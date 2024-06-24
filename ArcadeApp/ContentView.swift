@@ -1,24 +1,19 @@
-//
-//  ContentView.swift
-//  ArcadeApp
-//
-//  Created by Gabriel Garcia Millan on 21/6/24.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(LoginVM.self) private var loginVM
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        if loginVM.isLogged {
+            MainTabView()
+        } else {
+            LoginView()
         }
-        .padding()
     }
 }
 
 #Preview {
     ContentView()
+        .environment(LoginVM())
+    
 }

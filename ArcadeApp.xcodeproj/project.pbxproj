@@ -14,6 +14,22 @@
 		FC22BA712C2590F0002DFAA4 /* ArcadeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA702C2590F0002DFAA4 /* ArcadeAppTests.swift */; };
 		FC22BA7B2C2590F0002DFAA4 /* ArcadeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA7A2C2590F0002DFAA4 /* ArcadeAppUITests.swift */; };
 		FC22BA7D2C2590F0002DFAA4 /* ArcadeAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA7C2C2590F0002DFAA4 /* ArcadeAppUITestsLaunchTests.swift */; };
+		FC22BA8D2C259255002DFAA4 /* LoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA8C2C259255002DFAA4 /* LoginDTO.swift */; };
+		FC22BA922C2593D0002DFAA4 /* ACNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = FC22BA912C2593D0002DFAA4 /* ACNetwork */; };
+		FC22BA952C2593E8002DFAA4 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA942C2593E8002DFAA4 /* URL.swift */; };
+		FC22BA992C2594B2002DFAA4 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA982C2594B2002DFAA4 /* LoginInteractor.swift */; };
+		FC22BAA02C2595FF002DFAA4 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA9F2C2595FF002DFAA4 /* LoginVM.swift */; };
+		FC22BAA42C2596CE002DFAA4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BAA32C2596CE002DFAA4 /* LoginView.swift */; };
+		FC22BAA92C259A39002DFAA4 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BAA82C259A39002DFAA4 /* CustomTextField.swift */; };
+		FC22BAAB2C25E013002DFAA4 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BAAA2C25E013002DFAA4 /* SignupView.swift */; };
+		FC22BAAE2C25E292002DFAA4 /* CustomLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BAAD2C25E292002DFAA4 /* CustomLoginButton.swift */; };
+		FC22BAB02C25EEF5002DFAA4 /* SecKeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BAAF2C25EEF5002DFAA4 /* SecKeyStore.swift */; };
+		FC22BAB22C25EF01002DFAA4 /* SecManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BAB12C25EF01002DFAA4 /* SecManager.swift */; };
+		FC22BAB52C25FF8D002DFAA4 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BAB42C25FF8D002DFAA4 /* CustomAlert.swift */; };
+		FCA1994A2C283684005A7950 /* SignupFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA199492C283684005A7950 /* SignupFields.swift */; };
+		FCD2A6DA2C2A102E00F92778 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2A6D92C2A102E00F92778 /* MainTabView.swift */; };
+		FCD2A6DD2C2A109300F92778 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2A6DC2C2A109300F92778 /* SearchView.swift */; };
+		FCD2A6E02C2A10AC00F92778 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2A6DF2C2A10AC00F92778 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +60,22 @@
 		FC22BA762C2590F0002DFAA4 /* ArcadeAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArcadeAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC22BA7A2C2590F0002DFAA4 /* ArcadeAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeAppUITests.swift; sourceTree = "<group>"; };
 		FC22BA7C2C2590F0002DFAA4 /* ArcadeAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FC22BA8C2C259255002DFAA4 /* LoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDTO.swift; sourceTree = "<group>"; };
+		FC22BA942C2593E8002DFAA4 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		FC22BA982C2594B2002DFAA4 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		FC22BA9F2C2595FF002DFAA4 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
+		FC22BAA32C2596CE002DFAA4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		FC22BAA82C259A39002DFAA4 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		FC22BAAA2C25E013002DFAA4 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		FC22BAAD2C25E292002DFAA4 /* CustomLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoginButton.swift; sourceTree = "<group>"; };
+		FC22BAAF2C25EEF5002DFAA4 /* SecKeyStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecKeyStore.swift; sourceTree = "<group>"; };
+		FC22BAB12C25EF01002DFAA4 /* SecManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecManager.swift; sourceTree = "<group>"; };
+		FC22BAB32C25F266002DFAA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC22BAB42C25FF8D002DFAA4 /* CustomAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
+		FCA199492C283684005A7950 /* SignupFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFields.swift; sourceTree = "<group>"; };
+		FCD2A6D92C2A102E00F92778 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		FCD2A6DC2C2A109300F92778 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		FCD2A6DF2C2A10AC00F92778 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC22BA922C2593D0002DFAA4 /* ACNetwork in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				FC22BA5E2C2590EF002DFAA4 /* ArcadeApp */,
+				FC22BAB32C25F266002DFAA4 /* Info.plist */,
 				FC22BA6F2C2590F0002DFAA4 /* ArcadeAppTests */,
 				FC22BA792C2590F0002DFAA4 /* ArcadeAppUITests */,
 				FC22BA5D2C2590EF002DFAA4 /* Products */,
@@ -94,9 +128,13 @@
 		FC22BA5E2C2590EF002DFAA4 /* ArcadeApp */ = {
 			isa = PBXGroup;
 			children = (
-				FC22BA5F2C2590EF002DFAA4 /* ArcadeAppApp.swift */,
 				FC22BA612C2590EF002DFAA4 /* ContentView.swift */,
-				FC22BA632C2590F0002DFAA4 /* Assets.xcassets */,
+				FC22BA972C25949B002DFAA4 /* Core */,
+				FC22BAA52C25985C002DFAA4 /* CommonComponents */,
+				FC22BA932C2593DA002DFAA4 /* Interface */,
+				FC22BA8B2C259246002DFAA4 /* Model */,
+				FC22BA8E2C25929A002DFAA4 /* Security */,
+				FC22BA892C2591F8002DFAA4 /* System */,
 				FC22BA652C2590F0002DFAA4 /* Preview Content */,
 			);
 			path = ArcadeApp;
@@ -127,6 +165,129 @@
 			path = ArcadeAppUITests;
 			sourceTree = "<group>";
 		};
+		FC22BA892C2591F8002DFAA4 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				FC22BA5F2C2590EF002DFAA4 /* ArcadeAppApp.swift */,
+				FC22BA632C2590F0002DFAA4 /* Assets.xcassets */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
+		FC22BA8B2C259246002DFAA4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FC22BA8C2C259255002DFAA4 /* LoginDTO.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FC22BA8E2C25929A002DFAA4 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				FC22BAAF2C25EEF5002DFAA4 /* SecKeyStore.swift */,
+				FC22BAB12C25EF01002DFAA4 /* SecManager.swift */,
+			);
+			path = Security;
+			sourceTree = "<group>";
+		};
+		FC22BA932C2593DA002DFAA4 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				FC22BA942C2593E8002DFAA4 /* URL.swift */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		FC22BA962C259492002DFAA4 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				FC22BA9E2C2595D1002DFAA4 /* Views */,
+				FC22BAAC2C25E27D002DFAA4 /* Components */,
+				FCA199482C28366A005A7950 /* Options */,
+				FC22BA9B2C2595C3002DFAA4 /* ViewModels */,
+				FC22BA9A2C2595B8002DFAA4 /* Interactor */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		FC22BA972C25949B002DFAA4 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				FCD2A6D92C2A102E00F92778 /* MainTabView.swift */,
+				FCD2A6DE2C2A109F00F92778 /* Home */,
+				FCD2A6DB2C2A104400F92778 /* Search */,
+				FC22BA962C259492002DFAA4 /* Login */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		FC22BA9A2C2595B8002DFAA4 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				FC22BA982C2594B2002DFAA4 /* LoginInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		FC22BA9B2C2595C3002DFAA4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				FC22BA9F2C2595FF002DFAA4 /* LoginVM.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		FC22BA9E2C2595D1002DFAA4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FC22BAA32C2596CE002DFAA4 /* LoginView.swift */,
+				FC22BAAA2C25E013002DFAA4 /* SignupView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FC22BAA52C25985C002DFAA4 /* CommonComponents */ = {
+			isa = PBXGroup;
+			children = (
+				FC22BAB42C25FF8D002DFAA4 /* CustomAlert.swift */,
+				FC22BAA82C259A39002DFAA4 /* CustomTextField.swift */,
+			);
+			path = CommonComponents;
+			sourceTree = "<group>";
+		};
+		FC22BAAC2C25E27D002DFAA4 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				FC22BAAD2C25E292002DFAA4 /* CustomLoginButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		FCA199482C28366A005A7950 /* Options */ = {
+			isa = PBXGroup;
+			children = (
+				FCA199492C283684005A7950 /* SignupFields.swift */,
+			);
+			path = Options;
+			sourceTree = "<group>";
+		};
+		FCD2A6DB2C2A104400F92778 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				FCD2A6DC2C2A109300F92778 /* SearchView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		FCD2A6DE2C2A109F00F92778 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				FCD2A6DF2C2A10AC00F92778 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +304,9 @@
 			dependencies = (
 			);
 			name = ArcadeApp;
+			packageProductDependencies = (
+				FC22BA912C2593D0002DFAA4 /* ACNetwork */,
+			);
 			productName = ArcadeApp;
 			productReference = FC22BA5C2C2590EF002DFAA4 /* ArcadeApp.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +379,9 @@
 				Base,
 			);
 			mainGroup = FC22BA532C2590EF002DFAA4;
+			packageReferences = (
+				FC22BA902C2593D0002DFAA4 /* XCRemoteSwiftPackageReference "ACNetwork-Bootcamp2024" */,
+			);
 			productRefGroup = FC22BA5D2C2590EF002DFAA4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -257,8 +424,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC22BAAB2C25E013002DFAA4 /* SignupView.swift in Sources */,
+				FCA1994A2C283684005A7950 /* SignupFields.swift in Sources */,
+				FC22BA8D2C259255002DFAA4 /* LoginDTO.swift in Sources */,
+				FC22BAB02C25EEF5002DFAA4 /* SecKeyStore.swift in Sources */,
+				FC22BAA42C2596CE002DFAA4 /* LoginView.swift in Sources */,
+				FCD2A6E02C2A10AC00F92778 /* HomeView.swift in Sources */,
 				FC22BA622C2590EF002DFAA4 /* ContentView.swift in Sources */,
+				FC22BAA02C2595FF002DFAA4 /* LoginVM.swift in Sources */,
+				FC22BAA92C259A39002DFAA4 /* CustomTextField.swift in Sources */,
 				FC22BA602C2590EF002DFAA4 /* ArcadeAppApp.swift in Sources */,
+				FC22BA992C2594B2002DFAA4 /* LoginInteractor.swift in Sources */,
+				FC22BAB22C25EF01002DFAA4 /* SecManager.swift in Sources */,
+				FC22BAB52C25FF8D002DFAA4 /* CustomAlert.swift in Sources */,
+				FCD2A6DD2C2A109300F92778 /* SearchView.swift in Sources */,
+				FC22BAAE2C25E292002DFAA4 /* CustomLoginButton.swift in Sources */,
+				FC22BA952C2593E8002DFAA4 /* URL.swift in Sources */,
+				FCD2A6DA2C2A102E00F92778 /* MainTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,11 +607,12 @@
 				DEVELOPMENT_TEAM = NHXG9GL4YK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ArcadeApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -454,11 +637,12 @@
 				DEVELOPMENT_TEAM = NHXG9GL4YK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ArcadeApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -588,6 +772,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FC22BA902C2593D0002DFAA4 /* XCRemoteSwiftPackageReference "ACNetwork-Bootcamp2024" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/applecodingacademy/ACNetwork-Bootcamp2024";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.15;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FC22BA912C2593D0002DFAA4 /* ACNetwork */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FC22BA902C2593D0002DFAA4 /* XCRemoteSwiftPackageReference "ACNetwork-Bootcamp2024" */;
+			productName = ACNetwork;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FC22BA542C2590EF002DFAA4 /* Project object */;
 }
