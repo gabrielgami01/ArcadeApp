@@ -11,10 +11,10 @@ struct LoginView: View {
                 Text("Arcade Studio")
                     .font(.largeTitle)
                     .bold()
-                VStack (spacing: 20){
-                    CustomTextField(value: $bvm.username, label: "Username", type: .simple)
+                VStack (){
+                    CustomTextField(value: $bvm.username, isError: $bvm.showError, label: "Username", type: .simple)
                         .textContentType(.username)
-                    CustomTextField(value: $bvm.password, label: "Password", type: .secured)
+                    CustomTextField(value: $bvm.password, isError: $bvm.showError, label: "Password", type: .secured)
                         .textContentType(.password)
                     CustomLoginButton(label: "Log In") {
                         loginVM.login()
@@ -24,6 +24,7 @@ struct LoginView: View {
                 HStack {
                     Text("Don't have an account?")
                     Button {
+                        loginVM.resetRegister()
                         loginVM.showSignup.toggle()
                     } label: {
                         Text("Sign up")

@@ -19,30 +19,35 @@ struct SignupView: View {
             Text("Sign up")
                 .font(.title)
                 .bold()
-                .padding(.top, 40)
-            VStack(spacing: 20) {
-                CustomTextField(value: $bvm.fullName, label: "Full Name", type: .simple, capitalization: .words)
+            VStack {
+                CustomTextField(value: $bvm.fullName, isError: $bvm.showError,
+                                label: "Full Name", type: .simple, capitalization: .words, validation: loginVM.fullNameValidation)
                     .textContentType(.name)
                     .focused($fields, equals: .fullName)
-                CustomTextField(value: $bvm.email, label: "Email", type: .simple)
+                CustomTextField(value: $bvm.email, isError: $bvm.showError,
+                                label: "Email", type: .simple, validation: loginVM.emailValidation)
                     .textContentType(.emailAddress)
                     .keyboardType(.emailAddress)
                     .focused($fields, equals: .email)
-                CustomTextField(value: $bvm.username, label: "Username", type: .simple)
+                CustomTextField(value: $bvm.username, isError: $bvm.showError,
+                                label: "Username", type: .simple, validation: loginVM.usernameValidation)
                     .textContentType(.username)
                     .focused($fields, equals: .username)
-                CustomTextField(value: $bvm.password, label: "Password", type: .secured)
+                CustomTextField(value: $bvm.password, isError: $bvm.showError,
+                                label: "Password", type: .secured, validation: loginVM.passwordValidation)
                     .textContentType(.password)
                     .focused($fields, equals: .password)
-                CustomTextField(value: $bvm.repeatPassword, label: "Re-enter password", type: .secured)
+                CustomTextField(value: $bvm.repeatPassword, isError: $bvm.showError,
+                                label: "Re-enter password", type: .secured, validation: loginVM.repeatPasswordValidation)
                     .textContentType(.password)
                     .focused($fields, equals: .repeatPassword)
                 CustomLoginButton(label: "Sign Up") {
                     loginVM.register()
+                    loginVM.showSignup.toggle()
                 }
+                .disabled(loginVM.enableSignupButton())
             }
             .padding(.vertical, 20)
-            
         }
         .navigationBarBackButtonHidden()
         .toolbar {
@@ -78,9 +83,6 @@ struct SignupView: View {
         }
         .safeAreaPadding()
         .scrollBounceBehavior(.basedOnSize)
-        .onAppear {
-            loginVM.resetRegister()
-        }
     }
 }
 

@@ -8,9 +8,14 @@ enum TextFieldType {
 
 struct CustomTextField: View {
     @Binding var value: String
+    @Binding var isError: Bool
     let label: String
     let type: TextFieldType
     var capitalization: TextInputAutocapitalization = .never
+    var validation: ((String) -> String?)? = nil
+
+    @State private var error = false
+    @State private var errorMsg = ""
     
     
     var body: some View {
@@ -38,13 +43,44 @@ struct CustomTextField: View {
                     .fill(.quaternary)
                     .opacity(0.4)
             }
+            .overlay {
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(lineWidth: 2.0)
+                    .fill(.red)
+                    .padding(2)
+                    .opacity(error ? 1.0 : 0.0)
+            }
+            Text("\(label.capitalized) \(errorMsg).")
+                .font(.caption2)
+                .foregroundStyle(.red)
+                .bold()
+                .padding(.horizontal, 10)
+                .opacity(error ? 1.0 : 0.0)
         }
-        
+        .onChange(of: value, initial: false) {
+            if let validation {
+                if let message = validation(value) {
+                    error = true
+                    errorMsg = message
+                } else {
+                    error = false
+                    errorMsg = ""
+                }
+                isError = error
+            }
+        }
     }
-    
 }
 
 #Preview {
-    CustomTextField(value: .constant(""), label: "Username", type: .simple)
-        .padding()
+    CustomTextField(value: .constant(""), isError: .constant(true), label: "Username", type: .simple) { value in
+        if value.isEmpty {
+            "cannot be empty"
+        } else if value.count < 6 {
+            "cannot be less than 6 characters"
+        } else {
+            nil
+        }
+    }
+    .padding()
 }
