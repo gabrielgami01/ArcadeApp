@@ -10,11 +10,13 @@ import SwiftUI
 @main
 struct ArcadeAppApp: App {
     @State private var loginVM = LoginVM()
+    @State private var searchVM = SearchVM()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environment(loginVM)
+                .environment(searchVM)
         }
     }
 }

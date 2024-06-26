@@ -14,7 +14,7 @@
 		FC22BA712C2590F0002DFAA4 /* ArcadeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA702C2590F0002DFAA4 /* ArcadeAppTests.swift */; };
 		FC22BA7B2C2590F0002DFAA4 /* ArcadeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA7A2C2590F0002DFAA4 /* ArcadeAppUITests.swift */; };
 		FC22BA7D2C2590F0002DFAA4 /* ArcadeAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA7C2C2590F0002DFAA4 /* ArcadeAppUITestsLaunchTests.swift */; };
-		FC22BA8D2C259255002DFAA4 /* LoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA8C2C259255002DFAA4 /* LoginDTO.swift */; };
+		FC22BA8D2C259255002DFAA4 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA8C2C259255002DFAA4 /* LoginModel.swift */; };
 		FC22BA922C2593D0002DFAA4 /* ACNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = FC22BA912C2593D0002DFAA4 /* ACNetwork */; };
 		FC22BA952C2593E8002DFAA4 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA942C2593E8002DFAA4 /* URL.swift */; };
 		FC22BA992C2594B2002DFAA4 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA982C2594B2002DFAA4 /* LoginInteractor.swift */; };
@@ -27,6 +27,11 @@
 		FC22BAB22C25EF01002DFAA4 /* SecManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BAB12C25EF01002DFAA4 /* SecManager.swift */; };
 		FC22BAB52C25FF8D002DFAA4 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BAB42C25FF8D002DFAA4 /* CustomAlert.swift */; };
 		FCA1994A2C283684005A7950 /* SignupFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA199492C283684005A7950 /* SignupFields.swift */; };
+		FCCD73652C2C74D40056036E /* GamesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD73642C2C74D40056036E /* GamesListView.swift */; };
+		FCCE05592C2B311B00B0D2CD /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCE05582C2B311A00B0D2CD /* SearchInteractor.swift */; };
+		FCCE055E2C2B31DB00B0D2CD /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCE055D2C2B31DB00B0D2CD /* SearchModel.swift */; };
+		FCCE05602C2B33F600B0D2CD /* SearchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCE055F2C2B33F500B0D2CD /* SearchVM.swift */; };
+		FCCE05632C2B36ED00B0D2CD /* SearchDataPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCE05622C2B36ED00B0D2CD /* SearchDataPreview.swift */; };
 		FCD2A6DA2C2A102E00F92778 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2A6D92C2A102E00F92778 /* MainTabView.swift */; };
 		FCD2A6DD2C2A109300F92778 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2A6DC2C2A109300F92778 /* SearchView.swift */; };
 		FCD2A6E02C2A10AC00F92778 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2A6DF2C2A10AC00F92778 /* HomeView.swift */; };
@@ -60,7 +65,7 @@
 		FC22BA762C2590F0002DFAA4 /* ArcadeAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArcadeAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC22BA7A2C2590F0002DFAA4 /* ArcadeAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeAppUITests.swift; sourceTree = "<group>"; };
 		FC22BA7C2C2590F0002DFAA4 /* ArcadeAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		FC22BA8C2C259255002DFAA4 /* LoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDTO.swift; sourceTree = "<group>"; };
+		FC22BA8C2C259255002DFAA4 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		FC22BA942C2593E8002DFAA4 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		FC22BA982C2594B2002DFAA4 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		FC22BA9F2C2595FF002DFAA4 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
@@ -73,6 +78,11 @@
 		FC22BAB32C25F266002DFAA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC22BAB42C25FF8D002DFAA4 /* CustomAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		FCA199492C283684005A7950 /* SignupFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFields.swift; sourceTree = "<group>"; };
+		FCCD73642C2C74D40056036E /* GamesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesListView.swift; sourceTree = "<group>"; };
+		FCCE05582C2B311A00B0D2CD /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
+		FCCE055D2C2B31DB00B0D2CD /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
+		FCCE055F2C2B33F500B0D2CD /* SearchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVM.swift; sourceTree = "<group>"; };
+		FCCE05622C2B36ED00B0D2CD /* SearchDataPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDataPreview.swift; sourceTree = "<group>"; };
 		FCD2A6D92C2A102E00F92778 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		FCD2A6DC2C2A109300F92778 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		FCD2A6DF2C2A10AC00F92778 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -132,7 +142,6 @@
 				FC22BA972C25949B002DFAA4 /* Core */,
 				FC22BAA52C25985C002DFAA4 /* CommonComponents */,
 				FC22BA932C2593DA002DFAA4 /* Interface */,
-				FC22BA8B2C259246002DFAA4 /* Model */,
 				FC22BA8E2C25929A002DFAA4 /* Security */,
 				FC22BA892C2591F8002DFAA4 /* System */,
 				FC22BA652C2590F0002DFAA4 /* Preview Content */,
@@ -143,6 +152,7 @@
 		FC22BA652C2590F0002DFAA4 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				FCCE05612C2B36DC00B0D2CD /* Search */,
 				FC22BA662C2590F0002DFAA4 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -177,7 +187,7 @@
 		FC22BA8B2C259246002DFAA4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FC22BA8C2C259255002DFAA4 /* LoginDTO.swift */,
+				FC22BA8C2C259255002DFAA4 /* LoginModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -207,6 +217,7 @@
 				FCA199482C28366A005A7950 /* Options */,
 				FC22BA9B2C2595C3002DFAA4 /* ViewModels */,
 				FC22BA9A2C2595B8002DFAA4 /* Interactor */,
+				FC22BA8B2C259246002DFAA4 /* Model */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -272,10 +283,54 @@
 			path = Options;
 			sourceTree = "<group>";
 		};
-		FCD2A6DB2C2A104400F92778 /* Search */ = {
+		FCCE05552C2B2B3900B0D2CD /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				FCD2A6DC2C2A109300F92778 /* SearchView.swift */,
+				FCCD73642C2C74D40056036E /* GamesListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FCCE05562C2B2B3F00B0D2CD /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				FCCE055F2C2B33F500B0D2CD /* SearchVM.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		FCCE05572C2B30DC00B0D2CD /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				FCCE05582C2B311A00B0D2CD /* SearchInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		FCCE055C2C2B31AE00B0D2CD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FCCE055D2C2B31DB00B0D2CD /* SearchModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FCCE05612C2B36DC00B0D2CD /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				FCCE05622C2B36ED00B0D2CD /* SearchDataPreview.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		FCD2A6DB2C2A104400F92778 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				FCCE05552C2B2B3900B0D2CD /* Views */,
+				FCCE05562C2B2B3F00B0D2CD /* ViewModels */,
+				FCCE05572C2B30DC00B0D2CD /* Interactor */,
+				FCCE055C2C2B31AE00B0D2CD /* Model */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -426,16 +481,21 @@
 			files = (
 				FC22BAAB2C25E013002DFAA4 /* SignupView.swift in Sources */,
 				FCA1994A2C283684005A7950 /* SignupFields.swift in Sources */,
-				FC22BA8D2C259255002DFAA4 /* LoginDTO.swift in Sources */,
+				FCCD73652C2C74D40056036E /* GamesListView.swift in Sources */,
+				FC22BA8D2C259255002DFAA4 /* LoginModel.swift in Sources */,
 				FC22BAB02C25EEF5002DFAA4 /* SecKeyStore.swift in Sources */,
 				FC22BAA42C2596CE002DFAA4 /* LoginView.swift in Sources */,
 				FCD2A6E02C2A10AC00F92778 /* HomeView.swift in Sources */,
+				FCCE05602C2B33F600B0D2CD /* SearchVM.swift in Sources */,
 				FC22BA622C2590EF002DFAA4 /* ContentView.swift in Sources */,
+				FCCE055E2C2B31DB00B0D2CD /* SearchModel.swift in Sources */,
 				FC22BAA02C2595FF002DFAA4 /* LoginVM.swift in Sources */,
 				FC22BAA92C259A39002DFAA4 /* CustomTextField.swift in Sources */,
 				FC22BA602C2590EF002DFAA4 /* ArcadeAppApp.swift in Sources */,
 				FC22BA992C2594B2002DFAA4 /* LoginInteractor.swift in Sources */,
+				FCCE05632C2B36ED00B0D2CD /* SearchDataPreview.swift in Sources */,
 				FC22BAB22C25EF01002DFAA4 /* SecManager.swift in Sources */,
+				FCCE05592C2B311B00B0D2CD /* SearchInteractor.swift in Sources */,
 				FC22BAB52C25FF8D002DFAA4 /* CustomAlert.swift in Sources */,
 				FCD2A6DD2C2A109300F92778 /* SearchView.swift in Sources */,
 				FC22BAAE2C25E292002DFAA4 /* CustomLoginButton.swift in Sources */,

@@ -25,7 +25,7 @@ struct LoginInteractor: LoginInteractorProtocol, NetworkJSONInteractor {
     
     func loginJWT(user: String, pass: String) async throws {
         let token = "\(user):\(pass)".data(using: .utf8)?.base64EncodedString()
-        let accessToken = try await getJSON(request: .get(url: .loginJWT,token: token,authType: .basic), type: TokenDTO.self)
+        let accessToken = try await getJSON(request: .get(url: .loginJWT, token: token, authType: .basic), type: TokenDTO.self)
         SecKeyStore.shared.storeKey(key: Data(accessToken.token.utf8), label: "token")
     }
 }
