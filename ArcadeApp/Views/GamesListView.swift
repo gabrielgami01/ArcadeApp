@@ -1,16 +1,10 @@
-//
-//  GamesListView.swift
-//  ArcadeApp
-//
-//  Created by Gabriel Garcia Millan on 26/6/24.
-//
-
 import SwiftUI
 
 struct GamesListView: View {
-    let item: GenreConsole
+    let item: Master
     
-    @Environment(SearchVM.self) private var searchVM
+    @State var searchVM: SearchVM
+    
     
     var body: some View {
         ScrollView {
@@ -27,5 +21,5 @@ struct GamesListView: View {
 }
 
 #Preview {
-    GamesListView(item: Console.test)
+    GamesListView(item: Console.test, searchVM: SearchVM(interactor: TestInteractor()))
 }

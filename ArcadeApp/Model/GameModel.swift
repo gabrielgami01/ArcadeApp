@@ -1,20 +1,5 @@
 import Foundation
 
-protocol GenreConsole {
-    var id: UUID { get }
-    var name: String { get }
-}
-
-struct Genre: Codable, Identifiable, Hashable, GenreConsole {
-    let id: UUID
-    let name: String
-}
-
-struct Console: Codable, Identifiable, Hashable, GenreConsole {
-    let id: UUID
-    let name: String
-}
-
 struct GameDTO: Codable {
     let id: UUID
     let name: String

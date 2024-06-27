@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(LoginVM.self) private var loginVM
+    @Environment(UserVM.self) private var loginVM
     
     var body: some View {
         if loginVM.isLogged {
@@ -14,6 +14,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .environment(LoginVM())
-    
+        .environment(UserVM())
 }

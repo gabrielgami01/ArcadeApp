@@ -1,10 +1,10 @@
 import SwiftUI
 
 struct LoginView: View {
-    @Environment(LoginVM.self) private var loginVM
+    @Environment(UserVM.self) private var userVM
     
     var body: some View {
-        @Bindable var bvm = loginVM
+        @Bindable var bvm = userVM
         
         NavigationStack {
             VStack {
@@ -17,15 +17,15 @@ struct LoginView: View {
                     CustomTextField(value: $bvm.password, isError: $bvm.showError, label: "Password", type: .secured)
                         .textContentType(.password)
                     CustomLoginButton(label: "Log In") {
-                        loginVM.login()
+                        userVM.login()
                     }
                 }
                 .padding(.vertical, 100)
                 HStack {
                     Text("Don't have an account?")
                     Button {
-                        loginVM.resetRegister()
-                        loginVM.showSignup.toggle()
+                        userVM.resetRegister()
+                        userVM.showSignup.toggle()
                     } label: {
                         Text("Sign up")
                     }
@@ -41,5 +41,5 @@ struct LoginView: View {
 
 #Preview {
     LoginView()
-        .environment(LoginVM())
+        .environment(UserVM())
 }

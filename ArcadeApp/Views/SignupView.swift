@@ -1,19 +1,12 @@
-//
-//  SignupView.swift
-//  ArcadeApp
-//
-//  Created by Gabriel Garcia Millan on 21/6/24.
-//
-
 import SwiftUI
 
 struct SignupView: View {
-    @Environment(LoginVM.self) private var loginVM
+    @Environment(UserVM.self) private var userVM
     
     @FocusState var fields: SignupFields?
     
     var body: some View {
-        @Bindable var bvm = loginVM
+        @Bindable var bvm = userVM
         
         ScrollView {
             Text("Sign up")
@@ -21,31 +14,31 @@ struct SignupView: View {
                 .bold()
             VStack {
                 CustomTextField(value: $bvm.fullName, isError: $bvm.showError,
-                                label: "Full Name", type: .simple, capitalization: .words, validation: loginVM.fullNameValidation)
+                                label: "Full Name", type: .simple, capitalization: .words, validation: userVM.fullNameValidation)
                     .textContentType(.name)
                     .focused($fields, equals: .fullName)
                 CustomTextField(value: $bvm.email, isError: $bvm.showError,
-                                label: "Email", type: .simple, validation: loginVM.emailValidation)
+                                label: "Email", type: .simple, validation: userVM.emailValidation)
                     .textContentType(.emailAddress)
                     .keyboardType(.emailAddress)
                     .focused($fields, equals: .email)
                 CustomTextField(value: $bvm.username, isError: $bvm.showError,
-                                label: "Username", type: .simple, validation: loginVM.usernameValidation)
+                                label: "Username", type: .simple, validation: userVM.usernameValidation)
                     .textContentType(.username)
                     .focused($fields, equals: .username)
                 CustomTextField(value: $bvm.password, isError: $bvm.showError,
-                                label: "Password", type: .secured, validation: loginVM.passwordValidation)
+                                label: "Password", type: .secured, validation: userVM.passwordValidation)
                     .textContentType(.password)
                     .focused($fields, equals: .password)
                 CustomTextField(value: $bvm.repeatPassword, isError: $bvm.showError,
-                                label: "Re-enter password", type: .secured, validation: loginVM.repeatPasswordValidation)
+                                label: "Re-enter password", type: .secured, validation: userVM.repeatPasswordValidation)
                     .textContentType(.password)
                     .focused($fields, equals: .repeatPassword)
                 CustomLoginButton(label: "Sign Up") {
-                    loginVM.register()
-                    loginVM.showSignup.toggle()
+                    userVM.register()
+                    userVM.showSignup.toggle()
                 }
-                .disabled(loginVM.enableSignupButton())
+                .disabled(userVM.enableSignupButton())
             }
             .padding(.vertical, 20)
         }
@@ -53,8 +46,8 @@ struct SignupView: View {
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
                 Button {
-                    loginVM.resetRegister()
-                    loginVM.showSignup.toggle()
+                    userVM.resetRegister()
+                    userVM.showSignup.toggle()
                 } label: {
                     Text("Cancel")
                         .bold()
@@ -89,7 +82,7 @@ struct SignupView: View {
 #Preview {
     NavigationStack {
         SignupView()
-            .environment(LoginVM())
+            .environment(UserVM())
     }
 }
 

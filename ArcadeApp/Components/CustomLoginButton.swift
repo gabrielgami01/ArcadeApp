@@ -1,10 +1,3 @@
-//
-//  CustomLoginButton.swift
-//  ArcadeApp
-//
-//  Created by Gabriel Garcia Millan on 21/6/24.
-//
-
 import SwiftUI
 
 struct CustomLoginButton: View {

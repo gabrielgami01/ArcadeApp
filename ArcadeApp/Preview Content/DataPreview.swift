@@ -1,6 +1,14 @@
 import SwiftUI
 
-struct SearchInteractorTest: SearchInteractorProtocol {
+struct TestInteractor: DataInteractor {
+    func createUser(user: CreateUserDTO) async throws {
+        
+    }
+    
+    func loginJWT(user: String, pass: String) async throws {
+        
+    }
+    
     func getConsolesGenres() async throws -> (consoles: [Console], genres: [Genre]) {
         let consoles = [Console(id: UUID(), name: "Arcade"),
                         Console(id: UUID(), name: "NES"),

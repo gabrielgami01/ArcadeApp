@@ -17,5 +17,5 @@ struct MainTabView: View {
 
 #Preview {
     MainTabView()
-        .environment(LoginVM())
+        .environment(UserVM())
 }

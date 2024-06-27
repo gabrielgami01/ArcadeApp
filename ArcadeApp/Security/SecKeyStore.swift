@@ -1,10 +1,3 @@
-//
-//  SecKeyStore.swift
-//  SecureApp
-//
-//  Created by Julio César Fernández Muñoz on 13/5/24.
-//
-
 import SwiftUI
 import Security
 

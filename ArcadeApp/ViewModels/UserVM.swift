@@ -1,8 +1,8 @@
 import SwiftUI
 
 @Observable
-final class LoginVM {
-    let interactor: LoginInteractorProtocol
+final class UserVM {
+    let interactor: DataInteractor
     let secManager: SecManager = SecManager.shared
     
     var isLogged = false
@@ -17,7 +17,7 @@ final class LoginVM {
     var errorMsg = ""
     var showError = false
     
-    init(interactor: LoginInteractor = LoginInteractor.shared) {
+    init(interactor: DataInteractor = Network.shared) {
         self.interactor = interactor
         self.isLogged = secManager.isJWTToken
     }

@@ -2,7 +2,7 @@ import SwiftUI
 
 @Observable
 final class SearchVM {
-    let interactor: SearchInteractorProtocol
+    let interactor: DataInteractor
     
     var consoles: [Console] = []
     var genres: [Genre] = []
@@ -15,7 +15,7 @@ final class SearchVM {
     var errorMsg = ""
     var showAlert = false
     
-    init(interactor: SearchInteractorProtocol = SearchInteractor.shared) {
+    init(interactor: DataInteractor = Network.shared) {
         self.interactor = interactor
         Task {
             await getConsolesGenres()
@@ -34,7 +34,7 @@ final class SearchVM {
         }
     }
     
-    func getGamesByGenreConsole(item: GenreConsole) async {
+    func getGamesByGenreConsole(item: Master) async {
         do {
             if item is Console {
                let games = try await interactor.getGamesByConsole(id: item.id)

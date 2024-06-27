@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SearchView: View {
-    @Environment(SearchVM.self) private var searchVM
+    @State var searchVM = SearchVM()
     
     private let columns = Array(repeating: GridItem(spacing: 10), count: 2)
     
@@ -14,7 +14,7 @@ struct SearchView: View {
                     Section {
                         ForEach(searchVM.consoles) { console in                            
                             NavigationLink(value: console){
-                                ConsoleGenreCard(item: console)
+                                MasterCard(master: console)
                             }
                             .buttonStyle(.plain)
                         }
@@ -27,7 +27,7 @@ struct SearchView: View {
                     Section {
                         ForEach(searchVM.genres) { genre in
                             NavigationLink(value: genre){
-                                ConsoleGenreCard(item: genre)
+                                MasterCard(master: genre)
                             }
                             .buttonStyle(.plain)
                         }
@@ -41,10 +41,10 @@ struct SearchView: View {
             }
             .navigationTitle("Search")
             .navigationDestination(for: Console.self, destination: { console in
-                GamesListView(item: console)
+                GamesListView(item: console, searchVM: searchVM)
             })
             .navigationDestination(for: Genre.self, destination: { genre in
-                GamesListView(item: genre)
+                GamesListView(item: genre, searchVM: searchVM)
             })
             .searchable(text: $bvm.search, placement: .navigationBarDrawer(displayMode: .always)) {
                 //SwiftData RecentSearchs
@@ -55,29 +55,7 @@ struct SearchView: View {
 }
 
 #Preview {
-    SearchView()
-        .environment(SearchVM(interactor: SearchInteractorTest()))
+    SearchView(searchVM: SearchVM(interactor: TestInteractor()))
 }
 
-struct ConsoleGenreCard: View {
-    let item: GenreConsole
-    
-    var body: some View {
-        RoundedRectangle(cornerRadius: 10)
-            .fill(.fill)
-            .frame(height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
-            .overlay(alignment: .topLeading) {
-                Text(item.name)
-                    .font(.callout)
-                    .bold()
-                    .padding()
-            }
-            .overlay(alignment: .bottomTrailing) {
-                Image(systemName: "photo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 55)
-                    .padding()
-            }
-    }
-}
+
