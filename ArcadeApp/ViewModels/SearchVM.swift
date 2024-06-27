@@ -34,15 +34,10 @@ final class SearchVM {
         }
     }
     
-    func getGamesByGenreConsole(item: Master) async {
+    func getGamesByMaster(master: Master) async {
         do {
-            if item is Console {
-               let games = try await interactor.getGamesByConsole(id: item.id)
-                self.games = games
-            } else if item is Genre {
-               let games = try await interactor.getGamesByGenre(id: item.id)
-                self.games = games
-            }
+            let games = try await interactor.getGamesByMaster(master: master)
+            self.games = games
         } catch {
             self.errorMsg = error.localizedDescription
             self.showAlert.toggle()

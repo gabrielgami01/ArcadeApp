@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct TestInteractor: DataInteractor {
+    
     func createUser(user: CreateUserDTO) async throws {
         
     }
@@ -38,20 +39,30 @@ struct TestInteractor: DataInteractor {
         return (consoles, genres)
     }
     
-    func getGamesByConsole(id: UUID) async throws -> [Game] {
-        []
+    func loadData(file: String) throws -> [Game] {
+        guard let url = Bundle.main.url(forResource: file, withExtension: "json") else { return [] }
+        let data = try Data(contentsOf: url)
+        
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        
+        return try decoder.decode([GameDTO].self, from: data).map(\.toGame)
     }
     
-    func getGamesByGenre(id: UUID) async throws -> [Game] {
-        []
+    func getGamesByMaster(master: Master) async throws -> [Game] {
+        return if master is Console {
+            try loadData(file: "games").filter { $0.console == master.name}
+        } else {
+            try loadData(file: "games").filter { $0.genre == master.name}
+        }
     }
 }
 
 
 extension Console {
-    static let test = Console(id: UUID(uuidString: "ca7b48a7-a212-4673-80cb-a884e43387e9")!, name: "SNES")
+    static let test = Console(id: UUID(uuidString: "f076a3e7-40e2-42eb-be21-49c88761fdf4")!, name: "SNES")
 }
 
 extension Genre {
-    static let test = Genre(id: UUID(uuidString: "4638734c-fc58-4e3d-941a-a8885cf7b05d")!, name: "Action")
+    static let test = Genre(id: UUID(uuidString: "241aad9e-df3a-4e90-9ef4-06d1e11725d0")!, name: "Action")
 }

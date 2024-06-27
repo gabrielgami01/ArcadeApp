@@ -1,11 +1,10 @@
 import SwiftUI
 
 struct GamesListView: View {
-    let item: Master
+    let master: Master
     
     @State var searchVM: SearchVM
-    
-    
+
     var body: some View {
         ScrollView {
             LazyVStack {
@@ -15,11 +14,12 @@ struct GamesListView: View {
             }
         }
         .task {
-            await searchVM.getGamesByGenreConsole(item: item)
+            await searchVM.getGamesByMaster(master: master)
         }
+        .navigationTitle(master.name)
     }
 }
 
 #Preview {
-    GamesListView(item: Console.test, searchVM: SearchVM(interactor: TestInteractor()))
+    GamesListView(master: Console.test, searchVM: SearchVM(interactor: TestInteractor()))
 }

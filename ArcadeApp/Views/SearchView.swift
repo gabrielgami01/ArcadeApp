@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SearchView: View {
-    @State var searchVM = SearchVM()
+    @State var searchVM = SearchVM(interactor: TestInteractor())
     
     private let columns = Array(repeating: GridItem(spacing: 10), count: 2)
     
@@ -41,10 +41,10 @@ struct SearchView: View {
             }
             .navigationTitle("Search")
             .navigationDestination(for: Console.self, destination: { console in
-                GamesListView(item: console, searchVM: searchVM)
+                GamesListView(master: console, searchVM: searchVM)
             })
             .navigationDestination(for: Genre.self, destination: { genre in
-                GamesListView(item: genre, searchVM: searchVM)
+                GamesListView(master: genre, searchVM: searchVM)
             })
             .searchable(text: $bvm.search, placement: .navigationBarDrawer(displayMode: .always)) {
                 //SwiftData RecentSearchs

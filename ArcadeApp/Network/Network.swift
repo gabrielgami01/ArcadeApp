@@ -6,8 +6,7 @@ protocol DataInteractor {
     func loginJWT(user: String, pass: String) async throws
     
     func getConsolesGenres() async throws -> (consoles: [Console], genres: [Genre])
-    func getGamesByConsole(id: UUID) async throws -> [Game]
-    func getGamesByGenre(id: UUID) async throws -> [Game]
+    func getGamesByMaster(master: Master) async throws -> [Game]
 }
 
 struct Network: DataInteractor, NetworkJSONInteractor {
@@ -42,12 +41,13 @@ struct Network: DataInteractor, NetworkJSONInteractor {
         return try await (consolesRequest, genresRequest)
     }
     
-    func getGamesByConsole(id: UUID) async throws -> [Game] {
-        try await getJSON(request: .get(url: .getGamesByConsole(id: id), token: getToken()), type: [GameDTO].self).map(\.toGame)
+    func getGamesByMaster(master: Master) async throws -> [Game] {
+        return if master is Console {
+            try await getJSON(request: .get(url: .getGamesByConsole(id: master.id), token: getToken()), type: [GameDTO].self).map(\.toGame)
+        } else {
+            try await getJSON(request: .get(url: .getGamesByGenre(id: master.id), token: getToken()), type: [GameDTO].self).map(\.toGame)
+        }
     }
-    
-    func getGamesByGenre(id: UUID) async throws -> [Game] {
-        try await getJSON(request: .get(url: .getGamesByGenre(id: id), token: getToken()), type: [GameDTO].self).map(\.toGame)
-    }
+
     //END SEARCH
 }
