@@ -8,6 +8,7 @@ final class SearchVM {
     var genres: [Genre] = []
 
     var games: [Game] = []
+    var selectedGame: Game? = nil
     
     var search = ""
     var searching = false
