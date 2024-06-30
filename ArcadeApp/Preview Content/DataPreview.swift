@@ -56,6 +56,13 @@ struct TestInteractor: DataInteractor {
             try loadData(file: "games").filter { $0.genre == master.name}
         }
     }
+    
+    func getFeaturedFavoriteGames() async throws -> (featured: [Game], favorites: [Game]) {
+        let featured = try loadData(file: "games").filter { $0.featured}
+        let favorites = try loadData(file: "games").prefix(8).shuffled()
+        
+        return (featured, favorites)
+    }
 }
 
 
@@ -65,4 +72,16 @@ extension Console {
 
 extension Genre {
     static let test = Genre(id: UUID(uuidString: "241aad9e-df3a-4e90-9ef4-06d1e11725d0")!, name: "Action")
+}
+
+extension Game {
+    static let test = Game(id: UUID(uuidString: "3d45be8a-9799-41e7-a415-1af44774be85")!,
+                           name: "Pokémon Red and Blue",
+                           description: "An rpg game where players capture and train Pokémon to become the Pokémon Champion.",
+                           releaseDate: Calendar.current.date(from: DateComponents(year: 1996, month: 2, day: 27))!,
+                           genre: "RPG",
+                           console: "Gameboy",
+                           imageURL: URL(string: ""),
+                           videoURL: URL(string: ""),
+                           featured: false)
 }

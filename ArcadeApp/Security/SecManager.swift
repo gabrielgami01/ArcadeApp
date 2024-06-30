@@ -1,7 +1,7 @@
 import SwiftUI
 
-
 extension Notification.Name {
+    static let login = Notification.Name("LOGIN")
     static let logout = Notification.Name("LOGOUT")
 }
 
@@ -14,14 +14,14 @@ final class SecManager {
         String(data: Data(AK), encoding: .utf8) ?? ""
     }
 
-    var isJWTToken = false
+    var isLogged = false
     
     private init() {
-        isJWTToken = SecKeyStore.shared.readKey(label: "token") != nil
+        isLogged = SecKeyStore.shared.readKey(label: "token") != nil
     }
     
     func logout() {
         SecKeyStore.shared.deleteKey(label: "token")
-        isJWTToken.toggle()
+        isLogged.toggle()
     }
 }

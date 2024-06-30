@@ -7,6 +7,8 @@ protocol DataInteractor {
     
     func getConsolesGenres() async throws -> (consoles: [Console], genres: [Genre])
     func getGamesByMaster(master: Master) async throws -> [Game]
+    
+    func getFeaturedFavoriteGames() async throws -> (featured: [Game], favorites: [Game]) 
 }
 
 struct Network: DataInteractor, NetworkJSONInteractor {
@@ -30,6 +32,7 @@ struct Network: DataInteractor, NetworkJSONInteractor {
         let token = "\(user):\(pass)".data(using: .utf8)?.base64EncodedString()
         let accessToken = try await getJSON(request: .get(url: .loginJWT, token: token, authType: .basic), type: TokenDTO.self)
         SecKeyStore.shared.storeKey(key: Data(accessToken.token.utf8), label: "token")
+        NotificationCenter.default.post(name: .login, object: nil)
     }
     //END USERS
     
@@ -50,4 +53,12 @@ struct Network: DataInteractor, NetworkJSONInteractor {
     }
 
     //END SEARCH
+    
+    //HOME
+    func getFeaturedFavoriteGames() async throws -> (featured: [Game], favorites: [Game]) {
+        async let featuredRequest = getJSON(request: .get(url: .getFeaturedGames, token: getToken()), type: [GameDTO].self).map(\.toGame)
+        async let favoritesRequest = getJSON(request: .get(url: .getFavoriteGames, token: getToken()), type: [GameDTO].self).map(\.toGame)
+        
+        return try await (featuredRequest, favoritesRequest)
+    }
 }

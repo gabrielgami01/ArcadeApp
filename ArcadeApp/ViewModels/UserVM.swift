@@ -19,7 +19,7 @@ final class UserVM {
     
     init(interactor: DataInteractor = Network.shared) {
         self.interactor = interactor
-        self.isLogged = secManager.isJWTToken
+        self.isLogged = secManager.isLogged
     }
     
     func login() {

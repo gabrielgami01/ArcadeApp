@@ -9,10 +9,12 @@ struct ContentView: View {
         } else {
             LoginView()
         }
+        
     }
 }
 
 #Preview {
     ContentView()
         .environment(UserVM())
+        .environment(GamesVM(interactor: TestInteractor()))
 }

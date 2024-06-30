@@ -41,16 +41,17 @@ struct SearchView: View {
             }
             .navigationTitle("Search")
             .navigationDestination(for: Console.self, destination: { console in
-                GamesListView(master: console, searchVM: searchVM)
+                GamesView(master: console, searchVM: searchVM)
             })
             .navigationDestination(for: Genre.self, destination: { genre in
-                GamesListView(master: genre, searchVM: searchVM)
+                GamesView(master: genre, searchVM: searchVM)
             })
             .searchable(text: $bvm.search, placement: .navigationBarDrawer(displayMode: .always)) {
                 //SwiftData RecentSearchs
             }
             .safeAreaPadding()
         }
+        
     }
 }
 

@@ -18,4 +18,5 @@ struct MainTabView: View {
 #Preview {
     MainTabView()
         .environment(UserVM())
+        .environment(GamesVM(interactor: TestInteractor()))
 }

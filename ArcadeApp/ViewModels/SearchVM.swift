@@ -25,9 +25,7 @@ final class SearchVM {
     
     func getConsolesGenres() async {
         do {
-            let (consoles, genres) = try await interactor.getConsolesGenres()
-            self.consoles = consoles
-            self.genres = genres
+            (self.consoles, self.genres) = try await interactor.getConsolesGenres()
         } catch {
             self.errorMsg = error.localizedDescription
             self.showAlert.toggle()
@@ -37,8 +35,7 @@ final class SearchVM {
     
     func getGamesByMaster(master: Master) async {
         do {
-            let games = try await interactor.getGamesByMaster(master: master)
-            self.games = games
+            self.games = try await interactor.getGamesByMaster(master: master)
         } catch {
             self.errorMsg = error.localizedDescription
             self.showAlert.toggle()
