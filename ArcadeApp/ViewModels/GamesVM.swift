@@ -36,6 +36,8 @@ final class GamesVM {
         do {
             (featured, favorites) = try await interactor.getFeaturedFavoriteGames()
         } catch {
+            self.errorMsg = error.localizedDescription
+            self.showAlert.toggle()
             print(error.localizedDescription)
         }
     }

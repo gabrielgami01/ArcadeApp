@@ -8,7 +8,6 @@ struct GameCover: View {
     var body: some View {
         Group {
             if let image = game.imageURL {
-                
             } else {
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color(white: 0.6))

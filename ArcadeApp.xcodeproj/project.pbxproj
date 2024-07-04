@@ -35,6 +35,9 @@
 		FC64955B2C3310280095486D /* RatingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC64955A2C3310280095486D /* RatingComponent.swift */; };
 		FCA1994A2C283684005A7950 /* SignupFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA199492C283684005A7950 /* SignupFields.swift */; };
 		FCA519122C36B9CE001CCF54 /* ACNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = FCA519112C36B9CE001CCF54 /* ACNetwork */; };
+		FCA519152C36C18D001CCF54 /* Namespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA519142C36C18D001CCF54 /* Namespace.swift */; };
+		FCA519172C36C191001CCF54 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA519162C36C191001CCF54 /* UIDevice.swift */; };
+		FCA5191B2C36FDE5001CCF54 /* GameDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA5191A2C36FDE5001CCF54 /* GameDetailsVM.swift */; };
 		FCCD73652C2C74D40056036E /* GamesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD73642C2C74D40056036E /* GamesListView.swift */; };
 		FCCD73702C2D88990056036E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD736F2C2D88990056036E /* Network.swift */; };
 		FCCD73742C2D8AB40056036E /* MasterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD73732C2D8AB40056036E /* MasterCard.swift */; };
@@ -100,6 +103,9 @@
 		FC4F6C392C31C8B900B6D9F7 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		FC64955A2C3310280095486D /* RatingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingComponent.swift; sourceTree = "<group>"; };
 		FCA199492C283684005A7950 /* SignupFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFields.swift; sourceTree = "<group>"; };
+		FCA519142C36C18D001CCF54 /* Namespace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Namespace.swift; sourceTree = "<group>"; };
+		FCA519162C36C191001CCF54 /* UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
+		FCA5191A2C36FDE5001CCF54 /* GameDetailsVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailsVM.swift; sourceTree = "<group>"; };
 		FCCD73642C2C74D40056036E /* GamesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesListView.swift; sourceTree = "<group>"; };
 		FCCD736F2C2D88990056036E /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		FCCD73732C2D8AB40056036E /* MasterCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterCard.swift; sourceTree = "<group>"; };
@@ -173,6 +179,7 @@
 				FC22BA932C2593DA002DFAA4 /* Interface */,
 				FCCE055C2C2B31AE00B0D2CD /* Model */,
 				FC22BA8E2C25929A002DFAA4 /* Security */,
+				FCA519132C36C175001CCF54 /* Extensions */,
 				FC22BA892C2591F8002DFAA4 /* System */,
 				FC22BA652C2590F0002DFAA4 /* Preview Content */,
 			);
@@ -261,6 +268,15 @@
 			name = Search;
 			sourceTree = "<group>";
 		};
+		FCA519132C36C175001CCF54 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FCA519162C36C191001CCF54 /* UIDevice.swift */,
+				FCA519142C36C18D001CCF54 /* Namespace.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		FCCD73682C2D67040056036E /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +304,7 @@
 				FCED20E52C2F1C8900C0C5A1 /* GamesVM.swift */,
 				FC22BA9F2C2595FF002DFAA4 /* UserVM.swift */,
 				FCCE055F2C2B33F500B0D2CD /* SearchVM.swift */,
+				FCA5191A2C36FDE5001CCF54 /* GameDetailsVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -495,12 +512,14 @@
 				FCD2A6E02C2A10AC00F92778 /* LandingHomeView.swift in Sources */,
 				FCCE05602C2B33F600B0D2CD /* SearchVM.swift in Sources */,
 				FC22BA622C2590EF002DFAA4 /* ContentView.swift in Sources */,
+				FCA5191B2C36FDE5001CCF54 /* GameDetailsVM.swift in Sources */,
 				FC1FEB742C3561FC00721A1C /* GenreCard.swift in Sources */,
 				FCCE055E2C2B31DB00B0D2CD /* MastersModel.swift in Sources */,
 				FC22BAA02C2595FF002DFAA4 /* UserVM.swift in Sources */,
 				FC22BAA92C259A39002DFAA4 /* CustomTextField.swift in Sources */,
 				FC22BA602C2590EF002DFAA4 /* ArcadeAppApp.swift in Sources */,
 				FCCE05632C2B36ED00B0D2CD /* DataPreview.swift in Sources */,
+				FCA519152C36C18D001CCF54 /* Namespace.swift in Sources */,
 				FC2BC3092C34827D00353D48 /* GameCardButton.swift in Sources */,
 				FC22BAB22C25EF01002DFAA4 /* SecManager.swift in Sources */,
 				FC2BC3062C3480CD00353D48 /* HomeScrollView.swift in Sources */,
@@ -511,6 +530,7 @@
 				FC4F6C3A2C31C8B900B6D9F7 /* ProfileView.swift in Sources */,
 				FCED20E62C2F1C8900C0C5A1 /* GamesVM.swift in Sources */,
 				FCCD73742C2D8AB40056036E /* MasterCard.swift in Sources */,
+				FCA519172C36C191001CCF54 /* UIDevice.swift in Sources */,
 				FC22BAAE2C25E292002DFAA4 /* CustomButton.swift in Sources */,
 				FC22BA952C2593E8002DFAA4 /* URL.swift in Sources */,
 				FCD2A6DA2C2A102E00F92778 /* MainTabView.swift in Sources */,

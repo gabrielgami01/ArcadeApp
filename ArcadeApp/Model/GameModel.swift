@@ -36,3 +36,7 @@ struct Game: Identifiable, Hashable {
     let videoURL: URL?
     let featured: Bool
 }
+
+struct FavoriteGameDTO: Codable {
+    let id: UUID
+}

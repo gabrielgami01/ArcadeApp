@@ -11,8 +11,8 @@ struct GameDetailsView: View {
     let game: Game
     
     @Environment(GamesVM.self) private var gamesVM
+    @State private var detailsVM = GameDetailsVM()
     
-    @State private var favorite = false
     @State private var globalRating = 4
     @State private var rating = 0
     @State private var comment = ""
@@ -40,12 +40,12 @@ struct GameDetailsView: View {
                             .bold()
                         Spacer()
                         Button {
-                            favorite.toggle()
+                            detailsVM.useFavorite(gameID: game.id)
                         } label: {
                             Image(systemName: "heart")
                                 .font(.title2)
-                                .symbolVariant(favorite ? .fill : .none)
-                                .tint(favorite ? .red : .white)
+                                .symbolVariant(detailsVM.favorite ? .fill : .none)
+                                .tint(detailsVM.favorite ? .red : .white)
                         }
                     }
                     
@@ -106,6 +106,9 @@ struct GameDetailsView: View {
                 
             }
             
+        }
+        .onAppear {
+            detailsVM.loadGameDetails(id: game.id)
         }
         .ignoresSafeArea(edges: .top)
         .background(Color("backgroundColor"))

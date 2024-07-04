@@ -66,6 +66,18 @@ struct TestInteractor: DataInteractor {
         
         return (featured, favorites)
     }
+    
+    func isFavoriteGame(id: UUID) async throws -> Bool {
+        return true
+    }
+    
+    func addFavoriteGame(id: UUID) async throws {
+        
+    }
+    
+    func removeFavoriteGame(id: UUID) async throws {
+        
+    }
 }
 
 

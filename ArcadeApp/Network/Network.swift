@@ -10,6 +10,9 @@ protocol DataInteractor {
     func searchGame(name: String) async throws -> [Game]
     
     func getFeaturedFavoriteGames() async throws -> (featured: [Game], favorites: [Game]) 
+    func isFavoriteGame(id: UUID) async throws -> Bool
+    func addFavoriteGame(id: UUID) async throws
+    func removeFavoriteGame(id: UUID) async throws
 }
 
 struct Network: DataInteractor, NetworkJSONInteractor {
@@ -62,8 +65,23 @@ struct Network: DataInteractor, NetworkJSONInteractor {
     //HOME
     func getFeaturedFavoriteGames() async throws -> (featured: [Game], favorites: [Game]) {
         async let featuredRequest = getJSON(request: .get(url: .getFeaturedGames, token: getToken()), type: [GameDTO].self).map(\.toGame)
-        async let favoritesRequest = getJSON(request: .get(url: .getFavoriteGames, token: getToken()), type: [GameDTO].self).map(\.toGame)
+        async let favoritesRequest = getJSON(request: .get(url: .favoriteGames, token: getToken()), type: [GameDTO].self).map(\.toGame)
         
         return try await (featuredRequest, favoritesRequest)
+    }
+    //HOME
+    
+    func isFavoriteGame(id: UUID) async throws -> Bool {
+        try await getJSON(request: .get(url: .isFavoriteGame(id: id), token: getToken()), type: Bool.self)
+    }
+    
+    func addFavoriteGame(id: UUID) async throws {
+        let favoriteGameDTO = FavoriteGameDTO(id: id)
+        try await post(request: .post(url: .favoriteGames, post: favoriteGameDTO, token: getToken()), status: 201)
+    }
+    
+    func removeFavoriteGame(id: UUID) async throws {
+        let favoriteGameDTO = FavoriteGameDTO(id: id)
+        try await post(request: .post(url: .favoriteGames, post: favoriteGameDTO, method: .delete, token: getToken()))
     }
 }
