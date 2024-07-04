@@ -4,12 +4,14 @@ struct ContentView: View {
     @Environment(UserVM.self) private var loginVM
     
     var body: some View {
-        if loginVM.isLogged {
-            MainTabView()
-        } else {
-            LoginView()
+        Group {
+            if loginVM.isLogged {
+                MainTabView()
+            } else {
+                LoginView()
+            }
         }
-        
+        .preferredColorScheme(.dark)
     }
 }
 

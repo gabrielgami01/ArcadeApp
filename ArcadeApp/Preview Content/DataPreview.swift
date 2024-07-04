@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct TestInteractor: DataInteractor {
-    
     func createUser(user: CreateUserDTO) async throws {
         
     }
@@ -57,6 +56,10 @@ struct TestInteractor: DataInteractor {
         }
     }
     
+    func searchGame(name: String) async throws -> [Game] {
+        try loadData(file: "games").filter { $0.name.contains(name)}
+    }
+    
     func getFeaturedFavoriteGames() async throws -> (featured: [Game], favorites: [Game]) {
         let featured = try loadData(file: "games").filter { $0.featured}
         let favorites = try loadData(file: "games").prefix(8).shuffled()
@@ -83,5 +86,5 @@ extension Game {
                            console: "Gameboy",
                            imageURL: URL(string: ""),
                            videoURL: URL(string: ""),
-                           featured: false)
+                           featured: true)
 }

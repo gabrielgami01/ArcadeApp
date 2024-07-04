@@ -12,6 +12,13 @@ struct MainTabView: View {
                     Label("Search", systemImage: "magnifyingglass")
                 }
         }
+        .onAppear {
+            let appearance = UITabBarAppearance()
+            appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+            appearance.backgroundColor = .clear
+            UITabBar.appearance().standardAppearance = appearance
+            UITabBar.appearance().scrollEdgeAppearance = appearance
+        }
     }
 }
 
@@ -19,4 +26,5 @@ struct MainTabView: View {
     MainTabView()
         .environment(UserVM())
         .environment(GamesVM(interactor: TestInteractor()))
+        .preferredColorScheme(.dark)
 }

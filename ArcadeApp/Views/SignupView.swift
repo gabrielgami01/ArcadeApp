@@ -34,7 +34,7 @@ struct SignupView: View {
                                 label: "Re-enter password", type: .secured, validation: userVM.repeatPasswordValidation)
                     .textContentType(.password)
                     .focused($fields, equals: .repeatPassword)
-                CustomLoginButton(label: "Sign Up") {
+                CustomButton(label: "Sign Up") {
                     userVM.register()
                     userVM.showSignup.toggle()
                 }
@@ -74,6 +74,7 @@ struct SignupView: View {
                 }
             }
         }
+        .background(Color("backgroundColor"))
         .safeAreaPadding()
         .scrollBounceBehavior(.basedOnSize)
     }
@@ -83,6 +84,7 @@ struct SignupView: View {
     NavigationStack {
         SignupView()
             .environment(UserVM())
+            .preferredColorScheme(.dark)
     }
 }
 

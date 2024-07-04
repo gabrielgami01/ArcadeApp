@@ -7,6 +7,7 @@ protocol DataInteractor {
     
     func getConsolesGenres() async throws -> (consoles: [Console], genres: [Genre])
     func getGamesByMaster(master: Master) async throws -> [Game]
+    func searchGame(name: String) async throws -> [Game]
     
     func getFeaturedFavoriteGames() async throws -> (featured: [Game], favorites: [Game]) 
 }
@@ -50,6 +51,10 @@ struct Network: DataInteractor, NetworkJSONInteractor {
         } else {
             try await getJSON(request: .get(url: .getGamesByGenre(id: master.id), token: getToken()), type: [GameDTO].self).map(\.toGame)
         }
+    }
+    
+    func searchGame(name: String) async throws -> [Game] {
+        try await getJSON(request: .get(url: .searchGame(name: name), token: getToken()), type: [GameDTO].self).map(\.toGame)
     }
 
     //END SEARCH

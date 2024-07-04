@@ -5,7 +5,7 @@ struct MasterCard: View {
     
     var body: some View {
         RoundedRectangle(cornerRadius: 10)
-            .fill(.fill)
+            .fill(.quaternary)
             .frame(height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
             .overlay(alignment: .topLeading) {
                 Text(master.name)
@@ -25,4 +25,5 @@ struct MasterCard: View {
 
 #Preview {
     MasterCard(master: Console.test)
+        .padding(100)
 }

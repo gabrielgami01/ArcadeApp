@@ -1,18 +1,39 @@
-//
-//  GamsListView.swift
-//  ArcadeApp
-//
-//  Created by Gabriel Garcia Millan on 28/6/24.
-//
-
 import SwiftUI
 
-struct GamsListView: View {
+struct GamesListView: View {
+    let master: Master
+    
+    @Environment(GamesVM.self) private var gamesVM
+    
+    private let columns = Array(repeating: GridItem(spacing: 10), count: 2)
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            LazyVGrid(columns: columns, spacing: 20) {
+                ForEach(gamesVM.games) { game in
+                    GameCardButton(game: game) {
+                        gamesVM.selectedGame = game
+                    }
+                }
+            }
+        }
+        .task {
+            await gamesVM.getGamesByMaster(master: master)
+        }
+        .navigationTitle(master.name)
+        .navigationBarTitleDisplayMode(.inline)
+        .safeAreaPadding()
+        .background(Color("backgroundColor"))
     }
 }
 
 #Preview {
-    GamsListView()
+    NavigationStack {
+        GamesListView(master: Console.test)
+    }
+    .environment(GamesVM(interactor: TestInteractor()))
+    .preferredColorScheme(.dark)
 }
+
+
+

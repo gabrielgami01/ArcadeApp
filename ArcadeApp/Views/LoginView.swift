@@ -7,16 +7,16 @@ struct LoginView: View {
         @Bindable var bvm = userVM
         
         NavigationStack {
-            VStack {
+            ScrollView {
                 Text("Arcade Studio")
                     .font(.largeTitle)
                     .bold()
-                VStack (){
+                VStack {
                     CustomTextField(value: $bvm.username, isError: $bvm.showError, label: "Username", type: .simple)
                         .textContentType(.username)
                     CustomTextField(value: $bvm.password, isError: $bvm.showError, label: "Password", type: .secured)
                         .textContentType(.password)
-                    CustomLoginButton(label: "Log In") {
+                    CustomButton(label: "Log In") {
                         userVM.login()
                     }
                 }
@@ -34,7 +34,9 @@ struct LoginView: View {
             .navigationDestination(isPresented: $bvm.showSignup) {
                 SignupView()
             }
+            .background(Color("backgroundColor"))
             .safeAreaPadding()
+            
         }
     }
 }
@@ -42,4 +44,5 @@ struct LoginView: View {
 #Preview {
     LoginView()
         .environment(UserVM())
+        .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
 }

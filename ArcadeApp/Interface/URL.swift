@@ -19,9 +19,18 @@ extension URL {
     static func getGamesByGenre(id: UUID) -> URL {
         games.appending(path: "byGenre").appending(path: id.uuidString)
     }
+    static func searchGame(name: String) -> URL {
+        games.appending(path: "search").appending(queryItems: [.game(name: name)])
+    }
     
     static let getFavoriteGames = games.appending(path: "favorites")
     static func useFavoriteGame(id: UUID) -> URL {
         getFavoriteGames.appending(path: id.uuidString)
+    }
+}
+
+extension URLQueryItem {
+    static func game(name: String) -> URLQueryItem {
+        URLQueryItem(name: "gameName", value: name)
     }
 }

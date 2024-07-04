@@ -1,69 +1,23 @@
-import SwiftUI
+//
+//  HomeView.swift
+//  ArcadeApp
+//
+//  Created by Gabriel Garcia Millan on 2/7/24.
+//
 
-enum HomePage: String, Identifiable, CaseIterable {
-    case score = "Add score"
-    case challenges = "Challenges"
-    case rankings = "Rankings"
-    case forum = "Forum"
-    
-    var id: Self { self }
-}
+import SwiftUI
 
 struct HomeView: View {
     @Environment(UserVM.self) private var userVM
     @Environment(GamesVM.self) private var gamesVM
     
-    @State private var showProfile = false
-    
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                HStack {
-                    Text("Hello user")
-                        .font(.largeTitle)
-                    Spacer()
-                    Button {
-                        showProfile.toggle()
-                    } label: {
-                        Image(systemName: "person.crop.circle")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 30)
-                    }
-                    .buttonStyle(.plain)
-                }
-                .safeAreaPadding(.horizontal)
-                ScrollView(.horizontal) {
-                    LazyHStack {
-                        HomePageCard(page: .score, image: "plus", color: .cyan)
-                        HomePageCard(page: .challenges, image: "trophy", color: .green)
-                        HomePageCard(page: .rankings, image: "rosette", color: .purple)
-                        HomePageCard(page: .forum, image: "message", color: .orange)
-                    }
-                    .safeAreaPadding()
-                    .scrollTargetLayout()
-                }
-                
-                
-                ScrollView(.horizontal) {
-                    LazyHStack {
-                        ForEach(gamesVM.featured) { game in
-                            GameCard(game: game)
-                        }
-                    }
-                }
-                
-                ScrollView(.horizontal) {
-                    LazyHStack {
-                        ForEach(gamesVM.favorites) { game in
-                            GameCard(game: game)
-                        }
-                    }
-                }
-            }
-            .scrollIndicators(.hidden)
-            .navigationDestination(isPresented: $showProfile) {
-                ProfileView()
+        ZStack {
+            LandingHomeView()
+                .opacity(gamesVM.selectedGame == nil ? 1.0 : 0.0)
+            if let game = gamesVM.selectedGame {
+                GameDetailsView(game: game)
+                    .opacity(gamesVM.selectedGame == nil ? 0.0 : 1.0)
             }
         }
     }
@@ -73,27 +27,5 @@ struct HomeView: View {
     HomeView()
         .environment(UserVM())
         .environment(GamesVM(interactor: TestInteractor()))
-}
-
-struct HomePageCard: View {
-    let page: HomePage
-    let image: String
-    let color: Color
-    
-    var body: some View {
-        VStack {
-            RoundedRectangle(cornerRadius: 20)
-                .fill(color.gradient.opacity(0.4))
-                .frame(width: 100, height: 100)
-                .overlay {
-                    Image(systemName: image)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 40)
-                }
-            Text(page.rawValue)
-                .font(.footnote)
-                .bold()
-        }
-    }
+        .preferredColorScheme(.dark)
 }

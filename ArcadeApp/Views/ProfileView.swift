@@ -11,15 +11,20 @@ struct ProfileView: View {
     @Environment(UserVM.self) private var userVM
     
     var body: some View {
-        Button {
-            userVM.logout()
-        } label: {
-            Text("Logout")
+        ScrollView {
+            Button {
+                userVM.logout()
+            } label: {
+                Text("Logout")
+            }
         }
+        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+        .background(Color("backgroundColor"))
     }
 }
 
 #Preview {
     ProfileView()
         .environment(UserVM())
+        .preferredColorScheme(.dark)
 }
