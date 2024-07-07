@@ -10,7 +10,7 @@ struct CustomTextField: View {
     @Binding var value: String
     @Binding var isError: Bool
     let label: String
-    let type: TextFieldType
+    var type: TextFieldType = .simple
     var capitalization: TextInputAutocapitalization = .never
     var validation: ((String) -> String?)? = nil
 
@@ -73,7 +73,7 @@ struct CustomTextField: View {
 }
 
 #Preview {
-    CustomTextField(value: .constant(""), isError: .constant(true), label: "Username", type: .simple) { value in
+    CustomTextField(value: .constant(""), isError: .constant(true), label: "Username") { value in
         if value.isEmpty {
             "cannot be empty"
         } else if value.count < 6 {

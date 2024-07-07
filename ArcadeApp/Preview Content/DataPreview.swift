@@ -78,6 +78,14 @@ struct TestInteractor: DataInteractor {
     func removeFavoriteGame(id: UUID) async throws {
         
     }
+    
+    func getGameReviews(id: UUID) async throws -> [Review] {
+        [.test, .test2, .test3]
+    }
+    
+    func addReview(review: CreateReviewDTO) async throws {
+        
+    }
 }
 
 
@@ -99,4 +107,28 @@ extension Game {
                            imageURL: URL(string: ""),
                            videoURL: URL(string: ""),
                            featured: true)
+}
+
+extension Review {
+    static let test = Review(id: UUID(), 
+                             title: "Juego increíble",
+                             comment: "Me ha encantado el juego es adictivo",
+                             rating: 3,
+                             date: .now,
+                             username: "gabrielgm",
+                             avatarURL: nil)
+    static let test2 = Review(id: UUID(),
+                             title: "Muy aburrido",
+                             comment: nil,
+                             rating: 1,
+                             date: .now,
+                             username: "gabrielgm",
+                             avatarURL: nil)
+    static let test3 = Review(id: UUID(),
+                             title: "WOW",
+                             comment: "El mejor juego de la historia",
+                             rating: 5,
+                             date: .now,
+                             username: "gabrielgm",
+                             avatarURL: nil)
 }

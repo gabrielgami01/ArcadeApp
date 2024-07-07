@@ -13,6 +13,9 @@ protocol DataInteractor {
     func isFavoriteGame(id: UUID) async throws -> Bool
     func addFavoriteGame(id: UUID) async throws
     func removeFavoriteGame(id: UUID) async throws
+    
+    func getGameReviews(id: UUID) async throws -> [Review]
+    func addReview(review: CreateReviewDTO) async throws
 }
 
 struct Network: DataInteractor, NetworkJSONInteractor {
@@ -83,5 +86,13 @@ struct Network: DataInteractor, NetworkJSONInteractor {
     func removeFavoriteGame(id: UUID) async throws {
         let favoriteGameDTO = FavoriteGameDTO(id: id)
         try await post(request: .post(url: .favoriteGames, post: favoriteGameDTO, method: .delete, token: getToken()))
+    }
+    
+    func addReview(review: CreateReviewDTO) async throws {
+        try await post(request: .post(url: .reviews, post: review, token: getToken()), status: 201)
+    }
+    
+    func getGameReviews(id: UUID) async throws -> [Review] {
+        try await getJSON(request: .get(url: .getGameReviews(id: id),token: getToken()), type: [ReviewDTO].self).map(\.toReview)
     }
 }

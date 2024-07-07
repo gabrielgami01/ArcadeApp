@@ -24,8 +24,13 @@ extension URL {
     }
     
     static let favoriteGames = games.appending(path: "favorites")
-    static func isFavoriteGame(id: UUID) ->URL {
+    static func isFavoriteGame(id: UUID) -> URL {
         favoriteGames.appending(path: id.uuidString)
+    }
+    
+    static let reviews = api.appending(path: "reviews")
+    static func getGameReviews(id: UUID) -> URL {
+        reviews.appending(path: id.uuidString)
     }
    
 }

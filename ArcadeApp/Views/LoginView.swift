@@ -12,7 +12,7 @@ struct LoginView: View {
                     .font(.largeTitle)
                     .bold()
                 VStack {
-                    CustomTextField(value: $bvm.username, isError: $bvm.showError, label: "Username", type: .simple)
+                    CustomTextField(value: $bvm.username, isError: $bvm.showError, label: "Username")
                         .textContentType(.username)
                     CustomTextField(value: $bvm.password, isError: $bvm.showError, label: "Password", type: .secured)
                         .textContentType(.password)

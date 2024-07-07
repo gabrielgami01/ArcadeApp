@@ -11,10 +11,10 @@ struct GameDetailsView: View {
     let game: Game
     
     @Environment(GamesVM.self) private var gamesVM
-    @State private var detailsVM = GameDetailsVM()
+    @State var detailsVM = GameDetailsVM()
     
     @State private var globalRating = 4
-    @State private var rating = 0
+    @State private var rating = 3
     @State private var comment = ""
     
     var body: some View {
@@ -49,7 +49,7 @@ struct GameDetailsView: View {
                         }
                     }
                     
-                    RatingComponent(rating: $globalRating, mode: .display)
+                    RatingComponent(rating: .constant(globalRating), mode: .display)
 
                     HStack() {
                         if game.featured {
@@ -71,35 +71,51 @@ struct GameDetailsView: View {
                     .padding([.horizontal, .top])
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("Leave a Review")
-                        .font(.title3)
-                        .bold()
-                    RatingComponent(rating: $rating, mode: .rate)
-                    
-//                    TextViewUIKit(text: $comment, maxLines: 4)
-//                        .frame(height: 100)
-//                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                    
-                    TextEditor(text: $comment)
-                        .lineLimit(4)
-                        .scrollContentBackground(.hidden)
-                        .foregroundStyle(.black)
-                        .background(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .frame(height: 100)
-                    
-                    CustomButton(label: "Send") {
-                        
+                    HStack {
+                        Text("Player's Reviews")
+                            .font(.title3)
+                            .bold()
+                        Spacer()
+                        Button {
+                            detailsVM.showAddReview.toggle()
+                        } label: {
+                            Label {
+                                Text("Write a Review")
+                            } icon: {
+                                Image(systemName: "square.and.pencil")
+                            }
+                            .font(.headline)
+                        }
                     }
-                }
-                .padding([.horizontal, .top])
-                
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Player's Reviews")
-                        .font(.title3)
-                        .bold()
-                    LazyVStack {
-                                    
+                    LazyVStack(alignment: .leading) {
+                        ForEach(detailsVM.reviews) { review in
+                            HStack(alignment: .top, spacing: 20) {
+                                if let avatar = review.avatarURL {
+                                } else {
+                                    Image(systemName: "person.circle.fill")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 50)
+                                }
+                                VStack(alignment: .leading) {
+                                    Text(review.username)
+                                        .font(.headline)
+                                    HStack(spacing: 20) {
+                                        RatingComponent(rating: .constant(review.rating), mode: .display)
+                                        Text(review.date.formatted())
+                                            .font(.footnote)
+                                    }
+                                    .padding(.bottom, 5)
+                                    Text(review.title)
+                                        .font(.headline)
+                                    if let comment = review.comment {
+                                        Text(comment)
+                                            .font(.subheadline)
+                                    }
+                                }
+                            }
+                            Divider()
+                        }
                     }
                 }
                 .padding([.horizontal, .top])
@@ -107,8 +123,11 @@ struct GameDetailsView: View {
             }
             
         }
-        .onAppear {
-            detailsVM.loadGameDetails(id: game.id)
+        .task {
+            await detailsVM.loadGameDetails(id: game.id)
+        }
+        .sheet(isPresented: $detailsVM.showAddReview){
+            AddReviewView(addReviewVM: AddReviewVM(game: game))
         }
         .ignoresSafeArea(edges: .top)
         .background(Color("backgroundColor"))
@@ -118,8 +137,6 @@ struct GameDetailsView: View {
             } label: {
                 Image(systemName: "chevron.left")
                     .font(.largeTitle)
-//                    .symbolVariant(.fill)
-//                    .symbolVariant(.circle)
             }
             .buttonStyle(.plain)
             .foregroundStyle(.white)
@@ -131,7 +148,7 @@ struct GameDetailsView: View {
 }
 
 #Preview {
-    GameDetailsView(game: .test)
+    GameDetailsView(game: .test, detailsVM: GameDetailsVM(interactor: TestInteractor()))
         .environment(GamesVM(interactor: TestInteractor()))
         .preferredColorScheme(.dark)
 }

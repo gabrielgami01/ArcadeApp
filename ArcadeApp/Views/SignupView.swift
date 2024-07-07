@@ -14,16 +14,16 @@ struct SignupView: View {
                 .bold()
             VStack {
                 CustomTextField(value: $bvm.fullName, isError: $bvm.showError,
-                                label: "Full Name", type: .simple, capitalization: .words, validation: userVM.fullNameValidation)
+                                label: "Full Name", capitalization: .words, validation: userVM.fullNameValidation)
                     .textContentType(.name)
                     .focused($fields, equals: .fullName)
                 CustomTextField(value: $bvm.email, isError: $bvm.showError,
-                                label: "Email", type: .simple, validation: userVM.emailValidation)
+                                label: "Email", validation: userVM.emailValidation)
                     .textContentType(.emailAddress)
                     .keyboardType(.emailAddress)
                     .focused($fields, equals: .email)
                 CustomTextField(value: $bvm.username, isError: $bvm.showError,
-                                label: "Username", type: .simple, validation: userVM.usernameValidation)
+                                label: "Username", validation: userVM.usernameValidation)
                     .textContentType(.username)
                     .focused($fields, equals: .username)
                 CustomTextField(value: $bvm.password, isError: $bvm.showError,

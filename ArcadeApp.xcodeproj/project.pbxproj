@@ -32,12 +32,15 @@
 		FC2BC30D2C3496C200353D48 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2BC30C2C3496C200353D48 /* HomeView.swift */; };
 		FC2BC30F2C349A3E00353D48 /* GamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2BC30E2C349A3E00353D48 /* GamesView.swift */; };
 		FC4F6C3A2C31C8B900B6D9F7 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4F6C392C31C8B900B6D9F7 /* ProfileView.swift */; };
+		FC54459E2C3801F5001B26EF /* AddReviewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54459D2C3801F5001B26EF /* AddReviewVM.swift */; };
 		FC64955B2C3310280095486D /* RatingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC64955A2C3310280095486D /* RatingComponent.swift */; };
 		FCA1994A2C283684005A7950 /* SignupFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA199492C283684005A7950 /* SignupFields.swift */; };
 		FCA519122C36B9CE001CCF54 /* ACNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = FCA519112C36B9CE001CCF54 /* ACNetwork */; };
 		FCA519152C36C18D001CCF54 /* Namespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA519142C36C18D001CCF54 /* Namespace.swift */; };
 		FCA519172C36C191001CCF54 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA519162C36C191001CCF54 /* UIDevice.swift */; };
 		FCA5191B2C36FDE5001CCF54 /* GameDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA5191A2C36FDE5001CCF54 /* GameDetailsVM.swift */; };
+		FCA5191D2C3729EE001CCF54 /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA5191C2C3729EE001CCF54 /* ReviewModel.swift */; };
+		FCA5191F2C373153001CCF54 /* AddReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA5191E2C373153001CCF54 /* AddReviewView.swift */; };
 		FCCD73652C2C74D40056036E /* GamesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD73642C2C74D40056036E /* GamesListView.swift */; };
 		FCCD73702C2D88990056036E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD736F2C2D88990056036E /* Network.swift */; };
 		FCCD73742C2D8AB40056036E /* MasterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD73732C2D8AB40056036E /* MasterCard.swift */; };
@@ -101,11 +104,14 @@
 		FC2BC30C2C3496C200353D48 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		FC2BC30E2C349A3E00353D48 /* GamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesView.swift; sourceTree = "<group>"; };
 		FC4F6C392C31C8B900B6D9F7 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		FC54459D2C3801F5001B26EF /* AddReviewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewVM.swift; sourceTree = "<group>"; };
 		FC64955A2C3310280095486D /* RatingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingComponent.swift; sourceTree = "<group>"; };
 		FCA199492C283684005A7950 /* SignupFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFields.swift; sourceTree = "<group>"; };
 		FCA519142C36C18D001CCF54 /* Namespace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Namespace.swift; sourceTree = "<group>"; };
 		FCA519162C36C191001CCF54 /* UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		FCA5191A2C36FDE5001CCF54 /* GameDetailsVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailsVM.swift; sourceTree = "<group>"; };
+		FCA5191C2C3729EE001CCF54 /* ReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
+		FCA5191E2C373153001CCF54 /* AddReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewView.swift; sourceTree = "<group>"; };
 		FCCD73642C2C74D40056036E /* GamesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesListView.swift; sourceTree = "<group>"; };
 		FCCD736F2C2D88990056036E /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		FCCD73732C2D8AB40056036E /* MasterCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterCard.swift; sourceTree = "<group>"; };
@@ -305,6 +311,7 @@
 				FC22BA9F2C2595FF002DFAA4 /* UserVM.swift */,
 				FCCE055F2C2B33F500B0D2CD /* SearchVM.swift */,
 				FCA5191A2C36FDE5001CCF54 /* GameDetailsVM.swift */,
+				FC54459D2C3801F5001B26EF /* AddReviewVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -339,6 +346,7 @@
 				FC2BC30E2C349A3E00353D48 /* GamesView.swift */,
 				FCCD73642C2C74D40056036E /* GamesListView.swift */,
 				FCED20ED2C2F399B00C0C5A1 /* GameDetailsView.swift */,
+				FCA5191E2C373153001CCF54 /* AddReviewView.swift */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -358,6 +366,7 @@
 				FCCE055D2C2B31DB00B0D2CD /* MastersModel.swift */,
 				FC22BA8C2C259255002DFAA4 /* UserModel.swift */,
 				FCCD73752C2D8E520056036E /* GameModel.swift */,
+				FCA5191C2C3729EE001CCF54 /* ReviewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -515,6 +524,7 @@
 				FCA5191B2C36FDE5001CCF54 /* GameDetailsVM.swift in Sources */,
 				FC1FEB742C3561FC00721A1C /* GenreCard.swift in Sources */,
 				FCCE055E2C2B31DB00B0D2CD /* MastersModel.swift in Sources */,
+				FC54459E2C3801F5001B26EF /* AddReviewVM.swift in Sources */,
 				FC22BAA02C2595FF002DFAA4 /* UserVM.swift in Sources */,
 				FC22BAA92C259A39002DFAA4 /* CustomTextField.swift in Sources */,
 				FC22BA602C2590EF002DFAA4 /* ArcadeAppApp.swift in Sources */,
@@ -528,12 +538,14 @@
 				FC22BAB52C25FF8D002DFAA4 /* CustomAlert.swift in Sources */,
 				FCD2A6DD2C2A109300F92778 /* SearchView.swift in Sources */,
 				FC4F6C3A2C31C8B900B6D9F7 /* ProfileView.swift in Sources */,
+				FCA5191D2C3729EE001CCF54 /* ReviewModel.swift in Sources */,
 				FCED20E62C2F1C8900C0C5A1 /* GamesVM.swift in Sources */,
 				FCCD73742C2D8AB40056036E /* MasterCard.swift in Sources */,
 				FCA519172C36C191001CCF54 /* UIDevice.swift in Sources */,
 				FC22BAAE2C25E292002DFAA4 /* CustomButton.swift in Sources */,
 				FC22BA952C2593E8002DFAA4 /* URL.swift in Sources */,
 				FCD2A6DA2C2A102E00F92778 /* MainTabView.swift in Sources */,
+				FCA5191F2C373153001CCF54 /* AddReviewView.swift in Sources */,
 				FCCD73702C2D88990056036E /* Network.swift in Sources */,
 				FC2BC3042C34808300353D48 /* HomePageCard.swift in Sources */,
 				FCED20E82C2F214D00C0C5A1 /* GameCover.swift in Sources */,

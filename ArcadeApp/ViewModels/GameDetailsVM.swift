@@ -5,7 +5,10 @@ final class GameDetailsVM {
     let interactor: DataInteractor
     
     var favorite = false
+    var reviews: [Review] = []
     
+    var showAddReview = false
+
     var errorMsg = ""
     var showAlert = false
     
@@ -13,16 +16,14 @@ final class GameDetailsVM {
         self.interactor = interactor
     }
     
-    func loadGameDetails(id: UUID) {
-        Task {
-            do {
-                self.favorite = try await interactor.isFavoriteGame(id: id)
-                print(favorite)
-            } catch {
-                self.errorMsg = error.localizedDescription
-                self.showAlert.toggle()
-                print(error.localizedDescription)
-            }
+    func loadGameDetails(id: UUID) async {
+        do {
+            self.favorite = try await interactor.isFavoriteGame(id: id)
+            self.reviews = try await interactor.getGameReviews(id: id)
+        } catch {
+            self.errorMsg = error.localizedDescription
+            self.showAlert.toggle()
+            print(error.localizedDescription)
         }
     }
     
@@ -42,5 +43,4 @@ final class GameDetailsVM {
             }
         }
     }
-    
 }
