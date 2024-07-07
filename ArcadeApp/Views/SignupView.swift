@@ -74,7 +74,7 @@ struct SignupView: View {
                 }
             }
         }
-        .background(Color("backgroundColor"))
+        .background(Color("backgroundColor").gradient)
         .safeAreaPadding()
         .scrollBounceBehavior(.basedOnSize)
     }

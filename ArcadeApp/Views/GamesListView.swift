@@ -23,7 +23,7 @@ struct GamesListView: View {
         .navigationTitle(master.name)
         .navigationBarTitleDisplayMode(.inline)
         .safeAreaPadding()
-        .background(Color("backgroundColor"))
+        .background(Color("backgroundColor").gradient)
     }
 }
 

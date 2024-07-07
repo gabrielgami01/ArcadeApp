@@ -62,7 +62,7 @@ struct SearchView: View {
                 searchVM.searchGame(name: newValue)
             })
             .safeAreaPadding()
-            .background(Color("backgroundColor"))
+            .background(Color("backgroundColor").gradient)
         }
         
     }

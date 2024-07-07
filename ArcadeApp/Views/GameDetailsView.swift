@@ -130,7 +130,7 @@ struct GameDetailsView: View {
             AddReviewView(addReviewVM: AddReviewVM(game: game))
         }
         .ignoresSafeArea(edges: .top)
-        .background(Color("backgroundColor"))
+        .background(Color("backgroundColor").gradient)
         .overlay(alignment: .topLeading) {
             Button {
                 gamesVM.selectedGame = nil

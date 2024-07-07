@@ -60,7 +60,7 @@ struct LandingHomeView: View {
             .navigationDestination(isPresented: $showProfile) {
                 ProfileView()
             }
-            .background(Color("backgroundColor"))
+            .background(Color("backgroundColor").gradient)
         }
         
     }

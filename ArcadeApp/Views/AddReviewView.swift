@@ -7,7 +7,7 @@ struct AddReviewView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
+                VStack(alignment: .leading) {
                     CustomTextField(value: $addReviewVM.title, isError: $addReviewVM.showAlert, label: "Title")
                     HStack(spacing: 40) {
                         Text("Rating")
@@ -15,10 +15,7 @@ struct AddReviewView: View {
                             .bold()
                         RatingComponent(rating: $addReviewVM.rating, mode: .rate)
                     }
-
-    //                    TextViewUIKit(text: $comment, maxLines: 4)
-    //                        .frame(height: 100)
-    //                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .padding(.bottom, 20)
                     
                     TextEditor(text: $addReviewVM.comment)
                         .scrollContentBackground(.hidden)
@@ -52,7 +49,7 @@ struct AddReviewView: View {
             }
             .showAlert(show: $addReviewVM.showAlert, text: addReviewVM.errorMsg)
             .safeAreaPadding()
-            .background(Color("backgroundColor"))
+            .background(Color("backgroundColor").gradient)
         .scrollBounceBehavior(.basedOnSize)
         }
     }

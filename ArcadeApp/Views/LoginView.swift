@@ -34,7 +34,7 @@ struct LoginView: View {
             .navigationDestination(isPresented: $bvm.showSignup) {
                 SignupView()
             }
-            .background(Color("backgroundColor"))
+            .background(Color("backgroundColor").gradient)
             .safeAreaPadding()
             
         }

@@ -308,10 +308,10 @@
 			isa = PBXGroup;
 			children = (
 				FCED20E52C2F1C8900C0C5A1 /* GamesVM.swift */,
-				FC22BA9F2C2595FF002DFAA4 /* UserVM.swift */,
-				FCCE055F2C2B33F500B0D2CD /* SearchVM.swift */,
 				FCA5191A2C36FDE5001CCF54 /* GameDetailsVM.swift */,
 				FC54459D2C3801F5001B26EF /* AddReviewVM.swift */,
+				FCCE055F2C2B33F500B0D2CD /* SearchVM.swift */,
+				FC22BA9F2C2595FF002DFAA4 /* UserVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
