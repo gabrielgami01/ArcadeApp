@@ -14,8 +14,6 @@ struct GameDetailsView: View {
     @State var detailsVM = GameDetailsVM()
     
     @State private var globalRating = 4
-    @State private var rating = 3
-    @State private var comment = ""
     
     var body: some View {
         ScrollView {
@@ -49,7 +47,11 @@ struct GameDetailsView: View {
                         }
                     }
                     
-                    RatingComponent(rating: .constant(globalRating), mode: .display)
+                    HStack(alignment: .bottom, spacing: 20) {
+                        RatingComponent(rating: .constant(Int(detailsVM.globalRating)), mode: .display)
+                        Text("\(detailsVM.reviews.count) reviews")
+                            .font(.footnote)
+                    }
 
                     HStack() {
                         if game.featured {

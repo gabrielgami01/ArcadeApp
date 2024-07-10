@@ -6,6 +6,12 @@ final class GameDetailsVM {
     
     var favorite = false
     var reviews: [Review] = []
+    var globalRating: Double {
+        guard !reviews.isEmpty else { return 0.0 }
+           
+        let totalRating = reviews.reduce(0) { $0 + $1.rating }
+        return Double(totalRating) / Double(reviews.count)
+    }
     
     var showAddReview = false
 

@@ -1,9 +1,7 @@
 import SwiftUI
 
-struct GameCover: View {
+struct GameCoverFull: View {
     let game: Game
-    var width: CGFloat = 160
-    var height: CGFloat = 260
     
     var body: some View {
         Group {
@@ -19,14 +17,13 @@ struct GameCover: View {
                             .padding()
                     }
             }
-        }        
-        .frame(width: width, height: height)
+        }
+        .frame(width: .infinity, height: 350)
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .shadow(color: .primary.opacity(0.3), radius: 5, x: 0, y: 5)
     }
 }
 
 #Preview {
-    GameCover(game: .test, width: 160, height: 260)
-        .namespace(Namespace().wrappedValue)
+    GameCoverFull(game: .test)
 }

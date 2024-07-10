@@ -41,6 +41,7 @@
 		FCA5191B2C36FDE5001CCF54 /* GameDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA5191A2C36FDE5001CCF54 /* GameDetailsVM.swift */; };
 		FCA5191D2C3729EE001CCF54 /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA5191C2C3729EE001CCF54 /* ReviewModel.swift */; };
 		FCA5191F2C373153001CCF54 /* AddReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA5191E2C373153001CCF54 /* AddReviewView.swift */; };
+		FCAF56C52C3AA55C000B5D47 /* GameCoverFull.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAF56C42C3AA55C000B5D47 /* GameCoverFull.swift */; };
 		FCCD73652C2C74D40056036E /* GamesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD73642C2C74D40056036E /* GamesListView.swift */; };
 		FCCD73702C2D88990056036E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD736F2C2D88990056036E /* Network.swift */; };
 		FCCD73742C2D8AB40056036E /* MasterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD73732C2D8AB40056036E /* MasterCard.swift */; };
@@ -112,6 +113,7 @@
 		FCA5191A2C36FDE5001CCF54 /* GameDetailsVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailsVM.swift; sourceTree = "<group>"; };
 		FCA5191C2C3729EE001CCF54 /* ReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
 		FCA5191E2C373153001CCF54 /* AddReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewView.swift; sourceTree = "<group>"; };
+		FCAF56C42C3AA55C000B5D47 /* GameCoverFull.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCoverFull.swift; sourceTree = "<group>"; };
 		FCCD73642C2C74D40056036E /* GamesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesListView.swift; sourceTree = "<group>"; };
 		FCCD736F2C2D88990056036E /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		FCCD73732C2D8AB40056036E /* MasterCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterCard.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				FCED20E72C2F214D00C0C5A1 /* GameCover.swift */,
+				FCAF56C42C3AA55C000B5D47 /* GameCoverFull.swift */,
 				FC2BC3082C34827D00353D48 /* GameCardButton.swift */,
 				FC64955A2C3310280095486D /* RatingComponent.swift */,
 				FC1FEB732C3561FC00721A1C /* GenreCard.swift */,
@@ -536,6 +539,7 @@
 				FC2BC3012C3473C700353D48 /* TextViewUIKit.swift in Sources */,
 				FCED20EE2C2F399B00C0C5A1 /* GameDetailsView.swift in Sources */,
 				FC22BAB52C25FF8D002DFAA4 /* CustomAlert.swift in Sources */,
+				FCAF56C52C3AA55C000B5D47 /* GameCoverFull.swift in Sources */,
 				FCD2A6DD2C2A109300F92778 /* SearchView.swift in Sources */,
 				FC4F6C3A2C31C8B900B6D9F7 /* ProfileView.swift in Sources */,
 				FCA5191D2C3729EE001CCF54 /* ReviewModel.swift in Sources */,

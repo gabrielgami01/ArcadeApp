@@ -19,7 +19,7 @@ struct ProfileView: View {
             }
         }
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-        .background(Color("backgroundColor").gradient)
+        .background(Color("backgroundColor"))
     }
 }
 
