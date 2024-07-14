@@ -8,19 +8,16 @@ extension URL {
     static let createUser = api.appending(path: "users").appending(path: "create")
     static let loginJWT = api.appending(path: "users").appending(path: "loginJWT")
     
-    static let getConsoles = api.appending(path: "consoles")
-    static let getGenres = api.appending(path: "genres")
-    
     private static let games = api.appending(path: "games")
+    static func getAllGames(page: Int) -> URL {
+        games.appending(queryItems: [.page(num: page), .per()])
+    }
     static let getFeaturedGames = games.appending(path: "featured")
-    static func getGamesByConsole(id: UUID) -> URL {
-        games.appending(path: "byConsole").appending(path: id.uuidString)
+    static func searchGame(name: String, page: Int) -> URL {
+        games.appending(path: "search").appending(queryItems: [.game(name: name), .page(num: page), .per()])
     }
-    static func getGamesByGenre(id: UUID) -> URL {
-        games.appending(path: "byGenre").appending(path: id.uuidString)
-    }
-    static func searchGame(name: String) -> URL {
-        games.appending(path: "search").appending(queryItems: [.game(name: name)])
+    static func getGamesByConsole(name: String, page: Int) -> URL {
+        games.appending(path: "byConsole").appending(queryItems: [.console(name: name), .page(num: page), .per()])
     }
     
     static let favoriteGames = games.appending(path: "favorites")
@@ -36,7 +33,17 @@ extension URL {
 }
 
 extension URLQueryItem {
-    static func game(name: String) -> URLQueryItem {
-        URLQueryItem(name: "gameName", value: name)
+    static func page(num: Int) -> URLQueryItem {
+        URLQueryItem(name: "page", value: "\(num)")
     }
+    static func per(num: Int = 20) -> URLQueryItem {
+        URLQueryItem(name: "per", value: "\(num)")
+    }
+    static func game(name: String) -> URLQueryItem {
+        URLQueryItem(name: "game", value: name)
+    }
+    static func console(name: String) -> URLQueryItem {
+        URLQueryItem(name: "console", value: name)
+    }
+    
 }

@@ -34,9 +34,7 @@ struct LoginView: View {
             .navigationDestination(isPresented: $bvm.showSignup) {
                 SignupView()
             }
-            .background(Color("backgroundColor").gradient)
             .safeAreaPadding()
-            
         }
     }
 }
@@ -44,5 +42,4 @@ struct LoginView: View {
 #Preview {
     LoginView()
         .environment(UserVM())
-        .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
 }

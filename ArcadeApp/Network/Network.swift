@@ -5,9 +5,9 @@ protocol DataInteractor {
     func createUser(user: CreateUserDTO) async throws
     func loginJWT(user: String, pass: String) async throws
     
-    func getConsolesGenres() async throws -> (consoles: [Console], genres: [Genre])
-    func getGamesByMaster(master: Master) async throws -> [Game]
-    func searchGame(name: String) async throws -> [Game]
+    func getAllGames(page: Int) async throws -> [Game]
+    func getGamesByConsole(name: String, page: Int) async throws -> [Game]
+    func searchGame(name: String, page: Int) async throws -> [Game]
     
     func getFeaturedFavoriteGames() async throws -> (featured: [Game], favorites: [Game]) 
     func isFavoriteGame(id: UUID) async throws -> Bool
@@ -44,23 +44,16 @@ struct Network: DataInteractor, NetworkJSONInteractor {
     //END USERS
     
     //SEARCH
-    func getConsolesGenres() async throws -> (consoles: [Console], genres: [Genre]) {
-        async let consolesRequest = getJSON(request: .get(url: .getConsoles, token: getToken()), type: [Console].self)
-        async let genresRequest = getJSON(request: .get(url: .getGenres, token: getToken()), type: [Genre].self)
-        
-        return try await (consolesRequest, genresRequest)
+    func getAllGames(page: Int) async throws -> [Game] {
+        try await getJSON(request: .get(url: .getAllGames(page: page), token: getToken()), type: GamePageDTO.self).items.map(\.toGame)
     }
     
-    func getGamesByMaster(master: Master) async throws -> [Game] {
-        return if master is Console {
-            try await getJSON(request: .get(url: .getGamesByConsole(id: master.id), token: getToken()), type: [GameDTO].self).map(\.toGame)
-        } else {
-            try await getJSON(request: .get(url: .getGamesByGenre(id: master.id), token: getToken()), type: [GameDTO].self).map(\.toGame)
-        }
+    func getGamesByConsole(name: String, page: Int) async throws -> [Game] {
+        try await getJSON(request: .get(url: .getGamesByConsole(name: name, page: page), token: getToken()), type: GamePageDTO.self).items.map(\.toGame)
     }
     
-    func searchGame(name: String) async throws -> [Game] {
-        try await getJSON(request: .get(url: .searchGame(name: name), token: getToken()), type: [GameDTO].self).map(\.toGame)
+    func searchGame(name: String, page: Int) async throws -> [Game] {
+        try await getJSON(request: .get(url: .searchGame(name: name, page: page), token: getToken()), type: GamePageDTO.self).items.map(\.toGame)
     }
 
     //END SEARCH
