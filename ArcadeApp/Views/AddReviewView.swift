@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct AddReviewView: View {
+    @Environment(\.dismiss) private var dismiss
     @State var addReviewVM: AddReviewVM
-    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationStack {

@@ -1,6 +1,5 @@
 import SwiftUI
 
-
 struct GameCard: View {
     let game: Game
     let namespace: Namespace.ID
@@ -21,8 +20,7 @@ struct GameCard: View {
                     .zIndex(1)
 
                 ZStack {
-                    GameCover(game: game, namespace: namespace, width: size.width / 2, height: size.height)
-
+                    GameCover(game: game, width: size.width / 2, height: size.height, namespace: namespace)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
@@ -34,5 +32,48 @@ struct GameCard: View {
 
 #Preview {
     GameCard(game: .test, namespace: Namespace().wrappedValue)
+}
+
+struct GameInfoCard: View {
+    let game: Game
+    let namespace: Namespace.ID
+    
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .center, spacing: 10) {
+                Text(game.name)
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                    .multilineTextAlignment(.center)
+                    .matchedGeometryEffect(id: "\(game.id)-name", in: namespace)
+                HStack (spacing: 10){
+                    Text(game.console.rawValue)
+                        .font(.caption)
+                        .foregroundStyle(.white)
+                        .font(.caption)
+                        .padding(5)
+                        .background {
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(.primary)
+                        }
+                    Text(game.genre.rawValue)
+                        .font(.caption)
+                        .foregroundStyle(.white)
+                        .font(.caption)
+                        .padding(5)
+                        .background {
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(.primary)
+                        }
+                }
+                
+                Text(game.description)
+                    .font(.caption2)
+            }
+            .padding(.vertical)
+            .padding(.horizontal, 5)
+        }
+        .scrollBounceBehavior(.basedOnSize)
+    }
 }
 

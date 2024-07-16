@@ -1,11 +1,6 @@
 import Foundation
 import SwiftUI
 
-enum TextFieldType {
-    case simple
-    case secured
-}
-
 struct CustomTextField: View {
     @Binding var value: String
     @Binding var isError: Bool

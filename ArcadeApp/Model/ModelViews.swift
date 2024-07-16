@@ -1,5 +1,29 @@
 import Foundation
 
+enum HomePage: String, Identifiable, CaseIterable {
+    case friends = "Friends"
+    case challenges = "Challenges"
+    case rankings = "Rankings"
+    case forum = "Forum"
+    
+    var id: Self { self }
+}
+
+enum HomeScrollType: String, Identifiable, CaseIterable {
+    case featured
+    case favorites
+    
+    var id: Self { self }
+}
+
+enum PickerOptions: String, Identifiable, CaseIterable {
+    case review = "Reviews"
+    case score = "My scores"
+    
+    var id: Self { self }
+}
+
+
 enum SignupFields {
     case fullName
     case email
@@ -36,4 +60,14 @@ enum SignupFields {
                 self = .fullName
         }
     }
+}
+
+enum TextFieldType {
+    case simple
+    case secured
+}
+
+enum RatingMode {
+    case display
+    case rate
 }

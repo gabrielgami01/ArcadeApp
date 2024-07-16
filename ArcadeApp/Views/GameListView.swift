@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct GameListView: View {
-    let namespace: Namespace.ID
     @Environment(GamesVM.self) private var gamesVM
     @State var searchVM = SearchVM()
+    let namespace: Namespace.ID
     
     var body: some View {
         @Bindable var bvm = searchVM

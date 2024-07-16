@@ -1,10 +1,3 @@
-//
-//  MainView.swift
-//  ArcadeApp
-//
-//  Created by Gabriel Garcia Millan on 16/7/24.
-//
-
 import SwiftUI
 
 struct MainView: View {

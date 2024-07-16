@@ -2,7 +2,6 @@ import SwiftUI
 
 struct SignupView: View {
     @Environment(UserVM.self) private var userVM
-    
     @FocusState var fields: SignupFields?
     
     var body: some View {

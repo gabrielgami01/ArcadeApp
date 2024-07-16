@@ -1,10 +1,5 @@
 import SwiftUI
 
-enum RatingMode {
-    case display
-    case rate
-}
-
 struct RatingComponent: View {
     @Binding var rating: Int
     let mode: RatingMode

@@ -1,10 +1,3 @@
-//
-//  ProfileView.swift
-//  ArcadeApp
-//
-//  Created by Gabriel Garcia Millan on 30/6/24.
-//
-
 import SwiftUI
 
 struct ProfileView: View {

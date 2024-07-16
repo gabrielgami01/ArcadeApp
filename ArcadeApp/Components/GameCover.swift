@@ -2,10 +2,10 @@ import SwiftUI
 
 struct GameCover: View {
     let game: Game
-    let namespace: Namespace.ID
-    
     let width: CGFloat
     let height: CGFloat
+    let namespace: Namespace.ID
+    
     
     var body: some View {
         RoundedRectangle(cornerRadius: 10)
@@ -23,5 +23,5 @@ struct GameCover: View {
 }
 
 #Preview {
-    GameCover(game: .test, namespace: Namespace().wrappedValue, width: 160, height: 220)
+    GameCover(game: .test, width: 160, height: 220, namespace: Namespace().wrappedValue)
 }

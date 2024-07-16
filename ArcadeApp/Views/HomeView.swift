@@ -1,21 +1,5 @@
 import SwiftUI
 
-enum HomePage: String, Identifiable, CaseIterable {
-    case friends = "Friends"
-    case challenges = "Challenges"
-    case rankings = "Rankings"
-    case forum = "Forum"
-    
-    var id: Self { self }
-}
-
-enum HomeScrollType: String, Identifiable, CaseIterable {
-    case featured
-    case favorites
-    
-    var id: Self { self }
-}
-
 struct HomeView: View {
     @Environment(UserVM.self) private var userVM
     @Environment(GamesVM.self) private var gamesVM
@@ -30,8 +14,8 @@ struct HomeView: View {
             home
                 .opacity(gamesVM.selectedGame == nil ? 1.0 : 0.0)
             if let game = gamesVM.selectedGame {
-                GameDetailsView(namespace: gamesVM.homeType == .favorites ? namespaceFavorites : namespaceFeatured,
-                                detailsVM: GameDetailsVM(game: game))
+                GameDetailsView(detailsVM: GameDetailsVM(game: game),
+                                namespace: gamesVM.homeType == .favorites ? namespaceFavorites : namespaceFeatured)
                     .opacity(gamesVM.selectedGame == nil ? 0.0 : 1.0)
             }
         }

@@ -13,7 +13,6 @@ struct MainTabView: View {
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }
-            
         }
 //        .onAppear {
 //            let appearance = UITabBarAppearance()

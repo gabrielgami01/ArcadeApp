@@ -16,7 +16,10 @@
 		FC0E31C12C46DEAA004EB339 /* GamesScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E31C02C46DEAA004EB339 /* GamesScroll.swift */; };
 		FC0E31C32C46E005004EB339 /* GameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E31C22C46E005004EB339 /* GameListView.swift */; };
 		FC0E31C52C46E063004EB339 /* GameCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E31C42C46E063004EB339 /* GameCover.swift */; };
-		FC0E31C72C46E34E004EB339 /* GameInfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E31C62C46E34E004EB339 /* GameInfoCard.swift */; };
+		FC0E31C92C46F010004EB339 /* GameDetailsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E31C82C46F010004EB339 /* GameDetailsCard.swift */; };
+		FC0E31CB2C46F09F004EB339 /* ReviewListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E31CA2C46F09F004EB339 /* ReviewListView.swift */; };
+		FC0E31CD2C46F0D0004EB339 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E31CC2C46F0D0004EB339 /* ReviewCell.swift */; };
+		FC0E31CF2C46F1C6004EB339 /* ModelViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E31CE2C46F1C6004EB339 /* ModelViews.swift */; };
 		FC22BA602C2590EF002DFAA4 /* ArcadeAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA5F2C2590EF002DFAA4 /* ArcadeAppApp.swift */; };
 		FC22BA622C2590EF002DFAA4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA612C2590EF002DFAA4 /* ContentView.swift */; };
 		FC22BA642C2590F0002DFAA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC22BA632C2590F0002DFAA4 /* Assets.xcassets */; };
@@ -32,7 +35,6 @@
 		FC2FD07F2C43C27D0054CD43 /* ConsoleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2FD07E2C43C27D0054CD43 /* ConsoleButtonStyle.swift */; };
 		FC2FD0872C43E3C60054CD43 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2FD0862C43E3C60054CD43 /* MainTabView.swift */; };
 		FC2FD0892C43E3DD0054CD43 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2FD0882C43E3DD0054CD43 /* LoginView.swift */; };
-		FC2FD08B2C43E3F10054CD43 /* SignupFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2FD08A2C43E3F10054CD43 /* SignupFields.swift */; };
 		FC2FD08D2C43E4010054CD43 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2FD08C2C43E4010054CD43 /* SignupView.swift */; };
 		FC2FD08F2C4403F50054CD43 /* EnumsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2FD08E2C4403F50054CD43 /* EnumsModel.swift */; };
 		FC2FD0912C4427530054CD43 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2FD0902C4427530054CD43 /* CustomTextField.swift */; };
@@ -82,7 +84,10 @@
 		FC0E31C02C46DEAA004EB339 /* GamesScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesScroll.swift; sourceTree = "<group>"; };
 		FC0E31C22C46E005004EB339 /* GameListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListView.swift; sourceTree = "<group>"; };
 		FC0E31C42C46E063004EB339 /* GameCover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCover.swift; sourceTree = "<group>"; };
-		FC0E31C62C46E34E004EB339 /* GameInfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoCard.swift; sourceTree = "<group>"; };
+		FC0E31C82C46F010004EB339 /* GameDetailsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailsCard.swift; sourceTree = "<group>"; };
+		FC0E31CA2C46F09F004EB339 /* ReviewListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListView.swift; sourceTree = "<group>"; };
+		FC0E31CC2C46F0D0004EB339 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
+		FC0E31CE2C46F1C6004EB339 /* ModelViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelViews.swift; sourceTree = "<group>"; };
 		FC22BA5C2C2590EF002DFAA4 /* ArcadeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArcadeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC22BA5F2C2590EF002DFAA4 /* ArcadeAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeAppApp.swift; sourceTree = "<group>"; };
 		FC22BA612C2590EF002DFAA4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -102,7 +107,6 @@
 		FC2FD07E2C43C27D0054CD43 /* ConsoleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleButtonStyle.swift; sourceTree = "<group>"; };
 		FC2FD0862C43E3C60054CD43 /* MainTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		FC2FD0882C43E3DD0054CD43 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		FC2FD08A2C43E3F10054CD43 /* SignupFields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupFields.swift; sourceTree = "<group>"; };
 		FC2FD08C2C43E4010054CD43 /* SignupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		FC2FD08E2C4403F50054CD43 /* EnumsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumsModel.swift; sourceTree = "<group>"; };
 		FC2FD0902C4427530054CD43 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -153,8 +157,9 @@
 		FC0E31BB2C46DDF8004EB339 /* Games */ = {
 			isa = PBXGroup;
 			children = (
-				FC0E31A92C467FB4004EB339 /* AddReviewView.swift */,
 				FC2FD0942C4438F80054CD43 /* GameDetailsView.swift */,
+				FC0E31CA2C46F09F004EB339 /* ReviewListView.swift */,
+				FC0E31A92C467FB4004EB339 /* AddReviewView.swift */,
 			);
 			name = Games;
 			sourceTree = "<group>";
@@ -262,11 +267,11 @@
 		FC2BC3072C34815100353D48 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				FC7A37022C4525E7004F6910 /* RatingComponent.swift */,
-				FC2FD07E2C43C27D0054CD43 /* ConsoleButtonStyle.swift */,
-				FC0E31BC2C46DE24004EB339 /* GameCard.swift */,
 				FC0E31C42C46E063004EB339 /* GameCover.swift */,
-				FC0E31C62C46E34E004EB339 /* GameInfoCard.swift */,
+				FC0E31BC2C46DE24004EB339 /* GameCard.swift */,
+				FC0E31C82C46F010004EB339 /* GameDetailsCard.swift */,
+				FC0E31CC2C46F0D0004EB339 /* ReviewCell.swift */,
+				FC7A37022C4525E7004F6910 /* RatingComponent.swift */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -274,6 +279,7 @@
 		FC2BC30A2C34835100353D48 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				FC2FD07E2C43C27D0054CD43 /* ConsoleButtonStyle.swift */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -339,7 +345,6 @@
 			children = (
 				FC0E31B32C46879B004EB339 /* ProfileView.swift */,
 				FC2FD0882C43E3DD0054CD43 /* LoginView.swift */,
-				FC2FD08A2C43E3F10054CD43 /* SignupFields.swift */,
 				FC2FD08C2C43E4010054CD43 /* SignupView.swift */,
 			);
 			name = Users;
@@ -369,6 +374,7 @@
 				FCCD73752C2D8E520056036E /* GameModel.swift */,
 				FCA5191C2C3729EE001CCF54 /* ReviewModel.swift */,
 				FC2FD08E2C4403F50054CD43 /* EnumsModel.swift */,
+				FC0E31CE2C46F1C6004EB339 /* ModelViews.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -513,7 +519,6 @@
 				FC2FD0912C4427530054CD43 /* CustomTextField.swift in Sources */,
 				FC22BA8D2C259255002DFAA4 /* UserModel.swift in Sources */,
 				FC2FD0932C4427640054CD43 /* CustomButton.swift in Sources */,
-				FC0E31C72C46E34E004EB339 /* GameInfoCard.swift in Sources */,
 				FC2FD07F2C43C27D0054CD43 /* ConsoleButtonStyle.swift in Sources */,
 				FC0E31C12C46DEAA004EB339 /* GamesScroll.swift in Sources */,
 				FC22BAB02C25EEF5002DFAA4 /* SecKeyStore.swift in Sources */,
@@ -523,12 +528,15 @@
 				FC2FD0892C43E3DD0054CD43 /* LoginView.swift in Sources */,
 				FC2FD08D2C43E4010054CD43 /* SignupView.swift in Sources */,
 				FCCD73762C2D8E520056036E /* GameModel.swift in Sources */,
+				FC0E31CD2C46F0D0004EB339 /* ReviewCell.swift in Sources */,
 				FCCE05602C2B33F600B0D2CD /* SearchVM.swift in Sources */,
 				FC22BA622C2590EF002DFAA4 /* ContentView.swift in Sources */,
 				FCA5191B2C36FDE5001CCF54 /* GameDetailsVM.swift in Sources */,
 				FC35A2392C3EE1500075E7B4 /* AddScoreVM.swift in Sources */,
 				FC54459E2C3801F5001B26EF /* AddReviewVM.swift in Sources */,
+				FC0E31C92C46F010004EB339 /* GameDetailsCard.swift in Sources */,
 				FC2FD0952C4438F80054CD43 /* GameDetailsView.swift in Sources */,
+				FC0E31CF2C46F1C6004EB339 /* ModelViews.swift in Sources */,
 				FC0E31BD2C46DE24004EB339 /* GameCard.swift in Sources */,
 				FC22BAA02C2595FF002DFAA4 /* UserVM.swift in Sources */,
 				FC22BA602C2590EF002DFAA4 /* ArcadeAppApp.swift in Sources */,
@@ -540,9 +548,9 @@
 				FCA519172C36C191001CCF54 /* UIDevice.swift in Sources */,
 				FC22BA952C2593E8002DFAA4 /* URL.swift in Sources */,
 				FC0E31B42C46879B004EB339 /* ProfileView.swift in Sources */,
-				FC2FD08B2C43E3F10054CD43 /* SignupFields.swift in Sources */,
 				FC0E31AA2C467FB4004EB339 /* AddReviewView.swift in Sources */,
 				FC0E31BF2C46DE59004EB339 /* PageButton.swift in Sources */,
+				FC0E31CB2C46F09F004EB339 /* ReviewListView.swift in Sources */,
 				FC7A37032C4525E7004F6910 /* RatingComponent.swift in Sources */,
 				FC0E31C52C46E063004EB339 /* GameCover.swift in Sources */,
 				FCCD73702C2D88990056036E /* Network.swift in Sources */,
