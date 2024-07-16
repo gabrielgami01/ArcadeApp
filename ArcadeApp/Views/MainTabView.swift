@@ -2,25 +2,18 @@ import SwiftUI
 
 struct MainTabView: View {
     @Environment(UserVM.self) private var loginVM
-    
+    @Environment(GamesVM.self) private var gamesVM
     var body: some View {
         TabView {
-//           HomeView()
-//                .tabItem {
-//                    Label("Home", systemImage: "house")
-//                }
+           MainView()
+                .tabItem {
+                    Label("Home", systemImage: "house")
+                }
             SearchView()
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }
-            Button {
-                loginVM.logout()
-            } label: {
-                Text("Logout")
-            }
-            .tabItem {
-                Label("Logout", systemImage: "xmark")
-            }
+            
         }
 //        .onAppear {
 //            let appearance = UITabBarAppearance()

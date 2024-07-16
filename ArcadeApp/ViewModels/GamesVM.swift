@@ -9,6 +9,7 @@ final class GamesVM {
     
     var games: [Game] = []
     var selectedGame: Game? = nil
+    var homeType: HomeScrollType = .featured
     
     var errorMsg = ""
     var showAlert = false

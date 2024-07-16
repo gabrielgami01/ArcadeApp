@@ -15,14 +15,13 @@ struct CustomButton: View {
             
         }
         .padding()
-        .background(.cyan, in: Capsule())
+        .tint(.cyan.opacity(0.9))
         .controlSize(.extraLarge)
-        .buttonStyle(.plain)
+        .buttonBorderShape(.capsule)
+        .buttonStyle(.borderedProminent)
     }
 }
 
 #Preview {
     CustomButton(label: "Login", actions: {})
-        .safeAreaPadding()
-        .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
 }
