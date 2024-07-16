@@ -27,16 +27,10 @@ struct GameDetailsView: View {
             .buttonStyle(.plain)
             .padding(.bottom, 5)
             
-            GeometryReader {
-                let size = $0.size
-                HStack(spacing: 5) {
-                    GameCover(game: detailsVM.game, namespace: namespace ,width: size.width / 2.5, height: size.height)
-                    GameDetailsCard(detailsVM: detailsVM, namespace: namespace)
-                        .frame(height: size.height)
-                }
-                
+            HStack(spacing: 5) {
+                GameCover(game: detailsVM.game, namespace: namespace , width: UIDevice.width / 2.5, height: 220)
+                GameDetailsCard(detailsVM: detailsVM, namespace: namespace)
             }
-            .frame(height: 220)
             
             VStack(spacing: 10) {
                 Picker(selection: $option) {
