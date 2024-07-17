@@ -8,17 +8,26 @@ struct GameCover: View {
     
     
     var body: some View {
-        RoundedRectangle(cornerRadius: 10)
-            .fill(Color(white: 0.6))
-            .overlay {
-                Image(systemName: "gamecontroller")
-                    .resizable()
-                    .scaledToFit()
-                    .foregroundStyle(.primary)
-                    .padding()
-            }
-            .matchedGeometryEffect(id: "\(game.id)-cover", in: namespace)
-            .frame(width: width, height: height)
+        if let image = game.imageURL {
+            Image(game.name)
+                .resizable()
+                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .frame(width: width, height: height)
+                .matchedGeometryEffect(id: "\(game.id)-cover", in: namespace)
+            
+        } else {
+            RoundedRectangle(cornerRadius: 20)
+                .fill(Color(white: 0.6))
+                .overlay {
+                    Image(systemName: "gamecontroller")
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundStyle(.primary)
+                        .padding()
+                }
+                .matchedGeometryEffect(id: "\(game.id)-cover", in: namespace)
+                .frame(width: width, height: height)
+        }
     }
 }
 

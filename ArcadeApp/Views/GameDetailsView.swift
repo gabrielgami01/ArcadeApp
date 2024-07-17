@@ -34,7 +34,11 @@ struct GameDetailsView: View {
             
             ZStack {
                 GameAboutView(detailsVM: detailsVM, namespace: namespace)
+                    .offset(x: option == .about ? 0 : -UIDevice.width)
                     .opacity(option == .about ? 1.0 : 0.0)
+                GameScoresView()
+                    .offset(x: option == .about ? UIDevice.width : 0)
+                    .opacity(option == .about ? 0.0 : 1.0)
             }
         }
         .padding(.horizontal)
@@ -46,6 +50,7 @@ struct GameDetailsView: View {
         .sheet(isPresented: $detailsVM.showAddReview) {
             AddReviewView(addReviewVM: AddReviewVM(game: detailsVM.game))
         }
+        .animation(.easeInOut, value: option)
     }
 }
 

@@ -9,7 +9,7 @@ struct GameAboutView: View {
             GeometryReader {
                 let size = $0.size
                 
-                HStack(spacing: 5) {
+                HStack(spacing: 10) {
                     GameCover(game: detailsVM.game, width: size.width / 2.5, height: size.height, namespace: namespace)
                     GameDetailsCard(detailsVM: detailsVM, namespace: namespace)
                             .frame(height: size.height)
@@ -52,4 +52,5 @@ struct GameAboutView: View {
 #Preview {
     GameAboutView(detailsVM: GameDetailsVM(interactor: TestInteractor(), game: .test),
                    namespace: Namespace().wrappedValue)
+    .padding()
 }

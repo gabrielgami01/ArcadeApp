@@ -66,7 +66,7 @@ extension Game {
                            console: .gameboy,
                            genre: .rpg,
                            releaseDate: Calendar.current.date(from: DateComponents(year: 1996, month: 2, day: 27))!,
-                           imageURL: nil,
+                           imageURL: URL(string: "google.com"),
                            featured: true)
 }
 
