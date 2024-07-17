@@ -16,13 +16,10 @@ struct RatingComponent: View {
                             .animation(.easeInOut(duration: 0.5).delay(Double(number) * 0.1), value: rating)
                     case .rate:
                         Button {
-                            withAnimation {
-                                rating = number
-                            }
+                            rating = number
                         } label: {
                             image(for: number)
                                 .foregroundStyle(number > rating ? Color.blue : Color.yellow)
-                                .animation(.easeInOut(duration: 0.5).delay(Double(number) * 0.1), value: rating)
                         }
                         .buttonStyle(.plain)
                 }

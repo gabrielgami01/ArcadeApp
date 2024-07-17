@@ -13,19 +13,23 @@ struct GamesScroll: View {
                 .padding(.horizontal)
             
             ScrollView(.horizontal) {
-                LazyHStack {
+                LazyHStack(spacing: 10) {
                     ForEach(type == .favorites ? gamesVM.favorites : gamesVM.featured) { game in
                         //Text(gamesVM.games.count.formatted())
                         Button {
                             gamesVM.homeType = type
                             gamesVM.selectedGame = game
                         } label: {
-                            GameCard(game: game, namespace: namespace)
+                            VStack {
+                                GameCover(game: game, width: 140, height: 220, namespace: namespace)
+                                Text(game.name)
+                                    .font(.footnote)
+                                    .frame(width: 140)
+                                    .lineLimit(2, reservesSpace: true)
+                                    .multilineTextAlignment(.center)
+                            }
                         }
                         .buttonStyle(.plain)
-                        .onAppear {
-                            gamesVM.isLastItem(game: game)
-                        }
                     }
                 }
                 .padding(.horizontal)
