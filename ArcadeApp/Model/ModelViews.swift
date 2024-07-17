@@ -17,7 +17,7 @@ enum HomeScrollType: String, Identifiable, CaseIterable {
 }
 
 enum PickerOptions: String, Identifiable, CaseIterable {
-    case review = "Reviews"
+    case about = "About"
     case score = "My scores"
     
     var id: Self { self }

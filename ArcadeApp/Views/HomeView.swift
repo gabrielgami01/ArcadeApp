@@ -19,7 +19,7 @@ struct HomeView: View {
                     .opacity(gamesVM.selectedGame == nil ? 0.0 : 1.0)
             }
         }
-        .animation(.bouncy.speed(0.6), value: gamesVM.selectedGame)
+        .animation(.bouncy.speed(0.8), value: gamesVM.selectedGame)
     }
     
     var home: some View {

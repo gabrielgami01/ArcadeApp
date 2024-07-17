@@ -3,35 +3,22 @@ import SwiftUI
 struct GameDetailsView: View {
     @Environment(GamesVM.self) private var gamesVM
     @State var detailsVM: GameDetailsVM
-    @State private var option: PickerOptions = .review
+    @State private var option: PickerOptions = .about
     
     let namespace: Namespace.ID
     
     var body: some View {
         VStack(alignment: .leading) {
-            Button {
-                gamesVM.selectedGame = nil
-            } label: {
-                Image(systemName: "chevron.left")
-                    .font(.title)
-                    .foregroundStyle(.secondary)
-            }
-            .buttonStyle(.plain)
-            .padding(.bottom, 5)
-            
-            GeometryReader {
-                let size = $0.size
-                
-                HStack(spacing: 5) {
-                    GameCover(game: detailsVM.game, width: size.width / 2.5, height: size.height, namespace: namespace)
-                    GameDetailsCard(detailsVM: detailsVM, namespace: namespace)
-                            .frame(height: size.height)
-                    }
-
+            HStack(alignment: .center) {
+                Button {
+                    gamesVM.selectedGame = nil
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .font(.title)
+                        .foregroundStyle(.secondary)
                 }
-                .frame(height: 220)
-            
-            VStack(spacing: 10) {
+                .buttonStyle(.plain)
+                
                 Picker(selection: $option) {
                     ForEach(PickerOptions.allCases) { option in
                         Text(option.rawValue)
@@ -41,9 +28,13 @@ struct GameDetailsView: View {
                     Text("Options")
                 }
                 .pickerStyle(.segmented)
-                
-                ReviewListView(detailsVM: detailsVM)
-
+                .padding(.horizontal)
+            }
+            .padding(.bottom, 5)
+            
+            ZStack {
+                GameAboutView(detailsVM: detailsVM, namespace: namespace)
+                    .opacity(option == .about ? 1.0 : 0.0)
             }
         }
         .padding(.horizontal)
