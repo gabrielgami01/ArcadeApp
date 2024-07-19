@@ -5,8 +5,6 @@ struct GameDetailsView: View {
     @State var detailsVM: GameDetailsVM
     @State private var option: PickerOptions = .about
     
-    let namespace: Namespace.ID
-    
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .center) {
@@ -33,7 +31,7 @@ struct GameDetailsView: View {
             .padding(.bottom, 5)
             
             ZStack {
-                GameAboutView(detailsVM: detailsVM, namespace: namespace)
+                GameAboutView(detailsVM: detailsVM)
                     .offset(x: option == .about ? 0 : -UIDevice.width)
                     .opacity(option == .about ? 1.0 : 0.0)
                 GameScoresView()
@@ -55,7 +53,6 @@ struct GameDetailsView: View {
 }
 
 #Preview {
-    GameDetailsView(detailsVM: GameDetailsVM(interactor: TestInteractor(), game: .test),
-                    namespace: Namespace().wrappedValue)
-    .environment(GamesVM(interactor: TestInteractor()))
+    GameDetailsView(detailsVM: GameDetailsVM(interactor: TestInteractor(), game: .test))
+        .environment(GamesVM(interactor: TestInteractor()))
 }

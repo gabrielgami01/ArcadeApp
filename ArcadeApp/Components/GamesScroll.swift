@@ -1,10 +1,10 @@
 import SwiftUI
 
 struct GamesScroll: View {
-    let type: HomeScrollType
-    let namespace: Namespace.ID
-    
     @Environment(GamesVM.self) private var gamesVM
+    let type: HomeScrollType
+    
+    @Environment(\.namespace) private var namespace
     
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
@@ -20,13 +20,16 @@ struct GamesScroll: View {
                             gamesVM.homeType = type
                             gamesVM.selectedGame = game
                         } label: {
-                            VStack {
-                                GameCover(game: game, width: 140, height: 220, namespace: namespace)
-                                Text(game.name)
-                                    .font(.footnote)
-                                    .frame(width: 140)
-                                    .lineLimit(2, reservesSpace: true)
-                                    .multilineTextAlignment(.center)
+                            if let namespace {
+                                VStack {
+                                    GameCover(game: game, width: 140, height: 220)
+                                    Text(game.name)
+                                        .font(.footnote)
+                                        .frame(width: 140)
+                                        .lineLimit(2, reservesSpace: true)
+                                        .multilineTextAlignment(.center)
+                                        .matchedGeometryEffect(id: "\(game.id)-name", in: namespace)
+                                }
                             }
                         }
                         .buttonStyle(.plain)
@@ -42,6 +45,7 @@ struct GamesScroll: View {
 }
 
 #Preview {
-    GamesScroll(type: .favorites, namespace: Namespace().wrappedValue)
+    GamesScroll(type: .favorites)
         .environment(GamesVM(interactor: TestInteractor()))
+        .namespace(Namespace().wrappedValue)
 }

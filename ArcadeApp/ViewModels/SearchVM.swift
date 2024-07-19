@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 @Observable
 final class SearchVM {
@@ -9,7 +10,6 @@ final class SearchVM {
             page = 1
         }
     }
-    var searching = false
     var games: [Game] = []
     
     var page = 1
@@ -21,7 +21,6 @@ final class SearchVM {
         self.interactor = interactor
     }
     
-    
     func searchGame(name: String) {
         Task {
             do {
@@ -30,5 +29,14 @@ final class SearchVM {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    func saveGameSearch(game: Game, context: ModelContext) throws {
+        let id = game.id
+        let name = game.name
+        
+        let newGame = GameModel(id: id, name: name, image: nil)
+        
+        context.insert(newGame)
     }
 }

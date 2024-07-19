@@ -319,11 +319,11 @@
 		FCCD736A2C2D67390056036E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				FC22BA9F2C2595FF002DFAA4 /* UserVM.swift */,
 				FCED20E52C2F1C8900C0C5A1 /* GamesVM.swift */,
 				FCA5191A2C36FDE5001CCF54 /* GameDetailsVM.swift */,
-				FC54459D2C3801F5001B26EF /* AddReviewVM.swift */,
 				FCCE055F2C2B33F500B0D2CD /* SearchVM.swift */,
-				FC22BA9F2C2595FF002DFAA4 /* UserVM.swift */,
+				FC54459D2C3801F5001B26EF /* AddReviewVM.swift */,
 				FC35A2382C3EE1500075E7B4 /* AddScoreVM.swift */,
 			);
 			path = ViewModels;
@@ -346,9 +346,9 @@
 		FCCD736C2C2D67550056036E /* Users */ = {
 			isa = PBXGroup;
 			children = (
-				FC0E31B32C46879B004EB339 /* ProfileView.swift */,
 				FC2FD0882C43E3DD0054CD43 /* LoginView.swift */,
 				FC2FD08C2C43E4010054CD43 /* SignupView.swift */,
+				FC0E31B32C46879B004EB339 /* ProfileView.swift */,
 			);
 			name = Users;
 			sourceTree = "<group>";

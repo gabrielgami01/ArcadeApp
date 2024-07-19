@@ -2,7 +2,6 @@ import SwiftUI
 
 struct GameAboutView: View {
     @State var detailsVM: GameDetailsVM
-    let namespace: Namespace.ID
     
     var body: some View {
         VStack {
@@ -10,8 +9,8 @@ struct GameAboutView: View {
                 let size = $0.size
                 
                 HStack(spacing: 10) {
-                    GameCover(game: detailsVM.game, width: size.width / 2.5, height: size.height, namespace: namespace)
-                    GameDetailsCard(detailsVM: detailsVM, namespace: namespace)
+                    GameCover(game: detailsVM.game, width: size.width / 2.5, height: size.height)
+                    GameDetailsCard(detailsVM: detailsVM)
                             .frame(height: size.height)
                     }
 
@@ -43,14 +42,12 @@ struct GameAboutView: View {
                         Divider()
                     }
                 }
-                .padding(.horizontal)
             }
         }
     }
 }
 
 #Preview {
-    GameAboutView(detailsVM: GameDetailsVM(interactor: TestInteractor(), game: .test),
-                   namespace: Namespace().wrappedValue)
+    GameAboutView(detailsVM: GameDetailsVM(interactor: TestInteractor(), game: .test))
     .padding()
 }

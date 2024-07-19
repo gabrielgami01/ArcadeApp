@@ -2,15 +2,18 @@ import SwiftUI
 
 struct GameDetailsCard: View {
     @State var detailsVM: GameDetailsVM
-    let namespace: Namespace.ID
+    
+    @Environment(\.namespace) private var namespace
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text(detailsVM.game.name)
-                .font(.headline)
-                .fontWeight(.semibold)
-                .multilineTextAlignment(.center)
-                .matchedGeometryEffect(id: "\(detailsVM.game.id)-name", in: namespace)
+            if let namespace{
+                Text(detailsVM.game.name)
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                    .multilineTextAlignment(.center)
+                    .matchedGeometryEffect(id: "\(detailsVM.game.id)-name", in: namespace)
+            }
             Text("Release date: \(detailsVM.game.releaseDate.formatted(date: .abbreviated, time: .omitted))")
                 .font(.caption)
                 .foregroundStyle(.secondary)
@@ -39,5 +42,5 @@ struct GameDetailsCard: View {
 }
 
 #Preview {
-    GameDetailsCard(detailsVM: GameDetailsVM(interactor: TestInteractor(), game: .test), namespace: Namespace().wrappedValue)
+    GameDetailsCard(detailsVM: GameDetailsVM(interactor: TestInteractor(), game: .test))
 }

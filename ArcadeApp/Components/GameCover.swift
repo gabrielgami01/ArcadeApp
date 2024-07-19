@@ -4,11 +4,11 @@ struct GameCover: View {
     let game: Game
     let width: CGFloat
     let height: CGFloat
-    let namespace: Namespace.ID
     
+    @Environment(\.namespace) private var namespace
     
     var body: some View {
-        if let image = game.imageURL {
+        if let image = game.imageURL, let namespace {
             Image(game.name)
                 .resizable()
                 .clipShape(RoundedRectangle(cornerRadius: 20))
@@ -16,21 +16,23 @@ struct GameCover: View {
                 .matchedGeometryEffect(id: "\(game.id)-cover", in: namespace)
             
         } else {
-            RoundedRectangle(cornerRadius: 20)
-                .fill(Color(white: 0.6))
-                .overlay {
-                    Image(systemName: "gamecontroller")
-                        .resizable()
-                        .scaledToFit()
-                        .foregroundStyle(.primary)
-                        .padding()
-                }
-                .matchedGeometryEffect(id: "\(game.id)-cover", in: namespace)
-                .frame(width: width, height: height)
+            if let namespace {
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(Color(white: 0.6))
+                    .overlay {
+                        Image(systemName: "gamecontroller")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundStyle(.primary)
+                            .padding()
+                    }
+                    .matchedGeometryEffect(id: "\(game.id)-cover", in: namespace)
+                    .frame(width: width, height: height)
+            }
         }
     }
 }
 
 #Preview {
-    GameCover(game: .test, width: 160, height: 220, namespace: Namespace().wrappedValue)
+    GameCover(game: .test, width: 160, height: 220)
 }

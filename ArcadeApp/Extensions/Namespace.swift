@@ -1,10 +1,3 @@
-//
-//  Namespace.swift
-//  PeliculasDB
-//
-//  Created by Gabriel Garcia Millan on 9/5/24.
-//
-
 import SwiftUI
 
 struct NamespaceKey: EnvironmentKey {

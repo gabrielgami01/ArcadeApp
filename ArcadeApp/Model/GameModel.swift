@@ -1,4 +1,5 @@
 import Foundation
+import SwiftData
 
 struct GameDTO: Codable {
     let id: UUID
@@ -69,4 +70,19 @@ struct Game: Identifiable, Hashable {
 
 struct FavoriteGameDTO: Codable {
     let id: UUID
+}
+
+@Model
+final class GameModel {
+    @Attribute (.unique) let id: UUID
+    let name: String
+    @Attribute(.externalStorage) let image: Data?
+    let added: Date
+
+    init(id: UUID, name: String, image: Data?, added: Date = .now) {
+        self.id = id
+        self.name = name
+        self.image = image
+        self.added = added
+    }
 }

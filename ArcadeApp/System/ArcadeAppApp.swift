@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 @main
 struct ArcadeAppApp: App {
@@ -11,6 +12,7 @@ struct ArcadeAppApp: App {
                 .environment(userVM)
                 .environment(gamesVM)
         }
+        .modelContainer(for: GameModel.self)
         
     }
 }

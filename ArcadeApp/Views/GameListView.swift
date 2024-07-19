@@ -1,9 +1,14 @@
 import SwiftUI
+import SwiftData
 
 struct GameListView: View {
     @Environment(GamesVM.self) private var gamesVM
+    @Environment(\.modelContext) private var context
     @State var searchVM = SearchVM()
-    let namespace: Namespace.ID
+    
+    @Query(sort: [SortDescriptor(\GameModel.added, order: .reverse)]) private var searched: [GameModel]
+    
+    @Environment(\.namespace) private var namespace
     
     var body: some View {
         @Bindable var bvm = searchVM
@@ -15,15 +20,17 @@ struct GameListView: View {
                     ScrollView(.horizontal) {
                         LazyHStack(spacing: 10) {
                             ForEach(Console.allCases) { console in
-                                Button {
-                                    withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.7)) {
-                                        gamesVM.activeConsole = console
+                                if let namespace{
+                                    Button {
+                                        withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.7)) {
+                                            gamesVM.activeConsole = console
+                                        }
+                                    } label: {
+                                        Text(console.rawValue)
+                                            .font(.caption2)
                                     }
-                                } label: {
-                                    Text(console.rawValue)
-                                        .font(.caption2)
+                                    .buttonStyle(ConsoleButtonStyle(isActive: gamesVM.activeConsole == console, namespace: namespace))
                                 }
-                                .buttonStyle(ConsoleButtonStyle(isActive: gamesVM.activeConsole == console, namespace: namespace))
                             }
                         }
                         .frame(height: 30)
@@ -39,7 +46,7 @@ struct GameListView: View {
                                 Button {
                                     gamesVM.selectedGame = game
                                 } label: {
-                                    GameCard(game: game, namespace: namespace)
+                                    GameCard(game: game)
                                         .padding(.leading)
                                 }
                                 .buttonStyle(.plain)
@@ -59,14 +66,40 @@ struct GameListView: View {
                 }
             })
             .searchable(text: $bvm.search, placement: .navigationBarDrawer(displayMode: .always)) {
-                if !searchVM.games.isEmpty {
-                    ForEach(searchVM.games) { game in
-                        Text(game.name)
+                if searchVM.search == "" {
+                    if searched.isEmpty {
+                        ContentUnavailableView("Search games", image: "gamecontroller", description: Text("Search for games by name."))
+                    } else {
+                        ForEach(searched) { game in
+                            Button {
+                               
+                            } label: {
+                                Text(game.name)
+                            }
+                        }
                     }
-                } else if searchVM.search.isEmpty{
-                    Text("Swift Data")
                 } else {
-                    Text("No hay")
+                    if searchVM.games.isEmpty {
+                        ContentUnavailableView("No games", image: "gamecontroller", description: Text("There's no games with the name you introduced."))
+                    } else {
+                        ForEach(searchVM.games) { game in
+                            HStack (spacing: 10) {
+                                Button {
+                                    gamesVM.selectedGame = game
+                                    try? searchVM.saveGameSearch(game: game, context: context)
+                                } label: {
+                                    GameCover(game: game, width: 60, height: 60)
+                                    if let namespace{
+                                        Text(game.name)
+                                            .font(.body)
+                                            .matchedGeometryEffect(id: "\(game.id)-name", in: namespace)
+
+                                    }
+                                }
+                                .buttonStyle(.plain)
+                            }
+                        }
+                    }
                 }
             }
             .onChange(of: searchVM.search) { oldValue, newValue in
@@ -78,6 +111,7 @@ struct GameListView: View {
 }
 
 #Preview {
-    GameListView(namespace: Namespace().wrappedValue)
+    GameListView()
         .environment(GamesVM(interactor: TestInteractor()))
+        .namespace(Namespace().wrappedValue)
 }

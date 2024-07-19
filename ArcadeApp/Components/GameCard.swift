@@ -2,14 +2,12 @@ import SwiftUI
 
 struct GameCard: View {
     let game: Game
-    let namespace: Namespace.ID
-
     var body: some View {
         GeometryReader {
             let size = $0.size
 
             HStack(spacing: -25) {
-                GameInfoCard(game: game, namespace: namespace)
+                GameInfoCard(game: game)
                     .frame(width: size.width / 2, height: size.height * 0.8)
                     .background {
                         RoundedRectangle(cornerRadius: 10, style: .continuous)
@@ -20,7 +18,7 @@ struct GameCard: View {
                     .zIndex(1)
 
                 ZStack {
-                    GameCover(game: game, width: size.width / 2, height: size.height, namespace: namespace)
+                    GameCover(game: game, width: size.width / 2, height: size.height)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
@@ -31,21 +29,24 @@ struct GameCard: View {
 }
 
 #Preview {
-    GameCard(game: .test, namespace: Namespace().wrappedValue)
+    GameCard(game: .test)
 }
 
 struct GameInfoCard: View {
     let game: Game
-    let namespace: Namespace.ID
+    
+    @Environment(\.namespace) private var namespace
     
     var body: some View {
         ScrollView {
             VStack(alignment: .center, spacing: 10) {
-                Text(game.name)
-                    .font(.headline)
-                    .fontWeight(.semibold)
-                    .multilineTextAlignment(.center)
-                    .matchedGeometryEffect(id: "\(game.id)-name", in: namespace)
+                if let namespace{
+                    Text(game.name)
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .multilineTextAlignment(.center)
+                        .matchedGeometryEffect(id: "\(game.id)-name", in: namespace)
+                }
                 HStack (spacing: 10){
                     Text(game.console.rawValue)
                         .font(.caption)

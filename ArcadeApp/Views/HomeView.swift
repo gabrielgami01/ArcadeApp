@@ -4,22 +4,22 @@ struct HomeView: View {
     @Environment(UserVM.self) private var userVM
     @Environment(GamesVM.self) private var gamesVM
     
-    @Namespace private var namespaceFeatured
-    @Namespace private var namespaceFavorites
-    
     @State private var showProfile = false
+    
+    @Namespace private var myNamespace
+    @Namespace private var another
     
     var body: some View {
         ZStack {
             home
                 .opacity(gamesVM.selectedGame == nil ? 1.0 : 0.0)
             if let game = gamesVM.selectedGame {
-                GameDetailsView(detailsVM: GameDetailsVM(game: game),
-                                namespace: gamesVM.homeType == .favorites ? namespaceFavorites : namespaceFeatured)
+                GameDetailsView(detailsVM: GameDetailsVM(game: game))
                     .opacity(gamesVM.selectedGame == nil ? 0.0 : 1.0)
             }
         }
         .animation(.bouncy.speed(0.8), value: gamesVM.selectedGame)
+        .namespace(myNamespace)
     }
     
     var home: some View {
@@ -50,8 +50,8 @@ struct HomeView: View {
                     .safeAreaPadding()
                 }
                 
-                GamesScroll(type: .featured, namespace: namespaceFeatured)
-                GamesScroll(type: .favorites, namespace: namespaceFavorites)
+                GamesScroll(type: .featured)
+                GamesScroll(type: .favorites)
             }
         }
         .scrollIndicators(.hidden)
