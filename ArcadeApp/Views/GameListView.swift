@@ -39,24 +39,21 @@ struct GameListView: View {
                     }
                     .scrollTargetBehavior(.viewAligned)
                     //GameCards
-                    ScrollView {
-                        LazyVStack(spacing: 20) {
-                            ForEach(gamesVM.games) { game in
-                                //Text(gamesVM.games.count.formatted())
-                                Button {
-                                    gamesVM.selectedGame = game
-                                } label: {
-                                    GameCard(game: game)
-                                        .padding(.leading)
-                                }
-                                .buttonStyle(.plain)
-                                .onAppear {
-                                    gamesVM.isLastItem(game: game)
-                                }
+                    LazyVStack(spacing: 20) {
+                        ForEach(gamesVM.games) { game in
+                            Button {
+                                gamesVM.selectedGame = game
+                            } label: {
+                                GameCard(game: game)
+                                    .padding(.leading)
+                            }
+                            .buttonStyle(.plain)
+                            .onAppear {
+                                gamesVM.isLastItem(game: game)
                             }
                         }
-                        .padding()
                     }
+                    .padding()
                 }
             }
             .navigationTitle("Search")
