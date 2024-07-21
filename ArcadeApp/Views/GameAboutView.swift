@@ -4,7 +4,7 @@ struct GameAboutView: View {
     @State var detailsVM: GameDetailsVM
     
     var body: some View {
-        VStack {
+        VStack(spacing: 10) {
             GeometryReader {
                 let size = $0.size
                 
@@ -43,6 +43,9 @@ struct GameAboutView: View {
                     }
                 }
             }
+        }
+        .task {
+            await detailsVM.loadGameDetails()
         }
     }
 }

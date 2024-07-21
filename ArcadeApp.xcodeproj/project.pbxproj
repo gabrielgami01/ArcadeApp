@@ -44,6 +44,7 @@
 		FC35A2392C3EE1500075E7B4 /* AddScoreVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC35A2382C3EE1500075E7B4 /* AddScoreVM.swift */; };
 		FC54459E2C3801F5001B26EF /* AddReviewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54459D2C3801F5001B26EF /* AddReviewVM.swift */; };
 		FC7A37032C4525E7004F6910 /* RatingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A37022C4525E7004F6910 /* RatingComponent.swift */; };
+		FC8438F82C4D0F7A00434179 /* EnumTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8438F72C4D0F7A00434179 /* EnumTag.swift */; };
 		FCA519122C36B9CE001CCF54 /* ACNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = FCA519112C36B9CE001CCF54 /* ACNetwork */; };
 		FCA519152C36C18D001CCF54 /* Namespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA519142C36C18D001CCF54 /* Namespace.swift */; };
 		FCA519172C36C191001CCF54 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA519162C36C191001CCF54 /* UIDevice.swift */; };
@@ -117,6 +118,7 @@
 		FC35A2382C3EE1500075E7B4 /* AddScoreVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScoreVM.swift; sourceTree = "<group>"; };
 		FC54459D2C3801F5001B26EF /* AddReviewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewVM.swift; sourceTree = "<group>"; };
 		FC7A37022C4525E7004F6910 /* RatingComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingComponent.swift; sourceTree = "<group>"; };
+		FC8438F72C4D0F7A00434179 /* EnumTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumTag.swift; sourceTree = "<group>"; };
 		FCA519142C36C18D001CCF54 /* Namespace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Namespace.swift; sourceTree = "<group>"; };
 		FCA519162C36C191001CCF54 /* UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		FCA5191A2C36FDE5001CCF54 /* GameDetailsVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailsVM.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				FC0E31C82C46F010004EB339 /* GameDetailsCard.swift */,
 				FC0E31CC2C46F0D0004EB339 /* ReviewCell.swift */,
 				FC7A37022C4525E7004F6910 /* RatingComponent.swift */,
+				FC8438F72C4D0F7A00434179 /* EnumTag.swift */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 				FC2FD07F2C43C27D0054CD43 /* ConsoleButtonStyle.swift in Sources */,
 				FC0E31C12C46DEAA004EB339 /* GamesScroll.swift in Sources */,
 				FC22BAB02C25EEF5002DFAA4 /* SecKeyStore.swift in Sources */,
+				FC8438F82C4D0F7A00434179 /* EnumTag.swift in Sources */,
 				FC2FD0872C43E3C60054CD43 /* MainTabView.swift in Sources */,
 				FC2FD08F2C4403F50054CD43 /* EnumsModel.swift in Sources */,
 				FC0E31BA2C46DCFB004EB339 /* MainView.swift in Sources */,

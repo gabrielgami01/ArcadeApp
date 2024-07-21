@@ -21,7 +21,7 @@ struct ReviewCell: View {
                         Text(review.date.formatted())
                             .font(.footnote)
                     }
-                    .padding(.bottom, 5)
+                    .padding(.bottom, 2)
                     Text(review.title)
                         .font(.headline)
                     if let comment = review.comment {

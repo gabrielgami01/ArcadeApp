@@ -6,7 +6,7 @@ struct GameListView: View {
     @Environment(\.modelContext) private var context
     @State var searchVM: SearchVM
     
-    @Query(sort: [SortDescriptor(\GameModel.added, order: .reverse)]) private var searched: [GameModel]
+    @Query(sort: [SortDescriptor(\GameModel.added, order: .reverse)]) private var recentSearchs: [GameModel]
     
     @Environment(\.namespace) private var namespace
     
@@ -67,33 +67,44 @@ struct GameListView: View {
             })
             .searchable(text: $bvm.search, placement: .navigationBarDrawer(displayMode: .always)) {
                 if searchVM.search == "" {
-                    if searched.isEmpty {
-                        ContentUnavailableView("Search games", image: "gamecontroller", description: Text("Search for games by name."))
+                    if recentSearchs.isEmpty {
+                        ContentUnavailableView("Search games", systemImage: "gamecontroller",
+                                               description: Text("Search for games by name."))
                     } else {
-                        ForEach(searched) { game in
-                            Button {
-                               
-                            } label: {
-                                Text(game.name)
+                        ForEach(recentSearchs) { game in
+                            HStack {
+                                Button {
+    //                                gamesVM.selectedGame = game
+                                } label: {
+    //                                GameSearchableButton(game: game)
+                                    Text(game.name)
+                                        .font(.body)
+                                }
+                                
+                                Button {
+                                    try? searchVM.deleteGameSearch(game: game, context: context)
+                                } label: {
+                                    Image(systemName: "xmark")
+                                        .font(.body)
+                                }
                             }
+                        }
+                        CustomButton(label: "Clear recent searches") {
+                            try? searchVM.deleteGameSearch(context: context)
                         }
                     }
                 } else {
                     if searchVM.games.isEmpty {
-                        ContentUnavailableView("No games", image: "gamecontroller", 
+                        ContentUnavailableView("No games", systemImage: "gamecontroller",
                                                description: Text("There's no games with the name you introduced."))
+                        
                     } else {
                         ForEach(searchVM.games) { game in
                             Button {
                                 gamesVM.selectedGame = game
                                 try? searchVM.saveGameSearch(game: game, context: context)
                             } label: {
-                                HStack(spacing: 10) {
-                                    GameCover(game: game, width: 60, height: 60)
-                                        .namespace(nil)
-                                    Text(game.name)
-                                        .font(.body)
-                                }
+                                GameSearchableButton(game: game)
                             }
                             .buttonStyle(.plain)
                         }
@@ -112,4 +123,17 @@ struct GameListView: View {
     GameListView(searchVM: SearchVM(interactor: TestInteractor()))
         .environment(GamesVM(interactor: TestInteractor()))
         .namespace(Namespace().wrappedValue)
+}
+
+struct GameSearchableButton: View {
+    let game: Game
+    
+    var body: some View {
+        HStack(spacing: 10) {
+            GameCover(game: game, width: 60, height: 60)
+                .namespace(nil)
+            Text(game.name)
+                .font(.body)
+        }
+    }
 }

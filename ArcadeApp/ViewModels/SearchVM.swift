@@ -33,10 +33,38 @@ final class SearchVM {
     
     func saveGameSearch(game: Game, context: ModelContext) throws {
         let id = game.id
-        let name = game.name
+        let query = FetchDescriptor<GameModel>(predicate:
+            #Predicate { $0.id == id }
+        )
         
-        let newGame = GameModel(id: id, name: name, image: nil)
+        if let fetch = try context.fetch(query).first {
+            
+        } else {
+            let newGame = GameModel(id: game.id, name: game.name, image: nil)
+            context.insert(newGame)
+        }
         
-        context.insert(newGame)
+        
+       
+    }
+    
+    func deleteGameSearch(game: GameModel? = nil, context: ModelContext) throws {
+        if let game = game {
+            // Eliminar un elemento específico
+            let id = game.id
+            let query = FetchDescriptor<GameModel>(predicate:
+                #Predicate { $0.id == id }
+            )
+            if let fetch = try context.fetch(query).first {
+                context.delete(fetch)
+            }
+        } else {
+            // Eliminar todos los elementos
+            let query = FetchDescriptor<GameModel>()
+            let allGames = try context.fetch(query)
+            for game in allGames {
+                context.delete(game)
+            }
+        }
     }
 }

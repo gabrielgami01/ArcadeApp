@@ -19,6 +19,12 @@ struct GameDetailsCard: View {
                     .fontWeight(.semibold)
                     .multilineTextAlignment(.center)
             }
+            HStack(spacing: 10){
+                Text(detailsVM.game.console.rawValue)
+                    .enumTag()
+                Text(detailsVM.game.genre.rawValue)
+                    .enumTag()
+            }
             Text("Release date: \(detailsVM.game.releaseDate.formatted(date: .abbreviated, time: .omitted))")
                 .font(.caption)
                 .foregroundStyle(.secondary)

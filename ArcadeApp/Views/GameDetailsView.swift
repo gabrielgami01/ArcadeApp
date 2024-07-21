@@ -41,9 +41,6 @@ struct GameDetailsView: View {
         }
         .padding(.horizontal)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        .task {
-            await detailsVM.loadGameDetails()
-        }
         .toolbar(.hidden)
         .sheet(isPresented: $detailsVM.showAddReview) {
             AddReviewView(addReviewVM: AddReviewVM(game: detailsVM.game))

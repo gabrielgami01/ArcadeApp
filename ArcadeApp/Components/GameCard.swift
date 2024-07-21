@@ -49,25 +49,10 @@ struct GameInfoCard: View {
                 }
                 HStack (spacing: 10){
                     Text(game.console.rawValue)
-                        .font(.caption)
-                        .foregroundStyle(.white)
-                        .font(.caption)
-                        .padding(5)
-                        .background {
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(.primary)
-                        }
+                        .enumTag()
                     Text(game.genre.rawValue)
-                        .font(.caption)
-                        .foregroundStyle(.white)
-                        .font(.caption)
-                        .padding(5)
-                        .background {
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(.primary)
-                        }
+                        .enumTag()
                 }
-                
                 Text(game.description)
                     .font(.caption2)
             }
