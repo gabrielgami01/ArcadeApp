@@ -13,6 +13,11 @@ struct GameDetailsCard: View {
                     .fontWeight(.semibold)
                     .multilineTextAlignment(.center)
                     .matchedGeometryEffect(id: "\(detailsVM.game.id)-name", in: namespace)
+            } else {
+                Text(detailsVM.game.name)
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                    .multilineTextAlignment(.center)
             }
             Text("Release date: \(detailsVM.game.releaseDate.formatted(date: .abbreviated, time: .omitted))")
                 .font(.caption)

@@ -4,7 +4,7 @@ import SwiftData
 struct GameListView: View {
     @Environment(GamesVM.self) private var gamesVM
     @Environment(\.modelContext) private var context
-    @State var searchVM = SearchVM()
+    @State var searchVM: SearchVM
     
     @Query(sort: [SortDescriptor(\GameModel.added, order: .reverse)]) private var searched: [GameModel]
     
@@ -80,24 +80,22 @@ struct GameListView: View {
                     }
                 } else {
                     if searchVM.games.isEmpty {
-                        ContentUnavailableView("No games", image: "gamecontroller", description: Text("There's no games with the name you introduced."))
+                        ContentUnavailableView("No games", image: "gamecontroller", 
+                                               description: Text("There's no games with the name you introduced."))
                     } else {
                         ForEach(searchVM.games) { game in
-                            HStack (spacing: 10) {
-                                Button {
-                                    gamesVM.selectedGame = game
-                                    try? searchVM.saveGameSearch(game: game, context: context)
-                                } label: {
+                            Button {
+                                gamesVM.selectedGame = game
+                                try? searchVM.saveGameSearch(game: game, context: context)
+                            } label: {
+                                HStack(spacing: 10) {
                                     GameCover(game: game, width: 60, height: 60)
-                                    if let namespace{
-                                        Text(game.name)
-                                            .font(.body)
-                                            .matchedGeometryEffect(id: "\(game.id)-name", in: namespace)
-
-                                    }
+                                        .namespace(nil)
+                                    Text(game.name)
+                                        .font(.body)
                                 }
-                                .buttonStyle(.plain)
                             }
+                            .buttonStyle(.plain)
                         }
                     }
                 }
@@ -111,7 +109,7 @@ struct GameListView: View {
 }
 
 #Preview {
-    GameListView()
+    GameListView(searchVM: SearchVM(interactor: TestInteractor()))
         .environment(GamesVM(interactor: TestInteractor()))
         .namespace(Namespace().wrappedValue)
 }
