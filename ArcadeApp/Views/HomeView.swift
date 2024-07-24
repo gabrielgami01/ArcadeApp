@@ -5,6 +5,7 @@ struct HomeView: View {
     @Environment(GamesVM.self) private var gamesVM
     
     @State private var showProfile = false
+    @State private var selectedGame: UUID?
     
     @Namespace private var myNamespace
     @Namespace private var another
@@ -50,8 +51,9 @@ struct HomeView: View {
                     .safeAreaPadding()
                 }
                 
-                GamesScroll(type: .featured)
-                GamesScroll(type: .favorites)
+                GamesCarousel(type: .featured)
+                GamesCarousel(type: .favorites)
+
             }
         }
         .scrollIndicators(.hidden)
