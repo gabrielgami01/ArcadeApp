@@ -34,7 +34,7 @@ struct GameDetailsView: View {
                 GameAboutView(detailsVM: detailsVM)
                     .offset(x: option == .about ? 0 : -UIDevice.width)
                     .opacity(option == .about ? 1.0 : 0.0)
-                GameScoresView()
+                GameScoresView(detailsVM: detailsVM)
                     .offset(x: option == .about ? UIDevice.width : 0)
                     .opacity(option == .about ? 0.0 : 1.0)
             }
@@ -42,9 +42,7 @@ struct GameDetailsView: View {
         .padding(.horizontal)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .toolbar(.hidden)
-        .sheet(isPresented: $detailsVM.showAddReview) {
-            AddReviewView(addReviewVM: AddReviewVM(game: detailsVM.game))
-        }
+        
         .animation(.easeInOut, value: option)
     }
 }

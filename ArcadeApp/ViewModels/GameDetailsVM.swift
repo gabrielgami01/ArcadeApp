@@ -15,6 +15,7 @@ final class GameDetailsVM {
     }
     
     var showAddReview = false
+    var showAddScore = false
 
     var errorMsg = ""
     var showAlert = false

@@ -4,7 +4,7 @@ import SwiftData
 struct GameListView: View {
     @Environment(GamesVM.self) private var gamesVM
     @Environment(\.modelContext) private var context
-    @State var searchVM: SearchVM
+    @State var searchVM = SearchVM()
     
     @Query(sort: [SortDescriptor(\GameModel.added, order: .reverse)]) private var recentSearchs: [GameModel]
     
@@ -22,7 +22,9 @@ struct GameListView: View {
                             ForEach(Console.allCases) { console in
                                 if let namespace{
                                     Button {
-                                        withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.7)) {
+                                        withAnimation(.interactiveSpring(
+                                            response: 0.5, dampingFraction: 0.7, blendDuration: 0.7)
+                                        ) {
                                             gamesVM.activeConsole = console
                                         }
                                     } label: {

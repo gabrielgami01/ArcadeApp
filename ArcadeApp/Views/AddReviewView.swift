@@ -47,7 +47,7 @@ struct AddReviewView: View {
                 }
                 
             }
-            .safeAreaPadding()
+            .padding()
             .scrollBounceBehavior(.basedOnSize)
         }
     }

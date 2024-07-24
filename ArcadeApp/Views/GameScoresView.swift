@@ -1,18 +1,35 @@
-//
-//  GameScoresView.swift
-//  ArcadeApp
-//
-//  Created by Gabriel Garcia Millan on 17/7/24.
-//
-
 import SwiftUI
 
 struct GameScoresView: View {
+    @State var detailsVM: GameDetailsVM
+    
     var body: some View {
-        Text("Scores")
+        ScrollView {
+            HStack {
+                Text("Your scores")
+                    .font(.title3)
+                    .bold()
+                Spacer()
+                Button {
+                    detailsVM.showAddScore.toggle()
+                } label: {
+                    Label {
+                        Text("Add new Score")
+                    } icon: {
+                        Image(systemName: "plus")
+                    }
+                    .font(.body)
+                }
+            }
+            .padding(.vertical, 5)
+        }
+        .sheet(isPresented: $detailsVM.showAddScore) {
+//            AddReviewView(addReviewVM: AddReviewVM(game: detailsVM.game))
+        }
     }
 }
 
 #Preview {
-    GameScoresView()
+    GameScoresView(detailsVM: GameDetailsVM(interactor: TestInteractor(), game: .test))
+        .padding()
 }

@@ -4,12 +4,14 @@ import SwiftUI
 final class AddScoreVM {
     let interactor: DataInteractor
     
-    var selectedGame: Game?
+    let game: Game
+    var image: UIImage?
     
     var errorMsg = ""
     var showAlert = false
     
-    init(interactor: DataInteractor = Network.shared) {
+    init(interactor: DataInteractor = Network.shared, game: Game) {
         self.interactor = interactor
+        self.game = game
     }
 }

@@ -47,6 +47,9 @@ struct GameAboutView: View {
         .task {
             await detailsVM.loadGameDetails()
         }
+        .sheet(isPresented: $detailsVM.showAddReview) {
+            AddReviewView(addReviewVM: AddReviewVM(game: detailsVM.game))
+        }
     }
 }
 
