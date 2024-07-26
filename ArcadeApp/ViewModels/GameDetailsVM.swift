@@ -13,6 +13,8 @@ final class GameDetailsVM {
         let totalRating = reviews.reduce(0) { $0 + $1.rating }
         return Double(totalRating) / Double(reviews.count)
     }
+    var scores: [Score] = []
+    
     
     var showAddReview = false
     var showAddScore = false
@@ -27,8 +29,7 @@ final class GameDetailsVM {
     
     func loadGameDetails() async {
         do {
-            self.favorite = try await interactor.isFavoriteGame(id: game.id)
-            self.reviews = try await interactor.getGameReviews(id: game.id)
+            (favorite, reviews, scores) = try await interactor.getGameDetails(id: game.id)
         } catch {
             self.errorMsg = error.localizedDescription
             self.showAlert.toggle()

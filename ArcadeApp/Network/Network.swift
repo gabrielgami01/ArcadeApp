@@ -10,12 +10,12 @@ protocol DataInteractor {
     func searchGame(name: String, page: Int) async throws -> [Game]
     
     func getFeaturedFavoriteGames() async throws -> (featured: [Game], favorites: [Game]) 
-    func isFavoriteGame(id: UUID) async throws -> Bool
+    
+    func getGameDetails(id: UUID) async throws -> (favorite: Bool, reviews: [Review], scores: [Score])
     func addFavoriteGame(id: UUID) async throws
     func removeFavoriteGame(id: UUID) async throws
-    
-    func getGameReviews(id: UUID) async throws -> [Review]
     func addReview(review: CreateReviewDTO) async throws
+    func addScore(score: CreateScoreDTO) async throws
 }
 
 struct Network: DataInteractor, NetworkJSONInteractor {
@@ -67,8 +67,13 @@ struct Network: DataInteractor, NetworkJSONInteractor {
     }
     //HOME
     
-    func isFavoriteGame(id: UUID) async throws -> Bool {
-        try await getJSON(request: .get(url: .isFavoriteGame(id: id), token: getToken()), type: Bool.self)
+    //DETAILS
+    func getGameDetails(id: UUID) async throws -> (favorite: Bool, reviews: [Review], scores: [Score]) {
+        async let favoriteRequest = getJSON(request: .get(url: .isFavoriteGame(id: id), token: getToken()), type: Bool.self)
+        async let reviewsRequest = getJSON(request: .get(url: .getGameReviews(id: id),token: getToken()), type: [ReviewDTO].self).map(\.toReview)
+        async let scoresRequest  = getJSON(request: .get(url: .getGameScores(id: id),token: getToken()), type: [Score].self)
+        
+        return try await (favoriteRequest, reviewsRequest, scoresRequest)
     }
     
     func addFavoriteGame(id: UUID) async throws {
@@ -80,12 +85,15 @@ struct Network: DataInteractor, NetworkJSONInteractor {
         let favoriteGameDTO = FavoriteGameDTO(id: id)
         try await post(request: .post(url: .favoriteGames, post: favoriteGameDTO, method: .delete, token: getToken()))
     }
-    
+
     func addReview(review: CreateReviewDTO) async throws {
         try await post(request: .post(url: .reviews, post: review, token: getToken()), status: 201)
     }
     
-    func getGameReviews(id: UUID) async throws -> [Review] {
-        try await getJSON(request: .get(url: .getGameReviews(id: id),token: getToken()), type: [ReviewDTO].self).map(\.toReview)
+   
+    func addScore(score: CreateScoreDTO) async throws {
+        try await post(request: .post(url: .scores, post: score, token: getToken()), status: 201)
     }
+    
+    //DETAILS
 }

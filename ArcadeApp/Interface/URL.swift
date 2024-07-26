@@ -1,8 +1,9 @@
 import Foundation
 
 let desa = URL(string: "http://localhost:8080/api")!
+let proxy = URL(string: "https://b259-81-32-237-227.ngrok-free.app/api")!
 
-let api = desa
+let api = proxy
 
 extension URL {
     static let createUser = api.appending(path: "users").appending(path: "create")
@@ -28,6 +29,11 @@ extension URL {
     static let reviews = api.appending(path: "reviews")
     static func getGameReviews(id: UUID) -> URL {
         reviews.appending(path: id.uuidString)
+    }
+    
+    static let scores = api.appending(path: "scores")
+    static func getGameScores(id: UUID) -> URL {
+        scores.appending(path: id.uuidString)
     }
    
 }

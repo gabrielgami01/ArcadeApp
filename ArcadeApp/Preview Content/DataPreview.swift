@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct TestInteractor: DataInteractor {
+    
     func createUser(user: CreateUserDTO) async throws {
         
     }
@@ -38,9 +39,10 @@ struct TestInteractor: DataInteractor {
         return (featured, favorites)
     }
     
-    func isFavoriteGame(id: UUID) async throws -> Bool {
-        return true
+    func getGameDetails(id: UUID) async throws -> (favorite: Bool, reviews: [Review], scores: [Score]) {
+        return (true, [Review.test,Review.test2,Review.test3], [Score.test, Score.test2, Score.test3, Score.test4, Score.test5])
     }
+    
     
     func addFavoriteGame(id: UUID) async throws {
         
@@ -50,11 +52,11 @@ struct TestInteractor: DataInteractor {
         
     }
     
-    func getGameReviews(id: UUID) async throws -> [Review] {
-        [.test, .test2, .test3]
-    }
-    
     func addReview(review: CreateReviewDTO) async throws {
+        
+    }
+
+    func addScore(score: CreateScoreDTO) async throws {
         
     }
 }
@@ -92,4 +94,27 @@ extension Review {
                              date: .now,
                              username: "gabrielgm",
                              avatarURL: nil)
+}
+
+extension Score {
+    static let test = Score(id: UUID(),
+                            score: nil,
+                            state: .unverified,
+                            date: .now)
+    static let test2 = Score(id: UUID(),
+                            score: 5500,
+                            state: .verified,
+                             date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 1)) ?? .now)
+    static let test3 = Score(id: UUID(),
+                            score: 6000,
+                            state: .verified,
+                            date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 2)) ?? .now)
+    static let test4 = Score(id: UUID(),
+                            score: 4440,
+                            state: .verified,
+                            date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 3)) ?? .now)
+    static let test5 = Score(id: UUID(),
+                            score: 5323,
+                            state: .verified,
+                            date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 4)) ?? .now)
 }

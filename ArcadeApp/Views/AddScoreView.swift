@@ -1,4 +1,5 @@
 import SwiftUI
+import PhotosUI
 
 struct AddScoreView: View {
     @Environment(\.dismiss) private var dismiss
@@ -7,10 +8,18 @@ struct AddScoreView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading) {
-                    CustomButton(label: "Send") {
-                        
+                VStack {
+                    Button {
+                        addScoreVM.showCamera.toggle()
+                    } label: {
+                        ScoreImage(image: addScoreVM.image)
                     }
+                    .buttonStyle(.plain)
+                    
+                    CustomButton(label: "Send") {
+                        addScoreVM.addScore()
+                    }
+                    .disabled(addScoreVM.image == nil ? true : false)
                 }
                 
             }
@@ -28,6 +37,9 @@ struct AddScoreView: View {
             }
             .padding()
             .scrollBounceBehavior(.basedOnSize)
+            .sheet(isPresented: $addScoreVM.showCamera) {
+                CameraPicker(photo: $addScoreVM.image)
+            }
         }
     }
 }

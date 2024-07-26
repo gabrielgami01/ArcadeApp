@@ -38,11 +38,23 @@ struct GameDetailsView: View {
                     .offset(x: option == .about ? UIDevice.width : 0)
                     .opacity(option == .about ? 0.0 : 1.0)
             }
+            .gesture(
+                DragGesture(minimumDistance: 50)
+                    .onEnded { value in
+                        if value.startLocation.x > value.location.x {
+                            option = .score
+                        } else if value.startLocation.x < value.location.x {
+                            option = .about
+                        }
+                    }
+            )
+        }
+        .task {
+            await detailsVM.loadGameDetails()
         }
         .padding(.horizontal)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .toolbar(.hidden)
-        
         .animation(.easeInOut, value: option)
     }
 }

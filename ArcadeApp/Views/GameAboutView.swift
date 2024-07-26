@@ -35,17 +35,18 @@ struct GameAboutView: View {
                 }
                 .padding(.vertical, 5)
                    
-                LazyVStack(alignment: .leading) {
-                    ForEach(detailsVM.reviews) { review in
-                        ReviewCell(review: review)
-                        Divider()
+                if !detailsVM.reviews.isEmpty {
+                    LazyVStack(alignment: .leading) {
+                        ForEach(detailsVM.reviews) { review in
+                            ReviewCell(review: review)
+                            Divider()
+                        }
                     }
+                } else {
+                    ContentUnavailableView("No reviews", systemImage: "gamecontroller",
+                                           description: Text("There isn't any review for this game yet."))
                 }
-                   
             }
-        }
-        .task {
-            await detailsVM.loadGameDetails()
         }
         .sheet(isPresented: $detailsVM.showAddReview) {
             AddReviewView(addReviewVM: AddReviewVM(game: detailsVM.game))
