@@ -9,8 +9,13 @@ struct ScoreCell: View {
                 Text(score.date.formatted(date: .numeric, time: .shortened))
                     .font(.body)
                 Spacer()
-                Text(score.state.rawValue.capitalized)
-                    .font(.footnote)
+                HStack {
+                    Text(score.state.rawValue.capitalized)
+                        .font(.footnote)
+                    Image(systemName: score.state == .verified ? "checkmark" : "xmark")
+                        .foregroundStyle(score.state == .verified ? .green : .red)
+                        .font(.footnote)
+                }
             }
             if let score = score.score {
                 Text("Score: \(score)")

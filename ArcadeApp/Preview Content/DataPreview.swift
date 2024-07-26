@@ -104,17 +104,17 @@ extension Score {
     static let test2 = Score(id: UUID(),
                             score: 5500,
                             state: .verified,
-                             date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 1)) ?? .now)
+                             date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 1, hour: 22, minute: 30)) ?? .now)
     static let test3 = Score(id: UUID(),
                             score: 6000,
                             state: .verified,
-                            date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 2)) ?? .now)
+                            date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 5, hour: 15, minute: 22)) ?? .now)
     static let test4 = Score(id: UUID(),
                             score: 4440,
                             state: .verified,
-                            date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 3)) ?? .now)
+                            date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 10, hour: 16, minute: 33)) ?? .now)
     static let test5 = Score(id: UUID(),
                             score: 5323,
                             state: .verified,
-                            date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 4)) ?? .now)
+                             date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 22, hour: 14, minute: 02)) ?? .now)
 }

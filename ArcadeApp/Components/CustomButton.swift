@@ -15,7 +15,7 @@ struct CustomButton: View {
             
         }
         .padding()
-        .tint(.cyan.opacity(0.9))
+        .tint(.accent)
         .controlSize(.extraLarge)
         .buttonBorderShape(.capsule)
         .buttonStyle(.borderedProminent)

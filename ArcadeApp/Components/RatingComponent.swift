@@ -12,14 +12,14 @@ struct RatingComponent: View {
                 switch mode {
                     case .display:
                         image(for: number)
-                            .foregroundStyle(number > rating ? Color.blue : Color.yellow)
+                            .foregroundStyle(number > rating ? .accent : .yellow)
                             .animation(.easeInOut(duration: 0.5).delay(Double(number) * 0.1), value: rating)
                     case .rate:
                         Button {
                             rating = number
                         } label: {
                             image(for: number)
-                                .foregroundStyle(number > rating ? Color.blue : Color.yellow)
+                                .foregroundStyle(number > rating ? .accent : .yellow)
                         }
                         .buttonStyle(.plain)
                 }

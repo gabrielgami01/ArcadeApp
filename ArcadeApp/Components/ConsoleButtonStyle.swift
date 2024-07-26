@@ -13,7 +13,7 @@ struct ConsoleButtonStyle: ButtonStyle {
                 ZStack {
                     if isActive {
                         Capsule()
-                            .fill(.blue)
+                            .fill(.accent)
                             .matchedGeometryEffect(id: "ACTIVECONSOLE", in: namespace)
                     } else {
                         Capsule()

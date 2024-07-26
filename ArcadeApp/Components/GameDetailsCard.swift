@@ -41,7 +41,7 @@ struct GameDetailsCard: View {
                     Image(systemName: "heart")
                         .font(.title2)
                         .symbolVariant(detailsVM.favorite ? .fill : .none)
-                        .tint(detailsVM.favorite ? .red : .blue)
+                        .tint(detailsVM.favorite ? .red : .accent)
                 }
                 Text("Like")
                     .font(.body)
