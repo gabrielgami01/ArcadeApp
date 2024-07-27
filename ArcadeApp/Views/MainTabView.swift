@@ -9,18 +9,19 @@ struct MainTabView: View {
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
+                .onAppear {
+                    gamesVM.selectedGame = nil
+                }
+
             SearchView()
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }
+                .onAppear {
+                    gamesVM.selectedGame = nil
+                }
+
         }
-//        .onAppear {
-//            let appearance = UITabBarAppearance()
-//            appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
-//            appearance.backgroundColor = .clear
-//            UITabBar.appearance().standardAppearance = appearance
-//            UITabBar.appearance().scrollEdgeAppearance = appearance
-//        }
     }
 }
 

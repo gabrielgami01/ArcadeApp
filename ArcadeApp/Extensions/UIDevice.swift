@@ -20,7 +20,7 @@ extension UIDevice {
             .width ?? 0
     }
     
-    static var topInsetSize: CGFloat {
+    static var topInset: CGFloat {
         UIApplication
             .shared
             .connectedScenes
@@ -31,7 +31,7 @@ extension UIDevice {
             .top ?? 0
     }
     
-    static var bottomInsetSize: CGFloat {
+    static var bottomInset: CGFloat {
         UIApplication
             .shared
             .connectedScenes
