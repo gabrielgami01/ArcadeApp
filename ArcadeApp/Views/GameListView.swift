@@ -11,7 +11,8 @@ struct GameListView: View {
     @Environment(\.namespace) private var namespace
     
     var body: some View {
-        @Bindable var bvm = searchVM
+        @Bindable var searchBVM = searchVM
+        @Bindable var gamesBVM = gamesVM
         
         NavigationStack {
             ScrollView {
@@ -46,7 +47,7 @@ struct GameListView: View {
                             Button {
                                 gamesVM.selectedGame = game
                             } label: {
-                                GameCard(game: game)
+                                GameCard(game: game, selectedGame: $gamesBVM.selectedGame)
                                     .padding(.leading)
                             }
                             .buttonStyle(.plain)
@@ -64,7 +65,7 @@ struct GameListView: View {
                     gamesVM.getGames(console: newValue)
                 }
             })
-            .searchable(text: $bvm.search, placement: .navigationBarDrawer(displayMode: .always)) {
+            .searchable(text: $searchBVM.search, placement: .navigationBarDrawer(displayMode: .always)) {
                 if searchVM.search == "" {
                     if recentSearchs.isEmpty {
                         ContentUnavailableView("Search games", systemImage: "gamecontroller",

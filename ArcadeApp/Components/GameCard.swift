@@ -2,6 +2,8 @@ import SwiftUI
 
 struct GameCard: View {
     let game: Game
+    @Binding var selectedGame: Game?
+    
     var body: some View {
         GeometryReader {
             let size = $0.size
@@ -16,6 +18,8 @@ struct GameCard: View {
                             .shadow(color: .primary.opacity(0.08), radius: 8, x: -5, y: -5)
                     }
                     .zIndex(1)
+                    .offset(x: selectedGame == game ? -25 : 0)
+                    .animation(.easeInOut.speed(0.8), value: selectedGame)
 
                 ZStack {
                     GameCover(game: game, width: size.width / 2, height: size.height)
@@ -29,7 +33,7 @@ struct GameCard: View {
 }
 
 #Preview {
-    GameCard(game: .test)
+    GameCard(game: .test, selectedGame: .constant(.test))
 }
 
 struct GameInfoCard: View {
