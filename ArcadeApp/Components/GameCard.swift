@@ -34,6 +34,7 @@ struct GameCard: View {
 
 #Preview {
     GameCard(game: .test, selectedGame: .constant(.test))
+        .namespace(Namespace().wrappedValue)
 }
 
 struct GameInfoCard: View {
