@@ -34,7 +34,7 @@ struct TestInteractor: DataInteractor {
     
     func getFeaturedFavoriteGames() async throws -> (featured: [Game], favorites: [Game]) {
         let featured = try loadData(file: "games").filter { $0.featured}
-        let favorites = try loadData(file: "games").prefix(8).shuffled()
+        let favorites = Array(try loadData(file: "games").prefix(8).shuffled())
         
         return (featured, favorites)
     }
