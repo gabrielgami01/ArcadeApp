@@ -44,6 +44,7 @@
 		FC2FD0952C4438F80054CD43 /* GameDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2FD0942C4438F80054CD43 /* GameDetailsView.swift */; };
 		FC35A2392C3EE1500075E7B4 /* AddScoreVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC35A2382C3EE1500075E7B4 /* AddScoreVM.swift */; };
 		FC54459E2C3801F5001B26EF /* AddReviewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54459D2C3801F5001B26EF /* AddReviewVM.swift */; };
+		FC6F73E42C563E8E00E34AF3 /* ShimmerEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F73E32C563E8E00E34AF3 /* ShimmerEffect.swift */; };
 		FC7A37032C4525E7004F6910 /* RatingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A37022C4525E7004F6910 /* RatingComponent.swift */; };
 		FC8438F82C4D0F7A00434179 /* EnumTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8438F72C4D0F7A00434179 /* EnumTag.swift */; };
 		FC8438FA2C4D219F00434179 /* AddScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8438F92C4D219F00434179 /* AddScoreView.swift */; };
@@ -124,6 +125,7 @@
 		FC2FD0942C4438F80054CD43 /* GameDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailsView.swift; sourceTree = "<group>"; };
 		FC35A2382C3EE1500075E7B4 /* AddScoreVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScoreVM.swift; sourceTree = "<group>"; };
 		FC54459D2C3801F5001B26EF /* AddReviewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewVM.swift; sourceTree = "<group>"; };
+		FC6F73E32C563E8E00E34AF3 /* ShimmerEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerEffect.swift; sourceTree = "<group>"; };
 		FC7A37022C4525E7004F6910 /* RatingComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingComponent.swift; sourceTree = "<group>"; };
 		FC8438F72C4D0F7A00434179 /* EnumTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumTag.swift; sourceTree = "<group>"; };
 		FC8438F92C4D219F00434179 /* AddScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddScoreView.swift; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 		FCCD73692C2D67150056036E /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				FC6F73E32C563E8E00E34AF3 /* ShimmerEffect.swift */,
 				FC2FD0922C4427640054CD43 /* CustomButton.swift */,
 				FC2FD0902C4427530054CD43 /* CustomTextField.swift */,
 				FC2BC3022C34807400353D48 /* Home */,
@@ -560,6 +563,7 @@
 				FCC036032C480B6400DDBC90 /* GameScoresView.swift in Sources */,
 				FC22BA8D2C259255002DFAA4 /* UserModel.swift in Sources */,
 				FC2FD0932C4427640054CD43 /* CustomButton.swift in Sources */,
+				FC6F73E42C563E8E00E34AF3 /* ShimmerEffect.swift in Sources */,
 				FC2FD07F2C43C27D0054CD43 /* ConsoleButtonStyle.swift in Sources */,
 				FC8438FA2C4D219F00434179 /* AddScoreView.swift in Sources */,
 				FC0E31C12C46DEAA004EB339 /* GamesCarousel.swift in Sources */,

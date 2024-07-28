@@ -16,12 +16,15 @@ struct PageButton: View {
                     .padding(20)
                     .frame(width: 80)
             }
-            .tint(color.gradient.opacity(0.7))
+            .tint(color.gradient)
             .buttonStyle(.borderedProminent)
             .buttonBorderShape(.roundedRectangle(radius: 20))
+            .shimmerEffect()
+            
             Text(page.rawValue)
                 .font(.footnote)
                 .bold()
+                
         }
     }
 }
