@@ -9,7 +9,7 @@ struct SignupView: View {
         
         ScrollView {
             Text("Sign up")
-                .font(.title)
+                .font(.customTitle)
                 .bold()
             VStack {
                 CustomTextField(value: $bvm.fullName, isError: $bvm.showError,

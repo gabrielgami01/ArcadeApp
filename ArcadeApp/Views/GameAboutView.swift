@@ -39,7 +39,7 @@ struct GameAboutView: View {
                    
                 HStack {
                     Text("Player Reviews")
-                        .font(.title3)
+                        .font(.customTitle3)
                         .bold()
                     Spacer()
                     Button {
@@ -50,7 +50,7 @@ struct GameAboutView: View {
                         } icon: {
                             Image(systemName: "square.and.pencil")
                         }
-                        .font(.body)
+                        .font(.customBody)
                     }
                 }
                 .padding(.vertical, 5)
@@ -85,7 +85,7 @@ struct DescriptionCard: View {
     var body: some View {
         ScrollView{
             Text(game.description)
-                .font(.caption)
+                .font(.customCaption)
                 .padding()
         }
         .scrollBounceBehavior(.basedOnSize)

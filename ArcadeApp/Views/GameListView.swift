@@ -30,7 +30,7 @@ struct GameListView: View {
                                         }
                                     } label: {
                                         Text(console.rawValue)
-                                            .font(.caption2)
+                                            .font(.customCaption2)
                                     }
                                     .buttonStyle(ConsoleButtonStyle(isActive: gamesVM.activeConsole == console, namespace: namespace))
                                 }
@@ -78,14 +78,14 @@ struct GameListView: View {
                                 } label: {
     //                                GameSearchableButton(game: game)
                                     Text(game.name)
-                                        .font(.body)
+                                        .font(.customBody)
                                 }
                                 
                                 Button {
                                     try? searchVM.deleteGameSearch(game: game, context: context)
                                 } label: {
                                     Image(systemName: "xmark")
-                                        .font(.body)
+                                        .font(.customBody)
                                 }
                             }
                         }
@@ -133,7 +133,7 @@ struct GameSearchableButton: View {
             GameCover(game: game, width: 60, height: 60)
                 .namespace(nil)
             Text(game.name)
-                .font(.body)
+                .font(.customBody)
         }
     }
 }

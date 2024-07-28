@@ -14,18 +14,18 @@ struct ReviewCell: View {
             }
             VStack(alignment: .leading) {
                 Text(review.username)
-                    .font(.headline)
+                    .font(.customHeadline)
                 HStack(spacing: 20) {
                     RatingComponent(rating: .constant(review.rating), mode: .display)
                     Text(review.date.formatted())
-                        .font(.footnote)
+                        .font(.customFootnote)
                 }
                 .padding(.bottom, 2)
                 Text(review.title)
-                    .font(.headline)
+                    .font(.customHeadline)
                    if let comment = review.comment {
                     Text(comment)
-                        .font(.subheadline)
+                        .font(.customSubheadline)
                 }
             }
         }

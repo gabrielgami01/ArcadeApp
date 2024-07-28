@@ -4,9 +4,9 @@ fileprivate struct EnumTag: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .font(.caption)
+            .font(.customCaption)
             .foregroundStyle(.white)
-            .font(.caption)
+            .font(.customCaption)
             .padding(5)
             .background {
                 RoundedRectangle(cornerRadius: 10)

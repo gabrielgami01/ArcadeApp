@@ -11,7 +11,7 @@ struct GamesCarousel: View {
         
         VStack(alignment: .leading, spacing: 5) {
             Text(type.rawValue.uppercased())
-                .font(.headline)
+                .font(.customHeadline)
                 .padding(.horizontal)
             
             if !games.isEmpty {
@@ -29,7 +29,7 @@ struct GamesCarousel: View {
                                     .buttonStyle(.plain)
                                     
                                     Text(game.name)
-                                        .font(.footnote)
+                                        .font(.customFootnote)
                                         .frame(width: 140)
                                         .lineLimit(2, reservesSpace: true)
                                         .multilineTextAlignment(.center)

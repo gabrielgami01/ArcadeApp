@@ -9,7 +9,7 @@ struct LoginView: View {
         NavigationStack {
             ScrollView {
                 Text("Arcade Studio")
-                    .font(.largeTitle)
+                    .font(.customLargeTitle)
                     .bold()
                 VStack {
                     CustomTextField(value: $bvm.username, isError: $bvm.showError, label: "Username")

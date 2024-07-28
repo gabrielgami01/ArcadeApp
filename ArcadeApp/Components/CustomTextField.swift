@@ -19,6 +19,7 @@ struct CustomTextField: View {
                 switch type {
                     case .simple:
                         TextField(label, text: $value)
+                            .font(.customBody)
                     case .secured:
                        SecureField(label, text: $value)
                 }
@@ -46,7 +47,7 @@ struct CustomTextField: View {
                     .opacity(error ? 1.0 : 0.0)
             }
             Text("\(label.capitalized) \(errorMsg).")
-                .font(.caption2)
+                .font(.customCaption2)
                 .foregroundStyle(.red)
                 .bold()
                 .padding(.horizontal, 10)

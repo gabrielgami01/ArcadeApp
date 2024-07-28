@@ -47,7 +47,7 @@ struct GameInfoCard: View {
             VStack(alignment: .center, spacing: 10) {
                 if let namespace{
                     Text(game.name)
-                        .font(.headline)
+                        .font(.customHeadline)
                         .fontWeight(.semibold)
                         .multilineTextAlignment(.center)
                         .matchedGeometryEffect(id: "\(game.id)-name", in: namespace)
@@ -59,7 +59,7 @@ struct GameInfoCard: View {
                         .enumTag()
                 }
                 Text(game.description)
-                    .font(.caption2)
+                    .font(.customCaption2)
             }
             .padding(.vertical)
             .padding(.horizontal, 5)

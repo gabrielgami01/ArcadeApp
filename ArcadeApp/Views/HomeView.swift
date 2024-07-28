@@ -28,7 +28,7 @@ struct HomeView: View {
             VStack(alignment: .leading, spacing: 10) {
                 HStack {
                     Text("Hello user")
-                        .font(.largeTitle)
+                        .font(.customLargeTitle)
                     Spacer()
                     Button {
                         showProfile.toggle()

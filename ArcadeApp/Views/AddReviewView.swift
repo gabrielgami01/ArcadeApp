@@ -11,7 +11,7 @@ struct AddReviewView: View {
                     CustomTextField(value: $addReviewVM.title, isError: $addReviewVM.showAlert, label: "Title")
                     HStack(spacing: 40) {
                         Text("Rating")
-                            .font(.body)
+                            .font(.customBody)
                             .bold()
                         RatingComponent(rating: $addReviewVM.rating, mode: .rate)
                     }

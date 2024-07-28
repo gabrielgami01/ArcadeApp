@@ -9,13 +9,13 @@ struct GameDetailsCard: View {
         VStack(alignment: .leading, spacing: 10) {
             if let namespace{
                 Text(detailsVM.game.name)
-                    .font(.headline)
+                    .font(.customHeadline)
                     .fontWeight(.semibold)
                     .multilineTextAlignment(.center)
                     .matchedGeometryEffect(id: "\(detailsVM.game.id)-name", in: namespace)
             } else {
                 Text(detailsVM.game.name)
-                    .font(.headline)
+                    .font(.customHeadline)
                     .fontWeight(.semibold)
                     .multilineTextAlignment(.center)
             }
@@ -26,12 +26,12 @@ struct GameDetailsCard: View {
                     .enumTag()
             }
             Text("Release date: \(detailsVM.game.releaseDate.formatted(date: .abbreviated, time: .omitted))")
-                .font(.caption)
+                .font(.customCaption)
                 .foregroundStyle(.secondary)
             HStack(alignment: .lastTextBaseline, spacing: 5) {
                 RatingComponent(rating: .constant(Int(detailsVM.globalRating)), mode: .display)
                 Text("(\(detailsVM.globalRating.formatted(.number.precision(.fractionLength(1)))))")
-                    .font(.caption)
+                    .font(.customCaption)
                     .foregroundStyle(.yellow)
             }
             HStack {
@@ -44,7 +44,7 @@ struct GameDetailsCard: View {
                         .tint(detailsVM.favorite ? .red : .accent)
                 }
                 Text("Like")
-                    .font(.body)
+                    .font(.customBody)
                     .foregroundStyle(.secondary)
             }
         }

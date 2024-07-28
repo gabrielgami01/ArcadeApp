@@ -7,19 +7,19 @@ struct ScoreCell: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 Text(score.date.formatted(date: .numeric, time: .shortened))
-                    .font(.body)
+                    .font(.customBody)
                 Spacer()
                 HStack {
                     Text(score.state.rawValue.capitalized)
-                        .font(.footnote)
+                        .font(.customFootnote)
                     Image(systemName: score.state == .verified ? "checkmark" : "xmark")
                         .foregroundStyle(score.state == .verified ? .green : .red)
-                        .font(.footnote)
+                        .font(.customFootnote)
                 }
             }
             if let score = score.score {
                 Text("Score: \(score)")
-                    .font(.body)
+                    .font(.customBody)
                     .bold()
             }
         }

@@ -11,7 +11,7 @@ struct GameScoresView: View {
                 
                 HStack {
                     Text("Your scores")
-                        .font(.title3)
+                        .font(.customTitle3)
                         .bold()
                     Spacer()
                     Button {
@@ -22,7 +22,7 @@ struct GameScoresView: View {
                         } icon: {
                             Image(systemName: "plus")
                         }
-                        .font(.body)
+                        .font(.customBody)
                     }
                 }
                 .padding(.vertical, 5)

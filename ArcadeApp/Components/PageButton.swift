@@ -12,7 +12,7 @@ struct PageButton: View {
                 state.toggle()
             } label: {
                 Image(systemName: image)
-                    .font(.largeTitle)
+                    .font(.customLargeTitle)
                     .padding(20)
                     .frame(width: 80)
             }
@@ -22,7 +22,7 @@ struct PageButton: View {
             .shimmerEffect()
             
             Text(page.rawValue)
-                .font(.footnote)
+                .font(.customFootnote)
                 .bold()
                 
         }

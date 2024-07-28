@@ -20,7 +20,7 @@ struct GameDetailsView: View {
                 Picker(selection: $option) {
                     ForEach(PickerOptions.allCases) { option in
                         Text(option.rawValue)
-                            .font(.body)
+                            .font(.customBody)
                     }
                 } label: {
                     Text("Options")

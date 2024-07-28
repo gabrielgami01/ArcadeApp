@@ -9,7 +9,7 @@ struct CustomButton: View {
             actions()
         } label: {
             Text(label)
-                .font(.headline)
+                .font(.customHeadline)
                 .bold()
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
             
