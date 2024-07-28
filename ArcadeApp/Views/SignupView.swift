@@ -49,7 +49,7 @@ struct SignupView: View {
                     userVM.showSignup.toggle()
                 } label: {
                     Text("Cancel")
-                        .bold()
+                        .font(.customTitle3)
                 }
             }
             ToolbarItem(placement: .keyboard) {

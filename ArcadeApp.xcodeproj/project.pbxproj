@@ -47,6 +47,10 @@
 		FC6F73E42C563E8E00E34AF3 /* ShimmerEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F73E32C563E8E00E34AF3 /* ShimmerEffect.swift */; };
 		FC6F73E82C564C2900E34AF3 /* FontStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F73E72C564C2900E34AF3 /* FontStyles.swift */; };
 		FC6F73EA2C5650AA00E34AF3 /* VT323.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC6F73E92C5650AA00E34AF3 /* VT323.ttf */; };
+		FC6F73EC2C56CA3B00E34AF3 /* CustomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F73EB2C56CA3B00E34AF3 /* CustomCard.swift */; };
+		FC6F73EE2C56CAF900E34AF3 /* GameDescriptionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F73ED2C56CAF900E34AF3 /* GameDescriptionCard.swift */; };
+		FC6F73F12C56D19C00E34AF3 /* AsyncTypeWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F73F02C56D19C00E34AF3 /* AsyncTypeWriter.swift */; };
+		FC6F73F32C56D1F900E34AF3 /* AsyncText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F73F22C56D1F900E34AF3 /* AsyncText.swift */; };
 		FC7A37032C4525E7004F6910 /* RatingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A37022C4525E7004F6910 /* RatingComponent.swift */; };
 		FC8438F82C4D0F7A00434179 /* EnumTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8438F72C4D0F7A00434179 /* EnumTag.swift */; };
 		FC8438FA2C4D219F00434179 /* AddScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8438F92C4D219F00434179 /* AddScoreView.swift */; };
@@ -130,6 +134,10 @@
 		FC6F73E32C563E8E00E34AF3 /* ShimmerEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerEffect.swift; sourceTree = "<group>"; };
 		FC6F73E72C564C2900E34AF3 /* FontStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyles.swift; sourceTree = "<group>"; };
 		FC6F73E92C5650AA00E34AF3 /* VT323.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = VT323.ttf; sourceTree = "<group>"; };
+		FC6F73EB2C56CA3B00E34AF3 /* CustomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCard.swift; sourceTree = "<group>"; };
+		FC6F73ED2C56CAF900E34AF3 /* GameDescriptionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDescriptionCard.swift; sourceTree = "<group>"; };
+		FC6F73F02C56D19C00E34AF3 /* AsyncTypeWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncTypeWriter.swift; sourceTree = "<group>"; };
+		FC6F73F22C56D1F900E34AF3 /* AsyncText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncText.swift; sourceTree = "<group>"; };
 		FC7A37022C4525E7004F6910 /* RatingComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingComponent.swift; sourceTree = "<group>"; };
 		FC8438F72C4D0F7A00434179 /* EnumTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumTag.swift; sourceTree = "<group>"; };
 		FC8438F92C4D219F00434179 /* AddScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddScoreView.swift; sourceTree = "<group>"; };
@@ -193,6 +201,7 @@
 			children = (
 				FC22BA5E2C2590EF002DFAA4 /* ArcadeApp */,
 				FC22BAB32C25F266002DFAA4 /* Info.plist */,
+				FC6F73E92C5650AA00E34AF3 /* VT323.ttf */,
 				FC22BA6F2C2590F0002DFAA4 /* ArcadeAppTests */,
 				FC22BA792C2590F0002DFAA4 /* ArcadeAppUITests */,
 				FC22BA5D2C2590EF002DFAA4 /* Products */,
@@ -212,7 +221,6 @@
 		FC22BA5E2C2590EF002DFAA4 /* ArcadeApp */ = {
 			isa = PBXGroup;
 			children = (
-				FC6F73E92C5650AA00E34AF3 /* VT323.ttf */,
 				FCCD736B2C2D674B0056036E /* Views */,
 				FCCD73692C2D67150056036E /* Components */,
 				FCCD736A2C2D67390056036E /* ViewModels */,
@@ -295,6 +303,7 @@
 				FC0E31C42C46E063004EB339 /* GameCover.swift */,
 				FC0E31BC2C46DE24004EB339 /* GameCard.swift */,
 				FC0E31C82C46F010004EB339 /* GameDetailsCard.swift */,
+				FC6F73ED2C56CAF900E34AF3 /* GameDescriptionCard.swift */,
 				FC8438F72C4D0F7A00434179 /* EnumTag.swift */,
 			);
 			name = Game;
@@ -308,6 +317,19 @@
 			name = Search;
 			sourceTree = "<group>";
 		};
+		FC6F73EF2C56CBEA00E34AF3 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				FC6F73F22C56D1F900E34AF3 /* AsyncText.swift */,
+				FC6F73E32C563E8E00E34AF3 /* ShimmerEffect.swift */,
+				FC7A37022C4525E7004F6910 /* RatingComponent.swift */,
+				FC2FD0922C4427640054CD43 /* CustomButton.swift */,
+				FC2FD0902C4427530054CD43 /* CustomTextField.swift */,
+				FC6F73EB2C56CA3B00E34AF3 /* CustomCard.swift */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
 		FCA519132C36C175001CCF54 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +337,7 @@
 				FCA519142C36C18D001CCF54 /* Namespace.swift */,
 				FCC7245B2C525EF1008C3BC1 /* UIImage.swift */,
 				FC6F73E72C564C2900E34AF3 /* FontStyles.swift */,
+				FC6F73F02C56D19C00E34AF3 /* AsyncTypeWriter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -323,7 +346,6 @@
 			isa = PBXGroup;
 			children = (
 				FC0E31CC2C46F0D0004EB339 /* ReviewCell.swift */,
-				FC7A37022C4525E7004F6910 /* RatingComponent.swift */,
 			);
 			name = Review;
 			sourceTree = "<group>";
@@ -349,9 +371,7 @@
 		FCCD73692C2D67150056036E /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				FC6F73E32C563E8E00E34AF3 /* ShimmerEffect.swift */,
-				FC2FD0922C4427640054CD43 /* CustomButton.swift */,
-				FC2FD0902C4427530054CD43 /* CustomTextField.swift */,
+				FC6F73EF2C56CBEA00E34AF3 /* Common */,
 				FC2BC3022C34807400353D48 /* Home */,
 				FC2BC30A2C34835100353D48 /* Search */,
 				FC2BC3072C34815100353D48 /* Game */,
@@ -566,8 +586,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC6F73EC2C56CA3B00E34AF3 /* CustomCard.swift in Sources */,
 				FC2FD0912C4427530054CD43 /* CustomTextField.swift in Sources */,
 				FCC036032C480B6400DDBC90 /* GameScoresView.swift in Sources */,
+				FC6F73F12C56D19C00E34AF3 /* AsyncTypeWriter.swift in Sources */,
+				FC6F73F32C56D1F900E34AF3 /* AsyncText.swift in Sources */,
 				FC22BA8D2C259255002DFAA4 /* UserModel.swift in Sources */,
 				FC2FD0932C4427640054CD43 /* CustomButton.swift in Sources */,
 				FC6F73E42C563E8E00E34AF3 /* ShimmerEffect.swift in Sources */,
@@ -593,6 +616,7 @@
 				FCC724572C523C5D008C3BC1 /* CameraPicker.swift in Sources */,
 				FC54459E2C3801F5001B26EF /* AddReviewVM.swift in Sources */,
 				FC6F73E82C564C2900E34AF3 /* FontStyles.swift in Sources */,
+				FC6F73EE2C56CAF900E34AF3 /* GameDescriptionCard.swift in Sources */,
 				FC0E31C92C46F010004EB339 /* GameDetailsCard.swift in Sources */,
 				FC2FD0952C4438F80054CD43 /* GameDetailsView.swift in Sources */,
 				FC0E31CF2C46F1C6004EB339 /* ModelViews.swift in Sources */,

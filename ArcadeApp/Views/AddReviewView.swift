@@ -43,6 +43,7 @@ struct AddReviewView: View {
                         dismiss()
                     } label: {
                         Text("Cancel")
+                            .font(.customTitle3)
                     }
                 }
                 

@@ -5,24 +5,19 @@ struct GameCard: View {
     @Binding var selectedGame: Game?
     
     var body: some View {
-        GeometryReader {
-            let size = $0.size
+        GeometryReader { geometry in
+            let size = geometry.size
 
             HStack(spacing: -25) {
                 GameInfoCard(game: game)
                     .frame(width: size.width / 2, height: size.height * 0.8)
-                    .background {
-                        RoundedRectangle(cornerRadius: 10, style: .continuous)
-                            .fill(Color(white: 0.95))
-                            .shadow(color: .primary.opacity(0.08), radius: 8, x: 5, y: 5)
-                            .shadow(color: .primary.opacity(0.08), radius: 8, x: -5, y: -5)
-                    }
                     .zIndex(1)
                     .offset(x: selectedGame == game ? -25 : 0)
                     .animation(.easeInOut.speed(0.8), value: selectedGame)
-
+                
                 ZStack {
                     GameCover(game: game, width: size.width / 2, height: size.height)
+                        .shimmerEffect()
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
@@ -33,7 +28,7 @@ struct GameCard: View {
 }
 
 #Preview {
-    GameCard(game: .test, selectedGame: .constant(.test))
+    GameCard(game: .test, selectedGame: .constant(.test2))
         .namespace(Namespace().wrappedValue)
 }
 
@@ -45,26 +40,30 @@ struct GameInfoCard: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .center, spacing: 10) {
-                if let namespace{
+                if let namespace = namespace {
                     Text(game.name)
                         .font(.customHeadline)
-                        .fontWeight(.semibold)
                         .multilineTextAlignment(.center)
+                        .foregroundColor(.accent)
+     
                         .matchedGeometryEffect(id: "\(game.id)-name", in: namespace)
                 }
-                HStack (spacing: 10){
+                HStack(spacing: 10) {
                     Text(game.console.rawValue)
                         .enumTag()
                     Text(game.genre.rawValue)
                         .enumTag()
                 }
                 Text(game.description)
-                    .font(.customCaption2)
+                    .font(.customCaption)
+                    .foregroundColor(.white)
+                    .padding(.horizontal)
             }
             .padding(.vertical)
             .padding(.horizontal, 5)
         }
         .scrollBounceBehavior(.basedOnSize)
+        .customCard()
     }
 }
 

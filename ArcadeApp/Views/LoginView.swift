@@ -8,9 +8,8 @@ struct LoginView: View {
         
         NavigationStack {
             ScrollView {
-                Text("Arcade Studio")
-                    .font(.customLargeTitle)
-                    .bold()
+                AsyncText(label: "ARCADE STUDIOS", font: .customLargeTitle)
+                
                 VStack {
                     CustomTextField(value: $bvm.username, isError: $bvm.showError, label: "Username")
                         .textContentType(.username)
@@ -20,21 +19,23 @@ struct LoginView: View {
                         userVM.login()
                     }
                 }
-                .padding(.vertical, 100)
+                .padding(.vertical, 50)
                 HStack {
                     Text("Don't have an account?")
+                        .font(.customBody)
                     Button {
                         userVM.resetRegister()
                         userVM.showSignup.toggle()
                     } label: {
                         Text("Sign up")
+                            .font(.customHeadline)
                     }
                 }
             }
             .navigationDestination(isPresented: $bvm.showSignup) {
                 SignupView()
             }
-            .safeAreaPadding()
+            .padding()
         }
     }
 }

@@ -70,6 +70,14 @@ extension Game {
                            releaseDate: Calendar.current.date(from: DateComponents(year: 1996, month: 2, day: 27))!,
                            imageURL: URL(string: "google.com"),
                            featured: true)
+    static let test2 = Game(id: UUID(),
+                           name: "Super Mario Bros.",
+                           description: "A platform game where players control Mario and Luigi to save Princess Toadstool.",
+                           console: .nes,
+                           genre: .platformer,
+                           releaseDate: Calendar.current.date(from: DateComponents(year: 1985, month: 9, day: 13))!,
+                           imageURL: URL(string: "google.com"),
+                           featured: false)
 }
 
 extension Review {

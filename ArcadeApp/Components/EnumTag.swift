@@ -4,14 +4,11 @@ fileprivate struct EnumTag: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .font(.customCaption)
-            .foregroundStyle(.white)
-            .font(.customCaption)
+            .font(.customFootnote)
             .padding(5)
-            .background {
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(.primary)
-            }
+            .background(Color.black.opacity(0.7))
+            .cornerRadius(5)
+            .foregroundColor(.accent)
     }
 }
 

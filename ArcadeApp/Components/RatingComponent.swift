@@ -10,18 +10,18 @@ struct RatingComponent: View {
         HStack(spacing: 5) {
             ForEach(1 ... maxRating, id: \.self) { number in
                 switch mode {
-                    case .display:
+                case .display:
+                    image(for: number)
+                        .foregroundStyle(number > rating ? Color.gray : Color.yellow)
+                        .animation(.easeInOut(duration: 0.5).delay(Double(number) * 0.1), value: rating)
+                case .rate:
+                    Button {
+                        rating = number
+                    } label: {
                         image(for: number)
-                            .foregroundStyle(number > rating ? .accent : .yellow)
-                            .animation(.easeInOut(duration: 0.5).delay(Double(number) * 0.1), value: rating)
-                    case .rate:
-                        Button {
-                            rating = number
-                        } label: {
-                            image(for: number)
-                                .foregroundStyle(number > rating ? .accent : .yellow)
-                        }
-                        .buttonStyle(.plain)
+                            .foregroundStyle(number > rating ? Color.gray : Color.yellow)
+                    }
+                    .buttonStyle(.plain)
                 }
             }
         }
@@ -29,9 +29,9 @@ struct RatingComponent: View {
     
     func image(for number: Int) -> Image {
         if number > rating {
-            Image(systemName: "star")
+            return Image(systemName: "star")
         } else {
-            Image(systemName: "star.fill")
+            return Image(systemName: "star.fill")
         }
     }
 }

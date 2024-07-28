@@ -16,7 +16,8 @@ struct GameAboutView: View {
                             GameCover(game: detailsVM.game, width: size.width / 2.5, height: size.height)
                                 .rotation3DEffect(.degrees(isFlipped ? 180 : 0), axis: (x: 0, y: 1, z: 0))
                                 .opacity(isFlipped ? 0 : 1)
-                            DescriptionCard(game: detailsVM.game)
+                                .shimmerEffect()
+                            GameDescriptionCard(game: detailsVM.game)
                                 .frame(width: size.width / 2.5, height: size.height)
                                 .background {
                                     RoundedRectangle(cornerRadius: 20)
@@ -79,15 +80,3 @@ struct GameAboutView: View {
     .padding()
 }
 
-struct DescriptionCard: View {
-    let game: Game
-    
-    var body: some View {
-        ScrollView{
-            Text(game.description)
-                .font(.customCaption)
-                .padding()
-        }
-        .scrollBounceBehavior(.basedOnSize)
-    }
-}

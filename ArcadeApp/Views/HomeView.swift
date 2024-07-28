@@ -27,8 +27,7 @@ struct HomeView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
                 HStack {
-                    Text("Hello user")
-                        .font(.customLargeTitle)
+                    AsyncText(label: "Hello User", font: .customLargeTitle)
                     Spacer()
                     Button {
                         showProfile.toggle()
@@ -43,10 +42,10 @@ struct HomeView: View {
                 .padding(.horizontal)
                 ScrollView(.horizontal) {
                     LazyHStack {
-                        PageButton(state: .constant(false), page: .challenges, image: "trophy", color: .cyan)
-                        PageButton(state: .constant(false), page: .rankings, image: "rosette", color: .green)
-                        PageButton(state: .constant(false), page: .forum, image: "message", color: .purple)
-                        PageButton(state: .constant(false), page: .friends, image: "person.2", color: .orange)
+                        PageButton(state: .constant(false), page: .challenges, image: "trophy", color: .green)
+                        PageButton(state: .constant(false), page: .rankings, image: "rosette", color: .orange)
+                        PageButton(state: .constant(false), page: .forum, image: "message", color: .red)
+                        PageButton(state: .constant(false), page: .friends, image: "person.2", color: .purple)
                     }
                     .safeAreaPadding()
                 }

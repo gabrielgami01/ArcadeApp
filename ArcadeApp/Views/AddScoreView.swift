@@ -31,6 +31,7 @@ struct AddScoreView: View {
                         dismiss()
                     } label: {
                         Text("Cancel")
+                            .font(.customTitle3)
                     }
                 }
                 

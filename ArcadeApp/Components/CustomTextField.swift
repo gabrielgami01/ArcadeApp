@@ -22,6 +22,7 @@ struct CustomTextField: View {
                             .font(.customBody)
                     case .secured:
                        SecureField(label, text: $value)
+                            .font(.customBody)
                 }
                 Button {
                     value = ""

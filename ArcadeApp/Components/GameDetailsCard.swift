@@ -7,19 +7,21 @@ struct GameDetailsCard: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            if let namespace{
-                Text(detailsVM.game.name)
-                    .font(.customHeadline)
-                    .fontWeight(.semibold)
-                    .multilineTextAlignment(.center)
-                    .matchedGeometryEffect(id: "\(detailsVM.game.id)-name", in: namespace)
-            } else {
-                Text(detailsVM.game.name)
-                    .font(.customHeadline)
-                    .fontWeight(.semibold)
-                    .multilineTextAlignment(.center)
+            Group {
+                if let namespace = namespace {
+                    Text(detailsVM.game.name)
+                        .font(.customTitle2)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.cyan)
+                        .matchedGeometryEffect(id: "\(detailsVM.game.id)-name", in: namespace)
+                } else {
+                    Text(detailsVM.game.name)
+                        .font(.customTitle2)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.cyan)
+                }
             }
-            HStack(spacing: 10){
+            HStack(spacing: 10) {
                 Text(detailsVM.game.console.rawValue)
                     .enumTag()
                 Text(detailsVM.game.genre.rawValue)
@@ -27,12 +29,13 @@ struct GameDetailsCard: View {
             }
             Text("Release date: \(detailsVM.game.releaseDate.formatted(date: .abbreviated, time: .omitted))")
                 .font(.customCaption)
-                .foregroundStyle(.secondary)
+                .foregroundColor(.white)
+
             HStack(alignment: .lastTextBaseline, spacing: 5) {
                 RatingComponent(rating: .constant(Int(detailsVM.globalRating)), mode: .display)
                 Text("(\(detailsVM.globalRating.formatted(.number.precision(.fractionLength(1)))))")
                     .font(.customCaption)
-                    .foregroundStyle(.yellow)
+                    .foregroundColor(.yellow)
             }
             HStack {
                 Button {
@@ -41,14 +44,15 @@ struct GameDetailsCard: View {
                     Image(systemName: "heart")
                         .font(.title2)
                         .symbolVariant(detailsVM.favorite ? .fill : .none)
-                        .tint(detailsVM.favorite ? .red : .accent)
+                        .tint(detailsVM.favorite ? .red : .cyan)
                 }
                 Text("Like")
-                    .font(.customBody)
-                    .foregroundStyle(.secondary)
+                    .font(.customCaption)
+                    .foregroundColor(.white)
             }
         }
-        
+        .padding()
+        .customCard()
     }
 }
 
