@@ -1,4 +1,5 @@
 import SwiftUI
+import ACNetwork
 
 struct GameCover: View {
     let game: Game
@@ -6,50 +7,59 @@ struct GameCover: View {
     let height: CGFloat
     
     @Environment(\.namespace) private var namespace
+    @State private var imageVM = ImageNetworkVM()
     
     var body: some View {
-        if let namespace {
-            if let image = game.imageURL {
-                Image(game.name)
-                    .resizable()
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
-                    .frame(width: width, height: height)
-                    .matchedGeometryEffect(id: "\(game.id)-cover", in: namespace)
+        Group {
+            if let namespace {
+                if let image = imageVM.image {
+                    Image(uiImage: image)
+                        .resizable()
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .frame(width: width, height: height)
+                        .matchedGeometryEffect(id: "\(game.id)-cover", in: namespace)
+                        .shimmerEffect()
+                } else {
+                    RoundedRectangle(cornerRadius: 20)
+                                        .fill(Color(white: 0.6))
+                                        .overlay {
+                                            Image(systemName: "gamecontroller")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .foregroundStyle(.primary)
+                                                .padding()
+                                        }
+                                        .matchedGeometryEffect(id: "\(game.id)-cover", in: namespace)
+                                        .frame(width: width, height: height)
+                                        .shimmerEffect()
+                }
             } else {
-                RoundedRectangle(cornerRadius: 20)
-                                    .fill(Color(white: 0.6))
-                                    .overlay {
-                                        Image(systemName: "gamecontroller")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .foregroundStyle(.primary)
-                                            .padding()
-                                    }
-                                    .matchedGeometryEffect(id: "\(game.id)-cover", in: namespace)
-                                    .frame(width: width, height: height)
+                if let image = imageVM.image {
+                    Image(uiImage: image)
+                        .resizable()
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .frame(width: width, height: height)
+                } else {
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(Color(white: 0.6))
+                        .overlay {
+                            Image(systemName: "gamecontroller")
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundStyle(.primary)
+                                .padding()
+                        }
+                        .frame(width: width, height: height)
+                }
             }
-        } else {
-            if let image = game.imageURL {
-                Image(game.name)
-                    .resizable()
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
-                    .frame(width: width, height: height)
-            } else {
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(Color(white: 0.6))
-                    .overlay {
-                        Image(systemName: "gamecontroller")
-                            .resizable()
-                            .scaledToFit()
-                            .foregroundStyle(.primary)
-                            .padding()
-                    }
-                    .frame(width: width, height: height)
-            }
+        }
+        .task {
+           await imageVM.getImage(url: game.imageURL2, size: 300)
         }
     }
 }
 
 #Preview {
-    GameCover(game: .test, width: 160, height: 220)
+    GameCover(game: .test2, width: 160, height: 220)
+        .namespace(Namespace().wrappedValue)
 }

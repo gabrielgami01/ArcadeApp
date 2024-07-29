@@ -41,7 +41,7 @@ struct HomeView: View {
                 }
                 .padding(.horizontal)
                 ScrollView(.horizontal) {
-                    LazyHStack {
+                    LazyHStack(spacing: 10) {
                         PageButton(state: .constant(false), page: .challenges, image: "trophy", color: .green)
                         PageButton(state: .constant(false), page: .rankings, image: "rosette", color: .orange)
                         PageButton(state: .constant(false), page: .forum, image: "message", color: .red)

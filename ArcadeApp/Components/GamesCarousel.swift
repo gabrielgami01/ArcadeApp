@@ -25,7 +25,6 @@ struct GamesCarousel: View {
                                         gamesVM.selectedGame = game
                                     } label: {
                                         GameCover(game: game, width: 140, height: 220)
-                                            .shimmerEffect()
                                     }
                                     .buttonStyle(.plain)
                                     

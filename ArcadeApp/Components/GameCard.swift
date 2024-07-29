@@ -17,7 +17,6 @@ struct GameCard: View {
                 
                 ZStack {
                     GameCover(game: game, width: size.width / 2, height: size.height)
-                        .shimmerEffect()
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }

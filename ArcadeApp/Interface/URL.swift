@@ -1,9 +1,9 @@
 import Foundation
 
-let desa = URL(string: "http://localhost:8080/api")!
-let proxy = URL(string: "https://a4f7-81-32-237-227.ngrok-free.app/api")!
+let desa = URL(string: "http://localhost:8080")!
+let proxy = URL(string: "https://f9f9-81-32-237-227.ngrok-free.app")!
 
-let api = proxy 
+let api = desa.appending(path: "api")
 
 extension URL {
     static let createUser = api.appending(path: "users").appending(path: "create")

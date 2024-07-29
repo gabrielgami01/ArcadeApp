@@ -16,7 +16,6 @@ struct GameAboutView: View {
                             GameCover(game: detailsVM.game, width: size.width / 2.5, height: size.height)
                                 .rotation3DEffect(.degrees(isFlipped ? 180 : 0), axis: (x: 0, y: 1, z: 0))
                                 .opacity(isFlipped ? 0 : 1)
-                                .shimmerEffect()
                             GameDescriptionCard(game: detailsVM.game)
                                 .frame(width: size.width / 2.5, height: size.height)
                                 .background {

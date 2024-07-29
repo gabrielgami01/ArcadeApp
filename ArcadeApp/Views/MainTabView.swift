@@ -5,7 +5,7 @@ struct MainTabView: View {
     @Environment(GamesVM.self) private var gamesVM
     var body: some View {
         TabView {
-           MainView()
+            MainView()
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }

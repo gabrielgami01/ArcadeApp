@@ -66,6 +66,10 @@ struct Game: Identifiable, Hashable {
     let releaseDate: Date
     let imageURL: URL?
     let featured: Bool
+    
+    var imageURL2: URL {
+        desa.appending(path: "covers").appending(path: "\(id).jpg")
+    }
 }
 
 struct FavoriteGameDTO: Codable {
