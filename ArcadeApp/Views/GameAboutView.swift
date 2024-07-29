@@ -59,8 +59,7 @@ struct GameAboutView: View {
                         }
                     }
                 } else {
-                    ContentUnavailableView("No reviews", systemImage: "gamecontroller",
-                                           description: Text("There isn't any review for this game yet."))
+                    CustomUnavailableView(title: "No reviews", image: "gamecontroller", description: "There isn't any review for this game yet.")
                 }
             }
         }

@@ -6,7 +6,7 @@ struct ConsoleButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.custom("VT323-Regular", size: 16))
+            .font(.customSubheadline)
             .foregroundColor(isActive ? .black : .white)
             .padding(.horizontal)
             .padding(.vertical, 5)

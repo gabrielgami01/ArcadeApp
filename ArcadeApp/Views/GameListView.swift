@@ -68,8 +68,7 @@ struct GameListView: View {
             .searchable(text: $searchBVM.search, placement: .navigationBarDrawer(displayMode: .always)) {
                 if searchVM.search == "" {
                     if recentSearchs.isEmpty {
-                        ContentUnavailableView("Search games", systemImage: "gamecontroller",
-                                               description: Text("Search for games by name."))
+                        CustomUnavailableView(title: "Search games", image: "gamecontroller", description: "Search for games by name.")
                     } else {
                         ForEach(recentSearchs) { game in
                             HStack {
@@ -95,9 +94,7 @@ struct GameListView: View {
                     }
                 } else {
                     if searchVM.games.isEmpty {
-                        ContentUnavailableView("No games", systemImage: "gamecontroller",
-                                               description: Text("There's no games with the name you introduced."))
-                        
+                        CustomUnavailableView(title: "No results for '\(searchBVM.search)'", image: "magnifyingglass", description: "Check the spelling or try a new search.")
                     } else {
                         ForEach(searchVM.games) { game in
                             Button {
@@ -114,6 +111,7 @@ struct GameListView: View {
             .onChange(of: searchVM.search) { oldValue, newValue in
                 searchVM.searchGame(name: newValue)
             }
+            .animation(.easeInOut, value: gamesVM.games)
             .scrollIndicators(.hidden)
         }
     }

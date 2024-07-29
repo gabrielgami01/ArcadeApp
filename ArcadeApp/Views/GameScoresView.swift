@@ -35,13 +35,9 @@ struct GameScoresView: View {
                         }
                     }
                 } else {
-                    ContentUnavailableView("No scores", systemImage: "gamecontroller",
-                                           description: Text("You haven't any score for this game yet."))
+                    CustomUnavailableView(title: "No scores", image: "gamecontroller", description: "You haven't any score for this game yet.")
                 }
             }
-        }
-        .task {
-            await detailsVM.loadGameDetails()
         }
         .sheet(isPresented: $detailsVM.showAddScore) {
             AddScoreView(addScoreVM: AddScoreVM(game: detailsVM.game))

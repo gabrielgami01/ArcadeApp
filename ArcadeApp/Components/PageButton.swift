@@ -37,7 +37,7 @@ struct PageButton: View {
                 .fill(Color.black.opacity(0.7))
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(color, lineWidth: 5)
+                        .stroke(color, lineWidth: 4)
                 )
         )
     }

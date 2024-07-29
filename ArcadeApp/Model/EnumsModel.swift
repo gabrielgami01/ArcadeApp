@@ -2,7 +2,6 @@ import Foundation
 
 enum Console: String, Codable, Identifiable, CaseIterable {
     case all = "All"
-    case arcade = "Arcade"
     case nes = "NES"
     case snes = "SNES"
     case segagenesis = "SegaGenesis"
