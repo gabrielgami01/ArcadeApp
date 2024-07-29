@@ -1,21 +1,26 @@
 import SwiftUI
 
 struct AsyncText: View {
-    @State var text = ""
+    @State private var text = ""
     let label: String
     let font: Font
+    var onCompletion: (() -> Void)?
+    
+    @Environment(\.namespace) private var namespace
     
     var body: some View {
         Text(text)
             .font(font)
             .task {
-                let textBox = AsyncTypeWriter(message: label)
                 do {
+                    let textBox = AsyncTypeWriter(message: label)
                     for try await txt in textBox {
                         text = txt
                     }
+                    try await Task.sleep(for: .seconds(0.5))
+                    onCompletion?()
                 } catch {
-                    
+                    print("Error en la tarea asíncrona: \(error)")
                 }
             }
     }

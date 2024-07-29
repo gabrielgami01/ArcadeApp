@@ -18,10 +18,6 @@ struct GameAboutView: View {
                                 .opacity(isFlipped ? 0 : 1)
                             GameDescriptionCard(game: detailsVM.game)
                                 .frame(width: size.width / 2.5, height: size.height)
-                                .background {
-                                    RoundedRectangle(cornerRadius: 20)
-                                        .fill(Color(white: 0.95))
-                                }
                                 .rotation3DEffect(.degrees(isFlipped ? 0 : -180), axis: (x: 0, y: 1, z: 0))
                                 .opacity(isFlipped ? 1 : 0)
                             

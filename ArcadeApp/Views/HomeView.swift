@@ -5,7 +5,7 @@ struct HomeView: View {
     @Environment(GamesVM.self) private var gamesVM
     
     @State private var showProfile = false
-    @State private var selectedGame: UUID?
+    //@State private var textAnimation = false
     
     @Namespace private var myNamespace
     @Namespace private var another
@@ -27,7 +27,9 @@ struct HomeView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
                 HStack {
-                    AsyncText(label: "Hello User", font: .customLargeTitle)
+                    Text("Hello user")
+                        .font(.customLargeTitle)
+                    //AsyncText(label: "Hello User", font: .customLargeTitle)
                     Spacer()
                     Button {
                         showProfile.toggle()
