@@ -22,6 +22,7 @@
 		FC0E31CF2C46F1C6004EB339 /* ModelViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E31CE2C46F1C6004EB339 /* ModelViews.swift */; };
 		FC14731E2C5110CC00B1BE27 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC14731D2C5110CC00B1BE27 /* SearchView.swift */; };
 		FC1473202C5183C100B1BE27 /* ScoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC14731F2C5183C100B1BE27 /* ScoreModel.swift */; };
+		FC1F02FB2C58FD4800CE551B /* GameInfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1F02FA2C58FD4800CE551B /* GameInfoCard.swift */; };
 		FC22BA602C2590EF002DFAA4 /* ArcadeAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA5F2C2590EF002DFAA4 /* ArcadeAppApp.swift */; };
 		FC22BA622C2590EF002DFAA4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA612C2590EF002DFAA4 /* ContentView.swift */; };
 		FC22BA642C2590F0002DFAA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC22BA632C2590F0002DFAA4 /* Assets.xcassets */; };
@@ -106,6 +107,7 @@
 		FC0E31CE2C46F1C6004EB339 /* ModelViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelViews.swift; sourceTree = "<group>"; };
 		FC14731D2C5110CC00B1BE27 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		FC14731F2C5183C100B1BE27 /* ScoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreModel.swift; sourceTree = "<group>"; };
+		FC1F02FA2C58FD4800CE551B /* GameInfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoCard.swift; sourceTree = "<group>"; };
 		FC22BA5C2C2590EF002DFAA4 /* ArcadeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArcadeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC22BA5F2C2590EF002DFAA4 /* ArcadeAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeAppApp.swift; sourceTree = "<group>"; };
 		FC22BA612C2590EF002DFAA4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				FC0E31C82C46F010004EB339 /* GameDetailsCard.swift */,
 				FC6F73ED2C56CAF900E34AF3 /* GameDescriptionCard.swift */,
 				FC8438F72C4D0F7A00434179 /* EnumTag.swift */,
+				FC1F02FA2C58FD4800CE551B /* GameInfoCard.swift */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -640,6 +643,7 @@
 				FC0E31AA2C467FB4004EB339 /* AddReviewView.swift in Sources */,
 				FC0E31BF2C46DE59004EB339 /* PageButton.swift in Sources */,
 				FC0E31CB2C46F09F004EB339 /* GameAboutView.swift in Sources */,
+				FC1F02FB2C58FD4800CE551B /* GameInfoCard.swift in Sources */,
 				FC7A37032C4525E7004F6910 /* RatingComponent.swift in Sources */,
 				FC0E31C52C46E063004EB339 /* GameCover.swift in Sources */,
 				FCCD73702C2D88990056036E /* Network.swift in Sources */,
