@@ -63,7 +63,7 @@ struct GameListView: View {
                     gamesVM.getGames(console: newValue)
                 }
             })
-            .searchable(text: $searchVM.search, placement: .navigationBarDrawer(displayMode: .always)) {
+            .searchable(text: $searchVM.search, placement: .navigationBarDrawer) {
                 if searchVM.search == "" {
                     if recentSearchs.isEmpty {
                         CustomUnavailableView(title: "Search games", image: "gamecontroller", description: "Search for games by name.")

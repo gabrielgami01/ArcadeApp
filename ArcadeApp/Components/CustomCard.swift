@@ -5,7 +5,7 @@ fileprivate struct CustomCard: ViewModifier {
         content
             .background {
                 RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.black.opacity(0.9))
+                    .fill(Color(white: 0.15))
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(.accent, lineWidth: 3)

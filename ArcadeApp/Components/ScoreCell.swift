@@ -23,6 +23,11 @@ struct ScoreCell: View {
                     .bold()
             }
         }
+        .padding()
+        .background {
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color(white: 0.15))
+        }
     }
 }
 

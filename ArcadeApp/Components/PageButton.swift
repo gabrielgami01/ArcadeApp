@@ -34,7 +34,7 @@ struct PageButton: View {
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 10)
-                .fill(Color.black.opacity(0.7))
+                .fill(Color(white: 0.15))
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(color, lineWidth: 4)

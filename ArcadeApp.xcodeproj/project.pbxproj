@@ -330,8 +330,8 @@
 				FC7A37022C4525E7004F6910 /* RatingComponent.swift */,
 				FC2FD0922C4427640054CD43 /* CustomButton.swift */,
 				FC2FD0902C4427530054CD43 /* CustomTextField.swift */,
-				FC6F73EB2C56CA3B00E34AF3 /* CustomCard.swift */,
 				FCB0D5EE2C5810D000039654 /* CustomUnavailableView.swift */,
+				FC6F73EB2C56CA3B00E34AF3 /* CustomCard.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
