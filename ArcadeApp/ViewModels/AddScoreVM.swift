@@ -23,6 +23,7 @@ final class AddScoreVM {
                 if let image, let data = image.jpegData(compressionQuality: 0.8) {
                     let score = CreateScoreDTO(image: data, gameID: game.id)
                     try await interactor.addScore(score: score)
+                    NotificationCenter.default.post(name: .details, object: nil)
                 }
             } catch {
                 self.errorMsg = error.localizedDescription

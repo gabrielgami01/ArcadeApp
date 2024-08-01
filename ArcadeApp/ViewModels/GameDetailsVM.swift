@@ -28,6 +28,15 @@ final class GameDetailsVM {
     init(interactor: DataInteractor = Network.shared, game: Game) {
         self.interactor = interactor
         self.game = game
+        NotificationCenter.default.addObserver(forName: .details, object: nil, queue: .main) { _ in
+            Task {
+                await self.loadGameDetails()
+            }
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .details, object: nil)
     }
     
     func loadGameDetails() async {
@@ -49,6 +58,7 @@ final class GameDetailsVM {
                     try await interactor.addFavoriteGame(id: game.id)
                 }
                 favorite.toggle()
+                NotificationCenter.default.post(name: .favorite, object: nil)
             } catch {
                 self.errorMsg = error.localizedDescription
                 self.showAlert.toggle()

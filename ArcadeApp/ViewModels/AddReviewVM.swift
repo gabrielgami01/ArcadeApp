@@ -23,6 +23,7 @@ final class AddReviewVM {
             do {
                 let review = CreateReviewDTO(title: title, comment: comment, rating: rating, gameID: game.id)
                 try await interactor.addReview(review: review)
+                NotificationCenter.default.post(name: .details, object: nil)
             } catch {
                 self.errorMsg = error.localizedDescription
                 self.showAlert.toggle()

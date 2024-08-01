@@ -33,6 +33,14 @@ final class GamesVM {
             self.getFeaturedFavoriteGames()
             self.getGames()
         }
+        NotificationCenter.default.addObserver(forName: .favorite, object: nil, queue: .main) { _ in
+            self.getFeaturedFavoriteGames()
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .login, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .favorite, object: nil)
     }
     
     func getGames(console: Console = .all) {
