@@ -15,7 +15,6 @@ struct GameInfoCard: View {
                         .font(.customHeadline)
                         .multilineTextAlignment(.center)
                         .foregroundColor(.accent)
-     
                         .matchedGeometryEffect(id: "\(game.id)-name", in: namespace)
                 }
                 HStack(spacing: 10) {
@@ -26,7 +25,6 @@ struct GameInfoCard: View {
                 }
                 Text(game.description)
                     .font(.customCaption)
-                    .foregroundColor(.white)
                     .padding(.horizontal)
             }
             .padding(.vertical)

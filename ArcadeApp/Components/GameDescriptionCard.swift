@@ -7,7 +7,6 @@ struct GameDescriptionCard: View {
         ScrollView {
             Text(game.description)
                 .font(.customCaption)
-                .foregroundColor(.white)
                 .padding()
         }
         .scrollBounceBehavior(.basedOnSize)
