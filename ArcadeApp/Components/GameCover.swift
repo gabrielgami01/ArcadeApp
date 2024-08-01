@@ -15,12 +15,12 @@ struct GameCover: View {
                 if let image = imageVM.image {
                     Image(uiImage: image)
                         .resizable()
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
                         .frame(width: width, height: height)
                         .matchedGeometryEffect(id: "\(game.id)-cover", in: namespace)
                         .shimmerEffect()
                 } else {
-                    RoundedRectangle(cornerRadius: 20)
+                    RoundedRectangle(cornerRadius: 10)
                                         .fill(Color(white: 0.6))
                                         .overlay {
                                             Image(systemName: "gamecontroller")
@@ -37,10 +37,10 @@ struct GameCover: View {
                 if let image = imageVM.image {
                     Image(uiImage: image)
                         .resizable()
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
                         .frame(width: width, height: height)
                 } else {
-                    RoundedRectangle(cornerRadius: 20)
+                    RoundedRectangle(cornerRadius: 10)
                         .fill(Color(white: 0.6))
                         .overlay {
                             Image(systemName: "gamecontroller")

@@ -2,26 +2,20 @@ import SwiftUI
 
 fileprivate struct Shimmer: ViewModifier {
     let animation: Animation = Animation.linear(duration: 2).repeatForever(autoreverses: false)
-    let gradient: Gradient = Gradient(colors: [Color.white.opacity(0.0), Color.white.opacity(0.9), Color.white.opacity(0.0)])
-    let min: CGFloat
-    let max: CGFloat
+    let gradient: Gradient = Gradient(colors: [Color.white.opacity(0.0), Color.white, Color.white.opacity(0.0)])
     @State private var shimmerOffset: CGFloat = -1
-    
-    init(bandSize: CGFloat = 0.3) {
-        self.min = 0 - bandSize
-        self.max = 1 + bandSize
-    }
     
     func body(content: Content) -> some View {
         content
             .overlay(
                 GeometryReader { geometry in
                     let width = geometry.size.width
-                    LinearGradient(gradient: gradient, startPoint: .topLeading, endPoint: .bottomTrailing)
+                    LinearGradient(gradient: gradient, startPoint: .top, endPoint: .bottom)
                         .mask(
                             Rectangle()
-                                .fill(LinearGradient(gradient: gradient, startPoint: UnitPoint(x: shimmerOffset, y: 0.5), endPoint: UnitPoint(x: shimmerOffset + 1, y: 0.5)))
-                                .frame(width: width)
+                                .fill(LinearGradient(gradient: gradient, startPoint: UnitPoint(x: shimmerOffset, y: shimmerOffset),
+                                                     endPoint: UnitPoint(x: shimmerOffset + 1, y: shimmerOffset + 1)))
+                                .frame(width: width * 2)
                                 .offset(x: width * shimmerOffset)
                         )
                 }
