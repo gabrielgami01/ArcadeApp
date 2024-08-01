@@ -35,9 +35,13 @@ struct AddReviewView: View {
                 }
                 
             }
-            .navigationTitle("Leave a Review")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Leave a Review")
+                        .font(.customTitle3)
+                }
+                
                 ToolbarItem(placement: .cancellationAction) {
                     Button {
                         dismiss()

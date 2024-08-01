@@ -11,7 +11,6 @@ struct GameListView: View {
     @Environment(\.namespace) private var namespace
     
     var body: some View {
-        @Bindable var searchBVM = searchVM
         @Bindable var gamesBVM = gamesVM
         
         NavigationStack {
@@ -59,13 +58,12 @@ struct GameListView: View {
                     .padding()
                 }
             }
-            .navigationTitle("Search")
             .onChange(of: gamesVM.activeConsole, { oldValue, newValue in
                 withAnimation(.default) {
                     gamesVM.getGames(console: newValue)
                 }
             })
-            .searchable(text: $searchBVM.search, placement: .navigationBarDrawer(displayMode: .always)) {
+            .searchable(text: $searchVM.search, placement: .navigationBarDrawer(displayMode: .always)) {
                 if searchVM.search == "" {
                     if recentSearchs.isEmpty {
                         CustomUnavailableView(title: "Search games", image: "gamecontroller", description: "Search for games by name.")
@@ -94,7 +92,7 @@ struct GameListView: View {
                     }
                 } else {
                     if searchVM.games.isEmpty {
-                        CustomUnavailableView(title: "No results for '\(searchBVM.search)'", image: "magnifyingglass", description: "Check the spelling or try a new search.")
+                        CustomUnavailableView(title: "No results for '\(searchVM.search)'", image: "magnifyingglass", description: "Check the spelling or try a new search.")
                     } else {
                         ForEach(searchVM.games) { game in
                             Button {
@@ -108,6 +106,7 @@ struct GameListView: View {
                     }
                 }
             }
+            .font(.customBody)
             .onChange(of: searchVM.search) { oldValue, newValue in
                 searchVM.searchGame(name: newValue)
             }

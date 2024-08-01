@@ -52,10 +52,10 @@
 		FC6F73EE2C56CAF900E34AF3 /* GameDescriptionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F73ED2C56CAF900E34AF3 /* GameDescriptionCard.swift */; };
 		FC6F73F12C56D19C00E34AF3 /* AsyncTypeWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F73F02C56D19C00E34AF3 /* AsyncTypeWriter.swift */; };
 		FC6F73F32C56D1F900E34AF3 /* AsyncText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F73F22C56D1F900E34AF3 /* AsyncText.swift */; };
+		FC76F22E2C5B80E10070D970 /* ACNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = FC76F22D2C5B80E10070D970 /* ACNetwork */; };
 		FC7A37032C4525E7004F6910 /* RatingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A37022C4525E7004F6910 /* RatingComponent.swift */; };
 		FC8438F82C4D0F7A00434179 /* EnumTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8438F72C4D0F7A00434179 /* EnumTag.swift */; };
 		FC8438FA2C4D219F00434179 /* AddScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8438F92C4D219F00434179 /* AddScoreView.swift */; };
-		FCA519122C36B9CE001CCF54 /* ACNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = FCA519112C36B9CE001CCF54 /* ACNetwork */; };
 		FCA519152C36C18D001CCF54 /* Namespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA519142C36C18D001CCF54 /* Namespace.swift */; };
 		FCA519172C36C191001CCF54 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA519162C36C191001CCF54 /* UIDevice.swift */; };
 		FCA5191B2C36FDE5001CCF54 /* GameDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA5191A2C36FDE5001CCF54 /* GameDetailsVM.swift */; };
@@ -167,7 +167,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCA519122C36B9CE001CCF54 /* ACNetwork in Frameworks */,
+				FC76F22E2C5B80E10070D970 /* ACNetwork in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,7 +471,7 @@
 			);
 			name = ArcadeApp;
 			packageProductDependencies = (
-				FCA519112C36B9CE001CCF54 /* ACNetwork */,
+				FC76F22D2C5B80E10070D970 /* ACNetwork */,
 			);
 			productName = ArcadeApp;
 			productReference = FC22BA5C2C2590EF002DFAA4 /* ArcadeApp.app */;
@@ -546,7 +546,7 @@
 			);
 			mainGroup = FC22BA532C2590EF002DFAA4;
 			packageReferences = (
-				FCA519102C36B9CE001CCF54 /* XCRemoteSwiftPackageReference "ACNetwork-Bootcamp2024" */,
+				FC76F22C2C5B80E10070D970 /* XCRemoteSwiftPackageReference "ACNetwork-Bootcamp2024" */,
 			);
 			productRefGroup = FC22BA5D2C2590EF002DFAA4 /* Products */;
 			projectDirPath = "";
@@ -984,7 +984,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FCA519102C36B9CE001CCF54 /* XCRemoteSwiftPackageReference "ACNetwork-Bootcamp2024" */ = {
+		FC76F22C2C5B80E10070D970 /* XCRemoteSwiftPackageReference "ACNetwork-Bootcamp2024" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/applecodingacademy/ACNetwork-Bootcamp2024";
 			requirement = {
@@ -995,9 +995,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FCA519112C36B9CE001CCF54 /* ACNetwork */ = {
+		FC76F22D2C5B80E10070D970 /* ACNetwork */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FCA519102C36B9CE001CCF54 /* XCRemoteSwiftPackageReference "ACNetwork-Bootcamp2024" */;
+			package = FC76F22C2C5B80E10070D970 /* XCRemoteSwiftPackageReference "ACNetwork-Bootcamp2024" */;
 			productName = ACNetwork;
 		};
 /* End XCSwiftPackageProductDependency section */

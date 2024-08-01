@@ -20,7 +20,11 @@ struct MainTabView: View {
                 .onAppear {
                     gamesVM.selectedGame = nil
                 }
-
+        }
+        .onAppear {
+            let appearance = UITabBarItem.appearance()
+            let attributes = [NSAttributedString.Key.font: UIFont(name: "VT323", size: 15)!]
+            appearance.setTitleTextAttributes(attributes, for: .normal)
         }
     }
 }

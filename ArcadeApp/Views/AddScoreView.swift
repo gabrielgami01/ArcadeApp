@@ -23,9 +23,13 @@ struct AddScoreView: View {
                 }
                 
             }
-            .navigationTitle("Add new score")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Add new score")
+                        .font(.customTitle3)
+                }
+                
                 ToolbarItem(placement: .cancellationAction) {
                     Button {
                         dismiss()
