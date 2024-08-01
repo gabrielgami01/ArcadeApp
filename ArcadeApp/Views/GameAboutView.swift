@@ -13,7 +13,7 @@ struct GameAboutView: View {
 
                     HStack(spacing: 10) {
                         ZStack {
-                            GameCover(game: detailsVM.game, width: size.width / 2.5, height: size.height)
+                            GameCover(game: detailsVM.game, width: size.width / 2.5, height: size.height, shimmer: true)
                                 .rotation3DEffect(.degrees(isFlipped ? 180 : 0), axis: (x: 0, y: 1, z: 0))
                                 .opacity(isFlipped ? 0 : 1)
                             GameDescriptionCard(game: detailsVM.game)
