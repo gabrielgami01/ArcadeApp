@@ -12,13 +12,13 @@ struct GameDetailsCard: View {
                     Text(detailsVM.game.name)
                         .font(.customTitle2)
                         .multilineTextAlignment(.center)
-                        .foregroundColor(.cyan)
+                        .foregroundColor(.accent)
                         .matchedGeometryEffect(id: "\(detailsVM.game.id)-name", in: namespace)
                 } else {
                     Text(detailsVM.game.name)
                         .font(.customTitle2)
                         .multilineTextAlignment(.center)
-                        .foregroundColor(.cyan)
+                        .foregroundColor(.accent)
                 }
             }
             HStack(spacing: 10) {
@@ -29,7 +29,6 @@ struct GameDetailsCard: View {
             }
             Text("Release date: \(detailsVM.game.releaseDate.formatted(date: .abbreviated, time: .omitted))")
                 .font(.customCaption)
-                .foregroundColor(.white)
 
             HStack(alignment: .lastTextBaseline, spacing: 5) {
                 RatingComponent(rating: .constant(Int(detailsVM.globalRating)), mode: .display)
@@ -44,11 +43,10 @@ struct GameDetailsCard: View {
                     Image(systemName: "heart")
                         .font(.title2)
                         .symbolVariant(detailsVM.favorite ? .fill : .none)
-                        .tint(detailsVM.favorite ? .red : .cyan)
+                        .tint(detailsVM.favorite ? .red : .accent)
                 }
                 Text("Like")
                     .font(.customCaption)
-                    .foregroundColor(.white)
             }
         }
         .padding()

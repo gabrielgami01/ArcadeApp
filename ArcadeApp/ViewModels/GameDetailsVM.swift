@@ -14,6 +14,9 @@ final class GameDetailsVM {
         return Double(totalRating) / Double(reviews.count)
     }
     var scores: [Score] = []
+    var verifiedScores: [Score] {
+        scores.filter { $0.state == .verified }
+    }
     
     
     var showAddReview = false

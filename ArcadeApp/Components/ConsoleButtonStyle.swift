@@ -15,7 +15,7 @@ struct ConsoleButtonStyle: ButtonStyle {
                 ZStack {
                     if isActive {
                         Capsule()
-                            .fill(Color.cyan)
+                            .fill(.accent)
                             .matchedGeometryEffect(id: "ACTIVECONSOLE", in: namespace)
                             .shadow(color: .black, radius: 2, x: 2, y: 2)
                     } else {
@@ -23,7 +23,7 @@ struct ConsoleButtonStyle: ButtonStyle {
                             .fill(Color.black.opacity(0.7))
                             .overlay(
                                 Capsule()
-                                    .stroke(Color.cyan, lineWidth: 2)
+                                    .stroke(.accent, lineWidth: 2)
                             )
                             .shadow(color: .black, radius: 2, x: 2, y: 2)
                     }

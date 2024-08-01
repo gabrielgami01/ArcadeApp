@@ -3,11 +3,42 @@ import Charts
 
 struct GameScoresView: View {
     @State var detailsVM: GameDetailsVM
+    @State private var showSelectionBar = false
+    @State private var offsetX = 0.0
+    @State private var offsetY = 0.0
+    @State private var selectedDay: Date = .distantPast
+    @State private var selectedScore: Int? = 0
     
     var body: some View {
         ScrollView {
             VStack(spacing: 10) {
-                
+                Group {
+                    if detailsVM.verifiedScores.count > 1 {
+                        Chart {
+                            ForEach(detailsVM.verifiedScores) { score in
+                                if let value = score.score {
+                                    LineMark(
+                                        x: .value("Date", score.date),
+                                        y: .value("Score", value)
+                                    )
+                                    .lineStyle(StrokeStyle(lineWidth: 2, lineJoin: .round))
+                                    PointMark(
+                                        x: .value("Date", score.date),
+                                        y: .value("Score", value)
+                                    )
+                                }
+                            }
+                        }
+                        .chartXAxis {}
+                        .chartYAxis {
+                            AxisMarks(preset: .aligned, values: .automatic(desiredCount: 5))
+                        }
+                    } else {
+                        CustomUnavailableView(title: "Chart unavailable", image: "chart.xyaxis.line", description: "You need 2 or more scores to see the chart")
+                    }
+                }
+                .padding()
+                .frame(height: 220)
                 
                 HStack {
                     Text("Your scores")
