@@ -3,20 +3,4 @@
    uuid = "E5D254F5-5817-4935-B4C2-BAE9F97DC12A"
    type = "1"
    version = "2.0">
-   <Breakpoints>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D887DCF5-4BC4-468B-A7C9-6C01FBD5938A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../../../../../var/folders/dg/_16zyn2107q6tc3z7294nbl40000gn/T/swift-generated-sources/@__swiftmacro_9ArcadeApp12GameListViewV2pr5QueryfMp_.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1"
-            endingLineNumber = "1">
-         </BreakpointContent>
-      </BreakpointProxy>
-   </Breakpoints>
 </Bucket>

@@ -12,16 +12,8 @@ struct GameDetailsView: View {
                     gamesVM.selectedGame = nil
                 }
                 
-                Picker(selection: $option) {
-                    ForEach(PickerOptions.allCases) { option in
-                        Text(option.rawValue)
-                            
-                    }
-                } label: {
-                    Text("Options")
-                }
-                .pickerStyle(.segmented)
-                .padding(.horizontal)
+                CustomPicker(selectedOption: $option)
+                
             }
             .padding(.bottom, 5)
             
@@ -58,4 +50,7 @@ struct GameDetailsView: View {
 #Preview {
     GameDetailsView(detailsVM: GameDetailsVM(interactor: TestInteractor(), game: .test))
         .environment(GamesVM(interactor: TestInteractor()))
+        .namespace(Namespace().wrappedValue)
 }
+
+

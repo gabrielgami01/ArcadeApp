@@ -21,6 +21,9 @@ struct CustomButton: View {
 
 
 struct ChunkyButon: ButtonStyle {
+    @Environment(\.isEnabled) private var isEnabled: Bool
+    
+    
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .font(.customTitle3)
@@ -32,7 +35,7 @@ struct ChunkyButon: ButtonStyle {
                         .stroke(.white, lineWidth: 3)
                         .offset(y: configuration.isPressed ? 0 : 10)
                     Capsule()
-                        .fill(.accent)
+                        .fill(isEnabled ? Color.accent : Color.gray)
                         .stroke(.white, lineWidth: 3)
                 }
             }

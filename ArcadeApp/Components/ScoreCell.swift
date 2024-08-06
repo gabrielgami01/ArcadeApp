@@ -26,7 +26,7 @@ struct ScoreCell: View {
         .padding()
         .background {
             RoundedRectangle(cornerRadius: 10)
-                .fill(Color(white: 0.15))
+                .fill(Color.cardColor)
         }
     }
 }

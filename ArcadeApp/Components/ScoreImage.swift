@@ -1,10 +1,3 @@
-//
-//  ScoreImage.swift
-//  ArcadeApp
-//
-//  Created by Gabriel Garcia Millan on 25/7/24.
-//
-
 import SwiftUI
 
 struct ScoreImage: View {
@@ -17,11 +10,24 @@ struct ScoreImage: View {
                 .scaledToFit()
                 .clipShape(RoundedRectangle(cornerRadius: 10))
         } else {
-            Image(systemName: "photo")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 250, height: 250)
-                .foregroundStyle(.secondary)
+            VStack {
+                Image(systemName: "photo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200, height: 200)
+                    .foregroundColor(.gray)
+                    .padding()
+                    .background {
+                        RoundedRectangle(cornerRadius: 12)
+                            .strokeBorder(style: StrokeStyle(lineWidth: 2, dash: [5]))
+                            .foregroundColor(.gray)
+                    }
+                Text("Tap to upload an image")
+                    .foregroundColor(.gray)
+                    .font(.customHeadline)
+                    .padding(.top, 10)
+            }
+            .frame(width: 300, height: 300)
         }
     }
 }
