@@ -32,14 +32,19 @@ struct PageButton: View {
                 .shadow(color: .black, radius: 1, x: 1, y: 1)
         }
         .padding()
-        .background(
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color(white: 0.15))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(color, lineWidth: 4)
-                )
-        )
+        .background {
+            ZStack {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color(white: 0.15))
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(color, lineWidth: 4)
+                    }
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(color, lineWidth: 4)
+                    .blur(radius: 5)
+            }
+        }
     }
 }
 
