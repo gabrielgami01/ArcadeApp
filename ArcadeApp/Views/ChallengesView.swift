@@ -12,15 +12,9 @@ struct ChallengesView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 HStack(alignment: .firstTextBaseline, spacing: 20) {
-                    Button {
-                       dismiss()
-                    } label: {
-                        Image(systemName: "chevron.left")
-                            .font(.title)
-                            .foregroundStyle(.secondary)
+                    BackButton {
+                        dismiss()
                     }
-                    .buttonStyle(.plain)
-                    
                     Text("Challenges")
                         .font(.customLargeTitle)
                 }
@@ -69,10 +63,9 @@ struct ChallengesView: View {
 }
 
 #Preview {
-    ChallengesView(challengesVM: ChallengesVM(interactor: TestInteractor()))
-        .namespace(Namespace().wrappedValue)
+    NavigationStack {
+        ChallengesView(challengesVM: ChallengesVM(interactor: TestInteractor()))
+            .namespace(Namespace().wrappedValue)
+    }
 }
-
-
-
 

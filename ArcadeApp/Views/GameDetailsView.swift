@@ -8,19 +8,14 @@ struct GameDetailsView: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Button {
+                BackButton {
                     gamesVM.selectedGame = nil
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .font(.title)
-                        .foregroundStyle(.secondary)
                 }
-                .buttonStyle(.plain)
                 
                 Picker(selection: $option) {
                     ForEach(PickerOptions.allCases) { option in
                         Text(option.rawValue)
-                            .font(.customBody)
+                            
                     }
                 } label: {
                     Text("Options")

@@ -19,7 +19,6 @@ struct AddReviewView: View {
                     
                     TextEditor(text: $addReviewVM.comment)
                         .scrollContentBackground(.hidden)
-                        //.foregroundStyle(.black)
                         .background(Color(white: 0.05))
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .frame(height: 300)

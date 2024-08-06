@@ -47,6 +47,7 @@
 		FC2FD0932C4427640054CD43 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2FD0922C4427640054CD43 /* CustomButton.swift */; };
 		FC2FD0952C4438F80054CD43 /* GameDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2FD0942C4438F80054CD43 /* GameDetailsView.swift */; };
 		FC35A2392C3EE1500075E7B4 /* AddScoreVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC35A2382C3EE1500075E7B4 /* AddScoreVM.swift */; };
+		FC4FCA0A2C62345F004C12C4 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4FCA092C62345F004C12C4 /* BackButton.swift */; };
 		FC54459E2C3801F5001B26EF /* AddReviewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54459D2C3801F5001B26EF /* AddReviewVM.swift */; };
 		FC6F73E42C563E8E00E34AF3 /* ShimmerEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F73E32C563E8E00E34AF3 /* ShimmerEffect.swift */; };
 		FC6F73E82C564C2900E34AF3 /* FontStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F73E72C564C2900E34AF3 /* FontStyles.swift */; };
@@ -143,6 +144,7 @@
 		FC2FD0922C4427640054CD43 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		FC2FD0942C4438F80054CD43 /* GameDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailsView.swift; sourceTree = "<group>"; };
 		FC35A2382C3EE1500075E7B4 /* AddScoreVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScoreVM.swift; sourceTree = "<group>"; };
+		FC4FCA092C62345F004C12C4 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		FC54459D2C3801F5001B26EF /* AddReviewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewVM.swift; sourceTree = "<group>"; };
 		FC6F73E32C563E8E00E34AF3 /* ShimmerEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerEffect.swift; sourceTree = "<group>"; };
 		FC6F73E72C564C2900E34AF3 /* FontStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyles.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 				FC2FD0902C4427530054CD43 /* CustomTextField.swift */,
 				FCB0D5EE2C5810D000039654 /* CustomUnavailableView.swift */,
 				FC6F73EB2C56CA3B00E34AF3 /* CustomCard.swift */,
+				FC4FCA092C62345F004C12C4 /* BackButton.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -654,6 +657,7 @@
 				FC2E95102C61619400393C39 /* ChallengeFrontCard.swift in Sources */,
 				FC2FD0892C43E3DD0054CD43 /* LoginView.swift in Sources */,
 				FC2FD08D2C43E4010054CD43 /* SignupView.swift in Sources */,
+				FC4FCA0A2C62345F004C12C4 /* BackButton.swift in Sources */,
 				FCC53B302C5F915900015AC9 /* ChallengesVM.swift in Sources */,
 				FC1473202C5183C100B1BE27 /* ScoreModel.swift in Sources */,
 				FCCD73762C2D8E520056036E /* GameModel.swift in Sources */,
