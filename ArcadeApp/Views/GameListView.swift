@@ -15,7 +15,7 @@ struct GameListView: View {
         
         NavigationStack {
             ScrollView {
-                VStack(spacing: 15) {
+                VStack(alignment: .leading, spacing: 15) {
                     // ConsoleTags
                     ScrollView(.horizontal) {
                         LazyHStack(spacing: 10) {
@@ -46,7 +46,7 @@ struct GameListView: View {
                             Button {
                                 gamesVM.selectedGame = game
                             } label: {
-                                GameCard(game: game, selectedGame: $gamesBVM.selectedGame)
+                                GameCell(game: game, selectedGame: $gamesBVM.selectedGame)
                                     .padding(.leading)
                             }
                             .buttonStyle(.plain)
@@ -58,11 +58,6 @@ struct GameListView: View {
                     .padding()
                 }
             }
-            .onChange(of: gamesVM.activeConsole, { oldValue, newValue in
-                withAnimation(.default) {
-                    gamesVM.getGames(console: newValue)
-                }
-            })
             .searchable(text: $searchVM.search, placement: .navigationBarDrawer) {
                 if searchVM.search == "" {
                     if recentSearchs.isEmpty {
@@ -109,6 +104,9 @@ struct GameListView: View {
             .font(.customBody)
             .onChange(of: searchVM.search) { oldValue, newValue in
                 searchVM.searchGame(name: newValue)
+            }
+            .onChange(of: gamesVM.activeConsole) { oldValue, newValue in
+                gamesVM.getGames(console: newValue)
             }
             .animation(.easeInOut, value: gamesVM.games)
             .scrollIndicators(.hidden)

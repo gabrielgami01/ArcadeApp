@@ -55,7 +55,7 @@ struct GameCover: View {
             }
         }
         .task {
-           await imageVM.getImage(url: game.imageURL2, size: 300)
+           await imageVM.getImage(url: game.imageURL, size: 300)
         }
     }
 }

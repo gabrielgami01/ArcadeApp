@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct GameDescriptionCard: View {
+struct GameCoverBack: View {
     let game: Game
     
     var body: some View {
@@ -10,11 +10,10 @@ struct GameDescriptionCard: View {
                 .padding()
         }
         .scrollBounceBehavior(.basedOnSize)
-        .customCard()
-        
+        .customCard(borderColor: .accent, cornerRadius: 10)
     }
 }
 #Preview {
-    GameDescriptionCard(game: .test)
+    GameCoverBack(game: .test)
         .frame(width: 150, height: 220)
 }

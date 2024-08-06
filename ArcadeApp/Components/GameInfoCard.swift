@@ -8,31 +8,29 @@ struct GameInfoCard: View {
     @Environment(\.namespace) private var namespace
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .center, spacing: 10) {
-                if let namespace = namespace {
-                    Text(game.name)
-                        .font(.customHeadline)
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(.accent)
-                        .matchedGeometryEffect(id: "\(game.id)-name", in: namespace)
-                }
-                HStack(spacing: 10) {
-                    Text(game.console.rawValue)
-                        .enumTag()
-                    Text(game.genre.rawValue)
-                        .enumTag()
-                }
-                Text(game.description)
-                    .font(.customCaption)
-                    .padding(.horizontal)
+        VStack(alignment: .center, spacing: 10) {
+            if let namespace = namespace {
+                Text(game.name)
+                    .font(.customHeadline)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.accent)
+                    .matchedGeometryEffect(id: "\(game.id)-name", in: namespace)
             }
-            .padding(.vertical)
-            .padding(.horizontal, 5)
+            HStack(spacing: 10) {
+                Text(game.console.rawValue)
+                    .enumTag()
+                Text(game.genre.rawValue)
+                    .enumTag()
+            }
+            Text(game.description)
+                .font(.customCaption)
+                .padding(.horizontal)
         }
-        .frame(width: width, height: height)
+        .padding(.vertical)
+        .padding(.horizontal, 5)
+        .frame(width: width, height: height, alignment: .top)
         .scrollBounceBehavior(.basedOnSize)
-        .customCard()
+        .customCard(borderColor: .accent, cornerRadius: 10)
     }
 }
 

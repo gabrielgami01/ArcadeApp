@@ -10,13 +10,13 @@ struct GameDetailsCard: View {
             Group {
                 if let namespace = namespace {
                     Text(detailsVM.game.name)
-                        .font(.customTitle2)
+                        .font(.customHeadline)
                         .multilineTextAlignment(.center)
                         .foregroundColor(.accent)
                         .matchedGeometryEffect(id: "\(detailsVM.game.id)-name", in: namespace)
                 } else {
                     Text(detailsVM.game.name)
-                        .font(.customTitle2)
+                        .font(.customHeadline)
                         .multilineTextAlignment(.center)
                         .foregroundColor(.accent)
                 }
@@ -50,7 +50,7 @@ struct GameDetailsCard: View {
             }
         }
         .padding()
-        .customCard()
+        .customCard(borderColor: .accent, cornerRadius: 10)
     }
 }
 

@@ -1,10 +1,3 @@
-//
-//  UIDevice.swift
-//  PeliculasDB
-//
-//  Created by Gabriel Garcia Millan on 4/5/24.
-//
-
 import UIKit
 
 extension UIDevice {

@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct TestInteractor: DataInteractor {
-    
     func createUser(user: CreateUserDTO) async throws {
         
     }
@@ -59,6 +58,15 @@ struct TestInteractor: DataInteractor {
     func addScore(score: CreateScoreDTO) async throws {
         
     }
+    
+    func getAllChallenges(page: Int) async throws -> [Challenge] {
+        return [.test, .test2, .test3, .test4, .test5].sorted { $0.game < $1.game}
+    }
+    
+    func getChallengesByType(type: String, page: Int) async throws -> [Challenge] {
+        let challenges: [Challenge] = [.test, .test2, .test3, .test4, .test5]
+        return challenges.filter{ $0.type.rawValue == type }
+    }
 }
 
 extension Game {
@@ -68,7 +76,6 @@ extension Game {
                            console: .gameboy,
                            genre: .rpg,
                            releaseDate: Calendar.current.date(from: DateComponents(year: 1996, month: 2, day: 27))!,
-                           imageURL: URL(string: "google.com"),
                            featured: true)
     static let test2 = Game(id: UUID(),
                            name: "Super Mario Bros.",
@@ -76,7 +83,6 @@ extension Game {
                            console: .nes,
                            genre: .platformer,
                            releaseDate: Calendar.current.date(from: DateComponents(year: 1985, month: 9, day: 13))!,
-                           imageURL: URL(string: "google.com"),
                            featured: false)
 }
 
@@ -125,4 +131,40 @@ extension Score {
                             score: 5323,
                             state: .verified,
                              date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 22, hour: 14, minute: 02)) ?? .now)
+}
+
+extension Challenge {
+    static let test = Challenge(id: UUID(),
+                                name: "Mushroom Champion",
+                                description: "Score 100,000 points by collecting coins and defeating enemies.",
+                                targetScore: 100000,
+                                type: .gold,
+                                game: "Super Mario Bros")
+    
+    static let test2 = Challenge(id: UUID(),
+                                 name: "Hero of Hyrule",
+                                 description: "Reach a score of 50,000 points by defeating bosses and collecting items.",
+                                 targetScore: 50000,
+                                 type: .bronze,
+                                 game: "The Legend of Zelda")
+    static let test3 = Challenge(id: UUID(),
+                                 name: "Speed Demon",
+                                 description: "Achieve a score of 75,000 points by collecting rings and defeating Dr. Robotnik.",
+                                 targetScore: 75000,     
+                                 type: .gold,
+                                 game: "Sonic the Hedgehog")
+    
+    static let test4 = Challenge(id: UUID(),
+                                 name: "Martial Arts Master",
+                                 description: "Score 80,000 points by winning matches in Street Fighter II.",
+                                 targetScore: 80000,
+                                 type: .bronze,
+                                 game: "Street Fighter II")
+    static let test5 = Challenge(id: UUID(),
+                                 name: "Mako Reactor Hero",
+                                 description: "Reach a score of 60,000 points by completing quests and defeating enemies.",
+                                 targetScore: 60000,
+                                 type: .silver,
+                                 game: "Final Fantasy VII")
+    
 }

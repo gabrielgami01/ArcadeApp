@@ -7,7 +7,7 @@ struct GameDetailsView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            HStack(alignment: .center) {
+            HStack {
                 Button {
                     gamesVM.selectedGame = nil
                 } label: {

@@ -1,21 +1,24 @@
 import SwiftUI
 
 fileprivate struct CustomCard: ViewModifier {
+    let color: Color
+    let cornerRadius: CGFloat
+    
     func body(content: Content) -> some View {
         content
             .background {
-                RoundedRectangle(cornerRadius: 10)
+                RoundedRectangle(cornerRadius: cornerRadius)
                     .fill(Color(white: 0.15))
                     .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(.accent, lineWidth: 3)
+                        RoundedRectangle(cornerRadius: cornerRadius)
+                            .stroke(color, lineWidth: 3)
                     )
             }
     }
 }
 
 extension View {
-    func customCard() -> some View {
-        modifier(CustomCard())
+    func customCard(borderColor: Color, cornerRadius: CGFloat) -> some View {
+        modifier(CustomCard(color: borderColor, cornerRadius: cornerRadius))
     }
 }

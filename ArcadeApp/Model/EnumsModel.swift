@@ -34,3 +34,13 @@ enum ScoreState: String, Codable {
     case verified
     case unverified
 }
+
+enum ChallengeType: String, Codable, Identifiable, CaseIterable {
+    case all
+    case gold
+    case silver
+    case bronze
+    
+    var id: Self { self }
+    
+}

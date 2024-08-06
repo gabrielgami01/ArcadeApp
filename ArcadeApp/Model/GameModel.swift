@@ -19,57 +19,31 @@ struct GameDTO: Codable {
             console: console,
             genre: genre,
             releaseDate: releaseDate,
-            imageURL: URL(string: imageURL ?? ""),
             featured: featured)
     }
 }
 
 struct GamePageDTO: Codable {
-    let items: [GameItem]
+    let items: [Game]
     let metadata: Metadata
 }
 
-struct GameItem: Codable {
+struct Game: Codable, Identifiable, Hashable {
     let id: UUID
     let name: String
     let description: String
     let console: Console
     let genre: Genre
     let releaseDate: Date
-    let imageURL: String?
     let featured: Bool
     
-    var toGame: Game {
-        Game(
-            id: id,
-            name: name,
-            description: description,
-            console: console,
-            genre: genre,
-            releaseDate: releaseDate,
-            imageURL: URL(string: imageURL ?? ""),
-            featured: featured)
+    var imageURL: URL {
+        desa.appending(path: "covers").appending(path: "\(id).jpg")
     }
 }
 
 struct Metadata: Codable {
     let page, per, total: Int
-}
-
-
-struct Game: Identifiable, Hashable {
-    let id: UUID
-    let name: String
-    let description: String
-    let console: Console
-    let genre: Genre
-    let releaseDate: Date
-    let imageURL: URL?
-    let featured: Bool
-    
-    var imageURL2: URL {
-        desa.appending(path: "covers").appending(path: "\(id).jpg")
-    }
 }
 
 struct FavoriteGameDTO: Codable {

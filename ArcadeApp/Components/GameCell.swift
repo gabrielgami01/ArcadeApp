@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct GameCard: View {
+struct GameCell: View {
     let game: Game
     @Binding var selectedGame: Game?
     
@@ -26,7 +26,7 @@ struct GameCard: View {
 }
 
 #Preview {
-    GameCard(game: .test, selectedGame: .constant(.test2))
+    GameCell(game: .test, selectedGame: .constant(.test2))
         .namespace(Namespace().wrappedValue)
 }
 

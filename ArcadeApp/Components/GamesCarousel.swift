@@ -21,7 +21,6 @@ struct GamesCarousel: View {
                             ForEach(games) { game in
                                 VStack {
                                     Button {
-                                        gamesVM.homeType = type
                                         gamesVM.selectedGame = game
                                     } label: {
                                         GameCover(game: game, width: 140, height: 220)

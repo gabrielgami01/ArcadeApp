@@ -16,6 +16,9 @@ protocol DataInteractor {
     func removeFavoriteGame(id: UUID) async throws
     func addReview(review: CreateReviewDTO) async throws
     func addScore(score: CreateScoreDTO) async throws
+    
+    func getAllChallenges(page: Int) async throws -> [Challenge]
+    func getChallengesByType(type: String, page: Int) async throws -> [Challenge]
 }
 
 struct Network: DataInteractor, NetworkJSONInteractor {
@@ -45,15 +48,15 @@ struct Network: DataInteractor, NetworkJSONInteractor {
     
     //SEARCH
     func getAllGames(page: Int) async throws -> [Game] {
-        try await getJSON(request: .get(url: .getAllGames(page: page), token: getToken()), type: GamePageDTO.self).items.map(\.toGame)
+        try await getJSON(request: .get(url: .getAllGames(page: page), token: getToken()), type: GamePageDTO.self).items
     }
     
     func getGamesByConsole(name: String, page: Int) async throws -> [Game] {
-        try await getJSON(request: .get(url: .getGamesByConsole(name: name, page: page), token: getToken()), type: GamePageDTO.self).items.map(\.toGame)
+        try await getJSON(request: .get(url: .getGamesByConsole(name: name, page: page), token: getToken()), type: GamePageDTO.self).items
     }
     
     func searchGame(name: String, page: Int) async throws -> [Game] {
-        try await getJSON(request: .get(url: .searchGame(name: name, page: page), token: getToken()), type: GamePageDTO.self).items.map(\.toGame)
+        try await getJSON(request: .get(url: .searchGame(name: name, page: page), token: getToken()), type: GamePageDTO.self).items
     }
 
     //END SEARCH
@@ -96,4 +99,14 @@ struct Network: DataInteractor, NetworkJSONInteractor {
     }
     
     //DETAILS
+    
+    //CHALLENGES
+    func getAllChallenges(page: Int) async throws -> [Challenge] {
+        try await getJSON(request: .get(url: .getAllChallenges(page: page), token: getToken()), type: ChallengePageDTO.self).items
+    }
+    
+    func getChallengesByType(type: String, page: Int) async throws -> [Challenge] {
+        try await getJSON(request: .get(url: .getChallegesByType(type: type, page: page), token: getToken()), type: ChallengePageDTO.self).items
+    }
+    //CHALLENGES
 }

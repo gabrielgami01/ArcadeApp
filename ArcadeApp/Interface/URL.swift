@@ -11,14 +11,14 @@ extension URL {
     
     private static let games = api.appending(path: "games")
     static func getAllGames(page: Int) -> URL {
-        games.appending(queryItems: [.page(num: page), .per()])
+        games.appending(queryItems: [.page(page), .per()])
     }
     static let getFeaturedGames = games.appending(path: "featured")
     static func searchGame(name: String, page: Int) -> URL {
-        games.appending(path: "search").appending(queryItems: [.game(name: name), .page(num: page), .per()])
+        games.appending(path: "search").appending(queryItems: [.game(name), .page(page), .per()])
     }
     static func getGamesByConsole(name: String, page: Int) -> URL {
-        games.appending(path: "byConsole").appending(queryItems: [.console(name: name), .page(num: page), .per()])
+        games.appending(path: "byConsole").appending(queryItems: [.console(name), .page(page), .per()])
     }
     
     static let favoriteGames = games.appending(path: "favorites")
@@ -36,20 +36,30 @@ extension URL {
         scores.appending(path: id.uuidString)
     }
    
+    static let challenges = api.appending(path: "challenges")
+    static func getAllChallenges(page: Int) -> URL {
+        challenges.appending(queryItems: [.page(page), .per()])
+    }
+    static func getChallegesByType(type: String, page: Int) -> URL {
+        challenges.appending(path: "byType").appending(queryItems: [.type(type), .page(page), .per()])
+    }
 }
 
 extension URLQueryItem {
-    static func page(num: Int) -> URLQueryItem {
+    static func page(_ num: Int) -> URLQueryItem {
         URLQueryItem(name: "page", value: "\(num)")
     }
-    static func per(num: Int = 20) -> URLQueryItem {
+    static func per(_ num: Int = 20) -> URLQueryItem {
         URLQueryItem(name: "per", value: "\(num)")
     }
-    static func game(name: String) -> URLQueryItem {
+    static func game(_ name: String) -> URLQueryItem {
         URLQueryItem(name: "game", value: name)
     }
-    static func console(name: String) -> URLQueryItem {
+    static func console(_ name: String) -> URLQueryItem {
         URLQueryItem(name: "console", value: name)
+    }
+    static func type(_ name: String) -> URLQueryItem {
+        URLQueryItem(name: "type", value: name)
     }
     
 }

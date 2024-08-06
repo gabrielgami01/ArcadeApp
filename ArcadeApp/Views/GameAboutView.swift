@@ -2,8 +2,6 @@ import SwiftUI
 
 struct GameAboutView: View {
     @State var detailsVM: GameDetailsVM
-    @State private var isFlipped = false
-
     
     var body: some View {
         ScrollView {
@@ -12,21 +10,7 @@ struct GameAboutView: View {
                     let size = geometry.size
 
                     HStack(spacing: 10) {
-                        ZStack {
-                            GameCover(game: detailsVM.game, width: size.width / 2.5, height: size.height, shimmer: true)
-                                .rotation3DEffect(.degrees(isFlipped ? 180 : 0), axis: (x: 0, y: 1, z: 0))
-                                .opacity(isFlipped ? 0 : 1)
-                            GameDescriptionCard(game: detailsVM.game)
-                                .frame(width: size.width / 2.5, height: size.height)
-                                .rotation3DEffect(.degrees(isFlipped ? 0 : -180), axis: (x: 0, y: 1, z: 0))
-                                .opacity(isFlipped ? 1 : 0)
-                            
-                        }
-                        .onTapGesture {
-                            withAnimation(.easeInOut(duration: 0.5)) {
-                                isFlipped.toggle()
-                            }
-                         }
+                        GameCoverCard(game: detailsVM.game, width: size.width, height: size.height)
                         GameDetailsCard(detailsVM: detailsVM)
                             .frame(height: size.height)
                     }
