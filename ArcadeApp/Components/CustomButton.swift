@@ -28,7 +28,7 @@ struct ChunkyButon: ButtonStyle {
             .background() {
                 ZStack {
                     Capsule()
-                        .fill(Color(white: 0.05))
+                        .fill(Color.cardColor)
                         .stroke(.white, lineWidth: 3)
                         .offset(y: configuration.isPressed ? 0 : 10)
                     Capsule()

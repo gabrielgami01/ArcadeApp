@@ -48,6 +48,7 @@
 		FC2FD0952C4438F80054CD43 /* GameDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2FD0942C4438F80054CD43 /* GameDetailsView.swift */; };
 		FC35A2392C3EE1500075E7B4 /* AddScoreVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC35A2382C3EE1500075E7B4 /* AddScoreVM.swift */; };
 		FC4FCA0A2C62345F004C12C4 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4FCA092C62345F004C12C4 /* BackButton.swift */; };
+		FC4FCA0C2C627CED004C12C4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4FCA0B2C627CED004C12C4 /* Color.swift */; };
 		FC54459E2C3801F5001B26EF /* AddReviewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54459D2C3801F5001B26EF /* AddReviewVM.swift */; };
 		FC6F73E42C563E8E00E34AF3 /* ShimmerEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F73E32C563E8E00E34AF3 /* ShimmerEffect.swift */; };
 		FC6F73E82C564C2900E34AF3 /* FontStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F73E72C564C2900E34AF3 /* FontStyles.swift */; };
@@ -145,6 +146,7 @@
 		FC2FD0942C4438F80054CD43 /* GameDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailsView.swift; sourceTree = "<group>"; };
 		FC35A2382C3EE1500075E7B4 /* AddScoreVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScoreVM.swift; sourceTree = "<group>"; };
 		FC4FCA092C62345F004C12C4 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		FC4FCA0B2C627CED004C12C4 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		FC54459D2C3801F5001B26EF /* AddReviewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewVM.swift; sourceTree = "<group>"; };
 		FC6F73E32C563E8E00E34AF3 /* ShimmerEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerEffect.swift; sourceTree = "<group>"; };
 		FC6F73E72C564C2900E34AF3 /* FontStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyles.swift; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 				FC6F73E72C564C2900E34AF3 /* FontStyles.swift */,
 				FC76F2332C5BF5A60070D970 /* Notifications.swift */,
 				FC6F73F02C56D19C00E34AF3 /* AsyncTypeWriter.swift */,
+				FC4FCA0B2C627CED004C12C4 /* Color.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -668,6 +671,7 @@
 				FC35A2392C3EE1500075E7B4 /* AddScoreVM.swift in Sources */,
 				FCC724572C523C5D008C3BC1 /* CameraPicker.swift in Sources */,
 				FC2E95162C61648D00393C39 /* GameCoverCard.swift in Sources */,
+				FC4FCA0C2C627CED004C12C4 /* Color.swift in Sources */,
 				FC54459E2C3801F5001B26EF /* AddReviewVM.swift in Sources */,
 				FC6F73E82C564C2900E34AF3 /* FontStyles.swift in Sources */,
 				FC6F73EE2C56CAF900E34AF3 /* GameCoverBack.swift in Sources */,

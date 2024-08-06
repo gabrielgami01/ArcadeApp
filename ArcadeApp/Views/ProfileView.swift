@@ -11,6 +11,7 @@ struct ProfileView: View {
                 Text("Logout")
             }
         }
+        .background(Color.backgroundColor)
     }
 }
 

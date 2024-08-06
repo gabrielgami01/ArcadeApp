@@ -53,6 +53,7 @@ struct AddReviewView: View {
             }
             .padding()
             .scrollBounceBehavior(.basedOnSize)
+            .background(Color.background)
         }
     }
 }

@@ -58,7 +58,7 @@ struct ChallengesView: View {
         }
         .navigationBarBackButtonHidden()
         .scrollIndicators(.hidden)
-        
+        .background(Color.background)
     }
 }
 

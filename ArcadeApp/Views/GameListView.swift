@@ -110,6 +110,7 @@ struct GameListView: View {
             }
             .animation(.easeInOut, value: gamesVM.games)
             .scrollIndicators(.hidden)
+            .background(Color.background)
         }
     }
 }

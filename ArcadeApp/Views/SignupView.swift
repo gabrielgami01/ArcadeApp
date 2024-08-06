@@ -73,8 +73,9 @@ struct SignupView: View {
                 }
             }
         }
-        .safeAreaPadding()
+        .padding()
         .scrollBounceBehavior(.basedOnSize)
+        .background(Color.backgroundColor)
     }
 }
 

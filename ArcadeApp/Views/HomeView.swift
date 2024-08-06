@@ -58,15 +58,15 @@ struct HomeView: View {
 
                 }
             }
-            
-            .scrollIndicators(.hidden)
-            .scrollBounceBehavior(.basedOnSize)
-            .fullScreenCover(isPresented: $showProfile) {
-                ProfileView()
-            }
             .navigationDestination(isPresented: $showChallenges) {
                 ChallengesView()
             }
+            .fullScreenCover(isPresented: $showProfile) {
+                ProfileView()
+            }
+            .scrollIndicators(.hidden)
+            .scrollBounceBehavior(.basedOnSize)
+            .background(Color.backgroundColor)
         }
     }
 }

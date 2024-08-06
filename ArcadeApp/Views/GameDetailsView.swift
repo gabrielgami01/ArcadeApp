@@ -51,6 +51,7 @@ struct GameDetailsView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .toolbar(.hidden)
         .animation(.easeInOut, value: option)
+        .background(Color.background)
     }
 }
 

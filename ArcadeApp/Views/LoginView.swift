@@ -42,11 +42,13 @@ struct LoginView: View {
                     }
                 }
             }
+            .frame(maxWidth: .infinity)
             .navigationDestination(isPresented: $bvm.showSignup) {
                 SignupView()
             }
             .padding()
             .animation(.easeInOut, value: asyncAnimation)
+            .background(Color.backgroundColor)
         }
     }
     

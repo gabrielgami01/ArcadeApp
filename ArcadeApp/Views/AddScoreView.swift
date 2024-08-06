@@ -45,6 +45,7 @@ struct AddScoreView: View {
             .sheet(isPresented: $addScoreVM.showCamera) {
                 CameraPicker(photo: $addScoreVM.image)
             }
+            .background(Color.background)
         }
     }
 }
