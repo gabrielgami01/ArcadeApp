@@ -41,7 +41,6 @@ struct GameDetailsView: View {
         }
         .padding(.horizontal)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        .toolbar(.hidden)
         .animation(.easeInOut, value: option)
         .background(Color.background)
     }

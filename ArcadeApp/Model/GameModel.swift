@@ -54,13 +54,29 @@ struct FavoriteGameDTO: Codable {
 final class GameModel {
     @Attribute (.unique) let id: UUID
     let name: String
-    @Attribute(.externalStorage) let image: Data?
+    let desc: String
+    let console: String
+    let genre: String
+    let releaseDate: Date
     let added: Date
 
-    init(id: UUID, name: String, image: Data?, added: Date = .now) {
+    init(id: UUID, name: String, desc: String, console: String, genre: String, releaseDate: Date, added: Date) {
         self.id = id
         self.name = name
-        self.image = image
+        self.desc = desc
+        self.console = console
+        self.genre = genre
+        self.releaseDate = releaseDate
         self.added = added
+    }
+    
+    var toGame: Game {
+        Game(id: id,
+             name: name,
+             description: desc,
+             console: Console(rawValue: console) ?? .nes,
+             genre: Genre(rawValue: genre) ?? .action,
+             releaseDate: releaseDate,
+             featured: false)
     }
 }

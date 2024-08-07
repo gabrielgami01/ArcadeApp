@@ -32,7 +32,7 @@ struct GamesCarousel: View {
                                         .frame(width: 140)
                                         .lineLimit(2, reservesSpace: true)
                                         .multilineTextAlignment(.center)
-                                        .matchedGeometryEffect(id: "\(game.id)-name", in: namespace)
+                                        .matchedGeometryEffect(id: "\(game.id)/NAME", in: namespace)
                                 }
                                 .scrollTransition(.animated, axis: .horizontal) { content, phase in
                                     content
@@ -51,11 +51,11 @@ struct GamesCarousel: View {
                 .scrollTargetBehavior(.viewAligned)
             } else {
                 if type == .favorites {
-                    ContentUnavailableView("No favorite games", systemImage: "gamecontroller",
-                                           description: Text("You haven't any favorite game yet."))
+                    CustomUnavailableView(title: "No favorite games", image: "gamecontroller",
+                                          description: "You haven't any favorite game yet.")
                 } else {
-                    ContentUnavailableView("No featured games", systemImage: "gamecontroller",
-                                           description: Text("There isn't any featured game by the moment."))
+                    CustomUnavailableView(title: "No featured games", image: "gamecontroller", 
+                                          description: "There isn't any featured game by the moment.")
                 }
             }
         }

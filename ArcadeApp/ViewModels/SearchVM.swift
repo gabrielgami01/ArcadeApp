@@ -5,6 +5,7 @@ import SwiftData
 final class SearchVM {
     let interactor: DataInteractor
     
+    var showSearch = false
     var search: String = "" {
         didSet {
             page = 1
@@ -40,7 +41,13 @@ final class SearchVM {
         if let fetch = try context.fetch(query).first {
             
         } else {
-            let newGame = GameModel(id: game.id, name: game.name, image: nil)
+            let newGame = GameModel(id: game.id,
+                                    name: game.name,
+                                    desc: game.description,
+                                    console: game.console.rawValue,
+                                    genre: game.genre.rawValue,
+                                    releaseDate: game.releaseDate,
+                                    added: .now)
             context.insert(newGame)
         }
         
@@ -48,9 +55,8 @@ final class SearchVM {
        
     }
     
-    func deleteGameSearch(game: GameModel? = nil, context: ModelContext) throws {
+    func deleteGameSearch(game: Game? = nil, context: ModelContext) throws {
         if let game = game {
-            // Eliminar un elemento específico
             let id = game.id
             let query = FetchDescriptor<GameModel>(predicate:
                 #Predicate { $0.id == id }
@@ -59,7 +65,6 @@ final class SearchVM {
                 context.delete(fetch)
             }
         } else {
-            // Eliminar todos los elementos
             let query = FetchDescriptor<GameModel>()
             let allGames = try context.fetch(query)
             for game in allGames {

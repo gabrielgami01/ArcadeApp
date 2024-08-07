@@ -1,123 +1,89 @@
 import SwiftUI
-import SwiftData
 
 struct GameListView: View {
     @Environment(GamesVM.self) private var gamesVM
-    @Environment(\.modelContext) private var context
-    @State var searchVM = SearchVM()
-    
-    @Query(sort: [SortDescriptor(\GameModel.added, order: .reverse)]) private var recentSearchs: [GameModel]
-    
+    @Environment(SearchVM.self) private var searchVM    
     @Environment(\.namespace) private var namespace
     
     var body: some View {
         @Bindable var gamesBVM = gamesVM
+        @Bindable var searchBVM = searchVM
         
-        NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 15) {
-                    // ConsoleTags
-                    ScrollView(.horizontal) {
-                        LazyHStack(spacing: 10) {
-                            ForEach(Console.allCases) { console in
-                                if let namespace{
-                                    Button {
-                                        withAnimation(.interactiveSpring(
-                                            response: 0.5, dampingFraction: 0.7, blendDuration: 0.7)
-                                        ) {
-                                            gamesVM.activeConsole = console
-                                        }
-                                    } label: {
-                                        Text(console.rawValue)
-                                            .font(.customCaption2)
+        ScrollView {
+            VStack(alignment: .leading, spacing: 15) {
+                Button {
+                    searchVM.showSearch.toggle()
+                } label: {
+                    HStack(spacing: 10){
+                        Image(systemName:"magnifyingglass")
+                            .font(.customBody) 
+                        Text("Search")
+                            .font(.customBody)
+                        Spacer()
+                    }
+                    .foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(TextFieldButton())
+                
+                // ConsoleTags
+                ScrollView(.horizontal) {
+                    LazyHStack(spacing: 10) {
+                        ForEach(Console.allCases) { console in
+                            if let namespace{
+                                Button {
+                                    withAnimation(.interactiveSpring(
+                                        response: 0.5, dampingFraction: 0.7, blendDuration: 0.7)
+                                    ) {
+                                        gamesVM.activeConsole = console
                                     }
-                                    .buttonStyle(ConsoleButtonStyle(isActive: gamesVM.activeConsole == console, namespace: namespace))
+                                } label: {
+                                    Text(console.rawValue)
+                                        .font(.customCaption2)
                                 }
-                            }
-                        }
-                        .frame(height: 30)
-                        .safeAreaPadding(.horizontal)
-                        .scrollTargetLayout()
-                    }
-                    .scrollTargetBehavior(.viewAligned)
-                    //GameCards
-                    LazyVStack(spacing: 20) {
-                        ForEach(gamesVM.games) { game in
-                            Button {
-                                gamesVM.selectedGame = game
-                            } label: {
-                                GameCell(game: game, selectedGame: $gamesBVM.selectedGame)
-                                    .padding(.leading)
-                            }
-                            .buttonStyle(.plain)
-                            .onAppear {
-                                gamesVM.isLastItem(game: game)
+                                .buttonStyle(ConsoleButtonStyle(isActive: gamesVM.activeConsole == console, namespace: namespace))
                             }
                         }
                     }
-                    .padding()
+                    .frame(height: 30)
+                    .safeAreaPadding(.horizontal)
+                    .scrollTargetLayout()
                 }
-            }
-            .searchable(text: $searchVM.search, placement: .navigationBarDrawer) {
-                if searchVM.search == "" {
-                    if recentSearchs.isEmpty {
-                        CustomUnavailableView(title: "Search games", image: "gamecontroller", description: "Search for games by name.")
-                    } else {
-                        ForEach(recentSearchs) { game in
-                            HStack {
-                                Button {
-    //                                gamesVM.selectedGame = game
-                                } label: {
-    //                                GameSearchableButton(game: game)
-                                    Text(game.name)
-                                        .font(.customBody)
-                                }
-                                
-                                Button {
-                                    try? searchVM.deleteGameSearch(game: game, context: context)
-                                } label: {
-                                    Image(systemName: "xmark")
-                                        .font(.customBody)
-                                }
-                            }
+                .scrollTargetBehavior(.viewAligned)
+                //GameCards
+                LazyVStack(spacing: 20) {
+                    ForEach(gamesVM.games) { game in
+                        Button {
+                            gamesVM.selectedGame = game
+                        } label: {
+                            GameCell(game: game, selectedGame: $gamesBVM.selectedGame)
+                                .padding(.leading)
                         }
-                        CustomButton(label: "Clear recent searches") {
-                            try? searchVM.deleteGameSearch(context: context)
-                        }
-                    }
-                } else {
-                    if searchVM.games.isEmpty {
-                        CustomUnavailableView(title: "No results for '\(searchVM.search)'", image: "magnifyingglass", description: "Check the spelling or try a new search.")
-                    } else {
-                        ForEach(searchVM.games) { game in
-                            Button {
-                                gamesVM.selectedGame = game
-                                try? searchVM.saveGameSearch(game: game, context: context)
-                            } label: {
-                                GameSearchableButton(game: game)
-                            }
-                            .buttonStyle(.plain)
+                        .buttonStyle(.plain)
+                        .onAppear {
+                            gamesVM.isLastItem(game: game)
                         }
                     }
                 }
+                .padding()
             }
-            .font(.customBody)
-            .onChange(of: searchVM.search) { oldValue, newValue in
-                searchVM.searchGame(name: newValue)
-            }
-            .onChange(of: gamesVM.activeConsole) { oldValue, newValue in
-                gamesVM.getGames(console: newValue)
-            }
-            .animation(.easeInOut, value: gamesVM.games)
-            .scrollIndicators(.hidden)
-            .background(Color.background)
         }
+        .onChange(of: searchVM.search) { oldValue, newValue in
+            searchVM.searchGame(name: newValue)
+        }
+        .onChange(of: gamesVM.activeConsole) { oldValue, newValue in
+            gamesVM.getGames(console: newValue)
+        }
+        .animation(.easeInOut, value: gamesVM.games)
+        .scrollIndicators(.hidden)
+        .background(Color.background)
     }
 }
 
 #Preview {
-    GameListView(searchVM: SearchVM(interactor: TestInteractor()))
+    GameListView()
         .environment(GamesVM(interactor: TestInteractor()))
+        .environment(SearchVM(interactor: TestInteractor()))
         .namespace(Namespace().wrappedValue)
 }
 

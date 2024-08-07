@@ -19,4 +19,5 @@ struct ContentView: View {
     ContentView()
         .environment(UserVM())
         .environment(GamesVM(interactor: TestInteractor()))
+        .environment(SearchVM(interactor: TestInteractor()))
 }

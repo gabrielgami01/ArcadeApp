@@ -23,6 +23,14 @@ struct CustomTextField: View {
                     case .secured:
                        SecureField(label, text: $value)
                             .font(.customBody)
+                    case .search:
+                        HStack(spacing: 10){
+                            Image(systemName:"magnifyingglass")
+                                .font(.customBody)
+                                .foregroundStyle(.secondary)
+                            TextField(label, text: $value)
+                                .font(.customBody)
+                        }
                 }
                 Button {
                     value = ""
@@ -70,7 +78,7 @@ struct CustomTextField: View {
 }
 
 #Preview {
-    CustomTextField(value: .constant(""), isError: .constant(true), label: "Username") { value in
+    CustomTextField(value: .constant(""), isError: .constant(true), label: "Username", type: .search) { value in
         if value.isEmpty {
             "cannot be empty"
         } else if value.count < 6 {

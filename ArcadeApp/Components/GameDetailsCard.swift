@@ -13,7 +13,7 @@ struct GameDetailsCard: View {
                         .font(.customHeadline)
                         .multilineTextAlignment(.center)
                         .foregroundColor(.accent)
-                        .matchedGeometryEffect(id: "\(detailsVM.game.id)-name", in: namespace)
+                        .matchedGeometryEffect(id: "\(detailsVM.game.id)/NAME", in: namespace)
                 } else {
                     Text(detailsVM.game.name)
                         .font(.customHeadline)

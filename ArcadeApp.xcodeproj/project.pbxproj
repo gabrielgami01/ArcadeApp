@@ -69,6 +69,7 @@
 		FCA519172C36C191001CCF54 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA519162C36C191001CCF54 /* UIDevice.swift */; };
 		FCA5191B2C36FDE5001CCF54 /* GameDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA5191A2C36FDE5001CCF54 /* GameDetailsVM.swift */; };
 		FCA5191D2C3729EE001CCF54 /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA5191C2C3729EE001CCF54 /* ReviewModel.swift */; };
+		FCACFBC92C638A750065805E /* SearchableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCACFBC82C638A750065805E /* SearchableView.swift */; };
 		FCB0D5EF2C5810D000039654 /* CustomUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB0D5EE2C5810D000039654 /* CustomUnavailableView.swift */; };
 		FCC036032C480B6400DDBC90 /* GameScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC036022C480B6400DDBC90 /* GameScoresView.swift */; };
 		FCC046692C52B4D1003FAC6A /* ScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC046682C52B4D1003FAC6A /* ScoreCell.swift */; };
@@ -167,6 +168,7 @@
 		FCA519162C36C191001CCF54 /* UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		FCA5191A2C36FDE5001CCF54 /* GameDetailsVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailsVM.swift; sourceTree = "<group>"; };
 		FCA5191C2C3729EE001CCF54 /* ReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
+		FCACFBC82C638A750065805E /* SearchableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableView.swift; sourceTree = "<group>"; };
 		FCB0D5EE2C5810D000039654 /* CustomUnavailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUnavailableView.swift; sourceTree = "<group>"; };
 		FCC036022C480B6400DDBC90 /* GameScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScoresView.swift; sourceTree = "<group>"; };
 		FCC046682C52B4D1003FAC6A /* ScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCell.swift; sourceTree = "<group>"; };
@@ -475,6 +477,7 @@
 			children = (
 				FC14731D2C5110CC00B1BE27 /* SearchView.swift */,
 				FC0E31C22C46E005004EB339 /* GameListView.swift */,
+				FCACFBC82C638A750065805E /* SearchableView.swift */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -699,6 +702,7 @@
 				FC2E95142C61634E00393C39 /* ChallengeCard.swift in Sources */,
 				FC0E31AA2C467FB4004EB339 /* AddReviewView.swift in Sources */,
 				FC0E31BF2C46DE59004EB339 /* PageButton.swift in Sources */,
+				FCACFBC92C638A750065805E /* SearchableView.swift in Sources */,
 				FC0E31CB2C46F09F004EB339 /* GameAboutView.swift in Sources */,
 				FC1F02FB2C58FD4800CE551B /* GameInfoCard.swift in Sources */,
 				FC7A37032C4525E7004F6910 /* RatingComponent.swift in Sources */,

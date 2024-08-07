@@ -18,7 +18,7 @@ struct GameCover: View {
                         .resizable()
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .frame(width: width, height: height)
-                        .matchedGeometryEffect(id: "\(game.id)-cover", in: namespace)
+                        .matchedGeometryEffect(id: "\(game.id)/COVER", in: namespace)
                         .shimmerEffect(active: shimmer)
                 } else {
                     RoundedRectangle(cornerRadius: 10)
@@ -30,7 +30,7 @@ struct GameCover: View {
                                 .foregroundStyle(.primary)
                                 .padding()
                         }
-                        .matchedGeometryEffect(id: "\(game.id)-cover", in: namespace)
+                        .matchedGeometryEffect(id: "\(game.id)/COVER", in: namespace)
                         .frame(width: width, height: height)
                         .shimmerEffect(active: shimmer)
                 }

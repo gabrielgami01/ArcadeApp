@@ -21,7 +21,7 @@ struct CustomPicker: View {
                                 if selectedOption == option {
                                     RoundedRectangle(cornerRadius: 5)
                                         .fill(Color.accentColor)
-                                        .matchedGeometryEffect(id: "ACTIVECONSOLE", in: namespace)
+                                        .matchedGeometryEffect(id: "ACTIVEPICKER", in: namespace)
                                 } else {
                                     RoundedRectangle(cornerRadius: 5)
                                         .fill(Color.cardColor)

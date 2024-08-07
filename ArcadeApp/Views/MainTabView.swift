@@ -33,4 +33,5 @@ struct MainTabView: View {
     MainTabView()
         .environment(UserVM())
         .environment(GamesVM(interactor: TestInteractor()))
+        .environment(SearchVM(interactor: TestInteractor()))
 }

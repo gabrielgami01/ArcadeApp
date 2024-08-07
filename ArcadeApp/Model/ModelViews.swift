@@ -65,6 +65,7 @@ enum SignupFields {
 enum TextFieldType {
     case simple
     case secured
+    case search
 }
 
 enum RatingMode {

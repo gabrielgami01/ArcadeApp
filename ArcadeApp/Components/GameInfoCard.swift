@@ -14,7 +14,7 @@ struct GameInfoCard: View {
                     .font(.customHeadline)
                     .multilineTextAlignment(.center)
                     .foregroundColor(.accent)
-                    .matchedGeometryEffect(id: "\(game.id)-name", in: namespace)
+                    .matchedGeometryEffect(id: "\(game.id)/NAME", in: namespace)
             }
             HStack(spacing: 10) {
                 Text(game.console.rawValue)
