@@ -73,6 +73,7 @@ struct GameScoresView: View {
         .sheet(isPresented: $detailsVM.showAddScore) {
             AddScoreView(addScoreVM: AddScoreVM(game: detailsVM.game))
         }
+        .scrollBounceBehavior(.basedOnSize)
         .background(Color.background)
         
     }

@@ -11,7 +11,7 @@ struct CustomUnavailableView: View {
                 .resizable()
                 .scaledToFit()
                 .foregroundStyle(.gray)
-                .frame(width: 80)
+                .frame(width: 100)
             
             VStack{
                 Text(title)

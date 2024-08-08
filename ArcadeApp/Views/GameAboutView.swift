@@ -50,6 +50,7 @@ struct GameAboutView: View {
         .sheet(isPresented: $detailsVM.showAddReview) {
             AddReviewView(addReviewVM: AddReviewVM(game: detailsVM.game))
         }
+        .scrollBounceBehavior(.basedOnSize)
         .background(Color.background)
     }
 }

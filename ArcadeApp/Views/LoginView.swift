@@ -48,6 +48,7 @@ struct LoginView: View {
             }
             .padding()
             .animation(.easeInOut, value: asyncAnimation)
+            .scrollBounceBehavior(.basedOnSize)
             .background(Color.backgroundColor)
         }
     }

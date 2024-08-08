@@ -22,9 +22,14 @@ struct MainTabView: View {
                 }
         }
         .onAppear {
-            let appearance = UITabBarItem.appearance()
+            let itemAppearance = UITabBarItem.appearance()
             let attributes = [NSAttributedString.Key.font: UIFont(name: "VT323", size: 15)!]
-            appearance.setTitleTextAttributes(attributes, for: .normal)
+            itemAppearance.setTitleTextAttributes(attributes, for: .normal)
+            let appearance = UITabBarAppearance()
+            appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+            appearance.backgroundColor = .clear
+            UITabBar.appearance().standardAppearance = appearance
+            UITabBar.appearance().scrollEdgeAppearance = appearance
         }
     }
 }

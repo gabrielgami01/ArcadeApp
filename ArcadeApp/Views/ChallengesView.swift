@@ -58,6 +58,7 @@ struct ChallengesView: View {
         }
         .navigationBarBackButtonHidden()
         .scrollIndicators(.hidden)
+        .scrollBounceBehavior(.basedOnSize)
         .background(Color.background)
     }
 }

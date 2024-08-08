@@ -87,15 +87,3 @@ struct GameListView: View {
         .namespace(Namespace().wrappedValue)
 }
 
-struct GameSearchableButton: View {
-    let game: Game
-    
-    var body: some View {
-        HStack(spacing: 10) {
-            GameCover(game: game, width: 60, height: 60)
-                .namespace(nil)
-            Text(game.name)
-                .font(.customBody)
-        }
-    }
-}

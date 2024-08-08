@@ -13,7 +13,7 @@ struct SearchableView: View {
         @Bindable var bvm = searchVM
         
         ScrollView {
-            VStack {
+            VStack(spacing: 0) {
                 HStack(alignment: .firstTextBaseline) {
                     CustomTextField(value: $bvm.search, isError: .constant(false), label: "Search", type: .search)
                         .focused($focus)
@@ -32,7 +32,9 @@ struct SearchableView: View {
                         if recentSearchs.isEmpty {
                             CustomUnavailableView(title: "Search games", image: "gamecontroller", description: "Search for games by name.")
                         } else {
-                            LazyVStack {
+                            LazyVStack(alignment: .listRowSeparatorLeading) {
+                                Text("Recent searches")
+                                    .font(.customTitle3)
                                 ForEach(recentSearchs) { gameModel in
                                     let game = gameModel.toGame
                                     SearchCell(game: game, isRecent: true)
@@ -54,48 +56,14 @@ struct SearchableView: View {
             }
             .padding(.horizontal)
         }
-        .onAppear {
-            focus.toggle()
+        .onChange(of: searchVM.showSearch) { oldValue, newValue in
+            focus = newValue == true ? true :  false
         }
+        .onChange(of: gamesVM.selectedGame) {
+            focus = false
+        }
+        .scrollBounceBehavior(.basedOnSize)
         .background(Color.background)
-    }
-}
-
-struct SearchCell: View {
-    @Environment(GamesVM.self) private var gamesVM
-    @Environment(SearchVM.self) private var searchVM
-    @Environment(\.modelContext) private var context
-
-    let game: Game
-    let isRecent: Bool
-    
-    var body: some View {
-        VStack {
-            HStack {
-                Button {
-                    gamesVM.selectedGame = game
-                    if !isRecent {
-                        try? searchVM.saveGameSearch(game: game, context: context)
-                    }
-                } label: {
-                    GameSearchableButton(game: game)
-                }
-                
-                Spacer()
-                
-                if isRecent {
-                    Button {
-                        try? searchVM.deleteGameSearch(game: game, context: context)
-                    } label: {
-                        Text("X")
-                            .font(.customTitle)
-                    }
-                }
-            }
-            .buttonStyle(.plain)
-            
-            Divider()
-        }
     }
 }
 
