@@ -13,7 +13,7 @@ struct LoginDTO: Codable {
 }
 
 struct User: Codable {
-    let id: UUID?
+    let id: UUID
     let email: String
     let username: String
     let fullName: String
