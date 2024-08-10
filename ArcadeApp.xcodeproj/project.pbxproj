@@ -85,6 +85,7 @@
 		FCCE05632C2B36ED00B0D2CD /* DataPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCE05622C2B36ED00B0D2CD /* DataPreview.swift */; };
 		FCD1FCB42C6698460060E682 /* EditAboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD1FCB32C6698460060E682 /* EditAboutView.swift */; };
 		FCD1FCB62C669B7B0060E682 /* SheetToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD1FCB52C669B7B0060E682 /* SheetToolbar.swift */; };
+		FCE336CF2C67C44E009E30AB /* JWTDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE336CE2C67C44E009E30AB /* JWTDecoder.swift */; };
 		FCED20E62C2F1C8900C0C5A1 /* GamesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCED20E52C2F1C8900C0C5A1 /* GamesVM.swift */; };
 /* End PBXBuildFile section */
 
@@ -187,6 +188,7 @@
 		FCCE05622C2B36ED00B0D2CD /* DataPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPreview.swift; sourceTree = "<group>"; };
 		FCD1FCB32C6698460060E682 /* EditAboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAboutView.swift; sourceTree = "<group>"; };
 		FCD1FCB52C669B7B0060E682 /* SheetToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetToolbar.swift; sourceTree = "<group>"; };
+		FCE336CE2C67C44E009E30AB /* JWTDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTDecoder.swift; sourceTree = "<group>"; };
 		FCED20E52C2F1C8900C0C5A1 /* GamesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -399,6 +401,7 @@
 				FC76F2332C5BF5A60070D970 /* Notifications.swift */,
 				FC6F73F02C56D19C00E34AF3 /* AsyncTypeWriter.swift */,
 				FC4FCA0B2C627CED004C12C4 /* Color.swift */,
+				FCE336CE2C67C44E009E30AB /* JWTDecoder.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -713,6 +716,7 @@
 				FC0E31B42C46879B004EB339 /* ProfileView.swift in Sources */,
 				FC2E95142C61634E00393C39 /* ChallengeCard.swift in Sources */,
 				FC0E31AA2C467FB4004EB339 /* AddReviewView.swift in Sources */,
+				FCE336CF2C67C44E009E30AB /* JWTDecoder.swift in Sources */,
 				FC0E31BF2C46DE59004EB339 /* PageButton.swift in Sources */,
 				FCACFBC92C638A750065805E /* SearchableView.swift in Sources */,
 				FC0E31CB2C46F09F004EB339 /* GameAboutView.swift in Sources */,

@@ -9,6 +9,10 @@ struct TestInteractor: DataInteractor {
         .test
     }
     
+    func refreshJWT() async throws -> User {
+        .test
+    }
+    
     func getUserInfo() async throws -> User {
         .test
     }

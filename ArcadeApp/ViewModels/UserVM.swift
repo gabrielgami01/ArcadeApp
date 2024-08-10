@@ -24,7 +24,7 @@ final class UserVM {
         self.interactor = interactor
         self.isLogged = secManager.isLogged
         if isLogged {
-            getUserInfo()
+            refreshToken()
         }
     }
     
@@ -38,6 +38,16 @@ final class UserVM {
             }
         }
     } 
+    
+    func refreshToken() {
+        Task {
+            do {
+                self.activeUser = try await interactor.refreshJWT()
+            } catch {
+                print(error)
+            }
+        }
+    }
     
     func getUserInfo() {
         Task {
