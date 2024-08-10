@@ -3,7 +3,9 @@ import ACNetwork
 
 protocol DataInteractor {
     func createUser(user: CreateUserDTO) async throws
-    func loginJWT(user: String, pass: String) async throws
+    func loginJWT(user: String, pass: String) async throws -> User
+    func getUserInfo() async throws -> User
+    func editUserAbout(about: EditUserAboutDTO) async throws
     
     func getAllGames(page: Int) async throws -> [Game]
     func getGamesByConsole(name: String, page: Int) async throws -> [Game]
@@ -38,11 +40,20 @@ struct Network: DataInteractor, NetworkJSONInteractor {
         
         try await post(request: request, status: 201)
     }
-    func loginJWT(user: String, pass: String) async throws {
+    func loginJWT(user: String, pass: String) async throws -> User {
         let token = "\(user):\(pass)".data(using: .utf8)?.base64EncodedString()
-        let accessToken = try await getJSON(request: .get(url: .loginJWT, token: token, authType: .basic), type: TokenDTO.self)
-        SecKeyStore.shared.storeKey(key: Data(accessToken.token.utf8), label: "token")
+        let loginDTO = try await getJSON(request: .get(url: .loginJWT, token: token, authType: .basic), type: LoginDTO.self)
+        SecKeyStore.shared.storeKey(key: Data(loginDTO.token.utf8), label: "token")
         NotificationCenter.default.post(name: .login, object: nil)
+        return loginDTO.user
+    }
+    
+    func getUserInfo() async throws -> User {
+        try await getJSON(request: .get(url: .getUserInfo, token: getToken()), type: User.self)
+    }
+    
+    func editUserAbout(about: EditUserAboutDTO) async throws {
+        try await post(request: .post(url: .editUserAbout, post: about, method: .put, token: getToken()))
     }
     //END USERS
     

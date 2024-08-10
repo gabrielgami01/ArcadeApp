@@ -8,6 +8,9 @@ final class UserVM {
     var isLogged = false
     var showSignup = false
     
+    var activeUser: User? = nil
+    var about: String = ""
+    
     var username = ""
     var password = ""
     var fullName = ""
@@ -20,18 +23,31 @@ final class UserVM {
     init(interactor: DataInteractor = Network.shared) {
         self.interactor = interactor
         self.isLogged = secManager.isLogged
+        if isLogged {
+            getUserInfo()
+        }
     }
     
     func login() {
         Task {
             do {
-                try await interactor.loginJWT(user:username, pass:password)
+                self.activeUser = try await interactor.loginJWT(user:username, pass:password)
                 isLogged.toggle()
             } catch {        
                 print(error)
             }
         }
     } 
+    
+    func getUserInfo() {
+        Task {
+            do {
+                self.activeUser = try await interactor.getUserInfo()
+            } catch {
+                print(error)
+            }
+        }
+    }
     
     func logout() {
         secManager.logout()
@@ -121,6 +137,17 @@ final class UserVM {
     
     func enableSignupButton() -> Bool {
         !(!username.isEmpty && !password.isEmpty && !repeatPassword.isEmpty && !email.isEmpty && !fullName.isEmpty && !showError)
+    }
+    
+    func editUserAbout() {
+        Task {
+            do {
+                try await interactor.editUserAbout(about: EditUserAboutDTO(about: about))
+                getUserInfo()
+            } catch {
+                print(error)
+            }
+        }
     }
     
 }

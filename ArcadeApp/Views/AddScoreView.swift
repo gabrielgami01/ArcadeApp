@@ -15,30 +15,14 @@ struct AddScoreView: View {
                         ScoreImage(image: addScoreVM.image)
                     }
                     .buttonStyle(.plain)
-                    
-                    CustomButton(label: "Send") {
-                        addScoreVM.addScore()
-                    }
-                    .disabled(addScoreVM.image == nil ? true : false)
                 }
+                .frame(maxWidth: .infinity)
                 
             }
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text("Add new score")
-                        .font(.customTitle3)
-                }
-                
-                ToolbarItem(placement: .cancellationAction) {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Text("Cancel")
-                            .font(.customTitle3)
-                    }
-                }
-                
+            .sheetToolbar(title: "Add new score", confirmationLabel: "Send") {
+                addScoreVM.addScore()
+                dismiss()
             }
             .padding()
             .scrollBounceBehavior(.basedOnSize)

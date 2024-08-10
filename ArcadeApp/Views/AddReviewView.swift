@@ -20,37 +20,19 @@ struct AddReviewView: View {
                     TextEditor(text: $addReviewVM.comment)
                         .scrollContentBackground(.hidden)
                         .font(.customBody)
-                        .background(.quaternary)
+                        .background(.quinary)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .frame(height: 300)
-                    
-                    CustomButton(label: "Send") {
-                        if addReviewVM.checkReview() {
-                            addReviewVM.addReview()
-                            dismiss()
-                        } else {
-                            addReviewVM.showAlert.toggle()
-                        }
-                    }
                 }
-                
             }
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text("Leave a Review")
-                        .font(.customTitle3)
+            .sheetToolbar(title: "Leave a Review", confirmationLabel: "Send") {
+                if addReviewVM.checkReview() {
+                    addReviewVM.addReview()
+                    dismiss()
+                } else {
+                    addReviewVM.showAlert.toggle()
                 }
-                
-                ToolbarItem(placement: .cancellationAction) {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Text("Cancel")
-                            .font(.customTitle3)
-                    }
-                }
-                
             }
             .padding()
             .scrollBounceBehavior(.basedOnSize)

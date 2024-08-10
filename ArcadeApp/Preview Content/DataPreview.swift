@@ -5,7 +5,15 @@ struct TestInteractor: DataInteractor {
         
     }
     
-    func loginJWT(user: String, pass: String) async throws {
+    func loginJWT(user: String, pass: String) async throws  -> User {
+        .test
+    }
+    
+    func getUserInfo() async throws -> User {
+        .test
+    }
+    
+    func editUserAbout(about: EditUserAboutDTO) async throws {
         
     }
     
@@ -167,4 +175,8 @@ extension Challenge {
                                  type: .silver,
                                  game: "Final Fantasy VII")
     
+}
+
+extension User {
+    static let test = User(id: UUID(), email: "gabrielgmcv01@gmail.com", username: "gabrielgm", fullName: "gabriel", biography: "De locos")
 }

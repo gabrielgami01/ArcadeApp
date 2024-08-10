@@ -83,6 +83,8 @@
 		FCCD73782C2DDA680056036E /* games.json in Resources */ = {isa = PBXBuildFile; fileRef = FCCD73772C2DDA680056036E /* games.json */; };
 		FCCE05602C2B33F600B0D2CD /* SearchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCE055F2C2B33F500B0D2CD /* SearchVM.swift */; };
 		FCCE05632C2B36ED00B0D2CD /* DataPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCE05622C2B36ED00B0D2CD /* DataPreview.swift */; };
+		FCD1FCB42C6698460060E682 /* EditAboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD1FCB32C6698460060E682 /* EditAboutView.swift */; };
+		FCD1FCB62C669B7B0060E682 /* SheetToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD1FCB52C669B7B0060E682 /* SheetToolbar.swift */; };
 		FCED20E62C2F1C8900C0C5A1 /* GamesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCED20E52C2F1C8900C0C5A1 /* GamesVM.swift */; };
 /* End PBXBuildFile section */
 
@@ -183,6 +185,8 @@
 		FCCD73772C2DDA680056036E /* games.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = games.json; sourceTree = "<group>"; };
 		FCCE055F2C2B33F500B0D2CD /* SearchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVM.swift; sourceTree = "<group>"; };
 		FCCE05622C2B36ED00B0D2CD /* DataPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPreview.swift; sourceTree = "<group>"; };
+		FCD1FCB32C6698460060E682 /* EditAboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAboutView.swift; sourceTree = "<group>"; };
+		FCD1FCB52C669B7B0060E682 /* SheetToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetToolbar.swift; sourceTree = "<group>"; };
 		FCED20E52C2F1C8900C0C5A1 /* GamesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -371,6 +375,7 @@
 				FC6F73EB2C56CA3B00E34AF3 /* CustomCard.swift */,
 				FC4FCA092C62345F004C12C4 /* BackButton.swift */,
 				FC4FCA0F2C62B0BA004C12C4 /* CustomPicker.swift */,
+				FCD1FCB52C669B7B0060E682 /* SheetToolbar.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -471,6 +476,7 @@
 				FC2FD0882C43E3DD0054CD43 /* LoginView.swift */,
 				FC2FD08C2C43E4010054CD43 /* SignupView.swift */,
 				FC0E31B32C46879B004EB339 /* ProfileView.swift */,
+				FCD1FCB32C6698460060E682 /* EditAboutView.swift */,
 			);
 			name = Users;
 			sourceTree = "<group>";
@@ -675,6 +681,7 @@
 				FCC53B302C5F915900015AC9 /* ChallengesVM.swift in Sources */,
 				FC1473202C5183C100B1BE27 /* ScoreModel.swift in Sources */,
 				FCCD73762C2D8E520056036E /* GameModel.swift in Sources */,
+				FCD1FCB42C6698460060E682 /* EditAboutView.swift in Sources */,
 				FC0E31CD2C46F0D0004EB339 /* ReviewCell.swift in Sources */,
 				FCCE05602C2B33F600B0D2CD /* SearchVM.swift in Sources */,
 				FC22BA622C2590EF002DFAA4 /* ContentView.swift in Sources */,
@@ -686,6 +693,7 @@
 				FC54459E2C3801F5001B26EF /* AddReviewVM.swift in Sources */,
 				FC6F73E82C564C2900E34AF3 /* FontStyles.swift in Sources */,
 				FC6F73EE2C56CAF900E34AF3 /* GameCoverBack.swift in Sources */,
+				FCD1FCB62C669B7B0060E682 /* SheetToolbar.swift in Sources */,
 				FC0E31C92C46F010004EB339 /* GameDetailsCard.swift in Sources */,
 				FC2FD0952C4438F80054CD43 /* GameDetailsView.swift in Sources */,
 				FC0E31CF2C46F1C6004EB339 /* ModelViews.swift in Sources */,

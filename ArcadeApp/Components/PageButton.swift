@@ -15,7 +15,7 @@ struct PageButton: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 40, height: 40)
-                    .padding(20)
+                    .padding(15)
                     .background(color.opacity(0.5))
                     .overlay(
                         RoundedRectangle(cornerRadius: 5)

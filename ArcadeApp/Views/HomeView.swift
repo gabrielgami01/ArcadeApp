@@ -28,8 +28,10 @@ struct HomeView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 10) {
                     HStack {
-                        Text("Hello user")
-                            .font(.customLargeTitle)
+                        if let user = userVM.activeUser {
+                            Text("Hello \(user.username)")
+                                .font(.customLargeTitle)
+                        }
                         Spacer()
                         Button {
                             showProfile.toggle()
@@ -61,7 +63,7 @@ struct HomeView: View {
             .navigationDestination(isPresented: $showChallenges) {
                 ChallengesView()
             }
-            .fullScreenCover(isPresented: $showProfile) {
+            .navigationDestination(isPresented: $showProfile) {
                 ProfileView()
             }
             .scrollIndicators(.hidden)

@@ -7,6 +7,19 @@ struct CreateUserDTO: Codable {
     let fullName: String
 }
 
-struct TokenDTO: Codable {
+struct LoginDTO: Codable {
     let token: String
+    let user: User
+}
+
+struct User: Codable {
+    let id: UUID?
+    let email: String
+    let username: String
+    let fullName: String
+    let biography: String?
+}
+
+struct EditUserAboutDTO: Codable {
+    let about: String
 }

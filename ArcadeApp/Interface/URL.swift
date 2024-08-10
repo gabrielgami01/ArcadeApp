@@ -6,8 +6,11 @@ let proxy = URL(string: "https://f9f9-81-32-237-227.ngrok-free.app")!
 let api = desa.appending(path: "api")
 
 extension URL {
-    static let createUser = api.appending(path: "users").appending(path: "create")
-    static let loginJWT = api.appending(path: "users").appending(path: "loginJWT")
+    static let users = api.appending(path: "users")
+    static let createUser = users.appending(path: "create")
+    static let loginJWT = users.appending(path: "loginJWT")
+    static let getUserInfo = users.appending(path: "userInfo")
+    static let editUserAbout = users.appending(path: "updateAbout")
     
     private static let games = api.appending(path: "games")
     static func getAllGames(page: Int) -> URL {
