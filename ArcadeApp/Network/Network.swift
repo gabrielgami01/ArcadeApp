@@ -124,11 +124,36 @@ struct Network: DataInteractor, NetworkJSONInteractor {
     
     //CHALLENGES
     func getAllChallenges(page: Int) async throws -> [Challenge] {
-        try await getJSON(request: .get(url: .getAllChallenges(page: page), token: getToken()), type: ChallengePageDTO.self).items
+        let challengesDTO = try await getJSON(request: .get(url: .getAllChallenges(page: page), token: getToken()),type: ChallengePageDTO.self).items
+        
+        var challenges: [Challenge] = []
+        challenges.reserveCapacity(challengesDTO.count)
+        
+        for challengeDTO in challengesDTO {
+            async let completed = getJSON(request: .get(url: .isChallengeCompleted(id: challengeDTO.id), token: getToken()),type: Bool.self)
+            
+            let challenge = challengeDTO.toChallenge(completed: try await completed)
+            challenges.append(challenge)
+        }
+        
+        return challenges
     }
     
     func getChallengesByType(type: String, page: Int) async throws -> [Challenge] {
-        try await getJSON(request: .get(url: .getChallegesByType(type: type, page: page), token: getToken()), type: ChallengePageDTO.self).items
+        let challengesDTO = try await getJSON(request: .get(url: .getChallengesByType(type: type, page: page), token: getToken()),type: ChallengePageDTO.self).items
+        
+        var challenges: [Challenge] = []
+        challenges.reserveCapacity(challengesDTO.count)
+        
+        for challengeDTO in challengesDTO {
+            async let completed = getJSON(request: .get(url: .isChallengeCompleted(id: challengeDTO.id), token: getToken()),type: Bool.self)
+            
+            let challenge = challengeDTO.toChallenge(completed: try await completed)
+            challenges.append(challenge)
+        }
+        
+        return challenges
     }
+
     //CHALLENGES
 }

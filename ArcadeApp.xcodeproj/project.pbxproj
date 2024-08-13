@@ -256,7 +256,6 @@
 			isa = PBXGroup;
 			children = (
 				FCCD736B2C2D674B0056036E /* Views */,
-				FC76F23D2C5C26DD0070D970 /* Challenges */,
 				FCCD73692C2D67150056036E /* Components */,
 				FCCD736A2C2D67390056036E /* ViewModels */,
 				FCCD73682C2D67040056036E /* Network */,
@@ -388,7 +387,6 @@
 				FC76F23E2C5C26E90070D970 /* ChallengesView.swift */,
 			);
 			name = Challenges;
-			path = Views;
 			sourceTree = "<group>";
 		};
 		FCA519132C36C175001CCF54 /* Extensions */ = {
@@ -469,6 +467,7 @@
 				FC0E31BB2C46DDF8004EB339 /* Games */,
 				FCCD736C2C2D67550056036E /* Users */,
 				FCCD736D2C2D67750056036E /* Search */,
+				FC76F23D2C5C26DD0070D970 /* Challenges */,
 			);
 			path = Views;
 			sourceTree = "<group>";

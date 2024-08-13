@@ -151,33 +151,38 @@ extension Challenge {
                                 description: "Score 100,000 points by collecting coins and defeating enemies.",
                                 targetScore: 100000,
                                 type: .gold,
-                                game: "Super Mario Bros")
+                                game: "Super Mario Bros",
+                                completed: true)
     
     static let test2 = Challenge(id: UUID(),
                                  name: "Hero of Hyrule",
                                  description: "Reach a score of 50,000 points by defeating bosses and collecting items.",
                                  targetScore: 50000,
                                  type: .bronze,
-                                 game: "The Legend of Zelda")
+                                 game: "The Legend of Zelda",
+                                 completed: true)
     static let test3 = Challenge(id: UUID(),
                                  name: "Speed Demon",
                                  description: "Achieve a score of 75,000 points by collecting rings and defeating Dr. Robotnik.",
                                  targetScore: 75000,     
                                  type: .gold,
-                                 game: "Sonic the Hedgehog")
+                                 game: "Sonic the Hedgehog",
+                                 completed: false)
     
     static let test4 = Challenge(id: UUID(),
                                  name: "Martial Arts Master",
                                  description: "Score 80,000 points by winning matches in Street Fighter II.",
                                  targetScore: 80000,
                                  type: .bronze,
-                                 game: "Street Fighter II")
+                                 game: "Street Fighter II",
+                                 completed: true)
     static let test5 = Challenge(id: UUID(),
                                  name: "Mako Reactor Hero",
                                  description: "Reach a score of 60,000 points by completing quests and defeating enemies.",
                                  targetScore: 60000,
                                  type: .silver,
-                                 game: "Final Fantasy VII")
+                                 game: "Final Fantasy VII",
+                                 completed: false)
     
 }
 

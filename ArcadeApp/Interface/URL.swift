@@ -44,8 +44,11 @@ extension URL {
     static func getAllChallenges(page: Int) -> URL {
         challenges.appending(queryItems: [.page(page), .per()])
     }
-    static func getChallegesByType(type: String, page: Int) -> URL {
+    static func getChallengesByType(type: String, page: Int) -> URL {
         challenges.appending(path: "byType").appending(queryItems: [.type(type), .page(page), .per()])
+    }
+    static func isChallengeCompleted(id: UUID) -> URL {
+        challenges.appending(path: id.uuidString)
     }
 }
 

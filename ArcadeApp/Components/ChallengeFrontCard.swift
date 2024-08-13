@@ -26,12 +26,13 @@ struct ChallengeFrontCard: View {
         .padding()
         .customCard(borderColor: color, cornerRadius: 50)
         .overlay(alignment: .topTrailing) {
-            Image(systemName: "checkmark")
-                .symbolVariant(.circle)
-                .font(.largeTitle)
-                .foregroundStyle(.green)
-                .offset(x: 5, y: -5)
-                
+            if challenge.completed {
+                Image(systemName: "checkmark")
+                    .symbolVariant(.circle)
+                    .font(.largeTitle)
+                    .foregroundStyle(.green)
+                    .offset(x: 5, y: -5)
+            }
         }
     }
 }

@@ -13,6 +13,7 @@ struct LoginView: View {
                     VStack {
                         Text("WELCOME TO ARCADE STUDIOS")
                             .font(.customLargeTitle)
+                            .multilineTextAlignment(.center)
                         VStack {
                             CustomTextField(value: $bvm.username, isError: $bvm.showError, label: "Username")
                                 .textContentType(.username)
