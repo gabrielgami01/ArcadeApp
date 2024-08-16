@@ -22,6 +22,7 @@ struct GamesCarousel: View {
                                 VStack {
                                     Button {
                                         gamesVM.selectedGame = game
+                                        gamesVM.selectedType = type
                                     } label: {
                                         GameCover(game: game, width: 140, height: 220)
                                     }

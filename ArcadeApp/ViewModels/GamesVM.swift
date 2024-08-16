@@ -6,6 +6,7 @@ final class GamesVM {
     
     var featured: [Game] = []
     var favorites: [Game] = []
+    var selectedType: HomeScrollType = .featured
     
     var games: [Game] = []
     var selectedGame: Game? = nil

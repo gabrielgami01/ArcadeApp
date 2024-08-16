@@ -6,8 +6,8 @@ struct HomeView: View {
     
     @State private var selectedPage: HomePage?
     
-    @Namespace private var myNamespace
-    @Namespace private var another
+    @Namespace private var namespaceFeatured
+    @Namespace private var namespaceFavorites
     
     var body: some View {
         ZStack {
@@ -19,7 +19,7 @@ struct HomeView: View {
             }
         }
         .animation(.bouncy.speed(0.8), value: gamesVM.selectedGame)
-        .namespace(myNamespace)
+        .namespace(gamesVM.selectedType == .featured ? namespaceFeatured : namespaceFavorites)
     }
     
     var home: some View {
@@ -53,7 +53,9 @@ struct HomeView: View {
                     }
                     
                     GamesCarousel(type: .featured)
+                        .namespace(namespaceFeatured)
                     GamesCarousel(type: .favorites)
+                        .namespace(namespaceFavorites)
 
                 }
             }
