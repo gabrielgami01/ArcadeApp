@@ -79,6 +79,15 @@ struct TestInteractor: DataInteractor {
         let challenges: [Challenge] = [.test, .test2, .test3, .test4, .test5]
         return challenges.filter{ $0.type.rawValue == type }
     }
+    
+    func getGameRanking(id: UUID, page: Int) async throws -> [RankingScore] {
+        let scores: [RankingScore] = [.test, .test2, .test3, .test4]
+        return scores.sorted { $0.score > $1.score}
+    }
+}
+
+extension User {
+    static let test = User(id: UUID(), email: "gabrielgmcv01@gmail.com", username: "gabrielgm", fullName: "gabriel", biography: "De locos")
 }
 
 extension Game {
@@ -130,7 +139,7 @@ extension Score {
     static let test2 = Score(id: UUID(),
                             score: 5500,
                             state: .verified,
-                             date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 1, hour: 22, minute: 30)) ?? .now)
+                            date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 1, hour: 22, minute: 30)) ?? .now)
     static let test3 = Score(id: UUID(),
                             score: 6000,
                             state: .verified,
@@ -142,7 +151,7 @@ extension Score {
     static let test5 = Score(id: UUID(),
                             score: 5323,
                             state: .verified,
-                             date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 22, hour: 14, minute: 02)) ?? .now)
+                            date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 22, hour: 14, minute: 02)) ?? .now)
 }
 
 extension Challenge {
@@ -186,6 +195,21 @@ extension Challenge {
     
 }
 
-extension User {
-    static let test = User(id: UUID(), email: "gabrielgmcv01@gmail.com", username: "gabrielgm", fullName: "gabriel", biography: "De locos")
+extension RankingScore {
+    static let test = RankingScore(id: UUID(),
+                                   score: 5500,
+                                   date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 1, hour: 22, minute: 30)) ?? .now,
+                                   user: User.test.username)
+    static let test2 = RankingScore(id: UUID(),
+                                   score: 6000,
+                                   date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 5, hour: 15, minute: 22)) ?? .now,
+                                   user: User.test.username)
+    static let test3 = RankingScore(id: UUID(),
+                                   score: 4440,
+                                   date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 10, hour: 16, minute: 33)) ?? .now,
+                                   user: User.test.username)
+    static let test4 = RankingScore(id: UUID(),
+                                   score: 5323,
+                                   date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 22, hour: 14, minute: 02)) ?? .now,
+                                   user: User.test.username)
 }

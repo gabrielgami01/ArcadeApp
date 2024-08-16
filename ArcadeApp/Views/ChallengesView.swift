@@ -11,13 +11,7 @@ struct ChallengesView: View {
         
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                HStack(alignment: .firstTextBaseline, spacing: 20) {
-                    BackButton {
-                        dismiss()
-                    }
-                    Text("Challenges")
-                        .font(.customLargeTitle)
-                }
+                LabeledHeader(title: "Challenges")
                 .padding(.horizontal)
                 
                 ScrollView(.horizontal) {
@@ -47,6 +41,9 @@ struct ChallengesView: View {
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(challengesVM.challenges) { challenge in
                         ChallengeCard(challenge: challenge)
+                            .onAppear {
+                                challengesVM.isLastItem(challenge)
+                            }
                     }
                 }
                 .padding(.horizontal)

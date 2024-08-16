@@ -71,7 +71,7 @@ final class GamesVM {
         }
     }
     
-    func isLastItem(game: Game) {
+    func isLastItem(_ game: Game) {
         if games.last?.id == game.id {
             page += 1
             getGames(console: activeConsole)

@@ -5,13 +5,13 @@ enum HomePage: String, Identifiable, CaseIterable {
     case challenges = "Challenges"
     case rankings = "Rankings"
     case forum = "Forum"
+    case profile = "Profile"
     
     var id: Self { self }
 }
 
 enum HomeScrollType: String, Identifiable, CaseIterable {
-    case featured
-    case favorites
+    case featured, favorites
     
     var id: Self { self }
 }
@@ -25,11 +25,7 @@ enum PickerOptions: String, Identifiable, CaseIterable {
 
 
 enum SignupFields {
-    case fullName
-    case email
-    case username
-    case password
-    case repeatPassword
+    case fullName, email, username, password, repeatPassword
     
     mutating func prev() {
         switch self {
@@ -63,12 +59,11 @@ enum SignupFields {
 }
 
 enum TextFieldType {
-    case simple
-    case secured
-    case search
+    case simple, secured, search
 }
 
 enum RatingMode {
-    case display
-    case rate
+    case display, rate
 }
+
+

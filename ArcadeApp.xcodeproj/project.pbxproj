@@ -51,6 +51,8 @@
 		FC4FCA0C2C627CED004C12C4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4FCA0B2C627CED004C12C4 /* Color.swift */; };
 		FC4FCA102C62B0BA004C12C4 /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4FCA0F2C62B0BA004C12C4 /* CustomPicker.swift */; };
 		FC54459E2C3801F5001B26EF /* AddReviewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54459D2C3801F5001B26EF /* AddReviewVM.swift */; };
+		FC573A5F2C6F984300F56268 /* RankingScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC573A5E2C6F984300F56268 /* RankingScoreCell.swift */; };
+		FC573A612C6F98FC00F56268 /* LabeledHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC573A602C6F98FC00F56268 /* LabeledHeader.swift */; };
 		FC6F73E42C563E8E00E34AF3 /* ShimmerEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F73E32C563E8E00E34AF3 /* ShimmerEffect.swift */; };
 		FC6F73E82C564C2900E34AF3 /* FontStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F73E72C564C2900E34AF3 /* FontStyles.swift */; };
 		FC6F73EA2C5650AA00E34AF3 /* VT323.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC6F73E92C5650AA00E34AF3 /* VT323.ttf */; };
@@ -71,6 +73,9 @@
 		FCA5191D2C3729EE001CCF54 /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA5191C2C3729EE001CCF54 /* ReviewModel.swift */; };
 		FCACFBC92C638A750065805E /* SearchableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCACFBC82C638A750065805E /* SearchableView.swift */; };
 		FCB0D5EF2C5810D000039654 /* CustomUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB0D5EE2C5810D000039654 /* CustomUnavailableView.swift */; };
+		FCB2CD0E2C6BD67E001D5751 /* RankingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB2CD0D2C6BD67E001D5751 /* RankingsView.swift */; };
+		FCB2CD102C6BE494001D5751 /* RankingsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB2CD0F2C6BE494001D5751 /* RankingsVM.swift */; };
+		FCB2CD122C6BE7D4001D5751 /* GameRankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB2CD112C6BE7D4001D5751 /* GameRankingView.swift */; };
 		FCB699882C64C7B300A4D638 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB699872C64C7B300A4D638 /* SearchCell.swift */; };
 		FCC036032C480B6400DDBC90 /* GameScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC036022C480B6400DDBC90 /* GameScoresView.swift */; };
 		FCC046692C52B4D1003FAC6A /* ScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC046682C52B4D1003FAC6A /* ScoreCell.swift */; };
@@ -155,6 +160,8 @@
 		FC4FCA0B2C627CED004C12C4 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		FC4FCA0F2C62B0BA004C12C4 /* CustomPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicker.swift; sourceTree = "<group>"; };
 		FC54459D2C3801F5001B26EF /* AddReviewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewVM.swift; sourceTree = "<group>"; };
+		FC573A5E2C6F984300F56268 /* RankingScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingScoreCell.swift; sourceTree = "<group>"; };
+		FC573A602C6F98FC00F56268 /* LabeledHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledHeader.swift; sourceTree = "<group>"; };
 		FC6F73E32C563E8E00E34AF3 /* ShimmerEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerEffect.swift; sourceTree = "<group>"; };
 		FC6F73E72C564C2900E34AF3 /* FontStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyles.swift; sourceTree = "<group>"; };
 		FC6F73E92C5650AA00E34AF3 /* VT323.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = VT323.ttf; sourceTree = "<group>"; };
@@ -174,6 +181,9 @@
 		FCA5191C2C3729EE001CCF54 /* ReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
 		FCACFBC82C638A750065805E /* SearchableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableView.swift; sourceTree = "<group>"; };
 		FCB0D5EE2C5810D000039654 /* CustomUnavailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUnavailableView.swift; sourceTree = "<group>"; };
+		FCB2CD0D2C6BD67E001D5751 /* RankingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingsView.swift; sourceTree = "<group>"; };
+		FCB2CD0F2C6BE494001D5751 /* RankingsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingsVM.swift; sourceTree = "<group>"; };
+		FCB2CD112C6BE7D4001D5751 /* GameRankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRankingView.swift; sourceTree = "<group>"; };
 		FCB699872C64C7B300A4D638 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		FCC036022C480B6400DDBC90 /* GameScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScoresView.swift; sourceTree = "<group>"; };
 		FCC046682C52B4D1003FAC6A /* ScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCell.swift; sourceTree = "<group>"; };
@@ -364,6 +374,14 @@
 			name = Challenges;
 			sourceTree = "<group>";
 		};
+		FC573A5D2C6F982A00F56268 /* Rankings */ = {
+			isa = PBXGroup;
+			children = (
+				FC573A5E2C6F984300F56268 /* RankingScoreCell.swift */,
+			);
+			name = Rankings;
+			sourceTree = "<group>";
+		};
 		FC6F73EF2C56CBEA00E34AF3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -377,6 +395,7 @@
 				FC4FCA092C62345F004C12C4 /* BackButton.swift */,
 				FC4FCA0F2C62B0BA004C12C4 /* CustomPicker.swift */,
 				FCD1FCB52C669B7B0060E682 /* SheetToolbar.swift */,
+				FC573A602C6F98FC00F56268 /* LabeledHeader.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -402,6 +421,15 @@
 				FCE336CE2C67C44E009E30AB /* JWTDecoder.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FCB2CD0C2C6BD65F001D5751 /* Rankings */ = {
+			isa = PBXGroup;
+			children = (
+				FCB2CD0D2C6BD67E001D5751 /* RankingsView.swift */,
+				FCB2CD112C6BE7D4001D5751 /* GameRankingView.swift */,
+			);
+			name = Rankings;
 			sourceTree = "<group>";
 		};
 		FCC0466A2C52B571003FAC6A /* Review */ = {
@@ -440,6 +468,7 @@
 				FCC0466A2C52B571003FAC6A /* Review */,
 				FCC724582C525C88008C3BC1 /* Score */,
 				FC2E950E2C61616A00393C39 /* Challenges */,
+				FC573A5D2C6F982A00F56268 /* Rankings */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -454,6 +483,7 @@
 				FC54459D2C3801F5001B26EF /* AddReviewVM.swift */,
 				FC35A2382C3EE1500075E7B4 /* AddScoreVM.swift */,
 				FCC53B2F2C5F915900015AC9 /* ChallengesVM.swift */,
+				FCB2CD0F2C6BE494001D5751 /* RankingsVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -468,6 +498,7 @@
 				FCCD736C2C2D67550056036E /* Users */,
 				FCCD736D2C2D67750056036E /* Search */,
 				FC76F23D2C5C26DD0070D970 /* Challenges */,
+				FCB2CD0C2C6BD65F001D5751 /* Rankings */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -664,6 +695,7 @@
 				FC6F73E42C563E8E00E34AF3 /* ShimmerEffect.swift in Sources */,
 				FC2E95122C6161B400393C39 /* ChallengeBackCard.swift in Sources */,
 				FC76F23F2C5C26E90070D970 /* ChallengesView.swift in Sources */,
+				FCB2CD102C6BE494001D5751 /* RankingsVM.swift in Sources */,
 				FC4FCA102C62B0BA004C12C4 /* CustomPicker.swift in Sources */,
 				FC2FD07F2C43C27D0054CD43 /* ConsoleButtonStyle.swift in Sources */,
 				FC8438FA2C4D219F00434179 /* AddScoreView.swift in Sources */,
@@ -674,6 +706,7 @@
 				FCC7245C2C525EF1008C3BC1 /* UIImage.swift in Sources */,
 				FC2FD0872C43E3C60054CD43 /* MainTabView.swift in Sources */,
 				FC14731E2C5110CC00B1BE27 /* SearchView.swift in Sources */,
+				FC573A612C6F98FC00F56268 /* LabeledHeader.swift in Sources */,
 				FC2FD08F2C4403F50054CD43 /* EnumsModel.swift in Sources */,
 				FCB699882C64C7B300A4D638 /* SearchCell.swift in Sources */,
 				FC2E95102C61619400393C39 /* ChallengeFrontCard.swift in Sources */,
@@ -693,6 +726,7 @@
 				FC2E95162C61648D00393C39 /* GameCoverCard.swift in Sources */,
 				FC4FCA0C2C627CED004C12C4 /* Color.swift in Sources */,
 				FC54459E2C3801F5001B26EF /* AddReviewVM.swift in Sources */,
+				FCB2CD122C6BE7D4001D5751 /* GameRankingView.swift in Sources */,
 				FC6F73E82C564C2900E34AF3 /* FontStyles.swift in Sources */,
 				FC6F73EE2C56CAF900E34AF3 /* GameCoverBack.swift in Sources */,
 				FCD1FCB62C669B7B0060E682 /* SheetToolbar.swift in Sources */,
@@ -701,6 +735,7 @@
 				FC0E31CF2C46F1C6004EB339 /* ModelViews.swift in Sources */,
 				FC0E31BD2C46DE24004EB339 /* GameCell.swift in Sources */,
 				FC22BAA02C2595FF002DFAA4 /* UserVM.swift in Sources */,
+				FCB2CD0E2C6BD67E001D5751 /* RankingsView.swift in Sources */,
 				FC22BA602C2590EF002DFAA4 /* ArcadeAppApp.swift in Sources */,
 				FCCE05632C2B36ED00B0D2CD /* DataPreview.swift in Sources */,
 				FCC7245A2C525CA8008C3BC1 /* ScoreImage.swift in Sources */,
@@ -713,6 +748,7 @@
 				FCA519172C36C191001CCF54 /* UIDevice.swift in Sources */,
 				FC22BA952C2593E8002DFAA4 /* URL.swift in Sources */,
 				FC0E31B42C46879B004EB339 /* ProfileView.swift in Sources */,
+				FC573A5F2C6F984300F56268 /* RankingScoreCell.swift in Sources */,
 				FC2E95142C61634E00393C39 /* ChallengeCard.swift in Sources */,
 				FC0E31AA2C467FB4004EB339 /* AddReviewView.swift in Sources */,
 				FCE336CF2C67C44E009E30AB /* JWTDecoder.swift in Sources */,

@@ -37,4 +37,11 @@ final class ChallengesVM {
             }
         }
     }
+    
+    func isLastItem(_ challenge: Challenge) {
+        if challenges.last?.id == challenge.id {
+            page += 1
+            getChallenges(type: activeType)
+        }
+    }
 }

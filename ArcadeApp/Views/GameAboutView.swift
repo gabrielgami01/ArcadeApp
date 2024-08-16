@@ -39,7 +39,6 @@ struct GameAboutView: View {
                     LazyVStack(alignment: .leading) {
                         ForEach(detailsVM.reviews) { review in
                             ReviewCell(review: review)
-                            Divider()
                         }
                     }
                 } else {

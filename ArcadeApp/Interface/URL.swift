@@ -50,6 +50,11 @@ extension URL {
     static func isChallengeCompleted(id: UUID) -> URL {
         challenges.appending(path: id.uuidString)
     }
+    
+    static let rankings = api.appending(path: "rankings")
+    static func getGameRanking(id: UUID, page: Int) -> URL {
+        rankings.appending(path: id.uuidString).appending(queryItems: [.page(page), .per()])
+    }
 }
 
 extension URLQueryItem {

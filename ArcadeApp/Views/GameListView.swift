@@ -61,7 +61,7 @@ struct GameListView: View {
                         }
                         .buttonStyle(.plain)
                         .onAppear {
-                            gamesVM.isLastItem(game: game)
+                            gamesVM.isLastItem(game)
                         }
                     }
                 }

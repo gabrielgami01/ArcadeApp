@@ -22,6 +22,8 @@ protocol DataInteractor {
     
     func getAllChallenges(page: Int) async throws -> [Challenge]
     func getChallengesByType(type: String, page: Int) async throws -> [Challenge]
+    
+    func getGameRanking(id: UUID, page: Int) async throws -> [RankingScore]
 }
 
 struct Network: DataInteractor, NetworkJSONInteractor {
@@ -154,6 +156,12 @@ struct Network: DataInteractor, NetworkJSONInteractor {
         
         return challenges
     }
-
     //CHALLENGES
+    
+    //RANKINGS
+    func getGameRanking(id: UUID, page: Int) async throws -> [RankingScore] {
+        try await getJSON(request: .get(url: .getGameRanking(id: id, page: page), token: getToken()), type: RankingScorePageDTO.self).items
+    }
+    //RANKINGS
+    
 }

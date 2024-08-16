@@ -4,8 +4,7 @@ struct HomeView: View {
     @Environment(UserVM.self) private var userVM
     @Environment(GamesVM.self) private var gamesVM
     
-    @State private var showProfile = false
-    @State private var showChallenges = false
+    @State private var selectedPage: HomePage?
     
     @Namespace private var myNamespace
     @Namespace private var another
@@ -33,9 +32,7 @@ struct HomeView: View {
                                 .font(.customLargeTitle)
                         }
                         Spacer()
-                        Button {
-                            showProfile.toggle()
-                        } label: {
+                        NavigationLink(value: HomePage.profile) {
                             Image(systemName: "person.crop.circle")
                                 .resizable()
                                 .scaledToFit()
@@ -47,10 +44,10 @@ struct HomeView: View {
                     
                     ScrollView(.horizontal) {
                         LazyHStack(spacing: 15) {
-                            PageButton(state: $showChallenges, page: .challenges, image: "trophy", color: .green)
-                            PageButton(state: .constant(false), page: .rankings, image: "rosette", color: .orange)
-                            PageButton(state: .constant(false), page: .forum, image: "message", color: .red)
-                            PageButton(state: .constant(false), page: .friends, image: "person.2", color: .purple)
+                            PageButton(selectedPage: $selectedPage, page: .challenges, image: "trophy", color: .green)
+                            PageButton(selectedPage: $selectedPage, page: .rankings, image: "rosette", color: .orange)
+                            PageButton(selectedPage: $selectedPage, page: .forum, image: "message", color: .red)
+                            PageButton(selectedPage: $selectedPage, page: .friends, image: "person.2", color: .purple)
                         }
                         .safeAreaPadding()
                     }
@@ -60,11 +57,20 @@ struct HomeView: View {
 
                 }
             }
-            .navigationDestination(isPresented: $showChallenges) {
-                ChallengesView()
+            .navigationDestination(for: HomePage.self) { page in
+                switch page {
+                    case .challenges:
+                        ChallengesView()
+                    case .rankings:
+                        RankingsView()
+                    case .forum, .friends:
+                        EmptyView() // Rutas para otras vistas
+                    case .profile:
+                        ProfileView()
+                }
             }
-            .navigationDestination(isPresented: $showProfile) {
-                ProfileView()
+            .navigationDestination(for: Game.self) { game in
+                GameRankingView(rankingVM: RankingsVM(game: game))
             }
             .scrollIndicators(.hidden)
             .scrollBounceBehavior(.basedOnSize)
