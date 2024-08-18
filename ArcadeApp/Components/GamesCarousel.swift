@@ -35,13 +35,6 @@ struct GamesCarousel: View {
                                         .multilineTextAlignment(.center)
                                         .matchedGeometryEffect(id: "\(game.id)/NAME", in: namespace)
                                 }
-                                .scrollTransition(.animated, axis: .horizontal) { content, phase in
-                                    content
-                                        .opacity(phase.isIdentity ? 1.0 : 0.4)
-                                        .scaleEffect(phase.isIdentity ? 1.0 : 0.8)
-                                    //      .opacity(phase.value < 0 ? 0.4 : 1)
-                                    //      .scaleEffect(phase.value < 0 ? 0.8 : 1)
-                                }
                             }
                         }
                     }

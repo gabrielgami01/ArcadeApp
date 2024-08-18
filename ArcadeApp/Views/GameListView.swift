@@ -10,7 +10,7 @@ struct GameListView: View {
         @Bindable var searchBVM = searchVM
         
         ScrollView {
-            VStack(alignment: .leading, spacing: 15) {
+            VStack(alignment: .leading, spacing: 0) {
                 Button {
                     searchVM.showSearch.toggle()
                 } label: {
@@ -62,6 +62,11 @@ struct GameListView: View {
                         .buttonStyle(.plain)
                         .onAppear {
                             gamesVM.isLastItem(game)
+                        }
+                        .scrollTransition(.animated, axis: .vertical) { content, phase in
+                            content
+                                .opacity(phase.isIdentity ? 1.0 : 0.4)
+                                .scaleEffect(phase.isIdentity ? 1.0 : 0.9)
                         }
                     }
                 }
