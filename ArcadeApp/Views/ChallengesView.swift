@@ -12,31 +12,9 @@ struct ChallengesView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 LabeledHeader(title: "Challenges")
-                .padding(.horizontal)
+                    .padding(.horizontal)
                 
-                ScrollView(.horizontal) {
-                    LazyHStack(spacing: 10) {
-                        ForEach(ChallengeType.allCases) { type in
-                            if let namespace{
-                                Button {
-                                    withAnimation(.interactiveSpring(
-                                        response: 0.5, dampingFraction: 0.7, blendDuration: 0.7)
-                                    ) {
-                                        challengesVM.activeType = type
-                                    }
-                                } label: {
-                                    Text(type.rawValue.capitalized)
-                                        .font(.customCaption2)
-                                }
-                                .buttonStyle(ConsoleButtonStyle(isActive: challengesVM.activeType == type, namespace: namespace))
-                            }
-                        }
-                    }
-                    .frame(height: 30)
-                    .safeAreaPadding(.horizontal)
-                    .scrollTargetLayout()
-                }
-                .scrollTargetBehavior(.viewAligned)
+                ScrollSelector(activeSelection: $challengesVM.activeType) { $0.rawValue.capitalized }
             
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(challengesVM.challenges) { challenge in

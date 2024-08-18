@@ -26,31 +26,8 @@ struct GameListView: View {
                 }
                 .buttonStyle(TextFieldButton())
                 
-                // ConsoleTags
-                ScrollView(.horizontal) {
-                    LazyHStack(spacing: 10) {
-                        ForEach(Console.allCases) { console in
-                            if let namespace{
-                                Button {
-                                    withAnimation(.interactiveSpring(
-                                        response: 0.5, dampingFraction: 0.7, blendDuration: 0.7)
-                                    ) {
-                                        gamesVM.activeConsole = console
-                                    }
-                                } label: {
-                                    Text(console.rawValue)
-                                        .font(.customCaption2)
-                                }
-                                .buttonStyle(ConsoleButtonStyle(isActive: gamesVM.activeConsole == console, namespace: namespace))
-                            }
-                        }
-                    }
-                    .frame(height: 30)
-                    .safeAreaPadding(.horizontal)
-                    .scrollTargetLayout()
-                }
-                .scrollTargetBehavior(.viewAligned)
-                //GameCards
+                ScrollSelector(activeSelection: $gamesBVM.activeConsole) { $0.rawValue }
+                
                 LazyVStack(spacing: 20) {
                     ForEach(gamesVM.games) { game in
                         Button {
@@ -60,13 +37,13 @@ struct GameListView: View {
                                 .padding(.leading)
                         }
                         .buttonStyle(.plain)
-                        .onAppear {
-                            gamesVM.isLastItem(game)
-                        }
                         .scrollTransition(.animated, axis: .vertical) { content, phase in
                             content
                                 .opacity(phase.isIdentity ? 1.0 : 0.4)
                                 .scaleEffect(phase.isIdentity ? 1.0 : 0.9)
+                        }
+                        .onAppear {
+                            gamesVM.isLastItem(game)
                         }
                     }
                 }
@@ -91,4 +68,5 @@ struct GameListView: View {
         .environment(SearchVM(interactor: TestInteractor()))
         .namespace(Namespace().wrappedValue)
 }
+
 
