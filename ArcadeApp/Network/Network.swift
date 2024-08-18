@@ -66,7 +66,7 @@ struct Network: DataInteractor, NetworkJSONInteractor {
     }
     
     func editUserAbout(about: EditUserAboutDTO) async throws {
-        try await post(request: .post(url: .editUserAbout, post: about, method: .put, token: getToken()))
+        try await post(request: .post(url: .updateUserAbout, post: about, method: .put, token: getToken()))
     }
     //END USERS
     
@@ -88,7 +88,7 @@ struct Network: DataInteractor, NetworkJSONInteractor {
     //HOME
     func getFeaturedFavoriteGames() async throws -> (featured: [Game], favorites: [Game]) {
         async let featuredRequest = getJSON(request: .get(url: .getFeaturedGames, token: getToken()), type: [GameDTO].self).map(\.toGame)
-        async let favoritesRequest = getJSON(request: .get(url: .favoriteGames, token: getToken()), type: [GameDTO].self).map(\.toGame)
+        async let favoritesRequest = getJSON(request: .get(url: .getUserFavoriteGames, token: getToken()), type: [GameDTO].self).map(\.toGame)
         
         return try await (featuredRequest, favoritesRequest)
     }
@@ -105,28 +105,28 @@ struct Network: DataInteractor, NetworkJSONInteractor {
     
     func addFavoriteGame(id: UUID) async throws {
         let favoriteGameDTO = FavoriteGameDTO(id: id)
-        try await post(request: .post(url: .favoriteGames, post: favoriteGameDTO, token: getToken()), status: 201)
+        try await post(request: .post(url: .addFavoriteGame, post: favoriteGameDTO, token: getToken()), status: 201)
     }
     
     func removeFavoriteGame(id: UUID) async throws {
         let favoriteGameDTO = FavoriteGameDTO(id: id)
-        try await post(request: .post(url: .favoriteGames, post: favoriteGameDTO, method: .delete, token: getToken()))
+        try await post(request: .post(url: .deleteFavoriteGame, post: favoriteGameDTO, method: .delete, token: getToken()))
     }
 
     func addReview(review: CreateReviewDTO) async throws {
-        try await post(request: .post(url: .reviews, post: review, token: getToken()), status: 201)
+        try await post(request: .post(url: .addReview, post: review, token: getToken()), status: 201)
     }
     
    
     func addScore(score: CreateScoreDTO) async throws {
-        try await post(request: .post(url: .scores, post: score, token: getToken()), status: 201)
+        try await post(request: .post(url: .addScore, post: score, token: getToken()), status: 201)
     }
     
     //DETAILS
     
     //CHALLENGES
     func getAllChallenges(page: Int) async throws -> [Challenge] {
-        let challengesDTO = try await getJSON(request: .get(url: .getAllChallenges(page: page), token: getToken()),type: ChallengePageDTO.self).items
+        let challengesDTO = try await getJSON(request: .get(url: .getAllChallenges, token: getToken()), type: [ChallengeDTO].self)
         
         var challenges: [Challenge] = []
         challenges.reserveCapacity(challengesDTO.count)
@@ -142,7 +142,7 @@ struct Network: DataInteractor, NetworkJSONInteractor {
     }
     
     func getChallengesByType(type: String, page: Int) async throws -> [Challenge] {
-        let challengesDTO = try await getJSON(request: .get(url: .getChallengesByType(type: type, page: page), token: getToken()),type: ChallengePageDTO.self).items
+        let challengesDTO = try await getJSON(request: .get(url: .getChallengesByType(type: type, page: page), token: getToken()),type: [ChallengeDTO].self)
         
         var challenges: [Challenge] = []
         challenges.reserveCapacity(challengesDTO.count)

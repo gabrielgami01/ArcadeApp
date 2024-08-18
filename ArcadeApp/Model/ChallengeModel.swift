@@ -1,11 +1,6 @@
 import Foundation
 import SwiftUI
 
-struct ChallengePageDTO: Codable {
-    let items: [ChallengeDTO]
-    let metadata: Metadata
-}
-
 struct ChallengeDTO: Codable {
     let id: UUID
     let name: String
