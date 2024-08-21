@@ -19,9 +19,6 @@ struct ChallengesView: View {
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(challengesVM.challenges) { challenge in
                         ChallengeCard(challenge: challenge)
-                            .onAppear {
-                                challengesVM.isLastItem(challenge)
-                            }
                     }
                 }
                 .padding(.horizontal)
@@ -39,9 +36,7 @@ struct ChallengesView: View {
 }
 
 #Preview {
-    NavigationStack {
-        ChallengesView(challengesVM: ChallengesVM(interactor: TestInteractor()))
-            .namespace(Namespace().wrappedValue)
-    }
+    ChallengesView(challengesVM: ChallengesVM(interactor: TestInteractor()))
+        .namespace(Namespace().wrappedValue)
 }
 

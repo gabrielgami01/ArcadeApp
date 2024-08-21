@@ -9,7 +9,7 @@ protocol DataInteractor {
     func editUserAbout(about: EditUserAboutDTO) async throws
     
     func getAllGames(page: Int) async throws -> [Game]
-    func getGamesByConsole(name: String, page: Int) async throws -> [Game]
+    func getGamesByConsole(_ console: Console, page: Int) async throws -> [Game]
     func searchGame(name: String, page: Int) async throws -> [Game]
     
     func getFeaturedFavoriteGames() async throws -> (featured: [Game], favorites: [Game]) 
@@ -20,8 +20,8 @@ protocol DataInteractor {
     func addReview(review: CreateReviewDTO) async throws
     func addScore(score: CreateScoreDTO) async throws
     
-    func getAllChallenges(page: Int) async throws -> [Challenge]
-    func getChallengesByType(type: String, page: Int) async throws -> [Challenge]
+    func getAllChallenges() async throws -> [Challenge]
+    func getChallengesByType(_ type: ChallengeType) async throws -> [Challenge]
     
     func getGameRanking(id: UUID, page: Int) async throws -> [RankingScore]
 }
@@ -75,8 +75,8 @@ struct Network: DataInteractor, NetworkJSONInteractor {
         try await getJSON(request: .get(url: .getAllGames(page: page), token: getToken()), type: GamePageDTO.self).items
     }
     
-    func getGamesByConsole(name: String, page: Int) async throws -> [Game] {
-        try await getJSON(request: .get(url: .getGamesByConsole(name: name, page: page), token: getToken()), type: GamePageDTO.self).items
+    func getGamesByConsole(_ console: Console, page: Int) async throws -> [Game] {
+        try await getJSON(request: .get(url: .getGamesByConsole(name: console.rawValue, page: page), token: getToken()), type: GamePageDTO.self).items
     }
     
     func searchGame(name: String, page: Int) async throws -> [Game] {
@@ -125,7 +125,7 @@ struct Network: DataInteractor, NetworkJSONInteractor {
     //DETAILS
     
     //CHALLENGES
-    func getAllChallenges(page: Int) async throws -> [Challenge] {
+    func getAllChallenges() async throws -> [Challenge] {
         let challengesDTO = try await getJSON(request: .get(url: .getAllChallenges, token: getToken()), type: [ChallengeDTO].self)
         
         var challenges: [Challenge] = []
@@ -141,8 +141,8 @@ struct Network: DataInteractor, NetworkJSONInteractor {
         return challenges
     }
     
-    func getChallengesByType(type: String, page: Int) async throws -> [Challenge] {
-        let challengesDTO = try await getJSON(request: .get(url: .getChallengesByType(type: type, page: page), token: getToken()),type: [ChallengeDTO].self)
+    func getChallengesByType(_ type: ChallengeType) async throws -> [Challenge] {
+        let challengesDTO = try await getJSON(request: .get(url: .getChallengesByType(type: type.rawValue), token: getToken()),type: [ChallengeDTO].self)
         
         var challenges: [Challenge] = []
         challenges.reserveCapacity(challengesDTO.count)

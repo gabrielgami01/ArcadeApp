@@ -46,7 +46,7 @@ extension URL {
    
     static let challenges = api.appending(path: "challenges")
     static let getAllChallenges = challenges.appending(path: "list")
-    static func getChallengesByType(type: String, page: Int) -> URL {
+    static func getChallengesByType(type: String) -> URL {
         challenges.appending(path: "byType").appending(queryItems: [.type(type)])
     }
     static func isChallengeCompleted(id: UUID) -> URL {

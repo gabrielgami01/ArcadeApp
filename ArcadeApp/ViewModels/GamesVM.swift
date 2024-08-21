@@ -49,7 +49,7 @@ final class GamesVM {
                 if console == .all {
                     self.games += try await interactor.getAllGames(page: page)
                 } else {
-                    self.games += try await interactor.getGamesByConsole(name: console.rawValue, page: page)
+                    self.games += try await interactor.getGamesByConsole(console, page: page)
                 }
             } catch {
                 self.errorMsg = error.localizedDescription

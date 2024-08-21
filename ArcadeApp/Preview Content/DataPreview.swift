@@ -35,8 +35,8 @@ struct TestInteractor: DataInteractor {
         try loadData(file: "games")
     }
     
-    func getGamesByConsole(name: String, page: Int) async throws -> [Game] {
-        try loadData(file: "games").filter { $0.console.rawValue == name }
+    func getGamesByConsole(_ console: Console, page: Int) async throws -> [Game] {
+        try loadData(file: "games").filter { $0.console == console }
     }
     
     func searchGame(name: String, page: Int) async throws -> [Game] {
@@ -71,13 +71,13 @@ struct TestInteractor: DataInteractor {
         
     }
     
-    func getAllChallenges(page: Int) async throws -> [Challenge] {
+    func getAllChallenges() async throws -> [Challenge] {
         return [.test, .test2, .test3, .test4, .test5].sorted { $0.game < $1.game}
     }
     
-    func getChallengesByType(type: String, page: Int) async throws -> [Challenge] {
+    func getChallengesByType(_ type: ChallengeType) async throws -> [Challenge] {
         let challenges: [Challenge] = [.test, .test2, .test3, .test4, .test5]
-        return challenges.filter{ $0.type.rawValue == type }
+        return challenges.filter{ $0.type == type }
     }
     
     func getGameRanking(id: UUID, page: Int) async throws -> [RankingScore] {

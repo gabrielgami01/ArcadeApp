@@ -1,10 +1,8 @@
 import Foundation
 
 enum HomePage: String, Identifiable, CaseIterable {
-    case friends = "Friends"
     case challenges = "Challenges"
     case rankings = "Rankings"
-    case forum = "Forum"
     case profile = "Profile"
     
     var id: Self { self }

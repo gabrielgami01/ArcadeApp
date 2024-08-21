@@ -2,7 +2,7 @@ import SwiftUI
 
 fileprivate struct Shimmer: ViewModifier {
     let animation: Animation = Animation.linear(duration: 2).repeatForever(autoreverses: false)
-    let gradient: Gradient = Gradient(colors: [Color.white.opacity(0.0), Color.white, Color.white.opacity(0.0)])
+    let gradient: Gradient = Gradient(colors: [.clear, .white, .clear])
     let active: Bool
     @State private var shimmerOffset: CGFloat = -1
     
@@ -21,18 +21,14 @@ fileprivate struct Shimmer: ViewModifier {
                         )
                 }
                 .onAppear {
-                    startShimmer()
+                    if active {
+                        withAnimation(animation) { shimmerOffset = 2 }
+                    }
                 }
             )
     }
     
-    private func startShimmer() {
-        if active {
-            withAnimation(animation) {
-                shimmerOffset = 2
-            }
-        }
-    }
+
 }
 
 extension View {
@@ -40,3 +36,4 @@ extension View {
         self.modifier(Shimmer(active: active))
     }
 }
+

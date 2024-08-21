@@ -5,14 +5,7 @@ final class ChallengesVM {
     let interactor: DataInteractor
     
     var challenges: [Challenge] = []
-    var activeType: ChallengeType = .all {
-        didSet {
-            activeType != oldValue ? challenges.removeAll() : nil
-            page = 1
-        }
-    }
-    
-    var page = 1
+    var activeType: ChallengeType = .all
     
     var errorMsg = ""
     var showAlert = false
@@ -26,9 +19,9 @@ final class ChallengesVM {
         Task {
             do {
                 if type == .all {
-                    self.challenges += try await interactor.getAllChallenges(page: page)
+                    self.challenges = try await interactor.getAllChallenges()
                 } else {
-                    self.challenges += try await interactor.getChallengesByType(type: type.rawValue, page: page)
+                    self.challenges = try await interactor.getChallengesByType(type)
                 }
             } catch {
                 self.errorMsg = error.localizedDescription
@@ -37,11 +30,5 @@ final class ChallengesVM {
             }
         }
     }
-    
-    func isLastItem(_ challenge: Challenge) {
-        if challenges.last?.id == challenge.id {
-            page += 1
-            getChallenges(type: activeType)
-        }
-    }
+
 }
