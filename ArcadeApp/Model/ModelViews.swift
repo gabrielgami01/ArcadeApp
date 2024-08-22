@@ -64,4 +64,7 @@ enum RatingMode {
     case display, rate
 }
 
-
+enum CardAction: String {
+    case add
+    case update
+}

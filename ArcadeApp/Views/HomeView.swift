@@ -70,6 +70,6 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
-        .environment(UserVM())
+        .environment(UserVM(interactor: TestInteractor()))
         .environment(GamesVM(interactor: TestInteractor()))
 }

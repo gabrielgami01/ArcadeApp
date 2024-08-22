@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ChallengeFrontCard: View {
     let challenge: Challenge
+    let showCheck: Bool
     
     var body: some View {
         let color = challenge.colorForChallenge()
@@ -20,13 +21,12 @@ struct ChallengeFrontCard: View {
                 .symbolVariant(.fill)
                 .scaledToFit()
                 .frame(height: 75)
-                .shimmerEffect(active: true)
         }
         .frame(width: 130, height: 150)
         .padding()
         .customCard(borderColor: color, cornerRadius: 50)
         .overlay(alignment: .topTrailing) {
-            if challenge.completed {
+            if showCheck {
                 Image(systemName: "checkmark")
                     .symbolVariant(.circle)
                     .font(.largeTitle)
@@ -38,5 +38,5 @@ struct ChallengeFrontCard: View {
 }
 
 #Preview {
-    ChallengeFrontCard(challenge: .test)
+    ChallengeFrontCard(challenge: .test, showCheck: true)
 }

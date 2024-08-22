@@ -82,7 +82,7 @@ struct SignupView: View {
 #Preview {
     NavigationStack {
         SignupView()
-            .environment(UserVM())
+            .environment(UserVM(interactor: TestInteractor()))
     }
 }
 

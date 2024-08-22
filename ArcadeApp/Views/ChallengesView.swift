@@ -24,6 +24,9 @@ struct ChallengesView: View {
                 .padding(.horizontal)
             }
         }
+        .onAppear {
+            challengesVM.getChallenges()
+        }
         .animation(.easeInOut, value: challengesVM.challenges)
         .onChange(of: challengesVM.activeType) { oldValue, newValue in
             challengesVM.getChallenges(type: newValue)

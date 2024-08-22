@@ -22,6 +22,10 @@ protocol DataInteractor {
     
     func getAllChallenges() async throws -> [Challenge]
     func getChallengesByType(_ type: ChallengeType) async throws -> [Challenge]
+    func getCompletedChallenges() async throws -> [Challenge]
+    func getActiveEmblems() async throws -> [Emblem]
+    func addEmblem(emblem: CreateEmblemDTO) async throws
+    func deleteEmblem(emblem: CreateEmblemDTO) async throws
     
     func getGameRanking(id: UUID, page: Int) async throws -> [RankingScore]
 }
@@ -155,6 +159,23 @@ struct Network: DataInteractor, NetworkJSONInteractor {
         }
         
         return challenges
+    }
+    
+    func getCompletedChallenges() async throws -> [Challenge] {
+        let challengesDTO = try await getJSON(request: .get(url: .getCompletedChallenges, token: getToken()), type: [ChallengeDTO].self)
+        let challenges = challengesDTO.map {$0.toChallenge(completed: true)}
+        
+        return challenges
+    }
+    
+    func getActiveEmblems() async throws -> [Emblem] {
+        try await getJSON(request: .get(url: .getActiveEmblems, token: getToken()), type: [Emblem].self)
+    }
+    func addEmblem(emblem: CreateEmblemDTO) async throws {
+        try await post(request: .post(url: .addEmblem, post: emblem, token: getToken()), status: 201)
+    }
+    func deleteEmblem(emblem: CreateEmblemDTO) async throws {
+        try await post(request: .post(url: .deleteEmblem, post: emblem, method: .delete, token: getToken()))
     }
     //CHALLENGES
     

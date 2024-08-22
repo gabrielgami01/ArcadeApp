@@ -17,7 +17,7 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .environment(UserVM())
+        .environment(UserVM(interactor: TestInteractor()))
         .environment(GamesVM(interactor: TestInteractor()))
         .environment(SearchVM(interactor: TestInteractor()))
 }

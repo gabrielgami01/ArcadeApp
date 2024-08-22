@@ -80,6 +80,22 @@ struct TestInteractor: DataInteractor {
         return challenges.filter{ $0.type == type }
     }
     
+    func getCompletedChallenges() async throws -> [Challenge] {
+        return [.test, .test2, .test4].sorted { $0.game < $1.game}
+    }
+    
+    func getActiveEmblems() async throws -> [Emblem] {
+        [.test]
+    }
+    
+    func addEmblem(emblem: CreateEmblemDTO) async throws {
+        
+    }
+    
+    func deleteEmblem(emblem: CreateEmblemDTO) async throws {
+        
+    }
+    
     func getGameRanking(id: UUID, page: Int) async throws -> [RankingScore] {
         let scores: [RankingScore] = [.test, .test2, .test3, .test4]
         return scores.sorted { $0.score > $1.score}
@@ -193,6 +209,15 @@ extension Challenge {
                                  game: "Final Fantasy VII",
                                  completed: false)
     
+}
+
+extension Emblem {
+    static let test = Emblem(id: UUID(),
+                             name: "Mushroom Champion")
+    static let test2 = Emblem(id: UUID(),
+                             name: "Speed Demon")
+    static let test3 = Emblem(id: UUID(),
+                             name: "Martial Arts Master")
 }
 
 extension RankingScore {

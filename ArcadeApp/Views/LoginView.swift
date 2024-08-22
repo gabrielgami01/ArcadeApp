@@ -58,5 +58,5 @@ struct LoginView: View {
 
 #Preview {
     LoginView()
-        .environment(UserVM())
+        .environment(UserVM(interactor: TestInteractor()))
 }

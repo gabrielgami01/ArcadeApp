@@ -43,3 +43,12 @@ struct Challenge: Codable, Identifiable, Hashable {
         }
     }
 }
+
+struct Emblem: Codable, Identifiable, Hashable {
+    let id: UUID
+    let name: String
+}
+
+struct CreateEmblemDTO: Codable {
+    let id: UUID
+}
