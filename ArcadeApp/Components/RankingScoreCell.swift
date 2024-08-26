@@ -10,10 +10,7 @@ struct RankingScoreCell: View {
                 .font(.customHeadline)
                 .foregroundColor(.gray)
             
-            Image(systemName: "person.circle.fill")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 50)
+            UserAvatarImage(imageData: rankingScore.avatarImage, height: 50, width: 50)
             
             VStack(alignment: .leading) {
                 Text(rankingScore.user)

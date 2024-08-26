@@ -1,7 +1,7 @@
 import Foundation
 
 let desa = URL(string: "http://localhost:8080")!
-let proxy = URL(string: "https://b9a6-81-32-237-227.ngrok-free.app")!
+let proxy = URL(string: "https://3cf1-81-32-229-229.ngrok-free.app")!
 
 let api = desa.appending(path: "api")
 
@@ -12,6 +12,7 @@ extension URL {
     static let refreshJWT = users.appending(path: "refreshJWT")
     static let getUserInfo = users.appending(path: "userInfo")
     static let updateUserAbout = users.appending(path: "updateAbout")
+    static let updateUserAvatar = users.appending(path: "updateAvatar")
     
     private static let games = api.appending(path: "games")
     static func getAllGames(page: Int) -> URL {

@@ -5,13 +5,7 @@ struct ReviewCell: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 20) {
-            if let avatar = review.avatarURL {
-            } else {
-                Image(systemName: "person.circle.fill")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 50)
-            }
+            UserAvatarImage(imageData: review.avatarImage, height: 60, width: 60)
             VStack(alignment: .leading) {
                 Text(review.username)
                     .font(.customHeadline)
@@ -26,6 +20,7 @@ struct ReviewCell: View {
                    if let comment = review.comment {
                     Text(comment)
                         .font(.customSubheadline)
+                        .foregroundStyle(.secondary)
                 }
             }
         }

@@ -1,6 +1,5 @@
 import SwiftUI
-
-
+import PhotosUI
 
 struct ProfileView: View {
     @Environment(UserVM.self) private var userVM
@@ -10,22 +9,18 @@ struct ProfileView: View {
     @State private var showAddEmblem = false
     
     var body: some View {
+        @Bindable var userBVM = userVM
+        
         VStack {
             if let user = userVM.activeUser {
                 VStack(spacing: 0) {
-                    Image(systemName: "person.circle.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 100)
-                        .foregroundStyle(.secondary)
+                    UserAvatarImage(imageData: user.avatarImage)
                         .overlay(alignment: .topTrailing) {
-                            Button {
-                                
-                            } label: {
+                            PhotosPicker(selection: $userBVM.photoItem, matching: .images) {
                                 Image(systemName: "pencil.circle")
                                     .font(.largeTitle)
                                     .tint(.white)
-                                    .offset(x: 10, y: -10)
+                                    .offset(x: 5)
                             }
                         }
                     
@@ -39,7 +34,6 @@ struct ProfileView: View {
                 Form {
                     Section {
                         HStack(spacing: 0) {
-                            // Para los emblemas existentes
                             ForEach(Array(challengesVM.emblems.enumerated()), id: \.element.id) { index, emblem in
                                 Button {
                                     challengesVM.selectedEmblem = emblem
@@ -47,13 +41,10 @@ struct ProfileView: View {
                                 } label: {
                                     EmblemCard(emblem: emblem)
                                 }
-                                // Añadir Spacer si no es el último elemento
                                 if index != challengesVM.emblems.count - 1 || challengesVM.emblems.count < 3 {
                                     Spacer()
                                 }
                             }
-                            
-                            // Para los placeholders
                             ForEach(0..<max(0, 3 - challengesVM.emblems.count), id: \.self) { index in
                                 Button {
                                     challengesVM.selectedEmblem = nil
@@ -61,7 +52,6 @@ struct ProfileView: View {
                                 } label: {
                                     EmblemPlaceholder(showAddEmblem: $showAddEmblem)
                                 }
-                                // Añadir Spacer si no es el último elemento
                                 if index != max(0, 3 - challengesVM.emblems.count) - 1 {
                                     Spacer()
                                 }
@@ -114,6 +104,9 @@ struct ProfileView: View {
         .onAppear {
             challengesVM.getActiveEmblems()
         }
+        .onChange(of: userVM.photoItem) { _, _ in
+            userVM.editUserAvatar()
+        }
         .navigationBarBackButtonHidden()
         .padding(.vertical, 5)
         .scrollContentBackground(.hidden)
@@ -135,45 +128,6 @@ struct ProfileView: View {
 
 #Preview {
     ProfileView(challengesVM: ChallengesVM(interactor: TestInteractor()))
-        .environment(UserVM(interactor: TestInteractor()))
+        .environment(UserVM())
 }
 
-struct EmblemPlaceholder: View {
-    @Binding var showAddEmblem: Bool
-    
-    var body: some View {
-        VStack {
-            Text("Add new emblem")
-                .font(.customFootnote)
-                .foregroundStyle(.secondary)
-                .lineLimit(2, reservesSpace: true)
-                .multilineTextAlignment(.center)
-            
-            Image(systemName: "plus.circle")
-                .resizable()
-                .symbolVariant(.fill)
-                .scaledToFit()
-                .frame(height: 75)
-        }
-    }
-}
-
-struct EmblemCard: View {
-    let emblem: Emblem
-    
-    var body: some View {
-        VStack {
-            Text(emblem.name)
-                .font(.customFootnote)
-                .foregroundStyle(.secondary)
-                .lineLimit(2, reservesSpace: true)
-                .multilineTextAlignment(.center)
-            
-            Image(systemName: "trophy")
-                .resizable()
-                .symbolVariant(.fill)
-                .scaledToFit()
-                .frame(height: 75)
-        }
-    }
-}

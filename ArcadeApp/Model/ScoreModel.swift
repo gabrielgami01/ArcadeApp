@@ -22,4 +22,5 @@ struct RankingScore: Codable, Identifiable, Hashable {
     let score: Int
     let date: Date
     let user: String
+    let avatarImage: Data?
 }

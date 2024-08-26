@@ -2,7 +2,6 @@ import SwiftUI
 
 struct TestInteractor: DataInteractor {
     func createUser(user: CreateUserDTO) async throws {
-        
     }
     
     func loginJWT(user: String, pass: String) async throws  -> User {
@@ -18,7 +17,8 @@ struct TestInteractor: DataInteractor {
     }
     
     func editUserAbout(about: EditUserAboutDTO) async throws {
-        
+    }
+    func editUserAvatar(avatar: EditUserAvatarDTO) async throws {
     }
     
     func loadData(file: String) throws -> [Game] {
@@ -103,7 +103,12 @@ struct TestInteractor: DataInteractor {
 }
 
 extension User {
-    static let test = User(id: UUID(), email: "gabrielgmcv01@gmail.com", username: "gabrielgm", fullName: "gabriel", biography: "De locos")
+    static let test = User(id: UUID(), 
+                           email: "gabrielgmcv01@gmail.com",
+                           username: "gabrielgm", 
+                           fullName: "gabriel",
+                           biography: "De locos", 
+                           avatarImage: Data(base64Encoded: "iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADPElEQVR4nO2av2/TQBTHT5EYOGaKmjJAuzGylQW2CjH4OpYByD8AXSJFTF3I1g5IdCBE6oL4KUAiIFGkoiYNceNEatKIEpVKqI0UZcvQSiTLobvUruXYjZvYd5f4vtJXOTmR/d7HvucX+wCQkpKS6kOtzyDbTgEsglspkAGs1RYgcbO5Avi3dg0fbc0zNTmmWAAqC0wtFIC2AGYOoJUCGYGKYBpw0/W7mKt5C6IY5mlhABS3yrhcZuNiaVs8AI1GAzebTSYmx2IOQIXKRg4iLXthdswOgBGcWsF7T17STz/G+nHsAJDYVIgKKlS87wxVumOEc+eVbTMEOwC70YQRuNdjJwAkJhIbjREizXMAWYcDWAHoPtxZxIc7S56OzbYCcDpB3kOASMtBlO4F4OhXnNrL8ekAlIzdFPVd0ALg534DL2h79NOP8Wk1gIugDYD57K4RuNdj5gBUiLJkbnXcXV2dpoDfdgLQK94+ACgZfYfmuS8ugNPj9VxwAAD6Lc5LAMwFBwBQfZykHhoAWZtOq18Ab3/X8KXkBvW7am1gAE6dKrdGqNnD4680DFZU6vBrzQMAPjdCqstWuPZ+HRcmI7gwFcG1D+muwMs3o7RAkcRDT1epyZhsK92K9g3A91ZYdei0rAC0yQfHtyCEtalIV+D6dyTpc7EVah0A8SA1wK5T9V3QAmDzyj0jmc2r95kC4CJoAVBKfMT58RmcD8/g0otPXYHnpx/i/I1HXQ859O1DD6Ber+O/zwE1GVsDr1ar1G63Dw2AVe2kodGf1p61srv1t3xFPADQZB1AoB6KwqADCC19NRobq0OLX1wnlAzPGXeExMScsf27aYqR6SYcAOCQvG63AE7+ynbs1GlyB9CS6wMA83eAzTcdC/FytM0BwJ/ljiWAVECvgKZIU6Al1wccS64PiDHp+ITvBGEPZ5ITruf6evLy6AFon7HgSQBoRK+AQrzjwF4BhTjAxSADaMsaAIJZBH8sX3R99teejY0egNB0xPXqT/LbkQMAfTLv/IEEgAJ6Bahw9o4KUc36EJO1c1A5yEF0mzmAHFQOeCdvWgu0zxyAKkDiZnMAoBirsXib6XoAKSkpMEr6DyN3iOvnd7E9AAAAAElFTkSuQmCC"))
 }
 
 extension Game {
@@ -125,26 +130,26 @@ extension Game {
 
 extension Review {
     static let test = Review(id: UUID(), 
-                             title: "Juego increíble",
-                             comment: "Me ha encantado el juego es adictivo",
-                             rating: 3,
-                             date: .now,
-                             username: "gabrielgm",
-                             avatarURL: nil)
+                              title: "Juego increíble",
+                              comment: "Me ha encantado el juego es adictivo",
+                              rating: 3,
+                              date: .now,
+                              username: "gabrielgm",
+                              avatarImage: nil)
     static let test2 = Review(id: UUID(),
-                             title: "Muy aburrido",
-                             comment: nil,
-                             rating: 1,
-                             date: .now,
-                             username: "gabrielgm",
-                             avatarURL: nil)
+                              title: "Muy aburrido",
+                              comment: nil,
+                              rating: 1,
+                              date: .now,
+                              username: "gabrielgm",
+                              avatarImage: nil)
     static let test3 = Review(id: UUID(),
-                             title: "WOW",
-                             comment: "El mejor juego de la historia",
-                             rating: 5,
-                             date: .now,
-                             username: "gabrielgm",
-                             avatarURL: nil)
+                              title: "WOW",
+                              comment: "El mejor juego de la historia",
+                              rating: 5,
+                              date: .now,
+                              username: "gabrielgm",
+                              avatarImage: nil)
 }
 
 extension Score {
@@ -224,17 +229,21 @@ extension RankingScore {
     static let test = RankingScore(id: UUID(),
                                    score: 5500,
                                    date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 1, hour: 22, minute: 30)) ?? .now,
-                                   user: User.test.username)
+                                   user: User.test.username,
+                                   avatarImage: nil)
     static let test2 = RankingScore(id: UUID(),
-                                   score: 6000,
-                                   date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 5, hour: 15, minute: 22)) ?? .now,
-                                   user: User.test.username)
+                                    score: 6000,
+                                    date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 5, hour: 15, minute: 22)) ?? .now,
+                                    user: User.test.username,
+                                    avatarImage: nil)
     static let test3 = RankingScore(id: UUID(),
-                                   score: 4440,
-                                   date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 10, hour: 16, minute: 33)) ?? .now,
-                                   user: User.test.username)
+                                    score: 4440,
+                                    date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 10, hour: 16, minute: 33)) ?? .now,
+                                    user: User.test.username,
+                                     avatarImage: nil)
     static let test4 = RankingScore(id: UUID(),
-                                   score: 5323,
-                                   date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 22, hour: 14, minute: 02)) ?? .now,
-                                   user: User.test.username)
+                                    score: 5323,
+                                    date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 22, hour: 14, minute: 02)) ?? .now,
+                                    user: User.test.username,
+                                    avatarImage: nil)
 }

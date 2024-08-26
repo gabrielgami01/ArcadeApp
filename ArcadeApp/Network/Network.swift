@@ -7,6 +7,7 @@ protocol DataInteractor {
     func refreshJWT() async throws -> User
     func getUserInfo() async throws -> User
     func editUserAbout(about: EditUserAboutDTO) async throws
+    func editUserAvatar(avatar: EditUserAvatarDTO) async throws
     
     func getAllGames(page: Int) async throws -> [Game]
     func getGamesByConsole(_ console: Console, page: Int) async throws -> [Game]
@@ -72,6 +73,10 @@ struct Network: DataInteractor, NetworkJSONInteractor {
     func editUserAbout(about: EditUserAboutDTO) async throws {
         try await post(request: .post(url: .updateUserAbout, post: about, method: .put, token: getToken()))
     }
+    
+    func editUserAvatar(avatar: EditUserAvatarDTO) async throws {
+        try await post(request: .post(url: .updateUserAvatar, post: avatar, method: .put, token: getToken()))
+    }
     //END USERS
     
     //SEARCH
@@ -101,7 +106,7 @@ struct Network: DataInteractor, NetworkJSONInteractor {
     //DETAILS
     func getGameDetails(id: UUID) async throws -> (favorite: Bool, reviews: [Review], scores: [Score]) {
         async let favoriteRequest = getJSON(request: .get(url: .isFavoriteGame(id: id), token: getToken()), type: Bool.self)
-        async let reviewsRequest = getJSON(request: .get(url: .getGameReviews(id: id),token: getToken()), type: [ReviewDTO].self).map(\.toReview)
+        async let reviewsRequest = getJSON(request: .get(url: .getGameReviews(id: id),token: getToken()), type: [Review].self)
         async let scoresRequest  = getJSON(request: .get(url: .getGameScores(id: id),token: getToken()), type: [Score].self)
         
         return try await (favoriteRequest, reviewsRequest, scoresRequest)

@@ -68,6 +68,8 @@
 		FC7A37032C4525E7004F6910 /* RatingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A37022C4525E7004F6910 /* RatingComponent.swift */; };
 		FC8438F82C4D0F7A00434179 /* EnumTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8438F72C4D0F7A00434179 /* EnumTag.swift */; };
 		FC8438FA2C4D219F00434179 /* AddScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8438F92C4D219F00434179 /* AddScoreView.swift */; };
+		FC94F7192C78C48E00FEA9FE /* EmblemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC94F7182C78C48E00FEA9FE /* EmblemCard.swift */; };
+		FC94F71B2C78C4D300FEA9FE /* UserAvatarImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC94F71A2C78C4D300FEA9FE /* UserAvatarImage.swift */; };
 		FCA519152C36C18D001CCF54 /* Namespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA519142C36C18D001CCF54 /* Namespace.swift */; };
 		FCA519172C36C191001CCF54 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA519162C36C191001CCF54 /* UIDevice.swift */; };
 		FCA5191B2C36FDE5001CCF54 /* GameDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA5191A2C36FDE5001CCF54 /* GameDetailsVM.swift */; };
@@ -178,6 +180,8 @@
 		FC7A37022C4525E7004F6910 /* RatingComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingComponent.swift; sourceTree = "<group>"; };
 		FC8438F72C4D0F7A00434179 /* EnumTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumTag.swift; sourceTree = "<group>"; };
 		FC8438F92C4D219F00434179 /* AddScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddScoreView.swift; sourceTree = "<group>"; };
+		FC94F7182C78C48E00FEA9FE /* EmblemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmblemCard.swift; sourceTree = "<group>"; };
+		FC94F71A2C78C4D300FEA9FE /* UserAvatarImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAvatarImage.swift; sourceTree = "<group>"; };
 		FCA519142C36C18D001CCF54 /* Namespace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Namespace.swift; sourceTree = "<group>"; };
 		FCA519162C36C191001CCF54 /* UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		FCA5191A2C36FDE5001CCF54 /* GameDetailsVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailsVM.swift; sourceTree = "<group>"; };
@@ -413,6 +417,15 @@
 			name = Challenges;
 			sourceTree = "<group>";
 		};
+		FC94F7172C78C47D00FEA9FE /* User */ = {
+			isa = PBXGroup;
+			children = (
+				FC94F7182C78C48E00FEA9FE /* EmblemCard.swift */,
+				FC94F71A2C78C4D300FEA9FE /* UserAvatarImage.swift */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
 		FCA519132C36C175001CCF54 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -468,6 +481,7 @@
 			children = (
 				FC6F73EF2C56CBEA00E34AF3 /* Common */,
 				FC2BC3022C34807400353D48 /* Home */,
+				FC94F7172C78C47D00FEA9FE /* User */,
 				FC2BC30A2C34835100353D48 /* Search */,
 				FC2BC3072C34815100353D48 /* Game */,
 				FCC0466A2C52B571003FAC6A /* Review */,
@@ -729,6 +743,7 @@
 				FCA5191B2C36FDE5001CCF54 /* GameDetailsVM.swift in Sources */,
 				FC35A2392C3EE1500075E7B4 /* AddScoreVM.swift in Sources */,
 				FCC724572C523C5D008C3BC1 /* CameraPicker.swift in Sources */,
+				FC94F71B2C78C4D300FEA9FE /* UserAvatarImage.swift in Sources */,
 				FC2E95162C61648D00393C39 /* GameCoverCard.swift in Sources */,
 				FC4FCA0C2C627CED004C12C4 /* Color.swift in Sources */,
 				FC54459E2C3801F5001B26EF /* AddReviewVM.swift in Sources */,
@@ -745,6 +760,7 @@
 				FC22BA602C2590EF002DFAA4 /* ArcadeAppApp.swift in Sources */,
 				FCCE05632C2B36ED00B0D2CD /* DataPreview.swift in Sources */,
 				FCC7245A2C525CA8008C3BC1 /* ScoreImage.swift in Sources */,
+				FC94F7192C78C48E00FEA9FE /* EmblemCard.swift in Sources */,
 				FCA519152C36C18D001CCF54 /* Namespace.swift in Sources */,
 				FCB0D5EF2C5810D000039654 /* CustomUnavailableView.swift in Sources */,
 				FCC41CCD2C77371700E8C9D2 /* AddEmblemView.swift in Sources */,

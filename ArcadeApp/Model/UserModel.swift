@@ -18,8 +18,13 @@ struct User: Codable {
     let username: String
     let fullName: String
     let biography: String?
+    let avatarImage: Data?
 }
 
 struct EditUserAboutDTO: Codable {
     let about: String
+}
+
+struct EditUserAvatarDTO: Codable {
+    let image: Data
 }
