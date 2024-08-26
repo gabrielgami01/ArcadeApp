@@ -11,7 +11,7 @@ struct ChallengesView: View {
         
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                LabeledHeader(title: "Challenges")
+                CustomHeader(title: "Challenges")
                     .padding(.horizontal)
                 
                 ScrollSelector(activeSelection: $challengesVM.activeType) { $0.rawValue.capitalized }

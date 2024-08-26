@@ -6,7 +6,7 @@ struct GameRankingView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                LabeledHeader(title: rankingVM.game.name)
+                CustomHeader(title: rankingVM.game.name)
                 
                 if rankingVM.rankingScores.count > 0 {
                     LazyVStack {

@@ -2,8 +2,8 @@ import SwiftUI
 
 fileprivate struct SheetToolbar: ViewModifier {
     let title: String
-    let confirmationLabel:String
-    let confirmationAction: () -> Void
+    let confirmationLabel: String?
+    let confirmationAction: (() -> Void)?
     
     @Environment(\.dismiss) private var dismiss
     
@@ -24,12 +24,15 @@ fileprivate struct SheetToolbar: ViewModifier {
                     }
                 }
                 
-                ToolbarItem(placement: .confirmationAction) {
-                    Button {
-                        confirmationAction()
-                    } label: {
-                        Text("Save")
-                            .font(.customTitle3)
+                if let confirmationLabel,
+                   let confirmationAction {
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button {
+                            confirmationAction()
+                        } label: {
+                            Text(confirmationLabel)
+                                .font(.customTitle3)
+                        }
                     }
                 }
             }
@@ -37,7 +40,7 @@ fileprivate struct SheetToolbar: ViewModifier {
 }
 
 extension View {
-    func sheetToolbar(title: String, confirmationLabel: String, confirmationAction: @escaping () -> Void) -> some View {
+    func sheetToolbar(title: String, confirmationLabel: String?, confirmationAction: (() -> Void)?) -> some View {
         modifier(SheetToolbar(title: title, confirmationLabel: confirmationLabel, confirmationAction: confirmationAction))
     }
 }

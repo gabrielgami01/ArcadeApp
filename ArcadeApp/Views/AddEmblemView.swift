@@ -7,37 +7,42 @@ struct AddEmblemView: View {
     var body: some View {
         let columns = [GridItem(.flexible()), GridItem(.flexible())]
         
-        ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                LabeledHeader(title: "Completed challenges")
-                    .padding(.horizontal)
-            
-                LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(challengesVM.disponibleChallenges) { challenge in
-                        Button {
-                            if let selectedEmblem = challengesVM.selectedEmblem {
-                                challengesVM.addEmblem(id: challenge.id)
-                                challengesVM.deleteEmblem(id: selectedEmblem.id)
-                            } else {
-                                challengesVM.addEmblem(id: challenge.id)
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 20) {
+                    if challengesVM.disponibleChallenges.count > 0 {
+                        LazyVGrid(columns: columns, spacing: 20) {
+                            ForEach(challengesVM.disponibleChallenges) { challenge in
+                                Button {
+                                    if let selectedEmblem = challengesVM.selectedEmblem {
+                                        challengesVM.addEmblem(id: challenge.id)
+                                        challengesVM.deleteEmblem(id: selectedEmblem.id)
+                                    } else {
+                                        challengesVM.addEmblem(id: challenge.id)
+                                    }
+                                    dismiss()
+                                } label: {
+                                    ChallengeFrontCard(challenge: challenge, showCheck: false)
+                                }
+                                .buttonStyle(.plain)
                             }
-                            dismiss()
-                        } label: {
-                            ChallengeFrontCard(challenge: challenge, showCheck: false)
                         }
-                        .buttonStyle(.plain)
+                        .padding(.horizontal)
+                    } else {
+                        CustomUnavailableView(title: "No available challenges", image: "trophy", description: "You don't have available emblems by the moment")
                     }
                 }
-                .padding(.horizontal)
             }
+            .onAppear {
+                challengesVM.getCompletedChallenges()
+            }
+            .sheetToolbar(title: "Emblems", confirmationLabel: nil, confirmationAction: nil)
+            .navigationBarBackButtonHidden()
+            .scrollIndicators(.hidden)
+            .scrollBounceBehavior(.basedOnSize)
+            .background(Color.background)
         }
-        .onAppear {
-            challengesVM.getCompletedChallenges()
-        }
-        .navigationBarBackButtonHidden()
-        .scrollIndicators(.hidden)
-        .scrollBounceBehavior(.basedOnSize)
-        .background(Color.background)
+        
     }
 }
 

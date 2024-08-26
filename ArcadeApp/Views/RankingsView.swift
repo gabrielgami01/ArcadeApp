@@ -7,7 +7,7 @@ struct RankingsView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                LabeledHeader(title: "Rankings")
+                CustomHeader(title: "Rankings")
                 
                 LazyVStack(spacing: 20) {
                     ForEach(gamesVM.games) { game in
