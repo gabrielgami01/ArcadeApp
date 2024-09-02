@@ -3,11 +3,13 @@ import Charts
 
 struct GameScoresView: View {
     @State var detailsVM: GameDetailsVM
-    @State private var showSelectionBar = false
-    @State private var offsetX = 0.0
-    @State private var offsetY = 0.0
-    @State private var selectedDay: Date = .distantPast
-    @State private var selectedScore: Int? = 0
+    let game: Game
+    @Binding var animation: Bool
+    
+    @State private var showAddScore = false
+    
+    @State private var displayedPoints = 0
+    @State private var timer: Timer? = nil
     
     var body: some View {
         ScrollView {
@@ -15,7 +17,7 @@ struct GameScoresView: View {
                 Group {
                     if detailsVM.verifiedScores.count > 1 {
                         Chart {
-                            ForEach(detailsVM.verifiedScores) { score in
+                            ForEach(detailsVM.verifiedScores.prefix(displayedPoints)) { score in
                                 if let value = score.score {
                                     LineMark(
                                         x: .value("Date", score.date),
@@ -33,55 +35,82 @@ struct GameScoresView: View {
                         .chartYAxis {
                             AxisMarks(preset: .aligned, values: .automatic(desiredCount: 5))
                         }
+                        .padding(5)
                     } else {
-                        CustomUnavailableView(title: "Chart unavailable", image: "chart.xyaxis.line", description: "You need 2 or more scores to see the chart")
+                        CustomUnavailableView(title: "Chart unavailable", image: "chart.xyaxis.line",
+                                              description: "You need 2 or more scores to see the chart")
                     }
                 }
-                .padding()
                 .frame(height: 220)
                 
-                HStack {
-                    Text("Your scores")
-                        .font(.customTitle3)
-                        .bold()
-                    Spacer()
-                    Button {
-                        detailsVM.showAddScore.toggle()
-                    } label: {
-                        Label {
-                            Text("Add new Score")
-                        } icon: {
-                            Image(systemName: "plus")
+                Group {
+                    HStack {
+                        Text("Your scores")
+                            .font(.customTitle3)
+                            .bold()
+                        Spacer()
+                        Button {
+                            showAddScore.toggle()
+                        } label: {
+                            Label {
+                                Text("Add new Score")
+                            } icon: {
+                                Image(systemName: "plus")
+                            }
+                            .font(.customBody)
                         }
-                        .font(.customBody)
+                    }
+                    .padding(.vertical, 5)
+                    
+                    if !detailsVM.scores.isEmpty {
+                        LazyVStack(alignment: .leading, spacing: 15) {
+                            ForEach(detailsVM.scores) { score in
+                                ScoreCell(score: score)
+                            }
+                        }
+                    } else {
+                        CustomUnavailableView(title: "No scores", image: "gamecontroller",
+                                              description: "You haven't any score for this game yet.")
                     }
                 }
-                .padding(.vertical, 5)
-                
-                if !detailsVM.scores.isEmpty {
-                    LazyVStack(alignment: .leading) {
-                        ForEach(detailsVM.scores) { score in
-                            ScoreCell(score: score)
-                            Divider()
-                        }
-                    }
-                } else {
-                    CustomUnavailableView(title: "No scores", image: "gamecontroller", description: "You haven't any score for this game yet.")
+                .opacity(animation || detailsVM.verifiedScores.count < 2 ? 1.0 : 0.0)
+            }
+        }
+        .onAppear {
+            if !animation {
+                chartAnimation()
+            } else {
+                displayedPoints = detailsVM.verifiedScores.count
+            }
+        }
+        .sheet(isPresented: $showAddScore) {
+           AddScoreView(addScoreVM: AddScoreVM(game: game))
+        }
+        .padding(.horizontal)
+        .scrollBounceBehavior(.basedOnSize)
+        .scrollIndicators(.hidden)
+    }
+    
+    private func chartAnimation() {
+        displayedPoints = 0
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+            if displayedPoints < detailsVM.verifiedScores.count {
+                withAnimation(.easeInOut(duration: 0.5)) {
+                    displayedPoints += 1
+                }
+            } else {
+                timer?.invalidate()
+                withAnimation(.easeOut){
+                    animation = true
                 }
             }
         }
-        .sheet(isPresented: $detailsVM.showAddScore) {
-            AddScoreView(addScoreVM: AddScoreVM(game: detailsVM.game))
-        }
-        .scrollBounceBehavior(.basedOnSize)
-        .background(Color.background)
-        
     }
 }
 
 #Preview {
-    GameScoresView(detailsVM: GameDetailsVM(interactor: TestInteractor(), game: .test))
-        .padding()
+    GameScoresView(detailsVM: GameDetailsVM(interactor: TestInteractor()), game: .test, animation: .constant(true))
+        .background(Color.background)
+        .preferredColorScheme(.dark)
 }
-
 

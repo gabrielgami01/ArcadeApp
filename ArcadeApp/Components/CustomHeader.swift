@@ -1,8 +1,9 @@
 import SwiftUI
 
 struct CustomHeader: View {
-    @Environment(\.dismiss) private var dismiss
     let title: String?
+    
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: 20) {
@@ -19,4 +20,5 @@ struct CustomHeader: View {
 
 #Preview {
     CustomHeader(title: "Challenges")
+        .preferredColorScheme(.dark)
 }

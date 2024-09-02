@@ -34,4 +34,5 @@ struct ScoreImage: View {
 
 #Preview {
     ScoreImage()
+        .preferredColorScheme(.dark)
 }

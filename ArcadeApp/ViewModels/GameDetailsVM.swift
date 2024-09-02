@@ -3,34 +3,30 @@ import Foundation
 @Observable
 final class GameDetailsVM {
     let interactor: DataInteractor
-    let game: Game
     
-    var favorite = false
+    var isFavorite = false
     var reviews: [Review] = []
-    var globalRating: Double {
+    @ObservationIgnored var globalRating: Double {
         guard !reviews.isEmpty else { return 0.0 }
            
         let totalRating = reviews.reduce(0) { $0 + $1.rating }
         return Double(totalRating) / Double(reviews.count)
     }
     var scores: [Score] = []
-    var verifiedScores: [Score] {
+    @ObservationIgnored var verifiedScores: [Score] {
         scores.filter { $0.state == .verified }
     }
     
-    
-    var showAddReview = false
-    var showAddScore = false
-
     var errorMsg = ""
-    var showAlert = false
+    var showError = false
     
-    init(interactor: DataInteractor = Network.shared, game: Game) {
+    init(interactor: DataInteractor = Network.shared) {
         self.interactor = interactor
-        self.game = game
-        NotificationCenter.default.addObserver(forName: .details, object: nil, queue: .main) { _ in
-            Task {
-                await self.loadGameDetails()
+        NotificationCenter.default.addObserver(forName: .details, object: nil, queue: .main) { [self] notification in
+            if let userInfo = notification.userInfo, let id = userInfo["gameID"] as? UUID {
+                Task {
+                    await getGameDetails(id: id)
+                }
             }
         }
     }
@@ -39,29 +35,30 @@ final class GameDetailsVM {
         NotificationCenter.default.removeObserver(self, name: .details, object: nil)
     }
     
-    func loadGameDetails() async {
+    
+    func getGameDetails(id: UUID) async {
         do {
-            (favorite, reviews, scores) = try await interactor.getGameDetails(id: game.id)
+            (isFavorite, reviews, scores) = try await interactor.getGameDetails(id: id)
         } catch {
-            self.errorMsg = error.localizedDescription
-            self.showAlert.toggle()
-            print(error.localizedDescription)
+            errorMsg = error.localizedDescription
+            showError.toggle()
         }
     }
     
-    func useFavorite() {
+    func useFavorite(id: UUID) {
         Task {
             do {
-                if favorite {
-                    try await interactor.removeFavoriteGame(id: game.id)
+                let favoriteDTO = FavoriteGameDTO(id: id)
+                if isFavorite {
+                    try await interactor.removeFavoriteGame(favoriteDTO)
                 } else {
-                    try await interactor.addFavoriteGame(id: game.id)
+                    try await interactor.addFavoriteGame(favoriteDTO)
                 }
-                favorite.toggle()
+                isFavorite.toggle()
                 NotificationCenter.default.post(name: .favorite, object: nil)
             } catch {
-                self.errorMsg = error.localizedDescription
-                self.showAlert.toggle()
+                errorMsg = error.localizedDescription
+                showError.toggle()
                 print(error.localizedDescription)
             }
         }

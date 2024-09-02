@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct ChallengesView: View {
-    @Environment(\.dismiss) private var dismiss
     @State var challengesVM = ChallengesVM()
     
+    @Environment(\.dismiss) private var dismiss
     @Environment(\.namespace) private var namespace
     
     var body: some View {
@@ -15,31 +15,28 @@ struct ChallengesView: View {
                     .padding(.horizontal)
                 
                 ScrollSelector(activeSelection: $challengesVM.activeType) { $0.rawValue.capitalized }
-            
+                
                 LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(challengesVM.challenges) { challenge in
+                    ForEach(challengesVM.filteredChallenges) { challenge in
                         ChallengeCard(challenge: challenge)
                     }
                 }
                 .padding(.horizontal)
             }
         }
-        .onAppear {
-            challengesVM.getChallenges()
-        }
-        .animation(.easeInOut, value: challengesVM.challenges)
-        .onChange(of: challengesVM.activeType) { oldValue, newValue in
-            challengesVM.getChallenges(type: newValue)
+        .task {
+            await challengesVM.getChallenges()
         }
         .navigationBarBackButtonHidden()
-        .scrollIndicators(.hidden)
-        .scrollBounceBehavior(.basedOnSize)
         .background(Color.background)
+        .scrollBounceBehavior(.basedOnSize)
+        .scrollIndicators(.hidden)
     }
 }
 
 #Preview {
     ChallengesView(challengesVM: ChallengesVM(interactor: TestInteractor()))
+        .preferredColorScheme(.dark)
         .namespace(Namespace().wrappedValue)
 }
 

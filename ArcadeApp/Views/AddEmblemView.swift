@@ -15,8 +15,8 @@ struct AddEmblemView: View {
                             ForEach(challengesVM.disponibleChallenges) { challenge in
                                 Button {
                                     if let selectedEmblem = challengesVM.selectedEmblem {
-                                        challengesVM.addEmblem(id: challenge.id)
                                         challengesVM.deleteEmblem(id: selectedEmblem.id)
+                                        challengesVM.addEmblem(id: challenge.id)
                                     } else {
                                         challengesVM.addEmblem(id: challenge.id)
                                     }
@@ -29,18 +29,19 @@ struct AddEmblemView: View {
                         }
                         .padding(.horizontal)
                     } else {
-                        CustomUnavailableView(title: "No available challenges", image: "trophy", description: "You don't have available emblems by the moment")
+                        CustomUnavailableView(title: "No available emblems", image: "trophy",
+                                              description: "You don't have available emblems by the moment")
                     }
                 }
             }
-            .onAppear {
-                challengesVM.getCompletedChallenges()
+            .task {
+                await challengesVM.getCompletedChallenges()
             }
             .sheetToolbar(title: "Emblems", confirmationLabel: nil, confirmationAction: nil)
             .navigationBarBackButtonHidden()
+            .background(Color.background)
             .scrollIndicators(.hidden)
             .scrollBounceBehavior(.basedOnSize)
-            .background(Color.background)
         }
         
     }

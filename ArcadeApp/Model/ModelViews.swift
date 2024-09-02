@@ -1,26 +1,8 @@
-import Foundation
+import SwiftUI
 
-enum HomePage: String, Identifiable, CaseIterable {
-    case challenges = "Challenges"
-    case rankings = "Rankings"
-    case profile = "Profile"
-    
-    var id: Self { self }
+enum TextFieldType {
+    case simple, secured, search
 }
-
-enum HomeScrollType: String, Identifiable, CaseIterable {
-    case featured, favorites
-    
-    var id: Self { self }
-}
-
-enum PickerOptions: String, Identifiable, CaseIterable {
-    case about = "About"
-    case score = "My scores"
-    
-    var id: Self { self }
-}
-
 
 enum SignupFields {
     case fullName, email, username, password, repeatPassword
@@ -56,8 +38,47 @@ enum SignupFields {
     }
 }
 
-enum TextFieldType {
-    case simple, secured, search
+enum HomePage: String, Identifiable, CaseIterable {
+    case challenges = "Challenges"
+    case rankings = "Rankings"
+    case profile = "Profile"
+    
+    var id: Self { self }
+    
+    var image: String {
+        switch self {
+            case .challenges:
+                return "trophy"
+            case .rankings:
+                return "rosette"
+            case .profile:
+                return "person.crop.circle"
+        }
+    }
+    
+    var color: Color {
+        switch self {
+            case .challenges:
+                return .green
+            case .rankings:
+                return .orange
+            case .profile:
+                return .red
+        }
+    }
+}
+
+enum HomeScrollType: String, Identifiable, CaseIterable {
+    case featured, favorites
+    
+    var id: Self { self }
+}
+
+enum PickerOptions: String, Identifiable, CaseIterable {
+    case about = "About"
+    case score = "My scores"
+    
+    var id: Self { self }
 }
 
 enum RatingMode {

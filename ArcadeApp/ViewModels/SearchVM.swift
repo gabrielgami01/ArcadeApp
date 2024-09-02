@@ -5,28 +5,27 @@ import SwiftData
 final class SearchVM {
     let interactor: DataInteractor
     
-    var showSearch = false
-    var search: String = "" {
-        didSet {
-            page = 1
-        }
-    }
+    var search: String = ""
     var games: [Game] = []
     
-    var page = 1
-    
     var errorMsg = ""
-    var showAlert = false
+    var showError = false
     
     init(interactor: DataInteractor = Network.shared) {
         self.interactor = interactor
     }
     
-    func searchGame(name: String) {
+    func searchGame() {
         Task {
             do {
-                self.games = try await interactor.searchGame(name: name, page: page)
+                if !search.isEmpty {
+                    games = try await interactor.searchGame(name: search)
+                } else {
+                    games.removeAll()
+                }
             } catch {
+                errorMsg = error.localizedDescription
+                showError.toggle()
                 print(error.localizedDescription)
             }
         }
@@ -34,12 +33,9 @@ final class SearchVM {
     
     func saveGameSearch(game: Game, context: ModelContext) throws {
         let id = game.id
-        let query = FetchDescriptor<GameModel>(predicate:
-            #Predicate { $0.id == id }
-        )
-        
+        let query = FetchDescriptor<GameModel>(predicate: #Predicate { $0.id == id })
         if let fetch = try context.fetch(query).first {
-            
+            return
         } else {
             let newGame = GameModel(id: game.id,
                                     name: game.name,
@@ -50,17 +46,12 @@ final class SearchVM {
                                     added: .now)
             context.insert(newGame)
         }
-        
-        
-       
     }
     
     func deleteGameSearch(game: Game? = nil, context: ModelContext) throws {
-        if let game = game {
+        if let game {
             let id = game.id
-            let query = FetchDescriptor<GameModel>(predicate:
-                #Predicate { $0.id == id }
-            )
+            let query = FetchDescriptor<GameModel>(predicate: #Predicate { $0.id == id })
             if let fetch = try context.fetch(query).first {
                 context.delete(fetch)
             }

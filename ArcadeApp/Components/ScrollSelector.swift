@@ -12,16 +12,14 @@ struct ScrollSelector<T: Hashable & Identifiable & CaseIterable>: View where T.A
                 ForEach(T.allCases) { item in
                     if let namespace {
                         Button {
-                            withAnimation(.interactiveSpring(
-                                response: 0.5, dampingFraction: 0.7, blendDuration: 0.7)
-                            ) {
+                            withAnimation(.smooth) {
                                 activeSelection = item
                             }
                         } label: {
                             Text(titleFormatter(item))
                                 .font(.customCaption2)
                         }
-                        .buttonStyle(ConsoleButtonStyle(isActive: activeSelection == item, namespace: namespace))
+                        .buttonStyle(SelectorStyle(isActive: activeSelection == item, namespace: namespace))
                     }
                 }
             }
@@ -37,4 +35,5 @@ struct ScrollSelector<T: Hashable & Identifiable & CaseIterable>: View where T.A
 #Preview {
     ScrollSelector(activeSelection: .constant(Console.all)) { $0.rawValue }
         .namespace(Namespace().wrappedValue)
+        .preferredColorScheme(.dark)
 }

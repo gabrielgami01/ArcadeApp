@@ -2,60 +2,71 @@ import SwiftUI
 
 struct GameAboutView: View {
     @State var detailsVM: GameDetailsVM
+    let game: Game
+    @Binding var animation: Bool
+    
+    @State private var showAddReview = false
+    
+    @Environment(\.namespace) private var namespace
     
     var body: some View {
         ScrollView {
             VStack(spacing: 10) {
-                GeometryReader { geometry in
-                    let size = geometry.size
-
-                    HStack(spacing: 10) {
-                        GameCoverCard(game: detailsVM.game, width: size.width, height: size.height)
-                        GameDetailsCard(detailsVM: detailsVM)
-                            .frame(height: size.height)
-                    }
+                HStack(spacing: 10) {
+                    GameCover(game: game, width: 150, height: 220)
+                    
+                    GameAboutCard(detailsVM: detailsVM, game: game, animation: animation)
                 }
-                .frame(height: 220)
-                   
-                HStack {
-                    Text("Player Reviews")
-                        .font(.customTitle3)
-                        .bold()
-                    Spacer()
-                    Button {
-                        detailsVM.showAddReview.toggle()
-                    } label: {
-                        Label {
-                            Text("Write a Review")
-                        } icon: {
-                            Image(systemName: "square.and.pencil")
-                        }
-                        .font(.customBody)
-                    }
-                }
-                .padding(.vertical, 5)
-                   
-                if !detailsVM.reviews.isEmpty {
-                    LazyVStack(alignment: .leading) {
-                        ForEach(detailsVM.reviews) { review in
-                            ReviewCell(review: review)
+                
+                Group {
+                    HStack {
+                        Text("Player Reviews")
+                            .font(.customTitle3)
+                            .bold()
+                        Spacer()
+                        Button {
+                            showAddReview.toggle()
+                        } label: {
+                            Label {
+                                Text("Write a Review")
+                            } icon: {
+                                Image(systemName: "square.and.pencil")
+                            }
+                            .font(.customBody)
                         }
                     }
-                } else {
-                    CustomUnavailableView(title: "No reviews", image: "gamecontroller", description: "There isn't any review for this game yet.")
+                    .padding(.vertical, 5)
+                    
+                    if !detailsVM.reviews.isEmpty {
+                        LazyVStack(alignment: .leading, spacing: 15) {
+                            ForEach(detailsVM.reviews) { review in
+                                ReviewCell(review: review)
+                            }
+                        }
+                    } else {
+                        CustomUnavailableView(title: "No reviews", image: "gamecontroller",
+                                              description: "There isn't any review for this game yet.")
+                    }
                 }
+                .opacity(animation ? 1.0 : 0.0)
+                .animation(.easeOut.delay(0.6), value: animation)
             }
         }
-        .sheet(isPresented: $detailsVM.showAddReview) {
-            AddReviewView(addReviewVM: AddReviewVM(game: detailsVM.game))
+        .onAppear {
+            animation = true
         }
+        .sheet(isPresented: $showAddReview) {
+            AddReviewView(addReviewVM: AddReviewVM(game: game))
+        }
+        .padding(.horizontal)
         .scrollBounceBehavior(.basedOnSize)
-        .background(Color.background)
+        .scrollIndicators(.hidden)
     }
 }
 
 #Preview {
-    GameAboutView(detailsVM: GameDetailsVM(interactor: TestInteractor(), game: .test))
-    .padding()
+    GameAboutView(detailsVM: GameDetailsVM(interactor: TestInteractor()), game: .test, animation: .constant(true))
+        .background(Color.background)
+        .preferredColorScheme(.dark)
 }
 

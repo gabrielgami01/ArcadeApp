@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ConsoleButtonStyle: ButtonStyle {
+struct SelectorStyle: ButtonStyle {
     let isActive: Bool
     let namespace: Namespace.ID
 

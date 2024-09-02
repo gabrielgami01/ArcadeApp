@@ -1,7 +1,6 @@
 import SwiftUI
 
 fileprivate struct EnumTag: ViewModifier {
-    
     func body(content: Content) -> some View {
         content
             .font(.customFootnote)

@@ -4,24 +4,30 @@ struct SearchCell: View {
     @Environment(GamesVM.self) private var gamesVM
     @Environment(SearchVM.self) private var searchVM
     @Environment(\.modelContext) private var context
+    
+    @Environment(\.namespace) private var namespace
 
     let game: Game
-    let isRecent: Bool
+    var isRecent: Bool = false
     
     var body: some View {
         VStack {
             HStack {
                 Button {
-                    gamesVM.selectedGame = game
+                    withAnimation(.snappy){
+                        gamesVM.selectedGame = game
+                    }
                     if !isRecent {
                         try? searchVM.saveGameSearch(game: game, context: context)
                     }
                 } label: {
                     HStack(spacing: 10) {
                         GameCover(game: game, width: 60, height: 60)
-                            .namespace(nil)
-                        Text(game.name)
-                            .font(.customBody)
+                        if let namespace{
+                            Text(game.name)
+                                .font(.customBody)
+                                .matchedGeometryEffect(id: "\(game.id)_NAME", in: namespace, properties: .position)
+                        }
                     }
                 }
                 
@@ -44,7 +50,9 @@ struct SearchCell: View {
 }
 
 #Preview {
-    SearchCell(game: .test, isRecent: true)
+    SearchCell(game: .test)
         .environment(GamesVM(interactor: TestInteractor()))
         .environment(SearchVM(interactor: TestInteractor()))
+        .preferredColorScheme(.dark)
+        .namespace(Namespace().wrappedValue)
 }

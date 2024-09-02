@@ -30,7 +30,7 @@ struct EditAboutView: View {
         }
         .onAppear {
             if let about = userVM.activeUser?.biography {
-                userVM.about = about 
+                userVM.about = about
             }
         }
         

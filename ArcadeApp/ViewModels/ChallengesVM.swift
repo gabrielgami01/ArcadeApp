@@ -6,10 +6,17 @@ final class ChallengesVM {
     
     var challenges: [Challenge] = []
     var activeType: ChallengeType = .all
+    @ObservationIgnored var filteredChallenges: [Challenge] {
+        if activeType != .all {
+            challenges.filter{ $0.type == activeType}
+        } else {
+            challenges
+        }
+    }
     
     var emblems: [Emblem] = []
     var selectedEmblem: Emblem? = nil
-    var disponibleChallenges: [Challenge] {
+    @ObservationIgnored var disponibleChallenges: [Challenge] {
         challenges.filter { challenge in
             !emblems.contains { emblem in
                 emblem.name == challenge.name
@@ -18,49 +25,39 @@ final class ChallengesVM {
     }
     
     var errorMsg = ""
-    var showAlert = false
+    var showError = false
     
     init(interactor: DataInteractor = Network.shared) {
         self.interactor = interactor
     }
     
-    func getChallenges(type: ChallengeType = .all) {
-        Task {
-            do {
-                if type == .all {
-                    self.challenges = try await interactor.getAllChallenges()
-                } else {
-                    self.challenges = try await interactor.getChallengesByType(type)
-                }
-            } catch {
-                self.errorMsg = error.localizedDescription
-                self.showAlert.toggle()
-                print(error.localizedDescription)
-            }
+    func getChallenges() async {
+        do {
+            challenges = try await interactor.getAllChallenges()
+        } catch {
+            errorMsg = error.localizedDescription
+            showError.toggle()
+            print(error.localizedDescription)
         }
     }
     
-    func getActiveEmblems() {
-        Task {
-            do {
-                self.emblems = try await interactor.getActiveEmblems()
-            } catch {
-                self.errorMsg = error.localizedDescription
-                self.showAlert.toggle()
-                print(error.localizedDescription)
-            }
+    func getActiveEmblems() async {
+        do {
+            emblems = try await interactor.getActiveEmblems()
+        } catch {
+            errorMsg = error.localizedDescription
+            showError.toggle()
+            print(error.localizedDescription)
         }
     }
     
-    func getCompletedChallenges() {
-        Task {
-            do {
-                self.challenges = try await interactor.getCompletedChallenges()
-            } catch {
-                self.errorMsg = error.localizedDescription
-                self.showAlert.toggle()
-                print(error.localizedDescription)
-            }
+    func getCompletedChallenges() async {
+        do {
+            challenges = try await interactor.getCompletedChallenges()
+        } catch {
+            errorMsg = error.localizedDescription
+            showError.toggle()
+            print(error.localizedDescription)
         }
     }
     
@@ -68,26 +65,28 @@ final class ChallengesVM {
         Task {
             do {
                 let emblemDTO = CreateEmblemDTO(id: id)
-                try await interactor.addEmblem(emblem: emblemDTO)
-                getActiveEmblems()
+                try await interactor.addEmblem(emblemDTO)
+                await getActiveEmblems()
             } catch {
-                self.errorMsg = error.localizedDescription
-                self.showAlert.toggle()
+                errorMsg = error.localizedDescription
+                showError.toggle()
                 print(error.localizedDescription)
             }
         }
     }
+    
     func deleteEmblem(id: UUID) {
         Task {
             do {
                 let emblemDTO = CreateEmblemDTO(id: id)
-                try await interactor.deleteEmblem(emblem: emblemDTO)
-                getActiveEmblems()
+                try await interactor.deleteEmblem(emblemDTO)
+                await getActiveEmblems()
             } catch {
-                self.errorMsg = error.localizedDescription
-                self.showAlert.toggle()
+                errorMsg = error.localizedDescription
+                showError.toggle()
                 print(error.localizedDescription)
             }
         }
     }
+    
 }

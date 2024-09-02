@@ -32,6 +32,6 @@ struct ScoreCell: View {
 }
 
 #Preview {
-    ScoreCell(score: .test2)
-        .padding()
+    ScoreCell(score: .test)
+        .preferredColorScheme(.dark)
 }

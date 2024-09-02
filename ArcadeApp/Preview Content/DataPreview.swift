@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct TestInteractor: DataInteractor {
-    func createUser(user: CreateUserDTO) async throws {
+    func register(user: CreateUserDTO) async throws {
     }
     
     func loginJWT(user: String, pass: String) async throws  -> User {
@@ -16,9 +16,9 @@ struct TestInteractor: DataInteractor {
         .test
     }
     
-    func editUserAbout(about: EditUserAboutDTO) async throws {
+    func editUserAbout(_ about: EditUserAboutDTO) async throws {
     }
-    func editUserAvatar(avatar: EditUserAvatarDTO) async throws {
+    func editUserAvatar(_ avatar: EditUserAvatarDTO) async throws {
     }
     
     func loadData(file: String) throws -> [Game] {
@@ -28,7 +28,7 @@ struct TestInteractor: DataInteractor {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         
-        return try decoder.decode([GameDTO].self, from: data).map(\.toGame)
+        return try decoder.decode([Game].self, from: data)
     }
     
     func getAllGames(page: Int) async throws -> [Game] {
@@ -39,7 +39,7 @@ struct TestInteractor: DataInteractor {
         try loadData(file: "games").filter { $0.console == console }
     }
     
-    func searchGame(name: String, page: Int) async throws -> [Game] {
+    func searchGame(name: String) async throws -> [Game] {
         try loadData(file: "games").filter { $0.name.contains(name)}
     }
     
@@ -55,19 +55,19 @@ struct TestInteractor: DataInteractor {
     }
     
     
-    func addFavoriteGame(id: UUID) async throws {
+    func addFavoriteGame(_ game: FavoriteGameDTO) async throws {
         
     }
     
-    func removeFavoriteGame(id: UUID) async throws {
+    func removeFavoriteGame(_ game: FavoriteGameDTO) async throws {
         
     }
     
-    func addReview(review: CreateReviewDTO) async throws {
+    func addReview(_ review: CreateReviewDTO) async throws {
         
     }
 
-    func addScore(score: CreateScoreDTO) async throws {
+    func addScore(_ score: CreateScoreDTO) async throws {
         
     }
     
@@ -88,11 +88,11 @@ struct TestInteractor: DataInteractor {
         [.test]
     }
     
-    func addEmblem(emblem: CreateEmblemDTO) async throws {
+    func addEmblem(_ emblem: CreateEmblemDTO) async throws {
         
     }
     
-    func deleteEmblem(emblem: CreateEmblemDTO) async throws {
+    func deleteEmblem(_ emblem: CreateEmblemDTO) async throws{
         
     }
     
@@ -112,14 +112,14 @@ extension User {
 }
 
 extension Game {
-    static let test = Game(id: UUID(),
+    static let test = Game(id: UUID(uuidString: "f29eac70-e200-4e54-b878-efcdaa9413e3") ?? UUID(),
                            name: "Pokémon Red and Blue",
                            description: "An rpg game where players capture and train Pokémon to become the Pokémon Champion.",
                            console: .gameboy,
                            genre: .rpg,
                            releaseDate: Calendar.current.date(from: DateComponents(year: 1996, month: 2, day: 27))!,
                            featured: true)
-    static let test2 = Game(id: UUID(),
+    static let test2 = Game(id: UUID(uuidString: "373c6689-5674-45ba-b82f-3ff64622dd8c") ?? UUID(),
                            name: "Super Mario Bros.",
                            description: "A platform game where players control Mario and Luigi to save Princess Toadstool.",
                            console: .nes,
@@ -156,11 +156,11 @@ extension Score {
     static let test = Score(id: UUID(),
                             score: nil,
                             state: .unverified,
-                            date: .now)
+                            date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 1, hour: 22, minute: 30)) ?? .now)
     static let test2 = Score(id: UUID(),
                             score: 5500,
                             state: .verified,
-                            date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 1, hour: 22, minute: 30)) ?? .now)
+                            date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 3, hour: 15, minute: 30)) ?? .now)
     static let test3 = Score(id: UUID(),
                             score: 6000,
                             state: .verified,

@@ -5,10 +5,9 @@ struct GameCover: View {
     let game: Game
     let width: CGFloat
     let height: CGFloat
-    var shimmer: Bool = false
+    @State private var imageVM = ImageNetworkVM()    
     
     @Environment(\.namespace) private var namespace
-    @State private var imageVM = ImageNetworkVM()
     
     var body: some View {
         Group {
@@ -17,9 +16,8 @@ struct GameCover: View {
                     Image(uiImage: image)
                         .resizable()
                         .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .matchedGeometryEffect(id: "\(game.id)_COVER", in: namespace)
                         .frame(width: width, height: height)
-                        .matchedGeometryEffect(id: "\(game.id)/COVER", in: namespace)
-                        .shimmerEffect(active: shimmer)
                 } else {
                     RoundedRectangle(cornerRadius: 10)
                         .fill(Color(white: 0.6))
@@ -30,9 +28,9 @@ struct GameCover: View {
                                 .foregroundStyle(.primary)
                                 .padding()
                         }
-                        .matchedGeometryEffect(id: "\(game.id)/COVER", in: namespace)
+                        .matchedGeometryEffect(id: "\(game.id)_COVER", in: namespace)
                         .frame(width: width, height: height)
-                        .shimmerEffect(active: shimmer)
+                        .shimmerEffect()
                 }
             } else {
                 if let image = imageVM.image {
@@ -51,16 +49,18 @@ struct GameCover: View {
                                 .padding()
                         }
                         .frame(width: width, height: height)
+                        .shimmerEffect()
                 }
             }
         }
         .task {
-           await imageVM.getImage(url: game.imageURL, size: 300)
+            await imageVM.getImage(url: game.imageURL, size: 300)
         }
     }
 }
 
 #Preview {
-    GameCover(game: .test2, width: 160, height: 220, shimmer: true)
+    GameCover(game: .test, width: 140, height: 220)
         .namespace(Namespace().wrappedValue)
+        .preferredColorScheme(.dark)
 }

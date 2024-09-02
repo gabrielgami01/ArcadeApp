@@ -1,11 +1,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(UserVM.self) private var loginVM
+    @Environment(UserVM.self) private var userVM
     
     var body: some View {
         Group {
-            if loginVM.isLogged {
+            if userVM.isLogged {
                 MainTabView()
             } else {
                 LoginView()
@@ -19,5 +19,4 @@ struct ContentView: View {
     ContentView()
         .environment(UserVM())
         .environment(GamesVM(interactor: TestInteractor()))
-        .environment(SearchVM(interactor: TestInteractor()))
 }

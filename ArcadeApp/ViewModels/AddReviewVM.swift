@@ -11,34 +11,34 @@ final class AddReviewVM {
     var comment = ""
 
     var errorMsg = ""
-    var showAlert = false
+    var showError = false
     
-    init(interactor: DataInteractor = Network.shared, game: Game) {
-        self.interactor = interactor
+    init(game: Game, interactor: DataInteractor = Network.shared) {
         self.game = game
+        self.interactor = interactor
     }
     
     func addReview() {
         Task {
             do {
-                let review = CreateReviewDTO(title: title, comment: comment, rating: rating, gameID: game.id)
-                try await interactor.addReview(review: review)
-                NotificationCenter.default.post(name: .details, object: nil)
+                let reviewDTO = CreateReviewDTO(title: title, comment: comment, rating: rating, gameID: game.id)
+                try await interactor.addReview(reviewDTO)
+                NotificationCenter.default.post(name: .details, object: nil, userInfo: ["gameID": game.id])
             } catch {
-                self.errorMsg = error.localizedDescription
-                self.showAlert.toggle()
+                errorMsg = error.localizedDescription
+                showError.toggle()
                 print(error.localizedDescription)
             }
         }
     }
     
     func checkReview() -> Bool {
-        self.errorMsg = ""
+        errorMsg = ""
         if title.isEmpty {
-            self.errorMsg = "The review must have a title."
+            errorMsg = "The review must have a title."
         }
         if rating == 0 {
-            self.errorMsg += "The review must have a min rating of 1."
+            errorMsg += "The review must have a min rating of 1."
         }
         
         return errorMsg.isEmpty

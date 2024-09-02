@@ -30,4 +30,5 @@ struct CustomUnavailableView: View {
 
 #Preview {
     CustomUnavailableView(title: "No games", image: "gamecontroller", description: "There's no games with the name you introduced.")
+        .preferredColorScheme(.dark)
 }

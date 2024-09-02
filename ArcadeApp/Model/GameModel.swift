@@ -1,28 +1,6 @@
 import Foundation
 import SwiftData
 
-struct GameDTO: Codable {
-    let id: UUID
-    let name: String
-    let description: String
-    let console: Console
-    let genre: Genre
-    let releaseDate: Date
-    let imageURL: String?
-    let featured: Bool
-    
-    var toGame: Game {
-        Game(
-            id: id,
-            name: name,
-            description: description,
-            console: console,
-            genre: genre,
-            releaseDate: releaseDate,
-            featured: featured)
-    }
-}
-
 struct GamePageDTO: Codable {
     let items: [Game]
     let metadata: Metadata

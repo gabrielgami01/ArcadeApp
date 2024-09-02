@@ -10,24 +10,24 @@ final class AddScoreVM {
     var showCamera = false
     
     var errorMsg = ""
-    var showAlert = false
+    var showError = false
     
-    init(interactor: DataInteractor = Network.shared, game: Game) {
-        self.interactor = interactor
+    init(game: Game, interactor: DataInteractor = Network.shared) {
         self.game = game
+        self.interactor = interactor
     }
     
     func addScore() {
         Task {
             do {
                 if let image, let data = image.jpegData(compressionQuality: 0.8) {
-                    let score = CreateScoreDTO(image: data, gameID: game.id)
-                    try await interactor.addScore(score: score)
+                    let scoreDTO = CreateScoreDTO(image: data, gameID: game.id)
+                    try await interactor.addScore(scoreDTO)
                     NotificationCenter.default.post(name: .details, object: nil)
                 }
             } catch {
-                self.errorMsg = error.localizedDescription
-                self.showAlert.toggle()
+                errorMsg = error.localizedDescription
+                showError.toggle()
                 print(error.localizedDescription)
             }
         }

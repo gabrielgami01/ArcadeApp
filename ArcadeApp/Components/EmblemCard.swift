@@ -1,8 +1,6 @@
 import SwiftUI
 
 struct EmblemPlaceholder: View {
-    @Binding var showAddEmblem: Bool
-    
     var body: some View {
         VStack {
             Text("Add new emblem")
@@ -42,4 +40,5 @@ struct EmblemCard: View {
 
 #Preview {
     EmblemCard(emblem: .test)
+        .preferredColorScheme(.dark)
 }

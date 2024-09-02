@@ -4,8 +4,7 @@ struct AsyncText: View {
     @Binding var text: String
     let label: String
     let font: Font
-    
-    
+
     var body: some View {
         Text(text)
             .font(font)
@@ -27,5 +26,6 @@ struct AsyncText: View {
 
 #Preview {
     AsyncText(text: .constant("ARCADE STUDIOS"), label: "ARCADE STUDIOS", font: .customLargeTitle)
+        .preferredColorScheme(.dark)
 }
    

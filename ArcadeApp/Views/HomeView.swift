@@ -5,24 +5,14 @@ struct HomeView: View {
     @Environment(GamesVM.self) private var gamesVM
     
     @State private var selectedPage: HomePage?
+    @State private var selectedType: HomeScrollType = .featured
     
     @Namespace private var namespaceFeatured
     @Namespace private var namespaceFavorites
     
     var body: some View {
-        ZStack {
-            home
-                .opacity(gamesVM.selectedGame == nil ? 1.0 : 0.0)
-            if let game = gamesVM.selectedGame {
-                GameDetailsView(detailsVM: GameDetailsVM(game: game))
-                    .opacity(gamesVM.selectedGame == nil ? 0.0 : 1.0)
-            }
-        }
-        .animation(.bouncy.speed(0.8), value: gamesVM.selectedGame)
-        .namespace(gamesVM.selectedType == .featured ? namespaceFeatured : namespaceFavorites)
-    }
-    
-    var home: some View {
+        @Bindable var gamesBVM = gamesVM
+        
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 10) {
@@ -32,44 +22,50 @@ struct HomeView: View {
                             .padding(.horizontal)
                     }
                     
-                    
                     ScrollView(.horizontal) {
-                        LazyHStack(spacing: 25) {
-                            PageButton(selectedPage: $selectedPage, page: .challenges, image: "trophy", color: .green)
-                            PageButton(selectedPage: $selectedPage, page: .rankings, image: "rosette", color: .orange)
-                            PageButton(selectedPage: $selectedPage, page: .profile, image: "person.crop.circle", color: .red)
+                        HStack(spacing: 25) {
+                            PageButton(selectedPage: $selectedPage, page: .challenges)
+                            PageButton(selectedPage: $selectedPage, page: .rankings)
+                            PageButton(selectedPage: $selectedPage, page: .profile)
                         }
                         .safeAreaPadding()
                     }
                     
-                    GamesCarousel(type: .featured)
-                        .namespace(namespaceFeatured)
-                    GamesCarousel(type: .favorites)
-                        .namespace(namespaceFavorites)
+                    GamesCarousel(selectedType: $selectedType, type: .featured, games: gamesVM.featured)
+                    .namespace(namespaceFeatured)
+                    
+                    GamesCarousel(selectedType: $selectedType, type: .favorites, games: gamesVM.favorites)
+                    .namespace(namespaceFavorites)
                 }
             }
             .navigationDestination(for: HomePage.self) { page in
-                switch page {
-                    case .challenges:
-                        ChallengesView()
-                    case .rankings:
-                        RankingsView()
-                    case .profile:
-                        ProfileView()
+                Group {
+                    switch page {
+                        case .challenges:
+                            ChallengesView()
+                        case .rankings:
+                            RankingsView()
+                        case .profile:
+                            ProfileView()
+                    }
                 }
+                .namespace(namespaceFeatured)
             }
-            .navigationDestination(for: Game.self) { game in
-                GameRankingView(rankingVM: RankingsVM(game: game))
+            .showAlert(show: $gamesBVM.showError, text: gamesVM.errorMsg)
+            .overlay {
+                GameDetailsView(game: gamesVM.selectedGame)
             }
-            .scrollIndicators(.hidden)
+            .namespace(selectedType == .featured ? namespaceFeatured : namespaceFavorites)
+            .background(Color.background)
             .scrollBounceBehavior(.basedOnSize)
-            .background(Color.backgroundColor)
+            .scrollIndicators(.hidden)
         }
     }
 }
 
 #Preview {
     HomeView()
-        .environment(UserVM())
+        .environment(UserVM(interactor: TestInteractor()))
         .environment(GamesVM(interactor: TestInteractor()))
+        .preferredColorScheme(.dark)
 }

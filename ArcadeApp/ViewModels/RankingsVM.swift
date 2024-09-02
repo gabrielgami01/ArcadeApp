@@ -3,41 +3,64 @@ import SwiftUI
 @Observable
 final class RankingsVM {
     let interactor: DataInteractor
-    let game: Game
+    
+    var games: [Game] = []
+    
+    var selectedGame: Game?
     
     var rankingScores: [RankingScore] = []
     var ranking: [(offset: Int, element: RankingScore)] {
         rankingScores.enumerated().map { $0 }
     }
     
-    var page = 1
+    var gamesPage = 1
+    var rankingsPage = 1
+    
     
     var errorMsg = ""
-    var showAlert = false
+    var showError = false
     
-    
-    init(interactor: DataInteractor = Network.shared, game: Game) {
+    init(interactor: DataInteractor = Network.shared, selectedGame: Game? = nil) {
         self.interactor = interactor
-        self.game = game
-        getRanking()
+        self.selectedGame = selectedGame
+        getGames()
     }
     
-    func getRanking() {
+    func getGames() {
         Task {
             do {
-                self.rankingScores = try await interactor.getGameRanking(id: game.id, page: page)
+                games += try await interactor.getAllGames(page: gamesPage)
             } catch {
-                self.errorMsg = error.localizedDescription
-                self.showAlert.toggle()
+                errorMsg = error.localizedDescription
+                showError.toggle()
                 print(error.localizedDescription)
             }
         }
     }
     
-    func isLastItem(_ score: RankingScore) {
+    func getGameRanking(id: UUID) {
+        Task {
+            do {
+                rankingScores = try await interactor.getGameRanking(id: id, page: rankingsPage)
+            } catch {
+                errorMsg = error.localizedDescription
+                showError.toggle()
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func isLastScore(_ score: RankingScore, gameID: UUID) {
         if rankingScores.last?.id == score.id {
-            page += 1
-            getRanking()
+            rankingsPage += 1
+            getGameRanking(id: gameID)
+        }
+    }
+    
+    func isLastGame(_ game: Game) {
+        if games.last?.id == game.id {
+            gamesPage += 1
+            getGames()
         }
     }
     

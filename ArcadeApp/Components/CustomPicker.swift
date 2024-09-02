@@ -1,14 +1,15 @@
 import SwiftUI
 
 struct CustomPicker: View {
-    @Environment(\.namespace) private var namespace
     @Binding var selectedOption: PickerOptions
+    
+    @Environment(\.namespace) private var namespace
     
     var body: some View {
         HStack(spacing: 0) {
             ForEach(PickerOptions.allCases) { option in
                 Button {
-                    withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.7)) {
+                    withAnimation(.bouncy) {
                         selectedOption = option
                     }
                 } label: {
@@ -39,4 +40,5 @@ struct CustomPicker: View {
 #Preview {
     CustomPicker(selectedOption: .constant(.about))
         .namespace(Namespace().wrappedValue)
+        .preferredColorScheme(.dark)
 }

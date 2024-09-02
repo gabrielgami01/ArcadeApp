@@ -3,17 +3,18 @@ import PhotosUI
 
 struct ProfileView: View {
     @Environment(UserVM.self) private var userVM
-    @Environment(\.dismiss) private var dismiss
     @State var challengesVM = ChallengesVM()
     @State private var showEditAbout = false
     @State private var showAddEmblem = false
+    
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         @Bindable var userBVM = userVM
         
         VStack {
             if let user = userVM.activeUser {
-                VStack(spacing: 0) {
+                VStack {
                     UserAvatarImage(imageData: user.avatarImage)
                         .overlay(alignment: .topTrailing) {
                             PhotosPicker(selection: $userBVM.photoItem, matching: .images) {
@@ -26,6 +27,7 @@ struct ProfileView: View {
                     
                     Text(user.username)
                         .font(.customTitle2)
+                    
                     Text(user.email)
                         .foregroundStyle(.secondary)
                         .font(.customHeadline)
@@ -45,12 +47,13 @@ struct ProfileView: View {
                                     Spacer()
                                 }
                             }
+                            
                             ForEach(0..<max(0, 3 - challengesVM.emblems.count), id: \.self) { index in
                                 Button {
                                     challengesVM.selectedEmblem = nil
                                     showAddEmblem.toggle()
                                 } label: {
-                                    EmblemPlaceholder(showAddEmblem: $showAddEmblem)
+                                    EmblemPlaceholder()
                                 }
                                 if index != max(0, 3 - challengesVM.emblems.count) - 1 {
                                     Spacer()
@@ -82,7 +85,7 @@ struct ProfileView: View {
                     }
                     .font(.customBody)
                     .listRowBackground(Color.cardColor)
-
+                    
                     Section {
                         Button(role: .destructive) {
                             userVM.logout()
@@ -92,30 +95,17 @@ struct ProfileView: View {
                     }
                     .font(.customBody)
                     .listRowBackground(Color.cardColor)
+
                 }
-            } else {
-                Button(role: .destructive) {
-                    userVM.logout()
-                } label: {
-                    Text("Log Out")
-                }
+                
+                
             }
         }
-        .onAppear {
-            challengesVM.getActiveEmblems()
+        .task {
+           await challengesVM.getActiveEmblems()
         }
         .onChange(of: userVM.photoItem) { _, _ in
             userVM.editUserAvatar()
-        }
-        .navigationBarBackButtonHidden()
-        .padding(.vertical, 5)
-        .scrollContentBackground(.hidden)
-        .background(Color.background)
-        .overlay(alignment: .topLeading) {
-            BackButton {
-                dismiss()
-            }
-            .padding(.horizontal)
         }
         .sheet(isPresented: $showEditAbout) {
             EditAboutView()
@@ -123,11 +113,23 @@ struct ProfileView: View {
         .sheet(isPresented: $showAddEmblem) {
             AddEmblemView(challengesVM: challengesVM)
         }
+        .overlay(alignment: .topLeading) {
+            BackButton {
+                dismiss()
+            }
+            .padding(.horizontal)
+        }
+        .navigationBarBackButtonHidden()
+        .scrollContentBackground(.hidden)
+        .background(Color.background)
+        
+        
     }
 }
 
 #Preview {
-    ProfileView(challengesVM: ChallengesVM(interactor: TestInteractor()))
-        .environment(UserVM())
+    ProfileView()
+        .environment(UserVM(interactor: TestInteractor()))
+        .preferredColorScheme(.dark)
 }
 

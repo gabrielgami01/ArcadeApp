@@ -6,14 +6,11 @@ final class GamesVM {
     
     var featured: [Game] = []
     var favorites: [Game] = []
-    var selectedType: HomeScrollType = .featured
     
-    var games: [Game] = []
     var selectedGame: Game? = nil
     
-    var errorMsg = ""
-    var showAlert = false
-    
+    var games: [Game] = []
+    var page = 1
     var activeConsole: Console = .all {
         didSet {
             activeConsole != oldValue ? games.removeAll() : nil
@@ -21,7 +18,8 @@ final class GamesVM {
         }
     }
     
-    var page = 1
+    var errorMsg = ""
+    var showError = false
     
     init(interactor: DataInteractor = Network.shared) {
         self.interactor = interactor
@@ -29,12 +27,12 @@ final class GamesVM {
             getFeaturedFavoriteGames()
             getGames()
         }
-        NotificationCenter.default.addObserver(forName: .login, object: nil, queue: .main) { _ in
-            self.getFeaturedFavoriteGames()
-            self.getGames()
+        NotificationCenter.default.addObserver(forName: .login, object: nil, queue: .main) { [self] _ in
+            getFeaturedFavoriteGames()
+            getGames()
         }
-        NotificationCenter.default.addObserver(forName: .favorite, object: nil, queue: .main) { _ in
-            self.getFeaturedFavoriteGames()
+        NotificationCenter.default.addObserver(forName: .favorite, object: nil, queue: .main) { [self] _ in
+           getFeaturedFavoriteGames()
         }
     }
     
@@ -43,30 +41,28 @@ final class GamesVM {
         NotificationCenter.default.removeObserver(self, name: .favorite, object: nil)
     }
     
-    func getGames(console: Console = .all) {
-        Task {
-            do {
-                if console == .all {
-                    self.games += try await interactor.getAllGames(page: page)
-                } else {
-                    self.games += try await interactor.getGamesByConsole(console, page: page)
-                }
-            } catch {
-                self.errorMsg = error.localizedDescription
-                self.showAlert.toggle()
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    
     func getFeaturedFavoriteGames() {
         Task {
             do {
                 (featured, favorites) = try await interactor.getFeaturedFavoriteGames()
             } catch {
-                self.errorMsg = error.localizedDescription
-                self.showAlert.toggle()
+                errorMsg = error.localizedDescription
+                showError.toggle()
+            }
+        }
+    }
+    
+    func getGames() {
+        Task {
+            do {
+                if activeConsole == .all {
+                    games += try await interactor.getAllGames(page: page)
+                } else {
+                    games += try await interactor.getGamesByConsole(activeConsole, page: page)
+                }
+            } catch {
+                errorMsg = error.localizedDescription
+                showError.toggle()
                 print(error.localizedDescription)
             }
         }
@@ -75,7 +71,7 @@ final class GamesVM {
     func isLastItem(_ game: Game) {
         if games.last?.id == game.id {
             page += 1
-            getGames(console: activeConsole)
+            getGames()
         }
     }
     

@@ -2,31 +2,31 @@ import Foundation
 import ACNetwork
 
 protocol DataInteractor {
-    func createUser(user: CreateUserDTO) async throws
+    func register(user: CreateUserDTO) async throws
     func loginJWT(user: String, pass: String) async throws -> User
     func refreshJWT() async throws -> User
     func getUserInfo() async throws -> User
-    func editUserAbout(about: EditUserAboutDTO) async throws
-    func editUserAvatar(avatar: EditUserAvatarDTO) async throws
+    func editUserAbout(_ about: EditUserAboutDTO) async throws
+    func editUserAvatar(_ avatar: EditUserAvatarDTO) async throws
     
     func getAllGames(page: Int) async throws -> [Game]
     func getGamesByConsole(_ console: Console, page: Int) async throws -> [Game]
-    func searchGame(name: String, page: Int) async throws -> [Game]
+    func searchGame(name: String) async throws -> [Game]
     
     func getFeaturedFavoriteGames() async throws -> (featured: [Game], favorites: [Game]) 
     
     func getGameDetails(id: UUID) async throws -> (favorite: Bool, reviews: [Review], scores: [Score])
-    func addFavoriteGame(id: UUID) async throws
-    func removeFavoriteGame(id: UUID) async throws
-    func addReview(review: CreateReviewDTO) async throws
-    func addScore(score: CreateScoreDTO) async throws
+    func addFavoriteGame(_ game: FavoriteGameDTO) async throws
+    func removeFavoriteGame(_ game: FavoriteGameDTO) async throws
+    func addReview(_ review: CreateReviewDTO) async throws
+    func addScore(_ score: CreateScoreDTO) async throws
     
     func getAllChallenges() async throws -> [Challenge]
     func getChallengesByType(_ type: ChallengeType) async throws -> [Challenge]
     func getCompletedChallenges() async throws -> [Challenge]
     func getActiveEmblems() async throws -> [Emblem]
-    func addEmblem(emblem: CreateEmblemDTO) async throws
-    func deleteEmblem(emblem: CreateEmblemDTO) async throws
+    func addEmblem(_ emblem: CreateEmblemDTO) async throws
+    func deleteEmblem(_ emblem: CreateEmblemDTO) async throws
     
     func getGameRanking(id: UUID, page: Int) async throws -> [RankingScore]
 }
@@ -42,7 +42,7 @@ struct Network: DataInteractor, NetworkJSONInteractor {
     }
     
     //USERS
-    func createUser(user: CreateUserDTO) async throws {
+    func register(user: CreateUserDTO) async throws {
         var request: URLRequest = .post(url: .createUser, post: user)
         request.setValue(SecManager.shared.appAPIKEY, forHTTPHeaderField: "App-APIKey")
         
@@ -70,11 +70,11 @@ struct Network: DataInteractor, NetworkJSONInteractor {
         try await getJSON(request: .get(url: .getUserInfo, token: getToken()), type: User.self)
     }
     
-    func editUserAbout(about: EditUserAboutDTO) async throws {
+    func editUserAbout(_ about: EditUserAboutDTO) async throws {
         try await post(request: .post(url: .updateUserAbout, post: about, method: .put, token: getToken()))
     }
     
-    func editUserAvatar(avatar: EditUserAvatarDTO) async throws {
+    func editUserAvatar(_ avatar: EditUserAvatarDTO) async throws {
         try await post(request: .post(url: .updateUserAvatar, post: avatar, method: .put, token: getToken()))
     }
     //END USERS
@@ -88,16 +88,16 @@ struct Network: DataInteractor, NetworkJSONInteractor {
         try await getJSON(request: .get(url: .getGamesByConsole(name: console.rawValue, page: page), token: getToken()), type: GamePageDTO.self).items
     }
     
-    func searchGame(name: String, page: Int) async throws -> [Game] {
-        try await getJSON(request: .get(url: .searchGame(name: name, page: page), token: getToken()), type: GamePageDTO.self).items
+    func searchGame(name: String) async throws -> [Game] {
+        try await getJSON(request: .get(url: .searchGame(name: name), token: getToken()), type: [Game].self)
     }
 
     //END SEARCH
     
     //HOME
     func getFeaturedFavoriteGames() async throws -> (featured: [Game], favorites: [Game]) {
-        async let featuredRequest = getJSON(request: .get(url: .getFeaturedGames, token: getToken()), type: [GameDTO].self).map(\.toGame)
-        async let favoritesRequest = getJSON(request: .get(url: .getUserFavoriteGames, token: getToken()), type: [GameDTO].self).map(\.toGame)
+        async let featuredRequest = getJSON(request: .get(url: .getFeaturedGames, token: getToken()), type: [Game].self)
+        async let favoritesRequest = getJSON(request: .get(url: .getUserFavoriteGames, token: getToken()), type: [Game].self)
         
         return try await (featuredRequest, favoritesRequest)
     }
@@ -112,22 +112,20 @@ struct Network: DataInteractor, NetworkJSONInteractor {
         return try await (favoriteRequest, reviewsRequest, scoresRequest)
     }
     
-    func addFavoriteGame(id: UUID) async throws {
-        let favoriteGameDTO = FavoriteGameDTO(id: id)
-        try await post(request: .post(url: .addFavoriteGame, post: favoriteGameDTO, token: getToken()), status: 201)
+    func addFavoriteGame(_ game: FavoriteGameDTO) async throws{
+        try await post(request: .post(url: .addFavoriteGame, post: game, token: getToken()), status: 201)
     }
     
-    func removeFavoriteGame(id: UUID) async throws {
-        let favoriteGameDTO = FavoriteGameDTO(id: id)
-        try await post(request: .post(url: .deleteFavoriteGame, post: favoriteGameDTO, method: .delete, token: getToken()))
+    func removeFavoriteGame(_ game: FavoriteGameDTO) async throws {
+        try await post(request: .post(url: .deleteFavoriteGame, post: game, method: .delete, token: getToken()))
     }
 
-    func addReview(review: CreateReviewDTO) async throws {
+    func addReview(_ review: CreateReviewDTO) async throws {
         try await post(request: .post(url: .addReview, post: review, token: getToken()), status: 201)
     }
     
    
-    func addScore(score: CreateScoreDTO) async throws {
+    func addScore(_ score: CreateScoreDTO) async throws {
         try await post(request: .post(url: .addScore, post: score, token: getToken()), status: 201)
     }
     
@@ -176,10 +174,10 @@ struct Network: DataInteractor, NetworkJSONInteractor {
     func getActiveEmblems() async throws -> [Emblem] {
         try await getJSON(request: .get(url: .getActiveEmblems, token: getToken()), type: [Emblem].self)
     }
-    func addEmblem(emblem: CreateEmblemDTO) async throws {
+    func addEmblem(_ emblem: CreateEmblemDTO) async throws {
         try await post(request: .post(url: .addEmblem, post: emblem, token: getToken()), status: 201)
     }
-    func deleteEmblem(emblem: CreateEmblemDTO) async throws {
+    func deleteEmblem(_ emblem: CreateEmblemDTO) async throws {
         try await post(request: .post(url: .deleteEmblem, post: emblem, method: .delete, token: getToken()))
     }
     //CHALLENGES

@@ -22,8 +22,8 @@ extension URL {
         games.appending(path: "byConsole").appending(queryItems: [.console(name), .page(page), .per()])
     }
     static let getFeaturedGames = games.appending(path: "featured")
-    static func searchGame(name: String, page: Int) -> URL {
-        games.appending(path: "search").appending(queryItems: [.game(name), .page(page), .per()])
+    static func searchGame(name: String) -> URL {
+        games.appending(path: "search").appending(queryItems: [.game(name)])
     }
     static let favorites = games.appending(path: "favorites")
     static let getUserFavoriteGames = favorites.appending(path: "list")

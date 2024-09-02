@@ -5,8 +5,6 @@ struct ChallengeFrontCard: View {
     let showCheck: Bool
     
     var body: some View {
-        let color = challenge.colorForChallenge()
-        
         VStack {
             Text(challenge.name)
                 .font(.customHeadline)
@@ -24,7 +22,7 @@ struct ChallengeFrontCard: View {
         }
         .frame(width: 130, height: 150)
         .padding()
-        .customCard(borderColor: color, cornerRadius: 50)
+        .customCard(borderColor: challenge.colorForChallenge(), cornerRadius: 50)
         .overlay(alignment: .topTrailing) {
             if showCheck {
                 Image(systemName: "checkmark")
@@ -39,4 +37,5 @@ struct ChallengeFrontCard: View {
 
 #Preview {
     ChallengeFrontCard(challenge: .test, showCheck: true)
+        .preferredColorScheme(.dark)
 }

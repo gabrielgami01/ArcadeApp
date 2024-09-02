@@ -3,6 +3,7 @@ import SwiftUI
 struct MainTabView: View {
     @Environment(UserVM.self) private var loginVM
     @Environment(GamesVM.self) private var gamesVM
+    
     var body: some View {
         TabView {
             HomeView()
@@ -13,7 +14,7 @@ struct MainTabView: View {
                     gamesVM.selectedGame = nil
                 }
 
-            SearchView()
+            GameListView()
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }
@@ -38,5 +39,5 @@ struct MainTabView: View {
     MainTabView()
         .environment(UserVM())
         .environment(GamesVM(interactor: TestInteractor()))
-        .environment(SearchVM(interactor: TestInteractor()))
+        .preferredColorScheme(.dark)
 }

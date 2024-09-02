@@ -1,8 +1,9 @@
 import SwiftUI
 
 struct RankingsView: View {
-    @Environment(GamesVM.self) private var gamesVM
-    @Environment(\.dismiss) private var dismiss
+    @State var rankingsVM = RankingsVM()
+    
+    @Environment(\.namespace) private var namespace
     
     var body: some View {
         ScrollView {
@@ -10,14 +11,25 @@ struct RankingsView: View {
                 CustomHeader(title: "Rankings")
                 
                 LazyVStack(spacing: 20) {
-                    ForEach(gamesVM.games) { game in
-                        NavigationLink(value: game) {
+                    ForEach(rankingsVM.games) { game in
+                        Button {
+                            withAnimation(.snappy) {
+                                rankingsVM.selectedGame = game
+                            }
+                        } label: {
                             HStack(spacing: 10) {
                                 GameCover(game: game, width: 60, height: 60)
-                                    .namespace(nil)
-                                Text(game.name)
-                                    .font(.customBody)
+                                    
+                                if let namespace{
+                                    Text(game.name)
+                                        .font(.customBody)
+                                        .matchedGeometryEffect(id: "\(game.id)_NAME", in: namespace, properties: .position)
+                                }
+                                
                                 Spacer()
+                            }
+                            .onAppear {
+                                rankingsVM.isLastGame(game)
                             }
                         }
                         .buttonStyle(.plain)
@@ -26,14 +38,19 @@ struct RankingsView: View {
             }
         }
         .padding(.horizontal)
-        .navigationBarBackButtonHidden()
-        .scrollIndicators(.hidden)
-        .scrollBounceBehavior(.basedOnSize)
+        .overlay {
+            GameRankingView(rankingsVM: rankingsVM)
+        }
         .background(Color.background)
+        .navigationBarBackButtonHidden()
+        .scrollBounceBehavior(.basedOnSize)
+        .scrollIndicators(.hidden)
     }
 }
 
 #Preview {
-    RankingsView()
-        .environment(GamesVM(interactor: TestInteractor()))
+    NavigationStack {
+        RankingsView(rankingsVM: RankingsVM(interactor: TestInteractor()))
+            .preferredColorScheme(.dark)
+    }
 }

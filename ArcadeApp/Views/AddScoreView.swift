@@ -4,36 +4,38 @@ import PhotosUI
 struct AddScoreView: View {
     @Environment(\.dismiss) private var dismiss
     @State var addScoreVM: AddScoreVM
+    @State private var showCamera = false
     
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack {
-                    Button {
-                        addScoreVM.showCamera.toggle()
-                    } label: {
-                        ScoreImage(image: addScoreVM.image)
-                    }
-                    .buttonStyle(.plain)
+            VStack {
+                Button {
+                    addScoreVM.showCamera.toggle()
+                } label: {
+                    ScoreImage(image: addScoreVM.image)
                 }
-                .frame(maxWidth: .infinity)
+                .buttonStyle(.plain)
                 
+                Spacer()
             }
-            .navigationBarTitleDisplayMode(.inline)
-            .sheetToolbar(title: "Add new score", confirmationLabel: "Send") {
+            .sheetToolbar(title: "Add new Score", confirmationLabel: "Save") {
                 addScoreVM.addScore()
                 dismiss()
             }
-            .padding()
-            .scrollBounceBehavior(.basedOnSize)
-            .sheet(isPresented: $addScoreVM.showCamera) {
+            .sheet(isPresented: $showCamera) {
                 CameraPicker(photo: $addScoreVM.image)
             }
+            .showAlert(show: $addScoreVM.showError, text: addScoreVM.errorMsg)
+            .navigationBarTitleDisplayMode(.inline)
+            .frame(maxWidth: .infinity)
+            .padding()
             .background(Color.background)
+            
         }
     }
 }
 
 #Preview {
-    AddScoreView(addScoreVM: AddScoreVM(game: .test))
+    AddScoreView(addScoreVM: AddScoreVM(game: .test, interactor: TestInteractor()))
+        .preferredColorScheme(.dark)
 }

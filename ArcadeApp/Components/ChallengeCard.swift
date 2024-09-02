@@ -4,7 +4,7 @@ struct ChallengeCard: View {
     let challenge: Challenge
     @State private var isFlipped = false
     
-    var body: some View {        
+    var body: some View {
         ZStack {
             ChallengeFrontCard(challenge: challenge, showCheck: challenge.completed)
                 .rotation3DEffect(.degrees(isFlipped ? 180 : 0), axis: (x: 0, y: 1, z: 0))
@@ -23,4 +23,5 @@ struct ChallengeCard: View {
 
 #Preview {
     ChallengeCard(challenge: .test)
+        .preferredColorScheme(.dark)
 }

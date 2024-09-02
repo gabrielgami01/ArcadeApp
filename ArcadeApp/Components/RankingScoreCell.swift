@@ -11,6 +11,15 @@ struct RankingScoreCell: View {
                 .foregroundColor(.gray)
             
             UserAvatarImage(imageData: rankingScore.avatarImage, height: 50, width: 50)
+                .overlay {
+                    if index == 0 {
+                        Image(systemName: "crown.fill")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                            .foregroundStyle(.yellow)
+                            .offset(y: -40)
+                    }
+                }
             
             VStack(alignment: .leading) {
                 Text(rankingScore.user)
@@ -32,6 +41,7 @@ struct RankingScoreCell: View {
 }
 
 #Preview {
-    RankingScoreCell(index: 1, rankingScore: .test)
+    RankingScoreCell(index: 0, rankingScore: .test)
+        .preferredColorScheme(.dark)
         .padding()
 }

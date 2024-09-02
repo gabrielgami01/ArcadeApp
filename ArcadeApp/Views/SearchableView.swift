@@ -2,73 +2,88 @@ import SwiftUI
 import SwiftData
 
 struct SearchableView: View {
-    @Environment(GamesVM.self) private var gamesVM
     @Environment(SearchVM.self) private var searchVM
     @Environment(\.modelContext) private var context
-    @FocusState private var focus: Bool
+    @Binding var show: Bool
+    
+    @FocusState private var focus: Bool 
     
     @Query(sort: [SortDescriptor(\GameModel.added, order: .reverse)]) private var recentSearchs: [GameModel]
     
     var body: some View {
-        @Bindable var bvm = searchVM
+        @Bindable var searchBVM = searchVM
         
         ScrollView {
-            VStack(spacing: 0) {
+            VStack(spacing: 10) {
                 HStack(alignment: .firstTextBaseline) {
-                    CustomTextField(value: $bvm.search, isError: .constant(false), label: "Search", type: .search)
+                    CustomTextField(text: $searchBVM.search, label: "Search", type: .search)
                         .focused($focus)
                     Button {
-                        searchVM.showSearch.toggle()
+                        show.toggle()
                         searchVM.search.removeAll()
                     } label: {
                         Text("Cancel")
                             .font(.customTitle3)
                     }
                 }
-                .padding(.top, 5)
                 
-                Group {
-                    if searchVM.search.isEmpty {
-                        if recentSearchs.isEmpty {
-                            CustomUnavailableView(title: "Search games", image: "gamecontroller", description: "Search for games by name.")
-                        } else {
-                            LazyVStack(alignment: .listRowSeparatorLeading) {
+                if searchVM.search.isEmpty {
+                    if !recentSearchs.isEmpty {
+                        LazyVStack(alignment: .listRowSeparatorLeading) {
+                            HStack {
                                 Text("Recent searches")
                                     .font(.customTitle3)
-                                ForEach(recentSearchs) { gameModel in
-                                    let game = gameModel.toGame
-                                    SearchCell(game: game, isRecent: true)
+                                
+                                Spacer()
+                                
+                                Button {
+                                    try? searchVM.deleteGameSearch(context: context)
+                                } label: {
+                                    Text("Clear all")
+                                        .font(.customHeadline)
                                 }
+                            }
+                            ForEach(recentSearchs) { gameModel in
+                                SearchCell(game: gameModel.toGame, isRecent: true)
                             }
                         }
                     } else {
-                        if searchVM.games.isEmpty {
-                            CustomUnavailableView(title: "No results for '\(searchVM.search)'", image: "magnifyingglass", description: "Check the spelling or try a new search.")
-                        } else {
-                            LazyVStack(alignment: .leading) {
-                                ForEach(searchVM.games) { game in
-                                    SearchCell(game: game, isRecent: false)
-                                }
+                        CustomUnavailableView(title: "Search games", image: "gamecontroller",
+                                              description: "Search for games by name.")
+                    }
+                } else {
+                    if !searchVM.games.isEmpty {
+                        LazyVStack {
+                            ForEach(searchVM.games) { game in
+                                SearchCell(game: game)
                             }
                         }
+                    } else {
+                        CustomUnavailableView(title: "No results for '\(searchVM.search)'", image: "magnifyingglass",
+                                              description: "Check the spelling or try a new search.")
                     }
                 }
             }
-            .padding(.horizontal)
         }
-        .onChange(of: searchVM.showSearch) { oldValue, newValue in
-            focus = newValue == true ? true :  false
+        .onAppear {
+            focus.toggle()
         }
-        .onChange(of: gamesVM.selectedGame) {
-            focus = false
+        .onDisappear {
+            focus.toggle()
         }
-        .scrollBounceBehavior(.basedOnSize)
+        .onChange(of: searchVM.search) { _, _ in
+            searchVM.searchGame()
+        }
+        .padding(.horizontal)
         .background(Color.background)
+        .scrollBounceBehavior(.basedOnSize)
+        .scrollIndicators(.hidden)
     }
 }
 
 #Preview {
-    SearchableView()
-        .environment(GamesVM(interactor: TestInteractor()))
+    SearchableView(show: .constant(true))
         .environment(SearchVM(interactor: TestInteractor()))
+        .environment(GamesVM(interactor: TestInteractor()))
+        .preferredColorScheme(.dark)
 }
