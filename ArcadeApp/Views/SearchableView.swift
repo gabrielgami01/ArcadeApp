@@ -2,8 +2,8 @@ import SwiftUI
 import SwiftData
 
 struct SearchableView: View {
-    @Environment(SearchVM.self) private var searchVM
     @Environment(\.modelContext) private var context
+    @State private var searchVM = SearchVM()
     @Binding var show: Bool
     
     @FocusState private var focus: Bool 

@@ -36,11 +36,7 @@ struct CustomTextField: View {
             .textInputAutocapitalization(capitalization)
             .autocorrectionDisabled()
             .padding(10)
-            .background {
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(.quaternary)
-                    .opacity(0.4)
-            }
+            .background(.quaternary.opacity(0.4), in: .rect(cornerRadius: 10))
         }
     }
 }

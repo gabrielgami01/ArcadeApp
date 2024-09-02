@@ -33,10 +33,7 @@ struct RankingScoreCell: View {
                 .font(.customTitle3)
         }
         .padding()
-        .background {
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.cardColor)
-        }
+        .background(.card, in: .rect(cornerRadius: 10))
     }
 }
 

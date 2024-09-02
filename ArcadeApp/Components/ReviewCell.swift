@@ -29,10 +29,7 @@ struct ReviewCell: View {
             }
         }
         .padding()
-        .background {
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.cardColor)
-        }
+        .background(.card, in: .rect(cornerRadius: 10))
         .frame(maxWidth: .infinity)
     }
 }

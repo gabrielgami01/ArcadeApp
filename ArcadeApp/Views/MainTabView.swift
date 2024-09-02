@@ -37,7 +37,7 @@ struct MainTabView: View {
 
 #Preview {
     MainTabView()
-        .environment(UserVM())
+        .environment(UserVM(interactor: TestInteractor()))
         .environment(GamesVM(interactor: TestInteractor()))
         .preferredColorScheme(.dark)
 }
