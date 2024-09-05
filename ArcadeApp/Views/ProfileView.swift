@@ -7,7 +7,6 @@ struct ProfileView: View {
     @State private var showEditAbout = false
     @State private var showAddEmblem = false
     
-    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         @Bindable var userBVM = userVM
@@ -110,12 +109,6 @@ struct ProfileView: View {
         }
         .sheet(isPresented: $showAddEmblem) {
             AddEmblemView(emblemsVM: emblemsVM)
-        }
-        .overlay(alignment: .topLeading) {
-            BackButton {
-                dismiss()
-            }
-            .padding(.horizontal)
         }
         .navigationBarBackButtonHidden()
         .scrollContentBackground(.hidden)

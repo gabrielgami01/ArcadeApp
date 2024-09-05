@@ -26,7 +26,7 @@ struct HomeView: View {
                         HStack(spacing: 25) {
                             PageButton(selectedPage: $selectedPage, page: .challenges)
                             PageButton(selectedPage: $selectedPage, page: .rankings)
-                            PageButton(selectedPage: $selectedPage, page: .profile)
+                            PageButton(selectedPage: $selectedPage, page: .social)
                         }
                         .safeAreaPadding()
                     }
@@ -45,8 +45,8 @@ struct HomeView: View {
                             ChallengesView()
                         case .rankings:
                             RankingsView()
-                        case .profile:
-                            ProfileView()
+                        case .social:
+                            SocialView()
                     }
                 }
                 .namespace(namespaceFeatured)

@@ -41,7 +41,7 @@ enum SignupFields {
 enum HomePage: String, Identifiable, CaseIterable {
     case challenges = "Challenges"
     case rankings = "Rankings"
-    case profile = "Profile"
+    case social = "Social"
     
     var id: Self { self }
     
@@ -51,8 +51,8 @@ enum HomePage: String, Identifiable, CaseIterable {
                 return "trophy"
             case .rankings:
                 return "rosette"
-            case .profile:
-                return "person.crop.circle"
+            case .social:
+                return "person.2.fill"
         }
     }
     
@@ -62,7 +62,7 @@ enum HomePage: String, Identifiable, CaseIterable {
                 return .green
             case .rankings:
                 return .orange
-            case .profile:
+            case .social:
                 return .red
         }
     }

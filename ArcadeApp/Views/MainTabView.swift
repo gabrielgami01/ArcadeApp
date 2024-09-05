@@ -21,6 +21,14 @@ struct MainTabView: View {
                 .onAppear {
                     gamesVM.selectedGame = nil
                 }
+            
+            ProfileView()
+                .tabItem {
+                    Label("Profile", systemImage: "person.crop.circle")
+                }
+                .onAppear {
+                    gamesVM.selectedGame = nil
+                }
         }
         .onAppear {
             let itemAppearance = UITabBarItem.appearance()
