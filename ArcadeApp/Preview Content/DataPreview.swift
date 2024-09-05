@@ -1,4 +1,16 @@
 import SwiftUI
+import SwiftData
+
+func loadData(file: String) throws -> [Game] {
+    guard let url = Bundle.main.url(forResource: file, withExtension: "json") else { return [] }
+    let data = try Data(contentsOf: url)
+    
+    let decoder = JSONDecoder()
+    decoder.dateDecodingStrategy = .iso8601
+    
+    return try decoder.decode([Game].self, from: data)
+}
+
 
 struct TestInteractor: DataInteractor {
     func register(user: CreateUserDTO) async throws {
@@ -18,17 +30,8 @@ struct TestInteractor: DataInteractor {
     
     func editUserAbout(_ about: EditUserAboutDTO) async throws {
     }
-    func editUserAvatar(_ avatar: EditUserAvatarDTO) async throws {
-    }
     
-    func loadData(file: String) throws -> [Game] {
-        guard let url = Bundle.main.url(forResource: file, withExtension: "json") else { return [] }
-        let data = try Data(contentsOf: url)
-        
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-        
-        return try decoder.decode([Game].self, from: data)
+    func editUserAvatar(_ avatar: EditUserAvatarDTO) async throws {
     }
     
     func getAllGames(page: Int) async throws -> [Game] {
@@ -250,4 +253,28 @@ extension RankingScore {
                                     date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 22, hour: 14, minute: 02)) ?? .now,
                                     user:User.test.username,
                                     avatarImage: nil)
+}
+
+struct SwiftDataPreview: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .modelContainer(for: GameModel.self, inMemory: true) { result in
+                if case .success(let container) = result {
+                    let game = GameModel(id: UUID(),
+                                         name: "Pokémon Red and Blue",
+                                         desc: "An rpg game where players capture and train Pokémon to become the Pokémon Champion.",
+                                         console: "Gameboy",
+                                         genre: "RPG",
+                                         releaseDate: Calendar.current.date(from: DateComponents(year: 1996, month: 2, day: 27))!,
+                                         added: .now)
+                    container.mainContext.insert(game)
+                }
+            }
+    }
+}
+
+extension View {
+    var swiftDataPreview: some View {
+        modifier(SwiftDataPreview())
+    }
 }

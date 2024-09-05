@@ -2,13 +2,13 @@ import SwiftUI
 
 struct SearchCell: View {
     @Environment(GamesVM.self) private var gamesVM
-    @Environment(SearchVM.self) private var searchVM
     @Environment(\.modelContext) private var context
-    
-    @Environment(\.namespace) private var namespace
+    @State var searchVM: SearchVM
 
     let game: Game
     var isRecent: Bool = false
+    
+    @Environment(\.namespace) private var namespace
     
     var body: some View {
         VStack {
@@ -50,7 +50,7 @@ struct SearchCell: View {
 }
 
 #Preview {
-    SearchCell(game: .test)
+    SearchCell(searchVM: SearchVM(interactor: TestInteractor()), game: .test)
         .environment(GamesVM(interactor: TestInteractor()))
         .environment(SearchVM(interactor: TestInteractor()))
         .preferredColorScheme(.dark)

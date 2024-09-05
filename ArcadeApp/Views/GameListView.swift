@@ -8,6 +8,7 @@ struct GameListView: View {
     
     @Namespace private var namespace
     
+    
     var body: some View {
         @Bindable var gamesBVM = gamesVM
         
@@ -80,7 +81,7 @@ struct GameListView: View {
 #Preview {
     GameListView()
         .environment(GamesVM(interactor: TestInteractor()))
-        .environment(SearchVM(interactor: TestInteractor()))
+        .swiftDataPreview
         .namespace(Namespace().wrappedValue)
         .preferredColorScheme(.dark)
 }

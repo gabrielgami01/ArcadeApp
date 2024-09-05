@@ -44,7 +44,7 @@ struct SearchableView: View {
                                 }
                             }
                             ForEach(recentSearchs) { gameModel in
-                                SearchCell(game: gameModel.toGame, isRecent: true)
+                                SearchCell(searchVM: searchVM, game: gameModel.toGame, isRecent: true)
                             }
                         }
                     } else {
@@ -55,7 +55,7 @@ struct SearchableView: View {
                     if !searchVM.games.isEmpty {
                         LazyVStack {
                             ForEach(searchVM.games) { game in
-                                SearchCell(game: game)
+                                SearchCell(searchVM: searchVM, game: game)
                             }
                         }
                     } else {
@@ -83,7 +83,8 @@ struct SearchableView: View {
 
 #Preview {
     SearchableView(show: .constant(true))
-        .environment(SearchVM(interactor: TestInteractor()))
         .environment(GamesVM(interactor: TestInteractor()))
+        .swiftDataPreview
+        .namespace(Namespace().wrappedValue)
         .preferredColorScheme(.dark)
 }
