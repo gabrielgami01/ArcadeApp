@@ -1,33 +1,22 @@
 import SwiftUI
 
-struct EmblemPlaceholder: View {
-    var body: some View {
-        VStack {
-            Text("Add new emblem")
-                .font(.customFootnote)
-                .foregroundStyle(.secondary)
-                .lineLimit(2, reservesSpace: true)
-                .multilineTextAlignment(.center)
-            
-            Image(systemName: "plus.circle")
-                .resizable()
-                .symbolVariant(.fill)
-                .scaledToFit()
-                .frame(height: 75)
-        }
-    }
-}
-
 struct EmblemCard: View {
-    let emblem: Emblem
+    let emblem: Emblem?
     
     var body: some View {
         VStack {
-            Text(emblem.name)
-                .font(.customFootnote)
-                .foregroundStyle(.secondary)
-                .lineLimit(2, reservesSpace: true)
-                .multilineTextAlignment(.center)
+            Group {
+                if let emblem {
+                    Text(emblem.name) 
+                } else {
+                    Text("No emblem")
+                }
+            }
+            .font(.customFootnote)
+            .foregroundStyle(.secondary)
+            .lineLimit(2, reservesSpace: true)
+            .multilineTextAlignment(.center)
+            .frame(width: 100)
             
             Image(systemName: "trophy")
                 .resizable()

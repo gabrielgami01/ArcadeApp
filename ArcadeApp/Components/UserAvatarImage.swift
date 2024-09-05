@@ -13,6 +13,10 @@ struct UserAvatarImage: View {
                     .aspectRatio(contentMode: .fill)
                     .frame(width: width, height: height)
                     .clipShape(Circle())
+                    .overlay {
+                        Circle()
+                            .stroke(lineWidth: 3)
+                    }
                     
             }
         } else {

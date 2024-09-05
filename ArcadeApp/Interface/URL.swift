@@ -55,7 +55,10 @@ extension URL {
         challenges.appending(path: "isCompleted").appending(path: id.uuidString)
     }
     static let emblems = challenges.appending(path: "emblems")
-    static let getActiveEmblems = emblems.appending(path: "listActive")
+    static let getActiveUserEmblems = emblems.appending(path: "listActive")
+    static func getUserEmblems(id: UUID) -> URL {
+        emblems.appending(path: "listActive").appending(path: id.uuidString)
+    }
     static let addEmblem = emblems.appending(path: "add")
     static let deleteEmblem = emblems.appending(path: "delete")
     
@@ -81,5 +84,4 @@ extension URLQueryItem {
     static func type(_ name: String) -> URLQueryItem {
         URLQueryItem(name: "type", value: name)
     }
-    
 }

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct AddEmblemView: View {
     @Environment(\.dismiss) private var dismiss
-    @State var challengesVM: ChallengesVM
+    @State var emblemsVM: EmblemsVM
     
     var body: some View {
         let columns = [GridItem(.flexible()), GridItem(.flexible())]
@@ -10,15 +10,15 @@ struct AddEmblemView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
-                    if challengesVM.disponibleChallenges.count > 0 {
+                    if emblemsVM.disponibleChallenges.count > 0 {
                         LazyVGrid(columns: columns, spacing: 20) {
-                            ForEach(challengesVM.disponibleChallenges) { challenge in
+                            ForEach(emblemsVM.disponibleChallenges) { challenge in
                                 Button {
-                                    if let selectedEmblem = challengesVM.selectedEmblem {
-                                        challengesVM.deleteEmblem(id: selectedEmblem.id)
-                                        challengesVM.addEmblem(id: challenge.id)
+                                    if let selectedEmblem = emblemsVM.selectedEmblem {
+                                        emblemsVM.deleteEmblem(id: selectedEmblem.id)
+                                        emblemsVM.addEmblem(id: challenge.id)
                                     } else {
-                                        challengesVM.addEmblem(id: challenge.id)
+                                        emblemsVM.addEmblem(id: challenge.id)
                                     }
                                     dismiss()
                                 } label: {
@@ -35,7 +35,7 @@ struct AddEmblemView: View {
                 }
             }
             .task {
-                await challengesVM.getCompletedChallenges()
+                await emblemsVM.getCompletedChallenges()
             }
             .sheetToolbar(title: "Emblems", confirmationLabel: nil, confirmationAction: nil)
             .navigationBarBackButtonHidden()
@@ -48,5 +48,5 @@ struct AddEmblemView: View {
 }
 
 #Preview {
-    AddEmblemView(challengesVM: ChallengesVM(interactor: TestInteractor()))
+    AddEmblemView(emblemsVM: EmblemsVM(interactor: TestInteractor()))
 }

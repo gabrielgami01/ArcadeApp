@@ -84,8 +84,12 @@ struct TestInteractor: DataInteractor {
         return [.test, .test2, .test4].sorted { $0.game < $1.game}
     }
     
-    func getActiveEmblems() async throws -> [Emblem] {
+    func getActiveUserEmblems() async throws -> [Emblem] {
         [.test]
+    }
+    
+    func getUserEmblems(id: UUID) async throws -> [Emblem] {
+        [.test, .test2]
     }
     
     func addEmblem(_ emblem: CreateEmblemDTO) async throws {
@@ -244,6 +248,6 @@ extension RankingScore {
     static let test4 = RankingScore(id: UUID(),
                                     score: 5323,
                                     date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 22, hour: 14, minute: 02)) ?? .now,
-                                    user: User.test.username,
+                                    user:User.test.username,
                                     avatarImage: nil)
 }

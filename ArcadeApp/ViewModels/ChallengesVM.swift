@@ -14,16 +14,6 @@ final class ChallengesVM {
         }
     }
     
-    var emblems: [Emblem] = []
-    var selectedEmblem: Emblem? = nil
-    @ObservationIgnored var disponibleChallenges: [Challenge] {
-        challenges.filter { challenge in
-            !emblems.contains { emblem in
-                emblem.name == challenge.name
-            }
-        }
-    }
-    
     var errorMsg = ""
     var showError = false
     
@@ -40,53 +30,4 @@ final class ChallengesVM {
             print(error.localizedDescription)
         }
     }
-    
-    func getActiveEmblems() async {
-        do {
-            emblems = try await interactor.getActiveEmblems()
-        } catch {
-            errorMsg = error.localizedDescription
-            showError.toggle()
-            print(error.localizedDescription)
-        }
-    }
-    
-    func getCompletedChallenges() async {
-        do {
-            challenges = try await interactor.getCompletedChallenges()
-        } catch {
-            errorMsg = error.localizedDescription
-            showError.toggle()
-            print(error.localizedDescription)
-        }
-    }
-    
-    func addEmblem(id: UUID) {
-        Task {
-            do {
-                let emblemDTO = CreateEmblemDTO(id: id)
-                try await interactor.addEmblem(emblemDTO)
-                await getActiveEmblems()
-            } catch {
-                errorMsg = error.localizedDescription
-                showError.toggle()
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    func deleteEmblem(id: UUID) {
-        Task {
-            do {
-                let emblemDTO = CreateEmblemDTO(id: id)
-                try await interactor.deleteEmblem(emblemDTO)
-                await getActiveEmblems()
-            } catch {
-                errorMsg = error.localizedDescription
-                showError.toggle()
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
 }

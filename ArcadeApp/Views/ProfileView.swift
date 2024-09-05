@@ -3,7 +3,7 @@ import PhotosUI
 
 struct ProfileView: View {
     @Environment(UserVM.self) private var userVM
-    @State var challengesVM = ChallengesVM()
+    @State var emblemsVM = EmblemsVM()
     @State private var showEditAbout = false
     @State private var showAddEmblem = false
     
@@ -36,26 +36,26 @@ struct ProfileView: View {
                 Form {
                     Section {
                         HStack(spacing: 0) {
-                            ForEach(Array(challengesVM.emblems.enumerated()), id: \.element.id) { index, emblem in
+                            ForEach(Array(emblemsVM.emblems.enumerated()), id: \.element.id) { index, emblem in
                                 Button {
-                                    challengesVM.selectedEmblem = emblem
+                                    emblemsVM.selectedEmblem = emblem
                                     showAddEmblem.toggle()
                                 } label: {
                                     EmblemCard(emblem: emblem)
                                 }
-                                if index != challengesVM.emblems.count - 1 || challengesVM.emblems.count < 3 {
+                                if index != emblemsVM.emblems.count - 1 || emblemsVM.emblems.count < 3 {
                                     Spacer()
                                 }
                             }
                             
-                            ForEach(0..<max(0, 3 - challengesVM.emblems.count), id: \.self) { index in
+                            ForEach(0..<max(0, 3 - emblemsVM.emblems.count), id: \.self) { index in
                                 Button {
-                                    challengesVM.selectedEmblem = nil
+                                    emblemsVM.selectedEmblem = nil
                                     showAddEmblem.toggle()
                                 } label: {
-                                    EmblemPlaceholder()
+                                    AddEmblemCard()
                                 }
-                                if index != max(0, 3 - challengesVM.emblems.count) - 1 {
+                                if index != max(0, 3 - emblemsVM.emblems.count) - 1 {
                                     Spacer()
                                 }
                             }
@@ -97,12 +97,10 @@ struct ProfileView: View {
                     .listRowBackground(Color.cardColor)
 
                 }
-                
-                
             }
         }
         .task {
-           await challengesVM.getActiveEmblems()
+            await emblemsVM.getUserEmblems()
         }
         .onChange(of: userVM.photoItem) { _, _ in
             userVM.editUserAvatar()
@@ -111,7 +109,7 @@ struct ProfileView: View {
             EditAboutView()
         }
         .sheet(isPresented: $showAddEmblem) {
-            AddEmblemView(challengesVM: challengesVM)
+            AddEmblemView(emblemsVM: emblemsVM)
         }
         .overlay(alignment: .topLeading) {
             BackButton {
