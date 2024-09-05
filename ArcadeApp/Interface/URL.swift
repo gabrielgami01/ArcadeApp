@@ -54,7 +54,8 @@ extension URL {
     static func isChallengeCompleted(id: UUID) -> URL {
         challenges.appending(path: "isCompleted").appending(path: id.uuidString)
     }
-    static let emblems = challenges.appending(path: "emblems")
+    
+    static let emblems = api.appending(path: "emblems")
     static let getActiveUserEmblems = emblems.appending(path: "listActive")
     static func getUserEmblems(id: UUID) -> URL {
         emblems.appending(path: "listActive").appending(path: id.uuidString)
