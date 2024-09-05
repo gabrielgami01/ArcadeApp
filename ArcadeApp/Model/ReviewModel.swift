@@ -6,8 +6,7 @@ struct Review: Codable, Identifiable, Hashable {
     let comment: String?
     let rating: Int
     let date: Date
-    let username: String
-    let avatarImage: Data?
+    let user: User
 }
 
 struct CreateReviewDTO: Codable {

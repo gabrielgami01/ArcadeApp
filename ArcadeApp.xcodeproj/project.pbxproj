@@ -71,6 +71,7 @@
 		FC94F71B2C78C4D300FEA9FE /* UserAvatarImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC94F71A2C78C4D300FEA9FE /* UserAvatarImage.swift */; };
 		FC9639202C89C48C00ABAF72 /* EmblemsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC96391F2C89C48C00ABAF72 /* EmblemsVM.swift */; };
 		FC9639232C89CFE400ABAF72 /* AddEmblemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9639222C89CFE400ABAF72 /* AddEmblemCard.swift */; };
+		FC9639272C8A11CA00ABAF72 /* UserCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9639262C8A11CA00ABAF72 /* UserCard.swift */; };
 		FCA519152C36C18D001CCF54 /* Namespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA519142C36C18D001CCF54 /* Namespace.swift */; };
 		FCA519172C36C191001CCF54 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA519162C36C191001CCF54 /* UIDevice.swift */; };
 		FCA5191B2C36FDE5001CCF54 /* GameDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA5191A2C36FDE5001CCF54 /* GameDetailsVM.swift */; };
@@ -184,6 +185,7 @@
 		FC94F71A2C78C4D300FEA9FE /* UserAvatarImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAvatarImage.swift; sourceTree = "<group>"; };
 		FC96391F2C89C48C00ABAF72 /* EmblemsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmblemsVM.swift; sourceTree = "<group>"; };
 		FC9639222C89CFE400ABAF72 /* AddEmblemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEmblemCard.swift; sourceTree = "<group>"; };
+		FC9639262C8A11CA00ABAF72 /* UserCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCard.swift; sourceTree = "<group>"; };
 		FCA519142C36C18D001CCF54 /* Namespace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Namespace.swift; sourceTree = "<group>"; };
 		FCA519162C36C191001CCF54 /* UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		FCA5191A2C36FDE5001CCF54 /* GameDetailsVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailsVM.swift; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 			isa = PBXGroup;
 			children = (
 				FC94F71A2C78C4D300FEA9FE /* UserAvatarImage.swift */,
+				FC9639262C8A11CA00ABAF72 /* UserCard.swift */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -781,6 +784,7 @@
 				FC22BA952C2593E8002DFAA4 /* URL.swift in Sources */,
 				FC0E31B42C46879B004EB339 /* ProfileView.swift in Sources */,
 				FC573A5F2C6F984300F56268 /* RankingScoreCell.swift in Sources */,
+				FC9639272C8A11CA00ABAF72 /* UserCard.swift in Sources */,
 				FC565BA32C7205A20078C2ED /* ScrollSelector.swift in Sources */,
 				FC2E95142C61634E00393C39 /* ChallengeCard.swift in Sources */,
 				FC0E31AA2C467FB4004EB339 /* AddReviewView.swift in Sources */,

@@ -5,6 +5,7 @@ struct GameAboutView: View {
     let game: Game
     @Binding var animation: Bool
     
+    @State private var selectedUser: User?
     @State private var showAddReview = false
     
     @Environment(\.namespace) private var namespace
@@ -40,7 +41,14 @@ struct GameAboutView: View {
                     if !detailsVM.reviews.isEmpty {
                         LazyVStack(alignment: .leading, spacing: 15) {
                             ForEach(detailsVM.reviews) { review in
-                                ReviewCell(review: review)
+                                Button {
+                                    withAnimation {
+                                        selectedUser = review.user
+                                    }
+                                } label: {
+                                    ReviewCell(review: review)
+                                }
+                                .buttonStyle(.plain)
                             }
                         }
                     } else {
@@ -51,12 +59,27 @@ struct GameAboutView: View {
                 .opacity(animation ? 1.0 : 0.0)
                 .animation(.easeOut.delay(0.6), value: animation)
             }
+            .disabled(selectedUser != nil)
         }
         .onAppear {
             animation = true
         }
         .sheet(isPresented: $showAddReview) {
             AddReviewView(addReviewVM: AddReviewVM(game: game))
+        }
+        .blur(radius: selectedUser != nil ? 10 : 0)
+        .onTapGesture {
+            if selectedUser != nil {
+                withAnimation {
+                    selectedUser = nil
+                }
+            }
+        }
+        .overlay {
+            if let selectedUser {
+                UserCard(user: selectedUser)
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+            }
         }
         .padding(.horizontal)
         .scrollBounceBehavior(.basedOnSize)

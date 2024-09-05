@@ -3,6 +3,7 @@ import SwiftUI
 struct GameRankingView: View {
     @State var rankingsVM: RankingsVM
     @State var animation: Bool = false
+    @State private var selectedUser: User?
     
     @Environment(\.namespace) private var namespace
     
@@ -29,7 +30,15 @@ struct GameRankingView: View {
                         if rankingsVM.rankingScores.count > 0 {
                             LazyVStack {
                                 ForEach(rankingsVM.ranking, id: \.element.id) { index, rankingScore in
-                                    RankingScoreCell(index: index, rankingScore: rankingScore)
+                                    Button {
+                                        withAnimation {
+                                            selectedUser = rankingScore.user
+                                        }
+                                    } label: {
+                                        RankingScoreCell(index: index, rankingScore: rankingScore)
+                                    }
+                                    .buttonStyle(.plain)
+                                    
                                 }
                             }
                         } else {
@@ -39,6 +48,7 @@ struct GameRankingView: View {
                     }
                     .opacity(animation ? 1.0 : 0.0)
                 }
+                .disabled(selectedUser != nil)
             }
             .onAppear {
                 rankingsVM.getGameRanking(id: game.id)
@@ -48,6 +58,20 @@ struct GameRankingView: View {
             }
             .onDisappear {
                 animation = false
+            }
+            .blur(radius: selectedUser != nil ? 10 : 0)
+            .onTapGesture {
+                if selectedUser != nil {
+                    withAnimation {
+                        selectedUser = nil
+                    }
+                }
+            }
+            .overlay {
+                if let selectedUser {
+                    UserCard(user: selectedUser)
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                }
             }
             .padding(.horizontal)
             .background(Color.background)

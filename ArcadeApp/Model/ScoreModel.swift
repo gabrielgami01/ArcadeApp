@@ -21,6 +21,5 @@ struct RankingScore: Codable, Identifiable, Hashable {
     let id: UUID
     let score: Int
     let date: Date
-    let user: String
-    let avatarImage: Data?
+    let user: User
 }

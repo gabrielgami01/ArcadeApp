@@ -10,7 +10,7 @@ struct RankingScoreCell: View {
                 .font(.customHeadline)
                 .foregroundColor(.gray)
             
-            UserAvatarImage(imageData: rankingScore.avatarImage, height: 50, width: 50)
+            UserAvatarImage(imageData: rankingScore.user.avatarImage, height: 50, width: 50)
                 .overlay {
                     if index == 0 {
                         Image(systemName: "crown.fill")
@@ -22,7 +22,7 @@ struct RankingScoreCell: View {
                 }
             
             VStack(alignment: .leading) {
-                Text(rankingScore.user)
+                Text(rankingScore.user.username)
                     .font(.customTitle2)
                 Text(rankingScore.date.formatted(date: .abbreviated, time: .omitted))
                     .font(.customFootnote)

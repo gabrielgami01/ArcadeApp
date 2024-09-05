@@ -136,27 +136,24 @@ extension Game {
 }
 
 extension Review {
-    static let test = Review(id: UUID(), 
-                              title: "Juego increíble",
-                              comment: "Me ha encantado el juego es adictivo",
-                              rating: 3,
-                              date: .now,
-                              username: "gabrielgm",
-                              avatarImage: nil)
+    static let test = Review(id: UUID(),
+                             title: "Juego increíble",
+                             comment: "Me ha encantado el juego es adictivo",
+                             rating: 3,
+                             date: .now,
+                             user: .test)
     static let test2 = Review(id: UUID(),
                               title: "Muy aburrido",
                               comment: nil,
                               rating: 1,
                               date: .now,
-                              username: "gabrielgm",
-                              avatarImage: nil)
+                              user: .test)
     static let test3 = Review(id: UUID(),
                               title: "WOW",
                               comment: "El mejor juego de la historia",
                               rating: 5,
                               date: .now,
-                              username: "gabrielgm",
-                              avatarImage: nil)
+                              user: .test)
 }
 
 extension Score {
@@ -236,23 +233,19 @@ extension RankingScore {
     static let test = RankingScore(id: UUID(),
                                    score: 5500,
                                    date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 1, hour: 22, minute: 30)) ?? .now,
-                                   user: User.test.username,
-                                   avatarImage: nil)
+                                   user: .test)
     static let test2 = RankingScore(id: UUID(),
                                     score: 6000,
                                     date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 5, hour: 15, minute: 22)) ?? .now,
-                                    user: User.test.username,
-                                    avatarImage: nil)
+                                    user: .test)
     static let test3 = RankingScore(id: UUID(),
                                     score: 4440,
                                     date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 10, hour: 16, minute: 33)) ?? .now,
-                                    user: User.test.username,
-                                     avatarImage: nil)
+                                    user: .test)
     static let test4 = RankingScore(id: UUID(),
                                     score: 5323,
                                     date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 22, hour: 14, minute: 02)) ?? .now,
-                                    user:User.test.username,
-                                    avatarImage: nil)
+                                    user: .test)
 }
 
 struct SwiftDataPreview: ViewModifier {
