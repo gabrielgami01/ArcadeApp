@@ -67,5 +67,6 @@ struct HomeView: View {
     HomeView()
         .environment(UserVM(interactor: TestInteractor()))
         .environment(GamesVM(interactor: TestInteractor()))
+        .environment(SocialVM(interactor: TestInteractor()))
         .preferredColorScheme(.dark)
 }

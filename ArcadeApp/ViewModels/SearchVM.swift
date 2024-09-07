@@ -34,7 +34,7 @@ final class SearchVM {
     func saveGameSearch(game: Game, context: ModelContext) throws {
         let id = game.id
         let query = FetchDescriptor<GameModel>(predicate: #Predicate { $0.id == id })
-        if let fetch = try context.fetch(query).first {
+        if let _ = try context.fetch(query).first {
             return
         } else {
             let newGame = GameModel(id: game.id,

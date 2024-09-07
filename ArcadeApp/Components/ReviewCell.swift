@@ -5,7 +5,7 @@ struct ReviewCell: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 20) {
-            UserAvatarImage(imageData: review.user.avatarImage, height: 60, width: 60)
+            UserAvatarImage(imageData: review.user.avatarImage, size: 60)
             
             VStack(alignment: .leading) {
                 Text(review.user.username)

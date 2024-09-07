@@ -67,6 +67,13 @@ extension URL {
     static func getGameRanking(id: UUID, page: Int) -> URL {
         rankings.appending(path: "list").appending(path: id.uuidString).appending(queryItems: [.page(page), .per()])
     }
+    
+    static let listFollowing = users.appending(path: "listFollowing")
+    static let listFollowers = users.appending(path: "listFollowers")
+    static let followUser = users.appending(path: "followUser")
+    static func unfollowUser(id: UUID) -> URL {
+        users.appending(path: "unfollowUser").appending(path: id.uuidString)
+    }
 }
 
 extension URLQueryItem {

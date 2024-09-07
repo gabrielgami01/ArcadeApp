@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct GameRankingView: View {
+    @Environment(UserVM.self) private var userVM
     @State var rankingsVM: RankingsVM
     @State var animation: Bool = false
     @State private var selectedUser: User?
@@ -32,7 +33,9 @@ struct GameRankingView: View {
                                 ForEach(rankingsVM.ranking, id: \.element.id) { index, rankingScore in
                                     Button {
                                         withAnimation {
-                                            selectedUser = rankingScore.user
+                                            if rankingScore.user.id != userVM.activeUser?.id {
+                                                selectedUser = rankingScore.user
+                                            }
                                         }
                                     } label: {
                                         RankingScoreCell(index: index, rankingScore: rankingScore)
@@ -84,6 +87,7 @@ struct GameRankingView: View {
 
 #Preview {
     GameRankingView(rankingsVM: RankingsVM(interactor: TestInteractor(), selectedGame: .test))
+        .environment(UserVM(interactor: TestInteractor()))
         .namespace(Namespace().wrappedValue)
         .preferredColorScheme(.dark)
 }

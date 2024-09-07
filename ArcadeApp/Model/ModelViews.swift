@@ -39,9 +39,9 @@ enum SignupFields {
 }
 
 enum HomePage: String, Identifiable, CaseIterable {
-    case challenges = "Challenges"
-    case rankings = "Rankings"
-    case social = "Social"
+    case challenges
+    case rankings
+    case social
     
     var id: Self { self }
     
@@ -75,8 +75,8 @@ enum HomeScrollType: String, Identifiable, CaseIterable {
 }
 
 enum PickerOptions: String, Identifiable, CaseIterable {
-    case about = "About"
-    case score = "My scores"
+    case about
+    case score
     
     var id: Self { self }
 }
@@ -88,4 +88,10 @@ enum RatingMode {
 enum CardAction: String {
     case add
     case update
+}
+
+enum ProfilePage: String, Identifiable, CaseIterable  {
+    case following, followers
+    
+    var id: Self { self }
 }

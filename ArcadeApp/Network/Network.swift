@@ -24,12 +24,17 @@ protocol DataInteractor {
     func getAllChallenges() async throws -> [Challenge]
     func getChallengesByType(_ type: ChallengeType) async throws -> [Challenge]
     func getCompletedChallenges() async throws -> [Challenge]
+    
     func getActiveUserEmblems() async throws -> [Emblem]
     func getUserEmblems(id: UUID) async throws -> [Emblem]
     func addEmblem(_ emblem: CreateEmblemDTO) async throws
     func deleteEmblem(_ emblem: CreateEmblemDTO) async throws
     
     func getGameRanking(id: UUID, page: Int) async throws -> [RankingScore]
+    
+    func getFollowingFollowers() async throws -> (following: [User], followers: [User])
+    func followUser(_ user: UserDTO) async throws
+    func unfollowUser(id: UUID) async throws
 }
 
 struct Network: DataInteractor, NetworkJSONInteractor {
@@ -196,5 +201,23 @@ struct Network: DataInteractor, NetworkJSONInteractor {
         try await getJSON(request: .get(url: .getGameRanking(id: id, page: page), token: getToken()), type: RankingScorePageDTO.self).items
     }
     //RANKINGS
+    
+    //FOLLOW
+    func getFollowingFollowers() async throws -> (following: [User], followers: [User]) {
+        async let followingRequest = getJSON(request: .get(url: .listFollowing, token: getToken()), type: [User].self)
+        async let followersRequest = getJSON(request: .get(url: .listFollowers, token: getToken()), type: [User].self)
+        
+        return try await(followingRequest, followersRequest)
+    }
+    
+    func followUser(_ user: UserDTO) async throws {
+        try await post(request: .post(url: .followUser, post: user, token: getToken()), status: 201)
+    }
+    
+    func unfollowUser(id: UUID) async throws {
+        try await post(request: .post(url: .unfollowUser(id: id), post: "", method: .delete, token: getToken()))
+    }
+    
+    //FOLLOW
     
 }

@@ -31,19 +31,19 @@ struct GameDetailsView: View {
                         }
                     }
                     
-                    CustomPicker(selectedOption: $option)
+                    CustomPicker(activeSelection: $option) {$0.rawValue.capitalized}
                 }
                 .padding(.horizontal)
                 
                 ZStack {
                     if option == .about {
                         GameAboutView(detailsVM: detailsVM, game: game, animation: $aboutAnimation)
-                            .transition(.move(edge: .leading))
+                            .transition(.move(edge: .leading).combined(with: .opacity))
                     }
                     
                     if option == .score {
                         GameScoresView(detailsVM: detailsVM, game: game, animation: $scoresAnimation)
-                            .transition(.move(edge: .trailing))
+                            .transition(.move(edge: .trailing).combined(with: .opacity))
                     }
                 }
                 .gesture(
@@ -76,6 +76,7 @@ struct GameDetailsView: View {
 #Preview {
     GameDetailsView(detailsVM: GameDetailsVM(interactor: TestInteractor()), game: .test)
         .environment(GamesVM(interactor: TestInteractor()))
+        .environment(UserVM(interactor: TestInteractor()))
         .namespace(Namespace().wrappedValue)
         .preferredColorScheme(.dark)
 }

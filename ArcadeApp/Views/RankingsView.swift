@@ -51,6 +51,8 @@ struct RankingsView: View {
 #Preview {
     NavigationStack {
         RankingsView(rankingsVM: RankingsVM(interactor: TestInteractor()))
+            .environment(UserVM(interactor: TestInteractor()))
             .preferredColorScheme(.dark)
+            .namespace(Namespace().wrappedValue)
     }
 }

@@ -1,25 +1,26 @@
 import SwiftUI
 
-struct CustomPicker: View {
-    @Binding var selectedOption: PickerOptions
+struct CustomPicker<T: Hashable & Identifiable & CaseIterable>: View where T.AllCases: RandomAccessCollection{
+    @Binding var activeSelection: T
+    let titleFormatter: (T) -> String
     
     @Environment(\.namespace) private var namespace
     
     var body: some View {
         HStack(spacing: 0) {
-            ForEach(PickerOptions.allCases) { option in
+            ForEach(T.allCases) { option in
                 Button {
                     withAnimation(.bouncy) {
-                        selectedOption = option
+                        activeSelection = option
                     }
                 } label: {
-                    Text(option.rawValue)
+                    Text(titleFormatter(option))
                         .font(.customHeadline)
                         .padding(5)
                         .frame(maxWidth: .infinity)
                         .background {
                             if let namespace {
-                                if selectedOption == option {
+                                if activeSelection == option {
                                     RoundedRectangle(cornerRadius: 5)
                                         .fill(Color.accentColor)
                                         .matchedGeometryEffect(id: "ACTIVEPICKER", in: namespace)
@@ -38,7 +39,7 @@ struct CustomPicker: View {
 }
 
 #Preview {
-    CustomPicker(selectedOption: .constant(.about))
+    CustomPicker(activeSelection: .constant(ProfilePage.followers)) {$0.rawValue}
         .namespace(Namespace().wrappedValue)
         .preferredColorScheme(.dark)
 }

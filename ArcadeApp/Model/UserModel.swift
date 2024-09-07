@@ -28,3 +28,7 @@ struct EditUserAboutDTO: Codable {
 struct EditUserAvatarDTO: Codable {
     let image: Data
 }
+
+struct UserDTO: Codable {
+    let id: UUID
+}

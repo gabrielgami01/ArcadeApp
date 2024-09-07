@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct GameAboutView: View {
+    @Environment(UserVM.self) private var userVM
     @State var detailsVM: GameDetailsVM
     let game: Game
     @Binding var animation: Bool
@@ -43,7 +44,9 @@ struct GameAboutView: View {
                             ForEach(detailsVM.reviews) { review in
                                 Button {
                                     withAnimation {
-                                        selectedUser = review.user
+                                        if review.user.id != userVM.activeUser?.id {
+                                            selectedUser = review.user
+                                        }
                                     }
                                 } label: {
                                     ReviewCell(review: review)
@@ -89,6 +92,7 @@ struct GameAboutView: View {
 
 #Preview {
     GameAboutView(detailsVM: GameDetailsVM(interactor: TestInteractor()), game: .test, animation: .constant(true))
+        .environment(UserVM(interactor: TestInteractor()))
         .background(Color.background)
         .preferredColorScheme(.dark)
 }

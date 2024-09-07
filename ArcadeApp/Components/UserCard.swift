@@ -1,13 +1,15 @@
 import SwiftUI
 
 struct UserCard: View {
+    @Environment(SocialVM.self) private var socialVM
     @State var emblemsVM = EmblemsVM()
+    @State var isFollowed = false
     let user: User
     
     var body: some View {
         VStack(spacing: 30) {
             HStack(spacing: 10) {
-                UserAvatarImage(imageData: user.avatarImage, height: 75, width: 75)
+                UserAvatarImage(imageData: user.avatarImage, size: 75)
                 
                 VStack(alignment: .leading) {
                     Text(user.username)
@@ -21,11 +23,24 @@ struct UserCard: View {
                 
                 Spacer()
                 
-                Button {
-                    
-                } label: {
-                    Text("Add Friend")
+                Group {
+                    if isFollowed {
+                        Button {
+                            socialVM.unfollowUser(userID: user.id)
+                            isFollowed.toggle()
+                        } label: {
+                            Text("Following")
+                        }
+                    } else {
+                        Button {
+                            socialVM.followUser(userID: user.id)
+                            isFollowed.toggle()
+                        } label: {
+                            Text("Follow")
+                        }
+                    }
                 }
+                .font(.customBody)
                 .buttonStyle(.borderedProminent)
                 
             }
@@ -48,6 +63,9 @@ struct UserCard: View {
         }
         .task {
             await emblemsVM.getUserEmblems(id: user.id)
+            if !isFollowed {
+                isFollowed = socialVM.isFollowed(userID: user.id)
+            }
         }
         .padding()
         .background(.card, in: .rect(cornerRadius: 10))
@@ -56,5 +74,6 @@ struct UserCard: View {
 
 #Preview {
     UserCard(emblemsVM: EmblemsVM(interactor: TestInteractor()), user: .test)
+        .environment(SocialVM(interactor: TestInteractor()))
         .preferredColorScheme(.dark)
 }

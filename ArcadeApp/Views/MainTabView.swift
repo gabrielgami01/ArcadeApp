@@ -47,5 +47,6 @@ struct MainTabView: View {
     MainTabView()
         .environment(UserVM(interactor: TestInteractor()))
         .environment(GamesVM(interactor: TestInteractor()))
+        .environment(SocialVM(interactor: TestInteractor()))
         .preferredColorScheme(.dark)
 }

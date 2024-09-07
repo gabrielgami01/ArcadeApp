@@ -10,7 +10,7 @@ struct RankingScoreCell: View {
                 .font(.customHeadline)
                 .foregroundColor(.gray)
             
-            UserAvatarImage(imageData: rankingScore.user.avatarImage, height: 50, width: 50)
+            UserAvatarImage(imageData: rankingScore.user.avatarImage, size: 60)
                 .overlay {
                     if index == 0 {
                         Image(systemName: "crown.fill")

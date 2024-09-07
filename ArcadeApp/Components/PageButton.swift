@@ -20,7 +20,7 @@ struct PageButton: View {
                     }
                     .shadow(color: .black, radius: 2, x: 2, y: 2)
                 
-                Text(page.rawValue)
+                Text(page.rawValue.capitalized)
                     .font(.customCallout)
                     .foregroundColor(page.color)
                     .shadow(color: .black, radius: 1, x: 1, y: 1)
