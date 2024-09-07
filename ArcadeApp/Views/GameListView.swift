@@ -50,6 +50,7 @@ struct GameListView: View {
                     }
                 }
                 .padding(.horizontal)
+                .namespace(showSearchable ? nil : namespace)
             }
         }
         .onChange(of: gamesVM.activeConsole) { _, _ in
@@ -67,8 +68,9 @@ struct GameListView: View {
             ZStack {
                 GameDetailsView(game: gamesVM.selectedGame)
                     .zIndex(1)
-                SearchableView(show: $showSearchable)
-                    .opacity(showSearchable ? 1.0 : 0.0)
+                if showSearchable {
+                    SearchableView(show: $showSearchable)
+                }
             }
         }
         .namespace(namespace)

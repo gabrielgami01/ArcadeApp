@@ -18,6 +18,7 @@ struct SearchableView: View {
                 HStack(alignment: .firstTextBaseline) {
                     CustomTextField(text: $searchBVM.search, label: "Search", type: .search)
                         .focused($focus)
+                    
                     Button {
                         show.toggle()
                         searchVM.search.removeAll()
