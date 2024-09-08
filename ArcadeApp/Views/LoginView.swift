@@ -61,7 +61,7 @@ struct LoginView: View {
                 }
             }
             .padding()
-            .background(Color.backgroundGradient)
+            .background(Color.background)
         }
     }
 }

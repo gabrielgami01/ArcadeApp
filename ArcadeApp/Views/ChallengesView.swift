@@ -28,7 +28,7 @@ struct ChallengesView: View {
             await challengesVM.getChallenges()
         }
         .navigationBarBackButtonHidden()
-        .background(Color.backgroundGradient)
+        .background(Color.background)
         .scrollBounceBehavior(.basedOnSize)
         .scrollIndicators(.hidden)
     }

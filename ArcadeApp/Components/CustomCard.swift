@@ -8,7 +8,7 @@ fileprivate struct CustomCard: ViewModifier {
         content
             .background {
                 RoundedRectangle(cornerRadius: cornerRadius)
-                    .fill(Color.cardGradient)
+                    .fill(Color.card)
                     .overlay(
                         RoundedRectangle(cornerRadius: cornerRadius)
                             .stroke(color, lineWidth: 3)

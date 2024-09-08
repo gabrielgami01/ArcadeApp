@@ -46,7 +46,7 @@ struct AddReviewView: View {
             .showAlert(show: $addReviewVM.showError, text: addReviewVM.errorMsg)
             .navigationBarTitleDisplayMode(.inline)
             .padding()
-            .background(Color.backgroundGradient)
+            .background(Color.background)
         }
     }
 }

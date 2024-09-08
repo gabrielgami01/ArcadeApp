@@ -43,7 +43,7 @@ struct FollowsView: View {
 
         }
         .padding(.horizontal)
-        .background(Color.backgroundGradient)
+        .background(Color.background)
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
         .scrollBounceBehavior(.basedOnSize)

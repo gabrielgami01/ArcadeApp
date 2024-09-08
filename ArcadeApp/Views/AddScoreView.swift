@@ -29,7 +29,7 @@ struct AddScoreView: View {
             .navigationBarTitleDisplayMode(.inline)
             .frame(maxWidth: .infinity)
             .padding()
-            .background(Color.backgroundGradient)
+            .background(Color.background)
             
         }
     }

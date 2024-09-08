@@ -68,7 +68,7 @@ struct GameDetailsView: View {
                 scoresAnimation = false
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.backgroundGradient)
+            .background(Color.background)
         }
     }
 }

@@ -39,7 +39,7 @@ struct AddEmblemView: View {
             }
             .sheetToolbar(title: "Emblems", confirmationLabel: nil, confirmationAction: nil)
             .navigationBarBackButtonHidden()
-            .background(Color.backgroundGradient)
+            .background(Color.background)
             .scrollIndicators(.hidden)
             .scrollBounceBehavior(.basedOnSize)
         }

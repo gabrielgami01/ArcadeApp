@@ -57,7 +57,7 @@ struct RegisterView: View {
         .showAlert(show: $registerBVM.showError, text: registerVM.errorMsg)
         .navigationBarBackButtonHidden()
         .padding()
-        .background(Color.backgroundGradient)
+        .background(Color.background)
         .scrollBounceBehavior(.basedOnSize)
     }
 }

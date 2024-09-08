@@ -56,7 +56,7 @@ struct HomeView: View {
                 GameDetailsView(game: gamesVM.selectedGame)
             }
             .namespace(selectedType == .featured ? namespaceFeatured : namespaceFavorites)
-            .background(Color.backgroundGradient)
+            .background(Color.background)
             .scrollBounceBehavior(.basedOnSize)
             .scrollIndicators(.hidden)
         }

@@ -41,7 +41,7 @@ struct RankingsView: View {
         .overlay {
             GameRankingView(rankingsVM: rankingsVM)
         }
-        .background(Color.backgroundGradient)
+        .background(Color.background)
         .navigationBarBackButtonHidden()
         .scrollBounceBehavior(.basedOnSize)
         .scrollIndicators(.hidden)

@@ -26,7 +26,7 @@ struct CustomPicker<T: Hashable & Identifiable & CaseIterable>: View where T.All
                                         .matchedGeometryEffect(id: "ACTIVEPICKER", in: namespace)
                                 } else {
                                     RoundedRectangle(cornerRadius: 5)
-                                        .fill(Color.cardGradient)
+                                        .fill(Color.card)
                                 }
                             }
                         }

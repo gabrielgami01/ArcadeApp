@@ -74,7 +74,7 @@ struct GameListView: View {
             }
         }
         .namespace(namespace)
-        .background(Color.backgroundGradient)
+        .background(Color.background)
         .scrollBounceBehavior(.basedOnSize)
         .scrollIndicators(.hidden)
     }
