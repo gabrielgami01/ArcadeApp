@@ -14,20 +14,19 @@ struct SearchableView: View {
         @Bindable var searchBVM = searchVM
         
         ScrollView {
-            VStack(spacing: 10) {
+            VStack(spacing: 20) {
                 HStack(alignment: .firstTextBaseline) {
                     CustomTextField(text: $searchBVM.searchText, label: "Search", type: .search)
                         .focused($focus)
                     
                     Button {
-                        show.toggle()
+                        show = false
                         searchVM.searchText.removeAll()
                     } label: {
                         Text("Cancel")
                             .font(.customTitle3)
                     }
                 }
-                .padding(.bottom, 10)
                 
                 if searchVM.searchText.isEmpty {
                     if !recentSearchs.isEmpty {
@@ -44,7 +43,6 @@ struct SearchableView: View {
                                     .font(.customHeadline)
                             }
                         }
-                        .padding(.bottom, 5)
                 
                         LazyVStack {
                             ForEach(recentSearchs) { gameModel in
@@ -75,6 +73,7 @@ struct SearchableView: View {
         .onDisappear {
             focus = false
         }
+        .showAlert(show: $searchBVM.showError, text: searchVM.errorMsg)
         .padding(.horizontal)
         .background(Color.background)
         .scrollBounceBehavior(.basedOnSize)

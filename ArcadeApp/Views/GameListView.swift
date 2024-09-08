@@ -13,9 +13,9 @@ struct GameListView: View {
         @Bindable var gamesBVM = gamesVM
         
         ScrollView {
-            VStack(alignment: .leading, spacing: 10) {
+            VStack(alignment: .leading, spacing: 20) {
                 Button {
-                    showSearchable.toggle()
+                    showSearchable = true
                 } label: {
                     HStack(spacing: 10){
                         Image(systemName:"magnifyingglass")

@@ -14,18 +14,20 @@ struct SearchCell: View {
         VStack {
             HStack {
                 Button {
-                    withAnimation(.snappy){
+                    withAnimation {
                         gamesVM.selectedGame = game
                     }
+                    
                     if !isRecent {
                         try? searchVM.saveGameSearch(game: game, context: context)
                     }
                 } label: {
-                    HStack(spacing: 10) {
-                        GameCover(game: game, width: 60, height: 60)
-                        if let namespace{
+                    HStack(spacing: 15) {
+                        GameCover(game: game, width: 65, height: 65)
+                        
+                        if let namespace {
                             Text(game.name)
-                                .font(.customBody)
+                                .font(.customHeadline)
                                 .matchedGeometryEffect(id: "\(game.id)_NAME", in: namespace, properties: .position)
                         }
                     }
@@ -38,7 +40,7 @@ struct SearchCell: View {
                         try? searchVM.deleteGameSearch(game: game, context: context)
                     } label: {
                         Text("X")
-                            .font(.customTitle)
+                            .font(.customTitle2)
                     }
                 }
             }
@@ -50,7 +52,7 @@ struct SearchCell: View {
 }
 
 #Preview {
-    SearchCell(searchVM: SearchVM(interactor: TestInteractor()), game: .test)
+    SearchCell(searchVM: SearchVM(interactor: TestInteractor()), game: .test, isRecent: true)
         .environment(GamesVM(interactor: TestInteractor()))
         .environment(SearchVM(interactor: TestInteractor()))
         .preferredColorScheme(.dark)
