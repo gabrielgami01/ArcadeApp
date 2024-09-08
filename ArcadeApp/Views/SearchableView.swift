@@ -16,34 +16,37 @@ struct SearchableView: View {
         ScrollView {
             VStack(spacing: 10) {
                 HStack(alignment: .firstTextBaseline) {
-                    CustomTextField(text: $searchBVM.search, label: "Search", type: .search)
+                    CustomTextField(text: $searchBVM.searchText, label: "Search", type: .search)
                         .focused($focus)
                     
                     Button {
                         show.toggle()
-                        searchVM.search.removeAll()
+                        searchVM.searchText.removeAll()
                     } label: {
                         Text("Cancel")
                             .font(.customTitle3)
                     }
                 }
+                .padding(.bottom, 10)
                 
-                if searchVM.search.isEmpty {
+                if searchVM.searchText.isEmpty {
                     if !recentSearchs.isEmpty {
-                        LazyVStack(alignment: .listRowSeparatorLeading) {
-                            HStack {
-                                Text("Recent searches")
-                                    .font(.customTitle3)
-                                
-                                Spacer()
-                                
-                                Button {
-                                    try? searchVM.deleteGameSearch(context: context)
-                                } label: {
-                                    Text("Clear all")
-                                        .font(.customHeadline)
-                                }
+                        HStack {
+                            Text("Recent searches")
+                                .font(.customTitle3)
+                            
+                            Spacer()
+                            
+                            Button {
+                                try? searchVM.deleteGameSearch(context: context)
+                            } label: {
+                                Text("Clear all")
+                                    .font(.customHeadline)
                             }
+                        }
+                        .padding(.bottom, 5)
+                
+                        LazyVStack {
                             ForEach(recentSearchs) { gameModel in
                                 SearchCell(searchVM: searchVM, game: gameModel.toGame, isRecent: true)
                             }
@@ -60,20 +63,17 @@ struct SearchableView: View {
                             }
                         }
                     } else {
-                        CustomUnavailableView(title: "No results for '\(searchVM.search)'", image: "magnifyingglass",
+                        CustomUnavailableView(title: "No results for '\(searchVM.searchText)'", image: "magnifyingglass",
                                               description: "Check the spelling or try a new search.")
                     }
                 }
             }
         }
         .onAppear {
-            focus.toggle()
+            focus = true
         }
         .onDisappear {
-            focus.toggle()
-        }
-        .onChange(of: searchVM.search) { _, _ in
-            searchVM.searchGame()
+            focus = false
         }
         .padding(.horizontal)
         .background(Color.background)

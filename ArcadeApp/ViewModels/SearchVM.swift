@@ -5,7 +5,17 @@ import SwiftData
 final class SearchVM {
     let interactor: DataInteractor
     
-    var search: String = ""
+    var searchText: String = "" {
+        didSet {
+            if oldValue != searchText {
+                if !searchText.isEmpty {
+                    searchGame()
+                } else {
+                    games.removeAll()
+                }
+            }
+        }
+    }
     var games: [Game] = []
     
     var errorMsg = ""
@@ -18,11 +28,7 @@ final class SearchVM {
     func searchGame() {
         Task {
             do {
-                if !search.isEmpty {
-                    games = try await interactor.searchGame(name: search)
-                } else {
-                    games.removeAll()
-                }
+                games = try await interactor.searchGame(name: searchText)
             } catch {
                 errorMsg = error.localizedDescription
                 showError.toggle()
