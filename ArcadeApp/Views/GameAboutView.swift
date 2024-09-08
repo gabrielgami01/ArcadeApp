@@ -13,7 +13,7 @@ struct GameAboutView: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 10) {
+            VStack(spacing: 20) {
                 HStack(spacing: 10) {
                     GameCover(game: game, width: 150, height: 220)
                     
@@ -21,23 +21,13 @@ struct GameAboutView: View {
                 }
                 
                 Group {
-                    HStack {
-                        Text("Player Reviews")
-                            .font(.customTitle3)
-                            .bold()
-                        Spacer()
-                        Button {
-                            showAddReview.toggle()
-                        } label: {
-                            Label {
-                                Text("Write a Review")
-                            } icon: {
-                                Image(systemName: "square.and.pencil")
-                            }
-                            .font(.customBody)
+                    GameDetailsLabel(showAction: $showAddReview, title: "Player's Reviews") {
+                        Label {
+                            Text("Write a Review")
+                        } icon: {
+                            Image(systemName: "square.and.pencil")
                         }
                     }
-                    .padding(.vertical, 5)
                     
                     if !detailsVM.reviews.isEmpty {
                         LazyVStack(alignment: .leading, spacing: 15) {
@@ -96,4 +86,6 @@ struct GameAboutView: View {
         .background(Color.background)
         .preferredColorScheme(.dark)
 }
+
+
 

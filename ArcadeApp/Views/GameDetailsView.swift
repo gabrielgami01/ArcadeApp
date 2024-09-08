@@ -25,7 +25,7 @@ struct GameDetailsView: View {
                         withAnimation(.bouncy.speed(2)){
                             option = .about
                         } completion: {
-                            withAnimation(.snappy) {
+                            withAnimation {
                                 gamesVM.selectedGame = nil
                             }
                         }

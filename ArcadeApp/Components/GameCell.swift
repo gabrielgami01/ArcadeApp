@@ -13,7 +13,7 @@ struct GameCell: View {
             withAnimation {
                 animation = game
             } completion: {
-                withAnimation(.snappy){
+                withAnimation {
                     gamesVM.selectedGame = game
                 }
             }

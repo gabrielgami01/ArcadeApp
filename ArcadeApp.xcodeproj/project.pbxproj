@@ -31,6 +31,7 @@
 		FC22BAA02C2595FF002DFAA4 /* UserVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA9F2C2595FF002DFAA4 /* UserVM.swift */; };
 		FC22BAB02C25EEF5002DFAA4 /* SecKeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BAAF2C25EEF5002DFAA4 /* SecKeyStore.swift */; };
 		FC22BAB22C25EF01002DFAA4 /* SecManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BAB12C25EF01002DFAA4 /* SecManager.swift */; };
+		FC26EFF52C8E34A40084B289 /* GameDetailsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC26EFF42C8E34A40084B289 /* GameDetailsLabel.swift */; };
 		FC2E95102C61619400393C39 /* ChallengeFrontCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E950F2C61619400393C39 /* ChallengeFrontCard.swift */; };
 		FC2E95122C6161B400393C39 /* ChallengeBackCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E95112C6161B400393C39 /* ChallengeBackCard.swift */; };
 		FC2E95142C61634E00393C39 /* ChallengeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E95132C61634E00393C39 /* ChallengeCard.swift */; };
@@ -151,6 +152,7 @@
 		FC22BAAF2C25EEF5002DFAA4 /* SecKeyStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecKeyStore.swift; sourceTree = "<group>"; };
 		FC22BAB12C25EF01002DFAA4 /* SecManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecManager.swift; sourceTree = "<group>"; };
 		FC22BAB32C25F266002DFAA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC26EFF42C8E34A40084B289 /* GameDetailsLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailsLabel.swift; sourceTree = "<group>"; };
 		FC2E950F2C61619400393C39 /* ChallengeFrontCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeFrontCard.swift; sourceTree = "<group>"; };
 		FC2E95112C6161B400393C39 /* ChallengeBackCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeBackCard.swift; sourceTree = "<group>"; };
 		FC2E95132C61634E00393C39 /* ChallengeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCard.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 				FC0E31C42C46E063004EB339 /* GameCover.swift */,
 				FC0E31BC2C46DE24004EB339 /* GameCell.swift */,
 				FC6A9C1B2C862240002B9ED2 /* GameAboutCard.swift */,
+				FC26EFF42C8E34A40084B289 /* GameDetailsLabel.swift */,
 				FC8438F72C4D0F7A00434179 /* EnumTag.swift */,
 			);
 			name = Game;
@@ -748,6 +751,7 @@
 				FC935F1B2C7DE9080053F11C /* ErrorAlert.swift in Sources */,
 				FC6F73F12C56D19C00E34AF3 /* AsyncTypeWriter.swift in Sources */,
 				FC6F73F32C56D1F900E34AF3 /* AsyncText.swift in Sources */,
+				FC26EFF52C8E34A40084B289 /* GameDetailsLabel.swift in Sources */,
 				FC22BA8D2C259255002DFAA4 /* UserModel.swift in Sources */,
 				FC6F73E42C563E8E00E34AF3 /* ShimmerEffect.swift in Sources */,
 				FC2E95122C6161B400393C39 /* ChallengeBackCard.swift in Sources */,

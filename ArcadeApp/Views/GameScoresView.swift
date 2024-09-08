@@ -13,7 +13,7 @@ struct GameScoresView: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 10) {
+            VStack(spacing: 20) {
                 Group {
                     if detailsVM.verifiedScores.count > 1 {
                         Chart {
@@ -44,23 +44,13 @@ struct GameScoresView: View {
                 .frame(height: 220)
                 
                 Group {
-                    HStack {
-                        Text("Your scores")
-                            .font(.customTitle3)
-                            .bold()
-                        Spacer()
-                        Button {
-                            showAddScore.toggle()
-                        } label: {
-                            Label {
-                                Text("Add new Score")
-                            } icon: {
-                                Image(systemName: "plus")
-                            }
-                            .font(.customBody)
+                    GameDetailsLabel(showAction: $showAddScore, title: "Your scores") {
+                        Label {
+                            Text("Add new Score")
+                        } icon: {
+                            Image(systemName: "plus")
                         }
                     }
-                    .padding(.vertical, 5)
                     
                     if !detailsVM.scores.isEmpty {
                         LazyVStack(alignment: .leading, spacing: 15) {
