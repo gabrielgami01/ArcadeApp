@@ -87,7 +87,7 @@ struct ProfileView: View {
                             Text("Personal card")
                                 .font(.customTitle3)
                         }
-                        .listRowBackground(Color.cardColor)
+                        .listRowBackground(Color.cardGradient)
                         
                         Section {
                             HStack {
@@ -106,7 +106,7 @@ struct ProfileView: View {
                                 .font(.customTitle3)
                         }
                         .font(.customBody)
-                        .listRowBackground(Color.cardColor)
+                        .listRowBackground(Color.cardGradient)
                         
                         Section {
                             Button(role: .destructive) {
@@ -116,7 +116,7 @@ struct ProfileView: View {
                             }
                         }
                         .font(.customBody)
-                        .listRowBackground(Color.cardColor)
+                        .listRowBackground(Color.cardGradient)
 
                     }
                 }
@@ -143,7 +143,7 @@ struct ProfileView: View {
             }
             .navigationBarBackButtonHidden()
             .scrollContentBackground(.hidden)
-            .background(Color.background)
+            .background(Color.backgroundGradient)
         }
         
         

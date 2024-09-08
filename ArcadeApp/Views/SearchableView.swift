@@ -76,7 +76,7 @@ struct SearchableView: View {
             searchVM.searchGame()
         }
         .padding(.horizontal)
-        .background(Color.background)
+        .background(Color.backgroundGradient)
         .scrollBounceBehavior(.basedOnSize)
         .scrollIndicators(.hidden)
     }

@@ -110,7 +110,7 @@ struct GameScoresView: View {
 
 #Preview {
     GameScoresView(detailsVM: GameDetailsVM(interactor: TestInteractor()), game: .test, animation: .constant(true))
-        .background(Color.background)
+        .background(Color.backgroundGradient)
         .preferredColorScheme(.dark)
 }
 

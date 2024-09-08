@@ -93,7 +93,7 @@ struct GameAboutView: View {
 #Preview {
     GameAboutView(detailsVM: GameDetailsVM(interactor: TestInteractor()), game: .test, animation: .constant(true))
         .environment(UserVM(interactor: TestInteractor()))
-        .background(Color.background)
+        .background(Color.backgroundGradient)
         .preferredColorScheme(.dark)
 }
 

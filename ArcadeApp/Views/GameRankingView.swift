@@ -77,7 +77,7 @@ struct GameRankingView: View {
                 }
             }
             .padding(.horizontal)
-            .background(Color.background)
+            .background(Color.backgroundGradient)
             .navigationBarBackButtonHidden()
             .scrollBounceBehavior(.basedOnSize)
             .scrollIndicators(.hidden)

@@ -26,7 +26,7 @@ struct EditAboutView: View {
             }
             .padding()
             .scrollBounceBehavior(.basedOnSize)
-            .background(Color.background)
+            .background(Color.backgroundGradient)
         }
         .onAppear {
             if let about = userVM.activeUser?.biography {

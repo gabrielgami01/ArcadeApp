@@ -29,7 +29,7 @@ struct ReviewCell: View {
             }
         }
         .padding()
-        .background(.card, in: .rect(cornerRadius: 10))
+        .background(Color.cardGradient, in: .rect(cornerRadius: 10))
         .frame(maxWidth: .infinity)
     }
 }

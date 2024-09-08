@@ -43,6 +43,6 @@ struct FollowsListView: View {
     FollowsListView(type: .following)
         .environment(SocialVM(interactor: TestInteractor()))
         .padding()
-        .background(Color.background)
+        .background(Color.backgroundGradient)
         .preferredColorScheme(.dark)
 }

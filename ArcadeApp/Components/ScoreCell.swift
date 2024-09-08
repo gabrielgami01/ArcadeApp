@@ -24,7 +24,7 @@ struct ScoreCell: View {
             }
         }
         .padding()
-        .background(.card, in: .rect(cornerRadius: 10))
+        .background(Color.cardGradient, in: .rect(cornerRadius: 10))
     }
 }
 
