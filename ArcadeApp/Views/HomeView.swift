@@ -22,14 +22,12 @@ struct HomeView: View {
                             .padding(.horizontal)
                     }
                     
-                    ScrollView(.horizontal) {
-                        HStack(spacing: 25) {
-                            PageButton(selectedPage: $selectedPage, page: .challenges)
-                            PageButton(selectedPage: $selectedPage, page: .rankings)
-                            PageButton(selectedPage: $selectedPage, page: .social)
-                        }
-                        .safeAreaPadding()
+                    HStack(spacing: 25) {
+                        PageButton(selectedPage: $selectedPage, page: .challenges)
+                        PageButton(selectedPage: $selectedPage, page: .rankings)
+                        PageButton(selectedPage: $selectedPage, page: .social)
                     }
+                    .padding()
                     
                     GamesCarousel(selectedType: $selectedType, type: .featured, games: gamesVM.featured)
                     .namespace(namespaceFeatured)

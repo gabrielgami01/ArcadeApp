@@ -23,7 +23,7 @@ struct GamesCarousel: View {
                                     VStack {
                                         Button {
                                             selectedType = type
-                                            withAnimation(.snappy){
+                                            withAnimation {
                                                 gamesVM.selectedGame = game
                                             }
                                         } label: {
