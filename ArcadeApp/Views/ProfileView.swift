@@ -22,12 +22,12 @@ struct ProfileView: View {
                                     Image(systemName: "pencil.circle")
                                         .font(.largeTitle)
                                         .tint(.white)
-                                        .offset(x: 5)
+                                        .offset(x: 25)
                                 }
                             }
                         
                         Text(user.username)
-                            .font(.customTitle2)
+                            .font(.customTitle)
                         
                         Text(user.email)
                             .foregroundStyle(.secondary)
@@ -35,7 +35,7 @@ struct ProfileView: View {
                         
                         HStack {
                             NavigationLink(value: ProfilePage.following) {
-                                HStack(spacing:5) {
+                                HStack(spacing: 5) {
                                     Text("\(socialVM.following.count)")
                                     Text("Following")
                                         .foregroundStyle(.secondary)
@@ -43,7 +43,7 @@ struct ProfileView: View {
                             }
                             
                             NavigationLink(value: ProfilePage.followers) {
-                                HStack(spacing:5) {
+                                HStack(spacing: 5) {
                                     Text("\(socialVM.followers.count)")
                                     Text("Followers")
                                         .foregroundStyle(.secondary)
@@ -61,7 +61,7 @@ struct ProfileView: View {
                                 ForEach(Array(emblemsVM.emblems.enumerated()), id: \.element.id) { index, emblem in
                                     Button {
                                         emblemsVM.selectedEmblem = emblem
-                                        showAddEmblem.toggle()
+                                        showAddEmblem = true
                                     } label: {
                                         EmblemCard(emblem: emblem)
                                     }
@@ -73,7 +73,7 @@ struct ProfileView: View {
                                 ForEach(0..<max(0, 3 - emblemsVM.emblems.count), id: \.self) { index in
                                     Button {
                                         emblemsVM.selectedEmblem = nil
-                                        showAddEmblem.toggle()
+                                        showAddEmblem = true
                                     } label: {
                                         AddEmblemCard()
                                     }
@@ -82,24 +82,27 @@ struct ProfileView: View {
                                     }
                                 }
                             }
-                            .buttonStyle(.plain)
+                           
                         } header: {
                             Text("Personal card")
                                 .font(.customTitle3)
                         }
+                        .buttonStyle(.plain)
                         .listRowBackground(Color.card)
                         
                         Section {
                             HStack {
                                 Text(user.biography ?? "")
+                                
                                 Spacer()
+                                
                                 Button {
-                                    showEditAbout.toggle()
+                                    showEditAbout = true
                                 } label: {
                                     Text(">")
                                 }
                                 .foregroundStyle(.secondary)
-                                .buttonStyle(.plain)
+                                
                             }
                         } header: {
                             Text("About")
@@ -123,9 +126,6 @@ struct ProfileView: View {
             }
             .task {
                 await emblemsVM.getUserEmblems()
-            }
-            .onChange(of: userVM.photoItem) { _, _ in
-                userVM.editUserAvatar()
             }
             .sheet(isPresented: $showEditAbout) {
                 EditAboutView()

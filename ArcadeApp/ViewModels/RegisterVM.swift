@@ -4,11 +4,11 @@ import SwiftUI
 final class RegisterVM {
     let interactor: DataInteractor
     
-    var username = "Sergiogr"
-    var password = "qwerty1234"
-    var fullName = "Sergio Gancedo Rico"
+    var username = ""
+    var password = ""
+    var fullName = ""
     var repeatPassword = ""
-    var email = "serganri@gmail.com"
+    var email = ""
     
     var errorMsg = ""
     var showError = false

@@ -61,8 +61,10 @@ struct UserCard: View {
                 }
             }
         }
-        .task {
-            await emblemsVM.getUserEmblems(id: user.id)
+        .onAppear {
+            Task {
+                await emblemsVM.getUserEmblems(id: user.id)
+            }
             if !isFollowed {
                 isFollowed = socialVM.isFollowed(userID: user.id)
             }

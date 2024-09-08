@@ -45,7 +45,7 @@ struct RegisterView: View {
                         userVM.username = registerVM.username
                         dismiss()
                     } else {
-                        registerVM.showError.toggle()
+                        registerVM.showError = true
                     }
                 } label: {
                     Text("Sign Up")

@@ -17,6 +17,7 @@ struct UserAvatarImage: View {
             Image(systemName: "person.circle.fill")
                 .resizable()
                 .scaledToFit()
+                
                 .frame(width: size, height: size)
         }
     }

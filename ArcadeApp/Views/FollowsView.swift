@@ -8,7 +8,7 @@ struct FollowsView: View {
     @Namespace private var namespace
     
     var body: some View {
-        VStack {
+        VStack(spacing: 20) {
             HStack {
                 BackButton {
                     dismiss()

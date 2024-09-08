@@ -9,7 +9,11 @@ final class UserVM {
     var isLogged = false
     var activeUser: User? = nil
     var about: String = ""
-    var photoItem: PhotosPickerItem?
+    var photoItem: PhotosPickerItem? {
+        didSet {
+            editUserAvatar()
+        }
+    }
     
     var username = ""
     var password = ""
