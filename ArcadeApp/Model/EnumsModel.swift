@@ -2,16 +2,16 @@ import Foundation
 
 enum Console: String, Codable, Identifiable, CaseIterable {
     case all = "All"
-    case nes = "NES"
-    case snes = "SNES"
-    case segagenesis = "SegaGenesis"
-    case playstation = "PlayStation"
-    case n64 = "N64"
     case atari2600 = "Atari2600"
     case gameboy = "Gameboy"
-    case dreamcast = "Dreamcast"
     case gamecube = "Gamecube"
-    
+    case dreamcast = "Dreamcast"
+    case nes = "NES"
+    case n64 = "N64"
+    case playstation = "PlayStation"
+    case snes = "SNES"
+    case segagenesis = "SegaGenesis"
+
     var id: Self { self }
 }
 

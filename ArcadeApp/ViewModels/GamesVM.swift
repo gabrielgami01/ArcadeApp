@@ -11,10 +11,18 @@ final class GamesVM {
     
     var games: [Game] = []
     var page = 1
+    var gamesCache: [Console: [Game]] = [:]
+    var pageCache: [Console: Int] = [:]
     var activeConsole: Console = .all {
         didSet {
-            activeConsole != oldValue ? games.removeAll() : nil
-            page = 1
+            if activeConsole != oldValue {
+                games = gamesCache[activeConsole] ?? []
+                page = pageCache[activeConsole] ?? 1
+                
+                if games.isEmpty {
+                    getGames()
+                } 
+             }
         }
     }
     
@@ -55,11 +63,18 @@ final class GamesVM {
     func getGames() {
         Task {
             do {
+                var newGames: [Game] = []
                 if activeConsole == .all {
-                    games += try await interactor.getAllGames(page: page)
+                    newGames = try await interactor.getAllGames(page: page)
                 } else {
-                    games += try await interactor.getGamesByConsole(activeConsole, page: page)
+                    newGames = try await interactor.getGamesByConsole(activeConsole, page: page)
                 }
+                
+                games += newGames
+                
+                gamesCache[activeConsole] = games
+                pageCache[activeConsole] = page
+                
             } catch {
                 errorMsg = error.localizedDescription
                 showError.toggle()
@@ -71,6 +86,7 @@ final class GamesVM {
     func isLastItem(_ game: Game) {
         if games.last?.id == game.id {
             page += 1
+            pageCache[activeConsole] = page
             getGames()
         }
     }

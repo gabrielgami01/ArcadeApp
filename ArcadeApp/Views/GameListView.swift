@@ -35,6 +35,8 @@ struct GameListView: View {
                     ForEach(gamesVM.games) { game in
                         if game.id != gamesVM.selectedGame?.id {
                             GameCell(game: game, animation: $animationGame)
+                                .transition(.slide.combined(with: .opacity))
+                                .animation(.default, value: gamesVM.games)
                                 .scrollTransition(.animated, axis: .vertical) { content, phase in
                                     content
                                         .opacity(phase.isIdentity ? 1.0 : 0.4)
@@ -52,9 +54,6 @@ struct GameListView: View {
                 .padding(.horizontal)
                 .namespace(showSearchable ? nil : namespace)
             }
-        }
-        .onChange(of: gamesVM.activeConsole) { _, _ in
-            gamesVM.getGames()
         }
         .onChange(of: gamesVM.selectedGame) { oldValue, newValue in
             if newValue == nil {
