@@ -10,18 +10,32 @@ struct ChallengesView: View {
         let columns = [GridItem(.flexible()), GridItem(.flexible())]
         
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                CustomHeader(title: "Challenges")
+            LazyVStack(alignment: .leading, spacing: 10, pinnedViews: [.sectionHeaders]) {
+                Section {
+                    ScrollSelector(activeSelection: $challengesVM.activeType) { $0.rawValue.capitalized }
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        ForEach(challengesVM.filteredChallenges) { challenge in
+                            ChallengeCard(challenge: challenge)
+                        }
+                    }
                     .padding(.horizontal)
-                
-                ScrollSelector(activeSelection: $challengesVM.activeType) { $0.rawValue.capitalized }
-                
-                LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(challengesVM.filteredChallenges) { challenge in
-                        ChallengeCard(challenge: challenge)
+                } header: {
+                    HStack(alignment: .firstTextBaseline, spacing: 20) {
+                        BackButton {
+                            dismiss()
+                        }
+                        Text("Challenges")
+                            .font(.customLargeTitle)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal)
+                    .padding(.bottom, 5)
+                    .background {
+                        Rectangle()
+                            .fill(Color.background)
+                            .padding(.top, -UIDevice.topInset)
                     }
                 }
-                .padding(.horizontal)
             }
         }
         .task {

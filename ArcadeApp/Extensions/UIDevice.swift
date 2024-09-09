@@ -1,4 +1,4 @@
-import UIKit
+import SwiftUI
 
 extension UIDevice {
     static var width: CGFloat {
