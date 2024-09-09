@@ -12,10 +12,14 @@ struct RegisterView: View {
         
         ScrollView {
             VStack(spacing: 40) {
-                HStack{
-                    CustomHeader(title: "Sign Up")
-                    Spacer()
+                HStack(alignment: .firstTextBaseline, spacing: 20) {
+                    BackButton {
+                        dismiss()
+                    }
+                    Text("Sign Up")
+                        .font(.customLargeTitle)
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
                 
                 VStack(spacing: 25) {
                     CustomTextField(text: $registerBVM.fullName, label: "Full Name", capitalization: .words)

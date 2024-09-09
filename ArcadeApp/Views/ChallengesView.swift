@@ -11,22 +11,30 @@ struct ChallengesView: View {
         
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                CustomHeader(title: "Challenges")
-                    .padding(.horizontal)
-                
-                ScrollSelector(activeSelection: $challengesVM.activeType) { $0.rawValue.capitalized }
-                
-                LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(challengesVM.filteredChallenges) { challenge in
-                        ChallengeCard(challenge: challenge)
+                LazyVGrid(columns: columns, spacing: 20, pinnedViews: [.sectionHeaders]) {
+                    Section {
+                        ForEach(challengesVM.filteredChallenges) { challenge in
+                            ChallengeCard(challenge: challenge)
+                        }
+                        
+                    } header: {
+                        VStack {
+                            CustomHeader(title: "Challenges")
+                                .padding(.horizontal)
+                            ScrollSelector(activeSelection: $challengesVM.activeType) { $0.rawValue.capitalized }
+                        }
+                        .padding(.bottom, 5)
+                        .background(Color.background)
+                        
                     }
                 }
-                .padding(.horizontal)
+                
             }
         }
         .task {
             await challengesVM.getChallenges()
         }
+        .ignoresSafeArea(edges: .top)
         .navigationBarBackButtonHidden()
         .background(Color.background)
         .scrollBounceBehavior(.basedOnSize)

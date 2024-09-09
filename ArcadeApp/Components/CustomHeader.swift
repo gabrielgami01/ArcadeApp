@@ -15,6 +15,10 @@ struct CustomHeader: View {
                     .font(.customLargeTitle)
             }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.top, UIDevice.topInset)
+        .padding(.bottom, 5)
+        .background (Color.background)
     }
 }
 
