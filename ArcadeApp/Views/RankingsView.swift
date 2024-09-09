@@ -13,7 +13,7 @@ struct RankingsView: View {
                 LazyVStack(spacing: 20) {
                     ForEach(rankingsVM.games) { game in
                         Button {
-                            withAnimation(.snappy) {
+                            withAnimation {
                                 rankingsVM.selectedGame = game
                             }
                         } label: {

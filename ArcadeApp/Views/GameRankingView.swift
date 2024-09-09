@@ -14,7 +14,7 @@ struct GameRankingView: View {
                 VStack(alignment: .leading, spacing: 20) {
                     HStack(alignment: .firstTextBaseline, spacing: 20) {
                         BackButton {
-                            withAnimation(.snappy) {
+                            withAnimation {
                                 rankingsVM.selectedGame = nil
                             }
                         }
@@ -55,7 +55,7 @@ struct GameRankingView: View {
             }
             .onAppear {
                 rankingsVM.getGameRanking(id: game.id)
-                withAnimation(.easeOut.delay(0.3)) {
+                withAnimation(.easeOut.delay(0.4)) {
                     animation = true
                 }
             }
