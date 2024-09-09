@@ -3,34 +3,30 @@ import SwiftUI
 struct RankingsView: View {
     @State var rankingsVM = RankingsVM()
     
-    @Environment(\.dismiss) private var dismiss
     @Environment(\.namespace) private var namespace
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                LazyVStack(spacing: 15, pinnedViews: [.sectionHeaders]) {
-                    Section {
-                        ForEach(rankingsVM.games) { game in
-                            Button {
-                                withAnimation {
-                                    rankingsVM.selectedGame = game
-                                }
-                            } label: {
-                                GameRankingCell(game: game)
-                                    .onAppear {
-                                        rankingsVM.isLastGame(game)
-                                    }
+                CustomHeader(title: "Rankings")
+                
+                LazyVStack(spacing: 20) {
+                    ForEach(rankingsVM.games) { game in
+                        Button {
+                            withAnimation(.snappy) {
+                                rankingsVM.selectedGame = game
                             }
-                            .buttonStyle(.plain)
+                        } label: {
+                            GameRankingCell(game: game)
+                            .onAppear {
+                                rankingsVM.isLastGame(game)
+                            }
                         }
-                    } header: {
-                        CustomHeader(title: "Rankings")
+                        .buttonStyle(.plain)
                     }
                 }
             }
         }
-        .ignoresSafeArea(edges: .top)
         .padding(.horizontal)
         .overlay {
             GameRankingView(rankingsVM: rankingsVM)
