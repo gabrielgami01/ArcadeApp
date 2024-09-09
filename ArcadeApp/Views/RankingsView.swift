@@ -9,28 +9,18 @@ struct RankingsView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                LazyVStack(spacing: 20, pinnedViews: [.sectionHeaders]) {
+                LazyVStack(spacing: 15, pinnedViews: [.sectionHeaders]) {
                     Section {
                         ForEach(rankingsVM.games) { game in
                             Button {
-                                withAnimation(.snappy) {
+                                withAnimation {
                                     rankingsVM.selectedGame = game
                                 }
                             } label: {
-                                HStack(spacing: 10) {
-                                    GameCover(game: game, width: 60, height: 60)
-                                        
-                                    if let namespace {
-                                        Text(game.name)
-                                            .font(.customBody)
-                                            .matchedGeometryEffect(id: "\(game.id)_NAME", in: namespace, properties: .position)
+                                GameRankingCell(game: game)
+                                    .onAppear {
+                                        rankingsVM.isLastGame(game)
                                     }
-                                    
-                                    Spacer()
-                                }
-                                .onAppear {
-                                    rankingsVM.isLastGame(game)
-                                }
                             }
                             .buttonStyle(.plain)
                         }

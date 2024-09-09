@@ -12,35 +12,24 @@ struct GameRankingView: View {
         if let game = rankingsVM.selectedGame {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
-                    HStack(alignment: .firstTextBaseline, spacing: 20) {
-                        BackButton {
-                            withAnimation(.snappy) {
-                                rankingsVM.selectedGame = nil
-                            }
-                        }
-                        .opacity(animation ? 1.0 : 0.0)
-                        
-                        if let namespace {
-                            Text(game.name)
-                                .font(.customLargeTitle)
-                                .matchedGeometryEffect(id: "\(game.id)_NAME", in: namespace, properties: .position)
-                        }
-                    }
-                    
                     Group {
                         if rankingsVM.rankingScores.count > 0 {
-                            LazyVStack {
-                                ForEach(rankingsVM.ranking, id: \.element.id) { index, rankingScore in
-                                    Button {
-                                        withAnimation {
-                                            if rankingScore.user.id != userVM.activeUser?.id {
-                                                selectedUser = rankingScore.user
+                            LazyVStack(pinnedViews: [.sectionHeaders]) {
+                                Section {
+                                    ForEach(rankingsVM.ranking, id: \.element.id) { index, rankingScore in
+                                        Button {
+                                            withAnimation {
+                                                if rankingScore.user.id != userVM.activeUser?.id {
+                                                    selectedUser = rankingScore.user
+                                                }
                                             }
+                                        } label: {
+                                            RankingScoreCell(index: index, rankingScore: rankingScore)
                                         }
-                                    } label: {
-                                        RankingScoreCell(index: index, rankingScore: rankingScore)
+                                        .buttonStyle(.plain)
+                                        
                                     }
-                                    .buttonStyle(.plain)
+                                } header: {
                                     
                                 }
                             }
