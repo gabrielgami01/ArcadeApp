@@ -12,11 +12,6 @@ struct RegisterView: View {
         
         ScrollView {
             VStack(spacing: 40) {
-                HStack{
-                    CustomHeader(title: "Sign Up")
-                    Spacer()
-                }
-                
                 VStack(spacing: 25) {
                     CustomTextField(text: $registerBVM.fullName, label: "Full Name", capitalization: .words)
                         .textContentType(.name)
@@ -55,7 +50,7 @@ struct RegisterView: View {
             }
         }
         .showAlert(show: $registerBVM.showError, text: registerVM.errorMsg)
-        .navigationBarBackButtonHidden()
+        .headerToolbar(title: "Register") { dismiss() }
         .padding()
         .background(Color.background)
         .scrollBounceBehavior(.basedOnSize)
@@ -63,9 +58,11 @@ struct RegisterView: View {
 }
 
 #Preview {
-    RegisterView(registerVM: RegisterVM(interactor: TestInteractor()))
-        .environment(UserVM(interactor: TestInteractor()))
-        .preferredColorScheme(.dark)
+    NavigationStack {
+        RegisterView(registerVM: RegisterVM(interactor: TestInteractor()))
+            .environment(UserVM(interactor: TestInteractor()))
+            .preferredColorScheme(.dark)
+    }
 }
 
 

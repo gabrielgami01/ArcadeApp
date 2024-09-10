@@ -11,25 +11,10 @@ struct GameRankingView: View {
     var body: some View {
         if let game = rankingsVM.selectedGame {
             ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    HStack(alignment: .firstTextBaseline, spacing: 20) {
-                        BackButton {
-                            withAnimation {
-                                rankingsVM.selectedGame = nil
-                            }
-                        }
-                        .opacity(animation ? 1.0 : 0.0)
-                        
-                        if let namespace {
-                            Text(game.name)
-                                .font(.customLargeTitle)
-                                .matchedGeometryEffect(id: "\(game.id)_NAME", in: namespace, properties: .position)
-                        }
-                    }
-                    
-                    Group {
-                        if rankingsVM.rankingScores.count > 0 {
-                            LazyVStack {
+                LazyVStack(spacing: 15) {
+                    Section {
+                        Group {
+                            if !rankingsVM.rankingScores.isEmpty {
                                 ForEach(rankingsVM.ranking, id: \.element.id) { index, rankingScore in
                                     Button {
                                         withAnimation {
@@ -43,13 +28,28 @@ struct GameRankingView: View {
                                     .buttonStyle(.plain)
                                     
                                 }
+                            } else {
+                                CustomUnavailableView(title: "No scores", image: "gamecontroller",
+                                                      description: "There isn't any score for this game yet.")
                             }
-                        } else {
-                            CustomUnavailableView(title: "No scores", image: "gamecontroller",
-                                                  description: "There isn't any score for this game yet.")
                         }
+                        .opacity(animation ? 1.0 : 0.0)
+                    } header: {
+                        HStack(alignment: .firstTextBaseline, spacing: 20) {
+                            BackButton {
+                                withAnimation {
+                                    rankingsVM.selectedGame = nil
+                                }
+                            }
+                            
+                            if let namespace {
+                                Text(game.name)
+                                    .font(.customLargeTitle)
+                                    .matchedGeometryEffect(id: "\(game.id)_NAME", in: namespace, properties: .position)
+                            }
+                        }
+                        .stickyHeader()
                     }
-                    .opacity(animation ? 1.0 : 0.0)
                 }
                 .disabled(selectedUser != nil)
             }
@@ -62,6 +62,7 @@ struct GameRankingView: View {
             .onDisappear {
                 animation = false
             }
+            .ignoresSafeArea(edges: .top)
             .blur(radius: selectedUser != nil ? 10 : 0)
             .onTapGesture {
                 if selectedUser != nil {
@@ -77,10 +78,9 @@ struct GameRankingView: View {
                 }
             }
             .padding(.horizontal)
-            .background(Color.background)
-            .navigationBarBackButtonHidden()
             .scrollBounceBehavior(.basedOnSize)
             .scrollIndicators(.hidden)
+            .background(Color.background)
         }
     }
 }
@@ -88,6 +88,7 @@ struct GameRankingView: View {
 #Preview {
     GameRankingView(rankingsVM: RankingsVM(interactor: TestInteractor(), selectedGame: .test))
         .environment(UserVM(interactor: TestInteractor()))
+        .environment(SocialVM(interactor: TestInteractor()))
         .namespace(Namespace().wrappedValue)
         .preferredColorScheme(.dark)
 }

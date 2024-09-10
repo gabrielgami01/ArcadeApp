@@ -13,25 +13,9 @@ struct GameListView: View {
         @Bindable var gamesBVM = gamesVM
         
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                Button {
-                    showSearchable = true
-                } label: {
-                    HStack(spacing: 10){
-                        Image(systemName:"magnifyingglass")
-                            .font(.customBody)
-                        Text("Search")
-                            .font(.customBody)
-                        Spacer()
-                    }
-                    .foregroundStyle(.secondary)
-                    .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(TextFieldStyleButton())
-                
-                ScrollSelector(activeSelection: $gamesBVM.activeConsole) { $0.rawValue }
-                
-                LazyVStack(spacing: 20) {
+            LazyVStack(spacing: 20, pinnedViews: [.sectionHeaders]) {
+                Section {
+                    ScrollSelector(activeSelection: $gamesBVM.activeConsole) { $0.rawValue }
                     ForEach(gamesVM.games) { game in
                         if game.id != gamesVM.selectedGame?.id {
                             GameCell(game: game, animation: $animationGame)
@@ -48,11 +32,27 @@ struct GameListView: View {
                                 .frame(height: 210)
                         }
                     }
+                } header: {
+                    Button {
+                        showSearchable = true
+                    } label: {
+                        HStack(spacing: 10) {
+                            Image(systemName:"magnifyingglass")
+                                .font(.customBody)
+                            Text("Search")
+                                .font(.customBody)
+                            Spacer()
+                        }
+                        .foregroundStyle(.secondary)
+                        .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(TextFieldStyleButton())
+                    .stickyHeader()
                 }
-                .padding(.horizontal)
-                .namespace(showSearchable ? nil : namespace)
             }
+            .namespace(showSearchable ? nil : namespace)
         }
+        .ignoresSafeArea(edges: .top)
         .onChange(of: gamesVM.selectedGame) { oldValue, newValue in
             if newValue == nil {
                 withAnimation(.default.delay(0.4)) {
