@@ -4,8 +4,8 @@ import SwiftUI
 final class SocialVM {
     let interactor: DataInteractor
     
-    var following: [User] = []
-    var followers: [User] = []
+    var following: [UserFollows] = []
+    var followers: [UserFollows] = []
     
     var errorMsg = ""
     var showError = false

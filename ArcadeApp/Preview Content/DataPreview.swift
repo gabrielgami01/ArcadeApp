@@ -108,8 +108,8 @@ struct TestInteractor: DataInteractor {
         return scores.sorted { $0.score > $1.score}
     }
     
-    func getFollowingFollowers() async throws -> (following: [User], followers: [User]) {
-        ([.test, .test2], [.test, .test2])
+    func getFollowingFollowers() async throws -> (following: [UserFollows], followers: [UserFollows]) {
+        ([.test, .test2], [.test, .test2, .test3])
     }
     
     func followUser(_ user: UserDTO) async throws {
@@ -134,6 +134,21 @@ extension User {
                            fullName: "Sergio Gancedo Rico",
                            biography: "Work smart not hard",
                            avatarImage: nil)
+}
+
+extension UserFollows {
+    static let test = UserFollows(id: UUID(),
+                               user: .test,
+                               createdAt: Calendar.current.date(from: DateComponents(year: 2024, month: 9, day: 1))!
+    )
+    static let test2 = UserFollows(id: UUID(),
+                               user: .test2,
+                               createdAt: Calendar.current.date(from: DateComponents(year: 2024, month: 9, day: 3))!
+    )
+    static let test3 = UserFollows(id: UUID(),
+                               user: .test2,
+                               createdAt: Calendar.current.date(from: DateComponents(year: 2024, month: 9, day: 9, hour: 22, minute: 01))!
+    )
 }
 
 extension Game {

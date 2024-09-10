@@ -105,6 +105,7 @@
 		FCE78D772C8B98EC001FDD21 /* SocialVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE78D762C8B98EC001FDD21 /* SocialVM.swift */; };
 		FCED20E62C2F1C8900C0C5A1 /* GamesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCED20E52C2F1C8900C0C5A1 /* GamesVM.swift */; };
 		FCFA6ACA2C8F15AE0049E8E4 /* GameRankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFA6AC92C8F15AE0049E8E4 /* GameRankingCell.swift */; };
+		FCFA6ACC2C8F5B6E0049E8E4 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFA6ACB2C8F5B6E0049E8E4 /* Date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -226,6 +227,7 @@
 		FCE78D762C8B98EC001FDD21 /* SocialVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialVM.swift; sourceTree = "<group>"; };
 		FCED20E52C2F1C8900C0C5A1 /* GamesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesVM.swift; sourceTree = "<group>"; };
 		FCFA6AC92C8F15AE0049E8E4 /* GameRankingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRankingCell.swift; sourceTree = "<group>"; };
+		FCFA6ACB2C8F5B6E0049E8E4 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -474,6 +476,7 @@
 				FC6F73F02C56D19C00E34AF3 /* AsyncTypeWriter.swift */,
 				FC4FCA0B2C627CED004C12C4 /* Color.swift */,
 				FCE336CE2C67C44E009E30AB /* JWTDecoder.swift */,
+				FCFA6ACB2C8F5B6E0049E8E4 /* Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -784,6 +787,7 @@
 				FCD1FCB42C6698460060E682 /* EditAboutView.swift in Sources */,
 				FC0E31CD2C46F0D0004EB339 /* ReviewCell.swift in Sources */,
 				FCCE05602C2B33F600B0D2CD /* SearchVM.swift in Sources */,
+				FCFA6ACC2C8F5B6E0049E8E4 /* Date.swift in Sources */,
 				FC22BA622C2590EF002DFAA4 /* ContentView.swift in Sources */,
 				FCA5191B2C36FDE5001CCF54 /* GameDetailsVM.swift in Sources */,
 				FC35A2392C3EE1500075E7B4 /* AddScoreVM.swift in Sources */,

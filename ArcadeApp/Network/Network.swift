@@ -32,13 +32,19 @@ protocol DataInteractor {
     
     func getGameRanking(id: UUID, page: Int) async throws -> [RankingScore]
     
-    func getFollowingFollowers() async throws -> (following: [User], followers: [User])
+    func getFollowingFollowers() async throws -> (following: [UserFollows], followers: [UserFollows])
     func followUser(_ user: UserDTO) async throws
     func unfollowUser(id: UUID) async throws
 }
 
 struct Network: DataInteractor, NetworkJSONInteractor {
+    let session: URLSession
+    
     static let shared = Network()
+    
+    init(session: URLSession = .shared) {
+        self.session = session
+    }
     
     func getToken() -> String? {
         guard let token = SecKeyStore.shared.readKey(label: "token") else {
@@ -203,9 +209,9 @@ struct Network: DataInteractor, NetworkJSONInteractor {
     //RANKINGS
     
     //FOLLOW
-    func getFollowingFollowers() async throws -> (following: [User], followers: [User]) {
-        async let followingRequest = getJSON(request: .get(url: .listFollowing, token: getToken()), type: [User].self)
-        async let followersRequest = getJSON(request: .get(url: .listFollowers, token: getToken()), type: [User].self)
+    func getFollowingFollowers() async throws -> (following: [UserFollows], followers: [UserFollows]) {
+        async let followingRequest = getJSON(request: .get(url: .listFollowing, token: getToken()), type: [UserFollows].self)
+        async let followersRequest = getJSON(request: .get(url: .listFollowers, token: getToken()), type: [UserFollows].self)
         
         return try await(followingRequest, followersRequest)
     }

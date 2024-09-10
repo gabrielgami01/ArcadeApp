@@ -21,6 +21,12 @@ struct User: Codable, Identifiable, Hashable {
     let avatarImage: Data?
 }
 
+struct UserFollows: Codable, Identifiable, Hashable {
+    let id: UUID
+    let user: User
+    let createdAt: Date
+}
+
 struct EditUserAboutDTO: Codable {
     let about: String
 }

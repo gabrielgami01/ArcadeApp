@@ -9,13 +9,13 @@ struct FollowsListView: View {
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 10) {
-                ForEach(type == .following ? socialVM.following : socialVM.followers) { user in
+                ForEach(type == .following ? socialVM.following : socialVM.followers) { userFollows in
                     Button {
                         withAnimation {
-                            selectedUser = user
+                            selectedUser = userFollows.user
                         }
                     } label: {
-                        FollowsCell(user: user, type: type)
+                        FollowsCell(user: userFollows.user, type: type)
                     }
                     .buttonStyle(.plain)
                 }
