@@ -1,6 +1,7 @@
 🎮 Arcade Studios - Tu plataforma de juegos definitiva
 
-Arcade Studios es una aplicación desarrollada en SwiftUI para iOS 17 que te permite explorar y competir con tus amigos en una gran variedad de juegos retro. Personaliza tu perfil, sube tus mejores puntuaciones y desafía a la comunidad mientras alcanzas nuevas metas y emblemas.
+Arcade Studios es una aplicación desarrollada en SwiftUI para iOS 17 que te permite explorar y competir con tus amigos en una gran variedad de juegos retro.
+Personaliza tu perfil, sube tus mejores puntuaciones y desafía a la comunidad mientras alcanzas nuevas metas y emblemas.
 
 🚀 Características principales
 
