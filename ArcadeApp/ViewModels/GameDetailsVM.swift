@@ -22,13 +22,6 @@ final class GameDetailsVM {
     
     init(interactor: DataInteractor = Network.shared) {
         self.interactor = interactor
-        NotificationCenter.default.addObserver(forName: .details, object: nil, queue: .main) { [self] notification in
-            if let userInfo = notification.userInfo, let id = userInfo["gameID"] as? UUID {
-                Task {
-                    await getGameDetails(id: id)
-                }
-            }
-        }
     }
     
     deinit {
@@ -42,25 +35,58 @@ final class GameDetailsVM {
         } catch {
             errorMsg = error.localizedDescription
             showError.toggle()
+            print(error.localizedDescription)
         }
     }
     
-    func useFavorite(id: UUID) {
-        Task {
-            do {
-                let favoriteDTO = FavoriteGameDTO(id: id)
-                if isFavorite {
-                    try await interactor.removeFavoriteGame(favoriteDTO)
-                } else {
-                    try await interactor.addFavoriteGame(favoriteDTO)
-                }
-                isFavorite.toggle()
-                NotificationCenter.default.post(name: .favorite, object: nil)
-            } catch {
-                errorMsg = error.localizedDescription
-                showError.toggle()
-                print(error.localizedDescription)
+    func useFavorite(id: UUID) async -> Bool {
+        do {
+            let favoriteDTO = FavoriteGameDTO(id: id)
+            if isFavorite {
+                try await interactor.removeFavoriteGame(favoriteDTO)
+            } else {
+                try await interactor.addFavoriteGame(favoriteDTO)
             }
+            return true
+        } catch {
+            errorMsg = error.localizedDescription
+            showError.toggle()
+            print(error.localizedDescription)
+            return false
         }
+    }
+    
+    func addReviewAPI(_ review: Review, to game: Game) async -> Bool {
+        do {
+            let reviewDTO = CreateReviewDTO(title: review.title, comment: review.comment, rating: review.rating, gameID: game.id)
+            try await interactor.addReview(reviewDTO)
+            return true
+        } catch {
+            errorMsg = error.localizedDescription
+            showError.toggle()
+            print(error.localizedDescription)
+            return false
+        }
+    }
+    
+    func addReview(_ review: Review) {
+        reviews.append(review)
+    }
+    
+    func addScoreAPI(imageData: Data, to game: Game) async -> Bool {
+        do {
+            let scoreDTO = CreateScoreDTO(image: imageData, gameID: game.id)
+            try await interactor.addScore(scoreDTO)
+            return true
+        } catch {
+            errorMsg = error.localizedDescription
+            showError.toggle()
+            print(error.localizedDescription)
+            return false
+        }
+    }
+    
+    func addScore(_ score: Score) {
+        scores.append(score)
     }
 }

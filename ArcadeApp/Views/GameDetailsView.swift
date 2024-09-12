@@ -3,7 +3,7 @@ import Charts
 
 struct GameDetailsView: View {
     @Environment(GamesVM.self) private var gamesVM
-    @State var detailsVM = GameDetailsVM()
+    @Environment(GameDetailsVM.self) private var detailsVM
     
     @State private var option: PickerOptions = .about
     
@@ -36,12 +36,12 @@ struct GameDetailsView: View {
                 
                 ZStack {
                     if option == .about {
-                        GameAboutView(detailsVM: detailsVM, game: game, animation: $aboutAnimation)
+                        GameAboutView(game: game, animation: $aboutAnimation)
                             .transition(.move(edge: .leading).combined(with: .opacity))
                     }
                     
                     if option == .score {
-                        GameScoresView(detailsVM: detailsVM, game: game, animation: $scoresAnimation)
+                        GameScoresView(game: game, animation: $scoresAnimation)
                             .transition(.move(edge: .trailing).combined(with: .opacity))
                     }
                 }
@@ -73,9 +73,10 @@ struct GameDetailsView: View {
 }
 
 #Preview {
-    GameDetailsView(detailsVM: GameDetailsVM(interactor: TestInteractor()), game: .test)
-        .environment(GamesVM(interactor: TestInteractor()))
+    GameDetailsView(game: .test)
         .environment(UserVM(interactor: TestInteractor()))
+        .environment(GamesVM(interactor: TestInteractor()))
+        .environment(GameDetailsVM(interactor: TestInteractor()))
         .preferredColorScheme(.dark)
         .background(Color.background)
         .namespace(Namespace().wrappedValue)

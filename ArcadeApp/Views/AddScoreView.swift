@@ -2,15 +2,20 @@ import SwiftUI
 import PhotosUI
 
 struct AddScoreView: View {
-    @Environment(\.dismiss) private var dismiss
-    @State var addScoreVM: AddScoreVM
+    @Environment(GameDetailsVM.self) private var detailsVM
+    @State private var addScoreVM = AddScoreVM()
+    
     @State private var showCamera = false
+    
+    let game: Game
+    
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         NavigationStack {
             VStack {
                 Button {
-                    addScoreVM.showCamera.toggle()
+                    showCamera = true
                 } label: {
                     ScoreImage(image: addScoreVM.image)
                 }
@@ -19,8 +24,12 @@ struct AddScoreView: View {
                 Spacer()
             }
             .sheetToolbar(title: "Add new Score", confirmationLabel: "Save") {
-                addScoreVM.addScore()
-                dismiss()
+                if let (score, imageData) = addScoreVM.newScore() {
+                    if await detailsVM.addScoreAPI(imageData: imageData, to: game) {
+                        detailsVM.addScore(score)
+                        dismiss()
+                    }
+                }
             }
             .sheet(isPresented: $showCamera) {
                 CameraPicker(photo: $addScoreVM.image)
@@ -34,6 +43,7 @@ struct AddScoreView: View {
 }
 
 #Preview {
-    AddScoreView(addScoreVM: AddScoreVM(game: .test, interactor: TestInteractor()))
+    AddScoreView(game: .test)
+        .environment(GameDetailsVM(interactor: TestInteractor()))
         .preferredColorScheme(.dark)
 }

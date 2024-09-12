@@ -2,7 +2,8 @@ import SwiftUI
 import Charts
 
 struct GameScoresView: View {
-    @State var detailsVM: GameDetailsVM
+    @Environment(GameDetailsVM.self) private var detailsVM
+    
     let game: Game
     @Binding var animation: Bool
     
@@ -74,7 +75,7 @@ struct GameScoresView: View {
             }
         }
         .sheet(isPresented: $showAddScore) {
-           AddScoreView(addScoreVM: AddScoreVM(game: game))
+           AddScoreView(game: game)
         }
         .scrollBounceBehavior(.basedOnSize)
         .scrollIndicators(.hidden)
@@ -98,7 +99,10 @@ struct GameScoresView: View {
 }
 
 #Preview {
-    GameScoresView(detailsVM: GameDetailsVM(interactor: TestInteractor()), game: .test, animation: .constant(true))
+    GameScoresView(game: .test, animation: .constant(true))
+        .environment(UserVM(interactor: TestInteractor()))
+        .environment(GamesVM(interactor: TestInteractor()))
+        .environment(GameDetailsVM(interactor: TestInteractor()))
         .preferredColorScheme(.dark)
         .padding(.horizontal)
         .background(Color.background)

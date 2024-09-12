@@ -2,7 +2,8 @@ import SwiftUI
 
 struct GameAboutView: View {
     @Environment(UserVM.self) private var userVM
-    @State var detailsVM: GameDetailsVM
+    @Environment(GameDetailsVM.self) private var detailsVM
+    
     let game: Game
     @Binding var animation: Bool
     
@@ -58,7 +59,7 @@ struct GameAboutView: View {
             animation = true
         }
         .sheet(isPresented: $showAddReview) {
-            AddReviewView(addReviewVM: AddReviewVM(game: game))
+            AddReviewView(game: game)
         }
         .blur(radius: selectedUser != nil ? 10 : 0)
         .onTapGesture {
@@ -81,8 +82,10 @@ struct GameAboutView: View {
 }
 
 #Preview {
-    GameAboutView(detailsVM: GameDetailsVM(interactor: TestInteractor()), game: .test, animation: .constant(true))
+    GameAboutView(game: .test, animation: .constant(true))
         .environment(UserVM(interactor: TestInteractor()))
+        .environment(GamesVM(interactor: TestInteractor()))
+        .environment(GameDetailsVM(interactor: TestInteractor()))
         .preferredColorScheme(.dark)
         .padding(.horizontal)
         .background(Color.background)

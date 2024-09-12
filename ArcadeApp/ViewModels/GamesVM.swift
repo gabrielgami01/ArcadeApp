@@ -20,8 +20,8 @@ final class GamesVM {
                 page = pageCache[activeConsole] ?? 1
                 
                 if games.isEmpty {
-                    getGames()
-                } 
+                    Task { await getGames() }
+                }
              }
         }
     }
@@ -32,15 +32,16 @@ final class GamesVM {
     init(interactor: DataInteractor = Network.shared) {
         self.interactor = interactor
         if SecManager.shared.isLogged {
-            getFeaturedFavoriteGames()
-            getGames()
+            Task {
+                await getFeaturedFavoriteGames()
+                await getGames()
+            }
         }
         NotificationCenter.default.addObserver(forName: .login, object: nil, queue: .main) { [self] _ in
-            getFeaturedFavoriteGames()
-            getGames()
-        }
-        NotificationCenter.default.addObserver(forName: .favorite, object: nil, queue: .main) { [self] _ in
-           getFeaturedFavoriteGames()
+            Task {
+                await getFeaturedFavoriteGames()
+                await getGames()
+            }
         }
     }
     
@@ -49,37 +50,34 @@ final class GamesVM {
         NotificationCenter.default.removeObserver(self, name: .favorite, object: nil)
     }
     
-    func getFeaturedFavoriteGames() {
-        Task {
-            do {
-                (featured, favorites) = try await interactor.getFeaturedFavoriteGames()
-            } catch {
-                errorMsg = error.localizedDescription
-                showError.toggle()
-            }
+    func getFeaturedFavoriteGames() async {
+        do {
+            (featured, favorites) = try await interactor.getFeaturedFavoriteGames()
+        } catch {
+            errorMsg = error.localizedDescription
+            showError.toggle()
+            print(error.localizedDescription)
         }
     }
     
-    func getGames() {
-        Task {
-            do {
-                var newGames: [Game] = []
-                if activeConsole == .all {
-                    newGames = try await interactor.getAllGames(page: page)
-                } else {
-                    newGames = try await interactor.getGamesByConsole(activeConsole, page: page)
-                }
-                
-                games += newGames
-                
-                gamesCache[activeConsole] = games
-                pageCache[activeConsole] = page
-                
-            } catch {
-                errorMsg = error.localizedDescription
-                showError.toggle()
-                print(error.localizedDescription)
+    func getGames() async {
+        do {
+            var newGames: [Game] = []
+            if activeConsole == .all {
+                newGames = try await interactor.getAllGames(page: page)
+            } else {
+                newGames = try await interactor.getGamesByConsole(activeConsole, page: page)
             }
+            
+            games += newGames
+            
+            gamesCache[activeConsole] = games
+            pageCache[activeConsole] = page
+            
+        } catch {
+            errorMsg = error.localizedDescription
+            showError.toggle()
+            print(error.localizedDescription)
         }
     }
     
@@ -87,7 +85,15 @@ final class GamesVM {
         if games.last?.id == game.id {
             page += 1
             pageCache[activeConsole] = page
-            getGames()
+            Task { await getGames() }
+        }
+    }
+    
+    func toggleFavoriteGame(game: Game, favorite: Bool) {
+        if favorite {
+            favorites.append(game)
+        } else {
+            favorites.removeAll { $0.id == game.id }
         }
     }
     

@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct GameAboutCard: View {
+    @Environment(GamesVM.self) private var gamesVM
     @State var detailsVM: GameDetailsVM
     
     let game: Game
@@ -44,7 +45,12 @@ struct GameAboutCard: View {
                 }
                 HStack {
                     Button {
-                        detailsVM.useFavorite(id: game.id)
+                        Task {
+                            if await detailsVM.useFavorite(id: game.id) {
+                                detailsVM.isFavorite.toggle()
+                                gamesVM.toggleFavoriteGame(game: game, favorite: detailsVM.isFavorite)
+                            }
+                        }
                     } label: {
                         Image(systemName: "heart")
                             .font(.title2)
@@ -66,5 +72,6 @@ struct GameAboutCard: View {
 
 #Preview {
     GameAboutCard(detailsVM: GameDetailsVM(interactor: TestInteractor()), game: .test, animation: true)
+        .environment(GamesVM(interactor: TestInteractor()))
         .preferredColorScheme(.dark)
 }

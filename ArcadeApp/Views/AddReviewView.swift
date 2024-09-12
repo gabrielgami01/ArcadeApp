@@ -1,8 +1,13 @@
 import SwiftUI
 
 struct AddReviewView: View {
+    @Environment(UserVM.self) private var userVM
+    @Environment(GameDetailsVM.self) private var detailsVM
+    @State private var addReviewVM = AddReviewVM()
+    
+    let game: Game
+    
     @Environment(\.dismiss) private var dismiss
-    @State var addReviewVM: AddReviewVM
     
     var body: some View {
         NavigationStack {
@@ -36,11 +41,12 @@ struct AddReviewView: View {
                 Spacer()
             }
             .sheetToolbar(title: "Leave a Review", confirmationLabel: "Send") {
-                if addReviewVM.checkReview() {
-                    addReviewVM.addReview()
-                    dismiss()
-                } else {
-                    addReviewVM.showError.toggle()
+                if let user = userVM.activeUser,
+                   let review = addReviewVM.newReview(activeUser: user) {
+                    if await detailsVM.addReviewAPI(review, to: game) {
+                        detailsVM.addReview(review)
+                        dismiss()
+                    }
                 }
             }
             .showAlert(show: $addReviewVM.showError, text: addReviewVM.errorMsg)
@@ -52,6 +58,8 @@ struct AddReviewView: View {
 }
 
 #Preview {
-    AddReviewView(addReviewVM: AddReviewVM(game: .test, interactor: TestInteractor()))
+    AddReviewView(game: .test)
+        .environment(UserVM(interactor: TestInteractor()))
+        .environment(GameDetailsVM(interactor: TestInteractor()))
         .preferredColorScheme(.dark)
 }
