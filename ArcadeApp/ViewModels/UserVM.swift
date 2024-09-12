@@ -41,6 +41,9 @@ final class UserVM {
     }
     
     func logout() {
+        if let username = activeUser?.username {
+            self.username = username
+        }
         activeUser = nil
         secManager.logout()
     }
