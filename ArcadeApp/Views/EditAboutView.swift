@@ -19,8 +19,10 @@ struct EditAboutView: View {
                 Spacer()
             }
             .sheetToolbar(title: "About", confirmationLabel: "Save") {
-                userVM.editUserAbout()
-                dismiss()
+                if await userVM.updateUserAboutAPI() {
+                    userVM.updatedUserAbout()
+                    dismiss()
+                }
             }
             .navigationBarTitleDisplayMode(.inline)
             .padding(.horizontal)

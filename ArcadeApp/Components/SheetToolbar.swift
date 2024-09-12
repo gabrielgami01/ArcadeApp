@@ -3,7 +3,7 @@ import SwiftUI
 fileprivate struct SheetToolbar: ViewModifier {
     let title: String
     let confirmationLabel: String?
-    let confirmationAction: (() -> Void)?
+    let confirmationAction: (() async -> Void)?
     
     @Environment(\.dismiss) private var dismiss
     
@@ -28,7 +28,7 @@ fileprivate struct SheetToolbar: ViewModifier {
                    let confirmationAction {
                     ToolbarItem(placement: .confirmationAction) {
                         Button {
-                            confirmationAction()
+                            Task { await confirmationAction() }
                         } label: {
                             Text(confirmationLabel)
                                 .font(.customTitle3)
@@ -40,7 +40,7 @@ fileprivate struct SheetToolbar: ViewModifier {
 }
 
 extension View {
-    func sheetToolbar(title: String, confirmationLabel: String?, confirmationAction: (() -> Void)?) -> some View {
+    func sheetToolbar(title: String, confirmationLabel: String?, confirmationAction: (() async -> Void)?) -> some View {
         modifier(SheetToolbar(title: title, confirmationLabel: confirmationLabel, confirmationAction: confirmationAction))
     }
 }

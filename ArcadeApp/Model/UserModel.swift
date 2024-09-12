@@ -27,11 +27,11 @@ struct UserFollows: Codable, Identifiable, Hashable {
     let createdAt: Date
 }
 
-struct EditUserAboutDTO: Codable {
+struct UpdateUserAboutDTO: Codable {
     let about: String
 }
 
-struct EditUserAvatarDTO: Codable {
+struct UpdateUserAvatarDTO: Codable {
     let image: Data
 }
 

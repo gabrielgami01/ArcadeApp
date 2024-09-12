@@ -28,10 +28,10 @@ struct TestInteractor: DataInteractor {
         .test
     }
     
-    func editUserAbout(_ about: EditUserAboutDTO) async throws {
+    func updateUserAbout(_ about: UpdateUserAboutDTO) async throws {
     }
     
-    func editUserAvatar(_ avatar: EditUserAvatarDTO) async throws {
+    func updateUserAvatar(_ avatar: UpdateUserAvatarDTO) async throws {
     }
     
     func getAllGames(page: Int) async throws -> [Game] {

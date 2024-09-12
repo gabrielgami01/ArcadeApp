@@ -17,17 +17,16 @@ final class RegisterVM {
         self.interactor = interactor
     }
     
-    func register() {
-        Task {
-            do {
-                let newUser = CreateUserDTO(username: username, password: password, email: email, fullName: fullName)
-                try await interactor.register(user: newUser)
-                resetRegister()
-            } catch {
-                errorMsg = error.localizedDescription
-                showError.toggle()
-                print(error)
-            }
+    func register() async -> Bool {
+        do {
+            let newUser = CreateUserDTO(username: username, password: password, email: email, fullName: fullName)
+            try await interactor.register(user: newUser)
+            return true
+        } catch {
+            errorMsg = error.localizedDescription
+            showError.toggle()
+            print(error)
+            return false
         }
     }
     

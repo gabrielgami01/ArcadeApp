@@ -21,6 +21,6 @@ final class SecManager {
     
     func logout() {
         SecKeyStore.shared.deleteKey(label: "token")
-        isLogged.toggle()
+        isLogged = false
     }
 }

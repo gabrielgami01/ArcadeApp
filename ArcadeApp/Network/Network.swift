@@ -6,8 +6,8 @@ protocol DataInteractor {
     func loginJWT(user: String, pass: String) async throws -> User
     func refreshJWT() async throws -> User
     func getUserInfo() async throws -> User
-    func editUserAbout(_ about: EditUserAboutDTO) async throws
-    func editUserAvatar(_ avatar: EditUserAvatarDTO) async throws
+    func updateUserAbout(_ about: UpdateUserAboutDTO) async throws
+    func updateUserAvatar(_ avatar: UpdateUserAvatarDTO) async throws
     
     func getAllGames(page: Int) async throws -> [Game]
     func getGamesByConsole(_ console: Console, page: Int) async throws -> [Game]
@@ -82,11 +82,11 @@ struct Network: DataInteractor, NetworkJSONInteractor {
         try await getJSON(request: .get(url: .getUserInfo, token: getToken()), type: User.self)
     }
     
-    func editUserAbout(_ about: EditUserAboutDTO) async throws {
+    func updateUserAbout(_ about: UpdateUserAboutDTO) async throws {
         try await post(request: .post(url: .updateUserAbout, post: about, method: .put, token: getToken()))
     }
     
-    func editUserAvatar(_ avatar: EditUserAvatarDTO) async throws {
+    func updateUserAvatar(_ avatar: UpdateUserAvatarDTO) async throws {
         try await post(request: .post(url: .updateUserAvatar, post: avatar, method: .put, token: getToken()))
     }
     //END USERS

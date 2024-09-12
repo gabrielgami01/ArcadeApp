@@ -5,7 +5,7 @@ struct ContentView: View {
     
     var body: some View {
         Group {
-            if userVM.isLogged {
+            if let _ = userVM.activeUser {
                 MainTabView()
             } else {
                 LoginView()

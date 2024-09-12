@@ -37,9 +37,13 @@ struct RegisterView: View {
                 
                 Button {
                     if registerVM.checkFields() {
-                        registerVM.register()
-                        userVM.username = registerVM.username
-                        dismiss()
+                        Task {
+                            if await registerVM.register() {
+                                userVM.username = registerVM.username
+                                dismiss()
+                                registerVM.resetRegister()
+                            }
+                        }
                     } else {
                         registerVM.showError = true
                     }

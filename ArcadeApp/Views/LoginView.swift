@@ -24,7 +24,11 @@ struct LoginView: View {
                         .textContentType(.password)
                     
                     Button {
-                        userVM.login()
+                        Task {
+                            await userVM.login()
+                            userVM.password.removeAll()
+                        }
+                        
                     } label: {
                         Text("Log In")
                     }
@@ -38,7 +42,7 @@ struct LoginView: View {
                     Text("Don't have an account?")
                         
                     Button {
-                        showRegister.toggle()
+                        showRegister = true
                         userVM.resetLogin()
                     } label: {
                         Text("Sign up")
@@ -58,12 +62,12 @@ struct LoginView: View {
                     }
                 }
             }
-            .padding(.horizontal)
-            .padding(.top, 100)
-            .background(Color.background)
             .navigationDestination(isPresented: $showRegister) {
                 RegisterView()
             }
+            .padding(.horizontal)
+            .padding(.top, 100)
+            .background(Color.background)
             .showAlert(show: $userBVM.showError, text: userVM.errorMsg)
         }
     }
