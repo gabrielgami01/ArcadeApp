@@ -4,7 +4,6 @@ struct HomeView: View {
     @Environment(UserVM.self) private var userVM
     @Environment(GamesVM.self) private var gamesVM
     
-    @State private var selectedPage: HomePage?
     @State private var selectedType: HomeScrollType = .featured
     
     @Namespace private var namespaceFeatured
@@ -23,18 +22,22 @@ struct HomeView: View {
                     }
                     
                     HStack(spacing: 25) {
-                        PageButton(selectedPage: $selectedPage, page: .challenges)
-                        PageButton(selectedPage: $selectedPage, page: .rankings)
-                        PageButton(selectedPage: $selectedPage, page: .social)
+                        ForEach(HomePage.allCases) { page in
+                            NavigationLink(value: page) {
+                                PageButton(page: page)
+                            }
+                            .buttonStyle(.plain)
+                        }
                     }
                     .padding()
                     
                     GamesCarousel(selectedType: $selectedType, type: .featured, games: gamesVM.featured)
-                    .namespace(namespaceFeatured)
+                        .namespace(namespaceFeatured)
                     
                     GamesCarousel(selectedType: $selectedType, type: .favorites, games: gamesVM.favorites)
-                    .namespace(namespaceFavorites)
+                        .namespace(namespaceFavorites)
                 }
+                .opacity(gamesVM.selectedGame == nil ? 1.0 : 0.0)
             }
             .navigationDestination(for: HomePage.self) { page in
                 Group {
@@ -49,22 +52,22 @@ struct HomeView: View {
                 }
                 .namespace(namespaceFeatured)
             }
-            .showAlert(show: $gamesBVM.showError, text: gamesVM.errorMsg)
             .overlay {
                 GameDetailsView(game: gamesVM.selectedGame)
             }
-            .namespace(selectedType == .featured ? namespaceFeatured : namespaceFavorites)
-            .background(Color.background)
+            .showAlert(show: $gamesBVM.showError, text: gamesVM.errorMsg)
             .scrollBounceBehavior(.basedOnSize)
             .scrollIndicators(.hidden)
+            .background(Color.background)
+            .namespace(selectedType == .featured ? namespaceFeatured : namespaceFavorites)
         }
     }
 }
 
 #Preview {
     HomeView()
-        .environment(UserVM(interactor: TestInteractor()))
         .environment(GamesVM(interactor: TestInteractor()))
+        .environment(UserVM(interactor: TestInteractor()))
         .environment(SocialVM(interactor: TestInteractor()))
         .preferredColorScheme(.dark)
 }

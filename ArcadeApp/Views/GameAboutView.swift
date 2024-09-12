@@ -20,7 +20,7 @@ struct GameAboutView: View {
                     GameAboutCard(detailsVM: detailsVM, game: game, animation: animation)
                 }
                 
-                Group {
+                VStack {
                     GameDetailsLabel(showAction: $showAddReview, title: "Player's Reviews") {
                         Label {
                             Text("Write a Review")
@@ -74,17 +74,18 @@ struct GameAboutView: View {
                     .transition(.move(edge: .bottom).combined(with: .opacity))
             }
         }
-        .padding(.horizontal)
         .scrollBounceBehavior(.basedOnSize)
         .scrollIndicators(.hidden)
+        
     }
 }
 
 #Preview {
     GameAboutView(detailsVM: GameDetailsVM(interactor: TestInteractor()), game: .test, animation: .constant(true))
         .environment(UserVM(interactor: TestInteractor()))
-        .background(Color.background)
         .preferredColorScheme(.dark)
+        .padding(.horizontal)
+        .background(Color.background)
 }
 
 

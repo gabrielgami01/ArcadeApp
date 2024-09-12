@@ -37,5 +37,6 @@ struct ReviewCell: View {
 
 #Preview {
     ReviewCell(review: .test)
+        .padding()
         .preferredColorScheme(.dark)
 }

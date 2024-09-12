@@ -8,7 +8,7 @@ struct RankingsView: View {
     
     var body: some View {
         ScrollView {
-            LazyVStack(spacing: 20, pinnedViews: [.sectionHeaders]) {
+            LazyVStack(pinnedViews: [.sectionHeaders]) {
                 Section {
                     ForEach(rankingsVM.games) { game in
                         Button {
@@ -17,9 +17,9 @@ struct RankingsView: View {
                             }
                         } label: {
                             GameRankingCell(game: game)
-                            .onAppear {
-                                rankingsVM.isLastGame(game)
-                            }
+                                .onAppear {
+                                    rankingsVM.isLastGame(game)
+                                }
                         }
                         .buttonStyle(.plain)
                     }
@@ -34,17 +34,17 @@ struct RankingsView: View {
                     .stickyHeader()
                 }
             }
+            .opacity(rankingsVM.selectedGame == nil ? 1.0 : 0.0)
         }
         .ignoresSafeArea(edges: .top)
-        .opacity(rankingsVM.selectedGame == nil ? 1.0 : 0.0)
+        .overlay {
+            GameRankingView(rankingsVM: rankingsVM)
+        }
         .navigationBarBackButtonHidden()
         .padding(.horizontal)
         .scrollBounceBehavior(.basedOnSize)
         .scrollIndicators(.hidden)
         .background(Color.background)
-        .overlay {
-            GameRankingView(rankingsVM: rankingsVM)
-        }
     }
 }
 

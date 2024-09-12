@@ -2,11 +2,12 @@ import SwiftUI
 import ACNetwork
 
 struct GameCover: View {
+    @State private var imageVM = ImageNetworkVM()
+    
     let game: Game
     let width: CGFloat
     let height: CGFloat
-    @State private var imageVM = ImageNetworkVM()    
-    
+     
     @Environment(\.namespace) private var namespace
     
     var body: some View {
@@ -61,6 +62,6 @@ struct GameCover: View {
 
 #Preview {
     GameCover(game: .test, width: 140, height: 220)
-        .namespace(Namespace().wrappedValue)
         .preferredColorScheme(.dark)
+        .namespace(Namespace().wrappedValue)
 }

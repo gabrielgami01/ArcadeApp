@@ -2,10 +2,11 @@ import SwiftUI
 
 struct RegisterView: View {
     @Environment(UserVM.self) private var userVM
-    @Environment(\.dismiss) private var dismiss
     @State var registerVM = RegisterVM()
     
     @FocusState var fields: SignupFields?
+    
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         @Bindable var registerBVM = registerVM
@@ -52,8 +53,9 @@ struct RegisterView: View {
         .showAlert(show: $registerBVM.showError, text: registerVM.errorMsg)
         .headerToolbar(title: "Register") { dismiss() }
         .padding()
-        .background(Color.background)
         .scrollBounceBehavior(.basedOnSize)
+        .scrollIndicators(.hidden)
+        .background(Color.background)
     }
 }
 

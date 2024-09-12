@@ -6,10 +6,10 @@ struct GameRankingCell: View {
     @Environment(\.namespace) private var namespace
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             HStack(spacing: 15) {
-                GameCover(game: game, width: 65, height: 65)
-                    
+                GameCover(game: game, width: 60, height: 60)
+                                        
                 if let namespace {
                     Text(game.name)
                         .font(.customHeadline)
@@ -24,13 +24,18 @@ struct GameRankingCell: View {
             
             Divider()
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color.background)
     }
     
 }
 
 #Preview {
     GameRankingCell(game: .test)
-        .namespace(Namespace().wrappedValue)
-        .preferredColorScheme(.dark)
         .padding()
+        .preferredColorScheme(.dark)
+        .namespace(Namespace().wrappedValue)
 }
+
+
+

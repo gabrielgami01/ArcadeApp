@@ -8,7 +8,7 @@ struct SocialView: View {
     
     var body: some View {
         ScrollView {
-            LazyVStack(spacing: 20) {
+            LazyVStack(spacing: 15) {
                 ForEach(socialVM.followers) { userFollows in
                     VStack(alignment: .leading) {
                         HStack {

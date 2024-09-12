@@ -58,8 +58,8 @@ struct GameCell: View {
 #Preview {
     GameCell(game: .test, animation: .constant(.test2))
         .environment(GamesVM(interactor: TestInteractor()))
-        .namespace(Namespace().wrappedValue)
         .preferredColorScheme(.dark)
+        .namespace(Namespace().wrappedValue)
 }
 
 

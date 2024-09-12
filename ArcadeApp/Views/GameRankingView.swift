@@ -77,10 +77,6 @@ struct GameRankingView: View {
                         .transition(.move(edge: .bottom).combined(with: .opacity))
                 }
             }
-            .padding(.horizontal)
-            .scrollBounceBehavior(.basedOnSize)
-            .scrollIndicators(.hidden)
-            .background(Color.background)
         }
     }
 }
@@ -89,7 +85,11 @@ struct GameRankingView: View {
     GameRankingView(rankingsVM: RankingsVM(interactor: TestInteractor(), selectedGame: .test))
         .environment(UserVM(interactor: TestInteractor()))
         .environment(SocialVM(interactor: TestInteractor()))
-        .namespace(Namespace().wrappedValue)
         .preferredColorScheme(.dark)
+        .padding(.horizontal)
+        .scrollBounceBehavior(.basedOnSize)
+        .scrollIndicators(.hidden)
+        .background(Color.background)
+        .namespace(Namespace().wrappedValue)
 }
 

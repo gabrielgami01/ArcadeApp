@@ -2,9 +2,10 @@ import SwiftUI
 
 struct FollowsView: View {
     @Environment(SocialVM.self) private var socialVM
-    @Environment(\.dismiss) private var dismiss
+    
     @State var selectedPage: ProfilePage
     
+    @Environment(\.dismiss) private var dismiss
     @Namespace private var namespace
     
     var body: some View {
@@ -43,11 +44,11 @@ struct FollowsView: View {
 
         }
         .padding(.horizontal)
-        .background(Color.background)
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
         .scrollBounceBehavior(.basedOnSize)
         .scrollIndicators(.hidden)
+        .background(Color.background)
     }
 }
 

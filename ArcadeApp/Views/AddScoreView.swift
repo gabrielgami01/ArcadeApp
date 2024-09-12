@@ -28,9 +28,7 @@ struct AddScoreView: View {
             .showAlert(show: $addScoreVM.showError, text: addScoreVM.errorMsg)
             .navigationBarTitleDisplayMode(.inline)
             .frame(maxWidth: .infinity)
-            .padding()
             .background(Color.background)
-            
         }
     }
 }

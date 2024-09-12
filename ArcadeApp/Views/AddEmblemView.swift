@@ -49,4 +49,5 @@ struct AddEmblemView: View {
 
 #Preview {
     AddEmblemView(emblemsVM: EmblemsVM(interactor: TestInteractor()))
+        .preferredColorScheme(.dark)
 }

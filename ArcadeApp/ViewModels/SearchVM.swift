@@ -1,21 +1,20 @@
 import SwiftUI
 import SwiftData
+import Combine
 
 @Observable
 final class SearchVM {
     let interactor: DataInteractor
     
-    var searchText: String = "" {
+    private var subscribers = Set<AnyCancellable>()
+    let searchPublisher = PassthroughSubject<String, Never>()
+    var inputText: String = "" {
         didSet {
-            if oldValue != searchText {
-                if !searchText.isEmpty {
-                    searchGame()
-                } else {
-                    games.removeAll()
-                }
-            }
+            searchPublisher.send(inputText)
         }
     }
+    var searchText: String = ""
+    
     var games: [Game] = []
     
     var errorMsg = ""
@@ -23,12 +22,18 @@ final class SearchVM {
     
     init(interactor: DataInteractor = Network.shared) {
         self.interactor = interactor
+        searchPublisher
+            .debounce(for: .seconds(0.3), scheduler: DispatchQueue.main)
+            .sink { [self] text in
+                searchText = text
+            }
+            .store(in: &subscribers)
     }
     
     func searchGame() {
         Task {
             do {
-                games = try await interactor.searchGame(name: searchText)
+                games = try await interactor.searchGame(name: inputText)
             } catch {
                 errorMsg = error.localizedDescription
                 showError.toggle()

@@ -2,7 +2,7 @@ import Foundation
 
 final class NetworkMock: URLProtocol {
     var urlTest: URL {
-        Bundle.main.url(forResource: "gamesPage", withExtension: "json")!
+        Bundle(for: NetworkMock.self).url(forResource: "gamesPage", withExtension: "json")!
     }
     
     override class func canInit(with request: URLRequest) -> Bool {

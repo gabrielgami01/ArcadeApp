@@ -43,7 +43,7 @@ struct GameScoresView: View {
                 }
                 .frame(height: 220)
                 
-                Group {
+                VStack {
                     GameDetailsLabel(showAction: $showAddScore, title: "Your scores") {
                         Label {
                             Text("Add new Score")
@@ -76,7 +76,6 @@ struct GameScoresView: View {
         .sheet(isPresented: $showAddScore) {
            AddScoreView(addScoreVM: AddScoreVM(game: game))
         }
-        .padding(.horizontal)
         .scrollBounceBehavior(.basedOnSize)
         .scrollIndicators(.hidden)
     }
@@ -100,7 +99,8 @@ struct GameScoresView: View {
 
 #Preview {
     GameScoresView(detailsVM: GameDetailsVM(interactor: TestInteractor()), game: .test, animation: .constant(true))
-        .background(Color.background)
         .preferredColorScheme(.dark)
+        .padding(.horizontal)
+        .background(Color.background)
 }
 

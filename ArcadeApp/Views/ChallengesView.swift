@@ -16,6 +16,7 @@ struct ChallengesView: View {
                     ForEach(challengesVM.filteredChallenges) { challenge in
                         ChallengeCard(challenge: challenge)
                     }
+                    .animation(.none, value: challengesVM.activeType)
                 }
                 .padding(.horizontal)
             }
@@ -23,7 +24,8 @@ struct ChallengesView: View {
         .task {
             await challengesVM.getChallenges()
         }
-        .headerToolbar(title: "Challenges") { dismiss() }        
+        .headerToolbar(title: "Challenges") { dismiss() }  
+        .padding(.top, 5)
         .scrollBounceBehavior(.basedOnSize)
         .scrollIndicators(.hidden)
         .background(Color.background)

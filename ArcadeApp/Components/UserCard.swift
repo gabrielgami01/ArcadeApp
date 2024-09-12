@@ -3,7 +3,8 @@ import SwiftUI
 struct UserCard: View {
     @Environment(SocialVM.self) private var socialVM
     @State var emblemsVM = EmblemsVM()
-    @State var isFollowed = false
+    
+    @State private var isFollowed = false
     let user: User
     
     var body: some View {
@@ -61,13 +62,9 @@ struct UserCard: View {
                 }
             }
         }
-        .onAppear {
-            Task {
-                await emblemsVM.getUserEmblems(id: user.id)
-            }
-            if !isFollowed {
-                isFollowed = socialVM.isFollowed(userID: user.id)
-            }
+        .task {
+            await emblemsVM.getUserEmblems(id: user.id)
+            isFollowed = socialVM.isFollowed(userID: user.id)
         }
         .padding()
         .background(Color.card, in: .rect(cornerRadius: 10))

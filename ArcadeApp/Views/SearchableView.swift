@@ -1,7 +1,9 @@
 import SwiftUI
 import SwiftData
+import Combine
 
 struct SearchableView: View {
+    @Environment(GamesVM.self) private var gamesVM
     @Environment(\.modelContext) private var context
     @State private var searchVM = SearchVM()
     @Binding var show: Bool
@@ -16,12 +18,12 @@ struct SearchableView: View {
         ScrollView {
             VStack(spacing: 20) {
                 HStack(alignment: .firstTextBaseline) {
-                    CustomTextField(text: $searchBVM.searchText, label: "Search", type: .search)
+                    CustomTextField(text: $searchBVM.inputText, label: "Search", type: .search)
                         .focused($focus)
-                    
+
                     Button {
                         show = false
-                        searchVM.searchText.removeAll()
+                        searchVM.inputText.removeAll()
                     } label: {
                         Text("Cancel")
                             .font(.customTitle3)
@@ -46,7 +48,30 @@ struct SearchableView: View {
                 
                         LazyVStack {
                             ForEach(recentSearchs) { gameModel in
-                                SearchCell(searchVM: searchVM, game: gameModel.toGame, isRecent: true)
+                                if gameModel.id != gamesVM.selectedGame?.id {
+                                    HStack(alignment: .firstTextBaseline) {
+                                        Button {
+                                            withAnimation {
+                                                gamesVM.selectedGame = gameModel.toGame
+                                            }
+                                            
+                                            focus = false
+                                        } label: {
+                                            SearchCell(game: gameModel.toGame)
+                                        }
+                                        
+                                        Button {
+                                            try? searchVM.deleteGameSearch(game: gameModel.toGame, context: context)
+                                        } label: {
+                                            Text("X")
+                                                .font(.customTitle2)
+                                        }
+                                    }
+                                    .buttonStyle(.plain)
+                                } else {
+                                    Color.clear
+                                        .frame(height: 60)
+                                }
                             }
                         }
                     } else {
@@ -57,7 +82,23 @@ struct SearchableView: View {
                     if !searchVM.games.isEmpty {
                         LazyVStack {
                             ForEach(searchVM.games) { game in
-                                SearchCell(searchVM: searchVM, game: game)
+                                if game.id != gamesVM.selectedGame?.id {
+                                    Button {
+                                        withAnimation {
+                                            gamesVM.selectedGame = game
+                                        }
+                                        
+                                        focus = false
+                                        
+                                        try? searchVM.saveGameSearch(game: game, context: context)
+                                    } label: {
+                                        SearchCell(game: game)
+                                    }
+                                    .buttonStyle(.plain)
+                                } else {
+                                    Color.clear
+                                        .frame(height: 60)
+                                }
                             }
                         }
                     } else {
@@ -75,9 +116,6 @@ struct SearchableView: View {
         }
         .showAlert(show: $searchBVM.showError, text: searchVM.errorMsg)
         .padding(.horizontal)
-        .background(Color.background)
-        .scrollBounceBehavior(.basedOnSize)
-        .scrollIndicators(.hidden)
     }
 }
 
@@ -85,6 +123,9 @@ struct SearchableView: View {
     SearchableView(show: .constant(true))
         .environment(GamesVM(interactor: TestInteractor()))
         .swiftDataPreview
-        .namespace(Namespace().wrappedValue)
         .preferredColorScheme(.dark)
+        .scrollBounceBehavior(.basedOnSize)
+        .scrollIndicators(.hidden)
+        .background(Color.background)
+        .namespace(Namespace().wrappedValue)
 }

@@ -31,4 +31,5 @@ struct GameDetailsLabel<Content: View>: View {
             Image(systemName: "square.and.pencil")
         }
     }
+    .preferredColorScheme(.dark)
 }

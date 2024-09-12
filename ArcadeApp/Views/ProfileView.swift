@@ -5,9 +5,11 @@ struct ProfileView: View {
     @Environment(UserVM.self) private var userVM
     @Environment(SocialVM.self) private var socialVM
     @State var emblemsVM = EmblemsVM()
-    @State private var selectedPage: ProfilePage?
+    
     @State private var showEditAbout = false
     @State private var showAddEmblem = false
+    
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         @Bindable var userBVM = userVM
@@ -127,12 +129,11 @@ struct ProfileView: View {
             .task {
                 await emblemsVM.getUserEmblems()
             }
-            .sheet(isPresented: $showEditAbout) {
-                EditAboutView()
-            }
-            .sheet(isPresented: $showAddEmblem) {
-                AddEmblemView(emblemsVM: emblemsVM)
-            }
+            .navigationBarBackButtonHidden()
+            .scrollContentBackground(.hidden)
+            .scrollBounceBehavior(.basedOnSize)
+            .scrollIndicators(.hidden)
+            .background(Color.background)
             .navigationDestination(for: ProfilePage.self) { page in
                 switch page {
                     case .following:
@@ -141,9 +142,12 @@ struct ProfileView: View {
                         FollowsView(selectedPage: page)
                 }
             }
-            .navigationBarBackButtonHidden()
-            .scrollContentBackground(.hidden)
-            .background(Color.background)
+            .sheet(isPresented: $showEditAbout) {
+                EditAboutView()
+            }
+            .sheet(isPresented: $showAddEmblem) {
+                AddEmblemView(emblemsVM: emblemsVM)
+            }
         }
         
         

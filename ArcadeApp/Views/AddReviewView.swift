@@ -5,11 +5,12 @@ struct AddReviewView: View {
     @State var addReviewVM: AddReviewVM
     
     var body: some View {
-        NavigationStack{
+        NavigationStack {
             VStack(alignment: .leading, spacing: 20) {
                 CustomTextField(text: $addReviewVM.title, label: "Title")
+                    .textInputAutocapitalization(.sentences)
                 
-                HStack(spacing: 40) {
+                HStack(spacing: 20) {
                     Text("Rating")
                         .font(.customBody)
                         .bold()
@@ -22,7 +23,6 @@ struct AddReviewView: View {
                         Text("Add your comment")
                             .font(.customBody)
                             .padding(5)
-                            
                     }
                     
                     TextEditor(text: $addReviewVM.comment)
@@ -45,7 +45,7 @@ struct AddReviewView: View {
             }
             .showAlert(show: $addReviewVM.showError, text: addReviewVM.errorMsg)
             .navigationBarTitleDisplayMode(.inline)
-            .padding()
+            .padding(.horizontal)
             .background(Color.background)
         }
     }

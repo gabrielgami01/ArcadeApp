@@ -25,7 +25,7 @@ final class SocialVM {
     }
     
     func getFollowingFollowers() {
-        Task {
+        Task(priority: .high) {
             do {
                 (following, followers) = try await interactor.getFollowingFollowers()
             } catch {
@@ -64,6 +64,8 @@ final class SocialVM {
     }
     
     func isFollowed(userID: UUID) -> Bool {
-        following.contains { $0.id == userID }
+        let result = following.contains { $0.user.id == userID }
+        print(result)
+        return result
     }
 }

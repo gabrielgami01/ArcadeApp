@@ -1,6 +1,7 @@
 import SwiftUI
 
 extension Font {
+    static let customExtraLargeTitle = Font.custom("VT323", size: 42, relativeTo: .largeTitle)
     static let customLargeTitle = Font.custom("VT323", size: 36, relativeTo: .largeTitle)
     static let customTitle = Font.custom("VT323", size: 30, relativeTo: .title)
     static let customTitle2 = Font.custom("VT323", size: 24, relativeTo: .title2)

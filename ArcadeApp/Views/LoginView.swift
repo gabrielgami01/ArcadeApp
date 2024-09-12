@@ -2,7 +2,9 @@ import SwiftUI
 
 struct LoginView: View {
     @Environment(UserVM.self) private var userVM
-    @State private var showRegister = false    
+    
+    @State private var showRegister = false
+    
     @State private var asyncText = ""
     @State private var animationTF = false
     @State private var animationSU = false
@@ -11,8 +13,8 @@ struct LoginView: View {
         @Bindable var userBVM = userVM
         
         NavigationStack {
-            VStack(spacing: 80) {
-                AsyncText(text: $asyncText, label: "Arcade Studios", font: .customLargeTitle)
+            VStack(spacing: 40) {
+                AsyncText(text: $asyncText, label: "Arcade Studios", font: .customExtraLargeTitle)
                 
                 VStack(spacing: 20) {
                     CustomTextField(text: $userBVM.username, label: "Username")
@@ -47,10 +49,6 @@ struct LoginView: View {
                 
                 Spacer()
             }
-            .navigationDestination(isPresented: $showRegister) {
-                RegisterView()
-            }
-            .showAlert(show: $userBVM.showError, text: userVM.errorMsg)
             .onAppear {
                 withAnimation(.easeOut.delay(1.55)) {
                     animationTF = true
@@ -60,8 +58,13 @@ struct LoginView: View {
                     }
                 }
             }
-            .padding()
+            .padding(.horizontal)
+            .padding(.top, 100)
             .background(Color.background)
+            .navigationDestination(isPresented: $showRegister) {
+                RegisterView()
+            }
+            .showAlert(show: $userBVM.showError, text: userVM.errorMsg)
         }
     }
 }

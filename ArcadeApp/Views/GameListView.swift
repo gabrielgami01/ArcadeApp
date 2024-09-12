@@ -13,9 +13,10 @@ struct GameListView: View {
         @Bindable var gamesBVM = gamesVM
         
         ScrollView {
-            LazyVStack(spacing: 20, pinnedViews: [.sectionHeaders]) {
+            LazyVStack(spacing: 15, pinnedViews: [.sectionHeaders]) {
                 Section {
                     ScrollSelector(activeSelection: $gamesBVM.activeConsole) { $0.rawValue }
+                    
                     ForEach(gamesVM.games) { game in
                         if game.id != gamesVM.selectedGame?.id {
                             GameCell(game: game, animation: $animationGame)
@@ -32,6 +33,7 @@ struct GameListView: View {
                                 .frame(height: 210)
                         }
                     }
+                    .animation(.none, value: gamesVM.activeConsole)
                 } header: {
                     Button {
                         showSearchable = true
@@ -50,6 +52,7 @@ struct GameListView: View {
                     .stickyHeader()
                 }
             }
+            .opacity(!showSearchable && gamesVM.selectedGame == nil ? 1.0 : 0.0 )
             .namespace(showSearchable ? nil : namespace)
         }
         .ignoresSafeArea(edges: .top)
@@ -60,7 +63,6 @@ struct GameListView: View {
                 }
             }
         }
-        .showAlert(show: $gamesBVM.showError, text: gamesVM.errorMsg)
         .overlay {
             ZStack {
                 GameDetailsView(game: gamesVM.selectedGame)
@@ -70,18 +72,21 @@ struct GameListView: View {
                 }
             }
         }
-        .namespace(namespace)
-        .background(Color.background)
+        .showAlert(show: $gamesBVM.showError, text: gamesVM.errorMsg)
         .scrollBounceBehavior(.basedOnSize)
         .scrollIndicators(.hidden)
+        .background(Color.background)
+        .namespace(namespace)
     }
 }
 
 #Preview {
     GameListView()
         .environment(GamesVM(interactor: TestInteractor()))
+        .environment(UserVM(interactor: TestInteractor()))
+        .environment(SocialVM(interactor: TestInteractor()))
         .swiftDataPreview
-        .namespace(Namespace().wrappedValue)
         .preferredColorScheme(.dark)
+        .namespace(Namespace().wrappedValue)
 }
 

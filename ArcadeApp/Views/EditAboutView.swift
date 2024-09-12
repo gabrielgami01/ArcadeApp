@@ -8,24 +8,22 @@ struct EditAboutView: View {
         @Bindable var bvm = userVM
         
         NavigationStack {
-            ScrollView {
-                VStack {
-                    TextEditor(text: $bvm.about)
-                        .scrollContentBackground(.hidden)
-                        .font(.customBody)
-                        .background(.quinary)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .frame(height: 300, alignment: .top)
-                }
+            VStack {
+                TextEditor(text: $bvm.about)
+                    .scrollContentBackground(.hidden)
+                    .font(.customBody)
+                    .background(.quinary)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .frame(height: 300, alignment: .top)
                 
+                Spacer()
             }
-            .navigationBarTitleDisplayMode(.inline)
             .sheetToolbar(title: "About", confirmationLabel: "Save") {
                 userVM.editUserAbout()
                 dismiss()
             }
-            .padding()
-            .scrollBounceBehavior(.basedOnSize)
+            .navigationBarTitleDisplayMode(.inline)
+            .padding(.horizontal)
             .background(Color.background)
         }
         .onAppear {
@@ -40,6 +38,7 @@ struct EditAboutView: View {
 #Preview {
     EditAboutView()
         .environment(UserVM(interactor: TestInteractor()))
+        .preferredColorScheme(.dark)
 }
 
 

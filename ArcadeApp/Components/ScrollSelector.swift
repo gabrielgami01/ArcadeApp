@@ -33,7 +33,7 @@ struct ScrollSelector<T: Hashable & Identifiable & CaseIterable>: View where T.A
 }
 
 #Preview {
-    ScrollSelector(activeSelection: .constant(Console.all)) { $0.rawValue }
-        .namespace(Namespace().wrappedValue)
+    ScrollSelector(activeSelection: .constant(Console.all)) { $0.rawValue }  
         .preferredColorScheme(.dark)
+        .namespace(Namespace().wrappedValue)
 }

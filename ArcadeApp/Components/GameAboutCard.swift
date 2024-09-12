@@ -2,6 +2,7 @@ import SwiftUI
 
 struct GameAboutCard: View {
     @State var detailsVM: GameDetailsVM
+    
     let game: Game
     let animation: Bool
     

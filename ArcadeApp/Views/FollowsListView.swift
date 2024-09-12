@@ -8,7 +8,7 @@ struct FollowsListView: View {
     
     var body: some View {
         ScrollView {
-            LazyVStack(spacing: 10) {
+            LazyVStack(spacing: 15) {
                 ForEach(type == .following ? socialVM.following : socialVM.followers) { userFollows in
                     Button {
                         withAnimation {
@@ -32,7 +32,7 @@ struct FollowsListView: View {
         }
         .overlay {
             if let selectedUser {
-                UserCard(isFollowed: type == .following, user: selectedUser)
+                UserCard(user: selectedUser)
                     .transition(.move(edge: .bottom).combined(with: .opacity))
             }
         }
@@ -42,7 +42,7 @@ struct FollowsListView: View {
 #Preview {
     FollowsListView(type: .following)
         .environment(SocialVM(interactor: TestInteractor()))
-        .padding()
+        .padding(.horizontal)
         .background(Color.background)
         .preferredColorScheme(.dark)
 }

@@ -1,7 +1,7 @@
 import SwiftUI
 
 extension UIDevice {
-    static var width: CGFloat {
+    @MainActor static var width: CGFloat {
         UIApplication
             .shared
             .connectedScenes
@@ -13,7 +13,7 @@ extension UIDevice {
             .width ?? 0
     }
     
-    static var topInset: CGFloat {
+    @MainActor static var topInset: CGFloat {
         UIApplication
             .shared
             .connectedScenes

@@ -33,7 +33,6 @@ struct GameDetailsView: View {
                     
                     CustomPicker(activeSelection: $option) {$0.rawValue.capitalized}
                 }
-                .padding(.horizontal)
                 
                 ZStack {
                     if option == .about {
@@ -67,8 +66,8 @@ struct GameDetailsView: View {
                 aboutAnimation = false
                 scoresAnimation = false
             }
+            .padding(.horizontal)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.background)
         }
     }
 }
@@ -77,8 +76,9 @@ struct GameDetailsView: View {
     GameDetailsView(detailsVM: GameDetailsVM(interactor: TestInteractor()), game: .test)
         .environment(GamesVM(interactor: TestInteractor()))
         .environment(UserVM(interactor: TestInteractor()))
-        .namespace(Namespace().wrappedValue)
         .preferredColorScheme(.dark)
+        .background(Color.background)
+        .namespace(Namespace().wrappedValue)
 }
 
 

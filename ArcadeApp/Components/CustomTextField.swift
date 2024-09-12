@@ -13,17 +13,14 @@ struct CustomTextField: View {
                 switch type {
                     case .simple:
                         TextField(label, text: $text)
-                            .font(.customBody)
                     case .secured:
                         SecureField(label, text: $text)
-                             .font(.customBody)
                     case .search:
                         HStack(spacing: 10){
                             Image(systemName:"magnifyingglass")
                                 .foregroundStyle(.secondary)
                             TextField(label, text: $text)
                         }
-                        .font(.customBody)
                 }
                 Button {
                     text = ""
@@ -33,6 +30,7 @@ struct CustomTextField: View {
                 .buttonStyle(.plain)
                 .opacity(text.isEmpty ? 0.0 : 1.0)
             }
+            .font(.customBody)
             .textInputAutocapitalization(capitalization)
             .autocorrectionDisabled()
             .padding(10)

@@ -39,6 +39,6 @@ struct CustomPicker<T: Hashable & Identifiable & CaseIterable>: View where T.All
 
 #Preview {
     CustomPicker(activeSelection: .constant(ProfilePage.followers)) {$0.rawValue}
-        .namespace(Namespace().wrappedValue)
         .preferredColorScheme(.dark)
+        .namespace(Namespace().wrappedValue)
 }
