@@ -87,9 +87,7 @@ struct SearchableView: View {
                                         withAnimation {
                                             gamesVM.selectedGame = game
                                         }
-                                        
                                         focus = false
-                                        
                                         try? searchVM.saveGameSearch(game: game, context: context)
                                     } label: {
                                         SearchCell(game: game)

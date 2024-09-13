@@ -27,5 +27,6 @@ struct SearchCell: View {
 #Preview {
     SearchCell(game: .test)
         .preferredColorScheme(.dark)
+        .padding(.horizontal)
         .namespace(Namespace().wrappedValue)
 }

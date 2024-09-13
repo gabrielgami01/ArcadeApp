@@ -13,7 +13,11 @@ final class SearchVM {
             searchPublisher.send(inputText)
         }
     }
-    var searchText: String = ""
+    var searchText: String = "" {
+        didSet {
+            Task { await searchGame() }
+        }
+    }
     
     var games: [Game] = []
     
@@ -30,21 +34,20 @@ final class SearchVM {
             .store(in: &subscribers)
     }
     
-    func searchGame() {
-        Task {
-            do {
-                games = try await interactor.searchGame(name: inputText)
-            } catch {
-                errorMsg = error.localizedDescription
-                showError.toggle()
-                print(error.localizedDescription)
-            }
+    func searchGame() async {
+        do {
+            games = try await interactor.searchGame(name: inputText)
+        } catch {
+            errorMsg = error.localizedDescription
+            showError.toggle()
+            print(error.localizedDescription)
         }
     }
     
     func saveGameSearch(game: Game, context: ModelContext) throws {
         let id = game.id
         let query = FetchDescriptor<GameModel>(predicate: #Predicate { $0.id == id })
+        
         if let _ = try context.fetch(query).first {
             return
         } else {
@@ -63,11 +66,13 @@ final class SearchVM {
         if let game {
             let id = game.id
             let query = FetchDescriptor<GameModel>(predicate: #Predicate { $0.id == id })
+            
             if let fetch = try context.fetch(query).first {
                 context.delete(fetch)
             }
         } else {
             let query = FetchDescriptor<GameModel>()
+            
             let allGames = try context.fetch(query)
             for game in allGames {
                 context.delete(game)
