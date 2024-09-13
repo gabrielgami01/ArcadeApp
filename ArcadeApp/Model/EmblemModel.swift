@@ -6,5 +6,15 @@ struct Emblem: Codable, Identifiable, Hashable {
 }
 
 struct EmblemDTO: Codable {
+    let id: UUID
+    let challenge: ChallengeDTO
+    
+    var toEmblem: Emblem {
+        Emblem(id: id,
+               challenge: challenge.toChallenge(completed: true))
+    }
+}
+
+struct CreateEmblemDTO: Codable {
     let challengeID: UUID
 }

@@ -63,8 +63,8 @@ extension URL {
         emblems.appending(path: "listActive").appending(path: id.uuidString)
     }
     static let addEmblem = emblems.appending(path: "add")
-    static func updateEmblem(id: UUID) -> URL {
-        emblems.appending(path: "update").appending(path: id.uuidString)
+    static func deleteEmblem(challengeID: UUID) -> URL {
+        emblems.appending(path: "delete").appending(path: challengeID.uuidString)
     }
     
     static let rankings = api.appending(path: "rankings")

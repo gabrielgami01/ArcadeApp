@@ -48,30 +48,40 @@ final class EmblemsVM {
         }
     }
     
-    func addEmblem(challengeID: UUID) {
-        Task {
-            do {
-                let emblemDTO = EmblemDTO(challengeID: challengeID)
-                try await interactor.addEmblem(emblemDTO)
-                await getUserEmblems()
-            } catch {
-                errorMsg = error.localizedDescription
-                showError.toggle()
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    func updateEmblem(id: UUID, challengeID: UUID) async -> Bool {
+    func addEmblemAPI(challengeID: UUID) async -> Bool {
         do {
-            let emblemDTO = EmblemDTO(challengeID: challengeID)
-            try await interactor.updateEmblem(id: id, emblemDTO: emblemDTO)
+            let emblemDTO = CreateEmblemDTO(challengeID: challengeID)
+            try await interactor.addEmblem(emblemDTO)
             return true
         } catch {
             errorMsg = error.localizedDescription
             showError.toggle()
             print(error.localizedDescription)
             return false
+        }
+    }
+    
+    func addEmblem(_ emblem: Emblem) {
+        emblems.append(emblem)
+    }
+    
+    func updateEmblemAPI(newChallenge: UUID, oldChallenge: UUID) async -> Bool {
+        do {
+            let createEmblemDTO = CreateEmblemDTO(challengeID: newChallenge)
+            try await interactor.deleteEmblem(challengeID: oldChallenge)
+            try await interactor.addEmblem(createEmblemDTO)
+            return true
+        } catch {
+            errorMsg = error.localizedDescription
+            showError.toggle()
+            print(error.localizedDescription)
+            return false
+        }
+    }
+    
+    func updateEmblem(_ emblem: Emblem) {
+        if let index = emblems.firstIndex(where: { $0.id == emblem.id}) {
+            emblems[index] = emblem
         }
     }
 }

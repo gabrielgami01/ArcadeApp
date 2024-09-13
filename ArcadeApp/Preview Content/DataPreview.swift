@@ -95,11 +95,11 @@ struct TestInteractor: DataInteractor {
         [.test, .test2, .test3]
     }
     
-    func addEmblem(_ emblemDTO: EmblemDTO) async throws {
+    func addEmblem(_ emblemDTO: CreateEmblemDTO) async throws {
         
     }
     
-    func updateEmblem(id: UUID, emblemDTO: EmblemDTO) async throws {
+    func deleteEmblem(challengeID: UUID) async throws {
         
     }
     

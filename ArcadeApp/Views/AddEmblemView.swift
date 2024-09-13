@@ -15,9 +15,21 @@ struct AddEmblemView: View {
                             ForEach(emblemsVM.disponibleChallenges) { challenge in
                                 Button {
                                     if let selectedEmblem = emblemsVM.selectedEmblem {
-                                        emblemsVM.addEmblem(challengeID: challenge.id)
+                                        Task {
+                                            if await emblemsVM.updateEmblemAPI(newChallenge: challenge.id, oldChallenge: selectedEmblem.challenge.id) {
+                                                let updatedEmblem = Emblem(id: selectedEmblem.id, challenge: challenge)
+                                                emblemsVM.updateEmblem(updatedEmblem)
+                                                dismiss()
+                                            }
+                                        }
                                     } else {
-                                        emblemsVM.addEmblem(challengeID: challenge.id)
+                                        Task {
+                                            if await emblemsVM.addEmblemAPI(challengeID: challenge.id) {
+                                                let newEmblem = Emblem(id: UUID(), challenge: challenge)
+                                                emblemsVM.addEmblem(newEmblem)
+                                                dismiss()
+                                            }
+                                        }
                                     }
                                     dismiss()
                                 } label: {
