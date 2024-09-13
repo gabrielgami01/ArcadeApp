@@ -65,6 +65,7 @@ struct GameDetailsView: View {
             .onDisappear {
                 aboutAnimation = false
                 scoresAnimation = false
+                option = .about
             }
             .padding(.horizontal)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
