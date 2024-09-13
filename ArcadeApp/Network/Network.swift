@@ -6,8 +6,8 @@ protocol DataInteractor {
     func loginJWT(user: String, pass: String) async throws -> User
     func refreshJWT() async throws -> User
     func getUserInfo() async throws -> User
-    func updateUserAbout(_ about: UpdateUserAboutDTO) async throws
-    func updateUserAvatar(_ avatar: UpdateUserAvatarDTO) async throws
+    func updateUserAbout(_ updateUserDTO: UpdateUserDTO) async throws
+    func updateUserAvatar(_ updateUserDTO: UpdateUserDTO) async throws
     
     func getAllGames(page: Int) async throws -> [Game]
     func getGamesByConsole(_ console: Console, page: Int) async throws -> [Game]
@@ -16,8 +16,8 @@ protocol DataInteractor {
     func getFeaturedFavoriteGames() async throws -> (featured: [Game], favorites: [Game]) 
     
     func getGameDetails(id: UUID) async throws -> (favorite: Bool, reviews: [Review], scores: [Score])
-    func addFavoriteGame(_ game: FavoriteGameDTO) async throws
-    func removeFavoriteGame(_ game: FavoriteGameDTO) async throws
+    func addFavoriteGame(_ game: FavoriteDTO) async throws
+    func deleteFavoriteGame(id: UUID) async throws
     func addReview(_ review: CreateReviewDTO) async throws
     func addScore(_ score: CreateScoreDTO) async throws
     
@@ -27,13 +27,13 @@ protocol DataInteractor {
     
     func getActiveUserEmblems() async throws -> [Emblem]
     func getUserEmblems(id: UUID) async throws -> [Emblem]
-    func addEmblem(_ emblem: CreateEmblemDTO) async throws
-    func deleteEmblem(_ emblem: CreateEmblemDTO) async throws
+    func addEmblem(_ emblemDTO: EmblemDTO) async throws
+    func updateEmblem(id: UUID, emblemDTO: EmblemDTO) async throws
     
     func getGameRanking(id: UUID, page: Int) async throws -> [RankingScore]
     
     func getFollowingFollowers() async throws -> (following: [UserFollows], followers: [UserFollows])
-    func followUser(_ user: UserDTO) async throws
+    func followUser(_ followsDTO: FollowsDTO) async throws
     func unfollowUser(id: UUID) async throws
 }
 
@@ -82,12 +82,12 @@ struct Network: DataInteractor, NetworkJSONInteractor {
         try await getJSON(request: .get(url: .getUserInfo, token: getToken()), type: User.self)
     }
     
-    func updateUserAbout(_ about: UpdateUserAboutDTO) async throws {
-        try await post(request: .post(url: .updateUserAbout, post: about, method: .put, token: getToken()))
+    func updateUserAbout(_ updateUserDTO: UpdateUserDTO) async throws {
+        try await post(request: .post(url: .updateUserAbout, post: updateUserDTO, method: .put, token: getToken()))
     }
     
-    func updateUserAvatar(_ avatar: UpdateUserAvatarDTO) async throws {
-        try await post(request: .post(url: .updateUserAvatar, post: avatar, method: .put, token: getToken()))
+    func updateUserAvatar(_ updateUserDTO: UpdateUserDTO) async throws {
+        try await post(request: .post(url: .updateUserAvatar, post: updateUserDTO, method: .put, token: getToken()))
     }
     //END USERS
     
@@ -124,12 +124,12 @@ struct Network: DataInteractor, NetworkJSONInteractor {
         return try await (favoriteRequest, reviewsRequest, scoresRequest)
     }
     
-    func addFavoriteGame(_ game: FavoriteGameDTO) async throws{
+    func addFavoriteGame(_ game: FavoriteDTO) async throws{
         try await post(request: .post(url: .addFavoriteGame, post: game, token: getToken()), status: 201)
     }
     
-    func removeFavoriteGame(_ game: FavoriteGameDTO) async throws {
-        try await post(request: .post(url: .deleteFavoriteGame, post: game, method: .delete, token: getToken()))
+    func deleteFavoriteGame(id: UUID) async throws {
+        try await post(request: .post(url: .deleteFavoriteGame(id: id), post: "", method: .delete, token: getToken()))
     }
 
     func addReview(_ review: CreateReviewDTO) async throws {
@@ -193,12 +193,12 @@ struct Network: DataInteractor, NetworkJSONInteractor {
         try await getJSON(request: .get(url: .getUserEmblems(id: id), token: getToken()), type: [Emblem].self)
     }
     
-    func addEmblem(_ emblem: CreateEmblemDTO) async throws {
-        try await post(request: .post(url: .addEmblem, post: emblem, token: getToken()), status: 201)
+    func addEmblem(_ emblemDTO: EmblemDTO ) async throws {
+        try await post(request: .post(url: .addEmblem, post: emblemDTO, token: getToken()), status: 201)
     }
     
-    func deleteEmblem(_ emblem: CreateEmblemDTO) async throws {
-        try await post(request: .post(url: .deleteEmblem, post: emblem, method: .delete, token: getToken()))
+    func updateEmblem(id: UUID, emblemDTO: EmblemDTO) async throws {
+        try await post(request: .post(url: .updateEmblem(id: id), post: emblemDTO, method: .put, token: getToken()))
     }
     //EMBLEMS
     
@@ -216,8 +216,8 @@ struct Network: DataInteractor, NetworkJSONInteractor {
         return try await(followingRequest, followersRequest)
     }
     
-    func followUser(_ user: UserDTO) async throws {
-        try await post(request: .post(url: .followUser, post: user, token: getToken()), status: 201)
+    func followUser(_ followsDTO: FollowsDTO) async throws {
+        try await post(request: .post(url: .followUser, post: followsDTO, token: getToken()), status: 201)
     }
     
     func unfollowUser(id: UUID) async throws {

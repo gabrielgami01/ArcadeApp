@@ -10,7 +10,7 @@ final class EmblemsVM {
     @ObservationIgnored var disponibleChallenges: [Challenge] {
         completedChallenges.filter { challenge in
             !emblems.contains { emblem in
-                emblem.name == challenge.name
+                emblem.challenge.id == challenge.id
             }
         }
     }
@@ -48,10 +48,10 @@ final class EmblemsVM {
         }
     }
     
-    func addEmblem(id: UUID) {
+    func addEmblem(challengeID: UUID) {
         Task {
             do {
-                let emblemDTO = CreateEmblemDTO(id: id)
+                let emblemDTO = EmblemDTO(challengeID: challengeID)
                 try await interactor.addEmblem(emblemDTO)
                 await getUserEmblems()
             } catch {
@@ -62,17 +62,16 @@ final class EmblemsVM {
         }
     }
     
-    func deleteEmblem(id: UUID) {
-        Task {
-            do {
-                let emblemDTO = CreateEmblemDTO(id: id)
-                try await interactor.deleteEmblem(emblemDTO)
-                await getUserEmblems()
-            } catch {
-                errorMsg = error.localizedDescription
-                showError.toggle()
-                print(error.localizedDescription)
-            }
+    func updateEmblem(id: UUID, challengeID: UUID) async -> Bool {
+        do {
+            let emblemDTO = EmblemDTO(challengeID: challengeID)
+            try await interactor.updateEmblem(id: id, emblemDTO: emblemDTO)
+            return true
+        } catch {
+            errorMsg = error.localizedDescription
+            showError.toggle()
+            print(error.localizedDescription)
+            return false
         }
     }
 }

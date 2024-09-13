@@ -27,13 +27,13 @@ struct SocialView: View {
                             Group {
                                 if socialVM.isFollowed(userID: userFollows.user.id) {
                                     Button {
-                                        socialVM.unfollowUser(userID: userFollows.user.id)
+                                        socialVM.unfollowUser(id: userFollows.user.id)
                                     } label: {
                                         Text("Following")
                                     }
                                 } else {
                                     Button {
-                                        socialVM.followUser(userID: userFollows.user.id)
+                                        socialVM.followUser(id: userFollows.user.id)
                                     } label: {
                                         Text("Follow back")
                                     }

@@ -28,10 +28,10 @@ struct TestInteractor: DataInteractor {
         .test
     }
     
-    func updateUserAbout(_ about: UpdateUserAboutDTO) async throws {
+    func updateUserAbout(_ updateUserDTO: UpdateUserDTO) async throws {
     }
     
-    func updateUserAvatar(_ avatar: UpdateUserAvatarDTO) async throws {
+    func updateUserAvatar(_ updateUserDTO: UpdateUserDTO) async throws {
     }
     
     func getAllGames(page: Int) async throws -> [Game] {
@@ -58,11 +58,11 @@ struct TestInteractor: DataInteractor {
     }
     
     
-    func addFavoriteGame(_ game: FavoriteGameDTO) async throws {
+    func addFavoriteGame(_ game: FavoriteDTO) async throws {
         
     }
     
-    func removeFavoriteGame(_ game: FavoriteGameDTO) async throws {
+    func deleteFavoriteGame(id: UUID) async throws {
         
     }
     
@@ -88,18 +88,18 @@ struct TestInteractor: DataInteractor {
     }
     
     func getActiveUserEmblems() async throws -> [Emblem] {
-        [.test]
-    }
-    
-    func getUserEmblems(id: UUID) async throws -> [Emblem] {
         [.test, .test2]
     }
     
-    func addEmblem(_ emblem: CreateEmblemDTO) async throws {
+    func getUserEmblems(id: UUID) async throws -> [Emblem] {
+        [.test, .test2, .test3]
+    }
+    
+    func addEmblem(_ emblemDTO: EmblemDTO) async throws {
         
     }
     
-    func deleteEmblem(_ emblem: CreateEmblemDTO) async throws{
+    func updateEmblem(id: UUID, emblemDTO: EmblemDTO) async throws {
         
     }
     
@@ -112,7 +112,7 @@ struct TestInteractor: DataInteractor {
         ([.test, .test2], [.test, .test2, .test3])
     }
     
-    func followUser(_ user: UserDTO) async throws {
+    func followUser(_ followsDTO: FollowsDTO) async throws {
         
     }
     
@@ -255,11 +255,15 @@ extension Challenge {
 
 extension Emblem {
     static let test = Emblem(id: UUID(),
-                             name: "Mushroom Champion")
+                             challenge: .test)
     static let test2 = Emblem(id: UUID(),
-                             name: "Speed Demon")
+                             challenge: .test2)
     static let test3 = Emblem(id: UUID(),
-                             name: "Martial Arts Master")
+                             challenge: .test3)
+    static let test4 = Emblem(id: UUID(),
+                             challenge: .test4)
+    static let test5 = Emblem(id: UUID(),
+                             challenge: .test5)
 }
 
 extension RankingScore {

@@ -27,15 +27,17 @@ extension URL {
     }
     static let favorites = games.appending(path: "favorites")
     static let getUserFavoriteGames = favorites.appending(path: "list")
-    static let addFavoriteGame = favorites.appending(path: "addGame")
-    static let deleteFavoriteGame = favorites.appending(path: "deleteGame")
+    static let addFavoriteGame = favorites.appending(path: "add")
+    static func deleteFavoriteGame(id: UUID) -> URL {
+        favorites.appending(path: "delete").appending(path: id.uuidString)
+    }
     static func isFavoriteGame(id: UUID) -> URL {
         favorites.appending(path: "isFavorite").appending(path: id.uuidString)
     }
     
     static let reviews = api.appending(path: "reviews")
     static func getGameReviews(id: UUID) -> URL {
-        reviews.appending(path: "list").appending(path: id.uuidString)
+        reviews.appending(path: "listByGame").appending(path: id.uuidString)
     }
     static let addReview = reviews.appending(path: "add")
     
@@ -61,7 +63,9 @@ extension URL {
         emblems.appending(path: "listActive").appending(path: id.uuidString)
     }
     static let addEmblem = emblems.appending(path: "add")
-    static let deleteEmblem = emblems.appending(path: "delete")
+    static func updateEmblem(id: UUID) -> URL {
+        emblems.appending(path: "update").appending(path: id.uuidString)
+    }
     
     static let rankings = api.appending(path: "rankings")
     static func getGameRanking(id: UUID, page: Int) -> URL {
@@ -70,9 +74,9 @@ extension URL {
     
     static let listFollowing = users.appending(path: "listFollowing")
     static let listFollowers = users.appending(path: "listFollowers")
-    static let followUser = users.appending(path: "followUser")
+    static let followUser = users.appending(path: "follow")
     static func unfollowUser(id: UUID) -> URL {
-        users.appending(path: "unfollowUser").appending(path: id.uuidString)
+        users.appending(path: "unfollow").appending(path: id.uuidString)
     }
 }
 

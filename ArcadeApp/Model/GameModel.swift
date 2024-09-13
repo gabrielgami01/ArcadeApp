@@ -24,8 +24,8 @@ struct Metadata: Codable {
     let page, per, total: Int
 }
 
-struct FavoriteGameDTO: Codable {
-    let id: UUID
+struct FavoriteDTO: Codable {
+    let gameID: UUID
 }
 
 @Model

@@ -36,11 +36,11 @@ final class SocialVM {
         }
     }
     
-    func followUser(userID: UUID) {
+    func followUser(id: UUID) {
         Task {
             do {
-                let userDTO = UserDTO(id: userID)
-                try await interactor.followUser(userDTO)
+                let followsDTO = FollowsDTO(userID: id)
+                try await interactor.followUser(followsDTO)
                 getFollowingFollowers()
             } catch {
                 errorMsg = error.localizedDescription
@@ -50,10 +50,10 @@ final class SocialVM {
         }
     }
     
-    func unfollowUser(userID: UUID) {
+    func unfollowUser(id: UUID) {
         Task {
             do {
-                try await interactor.unfollowUser(id: userID)
+                try await interactor.unfollowUser(id: id)
                 getFollowingFollowers()
             } catch {
                 errorMsg = error.localizedDescription

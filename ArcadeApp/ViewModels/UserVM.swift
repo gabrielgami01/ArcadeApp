@@ -12,7 +12,7 @@ final class UserVM {
 
     var photoItem: PhotosPickerItem? {
         didSet {
-            Task { try await updateUserAvatar() }
+            Task { await updateUserAvatar() }
         }
     }
     
@@ -60,8 +60,8 @@ final class UserVM {
     
     func updateUserAboutAPI() async -> Bool {
         do {
-            let aboutDTO = UpdateUserAboutDTO(about: about)
-            try await interactor.updateUserAbout(aboutDTO)
+            let updateUserDTO = UpdateUserDTO(about: about, imageData: nil)
+            try await interactor.updateUserAbout(updateUserDTO)
             return true
         } catch {
             errorMsg = error.localizedDescription
@@ -88,8 +88,8 @@ final class UserVM {
     func updateUserAvatar() async {
         do {
             if let imageData = try await convertPhotoItem() {
-                let avatarDTO = UpdateUserAvatarDTO(image: imageData)
-                try await interactor.updateUserAvatar(avatarDTO)
+                let updateUserDTO = UpdateUserDTO(about: nil, imageData: imageData)
+                try await interactor.updateUserAvatar(updateUserDTO)
                 updateUserAvatar(imageData: imageData)
             }
         } catch {

@@ -39,12 +39,12 @@ final class GameDetailsVM {
         }
     }
     
-    func useFavorite(id: UUID) async -> Bool {
+    func useFavorite(gameID: UUID) async -> Bool {
         do {
-            let favoriteDTO = FavoriteGameDTO(id: id)
             if isFavorite {
-                try await interactor.removeFavoriteGame(favoriteDTO)
+                try await interactor.deleteFavoriteGame(id: gameID)
             } else {
+                let favoriteDTO = FavoriteDTO(gameID: gameID)
                 try await interactor.addFavoriteGame(favoriteDTO)
             }
             return true

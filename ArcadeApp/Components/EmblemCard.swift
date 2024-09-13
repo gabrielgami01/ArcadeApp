@@ -7,7 +7,7 @@ struct EmblemCard: View {
         VStack {
             Group {
                 if let emblem {
-                    Text(emblem.name) 
+                    Text(emblem.challenge.name) 
                 } else {
                     Text("No emblem")
                 }

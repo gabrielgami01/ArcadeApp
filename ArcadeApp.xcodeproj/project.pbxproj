@@ -87,6 +87,8 @@
 		FCB2CD102C6BE494001D5751 /* RankingsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB2CD0F2C6BE494001D5751 /* RankingsVM.swift */; };
 		FCB2CD122C6BE7D4001D5751 /* GameRankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB2CD112C6BE7D4001D5751 /* GameRankingView.swift */; };
 		FCB699882C64C7B300A4D638 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB699872C64C7B300A4D638 /* SearchCell.swift */; };
+		FCB9813A2C949C1C00987FC0 /* EmblemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB981392C949C1C00987FC0 /* EmblemModel.swift */; };
+		FCB9813C2C949D0800987FC0 /* FollowsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB9813B2C949D0800987FC0 /* FollowsModel.swift */; };
 		FCC036032C480B6400DDBC90 /* GameScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC036022C480B6400DDBC90 /* GameScoresView.swift */; };
 		FCC046692C52B4D1003FAC6A /* ScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC046682C52B4D1003FAC6A /* ScoreCell.swift */; };
 		FCC41CCD2C77371700E8C9D2 /* AddEmblemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC41CCC2C77371700E8C9D2 /* AddEmblemView.swift */; };
@@ -211,6 +213,8 @@
 		FCB2CD0F2C6BE494001D5751 /* RankingsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingsVM.swift; sourceTree = "<group>"; };
 		FCB2CD112C6BE7D4001D5751 /* GameRankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRankingView.swift; sourceTree = "<group>"; };
 		FCB699872C64C7B300A4D638 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		FCB981392C949C1C00987FC0 /* EmblemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmblemModel.swift; sourceTree = "<group>"; };
+		FCB9813B2C949D0800987FC0 /* FollowsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowsModel.swift; sourceTree = "<group>"; };
 		FCC036022C480B6400DDBC90 /* GameScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScoresView.swift; sourceTree = "<group>"; };
 		FCC046682C52B4D1003FAC6A /* ScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCell.swift; sourceTree = "<group>"; };
 		FCC41CCC2C77371700E8C9D2 /* AddEmblemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEmblemView.swift; sourceTree = "<group>"; };
@@ -614,6 +618,8 @@
 				FC0E31CE2C46F1C6004EB339 /* ModelViews.swift */,
 				FC14731F2C5183C100B1BE27 /* ScoreModel.swift */,
 				FC76F2402C5C27510070D970 /* ChallengeModel.swift */,
+				FCB981392C949C1C00987FC0 /* EmblemModel.swift */,
+				FCB9813B2C949D0800987FC0 /* FollowsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -769,6 +775,7 @@
 				FC6F73E42C563E8E00E34AF3 /* ShimmerEffect.swift in Sources */,
 				FC2E95122C6161B400393C39 /* ChallengeBackCard.swift in Sources */,
 				FC76F23F2C5C26E90070D970 /* ChallengesView.swift in Sources */,
+				FCB9813A2C949C1C00987FC0 /* EmblemModel.swift in Sources */,
 				FCB2CD102C6BE494001D5751 /* RankingsVM.swift in Sources */,
 				FC4FCA102C62B0BA004C12C4 /* CustomPicker.swift in Sources */,
 				FC2FD07F2C43C27D0054CD43 /* SelectorStyle.swift in Sources */,
@@ -789,6 +796,7 @@
 				FCC53B302C5F915900015AC9 /* ChallengesVM.swift in Sources */,
 				FC1473202C5183C100B1BE27 /* ScoreModel.swift in Sources */,
 				FCFA6ACA2C8F15AE0049E8E4 /* GameRankingCell.swift in Sources */,
+				FCB9813C2C949D0800987FC0 /* FollowsModel.swift in Sources */,
 				FCCD73762C2D8E520056036E /* GameModel.swift in Sources */,
 				FCD1FCB42C6698460060E682 /* EditAboutView.swift in Sources */,
 				FC0E31CD2C46F0D0004EB339 /* ReviewCell.swift in Sources */,

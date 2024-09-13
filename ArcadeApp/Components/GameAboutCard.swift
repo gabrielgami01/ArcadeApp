@@ -46,7 +46,7 @@ struct GameAboutCard: View {
                 HStack {
                     Button {
                         Task {
-                            if await detailsVM.useFavorite(id: game.id) {
+                            if await detailsVM.useFavorite(gameID: game.id) {
                                 detailsVM.isFavorite.toggle()
                                 gamesVM.toggleFavoriteGame(game: game, favorite: detailsVM.isFavorite)
                             }

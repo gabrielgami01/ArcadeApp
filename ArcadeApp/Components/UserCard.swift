@@ -27,14 +27,14 @@ struct UserCard: View {
                 Group {
                     if isFollowed {
                         Button {
-                            socialVM.unfollowUser(userID: user.id)
+                            socialVM.unfollowUser(id: user.id)
                             isFollowed.toggle()
                         } label: {
                             Text("Following")
                         }
                     } else {
                         Button {
-                            socialVM.followUser(userID: user.id)
+                            socialVM.followUser(id: user.id)
                             isFollowed.toggle()
                         } label: {
                             Text("Follow")

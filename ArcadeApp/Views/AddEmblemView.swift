@@ -15,10 +15,9 @@ struct AddEmblemView: View {
                             ForEach(emblemsVM.disponibleChallenges) { challenge in
                                 Button {
                                     if let selectedEmblem = emblemsVM.selectedEmblem {
-                                        emblemsVM.deleteEmblem(id: selectedEmblem.id)
-                                        emblemsVM.addEmblem(id: challenge.id)
+                                        emblemsVM.addEmblem(challengeID: challenge.id)
                                     } else {
-                                        emblemsVM.addEmblem(id: challenge.id)
+                                        emblemsVM.addEmblem(challengeID: challenge.id)
                                     }
                                     dismiss()
                                 } label: {

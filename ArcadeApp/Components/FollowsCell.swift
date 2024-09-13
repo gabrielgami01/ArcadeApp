@@ -23,20 +23,20 @@ struct FollowsCell: View {
             Group {
                 if type == .following {
                     Button {
-                        socialVM.unfollowUser(userID: user.id)
+                        socialVM.unfollowUser(id: user.id)
                     } label: {
                         Text("Following")
                     }
                 } else {
                     if socialVM.isFollowed(userID: user.id) {
                         Button {
-                            socialVM.unfollowUser(userID: user.id)
+                            socialVM.unfollowUser(id: user.id)
                         } label: {
                             Text("Following")
                         }
                     } else {
                         Button {
-                            socialVM.followUser(userID: user.id)
+                            socialVM.followUser(id: user.id)
                         } label: {
                             Text("Follow back")
                         }
