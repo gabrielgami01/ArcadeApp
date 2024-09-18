@@ -13,26 +13,19 @@ func loadData(file: String) throws -> [Game] {
 
 
 struct TestInteractor: DataInteractor {
-    func register(user: CreateUserDTO) async throws {
-    }
+    func register(user: CreateUserDTO) async throws {}
     
-    func loginJWT(user: String, pass: String) async throws  -> User {
+    func login(user: String, pass: String) async throws  -> User {
         .test
     }
     
     func refreshJWT() async throws -> User {
         .test
     }
+
+    func updateUserAbout(_ updateUserDTO: UpdateUserDTO) async throws {}
     
-    func getUserInfo() async throws -> User {
-        .test
-    }
-    
-    func updateUserAbout(_ updateUserDTO: UpdateUserDTO) async throws {
-    }
-    
-    func updateUserAvatar(_ updateUserDTO: UpdateUserDTO) async throws {
-    }
+    func updateUserAvatar(_ updateUserDTO: UpdateUserDTO) async throws {}
     
     func getAllGames(page: Int) async throws -> [Game] {
         try loadData(file: "games")
@@ -58,21 +51,13 @@ struct TestInteractor: DataInteractor {
     }
     
     
-    func addFavoriteGame(_ game: FavoriteDTO) async throws {
-        
-    }
+    func addFavoriteGame(_ game: FavoriteDTO) async throws {}
     
-    func deleteFavoriteGame(id: UUID) async throws {
-        
-    }
+    func deleteFavoriteGame(id: UUID) async throws {}
     
-    func addReview(_ review: CreateReviewDTO) async throws {
-        
-    }
+    func addReview(_ review: CreateReviewDTO) async throws {}
 
-    func addScore(_ score: CreateScoreDTO) async throws {
-        
-    }
+    func addScore(_ score: CreateScoreDTO) async throws {}
     
     func getAllChallenges() async throws -> [Challenge] {
         return [.test, .test2, .test3, .test4, .test5].sorted { $0.game < $1.game}
@@ -95,13 +80,9 @@ struct TestInteractor: DataInteractor {
         [.test, .test2, .test3]
     }
     
-    func addEmblem(_ emblemDTO: CreateEmblemDTO) async throws {
-        
-    }
+    func addEmblem(_ emblemDTO: CreateEmblemDTO) async throws {}
     
-    func deleteEmblem(challengeID: UUID) async throws {
-        
-    }
+    func deleteEmblem(challengeID: UUID) async throws {}
     
     func getGameRanking(id: UUID, page: Int) async throws -> [RankingScore] {
         let scores: [RankingScore] = [.test, .test2, .test3, .test4]
@@ -112,13 +93,9 @@ struct TestInteractor: DataInteractor {
         ([.test, .test2], [.test, .test3])
     }
     
-    func followUser(_ connectionsDTO: ConnectionsDTO) async throws {
-        
-    }
+    func followUser(_ connectionsDTO: ConnectionsDTO) async throws {}
     
-    func unfollowUser(id: UUID) async throws {
-        
-    }
+    func unfollowUser(id: UUID) async throws {}
 }
 
 extension User {

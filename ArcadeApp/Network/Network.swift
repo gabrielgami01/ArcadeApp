@@ -3,9 +3,8 @@ import ACNetwork
 
 protocol DataInteractor {
     func register(user: CreateUserDTO) async throws
-    func loginJWT(user: String, pass: String) async throws -> User
+    func login(user: String, pass: String) async throws -> User
     func refreshJWT() async throws -> User
-    func getUserInfo() async throws -> User
     func updateUserAbout(_ updateUserDTO: UpdateUserDTO) async throws
     func updateUserAvatar(_ updateUserDTO: UpdateUserDTO) async throws
     
@@ -61,7 +60,7 @@ struct Network: DataInteractor, NetworkJSONInteractor {
         try await post(request: request, status: 201)
     }
     
-    func loginJWT(user: String, pass: String) async throws -> User {
+    func login(user: String, pass: String) async throws -> User {
         let token = "\(user):\(pass)".data(using: .utf8)?.base64EncodedString()
         let loginDTO = try await getJSON(request: .get(url: .loginJWT, token: token, authType: .basic), type: LoginDTO.self)
         SecKeyStore.shared.storeKey(key: Data(loginDTO.token.utf8), label: "token")
@@ -76,10 +75,6 @@ struct Network: DataInteractor, NetworkJSONInteractor {
         SecKeyStore.shared.storeKey(key: Data(loginDTO.token.utf8), label: "token")
        
         return loginDTO.user
-    }
-    
-    func getUserInfo() async throws -> User {
-        try await getJSON(request: .get(url: .getUserInfo, token: getToken()), type: User.self)
     }
     
     func updateUserAbout(_ updateUserDTO: UpdateUserDTO) async throws {
@@ -208,7 +203,7 @@ struct Network: DataInteractor, NetworkJSONInteractor {
     }
     //RANKINGS
     
-    //FOLLOW
+    //CONNECTIONS
     func getFollowingFollowers() async throws -> (following: [UserConnections], followers: [UserConnections]) {
         async let followingRequest = getJSON(request: .get(url: .listFollowing, token: getToken()), type: [UserConnections].self)
         async let followersRequest = getJSON(request: .get(url: .listFollowers, token: getToken()), type: [UserConnections].self)
@@ -223,7 +218,6 @@ struct Network: DataInteractor, NetworkJSONInteractor {
     func unfollowUser(id: UUID) async throws {
         try await post(request: .post(url: .unfollowUser(id: id), post: "", method: .delete, token: getToken()))
     }
-    
-    //FOLLOW
+    //CONNECTIONS
     
 }

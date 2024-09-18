@@ -32,7 +32,7 @@ final class UserVM {
     
     func login() async {
         do {
-            activeUser = try await interactor.loginJWT(user: username, pass: password)
+            activeUser = try await interactor.login(user: username, pass: password)
         } catch {
             errorMsg = error.localizedDescription
             showError = true
