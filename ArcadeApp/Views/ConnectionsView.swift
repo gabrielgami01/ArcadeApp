@@ -1,9 +1,9 @@
 import SwiftUI
 
-struct FollowsView: View {
+struct ConnectionsView: View {
     @Environment(SocialVM.self) private var socialVM
     
-    @State var selectedPage: ProfilePage
+    @State var selectedPage: ConnectionType
     
     @Environment(\.dismiss) private var dismiss
     @Namespace private var namespace
@@ -53,7 +53,7 @@ struct FollowsView: View {
 }
 
 #Preview {
-    FollowsView(selectedPage: .followers)
+    ConnectionsView(selectedPage: .followers)
         .environment(SocialVM(interactor: TestInteractor()))
         .preferredColorScheme(.dark)
 }

@@ -1,10 +1,10 @@
 import SwiftUI
 
-struct FollowsListView: View {
+struct ConnectionsListView: View {
     @Environment(SocialVM.self) private var socialVM
     @State private var selectedUser: User?
     
-    let type: ProfilePage
+    let type: ConnectionType
     
     var body: some View {
         ScrollView {
@@ -40,7 +40,7 @@ struct FollowsListView: View {
 }
 
 #Preview {
-    FollowsListView(type: .following)
+    ConnectionsListView(type: .following)
         .environment(SocialVM(interactor: TestInteractor()))
         .padding(.horizontal)
         .background(Color.background)
