@@ -24,11 +24,6 @@ final class GameDetailsVM {
         self.interactor = interactor
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: .details, object: nil)
-    }
-    
-    
     func getGameDetails(id: UUID) async {
         do {
             (isFavorite, reviews, scores) = try await interactor.getGameDetails(id: id)

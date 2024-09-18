@@ -47,7 +47,6 @@ final class GamesVM {
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: .login, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .favorite, object: nil)
     }
     
     func getFeaturedFavoriteGames() async {
