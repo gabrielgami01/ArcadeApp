@@ -8,14 +8,13 @@ struct GameListView: View {
     
     @Namespace private var namespace
     
-    
     var body: some View {
         @Bindable var gamesBVM = gamesVM
         
         ScrollView {
             LazyVStack(spacing: 15, pinnedViews: [.sectionHeaders]) {
                 Section {
-                    ScrollSelector(activeSelection: $gamesBVM.activeConsole) { $0.rawValue }
+                    ScrollSelector(selected: $gamesBVM.activeConsole, displayKeyPath: \.rawValue)
                     
                     ForEach(gamesVM.games) { game in
                         if game.id != gamesVM.selectedGame?.id {
@@ -33,7 +32,6 @@ struct GameListView: View {
                                 .frame(height: 210)
                         }
                     }
-                    .animation(.none, value: gamesVM.activeConsole)
                 } header: {
                     Button {
                         showSearchable = true
@@ -83,6 +81,7 @@ struct GameListView: View {
 #Preview {
     GameListView()
         .environment(GamesVM(interactor: TestInteractor()))
+        .environment(GameDetailsVM(interactor: TestInteractor()))
         .environment(UserVM(interactor: TestInteractor()))
         .environment(SocialVM(interactor: TestInteractor()))
         .swiftDataPreview

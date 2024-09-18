@@ -1,10 +1,9 @@
 import SwiftUI
 
-struct FollowsCell: View {
+struct ConnectionsCell: View {
     @Environment(SocialVM.self) private var socialVM
     
     let user: User
-    let type: ConnectionType
     
     var body: some View {
         HStack {
@@ -20,6 +19,7 @@ struct FollowsCell: View {
             
             Spacer()
             
+            ConnectionsButton(user: user)
             
         }
         .padding()
@@ -28,12 +28,8 @@ struct FollowsCell: View {
 }
 
 #Preview {
-    FollowsCell(user: .test, type: .following)
+    ConnectionsCell(user: .test)
         .environment(SocialVM(interactor: TestInteractor()))
         .preferredColorScheme(.dark)
         .padding()
-}
-
-struct ConnectionsButton: View {
-    
 }

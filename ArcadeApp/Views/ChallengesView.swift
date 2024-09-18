@@ -10,7 +10,7 @@ struct ChallengesView: View {
         
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                ScrollSelector(activeSelection: $challengesVM.activeType) { $0.rawValue.capitalized }
+                ScrollSelector(selected: $challengesVM.activeType, displayKeyPath: \.rawValue)
                 
                 LazyVGrid(columns: columns, spacing: 15) {
                     ForEach(challengesVM.filteredChallenges) { challenge in

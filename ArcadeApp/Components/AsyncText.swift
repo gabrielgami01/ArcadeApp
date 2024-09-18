@@ -17,7 +17,7 @@ struct AsyncText: View {
                         }
                         try await Task.sleep(for: .seconds(0.5))
                     } catch {
-                        print("Error en la tarea asíncrona: \(error)")
+                       
                     }
                 }
             }

@@ -3,7 +3,7 @@ import Foundation
 struct Score: Codable, Identifiable, Hashable {
     let id: UUID
     let score: Int?
-    let state: ScoreState
+    let status: ScoreStatus
     let date: Date
 }
 

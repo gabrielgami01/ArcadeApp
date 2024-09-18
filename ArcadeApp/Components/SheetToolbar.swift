@@ -36,6 +36,7 @@ fileprivate struct SheetToolbar: ViewModifier {
                     }
                 }
             }
+            .padding(.bottom, 5)
     }
 }
 

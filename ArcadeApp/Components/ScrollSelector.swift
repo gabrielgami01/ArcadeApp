@@ -1,28 +1,28 @@
 import SwiftUI
 
 struct ScrollSelector<T: Hashable & Identifiable & CaseIterable>: View where T.AllCases: RandomAccessCollection {
-    @Binding var activeSelection: T
-    let titleFormatter: (T) -> String
+    @Binding var selected: T
+    let displayKeyPath: KeyPath<T, String>
     
     @Environment(\.namespace) private var namespace
     
     var body: some View {
         ScrollView(.horizontal) {
             LazyHStack(spacing: 10) {
-                ForEach(T.allCases) { item in
+                ForEach(T.allCases) { option in
                     if let namespace {
                         Button {
-                            withAnimation(.smooth) {
-                                activeSelection = item
-                            }
+                            selected = option
                         } label: {
-                            Text(titleFormatter(item))
+                            let item = option[keyPath: displayKeyPath]
+                            Text(item.capitalized)
                                 .font(.customCaption2)
                         }
-                        .buttonStyle(SelectorStyle(isActive: activeSelection == item, namespace: namespace))
+                        .buttonStyle(SelectorStyle(isActive: selected == option, namespace: namespace))
                     }
                 }
             }
+            .animation(.smooth, value: selected)
             .frame(height: 30)
             .safeAreaPadding(.horizontal)
             .scrollTargetLayout()
@@ -33,7 +33,7 @@ struct ScrollSelector<T: Hashable & Identifiable & CaseIterable>: View where T.A
 }
 
 #Preview {
-    ScrollSelector(activeSelection: .constant(Console.all)) { $0.rawValue }  
+    ScrollSelector(selected: .constant(Console.all), displayKeyPath: \.rawValue)
         .preferredColorScheme(.dark)
         .namespace(Namespace().wrappedValue)
 }

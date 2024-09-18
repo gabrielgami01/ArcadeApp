@@ -107,12 +107,12 @@ struct TestInteractor: DataInteractor {
         let scores: [RankingScore] = [.test, .test2, .test3, .test4]
         return scores.sorted { $0.score > $1.score}
     }
-    
-    func getFollowingFollowers() async throws -> (following: [UserFollows], followers: [UserFollows]) {
-        ([.test, .test2], [.test, .test2, .test3])
+
+    func getFollowingFollowers() async throws -> (following: [UserConnections], followers: [UserConnections]) {
+        ([.test, .test2], [.test, .test3])
     }
     
-    func followUser(_ followsDTO: FollowsDTO) async throws {
+    func followUser(_ connectionsDTO: ConnectionsDTO) async throws {
         
     }
     
@@ -136,16 +136,16 @@ extension User {
                            avatarImage: nil)
 }
 
-extension UserFollows {
-    static let test = UserFollows(id: UUID(),
+extension UserConnections {
+    static let test = UserConnections(id: UUID(),
                                user: .test,
                                createdAt: Calendar.current.date(from: DateComponents(year: 2024, month: 9, day: 1))!
     )
-    static let test2 = UserFollows(id: UUID(),
+    static let test2 = UserConnections(id: UUID(),
                                user: .test2,
                                createdAt: Calendar.current.date(from: DateComponents(year: 2024, month: 9, day: 3))!
     )
-    static let test3 = UserFollows(id: UUID(),
+    static let test3 = UserConnections(id: UUID(),
                                user: .test2,
                                createdAt: Calendar.current.date(from: DateComponents(year: 2024, month: 9, day: 9, hour: 22, minute: 01))!
     )
@@ -192,23 +192,23 @@ extension Review {
 extension Score {
     static let test = Score(id: UUID(),
                             score: nil,
-                            state: .unverified,
+                            status: .unverified,
                             date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 1, hour: 22, minute: 30)) ?? .now)
     static let test2 = Score(id: UUID(),
                             score: 5500,
-                            state: .verified,
+                            status: .verified,
                             date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 3, hour: 15, minute: 30)) ?? .now)
     static let test3 = Score(id: UUID(),
                             score: 6000,
-                            state: .verified,
+                            status: .verified,
                             date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 5, hour: 15, minute: 22)) ?? .now)
     static let test4 = Score(id: UUID(),
                             score: 4440,
-                            state: .verified,
+                            status: .verified,
                             date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 10, hour: 16, minute: 33)) ?? .now)
     static let test5 = Score(id: UUID(),
                             score: 5323,
-                            state: .verified,
+                            status: .verified,
                             date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 22, hour: 14, minute: 02)) ?? .now)
 }
 

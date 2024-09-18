@@ -4,7 +4,6 @@ struct LoginView: View {
     @Environment(UserVM.self) private var userVM
     
     @State private var showRegister = false
-    
     @State private var asyncText = ""
     @State private var animationTF = false
     @State private var animationSU = false

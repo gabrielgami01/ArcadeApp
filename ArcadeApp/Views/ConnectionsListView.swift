@@ -2,9 +2,10 @@ import SwiftUI
 
 struct ConnectionsListView: View {
     @Environment(SocialVM.self) private var socialVM
-    @State private var selectedUser: User?
     
-    let type: ConnectionType
+    let type: ConnectionOptions
+    
+    @State private var selectedUser: User?
     
     var body: some View {
         ScrollView {
@@ -15,7 +16,7 @@ struct ConnectionsListView: View {
                             selectedUser = userFollows.user
                         }
                     } label: {
-                        FollowsCell(user: userFollows.user, type: type)
+                        ConnectionsCell(user: userFollows.user)
                     }
                     .buttonStyle(.plain)
                 }

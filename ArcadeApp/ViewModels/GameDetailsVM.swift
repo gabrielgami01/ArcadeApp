@@ -14,7 +14,7 @@ final class GameDetailsVM {
     }
     var scores: [Score] = []
     @ObservationIgnored var verifiedScores: [Score] {
-        scores.filter { $0.state == .verified }
+        scores.filter { $0.status == .verified }
     }
     
     var errorMsg = ""

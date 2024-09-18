@@ -3,7 +3,7 @@ import SwiftUI
 struct ConnectionsView: View {
     @Environment(SocialVM.self) private var socialVM
     
-    @State var selectedPage: ConnectionType
+    @State var selectedPage: ConnectionOptions
     
     @Environment(\.dismiss) private var dismiss
     @Namespace private var namespace
@@ -14,18 +14,19 @@ struct ConnectionsView: View {
                 BackButton {
                     dismiss()
                 }
-                CustomPicker(activeSelection: $selectedPage) { $0.rawValue.capitalized }
+                
+                CustomPicker(selected: $selectedPage, displayKeyPath: \.rawValue)
                     .namespace(namespace)
             }
             
             ZStack {
                 if selectedPage == .following {
-                    FollowsListView(type: .following)
+                    ConnectionsListView(type: .following)
                         .transition(.move(edge: .leading).combined(with: .opacity))
                 }
                 
                 if selectedPage == .followers {
-                    FollowsListView(type: .followers)
+                    ConnectionsListView(type: .followers)
                         .transition(.move(edge: .trailing).combined(with: .opacity))
                 }
             }

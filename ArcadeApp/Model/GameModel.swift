@@ -16,7 +16,7 @@ struct Game: Codable, Identifiable, Hashable {
     let featured: Bool
     
     var imageURL: URL {
-        proxy.appending(path: "covers").appending(path: "\(id).jpg")
+        desa.appending(path: "covers").appending(path: "\(id).jpg")
     }
 }
 
@@ -30,13 +30,13 @@ struct FavoriteDTO: Codable {
 
 @Model
 final class GameModel {
-    @Attribute (.unique) let id: UUID
-    let name: String
-    let desc: String
-    let console: String
-    let genre: String
-    let releaseDate: Date
-    let added: Date
+    @Attribute(.unique) var id: UUID
+    var name: String
+    var desc: String
+    var console: String
+    var genre: String
+    var releaseDate: Date
+    var added: Date
 
     init(id: UUID, name: String, desc: String, console: String, genre: String, releaseDate: Date, added: Date) {
         self.id = id

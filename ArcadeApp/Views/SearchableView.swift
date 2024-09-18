@@ -3,9 +3,10 @@ import SwiftData
 import Combine
 
 struct SearchableView: View {
-    @Environment(GamesVM.self) private var gamesVM
     @Environment(\.modelContext) private var context
+    @Environment(GamesVM.self) private var gamesVM
     @State private var searchVM = SearchVM()
+    
     @Binding var show: Bool
     
     @FocusState private var focus: Bool 

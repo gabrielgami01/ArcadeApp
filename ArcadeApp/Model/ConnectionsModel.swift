@@ -1,11 +1,11 @@
 import Foundation
 
-struct UserFollows: Codable, Identifiable, Hashable {
+struct UserConnections: Codable, Identifiable, Hashable {
     let id: UUID
     let user: User
     let createdAt: Date
 }
 
-struct FollowsDTO: Codable {
+struct ConnectionsDTO: Codable {
     let userID: UUID
 }

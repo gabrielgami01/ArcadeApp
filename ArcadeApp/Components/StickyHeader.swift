@@ -1,7 +1,6 @@
 import SwiftUI
 
-fileprivate struct StickyHeader: ViewModifier {
-    
+fileprivate struct StickyHeader: ViewModifier {    
     func body(content: Content) -> some View {
         content
             .frame(maxWidth: .infinity, alignment: .leading)

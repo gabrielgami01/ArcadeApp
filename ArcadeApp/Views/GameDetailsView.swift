@@ -5,15 +5,11 @@ struct GameDetailsView: View {
     @Environment(GamesVM.self) private var gamesVM
     @Environment(GameDetailsVM.self) private var detailsVM
     
-    @State private var option: PickerOptions = .about
+    let game: Game?
     
+    @State private var option: GameOptions = .about
     @State private var aboutAnimation = false
     @State private var scoresAnimation = false
-    
-    @State private var displayedPoints = 0
-    @State private var timer: Timer? = nil
-    
-    let game: Game?
     
     @Environment(\.namespace) private var namespace
     
@@ -31,7 +27,7 @@ struct GameDetailsView: View {
                         }
                     }
                     
-                    CustomPicker(activeSelection: $option) {$0.rawValue.capitalized}
+                    CustomPicker(selected: $option, displayKeyPath: \.rawValue)
                 }
                 
                 ZStack {

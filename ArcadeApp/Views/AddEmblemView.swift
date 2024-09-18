@@ -1,8 +1,9 @@
 import SwiftUI
 
 struct AddEmblemView: View {
-    @Environment(\.dismiss) private var dismiss
     @State var emblemsVM: EmblemsVM
+    
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         let columns = [GridItem(.flexible()), GridItem(.flexible())]

@@ -32,8 +32,8 @@ protocol DataInteractor {
     
     func getGameRanking(id: UUID, page: Int) async throws -> [RankingScore]
     
-    func getFollowingFollowers() async throws -> (following: [UserFollows], followers: [UserFollows])
-    func followUser(_ followsDTO: FollowsDTO) async throws
+    func getFollowingFollowers() async throws -> (following: [UserConnections], followers: [UserConnections])
+    func followUser(_ connectionsDTO: ConnectionsDTO) async throws
     func unfollowUser(id: UUID) async throws
 }
 
@@ -209,15 +209,15 @@ struct Network: DataInteractor, NetworkJSONInteractor {
     //RANKINGS
     
     //FOLLOW
-    func getFollowingFollowers() async throws -> (following: [UserFollows], followers: [UserFollows]) {
-        async let followingRequest = getJSON(request: .get(url: .listFollowing, token: getToken()), type: [UserFollows].self)
-        async let followersRequest = getJSON(request: .get(url: .listFollowers, token: getToken()), type: [UserFollows].self)
+    func getFollowingFollowers() async throws -> (following: [UserConnections], followers: [UserConnections]) {
+        async let followingRequest = getJSON(request: .get(url: .listFollowing, token: getToken()), type: [UserConnections].self)
+        async let followersRequest = getJSON(request: .get(url: .listFollowers, token: getToken()), type: [UserConnections].self)
         
         return try await(followingRequest, followersRequest)
     }
     
-    func followUser(_ followsDTO: FollowsDTO) async throws {
-        try await post(request: .post(url: .followUser, post: followsDTO, token: getToken()), status: 201)
+    func followUser(_ connectionsDTO: ConnectionsDTO) async throws {
+        try await post(request: .post(url: .followUser, post: connectionsDTO, token: getToken()), status: 201)
     }
     
     func unfollowUser(id: UUID) async throws {

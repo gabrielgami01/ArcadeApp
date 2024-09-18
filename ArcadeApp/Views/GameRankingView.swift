@@ -3,6 +3,7 @@ import SwiftUI
 struct GameRankingView: View {
     @Environment(UserVM.self) private var userVM
     @State var rankingsVM: RankingsVM
+    
     @State var animation: Bool = false
     @State private var selectedUser: User?
     

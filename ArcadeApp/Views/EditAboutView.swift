@@ -2,6 +2,7 @@ import SwiftUI
 
 struct EditAboutView: View {
     @Environment(UserVM.self) private var userVM
+    
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {

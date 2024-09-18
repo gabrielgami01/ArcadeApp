@@ -5,9 +5,9 @@ struct AddScoreView: View {
     @Environment(GameDetailsVM.self) private var detailsVM
     @State private var addScoreVM = AddScoreVM()
     
-    @State private var showCamera = false
-    
     let game: Game
+    
+    @State private var showCamera = false
     
     @Environment(\.dismiss) private var dismiss
     

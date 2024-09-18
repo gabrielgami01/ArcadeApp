@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct MainTabView: View {
-    @Environment(UserVM.self) private var loginVM
     @Environment(GamesVM.self) private var gamesVM
     
     init() {

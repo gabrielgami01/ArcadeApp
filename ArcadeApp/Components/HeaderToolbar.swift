@@ -24,6 +24,7 @@ fileprivate struct HeaderToolbar: ViewModifier {
                     }
                 }
             }
+            .padding(.bottom, 5)
             .toolbarBackground(Color.background, for: .navigationBar)
             .navigationBarBackButtonHidden()
     }

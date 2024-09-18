@@ -8,7 +8,6 @@ struct GameScoresView: View {
     @Binding var animation: Bool
     
     @State private var showAddScore = false
-    
     @State private var displayedPoints = 0
     @State private var timer: Timer? = nil
     

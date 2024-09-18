@@ -11,7 +11,7 @@ final class AddScoreVM {
     
     func newScore() -> (score: Score, image: Data)? {
         if let image, let data = image.jpegData(compressionQuality: 0.8) {
-            let score = Score(id: UUID(), score: nil, state: .unverified, date: .now)
+            let score = Score(id: UUID(), score: nil, status: .unverified, date: .now)
             return (score, data)
         } else {
             return nil

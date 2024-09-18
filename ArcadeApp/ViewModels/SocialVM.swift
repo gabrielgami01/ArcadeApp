@@ -4,8 +4,8 @@ import SwiftUI
 final class SocialVM {
     let interactor: DataInteractor
     
-    var following: [UserFollows] = []
-    var followers: [UserFollows] = []
+    var following: [UserConnections] = []
+    var followers: [UserConnections] = []
     
     var errorMsg = ""
     var showError = false
@@ -13,10 +13,14 @@ final class SocialVM {
     init(interactor: DataInteractor = Network.shared) {
         self.interactor = interactor
         if SecManager.shared.isLogged {
-            getFollowingFollowers()
+            Task {
+                await getFollowingFollowers()
+            }
         }
         NotificationCenter.default.addObserver(forName: .login, object: nil, queue: .main) { [self] _ in
-            getFollowingFollowers()
+            Task {
+                await getFollowingFollowers()
+            }
         }
     }
     
@@ -24,48 +28,51 @@ final class SocialVM {
         NotificationCenter.default.removeObserver(self, name: .login, object: nil)
     }
     
-    func getFollowingFollowers() {
-        Task(priority: .high) {
-            do {
-                (following, followers) = try await interactor.getFollowingFollowers()
-            } catch {
-                errorMsg = error.localizedDescription
-                showError.toggle()
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    func followUser(id: UUID) {
-        Task {
-            do {
-                let followsDTO = FollowsDTO(userID: id)
-                try await interactor.followUser(followsDTO)
-                getFollowingFollowers()
-            } catch {
-                errorMsg = error.localizedDescription
-                showError.toggle()
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    func unfollowUser(id: UUID) {
-        Task {
-            do {
-                try await interactor.unfollowUser(id: id)
-                getFollowingFollowers()
-            } catch {
-                errorMsg = error.localizedDescription
-                showError.toggle()
-                print(error.localizedDescription)
-            }
+    func getFollowingFollowers() async {
+        do {
+            (following, followers) = try await interactor.getFollowingFollowers()
+        } catch {
+            errorMsg = error.localizedDescription
+            showError.toggle()
+            print(error.localizedDescription)
         }
     }
     
     func isFollowed(userID: UUID) -> Bool {
-        let result = following.contains { $0.user.id == userID }
-        print(result)
-        return result
+        following.contains { $0.user.id == userID }
     }
+    
+    func followUserAPI(id: UUID) async -> Bool {
+        do {
+            let connectionsDTO = ConnectionsDTO(userID: id)
+            try await interactor.followUser(connectionsDTO)
+            return true
+        } catch {
+            errorMsg = error.localizedDescription
+            showError.toggle()
+            print(error.localizedDescription)
+            return false
+        }
+    }
+    
+    func followUser(_ userConnections: UserConnections) {
+        following.append(userConnections)
+    }
+    
+    func unfollowUserAPI(id: UUID) async -> Bool {
+        do {
+            try await interactor.unfollowUser(id: id)
+            return true
+        } catch {
+            errorMsg = error.localizedDescription
+            showError.toggle()
+            print(error.localizedDescription)
+            return false
+        }
+    }
+    
+    func unfollowUser(id: UUID) {
+        following.removeAll(where: { $0.user.id == id })
+    }
+    
 }

@@ -1,10 +1,8 @@
 import SwiftUI
 
 struct UserCard: View {
-    @Environment(SocialVM.self) private var socialVM
     @State var emblemsVM = EmblemsVM()
     
-    @State private var isFollowed = false
     let user: User
     
     var body: some View {
@@ -24,26 +22,7 @@ struct UserCard: View {
                 
                 Spacer()
                 
-                Group {
-                    if isFollowed {
-                        Button {
-                            socialVM.unfollowUser(id: user.id)
-                            isFollowed.toggle()
-                        } label: {
-                            Text("Following")
-                        }
-                    } else {
-                        Button {
-                            socialVM.followUser(id: user.id)
-                            isFollowed.toggle()
-                        } label: {
-                            Text("Follow")
-                        }
-                    }
-                }
-                .font(.customBody)
-                .buttonStyle(.borderedProminent)
-                
+                ConnectionsButton(user: user)
             }
             
             HStack(spacing: 0) {
@@ -64,7 +43,6 @@ struct UserCard: View {
         }
         .task {
             await emblemsVM.getUserEmblems(id: user.id)
-            isFollowed = socialVM.isFollowed(userID: user.id)
         }
         .padding()
         .background(Color.card, in: .rect(cornerRadius: 10))

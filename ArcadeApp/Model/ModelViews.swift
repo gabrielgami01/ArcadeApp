@@ -74,7 +74,7 @@ enum HomeScrollType: String, Identifiable, CaseIterable {
     var id: Self { self }
 }
 
-enum PickerOptions: String, Identifiable, CaseIterable {
+enum GameOptions: String, Identifiable, CaseIterable {
     case about
     case score
     
@@ -90,7 +90,7 @@ enum CardAction: String {
     case update
 }
 
-enum ProfilePage: String, Identifiable, CaseIterable  {
+enum ConnectionOptions: String, Identifiable, CaseIterable  {
     case following, followers
     
     var id: Self { self }

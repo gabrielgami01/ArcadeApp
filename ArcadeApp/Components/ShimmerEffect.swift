@@ -1,9 +1,10 @@
 import SwiftUI
 
 fileprivate struct Shimmer: ViewModifier {
+    @State private var shimmerOffset: CGFloat = -1
     let animation: Animation = Animation.linear(duration: 2).repeatForever(autoreverses: false)
     let gradient: Gradient = Gradient(colors: [.clear, .white, .clear])
-    @State private var shimmerOffset: CGFloat = -1
+    
     
     func body(content: Content) -> some View {
         content

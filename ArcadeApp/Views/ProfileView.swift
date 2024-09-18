@@ -36,7 +36,7 @@ struct ProfileView: View {
                             .font(.customHeadline)
                         
                         HStack {
-                            NavigationLink(value: ProfilePage.following) {
+                            NavigationLink(value: ConnectionOptions.following) {
                                 HStack(spacing: 5) {
                                     Text("\(socialVM.following.count)")
                                     Text("Following")
@@ -44,7 +44,7 @@ struct ProfileView: View {
                                 }
                             }
                             
-                            NavigationLink(value: ProfilePage.followers) {
+                            NavigationLink(value: ConnectionOptions.followers) {
                                 HStack(spacing: 5) {
                                     Text("\(socialVM.followers.count)")
                                     Text("Followers")
@@ -134,12 +134,12 @@ struct ProfileView: View {
             .scrollBounceBehavior(.basedOnSize)
             .scrollIndicators(.hidden)
             .background(Color.background)
-            .navigationDestination(for: ProfilePage.self) { page in
+            .navigationDestination(for: ConnectionOptions.self) { page in
                 switch page {
                     case .following:
-                        FollowsView(selectedPage: page)
+                        ConnectionsView(selectedPage: page)
                     case .followers:
-                        FollowsView(selectedPage: page)
+                        ConnectionsView(selectedPage: page)
                 }
             }
             .sheet(isPresented: $showEditAbout) {

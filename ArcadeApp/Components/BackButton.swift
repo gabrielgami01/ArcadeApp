@@ -15,8 +15,6 @@ struct BackButton: View {
 }
 
 #Preview {
-    BackButton() {
-        
-    }
+    BackButton() {}
     .preferredColorScheme(.dark)
 }
