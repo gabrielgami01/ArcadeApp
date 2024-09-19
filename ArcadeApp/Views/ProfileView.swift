@@ -94,7 +94,7 @@ struct ProfileView: View {
                         
                         Section {
                             HStack {
-                                Text(user.biography ?? "")
+                                Text(user.about ?? "")
                                 
                                 Spacer()
                                 

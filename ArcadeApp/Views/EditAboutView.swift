@@ -30,7 +30,7 @@ struct EditAboutView: View {
             .background(Color.background)
         }
         .onAppear {
-            if let about = userVM.activeUser?.biography {
+            if let about = userVM.activeUser?.about {
                 userVM.about = about
             }
         }

@@ -14,7 +14,7 @@ struct UserCard: View {
                     Text(user.username)
                         .font(.customTitle3)
                     
-                    if let about = user.biography {
+                    if let about = user.about {
                         Text(about)
                             .font(.customFootnote)
                     }

@@ -81,7 +81,7 @@ final class UserVM {
                                email: user.email,
                                username: user.username,
                                fullName: user.fullName,
-                               biography: about,
+                               about: about,
                                avatarImage: user.avatarImage)
         activeUser = updatedUser
     }
@@ -109,7 +109,7 @@ final class UserVM {
                                email: user.email,
                                username: user.username,
                                fullName: user.fullName,
-                               biography: user.biography,
+                               about: user.about,
                                avatarImage: imageData)
         activeUser = updatedUser
     }

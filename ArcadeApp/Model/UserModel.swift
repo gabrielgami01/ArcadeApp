@@ -5,7 +5,7 @@ struct User: Codable, Identifiable, Hashable {
     let email: String
     let username: String
     let fullName: String
-    let biography: String?
+    let about: String?
     let avatarImage: Data?
 }
 
