@@ -62,14 +62,12 @@ struct Network: DataInteractor, NetworkJSONInteractor {
         let token = "\(user):\(pass)".data(using: .utf8)?.base64EncodedString()
         let loginDTO = try await getJSON(request: .get(url: .loginJWT, token: token, authType: .basic), type: LoginDTO.self)
         SecKeyStore.shared.storeKey(key: Data(loginDTO.token.utf8), label: "token")
-        NotificationCenter.default.post(name: .login, object: nil)
         
         return loginDTO.user
     }
     
     func refreshJWT() async throws -> User {
         let loginDTO = try await getJSON(request: .get(url: .refreshJWT, token: getToken()), type: LoginDTO.self)
-        SecKeyStore.shared.deleteKey(label: "token")
         SecKeyStore.shared.storeKey(key: Data(loginDTO.token.utf8), label: "token")
        
         return loginDTO.user

@@ -13,14 +13,13 @@ final class SecManager {
     
     private init() {
         let tokenData = SecKeyStore.shared.readKey(label: "token")
-         if let tokenData {
-            let token = String(data: tokenData, encoding: .utf8) ?? ""
-            isLogged = JWTDecoder.isTokenExpired(token: token) ? false : true
-         }
+        if let tokenData {
+           let token = String(data: tokenData, encoding: .utf8) ?? ""
+           isLogged = JWTDecoder.isTokenExpired(token: token) ? false : true
+        }
     }
     
     func logout() {
         SecKeyStore.shared.deleteKey(label: "token")
-        isLogged = false
     }
 }

@@ -33,6 +33,7 @@ final class UserVM {
     func login() async {
         do {
             activeUser = try await interactor.login(user: username, pass: password)
+            NotificationCenter.default.post(name: .login, object: nil)
         } catch {
             errorMsg = error.localizedDescription
             showError = true
