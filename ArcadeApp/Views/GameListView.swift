@@ -14,8 +14,6 @@ struct GameListView: View {
         ScrollView {
             LazyVStack(spacing: 15, pinnedViews: [.sectionHeaders]) {
                 Section {
-                    ScrollSelector(selected: $gamesBVM.activeConsole, displayKeyPath: \.rawValue)
-                    
                     ForEach(gamesVM.games) { game in
                         if game.id != gamesVM.selectedGame?.id {
                             GameCell(game: game, animation: $animationGame)
@@ -33,20 +31,24 @@ struct GameListView: View {
                         }
                     }
                 } header: {
-                    Button {
-                        showSearchable = true
-                    } label: {
-                        HStack(spacing: 10) {
-                            Image(systemName:"magnifyingglass")
-                                .font(.customBody)
-                            Text("Search")
-                                .font(.customBody)
-                            Spacer()
+                    VStack{
+                        Button {
+                            showSearchable = true
+                        } label: {
+                            HStack(spacing: 10) {
+                                Image(systemName:"magnifyingglass")
+                                    .font(.customBody)
+                                Text("Search")
+                                    .font(.customBody)
+                                Spacer()
+                            }
+                            .foregroundStyle(.secondary)
+                            .frame(maxWidth: .infinity)
                         }
-                        .foregroundStyle(.secondary)
-                        .frame(maxWidth: .infinity)
+                        .buttonStyle(TextFieldStyleButton())
+                        
+                        ScrollSelector(selected: $gamesBVM.activeConsole)
                     }
-                    .buttonStyle(TextFieldStyleButton())
                     .stickyHeader()
                 }
             }

@@ -10,16 +10,12 @@ struct ChallengesView: View {
         let columns = [GridItem(.flexible()), GridItem(.flexible())]
         
         ScrollView {
-            VStack(alignment: .leading, spacing: 15) {
-                ScrollSelector(selected: $challengesBVM.activeType, displayKeyPath: \.rawValue)
-                
-                LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(challengesVM.filteredChallenges) { challenge in
-                        ChallengeCard(challenge: challenge)
-                    }
+            LazyVGrid(columns: columns, spacing: 20) {
+                ForEach(challengesVM.filteredChallenges) { challenge in
+                    ChallengeCard(challenge: challenge)
                 }
-                .padding(.horizontal)
             }
+            .padding(.horizontal)
         }
         .refreshable {
             Task {
@@ -28,7 +24,6 @@ struct ChallengesView: View {
         }
         .headerToolbar(title: "Challenges") { dismiss() }
         .scrollBounceBehavior(.basedOnSize)
-        .scrollIndicators(.hidden)
         .background(Color.background)
     }
 }

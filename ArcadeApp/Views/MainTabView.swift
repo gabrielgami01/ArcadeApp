@@ -16,26 +16,15 @@ struct MainTabView: View {
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
-                .onAppear {
-                    gamesVM.selectedGame = nil
-                }
-
             GameListView()
                 .toolbarBackground(.visible, for: .tabBar)
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }
-                .onAppear {
-                    gamesVM.selectedGame = nil
-                }
-            
             ProfileView()
                 .toolbarBackground(.visible, for: .tabBar)
                 .tabItem {
                     Label("Profile", systemImage: "person.crop.circle")
-                }
-                .onAppear {
-                    gamesVM.selectedGame = nil
                 }
         }
        

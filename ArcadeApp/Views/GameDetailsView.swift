@@ -65,6 +65,7 @@ struct GameDetailsView: View {
             }
             .padding(.horizontal)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .toolbar(.hidden, for: .tabBar)
         }
     }
 }

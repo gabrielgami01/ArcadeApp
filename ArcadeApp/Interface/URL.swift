@@ -1,9 +1,9 @@
 import Foundation
 
 let desa = URL(string: "http://localhost:8080")!
-let proxy = URL(string: "https://559d-81-32-229-229.ngrok-free.app")!
+let proxy = URL(string: "https://a6cf-83-53-211-97.ngrok-free.app")!
 
-let api = desa.appending(path: "api")
+let api = proxy.appending(path: "api")
 
 extension URL {
     static let users = api.appending(path: "users")
