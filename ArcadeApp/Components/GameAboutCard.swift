@@ -2,7 +2,7 @@ import SwiftUI
 
 struct GameAboutCard: View {
     @Environment(GamesVM.self) private var gamesVM
-    @State var detailsVM: GameDetailsVM
+    @Environment(GameDetailsVM.self) private var detailsVM
     
     let game: Game
     let animation: Bool
@@ -11,19 +11,17 @@ struct GameAboutCard: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Group {
-                if let namespace = namespace {
-                    Text(game.name)
-                        .font(.customHeadline)
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(.accent)
-                        .matchedGeometryEffect(id: "\(game.id)_NAME", in: namespace, properties: .position)
-                } else {
-                    Text(game.name)
-                        .font(.customHeadline)
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(.accent)
-                }
+            if let namespace = namespace {
+                Text(game.name)
+                    .font(.customHeadline)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.accent)
+                    .matchedGeometryEffect(id: "\(game.id)_NAME", in: namespace, properties: .position)
+            } else {
+                Text(game.name)
+                    .font(.customHeadline)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.accent)
             }
             
             Group {
@@ -43,10 +41,11 @@ struct GameAboutCard: View {
                         .font(.customCaption)
                         .foregroundColor(.yellow)
                 }
+                
                 HStack {
                     Button {
                         Task {
-                            if await detailsVM.useFavorite(gameID: game.id) {
+                            if await detailsVM.toggleFavorite(gameID: game.id) {
                                 detailsVM.isFavorite.toggle()
                                 gamesVM.toggleFavoriteGame(game: game, favorite: detailsVM.isFavorite)
                             }
@@ -71,7 +70,8 @@ struct GameAboutCard: View {
 }
 
 #Preview {
-    GameAboutCard(detailsVM: GameDetailsVM(interactor: TestInteractor()), game: .test, animation: true)
+    GameAboutCard(game: .test, animation: true)
         .environment(GamesVM(interactor: TestInteractor()))
+        .environment(GameDetailsVM(interactor: TestInteractor()))
         .preferredColorScheme(.dark)
 }

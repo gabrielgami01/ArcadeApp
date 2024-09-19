@@ -5,6 +5,7 @@ final class GameDetailsVM {
     let interactor: DataInteractor
     
     var isFavorite = false
+    
     var reviews: [Review] = []
     @ObservationIgnored var globalRating: Double {
         guard !reviews.isEmpty else { return 0.0 }
@@ -12,6 +13,7 @@ final class GameDetailsVM {
         let totalRating = reviews.reduce(0) { $0 + $1.rating }
         return Double(totalRating) / Double(reviews.count)
     }
+    
     var scores: [Score] = []
     @ObservationIgnored var verifiedScores: [Score] {
         scores.filter { $0.status == .verified }
@@ -34,7 +36,7 @@ final class GameDetailsVM {
         }
     }
     
-    func useFavorite(gameID: UUID) async -> Bool {
+    func toggleFavorite(gameID: UUID) async -> Bool {
         do {
             if isFavorite {
                 try await interactor.deleteFavoriteGame(id: gameID)

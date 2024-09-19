@@ -18,7 +18,7 @@ struct GameAboutView: View {
                 HStack(spacing: 10) {
                     GameCover(game: game, width: 150, height: 220)
                     
-                    GameAboutCard(detailsVM: detailsVM, game: game, animation: animation)
+                    GameAboutCard(game: game, animation: animation)
                 }
                 
                 VStack {
