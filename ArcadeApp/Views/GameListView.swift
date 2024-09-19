@@ -67,6 +67,7 @@ struct GameListView: View {
                     .zIndex(1)
                 if showSearchable {
                     SearchableView(show: $showSearchable)
+                        .opacity(gamesVM.selectedGame == nil ? 1.0 : 0.0)
                 }
             }
         }
