@@ -6,7 +6,7 @@ struct ChallengeCard: View {
     
     var body: some View {
         ZStack {
-            ChallengeFrontCard(challenge: challenge, showCheck: challenge.completed)
+            ChallengeFrontCard(challenge: challenge, showCheck: challenge.isCompleted)
                 .rotation3DEffect(.degrees(isFlipped ? 180 : 0), axis: (x: 0, y: 1, z: 0))
                 .opacity(isFlipped ? 0 : 1)
             ChallengeBackCard(challenge: challenge)

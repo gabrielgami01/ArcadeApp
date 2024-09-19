@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct UserCard: View {
-    @State var emblemsVM = EmblemsVM()
+    @Environment(ChallengesVM.self) private var challengesVM
     
     let user: User
     
@@ -26,23 +26,23 @@ struct UserCard: View {
             }
             
             HStack(spacing: 0) {
-                ForEach(Array(emblemsVM.emblems.enumerated()), id: \.element.id) { index, emblem in
+                ForEach(Array(challengesVM.emblems.enumerated()), id: \.element.id) { index, emblem in
                     EmblemCard(emblem: emblem)
-                    if index != emblemsVM.emblems.count - 1 || emblemsVM.emblems.count < 3 {
+                    if index != challengesVM.emblems.count - 1 || challengesVM.emblems.count < 3 {
                         Spacer()
                     }
                 }
                 
-                ForEach(0..<max(0, 3 - emblemsVM.emblems.count), id: \.self) { index in
+                ForEach(0..<max(0, 3 - challengesVM.emblems.count), id: \.self) { index in
                     EmblemCard(emblem: nil)
-                    if index != max(0, 3 - emblemsVM.emblems.count) - 1 {
+                    if index != max(0, 3 - challengesVM.emblems.count) - 1 {
                         Spacer()
                     }
                 }
             }
         }
         .task {
-            await emblemsVM.getUserEmblems(id: user.id)
+            await challengesVM.getUserEmblems(id: user.id)
         }
         .padding()
         .background(Color.card, in: .rect(cornerRadius: 10))
@@ -50,7 +50,8 @@ struct UserCard: View {
 }
 
 #Preview {
-    UserCard(emblemsVM: EmblemsVM(interactor: TestInteractor()), user: .test)
+    UserCard(user: .test)
+        .environment(ChallengesVM(interactor: TestInteractor()))
         .environment(SocialVM(interactor: TestInteractor()))
         .preferredColorScheme(.dark)
 }

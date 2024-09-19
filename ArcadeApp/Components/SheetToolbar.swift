@@ -13,6 +13,7 @@ fileprivate struct SheetToolbar: ViewModifier {
                 ToolbarItem(placement: .principal) {
                     Text(title)
                         .font(.customTitle3)
+                        .padding(.bottom, 5)
                 }
                 
                 ToolbarItem(placement: .cancellationAction) {
@@ -36,7 +37,7 @@ fileprivate struct SheetToolbar: ViewModifier {
                     }
                 }
             }
-            .padding(.bottom, 5)
+            .padding(.top, 5)
     }
 }
 

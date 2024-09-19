@@ -6,6 +6,7 @@ struct ArcadeAppApp: App {
     @State private var userVM = UserVM()
     @State private var gamesVM = GamesVM()
     @State private var detailsVM = GameDetailsVM()
+    @State private var challengesVM = ChallengesVM()
     @State private var socialVM = SocialVM()
     
     var body: some Scene {
@@ -14,6 +15,7 @@ struct ArcadeAppApp: App {
                 .environment(userVM)
                 .environment(gamesVM)
                 .environment(detailsVM)
+                .environment(challengesVM)
                 .environment(socialVM)
         }
         .modelContainer(for: GameModel.self)

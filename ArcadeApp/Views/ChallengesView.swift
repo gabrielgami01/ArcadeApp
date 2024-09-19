@@ -1,31 +1,32 @@
 import SwiftUI
 
 struct ChallengesView: View {
-    @State var challengesVM = ChallengesVM()
+    @Environment(ChallengesVM.self) private var challengesVM
     
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        let columns = [GridItem(.flexible(), spacing: 10), GridItem(.flexible())]
+        @Bindable var challengesBVM = challengesVM
+        let columns = [GridItem(.flexible()), GridItem(.flexible())]
         
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                ScrollSelector(selected: $challengesVM.activeType, displayKeyPath: \.rawValue)
+            VStack(alignment: .leading, spacing: 15) {
+                ScrollSelector(selected: $challengesBVM.activeType, displayKeyPath: \.rawValue)
                 
-                LazyVGrid(columns: columns, spacing: 15) {
+                LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(challengesVM.filteredChallenges) { challenge in
                         ChallengeCard(challenge: challenge)
                     }
-                    .animation(.none, value: challengesVM.activeType)
                 }
                 .padding(.horizontal)
             }
         }
-        .task {
-            await challengesVM.getChallenges()
+        .refreshable {
+            Task {
+                await challengesVM.getChallenges()
+            }
         }
-        .headerToolbar(title: "Challenges") { dismiss() }  
-        .padding(.top, 5)
+        .headerToolbar(title: "Challenges") { dismiss() }
         .scrollBounceBehavior(.basedOnSize)
         .scrollIndicators(.hidden)
         .background(Color.background)
@@ -34,7 +35,8 @@ struct ChallengesView: View {
 
 #Preview {
     NavigationStack {
-        ChallengesView(challengesVM: ChallengesVM(interactor: TestInteractor()))
+        ChallengesView()
+            .environment(ChallengesVM(interactor: TestInteractor()))
             .preferredColorScheme(.dark)
             .namespace(Namespace().wrappedValue)
     }

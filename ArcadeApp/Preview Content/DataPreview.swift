@@ -59,19 +59,10 @@ struct TestInteractor: DataInteractor {
 
     func addScore(_ score: CreateScoreDTO) async throws {}
     
-    func getAllChallenges() async throws -> [Challenge] {
+    func getChallenges() async throws -> [Challenge] {
         return [.test, .test2, .test3, .test4, .test5].sorted { $0.game < $1.game}
     }
-    
-    func getChallengesByType(_ type: ChallengeType) async throws -> [Challenge] {
-        let challenges: [Challenge] = [.test, .test2, .test3, .test4, .test5]
-        return challenges.filter{ $0.type == type }
-    }
-    
-    func getCompletedChallenges() async throws -> [Challenge] {
-        return [.test, .test2, .test4].sorted { $0.game < $1.game}
-    }
-    
+
     func getActiveUserEmblems() async throws -> [Emblem] {
         [.test, .test2]
     }
@@ -196,7 +187,7 @@ extension Challenge {
                                 targetScore: 100000,
                                 type: .gold,
                                 game: "Super Mario Bros",
-                                completed: true)
+                                isCompleted: true)
     
     static let test2 = Challenge(id: UUID(),
                                  name: "Hero of Hyrule",
@@ -204,14 +195,14 @@ extension Challenge {
                                  targetScore: 50000,
                                  type: .bronze,
                                  game: "The Legend of Zelda",
-                                 completed: true)
+                                 isCompleted: true)
     static let test3 = Challenge(id: UUID(),
                                  name: "Speed Demon",
                                  description: "Achieve a score of 75,000 points by collecting rings and defeating Dr. Robotnik.",
                                  targetScore: 75000,     
                                  type: .gold,
                                  game: "Sonic the Hedgehog",
-                                 completed: false)
+                                 isCompleted: false)
     
     static let test4 = Challenge(id: UUID(),
                                  name: "Martial Arts Master",
@@ -219,14 +210,14 @@ extension Challenge {
                                  targetScore: 80000,
                                  type: .bronze,
                                  game: "Street Fighter II",
-                                 completed: true)
+                                 isCompleted: true)
     static let test5 = Challenge(id: UUID(),
                                  name: "Mako Reactor Hero",
                                  description: "Reach a score of 60,000 points by completing quests and defeating enemies.",
                                  targetScore: 60000,
                                  type: .silver,
                                  game: "Final Fantasy VII",
-                                 completed: false)
+                                 isCompleted: false)
     
 }
 

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct AddEmblemView: View {
-    @State var emblemsVM: EmblemsVM
+    @Environment(ChallengesVM.self) private var challengesVM
     
     @Environment(\.dismiss) private var dismiss
     
@@ -10,47 +10,36 @@ struct AddEmblemView: View {
         
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    if emblemsVM.disponibleChallenges.count > 0 {
-                        LazyVGrid(columns: columns, spacing: 20) {
-                            ForEach(emblemsVM.disponibleChallenges) { challenge in
-                                Button {
-                                    if let selectedEmblem = emblemsVM.selectedEmblem {
-                                        Task {
-                                            if await emblemsVM.updateEmblemAPI(newChallenge: challenge.id, oldChallenge: selectedEmblem.challenge.id) {
-                                                let updatedEmblem = Emblem(id: selectedEmblem.id, challenge: challenge)
-                                                emblemsVM.updateEmblem(updatedEmblem)
-                                                dismiss()
-                                            }
-                                        }
-                                    } else {
-                                        Task {
-                                            if await emblemsVM.addEmblemAPI(challengeID: challenge.id) {
-                                                let newEmblem = Emblem(id: UUID(), challenge: challenge)
-                                                emblemsVM.addEmblem(newEmblem)
-                                                dismiss()
-                                            }
-                                        }
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(challengesVM.disponibleChallenges) { challenge in
+                        Button {
+                            if let selectedEmblem = challengesVM.selectedEmblem {
+                                Task {
+                                    if await challengesVM.updateEmblemAPI(newChallenge: challenge.id, oldChallenge: selectedEmblem.challenge.id) {
+                                        let updatedEmblem = Emblem(id: selectedEmblem.id, challenge: challenge)
+                                        challengesVM.updateEmblem(updatedEmblem)
+                                        dismiss()
                                     }
-                                    dismiss()
-                                } label: {
-                                    ChallengeFrontCard(challenge: challenge, showCheck: false)
                                 }
-                                .buttonStyle(.plain)
+                            } else {
+                                Task {
+                                    if await challengesVM.addEmblemAPI(challengeID: challenge.id) {
+                                        let newEmblem = Emblem(id: UUID(), challenge: challenge)
+                                        challengesVM.addEmblem(newEmblem)
+                                        dismiss()
+                                    }
+                                }
                             }
+                        } label: {
+                            ChallengeFrontCard(challenge: challenge, showCheck: false)
                         }
-                        .padding(.horizontal)
-                    } else {
-                        CustomUnavailableView(title: "No available emblems", image: "trophy",
-                                              description: "You don't have available emblems by the moment")
+                        .buttonStyle(.plain)
                     }
                 }
             }
-            .task {
-                await emblemsVM.getCompletedChallenges()
-            }
             .sheetToolbar(title: "Emblems", confirmationLabel: nil, confirmationAction: nil)
-            .navigationBarBackButtonHidden()
+            .navigationBarTitleDisplayMode(.inline)
+            .padding(.horizontal)
             .background(Color.background)
             .scrollIndicators(.hidden)
             .scrollBounceBehavior(.basedOnSize)
@@ -60,6 +49,7 @@ struct AddEmblemView: View {
 }
 
 #Preview {
-    AddEmblemView(emblemsVM: EmblemsVM(interactor: TestInteractor()))
+    AddEmblemView()
+        .environment(ChallengesVM(interactor: TestInteractor()))
         .preferredColorScheme(.dark)
 }

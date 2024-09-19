@@ -75,7 +75,6 @@
 		FC935F1D2C7DEEFA0053F11C /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC935F1C2C7DEEFA0053F11C /* CustomButtonStyle.swift */; };
 		FC94F7192C78C48E00FEA9FE /* EmblemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC94F7182C78C48E00FEA9FE /* EmblemCard.swift */; };
 		FC94F71B2C78C4D300FEA9FE /* UserAvatarImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC94F71A2C78C4D300FEA9FE /* UserAvatarImage.swift */; };
-		FC9639202C89C48C00ABAF72 /* EmblemsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC96391F2C89C48C00ABAF72 /* EmblemsVM.swift */; };
 		FC9639232C89CFE400ABAF72 /* AddEmblemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9639222C89CFE400ABAF72 /* AddEmblemCard.swift */; };
 		FC9639272C8A11CA00ABAF72 /* UserCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9639262C8A11CA00ABAF72 /* UserCard.swift */; };
 		FC96392A2C8A150400ABAF72 /* SocialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9639292C8A150400ABAF72 /* SocialView.swift */; };
@@ -203,7 +202,6 @@
 		FC935F1C2C7DEEFA0053F11C /* CustomButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyle.swift; sourceTree = "<group>"; };
 		FC94F7182C78C48E00FEA9FE /* EmblemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmblemCard.swift; sourceTree = "<group>"; };
 		FC94F71A2C78C4D300FEA9FE /* UserAvatarImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAvatarImage.swift; sourceTree = "<group>"; };
-		FC96391F2C89C48C00ABAF72 /* EmblemsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmblemsVM.swift; sourceTree = "<group>"; };
 		FC9639222C89CFE400ABAF72 /* AddEmblemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEmblemCard.swift; sourceTree = "<group>"; };
 		FC9639262C8A11CA00ABAF72 /* UserCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCard.swift; sourceTree = "<group>"; };
 		FC9639292C8A150400ABAF72 /* SocialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialView.swift; sourceTree = "<group>"; };
@@ -433,22 +431,22 @@
 		FC6F73EF2C56CBEA00E34AF3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				FC6C61302C9B360E00A64649 /* ConnectionsButton.swift */,
-				FC6F73F22C56D1F900E34AF3 /* AsyncText.swift */,
-				FC935F1C2C7DEEFA0053F11C /* CustomButtonStyle.swift */,
-				FC6F73E32C563E8E00E34AF3 /* ShimmerEffect.swift */,
-				FC7A37022C4525E7004F6910 /* RatingComponent.swift */,
-				FC2FD0902C4427530054CD43 /* CustomTextField.swift */,
-				FCB0D5EE2C5810D000039654 /* CustomUnavailableView.swift */,
-				FC6F73EB2C56CA3B00E34AF3 /* CustomCard.swift */,
-				FC4FCA092C62345F004C12C4 /* BackButton.swift */,
-				FC4FCA0F2C62B0BA004C12C4 /* CustomPicker.swift */,
-				FCD1FCB52C669B7B0060E682 /* SheetToolbar.swift */,
-				FC565BA22C7205A20078C2ED /* ScrollSelector.swift */,
-				FC2FD07E2C43C27D0054CD43 /* SelectorStyle.swift */,
 				FC935F1A2C7DE9080053F11C /* ErrorAlert.swift */,
-				FCD41A5D2C90B52C002B3AD5 /* StickyHeader.swift */,
+				FC2FD0902C4427530054CD43 /* CustomTextField.swift */,
+				FC935F1C2C7DEEFA0053F11C /* CustomButtonStyle.swift */,
+				FC2FD07E2C43C27D0054CD43 /* SelectorStyle.swift */,
+				FC4FCA092C62345F004C12C4 /* BackButton.swift */,
+				FC6C61302C9B360E00A64649 /* ConnectionsButton.swift */,
 				FC5C1BF92C9309E00063EDA5 /* HeaderToolbar.swift */,
+				FCD1FCB52C669B7B0060E682 /* SheetToolbar.swift */,
+				FCD41A5D2C90B52C002B3AD5 /* StickyHeader.swift */,
+				FC4FCA0F2C62B0BA004C12C4 /* CustomPicker.swift */,
+				FC565BA22C7205A20078C2ED /* ScrollSelector.swift */,
+				FC6F73EB2C56CA3B00E34AF3 /* CustomCard.swift */,
+				FCB0D5EE2C5810D000039654 /* CustomUnavailableView.swift */,
+				FC7A37022C4525E7004F6910 /* RatingComponent.swift */,
+				FC6F73F22C56D1F900E34AF3 /* AsyncText.swift */,
+				FC6F73E32C563E8E00E34AF3 /* ShimmerEffect.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -569,7 +567,6 @@
 				FCCE055F2C2B33F500B0D2CD /* SearchVM.swift */,
 				FCC53B2F2C5F915900015AC9 /* ChallengesVM.swift */,
 				FCB2CD0F2C6BE494001D5751 /* RankingsVM.swift */,
-				FC96391F2C89C48C00ABAF72 /* EmblemsVM.swift */,
 				FCE78D762C8B98EC001FDD21 /* SocialVM.swift */,
 			);
 			path = ViewModels;
@@ -861,7 +858,6 @@
 				FC935F192C7DE00A0053F11C /* RegisterVM.swift in Sources */,
 				FCE78D772C8B98EC001FDD21 /* SocialVM.swift in Sources */,
 				FC4DDABC2C847EA8009E1FCA /* TextFieldButtonStyle.swift in Sources */,
-				FC9639202C89C48C00ABAF72 /* EmblemsVM.swift in Sources */,
 				FCE336CF2C67C44E009E30AB /* JWTDecoder.swift in Sources */,
 				FC0E31BF2C46DE59004EB339 /* PageButton.swift in Sources */,
 				FCACFBC92C638A750065805E /* SearchableView.swift in Sources */,

@@ -1,25 +1,6 @@
 import Foundation
 import SwiftUI
 
-struct ChallengeDTO: Codable {
-    let id: UUID
-    let name: String
-    let description: String
-    let targetScore: Int
-    let type: ChallengeType
-    let game: String
-    
-    func toChallenge(completed: Bool) -> Challenge {
-        Challenge(id: id,
-                  name: name,
-                  description: description,
-                  targetScore: targetScore,
-                  type: type,
-                  game: game,
-                  completed: completed)
-    }
-}
-
 struct Challenge: Codable, Identifiable, Hashable {
     let id: UUID
     let name: String
@@ -27,7 +8,7 @@ struct Challenge: Codable, Identifiable, Hashable {
     let targetScore: Int
     let type: ChallengeType
     let game: String
-    let completed: Bool
+    let isCompleted: Bool
     
     func colorForChallenge() -> Color {
         switch self.type {

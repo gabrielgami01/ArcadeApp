@@ -20,9 +20,7 @@ protocol DataInteractor {
     func addReview(_ review: CreateReviewDTO) async throws
     func addScore(_ score: CreateScoreDTO) async throws
     
-    func getAllChallenges() async throws -> [Challenge]
-    func getChallengesByType(_ type: ChallengeType) async throws -> [Challenge]
-    func getCompletedChallenges() async throws -> [Challenge]
+    func getChallenges() async throws -> [Challenge]
     
     func getActiveUserEmblems() async throws -> [Emblem]
     func getUserEmblems(id: UUID) async throws -> [Emblem]
@@ -139,53 +137,18 @@ struct Network: DataInteractor, NetworkJSONInteractor {
     //DETAILS
     
     //CHALLENGES
-    func getAllChallenges() async throws -> [Challenge] {
-        let challengesDTO = try await getJSON(request: .get(url: .getAllChallenges, token: getToken()), type: [ChallengeDTO].self)
-        
-        var challenges: [Challenge] = []
-        challenges.reserveCapacity(challengesDTO.count)
-        
-        for challengeDTO in challengesDTO {
-            async let completed = getJSON(request: .get(url: .isChallengeCompleted(id: challengeDTO.id), token: getToken()),type: Bool.self)
-            
-            let challenge = challengeDTO.toChallenge(completed: try await completed)
-            challenges.append(challenge)
-        }
-        
-        return challenges
-    }
-    
-    func getChallengesByType(_ type: ChallengeType) async throws -> [Challenge] {
-        let challengesDTO = try await getJSON(request: .get(url: .getChallengesByType(type: type.rawValue), token: getToken()),type: [ChallengeDTO].self)
-        
-        var challenges: [Challenge] = []
-        challenges.reserveCapacity(challengesDTO.count)
-        
-        for challengeDTO in challengesDTO {
-            async let completed = getJSON(request: .get(url: .isChallengeCompleted(id: challengeDTO.id), token: getToken()),type: Bool.self)
-            
-            let challenge = challengeDTO.toChallenge(completed: try await completed)
-            challenges.append(challenge)
-        }
-        
-        return challenges
-    }
-    
-    func getCompletedChallenges() async throws -> [Challenge] {
-        let challengesDTO = try await getJSON(request: .get(url: .getCompletedChallenges, token: getToken()), type: [ChallengeDTO].self)
-        let challenges = challengesDTO.map {$0.toChallenge(completed: true)}
-        
-        return challenges
+    func getChallenges() async throws -> [Challenge] {
+        try await getJSON(request: .get(url: .getChallenges, token: getToken()), type: [Challenge].self)
     }
     //CHALLENGES
     
     //EMBLEMS
     func getActiveUserEmblems() async throws -> [Emblem] {
-        try await getJSON(request: .get(url: .getActiveUserEmblems, token: getToken()), type: [EmblemDTO].self).map(\.toEmblem)
+        try await getJSON(request: .get(url: .getActiveUserEmblems, token: getToken()), type: [Emblem].self)
     }
     
     func getUserEmblems(id: UUID) async throws -> [Emblem] {
-        try await getJSON(request: .get(url: .getUserEmblems(id: id), token: getToken()), type: [EmblemDTO].self).map(\.toEmblem)
+        try await getJSON(request: .get(url: .getUserEmblems(id: id), token: getToken()), type: [Emblem].self)
     }
     
     func addEmblem(_ emblemDTO: CreateEmblemDTO ) async throws {

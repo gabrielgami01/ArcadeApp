@@ -22,9 +22,9 @@ fileprivate struct HeaderToolbar: ViewModifier {
                                 .font(.customLargeTitle)
                         }
                     }
+                    .padding(.bottom, 5)
                 }
             }
-            .padding(.bottom, 5)
             .toolbarBackground(Color.background, for: .navigationBar)
             .navigationBarBackButtonHidden()
     }
