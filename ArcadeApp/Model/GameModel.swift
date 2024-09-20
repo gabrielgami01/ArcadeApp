@@ -16,7 +16,7 @@ struct Game: Codable, Identifiable, Hashable {
     let featured: Bool
     
     var imageURL: URL {
-        proxy.appending(path: "covers").appending(path: "\(id).jpg")
+        desa.appending(path: "covers").appending(path: "\(id).jpg")
     }
 }
 

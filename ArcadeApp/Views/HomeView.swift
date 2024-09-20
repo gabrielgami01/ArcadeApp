@@ -21,7 +21,7 @@ struct HomeView: View {
                             .padding(.horizontal)
                     }
                     
-                    HStack(spacing: 25) {
+                    HStack(spacing: 30) {
                         ForEach(HomePage.allCases) { page in
                             NavigationLink(value: page) {
                                 PageButton(page: page)
