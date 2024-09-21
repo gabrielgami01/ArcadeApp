@@ -55,17 +55,6 @@ enum HomePage: String, Identifiable, CaseIterable {
                 return "person.2.fill"
         }
     }
-    
-    var color: Color {
-        switch self {
-            case .challenges:
-                return .green
-            case .rankings:
-                return .orange
-            case .social:
-                return .red
-        }
-    }
 }
 
 enum HomeScrollType: String, Identifiable, CaseIterable {

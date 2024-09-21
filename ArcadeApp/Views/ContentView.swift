@@ -20,5 +20,6 @@ struct ContentView: View {
         .environment(UserVM())
         .environment(GamesVM(interactor: TestInteractor()))
         .environment(GameDetailsVM(interactor: TestInteractor()))
+        .environment(ChallengesVM(interactor: TestInteractor()))
         .environment(SocialVM(interactor: TestInteractor()))
 }

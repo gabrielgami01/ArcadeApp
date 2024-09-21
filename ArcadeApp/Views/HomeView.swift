@@ -21,14 +21,25 @@ struct HomeView: View {
                             .padding(.horizontal)
                     }
                     
-                    HStack(spacing: 30) {
-                        ForEach(HomePage.allCases) { page in
-                            NavigationLink(value: page) {
-                                PageButton(page: page)
-                            }
-                            .buttonStyle(.plain)
+                    HStack {
+                        NavigationLink(value: HomePage.challenges) {
+                            PageButton(page: HomePage.challenges)
                         }
+                        
+                        Spacer()
+                        
+                        NavigationLink(value: HomePage.rankings) {
+                            PageButton(page: HomePage.rankings)
+                        }
+                        
+                        Spacer()
+                        
+                        NavigationLink(value: HomePage.social) {
+                            PageButton(page: HomePage.social)
+                        }
+                        
                     }
+                    .buttonStyle(.plain)
                     .padding()
                     
                     GamesCarousel(selectedType: $selectedType, type: .featured, games: gamesVM.featured)
