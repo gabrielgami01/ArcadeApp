@@ -95,3 +95,8 @@ enum ConnectionOptions: String, Identifiable, CaseIterable  {
     
     var id: Self { self }
 }
+
+
+enum SortOption: String, CaseIterable {
+    case completed, uncompleted
+}

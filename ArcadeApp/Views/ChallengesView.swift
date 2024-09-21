@@ -10,9 +10,17 @@ struct ChallengesView: View {
         let columns = [GridItem(.flexible()), GridItem(.flexible())]
         
         ScrollView {
-            LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(challengesVM.filteredChallenges) { challenge in
-                    ChallengeCard(challenge: challenge)
+            VStack(spacing: 15) {
+                CustomTextField(text: $challengesBVM.searchText, label: "Search", type: .search)
+                    .scrollTransition(.animated, axis: .vertical) { content, phase in
+                        content
+                            .opacity(phase.isIdentity ? 1.0 : 0.0)
+                    }
+                
+                LazyVGrid(columns: columns, spacing: 15) {
+                    ForEach(challengesBVM.displayChallenges) { challenge in
+                        ChallengeCard(challenge: challenge)
+                    }
                 }
             }
             .padding(.horizontal)
@@ -22,7 +30,31 @@ struct ChallengesView: View {
                 await challengesVM.getChallenges()
             }
         }
-        .headerToolbar(title: "Challenges") { dismiss() }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                HStack(alignment: .firstTextBaseline, spacing: 20) {
+                    BackButton { dismiss() }
+                    
+                    Text("Challenges")
+                        .font(.customLargeTitle)
+                }
+                .padding(.bottom, 5)
+            }
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    challengesVM.sortOption = challengesVM.sortOption == .completed ? .uncompleted : .completed
+                } label: {
+                    Image(systemName: "arrow.up.arrow.down")
+                        .bold()
+                        .font(.subheadline)
+                }
+                .buttonStyle(.plain)
+                .padding(.bottom, 5)
+            }
+        }
+        .toolbarBackground(Color.background, for: .navigationBar)
+        .navigationBarBackButtonHidden()
         .scrollBounceBehavior(.basedOnSize)
         .background(Color.background)
     }

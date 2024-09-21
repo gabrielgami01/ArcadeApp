@@ -5,19 +5,30 @@ final class ChallengesVM {
     let interactor: DataInteractor
     
     var challenges: [Challenge] = []
-    var activeType: ChallengeType = .all
-    @ObservationIgnored var filteredChallenges: [Challenge] {
-        if activeType != .all {
-            challenges.filter{ $0.type == activeType}.sorted{ $0.isCompleted && !$1.isCompleted}
-        } else {
-            challenges.sorted{ $0.isCompleted && !$1.isCompleted}
+    var searchText = ""
+    var sortOption: SortOption = .completed
+    @ObservationIgnored var displayChallenges: [Challenge] {
+        challenges.filter { challenge in
+            if searchText.isEmpty {
+                true
+            } else {
+                challenge.game.localizedStandardContains(searchText) || challenge.name.localizedStandardContains(searchText)
+            }
         }
-    }
-    @ObservationIgnored var completedChallenges: [Challenge] {
-        challenges.filter{ $0.isCompleted }
+        .sorted { c1, c2 in
+            switch sortOption {
+                case .completed:
+                    !c1.isCompleted && c2.isCompleted
+                case .uncompleted:
+                    c1.isCompleted && !c2.isCompleted
+            }
+        }
     }
     
     var emblems: [Emblem] = []
+    @ObservationIgnored var completedChallenges: [Challenge] {
+        challenges.filter{ $0.isCompleted }
+    }
     @ObservationIgnored var disponibleChallenges: [Challenge] {
         completedChallenges.filter { challenge in
             !emblems.contains { emblem in
