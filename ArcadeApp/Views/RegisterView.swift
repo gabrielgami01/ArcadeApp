@@ -55,7 +55,7 @@ struct RegisterView: View {
             }
         }
         .showAlert(show: $registerBVM.showError, text: registerVM.errorMsg)
-        .headerToolbar(title: "Register") { dismiss() }
+        .headerToolbar(title: "Register")
         .padding()
         .scrollBounceBehavior(.basedOnSize)
         .scrollIndicators(.hidden)

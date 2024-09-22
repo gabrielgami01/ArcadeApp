@@ -25,20 +25,7 @@ struct RankingsView: View {
                 gamesVM.activeConsole = .all
             }
         }
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                HStack(alignment: .firstTextBaseline, spacing: 20) {
-                    BackButton {
-                        dismiss()
-                    }
-                    Text("Rankings")
-                        .font(.customLargeTitle)
-                }
-                .padding(.bottom, 5)
-            }
-        }
-        .toolbarBackground(Color.background, for: .navigationBar)
-        .navigationBarBackButtonHidden()
+        .headerToolbar(title: "Rankings")
         .scrollBounceBehavior(.basedOnSize)
         .background(Color.background)
     }

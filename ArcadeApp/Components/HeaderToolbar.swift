@@ -2,8 +2,8 @@ import SwiftUI
 
 fileprivate struct HeaderToolbar: ViewModifier {
     let title: String
-    let namespace: Namespace.ID?
-    let backAction: () -> Void
+    
+    @Environment(\.dismiss) private var dismiss
     
     func body(content: Content) -> some View {
         content
@@ -11,16 +11,11 @@ fileprivate struct HeaderToolbar: ViewModifier {
                 ToolbarItem(placement: .topBarLeading) {
                     HStack(alignment: .firstTextBaseline, spacing: 20) {
                         BackButton {
-                            backAction()
+                           dismiss()
                         }
-                        if let namespace {
-                            Text(title)
-                                .font(.customLargeTitle)
-                                .matchedGeometryEffect(id: "\(title)", in: namespace, properties: .position)
-                        } else {
-                            Text(title)
-                                .font(.customLargeTitle)
-                        }
+                        
+                        Text(title)
+                            .font(.customLargeTitle)
                     }
                     .padding(.bottom, 5)
                 }
@@ -31,7 +26,7 @@ fileprivate struct HeaderToolbar: ViewModifier {
 }
 
 extension View {
-    func headerToolbar(title: String, namespace: Namespace.ID? = nil, backAction: @escaping () -> Void) -> some View {
-        modifier(HeaderToolbar(title: title, namespace: namespace, backAction: backAction))
+    func headerToolbar(title: String) -> some View {
+        modifier(HeaderToolbar(title: title))
     }
 }

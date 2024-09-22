@@ -8,8 +8,6 @@ struct GameRankingView: View {
     
     @State private var selectedUser: User?
     
-    @Environment(\.dismiss) private var dismiss
-    
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 15) {
@@ -52,20 +50,7 @@ struct GameRankingView: View {
                     .transition(.move(edge: .bottom).combined(with: .opacity))
             }
         }
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                HStack(alignment: .firstTextBaseline, spacing: 20) {
-                    BackButton {
-                        dismiss()
-                    }
-                    Text(game.name)
-                        .font(.customLargeTitle)
-                }
-                .padding(.bottom, 5)
-            }
-        }
-        .toolbarBackground(Color.background, for: .navigationBar)
-        .navigationBarBackButtonHidden()
+        .headerToolbar(title: game.name)
         .scrollBounceBehavior(.basedOnSize)
         .background(Color.background)
     }

@@ -23,6 +23,7 @@ fileprivate struct SheetToolbar: ViewModifier {
                         Text("Cancel")
                             .font(.customTitle3)
                     }
+                    .padding(.bottom, 5)
                 }
                 
                 if let confirmationLabel,
@@ -34,10 +35,10 @@ fileprivate struct SheetToolbar: ViewModifier {
                             Text(confirmationLabel)
                                 .font(.customTitle3)
                         }
+                        .padding(.bottom, 5)
                     }
                 }
             }
-            .padding(.top, 5)
     }
 }
 

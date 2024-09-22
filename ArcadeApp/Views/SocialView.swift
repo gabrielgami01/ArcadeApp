@@ -41,20 +41,7 @@ struct SocialView: View {
                     .transition(.move(edge: .bottom).combined(with: .opacity))
             }
         }
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                HStack(alignment: .firstTextBaseline, spacing: 20) {
-                    BackButton {
-                        dismiss()
-                    }
-                    Text("Rankings")
-                        .font(.customLargeTitle)
-                }
-                .padding(.bottom, 5)
-            }
-        }
-        .toolbarBackground(Color.background, for: .navigationBar)
-        .navigationBarBackButtonHidden()
+        .headerToolbar(title: "Social")
         .scrollBounceBehavior(.basedOnSize)
         .background(Color.background)
     }
