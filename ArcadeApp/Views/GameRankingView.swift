@@ -34,18 +34,18 @@ struct GameRankingView: View {
             }
             .disabled(selectedUser != nil)
             .blur(radius: selectedUser != nil ? 10 : 0)
-            .onTapGesture {
-                if selectedUser != nil {
-                    withAnimation {
-                        selectedUser = nil
-                    }
-                }
-            }
-            .padding(.horizontal)
         }
         .task {
             await rankingsVM.getGameRanking(id: game.id)
         }
+        .onTapGesture {
+            if selectedUser != nil {
+                withAnimation {
+                    selectedUser = nil
+                }
+            }
+        }
+        .padding(.horizontal)
         .overlay {
             if let selectedUser {
                 UserCard(user: selectedUser)

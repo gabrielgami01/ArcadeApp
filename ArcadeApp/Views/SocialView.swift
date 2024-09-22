@@ -1,7 +1,10 @@
 import SwiftUI
 
 struct SocialView: View {
+    @Environment(UserVM.self) private var userVM
     @Environment(SocialVM.self) private var socialVM
+    
+    @State private var selectedUser: User?
     
     @Environment(\.dismiss) private var dismiss
     
@@ -9,14 +12,50 @@ struct SocialView: View {
         ScrollView {
             LazyVStack(spacing: 15) {
                 ForEach(socialVM.followers) { userConnection in
-                    SocialCell(userConnection: userConnection)
+                    Button {
+                        withAnimation {
+                            if userConnection.user != userVM.activeUser {
+                                selectedUser = userConnection.user
+                            }
+                        }
+                    } label: {
+                        SocialCell(userConnection: userConnection)
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+            .disabled(selectedUser != nil)
+            .blur(radius: selectedUser != nil ? 10 : 0)
+            .padding(.horizontal)
+        }
+        .onTapGesture {
+            if selectedUser != nil {
+                withAnimation {
+                    selectedUser = nil
                 }
             }
         }
-        .headerToolbar(title: "Social") { dismiss() }
-        .padding(.horizontal)
+        .overlay {
+            if let selectedUser {
+                UserCard(user: selectedUser)
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                HStack(alignment: .firstTextBaseline, spacing: 20) {
+                    BackButton {
+                        dismiss()
+                    }
+                    Text("Rankings")
+                        .font(.customLargeTitle)
+                }
+                .padding(.bottom, 5)
+            }
+        }
+        .toolbarBackground(Color.background, for: .navigationBar)
+        .navigationBarBackButtonHidden()
         .scrollBounceBehavior(.basedOnSize)
-        .scrollIndicators(.hidden)
         .background(Color.background)
     }
 }
@@ -25,6 +64,7 @@ struct SocialView: View {
     NavigationStack {
         SocialView()
             .environment(UserVM(interactor: TestInteractor()))
+            .environment(ChallengesVM(interactor: TestInteractor()))
             .environment(SocialVM(interactor: TestInteractor()))
             .preferredColorScheme(.dark)
     }

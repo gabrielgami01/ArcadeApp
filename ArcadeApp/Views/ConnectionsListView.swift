@@ -22,8 +22,9 @@ struct ConnectionsListView: View {
                 }
             }
             .disabled(selectedUser != nil)
+            .blur(radius: selectedUser != nil ? 10 : 0)
+            .padding(.horizontal)
         }
-        .blur(radius: selectedUser != nil ? 10 : 0)
         .onTapGesture {
             if selectedUser != nil {
                 withAnimation {
@@ -42,8 +43,9 @@ struct ConnectionsListView: View {
 
 #Preview {
     ConnectionsListView(type: .following)
+        .environment(UserVM(interactor: TestInteractor()))
+        .environment(ChallengesVM(interactor: TestInteractor()))
         .environment(SocialVM(interactor: TestInteractor()))
-        .padding(.horizontal)
         .background(Color.background)
         .preferredColorScheme(.dark)
 }

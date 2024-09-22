@@ -22,9 +22,10 @@ struct SocialCell: View {
                 
                 ConnectionsButton(user: userConnection.user)
             }
-            .padding(.horizontal, 16)
+            .frame(maxWidth: .infinity)
             Divider()
         }
+        .background(Color.background)
     }
 }
 
@@ -32,5 +33,5 @@ struct SocialCell: View {
     SocialCell(userConnection: .test)
         .environment(SocialVM(interactor: TestInteractor()))
         .preferredColorScheme(.dark)
-        .background(Color.background)
+        
 }

@@ -18,6 +18,7 @@ struct ConnectionsView: View {
                 CustomPicker(selected: $selectedPage, displayKeyPath: \.rawValue)
                     .namespace(namespace)
             }
+            .padding(.horizontal)
             
             ZStack {
                 if selectedPage == .following {
@@ -44,7 +45,6 @@ struct ConnectionsView: View {
             )
 
         }
-        .padding(.horizontal)
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
         .scrollBounceBehavior(.basedOnSize)
@@ -55,6 +55,8 @@ struct ConnectionsView: View {
 
 #Preview {
     ConnectionsView(selectedPage: .followers)
+        .environment(UserVM(interactor: TestInteractor()))
+        .environment(ChallengesVM(interactor: TestInteractor()))
         .environment(SocialVM(interactor: TestInteractor()))
         .preferredColorScheme(.dark)
 }
