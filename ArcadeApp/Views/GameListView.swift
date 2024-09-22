@@ -12,8 +12,31 @@ struct GameListView: View {
         @Bindable var gamesBVM = gamesVM
         
         ScrollView {
-            LazyVStack(spacing: 15, pinnedViews: [.sectionHeaders]) {
-                Section {
+            VStack(spacing: 15) {
+                Group {
+                    Button {
+                        showSearchable = true
+                    } label: {
+                        HStack(spacing: 10) {
+                            Image(systemName:"magnifyingglass")
+                                .font(.customBody)
+                            Text("Search")
+                                .font(.customBody)
+                            Spacer()
+                        }
+                        .foregroundStyle(.secondary)
+                        .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(TextFieldStyleButton())
+                    
+                    ScrollSelector(selected: $gamesBVM.activeConsole)
+                }
+                .scrollTransition(.animated, axis: .vertical) { content, phase in
+                    content
+                        .opacity(phase.isIdentity ? 1.0 : 0.4)
+                }
+                
+                LazyVStack(spacing: 20) {
                     ForEach(gamesVM.games) { game in
                         if game.id != gamesVM.selectedGame?.id {
                             GameCell(game: game, animation: $animationGame)
@@ -30,32 +53,13 @@ struct GameListView: View {
                                 .frame(height: 210)
                         }
                     }
-                } header: {
-                    VStack{
-                        Button {
-                            showSearchable = true
-                        } label: {
-                            HStack(spacing: 10) {
-                                Image(systemName:"magnifyingglass")
-                                    .font(.customBody)
-                                Text("Search")
-                                    .font(.customBody)
-                                Spacer()
-                            }
-                            .foregroundStyle(.secondary)
-                            .frame(maxWidth: .infinity)
-                        }
-                        .buttonStyle(TextFieldStyleButton())
-                        
-                        ScrollSelector(selected: $gamesBVM.activeConsole)
-                    }
-                    .stickyHeader()
                 }
+                
             }
             .opacity(!showSearchable && gamesVM.selectedGame == nil ? 1.0 : 0.0 )
             .namespace(showSearchable ? nil : namespace)
         }
-        .ignoresSafeArea(edges: .top)
+        .padding(.top)
         .onChange(of: gamesVM.selectedGame) { oldValue, newValue in
             if newValue == nil {
                 withAnimation(.default.delay(0.4)) {
@@ -75,7 +79,6 @@ struct GameListView: View {
         }
         .showAlert(show: $gamesBVM.showError, text: gamesVM.errorMsg)
         .scrollBounceBehavior(.basedOnSize)
-        .scrollIndicators(.hidden)
         .background(Color.background)
         .namespace(namespace)
     }
