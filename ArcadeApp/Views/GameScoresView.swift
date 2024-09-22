@@ -65,6 +65,7 @@ struct GameScoresView: View {
                 }
                 .opacity(animation || detailsVM.verifiedScores.count < 2 ? 1.0 : 0.0)
             }
+            .padding(.horizontal)
         }
         .onAppear {
             if !animation {
@@ -76,8 +77,6 @@ struct GameScoresView: View {
         .sheet(isPresented: $showAddScore) {
            AddScoreView(game: game)
         }
-        .scrollBounceBehavior(.basedOnSize)
-        .scrollIndicators(.hidden)
     }
     
     private func chartAnimation() {
@@ -103,7 +102,6 @@ struct GameScoresView: View {
         .environment(GamesVM(interactor: TestInteractor()))
         .environment(GameDetailsVM(interactor: TestInteractor()))
         .preferredColorScheme(.dark)
-        .padding(.horizontal)
         .background(Color.background)
 }
 

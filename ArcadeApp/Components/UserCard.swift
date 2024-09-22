@@ -46,6 +46,7 @@ struct UserCard: View {
         }
         .padding()
         .background(Color.card, in: .rect(cornerRadius: 10))
+        .padding(.horizontal)
     }
 }
 

@@ -54,6 +54,7 @@ struct GameAboutView: View {
                 .animation(.easeOut.delay(0.6), value: animation)
             }
             .disabled(selectedUser != nil)
+            .padding(.horizontal)
         }
         .onAppear {
             animation = true
@@ -76,8 +77,6 @@ struct GameAboutView: View {
             }
         }
         .scrollBounceBehavior(.basedOnSize)
-        .scrollIndicators(.hidden)
-        
     }
 }
 
@@ -87,7 +86,6 @@ struct GameAboutView: View {
         .environment(GamesVM(interactor: TestInteractor()))
         .environment(GameDetailsVM(interactor: TestInteractor()))
         .preferredColorScheme(.dark)
-        .padding(.horizontal)
         .background(Color.background)
 }
 

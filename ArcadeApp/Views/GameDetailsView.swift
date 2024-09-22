@@ -18,7 +18,7 @@ struct GameDetailsView: View {
             VStack(alignment: .leading) {
                 HStack {
                     BackButton {
-                        withAnimation(.bouncy.speed(2)){
+                        withAnimation(.bouncy.speed(2)) {
                             option = .about
                         } completion: {
                             withAnimation {
@@ -29,6 +29,7 @@ struct GameDetailsView: View {
                     
                     CustomPicker(selected: $option, displayKeyPath: \.rawValue)
                 }
+                .padding(.horizontal)
                 
                 ZStack {
                     if option == .about {
@@ -43,8 +44,8 @@ struct GameDetailsView: View {
                 }
                 .gesture(
                     DragGesture(minimumDistance: 50)
-                        .onEnded { value in
-                            withAnimation(.bouncy){
+                        .onChanged { value in
+                            withAnimation(.bouncy) {
                                 if value.startLocation.x > value.location.x {
                                     option = .score
                                 } else if value.startLocation.x < value.location.x {
@@ -53,7 +54,6 @@ struct GameDetailsView: View {
                             }
                         }
                 )
-                
             }
             .task {
                 await detailsVM.getGameDetails(id: game.id)
@@ -63,7 +63,6 @@ struct GameDetailsView: View {
                 scoresAnimation = false
                 option = .about
             }
-            .padding(.horizontal)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .toolbar(.hidden, for: .tabBar)
         }
