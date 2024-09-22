@@ -2,68 +2,37 @@ import SwiftUI
 
 struct GameRankingView: View {
     @Environment(UserVM.self) private var userVM
-    @State var rankingsVM: RankingsVM
+    @State var rankingsVM = RankingsVM()
     
-    @State var animation: Bool = false
+    let game: Game
+    
     @State private var selectedUser: User?
     
-    @Environment(\.namespace) private var namespace
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        if let game = rankingsVM.selectedGame {
-            ScrollView {
-                LazyVStack(spacing: 15) {
-                    Section {
-                        Group {
-                            if !rankingsVM.rankingScores.isEmpty {
-                                ForEach(rankingsVM.ranking, id: \.element.id) { index, rankingScore in
-                                    Button {
-                                        withAnimation {
-                                            if rankingScore.user.id != userVM.activeUser?.id {
-                                                selectedUser = rankingScore.user
-                                            }
-                                        }
-                                    } label: {
-                                        RankingScoreCell(index: index, rankingScore: rankingScore)
-                                    }
-                                    .buttonStyle(.plain)
-                                    
-                                }
-                            } else {
-                                CustomUnavailableView(title: "No scores", image: "gamecontroller",
-                                                      description: "There isn't any score for this game yet.")
-                            }
-                        }
-                        .opacity(animation ? 1.0 : 0.0)
-                    } header: {
-                        HStack(alignment: .firstTextBaseline, spacing: 20) {
-                            BackButton {
-                                withAnimation {
-                                    rankingsVM.selectedGame = nil
+        ScrollView {
+            LazyVStack(spacing: 15) {
+                if !rankingsVM.rankingScores.isEmpty {
+                    ForEach(rankingsVM.ranking, id: \.element.id) { index, rankingScore in
+                        Button {
+                            withAnimation {
+                                if rankingScore.user != userVM.activeUser {
+                                    selectedUser = rankingScore.user
                                 }
                             }
-                            
-                            if let namespace {
-                                Text(game.name)
-                                    .font(.customLargeTitle)
-                                    .matchedGeometryEffect(id: "\(game.id)_NAME", in: namespace, properties: .position)
-                            }
+                        } label: {
+                            RankingScoreCell(index: index, rankingScore: rankingScore)
                         }
-                        .stickyHeader()
+                        .buttonStyle(.plain)
+                        
                     }
-                }
-                .disabled(selectedUser != nil)
-            }
-            .onAppear {
-                rankingsVM.getGameRanking(id: game.id)
-                withAnimation(.easeOut.delay(0.4)) {
-                    animation = true
+                } else {
+                    CustomUnavailableView(title: "No scores", image: "gamecontroller",
+                                          description: "There isn't any score for this game yet.")
                 }
             }
-            .onDisappear {
-                animation = false
-            }
-            .ignoresSafeArea(edges: .top)
+            .disabled(selectedUser != nil)
             .blur(radius: selectedUser != nil ? 10 : 0)
             .onTapGesture {
                 if selectedUser != nil {
@@ -72,25 +41,43 @@ struct GameRankingView: View {
                     }
                 }
             }
-            .overlay {
-                if let selectedUser {
-                    UserCard(user: selectedUser)
-                        .transition(.move(edge: .bottom).combined(with: .opacity))
-                }
+            .padding(.horizontal)
+        }
+        .task {
+            await rankingsVM.getGameRanking(id: game.id)
+        }
+        .overlay {
+            if let selectedUser {
+                UserCard(user: selectedUser)
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
             }
         }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                HStack(alignment: .firstTextBaseline, spacing: 20) {
+                    BackButton {
+                        dismiss()
+                    }
+                    Text(game.name)
+                        .font(.customLargeTitle)
+                }
+                .padding(.bottom, 5)
+            }
+        }
+        .toolbarBackground(Color.background, for: .navigationBar)
+        .navigationBarBackButtonHidden()
+        .scrollBounceBehavior(.basedOnSize)
+        .background(Color.background)
     }
 }
 
 #Preview {
-    GameRankingView(rankingsVM: RankingsVM(interactor: TestInteractor(), selectedGame: .test))
-        .environment(UserVM(interactor: TestInteractor()))
-        .environment(SocialVM(interactor: TestInteractor()))
-        .preferredColorScheme(.dark)
-        .padding(.horizontal)
-        .scrollBounceBehavior(.basedOnSize)
-        .scrollIndicators(.hidden)
-        .background(Color.background)
-        .namespace(Namespace().wrappedValue)
+    NavigationStack {
+        GameRankingView(rankingsVM: RankingsVM(interactor: TestInteractor()), game: .test)
+            .environment(UserVM(interactor: TestInteractor()))
+            .environment(SocialVM(interactor: TestInteractor()))
+            .environment(ChallengesVM(interactor: TestInteractor()))
+            .preferredColorScheme(.dark)
+    }
 }
 

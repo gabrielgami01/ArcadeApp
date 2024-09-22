@@ -1,57 +1,53 @@
 import SwiftUI
 
 struct RankingsView: View {
-    @State var rankingsVM = RankingsVM()
+    @Environment(GamesVM.self) private var gamesVM
     
-    @Environment(\.namespace) private var namespace
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         ScrollView {
-            LazyVStack(pinnedViews: [.sectionHeaders]) {
-                Section {
-                    ForEach(rankingsVM.games) { game in
-                        Button {
-                            withAnimation {
-                                rankingsVM.selectedGame = game
+            LazyVStack {
+                ForEach(gamesVM.games) { game in
+                    NavigationLink(value: game) {
+                        GameRankingCell(game: game)
+                            .onAppear {
+                                gamesVM.isLastItem(game)
                             }
-                        } label: {
-                            GameRankingCell(game: game)
-                                .onAppear {
-                                    rankingsVM.isLastGame(game)
-                                }
-                        }
-                        .buttonStyle(.plain)
                     }
-                } header: {
-                    HStack(alignment: .firstTextBaseline, spacing: 20) {
-                        BackButton {
-                            dismiss()
-                        }
-                        Text("Rankings")
-                            .font(.customLargeTitle)
-                    }
-                    .stickyHeader()
+                    .buttonStyle(.plain)
                 }
             }
-            .opacity(rankingsVM.selectedGame == nil ? 1.0 : 0.0)
+            .padding(.horizontal)
         }
-        .ignoresSafeArea(edges: .top)
-        .overlay {
-            GameRankingView(rankingsVM: rankingsVM)
+        .onAppear {
+            if gamesVM.activeConsole != .all {
+                gamesVM.activeConsole = .all
+            }
         }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                HStack(alignment: .firstTextBaseline, spacing: 20) {
+                    BackButton {
+                        dismiss()
+                    }
+                    Text("Rankings")
+                        .font(.customLargeTitle)
+                }
+                .padding(.bottom, 5)
+            }
+        }
+        .toolbarBackground(Color.background, for: .navigationBar)
         .navigationBarBackButtonHidden()
-        .padding(.horizontal)
         .scrollBounceBehavior(.basedOnSize)
-        .scrollIndicators(.hidden)
         .background(Color.background)
     }
 }
 
 #Preview {
     NavigationStack {
-        RankingsView(rankingsVM: RankingsVM(interactor: TestInteractor()))
-            .environment(UserVM(interactor: TestInteractor()))
+        RankingsView()
+            .environment(GamesVM(interactor: TestInteractor()))
             .preferredColorScheme(.dark)
             .namespace(Namespace().wrappedValue)
     }

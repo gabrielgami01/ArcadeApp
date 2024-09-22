@@ -76,7 +76,7 @@ struct TestInteractor: DataInteractor {
     func deleteEmblem(challengeID: UUID) async throws {}
     
     func getGameRanking(id: UUID, page: Int) async throws -> [RankingScore] {
-        let scores: [RankingScore] = [.test, .test2, .test3, .test4]
+        let scores: [RankingScore] = [.test, .test2, .test3, .test4, .test5, .test6, .test7, .test8]
         return scores.sorted { $0.score > $1.score}
     }
 
@@ -242,15 +242,31 @@ extension RankingScore {
     static let test2 = RankingScore(id: UUID(),
                                     score: 6000,
                                     date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 5, hour: 15, minute: 22)) ?? .now,
-                                    user: .test)
+                                    user: .test2)
     static let test3 = RankingScore(id: UUID(),
                                     score: 4440,
                                     date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 10, hour: 16, minute: 33)) ?? .now,
-                                    user: .test)
+                                    user: .test2)
     static let test4 = RankingScore(id: UUID(),
                                     score: 5323,
                                     date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 22, hour: 14, minute: 02)) ?? .now,
                                     user: .test)
+    static let test5 = RankingScore(id: UUID(),
+                                    score: 3223,
+                                    date: Calendar.current.date(from: DateComponents(year: 2024, month: 9, day: 2, hour: 14, minute: 02)) ?? .now,
+                                    user: .test)
+    static let test6 = RankingScore(id: UUID(),
+                                    score: 6546,
+                                    date: Calendar.current.date(from: DateComponents(year: 2024, month: 9, day: 5, hour: 14, minute: 02)) ?? .now,
+                                    user: .test2)
+    static let test7 = RankingScore(id: UUID(),
+                                    score: 2555,
+                                    date: Calendar.current.date(from: DateComponents(year: 2024, month: 9, day: 10, hour: 14, minute: 02)) ?? .now,
+                                    user: .test)
+    static let test8 = RankingScore(id: UUID(),
+                                    score: 9393,
+                                    date: Calendar.current.date(from: DateComponents(year: 2024, month: 9, day: 22, hour: 14, minute: 02)) ?? .now,
+                                    user: .test2)
 }
 
 struct SwiftDataPreview: ViewModifier {

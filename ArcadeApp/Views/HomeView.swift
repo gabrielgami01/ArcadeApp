@@ -63,6 +63,9 @@ struct HomeView: View {
                 }
                 .namespace(namespaceFeatured)
             }
+            .navigationDestination(for: Game.self) { game in
+                GameRankingView(game: game)
+            }
             .overlay {
                 GameDetailsView(game: gamesVM.selectedGame)
             }

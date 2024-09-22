@@ -15,7 +15,7 @@ struct RankingScoreCell: View {
                     if index == 0 {
                         Image(systemName: "crown.fill")
                             .resizable()
-                            .frame(width: 40, height: 40)
+                            .frame(width: 30, height: 30)
                             .foregroundStyle(.yellow)
                             .offset(y: -40)
                     }

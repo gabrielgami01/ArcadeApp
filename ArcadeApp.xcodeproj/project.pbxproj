@@ -105,7 +105,6 @@
 		FCD1FCB42C6698460060E682 /* EditAboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD1FCB32C6698460060E682 /* EditAboutView.swift */; };
 		FCD1FCB62C669B7B0060E682 /* SheetToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD1FCB52C669B7B0060E682 /* SheetToolbar.swift */; };
 		FCD41A542C905E02002B3AD5 /* NetworkMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD41A532C905E02002B3AD5 /* NetworkMock.swift */; };
-		FCD41A5E2C90B52C002B3AD5 /* StickyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD41A5D2C90B52C002B3AD5 /* StickyHeader.swift */; };
 		FCE336CF2C67C44E009E30AB /* JWTDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE336CE2C67C44E009E30AB /* JWTDecoder.swift */; };
 		FCE78D772C8B98EC001FDD21 /* SocialVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE78D762C8B98EC001FDD21 /* SocialVM.swift */; };
 		FCED20E62C2F1C8900C0C5A1 /* GamesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCED20E52C2F1C8900C0C5A1 /* GamesVM.swift */; };
@@ -232,7 +231,6 @@
 		FCD1FCB32C6698460060E682 /* EditAboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAboutView.swift; sourceTree = "<group>"; };
 		FCD1FCB52C669B7B0060E682 /* SheetToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetToolbar.swift; sourceTree = "<group>"; };
 		FCD41A532C905E02002B3AD5 /* NetworkMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMock.swift; sourceTree = "<group>"; };
-		FCD41A5D2C90B52C002B3AD5 /* StickyHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyHeader.swift; sourceTree = "<group>"; };
 		FCE336CE2C67C44E009E30AB /* JWTDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTDecoder.swift; sourceTree = "<group>"; };
 		FCE78D762C8B98EC001FDD21 /* SocialVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialVM.swift; sourceTree = "<group>"; };
 		FCED20E52C2F1C8900C0C5A1 /* GamesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesVM.swift; sourceTree = "<group>"; };
@@ -439,7 +437,6 @@
 				FC6C61302C9B360E00A64649 /* ConnectionsButton.swift */,
 				FC5C1BF92C9309E00063EDA5 /* HeaderToolbar.swift */,
 				FCD1FCB52C669B7B0060E682 /* SheetToolbar.swift */,
-				FCD41A5D2C90B52C002B3AD5 /* StickyHeader.swift */,
 				FC4FCA0F2C62B0BA004C12C4 /* CustomPicker.swift */,
 				FC565BA22C7205A20078C2ED /* ScrollSelector.swift */,
 				FC6F73EB2C56CA3B00E34AF3 /* CustomCard.swift */,
@@ -838,7 +835,6 @@
 				FCCE05632C2B36ED00B0D2CD /* DataPreview.swift in Sources */,
 				FCC7245A2C525CA8008C3BC1 /* ScoreImage.swift in Sources */,
 				FC94F7192C78C48E00FEA9FE /* EmblemCard.swift in Sources */,
-				FCD41A5E2C90B52C002B3AD5 /* StickyHeader.swift in Sources */,
 				FCA519152C36C18D001CCF54 /* Namespace.swift in Sources */,
 				FCB0D5EF2C5810D000039654 /* CustomUnavailableView.swift in Sources */,
 				FCC41CCD2C77371700E8C9D2 /* AddEmblemView.swift in Sources */,
