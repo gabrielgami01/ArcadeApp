@@ -52,6 +52,7 @@ struct GameAboutCard: View {
                         }
                     } label: {
                         Image(systemName: "heart")
+                            .symbolEffect(.bounce, value: detailsVM.isFavorite)
                             .font(.title2)
                             .symbolVariant(detailsVM.isFavorite ? .fill : .none)
                             .tint(detailsVM.isFavorite ? .red : .accent)
