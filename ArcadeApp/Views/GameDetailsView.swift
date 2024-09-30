@@ -16,7 +16,7 @@ struct GameDetailsView: View {
     var body: some View {
         if let game {
             VStack(alignment: .leading) {
-                HStack {
+                HStack(spacing: 15) {
                     BackButton {
                         withAnimation(.bouncy.speed(2)) {
                             option = .about

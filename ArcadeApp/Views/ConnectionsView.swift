@@ -10,7 +10,7 @@ struct ConnectionsView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            HStack {
+            HStack(spacing: 15) {
                 BackButton {
                     dismiss()
                 }
