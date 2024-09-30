@@ -2,7 +2,6 @@ import SwiftUI
 
 @Observable
 final class AddReviewVM {
-    
     var title = ""
     var rating = 0
     var comment = ""
@@ -14,7 +13,8 @@ final class AddReviewVM {
         return if checkReview() {
             Review(id: UUID(),
                    title: title,
-                   comment: comment, rating: rating,
+                   comment: comment,
+                   rating: rating,
                    date: .now,
                    user: activeUser)
         } else {

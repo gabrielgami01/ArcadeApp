@@ -23,7 +23,6 @@
 		FC22BA622C2590EF002DFAA4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA612C2590EF002DFAA4 /* ContentView.swift */; };
 		FC22BA642C2590F0002DFAA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC22BA632C2590F0002DFAA4 /* Assets.xcassets */; };
 		FC22BA672C2590F0002DFAA4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC22BA662C2590F0002DFAA4 /* Preview Assets.xcassets */; };
-		FC22BA712C2590F0002DFAA4 /* ArcadeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA702C2590F0002DFAA4 /* ArcadeAppTests.swift */; };
 		FC22BA7B2C2590F0002DFAA4 /* ArcadeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA7A2C2590F0002DFAA4 /* ArcadeAppUITests.swift */; };
 		FC22BA7D2C2590F0002DFAA4 /* ArcadeAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA7C2C2590F0002DFAA4 /* ArcadeAppUITestsLaunchTests.swift */; };
 		FC22BA8D2C259255002DFAA4 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA8C2C259255002DFAA4 /* UserModel.swift */; };
@@ -104,7 +103,6 @@
 		FCCE05632C2B36ED00B0D2CD /* DataPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCE05622C2B36ED00B0D2CD /* DataPreview.swift */; };
 		FCD1FCB42C6698460060E682 /* EditAboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD1FCB32C6698460060E682 /* EditAboutView.swift */; };
 		FCD1FCB62C669B7B0060E682 /* SheetToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD1FCB52C669B7B0060E682 /* SheetToolbar.swift */; };
-		FCD41A542C905E02002B3AD5 /* NetworkMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD41A532C905E02002B3AD5 /* NetworkMock.swift */; };
 		FCE336CF2C67C44E009E30AB /* JWTDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE336CE2C67C44E009E30AB /* JWTDecoder.swift */; };
 		FCE78D772C8B98EC001FDD21 /* SocialVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE78D762C8B98EC001FDD21 /* SocialVM.swift */; };
 		FCED20E62C2F1C8900C0C5A1 /* GamesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCED20E52C2F1C8900C0C5A1 /* GamesVM.swift */; };
@@ -148,7 +146,6 @@
 		FC22BA632C2590F0002DFAA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC22BA662C2590F0002DFAA4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FC22BA6C2C2590F0002DFAA4 /* ArcadeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArcadeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FC22BA702C2590F0002DFAA4 /* ArcadeAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeAppTests.swift; sourceTree = "<group>"; };
 		FC22BA762C2590F0002DFAA4 /* ArcadeAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArcadeAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC22BA7A2C2590F0002DFAA4 /* ArcadeAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeAppUITests.swift; sourceTree = "<group>"; };
 		FC22BA7C2C2590F0002DFAA4 /* ArcadeAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -230,7 +227,6 @@
 		FCCE05622C2B36ED00B0D2CD /* DataPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPreview.swift; sourceTree = "<group>"; };
 		FCD1FCB32C6698460060E682 /* EditAboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAboutView.swift; sourceTree = "<group>"; };
 		FCD1FCB52C669B7B0060E682 /* SheetToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetToolbar.swift; sourceTree = "<group>"; };
-		FCD41A532C905E02002B3AD5 /* NetworkMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMock.swift; sourceTree = "<group>"; };
 		FCE336CE2C67C44E009E30AB /* JWTDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTDecoder.swift; sourceTree = "<group>"; };
 		FCE78D762C8B98EC001FDD21 /* SocialVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialVM.swift; sourceTree = "<group>"; };
 		FCED20E52C2F1C8900C0C5A1 /* GamesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesVM.swift; sourceTree = "<group>"; };
@@ -328,8 +324,6 @@
 		FC22BA6F2C2590F0002DFAA4 /* ArcadeAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				FC22BA702C2590F0002DFAA4 /* ArcadeAppTests.swift */,
-				FCD41A532C905E02002B3AD5 /* NetworkMock.swift */,
 			);
 			path = ArcadeAppTests;
 			sourceTree = "<group>";
@@ -871,8 +865,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCD41A542C905E02002B3AD5 /* NetworkMock.swift in Sources */,
-				FC22BA712C2590F0002DFAA4 /* ArcadeAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1092,7 +1084,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NHXG9GL4YK;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gabrielgarcia.ArcadeAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1111,7 +1103,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NHXG9GL4YK;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gabrielgarcia.ArcadeAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1129,6 +1121,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NHXG9GL4YK;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gabrielgarcia.ArcadeAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1146,6 +1139,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NHXG9GL4YK;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gabrielgarcia.ArcadeAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

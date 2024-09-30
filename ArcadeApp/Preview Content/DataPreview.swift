@@ -36,12 +36,12 @@ struct TestInteractor: DataInteractor {
     }
     
     func searchGame(name: String) async throws -> [Game] {
-        try loadData(file: "games").filter { $0.name.contains(name)}
+        try loadData(file: "games").filter { $0.name.localizedStandardContains(name) }
     }
     
     func getFeaturedFavoriteGames() async throws -> (featured: [Game], favorites: [Game]) {
         let featured = try loadData(file: "games").filter { $0.featured}
-        let favorites = Array(try loadData(file: "games").prefix(8).shuffled())
+        let favorites = Array(try loadData(file: "games").prefix(8))
         
         return (featured, favorites)
     }

@@ -2,12 +2,10 @@ import SwiftUI
 
 @Observable
 final class AddScoreVM {
-    
     var image: UIImage?
     
     var errorMsg = ""
     var showError = false
-
     
     func newScore() -> (score: Score, image: Data)? {
         if let image, let data = image.jpegData(compressionQuality: 0.8) {

@@ -36,7 +36,7 @@ final class SearchVM {
     
     func searchGame() async {
         do {
-            games = try await interactor.searchGame(name: inputText)
+            games = try await interactor.searchGame(name: searchText)
         } catch {
             errorMsg = error.localizedDescription
             showError.toggle()
