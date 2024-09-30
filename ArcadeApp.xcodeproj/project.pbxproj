@@ -62,7 +62,6 @@
 		FC6F73EC2C56CA3B00E34AF3 /* CustomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F73EB2C56CA3B00E34AF3 /* CustomCard.swift */; };
 		FC6F73F12C56D19C00E34AF3 /* AsyncTypeWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F73F02C56D19C00E34AF3 /* AsyncTypeWriter.swift */; };
 		FC6F73F32C56D1F900E34AF3 /* AsyncText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F73F22C56D1F900E34AF3 /* AsyncText.swift */; };
-		FC76F22E2C5B80E10070D970 /* ACNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = FC76F22D2C5B80E10070D970 /* ACNetwork */; };
 		FC76F2342C5BF5A60070D970 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC76F2332C5BF5A60070D970 /* Notifications.swift */; };
 		FC76F23F2C5C26E90070D970 /* ChallengesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC76F23E2C5C26E90070D970 /* ChallengesView.swift */; };
 		FC76F2412C5C27510070D970 /* ChallengeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC76F2402C5C27510070D970 /* ChallengeModel.swift */; };
@@ -91,6 +90,16 @@
 		FCB9813C2C949D0800987FC0 /* ConnectionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB9813B2C949D0800987FC0 /* ConnectionsModel.swift */; };
 		FCC036032C480B6400DDBC90 /* GameScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC036022C480B6400DDBC90 /* GameScoresView.swift */; };
 		FCC046692C52B4D1003FAC6A /* ScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC046682C52B4D1003FAC6A /* ScoreCell.swift */; };
+		FCC324112CAAB37C00D1E961 /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC324102CAAB37800D1E961 /* URLRequest.swift */; };
+		FCC324132CAAB59000D1E961 /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC324122CAAB58C00D1E961 /* JSONDecoder.swift */; };
+		FCC324152CAAB62A00D1E961 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC324142CAAB62700D1E961 /* URLSession.swift */; };
+		FCC324172CAAB66900D1E961 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC324162CAAB66400D1E961 /* NetworkError.swift */; };
+		FCC324192CAAB78D00D1E961 /* NetworkInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC324182CAAB78900D1E961 /* NetworkInteractor.swift */; };
+		FCC324222CAAC46000D1E961 /* ImageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC324212CAAC45800D1E961 /* ImageVM.swift */; };
+		FCC324242CAAC53F00D1E961 /* NetworkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC324232CAAC53B00D1E961 /* NetworkImage.swift */; };
+		FCC324262CAAC5ED00D1E961 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC324252CAAC5EA00D1E961 /* CGSize.swift */; };
+		FCC324282CAAC70300D1E961 /* NetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC324272CAAC70100D1E961 /* NetworkStatus.swift */; };
+		FCC3242A2CAAC73C00D1E961 /* UnavailableNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC324292CAAC73700D1E961 /* UnavailableNetwork.swift */; };
 		FCC41CCD2C77371700E8C9D2 /* AddEmblemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC41CCC2C77371700E8C9D2 /* AddEmblemView.swift */; };
 		FCC53B302C5F915900015AC9 /* ChallengesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC53B2F2C5F915900015AC9 /* ChallengesVM.swift */; };
 		FCC724572C523C5D008C3BC1 /* CameraPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC724562C523C5D008C3BC1 /* CameraPicker.swift */; };
@@ -215,6 +224,16 @@
 		FCB9813B2C949D0800987FC0 /* ConnectionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsModel.swift; sourceTree = "<group>"; };
 		FCC036022C480B6400DDBC90 /* GameScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScoresView.swift; sourceTree = "<group>"; };
 		FCC046682C52B4D1003FAC6A /* ScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCell.swift; sourceTree = "<group>"; };
+		FCC324102CAAB37800D1E961 /* URLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
+		FCC324122CAAB58C00D1E961 /* JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoder.swift; sourceTree = "<group>"; };
+		FCC324142CAAB62700D1E961 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
+		FCC324162CAAB66400D1E961 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		FCC324182CAAB78900D1E961 /* NetworkInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInteractor.swift; sourceTree = "<group>"; };
+		FCC324212CAAC45800D1E961 /* ImageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVM.swift; sourceTree = "<group>"; };
+		FCC324232CAAC53B00D1E961 /* NetworkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImage.swift; sourceTree = "<group>"; };
+		FCC324252CAAC5EA00D1E961 /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
+		FCC324272CAAC70100D1E961 /* NetworkStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatus.swift; sourceTree = "<group>"; };
+		FCC324292CAAC73700D1E961 /* UnavailableNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnavailableNetwork.swift; sourceTree = "<group>"; };
 		FCC41CCC2C77371700E8C9D2 /* AddEmblemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEmblemView.swift; sourceTree = "<group>"; };
 		FCC53B2F2C5F915900015AC9 /* ChallengesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesVM.swift; sourceTree = "<group>"; };
 		FCC724562C523C5D008C3BC1 /* CameraPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPicker.swift; sourceTree = "<group>"; };
@@ -239,7 +258,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC76F22E2C5B80E10070D970 /* ACNetwork in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,7 +318,7 @@
 				FCCD736B2C2D674B0056036E /* Views */,
 				FCCD73692C2D67150056036E /* Components */,
 				FCCD736A2C2D67390056036E /* ViewModels */,
-				FCCD73682C2D67040056036E /* Network */,
+				FCCD73682C2D67040056036E /* Interactor */,
 				FC22BA932C2593DA002DFAA4 /* Interface */,
 				FCCE055C2C2B31AE00B0D2CD /* Model */,
 				FC22BA8E2C25929A002DFAA4 /* Security */,
@@ -358,7 +376,12 @@
 		FC22BA932C2593DA002DFAA4 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				FCC324182CAAB78900D1E961 /* NetworkInteractor.swift */,
+				FCC324142CAAB62700D1E961 /* URLSession.swift */,
+				FCC324102CAAB37800D1E961 /* URLRequest.swift */,
 				FC22BA942C2593E8002DFAA4 /* URL.swift */,
+				FCC324162CAAB66400D1E961 /* NetworkError.swift */,
+				FCC324272CAAC70100D1E961 /* NetworkStatus.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -423,6 +446,7 @@
 		FC6F73EF2C56CBEA00E34AF3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				FCC324292CAAC73700D1E961 /* UnavailableNetwork.swift */,
 				FC935F1A2C7DE9080053F11C /* ErrorAlert.swift */,
 				FC2FD0902C4427530054CD43 /* CustomTextField.swift */,
 				FC935F1C2C7DEEFA0053F11C /* CustomButtonStyle.swift */,
@@ -480,6 +504,8 @@
 		FCA519132C36C175001CCF54 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FCC324252CAAC5EA00D1E961 /* CGSize.swift */,
+				FCC324122CAAB58C00D1E961 /* JSONDecoder.swift */,
 				FCA519162C36C191001CCF54 /* UIDevice.swift */,
 				FCA519142C36C18D001CCF54 /* Namespace.swift */,
 				FCC7245B2C525EF1008C3BC1 /* UIImage.swift */,
@@ -520,12 +546,13 @@
 			name = Score;
 			sourceTree = "<group>";
 		};
-		FCCD73682C2D67040056036E /* Network */ = {
+		FCCD73682C2D67040056036E /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				FCC324232CAAC53B00D1E961 /* NetworkImage.swift */,
 				FCCD736F2C2D88990056036E /* Network.swift */,
 			);
-			path = Network;
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		FCCD73692C2D67150056036E /* Components */ = {
@@ -559,6 +586,7 @@
 				FCC53B2F2C5F915900015AC9 /* ChallengesVM.swift */,
 				FCB2CD0F2C6BE494001D5751 /* RankingsVM.swift */,
 				FCE78D762C8B98EC001FDD21 /* SocialVM.swift */,
+				FCC324212CAAC45800D1E961 /* ImageVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -643,7 +671,6 @@
 			);
 			name = ArcadeApp;
 			packageProductDependencies = (
-				FC76F22D2C5B80E10070D970 /* ACNetwork */,
 			);
 			productName = ArcadeApp;
 			productReference = FC22BA5C2C2590EF002DFAA4 /* ArcadeApp.app */;
@@ -718,7 +745,6 @@
 			);
 			mainGroup = FC22BA532C2590EF002DFAA4;
 			packageReferences = (
-				FC76F22C2C5B80E10070D970 /* XCRemoteSwiftPackageReference "ACNetwork-Bootcamp2024" */,
 			);
 			productRefGroup = FC22BA5D2C2590EF002DFAA4 /* Products */;
 			projectDirPath = "";
@@ -765,13 +791,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC6F73EC2C56CA3B00E34AF3 /* CustomCard.swift in Sources */,
+				FCC324242CAAC53F00D1E961 /* NetworkImage.swift in Sources */,
 				FC2FD0912C4427530054CD43 /* CustomTextField.swift in Sources */,
+				FCC324222CAAC46000D1E961 /* ImageVM.swift in Sources */,
 				FC5C1BFA2C9309E00063EDA5 /* HeaderToolbar.swift in Sources */,
 				FC76F2342C5BF5A60070D970 /* Notifications.swift in Sources */,
 				FCC036032C480B6400DDBC90 /* GameScoresView.swift in Sources */,
 				FC935F1B2C7DE9080053F11C /* ErrorAlert.swift in Sources */,
 				FC6C61342C9B369D00A64649 /* SocialCell.swift in Sources */,
 				FC6F73F12C56D19C00E34AF3 /* AsyncTypeWriter.swift in Sources */,
+				FCC324282CAAC70300D1E961 /* NetworkStatus.swift in Sources */,
 				FC6F73F32C56D1F900E34AF3 /* AsyncText.swift in Sources */,
 				FC26EFF52C8E34A40084B289 /* GameDetailsLabel.swift in Sources */,
 				FC22BA8D2C259255002DFAA4 /* UserModel.swift in Sources */,
@@ -796,6 +825,7 @@
 				FC2E95102C61619400393C39 /* ChallengeFrontCard.swift in Sources */,
 				FC2FD0892C43E3DD0054CD43 /* LoginView.swift in Sources */,
 				FC2FD08D2C43E4010054CD43 /* RegisterView.swift in Sources */,
+				FCC324262CAAC5ED00D1E961 /* CGSize.swift in Sources */,
 				FC4FCA0A2C62345F004C12C4 /* BackButton.swift in Sources */,
 				FCC53B302C5F915900015AC9 /* ChallengesVM.swift in Sources */,
 				FC1473202C5183C100B1BE27 /* ScoreModel.swift in Sources */,
@@ -813,6 +843,7 @@
 				FCC724572C523C5D008C3BC1 /* CameraPicker.swift in Sources */,
 				FC94F71B2C78C4D300FEA9FE /* UserAvatarImage.swift in Sources */,
 				FC4FCA0C2C627CED004C12C4 /* Color.swift in Sources */,
+				FCC324112CAAB37C00D1E961 /* URLRequest.swift in Sources */,
 				FC54459E2C3801F5001B26EF /* AddReviewVM.swift in Sources */,
 				FC96392A2C8A150400ABAF72 /* SocialView.swift in Sources */,
 				FCB2CD122C6BE7D4001D5751 /* GameRankingView.swift in Sources */,
@@ -823,6 +854,8 @@
 				FC0E31CF2C46F1C6004EB339 /* ModelViews.swift in Sources */,
 				FC0E31BD2C46DE24004EB339 /* GameCell.swift in Sources */,
 				FC22BAA02C2595FF002DFAA4 /* UserVM.swift in Sources */,
+				FCC324132CAAB59000D1E961 /* JSONDecoder.swift in Sources */,
+				FCC3242A2CAAC73C00D1E961 /* UnavailableNetwork.swift in Sources */,
 				FCB2CD0E2C6BD67E001D5751 /* RankingsView.swift in Sources */,
 				FC935F1D2C7DEEFA0053F11C /* CustomButtonStyle.swift in Sources */,
 				FC22BA602C2590EF002DFAA4 /* ArcadeAppApp.swift in Sources */,
@@ -833,6 +866,7 @@
 				FCB0D5EF2C5810D000039654 /* CustomUnavailableView.swift in Sources */,
 				FCC41CCD2C77371700E8C9D2 /* AddEmblemView.swift in Sources */,
 				FC22BAB22C25EF01002DFAA4 /* SecManager.swift in Sources */,
+				FCC324172CAAB66900D1E961 /* NetworkError.swift in Sources */,
 				FCA5191D2C3729EE001CCF54 /* ReviewModel.swift in Sources */,
 				FCC046692C52B4D1003FAC6A /* ScoreCell.swift in Sources */,
 				FCED20E62C2F1C8900C0C5A1 /* GamesVM.swift in Sources */,
@@ -852,6 +886,8 @@
 				FC0E31BF2C46DE59004EB339 /* PageButton.swift in Sources */,
 				FCACFBC92C638A750065805E /* SearchableView.swift in Sources */,
 				FC0E31CB2C46F09F004EB339 /* GameAboutView.swift in Sources */,
+				FCC324192CAAB78D00D1E961 /* NetworkInteractor.swift in Sources */,
+				FCC324152CAAB62A00D1E961 /* URLSession.swift in Sources */,
 				FC47C1562C8CCDAE002F214B /* ConnectionCell.swift in Sources */,
 				FC7A37032C4525E7004F6910 /* RatingComponent.swift in Sources */,
 				FC0E31C52C46E063004EB339 /* GameCover.swift in Sources */,
@@ -1190,25 +1226,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		FC76F22C2C5B80E10070D970 /* XCRemoteSwiftPackageReference "ACNetwork-Bootcamp2024" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/applecodingacademy/ACNetwork-Bootcamp2024";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.15;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		FC76F22D2C5B80E10070D970 /* ACNetwork */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FC76F22C2C5B80E10070D970 /* XCRemoteSwiftPackageReference "ACNetwork-Bootcamp2024" */;
-			productName = ACNetwork;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FC22BA542C2590EF002DFAA4 /* Project object */;
 }

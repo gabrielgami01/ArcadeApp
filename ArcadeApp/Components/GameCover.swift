@@ -1,8 +1,7 @@
 import SwiftUI
-import ACNetwork
 
 struct GameCover: View {
-    @State private var imageVM = ImageNetworkVM()
+    @State private var imageVM = ImageVM()
     
     let game: Game
     let width: CGFloat
@@ -54,8 +53,8 @@ struct GameCover: View {
                 }
             }
         }
-        .task {
-            await imageVM.getImage(url: game.imageURL, size: 300)
+        .onAppear {
+            imageVM.getImage(url: game.imageURL)
         }
     }
 }

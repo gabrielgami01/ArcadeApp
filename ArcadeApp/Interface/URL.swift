@@ -86,7 +86,4 @@ extension URLQueryItem {
     static func console(_ name: String) -> URLQueryItem {
         URLQueryItem(name: "console", value: name)
     }
-    static func type(_ name: String) -> URLQueryItem {
-        URLQueryItem(name: "type", value: name)
-    }
 }

@@ -3,6 +3,7 @@ import SwiftData
 
 @main
 struct ArcadeAppApp: App {
+    @State private var network = NetworkStatus()
     @State private var userVM = UserVM()
     @State private var gamesVM = GamesVM()
     @State private var detailsVM = GameDetailsVM()
@@ -17,6 +18,7 @@ struct ArcadeAppApp: App {
                 .environment(detailsVM)
                 .environment(challengesVM)
                 .environment(socialVM)
+                .unavailableNetwork(status: network.status)
         }
         .modelContainer(for: GameModel.self)
         
