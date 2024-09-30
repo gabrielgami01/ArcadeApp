@@ -10,31 +10,36 @@ struct AddEmblemView: View {
         
         NavigationStack {
             ScrollView {
-                LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(challengesVM.disponibleChallenges) { challenge in
-                        Button {
-                            if let selectedEmblem = challengesVM.selectedEmblem {
-                                Task {
-                                    if await challengesVM.updateEmblemAPI(newChallenge: challenge.id, oldChallenge: selectedEmblem.challenge.id) {
-                                        let updatedEmblem = Emblem(id: selectedEmblem.id, challenge: challenge)
-                                        challengesVM.updateEmblem(updatedEmblem)
-                                        dismiss()
+                if !challengesVM.disponibleChallenges.isEmpty {
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        ForEach(challengesVM.disponibleChallenges) { challenge in
+                            Button {
+                                if let selectedEmblem = challengesVM.selectedEmblem {
+                                    Task {
+                                        if await challengesVM.updateEmblemAPI(newChallenge: challenge.id, oldChallenge: selectedEmblem.challenge.id) {
+                                            let updatedEmblem = Emblem(id: selectedEmblem.id, challenge: challenge)
+                                            challengesVM.updateEmblem(updatedEmblem)
+                                            dismiss()
+                                        }
+                                    }
+                                } else {
+                                    Task {
+                                        if await challengesVM.addEmblemAPI(challengeID: challenge.id) {
+                                            let newEmblem = Emblem(id: UUID(), challenge: challenge)
+                                            challengesVM.addEmblem(newEmblem)
+                                            dismiss()
+                                        }
                                     }
                                 }
-                            } else {
-                                Task {
-                                    if await challengesVM.addEmblemAPI(challengeID: challenge.id) {
-                                        let newEmblem = Emblem(id: UUID(), challenge: challenge)
-                                        challengesVM.addEmblem(newEmblem)
-                                        dismiss()
-                                    }
-                                }
+                            } label: {
+                                ChallengeFrontCard(challenge: challenge, showCheck: false)
                             }
-                        } label: {
-                            ChallengeFrontCard(challenge: challenge, showCheck: false)
+                            .buttonStyle(.plain)
                         }
-                        .buttonStyle(.plain)
                     }
+                } else {
+                    CustomUnavailableView(title: "No available emblems", image: "trophy",
+                                          description: "You don't have available emblems by the moment")
                 }
             }
             .sheetToolbar(title: "Emblems", confirmationLabel: nil, confirmationAction: nil)

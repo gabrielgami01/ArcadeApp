@@ -13,15 +13,15 @@ struct CustomUnavailableView: View {
                 .foregroundStyle(.gray)
                 .frame(width: 100)
             
-            VStack{
+            VStack {
                 Text(title)
                     .font(.customTitle)
-                    .multilineTextAlignment(.center)
                 
                 Text(description)
                     .font(.customBody)
                     .foregroundStyle(.gray)
             }
+            .multilineTextAlignment(.center)
         }
         .frame(maxWidth: .infinity)
         .padding()
