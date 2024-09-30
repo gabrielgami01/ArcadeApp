@@ -9,7 +9,7 @@ fileprivate struct HeaderToolbar: ViewModifier {
         content
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    HStack(alignment: .firstTextBaseline, spacing: 20) {
+                    HStack(alignment: .firstTextBaseline, spacing: 15) {
                         BackButton {
                            dismiss()
                         }
