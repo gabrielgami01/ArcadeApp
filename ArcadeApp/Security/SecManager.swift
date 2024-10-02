@@ -15,7 +15,7 @@ final class SecManager {
         let tokenData = SecKeyStore.shared.readKey(label: "token")
         if let tokenData {
            let token = String(data: tokenData, encoding: .utf8) ?? ""
-           isLogged = JWTDecoder.isTokenExpired(token: token) ? false : true
+           isLogged = JWTDecoder().isTokenExpired(token: token) ? false : true
         }
     }
     
