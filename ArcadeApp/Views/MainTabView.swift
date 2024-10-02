@@ -4,6 +4,12 @@ struct MainTabView: View {
     @Environment(GamesVM.self) private var gamesVM
     
     init() {
+        let appearance = UITabBarAppearance()
+        appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+        appearance.backgroundColor = .clear
+        UITabBar.appearance().standardAppearance = appearance
+        UITabBar.appearance().scrollEdgeAppearance = appearance
+        
         let itemAppearance = UITabBarItem.appearance()
         let attributes = [NSAttributedString.Key.font: UIFont(name: "VT323", size: 15)!]
         itemAppearance.setTitleTextAttributes(attributes, for: .normal)
@@ -12,17 +18,14 @@ struct MainTabView: View {
     var body: some View {
         TabView {
             HomeView()
-                .toolbarBackground(.visible, for: .tabBar)
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
             GameListView()
-                .toolbarBackground(.visible, for: .tabBar)
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }
             ProfileView()
-                .toolbarBackground(.visible, for: .tabBar)
                 .tabItem {
                     Label("Profile", systemImage: "person.crop.circle")
                 }
