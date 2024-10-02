@@ -11,8 +11,8 @@ final class GamesVM {
     
     var games: [Game] = []
     var page = 1
-    var gamesCache: [Console: [Game]] = [:]
-    var pageCache: [Console: Int] = [:]
+    @ObservationIgnored var gamesCache: [Console: [Game]] = [:]
+    @ObservationIgnored var pageCache: [Console: Int] = [:]
     var activeConsole: Console = .all {
         didSet {
             if activeConsole != oldValue {
@@ -51,10 +51,16 @@ final class GamesVM {
     
     func getFeaturedFavoriteGames() async {
         do {
-            (featured, favorites) = try await interactor.getFeaturedFavoriteGames()
+            let (featured, favorites) = try await interactor.getFeaturedFavoriteGames()
+            await MainActor.run {
+                self.featured = featured
+                self.favorites = favorites
+            }
         } catch {
-            errorMsg = error.localizedDescription
-            showError.toggle()
+            await MainActor.run {
+                errorMsg = error.localizedDescription
+                showError.toggle()
+            }
             print(error.localizedDescription)
         }
     }
@@ -68,14 +74,18 @@ final class GamesVM {
                 newGames = try await interactor.getGamesByConsole(activeConsole, page: page)
             }
             
-            games += newGames
+            await MainActor.run {
+                games += newGames
+            }
             
             gamesCache[activeConsole] = games
             pageCache[activeConsole] = page
             
         } catch {
-            errorMsg = error.localizedDescription
-            showError.toggle()
+            await MainActor.run {
+                errorMsg = error.localizedDescription
+                showError.toggle()
+            }
             print(error.localizedDescription)
         }
     }

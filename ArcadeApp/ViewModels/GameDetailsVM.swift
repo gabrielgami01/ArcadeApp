@@ -28,10 +28,17 @@ final class GameDetailsVM {
     
     func getGameDetails(id: UUID) async {
         do {
-            (isFavorite, reviews, scores) = try await interactor.getGameDetails(id: id)
+            let (isFavorite, reviews, scores) = try await interactor.getGameDetails(id: id)
+            await MainActor.run {
+                self.isFavorite = isFavorite
+                self.reviews = reviews
+                self.scores = scores
+            }
         } catch {
-            errorMsg = error.localizedDescription
-            showError.toggle()
+            await MainActor.run {
+                errorMsg = error.localizedDescription
+                showError.toggle()
+            }
             print(error.localizedDescription)
         }
     }
@@ -46,8 +53,10 @@ final class GameDetailsVM {
             }
             return true
         } catch {
-            errorMsg = error.localizedDescription
-            showError.toggle()
+            await MainActor.run {
+                errorMsg = error.localizedDescription
+                showError.toggle()
+            }
             print(error.localizedDescription)
             return false
         }
@@ -59,8 +68,10 @@ final class GameDetailsVM {
             try await interactor.addReview(reviewDTO)
             return true
         } catch {
-            errorMsg = error.localizedDescription
-            showError.toggle()
+            await MainActor.run {
+                errorMsg = error.localizedDescription
+                showError.toggle()
+            }
             print(error.localizedDescription)
             return false
         }
@@ -76,8 +87,10 @@ final class GameDetailsVM {
             try await interactor.addScore(scoreDTO)
             return true
         } catch {
-            errorMsg = error.localizedDescription
-            showError.toggle()
+            await MainActor.run {
+                errorMsg = error.localizedDescription
+                showError.toggle()
+            }
             print(error.localizedDescription)
             return false
         }

@@ -30,10 +30,16 @@ final class SocialVM {
     
     func getFollowingFollowers() async {
         do {
-            (following, followers) = try await interactor.getFollowingFollowers()
+            let (following, followers) = try await interactor.getFollowingFollowers()
+            await MainActor.run {
+                self.following = following
+                self.followers = followers
+            }
         } catch {
-            errorMsg = error.localizedDescription
-            showError.toggle()
+            await MainActor.run {
+                errorMsg = error.localizedDescription
+                showError.toggle()
+            }
             print(error.localizedDescription)
         }
     }
@@ -48,8 +54,10 @@ final class SocialVM {
             try await interactor.followUser(connectionsDTO)
             return true
         } catch {
-            errorMsg = error.localizedDescription
-            showError.toggle()
+            await MainActor.run {
+                errorMsg = error.localizedDescription
+                showError.toggle()
+            }
             print(error.localizedDescription)
             return false
         }
@@ -64,8 +72,10 @@ final class SocialVM {
             try await interactor.unfollowUser(id: id)
             return true
         } catch {
-            errorMsg = error.localizedDescription
-            showError.toggle()
+            await MainActor.run {
+                errorMsg = error.localizedDescription
+                showError.toggle()
+            }
             print(error.localizedDescription)
             return false
         }

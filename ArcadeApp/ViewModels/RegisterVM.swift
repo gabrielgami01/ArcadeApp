@@ -23,9 +23,11 @@ final class RegisterVM {
             try await interactor.register(user: newUser)
             return true
         } catch {
-            errorMsg = error.localizedDescription
-            showError.toggle()
-            print(error)
+            await MainActor.run {
+                errorMsg = error.localizedDescription
+                showError.toggle()
+            }
+            print(error.localizedDescription)
             return false
         }
     }

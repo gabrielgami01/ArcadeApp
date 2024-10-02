@@ -36,10 +36,15 @@ final class SearchVM {
     
     func searchGame() async {
         do {
-            games = try await interactor.searchGame(name: searchText)
+            let games = try await interactor.searchGame(name: searchText)
+            await MainActor.run {
+                self.games = games
+            }
         } catch {
-            errorMsg = error.localizedDescription
-            showError.toggle()
+            await MainActor.run {
+                errorMsg = error.localizedDescription
+                showError.toggle()
+            }
             print(error.localizedDescription)
         }
     }

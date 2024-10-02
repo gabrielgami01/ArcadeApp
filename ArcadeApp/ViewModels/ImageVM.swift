@@ -20,7 +20,9 @@ final class ImageVM {
     private func fetchImage(from url: URL) async {
         do {
             let image = try await NetworkImage.shared.fetchImage(from: url)
-            self.image = image
+            await MainActor.run {
+                self.image = image
+            }
         } catch {
             print("Error recuperando la imagen \(url.lastPathComponent).")
         }

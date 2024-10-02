@@ -5,12 +5,11 @@ final class RankingsVM {
     let interactor: DataInteractor
     
     var rankingScores: [RankingScore] = []
-    var ranking: [(offset: Int, element: RankingScore)] {
+    @ObservationIgnored var ranking: [(offset: Int, element: RankingScore)] {
         rankingScores.enumerated().map { $0 }
     }
     
     var rankingsPage = 1
-    
     
     var errorMsg = ""
     var showError = false
@@ -21,10 +20,15 @@ final class RankingsVM {
     
     func getGameRanking(id: UUID) async {
         do {
-            rankingScores = try await interactor.getGameRanking(id: id, page: rankingsPage)
+            let rankingScores = try await interactor.getGameRanking(id: id, page: rankingsPage)
+            await MainActor.run {
+                self.rankingScores = rankingScores
+            }
         } catch {
-            errorMsg = error.localizedDescription
-            showError.toggle()
+            await MainActor.run {
+                errorMsg = error.localizedDescription
+                showError.toggle()
+            }
             print(error.localizedDescription)
         }
     }

@@ -32,12 +32,17 @@ final class UserVM {
     
     func login() async {
         do {
-            activeUser = try await interactor.login(user: username, pass: password)
+            let activeUser = try await interactor.login(user: username, pass: password)
+            await MainActor.run {
+                self.activeUser = activeUser
+            }
             NotificationCenter.default.post(name: .login, object: nil)
         } catch {
-            errorMsg = error.localizedDescription
-            showError = true
-            print(error)
+            await MainActor.run {
+                errorMsg = error.localizedDescription
+                showError.toggle()
+            }
+            print(error.localizedDescription)
         }
     }
     
@@ -51,10 +56,15 @@ final class UserVM {
     
     func refreshToken() async {
         do {
-            activeUser = try await interactor.refreshJWT()
+            let activeUser = try await interactor.refreshJWT()
+            await MainActor.run {
+                self.activeUser = activeUser
+            }
         } catch {
-            errorMsg = error.localizedDescription
-            showError = true
+            await MainActor.run {
+                errorMsg = error.localizedDescription
+                showError.toggle()
+            }
             print(error.localizedDescription)
         }
     }
@@ -65,8 +75,10 @@ final class UserVM {
             try await interactor.updateUserAbout(updateUserDTO)
             return true
         } catch {
-            errorMsg = error.localizedDescription
-            showError = true
+            await MainActor.run {
+                errorMsg = error.localizedDescription
+                showError.toggle()
+            }
             print(error.localizedDescription)
             return false
         }
@@ -94,8 +106,10 @@ final class UserVM {
                 updateUserAvatar(imageData: imageData)
             }
         } catch {
-            errorMsg = error.localizedDescription
-            showError = true
+            await MainActor.run {
+                errorMsg = error.localizedDescription
+                showError.toggle()
+            }
             print(error.localizedDescription)
         }
     }

@@ -62,10 +62,15 @@ final class ChallengesVM {
     
     func getChallenges() async {
         do {
-            challenges = try await interactor.getChallenges()
+            let challenges = try await interactor.getChallenges()
+            await MainActor.run {
+                self.challenges = challenges
+            }
         } catch {
-            errorMsg = error.localizedDescription
-            showError.toggle()
+            await MainActor.run {
+                errorMsg = error.localizedDescription
+                showError.toggle()
+            }
             print(error.localizedDescription)
         }
     }
@@ -73,13 +78,21 @@ final class ChallengesVM {
     func getUserEmblems(id: UUID? = nil) async {
         do {
             if let id {
-                emblems = try await interactor.getUserEmblems(id: id)
+                let emblems = try await interactor.getUserEmblems(id: id)
+                await MainActor.run {
+                    self.emblems = emblems
+                }
             } else {
-                emblems = try await interactor.getActiveUserEmblems()
+                let emblems = try await interactor.getActiveUserEmblems()
+                await MainActor.run {
+                    self.emblems = emblems
+                }
             }
         } catch {
-            errorMsg = error.localizedDescription
-            showError.toggle()
+            await MainActor.run {
+                errorMsg = error.localizedDescription
+                showError.toggle()
+            }
             print(error.localizedDescription)
         }
     }
@@ -90,8 +103,10 @@ final class ChallengesVM {
             try await interactor.addEmblem(emblemDTO)
             return true
         } catch {
-            errorMsg = error.localizedDescription
-            showError.toggle()
+            await MainActor.run {
+                errorMsg = error.localizedDescription
+                showError.toggle()
+            }
             print(error.localizedDescription)
             return false
         }
@@ -108,8 +123,10 @@ final class ChallengesVM {
             try await interactor.addEmblem(createEmblemDTO)
             return true
         } catch {
-            errorMsg = error.localizedDescription
-            showError.toggle()
+            await MainActor.run {
+                errorMsg = error.localizedDescription
+                showError.toggle()
+            }
             print(error.localizedDescription)
             return false
         }
