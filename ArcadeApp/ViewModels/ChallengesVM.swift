@@ -44,20 +44,6 @@ final class ChallengesVM {
     
     init(interactor: DataInteractor = Network.shared) {
         self.interactor = interactor
-        if SecManager.shared.isLogged {
-            Task {
-                await getChallenges()
-            }
-        }
-        NotificationCenter.default.addObserver(forName: .login, object: nil, queue: .main) { [self] _ in
-            Task {
-                await getChallenges()
-            }
-        }
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: .login, object: nil)
     }
     
     func getChallenges() async {

@@ -13,12 +13,12 @@ final class SocialVM {
     init(interactor: DataInteractor = Network.shared) {
         self.interactor = interactor
         if SecManager.shared.isLogged {
-            Task {
+            Task(priority: .high) {
                 await getFollowingFollowers()
             }
         }
         NotificationCenter.default.addObserver(forName: .login, object: nil, queue: .main) { [self] _ in
-            Task {
+            Task(priority: .high) {
                 await getFollowingFollowers()
             }
         }

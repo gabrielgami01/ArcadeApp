@@ -1,47 +1,35 @@
 import Foundation
 
-struct JWTPayload: Codable {
-    let exp: TimeInterval?
-}
-
 struct JWTDecoder {
-    private func base64Padding(jwt: String) -> String {
-        var encoded = jwt
+    func isTokenExpired(token: String) -> Bool {
+        let segments = token.split(separator: ".")
+        guard segments.count == 3 else {
+            return true
+        }
+        
+        let base64String = String(segments[1])
             .replacingOccurrences(of: "-", with: "+")
             .replacingOccurrences(of: "_", with: "/")
-        let count = encoded.count % 4
-        if count > 0 {
-            for _ in 0 ..< (4 - count) {
-                encoded += "="
-            }
-        }
-        return encoded
-    }
-
-    func isTokenExpired(token: String) -> Bool {
-        let jwtParts = token.components(separatedBy: ".")
         
-        guard jwtParts.count == 3 else {
-            return true
+        var base64Length = base64String.count
+        while base64Length % 4 != 0 {
+            base64Length += 1
         }
-
-        let bodyb64 = base64Padding(jwt: jwtParts[1])
         
-        guard let bodyData = Data(base64Encoded: bodyb64) else {
+        let paddedBase64String = base64String.padding(toLength: base64Length, withPad: "=", startingAt: 0)
+        
+        guard let payloadData = Data(base64Encoded: paddedBase64String),
+              let json = try? JSONSerialization.jsonObject(with: payloadData, options: []),
+              let payload = json as? [String: Any] else {
             return true
         }
-
-        let decoder = JSONDecoder()
-        guard let payload = try? decoder.decode(JWTPayload.self, from: bodyData),
-              let exp = payload.exp else {
-            return true
+        
+        
+        if let exp = payload["exp"] as? TimeInterval {
+            let expirationDate = Date(timeIntervalSince1970: exp)
+            return expirationDate <= Date()
         }
-
-        let currentTime = Date().timeIntervalSince1970
-
-        return currentTime >= exp
+        
+        return true 
     }
-
-    
 }
-

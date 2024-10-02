@@ -25,6 +25,9 @@ struct ChallengesView: View {
             }
             .padding(.horizontal)
         }
+        .task {
+            await challengesVM.getChallenges()
+        }
         .refreshable {
             Task {
                 await challengesVM.getChallenges()
