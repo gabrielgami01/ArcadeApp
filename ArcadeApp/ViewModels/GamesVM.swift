@@ -67,20 +67,19 @@ final class GamesVM {
     
     func getGames() async {
         do {
-            var newGames: [Game] = []
             if activeConsole == .all {
-                newGames = try await interactor.getAllGames(page: page)
+                let games = try await interactor.getAllGames(page: page)
+                await MainActor.run {
+                    self.games += games
+                }
             } else {
-                newGames = try await interactor.getGamesByConsole(activeConsole, page: page)
+                let games = try await interactor.getGamesByConsole(activeConsole, page: page)
+                await MainActor.run {
+                    self.games += games
+                }
             }
-            
-            await MainActor.run {
-                games += newGames
-            }
-            
             gamesCache[activeConsole] = games
             pageCache[activeConsole] = page
-            
         } catch {
             await MainActor.run {
                 errorMsg = error.localizedDescription
