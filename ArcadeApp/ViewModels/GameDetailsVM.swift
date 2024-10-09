@@ -18,6 +18,15 @@ final class GameDetailsVM {
     @ObservationIgnored var verifiedScores: [Score] {
         scores.filter { $0.status == .verified }
     }
+    @ObservationIgnored var maxDisplayScore: Double {
+        (verifiedScores.map { Double($0.score ?? 0) }.max() ?? 0) * 1.25
+    }
+    @ObservationIgnored var minDisplayDate: Date {
+        (verifiedScores.map { $0.date }.min() ?? Date()).addingTimeInterval(-2 * 24 * 60 * 60)
+    }
+    @ObservationIgnored var maxDisplayDate: Date {
+       (verifiedScores.map { $0.date }.max() ?? Date()).addingTimeInterval(2 * 24 * 60 * 60)
+    }
     
     var errorMsg = ""
     var showError = false

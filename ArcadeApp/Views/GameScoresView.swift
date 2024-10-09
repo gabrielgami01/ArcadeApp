@@ -8,39 +8,77 @@ struct GameScoresView: View {
     @Binding var animation: Bool
     
     @State private var showAddScore = false
-    @State private var displayedPoints = 0
-    @State private var timer: Timer? = nil
+    
+    @State private var selectedScore: Score?
     
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
                 Group {
-                    if detailsVM.verifiedScores.count > 1 {
+                    if detailsVM.verifiedScores.count > 0 {
                         Chart {
-                            ForEach(detailsVM.verifiedScores.prefix(displayedPoints)) { score in
-                                if let value = score.score {
+                            ForEach(detailsVM.verifiedScores) { score in
+                                if let points = score.score {
                                     LineMark(
                                         x: .value("Date", score.date),
-                                        y: .value("Score", value)
+                                        y: .value("Score", points)
                                     )
-                                    .lineStyle(StrokeStyle(lineWidth: 2, lineJoin: .round))
+                                    .interpolationMethod(.catmullRom)
+                                    
                                     PointMark(
                                         x: .value("Date", score.date),
-                                        y: .value("Score", value)
+                                        y: .value("Score", points)
                                     )
-                                }
+                                    .symbolSize(80)
+                                    
+                                    if let selectedScore, let value = selectedScore.score {
+                                        RuleMark(
+                                            x: .value("Date", selectedScore.date),
+                                            yStart: .value("Y Start", 0),
+                                            yEnd: .value("Score", value)
+                                        )
+                                        .lineStyle(.init(lineWidth: 2, dash: [5]))
+                                        .foregroundStyle(Color.blue)
+                                        .annotation(position: .top) {
+                                            Text("Score: \(value)")
+                                                .font(.customCallout)
+                                                .padding(8)
+                                                .background(Color.black.opacity(0.8))
+                                                .cornerRadius(10)
+                                        }
+                                    }
+                                                    
+                               }
                             }
                         }
-                        .chartXAxis {}
-                        .chartYAxis {
-                            AxisMarks(preset: .aligned, values: .automatic(desiredCount: 5))
+                        .chartYScale(domain: 0...detailsVM.maxDisplayScore)
+                        .chartXScale(domain: detailsVM.minDisplayDate...detailsVM.maxDisplayDate)
+                        .chartOverlay { proxy in
+                            GeometryReader { geo in
+                                Rectangle().fill(.clear).contentShape(Rectangle())
+                                    .gesture(
+                                        DragGesture()
+                                            .onChanged { value in
+                                                let location = value.location
+                                                if let date: Date = proxy.value(atX: location.x),
+                                                   let closestScore = detailsVM.verifiedScores.min(by: { abs($0.date.timeIntervalSince(date)) < abs($1.date.timeIntervalSince(date)) }) {
+                                                    selectedScore = closestScore
+                                                }
+                                            }
+                                            .onEnded { _ in
+                                                selectedScore = nil
+                                            }
+                                    )
+                            }
                         }
-                        .padding(5)
+                        
                     } else {
-                        CustomUnavailableView(title: "Chart unavailable", image: "chart.xyaxis.line",
+                      CustomUnavailableView(title: "Chart unavailable", image: "chart.xyaxis.line",
                                               description: "You need 2 or more scores to see the chart")
                     }
                 }
+                .opacity(animation ? 1.0: 0.0)
+                .animation(.easeInOut, value: animation)
                 .frame(height: 220)
                 
                 VStack {
@@ -63,35 +101,17 @@ struct GameScoresView: View {
                                               description: "You haven't any score for this game yet.")
                     }
                 }
-                .opacity(animation || detailsVM.verifiedScores.count < 2 ? 1.0 : 0.0)
+                .opacity(animation ? 1.0: 0.0)
+                .animation(.easeInOut.delay(0.4), value: animation)
             }
+            
             .padding(.horizontal)
         }
         .onAppear {
-            if !animation {
-                chartAnimation()
-            } else {
-                displayedPoints = detailsVM.verifiedScores.count
-            }
+            animation = true
         }
         .sheet(isPresented: $showAddScore) {
            AddScoreView(game: game)
-        }
-    }
-    
-    private func chartAnimation() {
-        displayedPoints = 0
-        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
-            if displayedPoints < detailsVM.verifiedScores.count {
-                withAnimation(.easeInOut(duration: 0.5)) {
-                    displayedPoints += 1
-                }
-            } else {
-                timer?.invalidate()
-                withAnimation(.easeOut){
-                    animation = true
-                }
-            }
         }
     }
 }
@@ -104,4 +124,3 @@ struct GameScoresView: View {
         .preferredColorScheme(.dark)
         .background(Color.background)
 }
-
