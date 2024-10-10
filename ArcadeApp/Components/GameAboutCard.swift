@@ -28,7 +28,7 @@ struct GameAboutCard: View {
                 HStack(spacing: 5) {
                     Text(game.console.rawValue)
                         .enumTag()
-                    Text(game.genre.rawValue)
+                    Text(LocalizedStringKey(game.genre.rawValue))
                         .enumTag()
                 }
                 

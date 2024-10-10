@@ -31,7 +31,7 @@ struct GameCell: View {
                     HStack(spacing: 10) {
                         Text(game.console.rawValue)
                             .enumTag()
-                        Text(game.genre.rawValue)
+                        Text(LocalizedStringKey(game.genre.rawValue))
                             .enumTag()
                     }
                     

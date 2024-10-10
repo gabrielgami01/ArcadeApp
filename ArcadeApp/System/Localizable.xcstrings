@@ -79,6 +79,17 @@
         }
       }
     },
+    "Action" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acción"
+          }
+        }
+      }
+    },
     "Add new emblem" : {
       "localizations" : {
         "es" : {
@@ -105,6 +116,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Añade tu comentario"
+          }
+        }
+      }
+    },
+    "Adventure" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aventura"
+          }
+        }
+      }
+    },
+    "All" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todas"
           }
         }
       }
@@ -227,6 +260,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "DESTACADOS"
+          }
+        }
+      }
+    },
+    "Fighting" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lucha"
           }
         }
       }
@@ -443,6 +487,17 @@
         }
       }
     },
+    "Platformer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plataformas"
+          }
+        }
+      }
+    },
     "Player's Reviews" : {
       "localizations" : {
         "es" : {
@@ -459,6 +514,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Perfil"
+          }
+        }
+      }
+    },
+    "Racing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carreras"
           }
         }
       }
@@ -596,6 +662,17 @@
         }
       }
     },
+    "Shooter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disparos"
+          }
+        }
+      }
+    },
     "Sign Up" : {
       "localizations" : {
         "es" : {
@@ -606,8 +683,41 @@
         }
       }
     },
+    "Simulation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simulación"
+          }
+        }
+      }
+    },
     "Social" : {
       "shouldTranslate" : false
+    },
+    "Sports" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deportes"
+          }
+        }
+      }
+    },
+    "Strategy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estrategia"
+          }
+        }
+      }
     },
     "Tap to upload an image" : {
       "localizations" : {
