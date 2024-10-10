@@ -23,7 +23,7 @@ struct AddScoreView: View {
                 
                 Spacer()
             }
-            .sheetToolbar(title: "Add new Score", confirmationLabel: "Save") {
+            .sheetToolbar(title: "Add new score", confirmationLabel: "Save") {
                 if let (score, imageData) = addScoreVM.newScore() {
                     if await detailsVM.addScoreAPI(imageData: imageData, to: game) {
                         detailsVM.addScore(score)

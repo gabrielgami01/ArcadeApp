@@ -1,7 +1,7 @@
 import SwiftUI
 
 fileprivate struct HeaderToolbar: ViewModifier {
-    let title: String
+    let title: LocalizedStringKey
     
     @Environment(\.dismiss) private var dismiss
     
@@ -26,7 +26,7 @@ fileprivate struct HeaderToolbar: ViewModifier {
 }
 
 extension View {
-    func headerToolbar(title: String) -> some View {
+    func headerToolbar(title: LocalizedStringKey) -> some View {
         modifier(HeaderToolbar(title: title))
     }
 }

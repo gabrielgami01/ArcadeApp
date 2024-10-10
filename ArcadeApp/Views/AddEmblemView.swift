@@ -39,7 +39,7 @@ struct AddEmblemView: View {
                     }
                 } else {
                     CustomUnavailableView(title: "No available emblems", image: "trophy",
-                                          description: "You don't have available emblems by the moment")
+                                          description: "You haven't any available emblems by the moment.")
                 }
             }
             .sheetToolbar(title: "Emblems", confirmationLabel: nil, confirmationAction: nil)

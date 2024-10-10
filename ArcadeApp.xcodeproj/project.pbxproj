@@ -66,6 +66,7 @@
 		FC76F23F2C5C26E90070D970 /* ChallengesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC76F23E2C5C26E90070D970 /* ChallengesView.swift */; };
 		FC76F2412C5C27510070D970 /* ChallengeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC76F2402C5C27510070D970 /* ChallengeModel.swift */; };
 		FC7A37032C4525E7004F6910 /* RatingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7A37022C4525E7004F6910 /* RatingComponent.swift */; };
+		FC7AB6C72CB83CF400984254 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = FC7AB6C62CB83CF400984254 /* Localizable.xcstrings */; };
 		FC8438F82C4D0F7A00434179 /* EnumTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8438F72C4D0F7A00434179 /* EnumTag.swift */; };
 		FC8438FA2C4D219F00434179 /* AddScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8438F92C4D219F00434179 /* AddScoreView.swift */; };
 		FC935F192C7DE00A0053F11C /* RegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC935F182C7DE00A0053F11C /* RegisterVM.swift */; };
@@ -200,6 +201,7 @@
 		FC76F23E2C5C26E90070D970 /* ChallengesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesView.swift; sourceTree = "<group>"; };
 		FC76F2402C5C27510070D970 /* ChallengeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeModel.swift; sourceTree = "<group>"; };
 		FC7A37022C4525E7004F6910 /* RatingComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingComponent.swift; sourceTree = "<group>"; };
+		FC7AB6C62CB83CF400984254 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		FC8438F72C4D0F7A00434179 /* EnumTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumTag.swift; sourceTree = "<group>"; };
 		FC8438F92C4D219F00434179 /* AddScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddScoreView.swift; sourceTree = "<group>"; };
 		FC935F182C7DE00A0053F11C /* RegisterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVM.swift; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 			children = (
 				FC22BA5F2C2590EF002DFAA4 /* ArcadeAppApp.swift */,
 				FC22BA632C2590F0002DFAA4 /* Assets.xcassets */,
+				FC7AB6C62CB83CF400984254 /* Localizable.xcstrings */,
 			);
 			path = System;
 			sourceTree = "<group>";
@@ -645,11 +648,11 @@
 				FCCD73752C2D8E520056036E /* GameModel.swift */,
 				FCA5191C2C3729EE001CCF54 /* ReviewModel.swift */,
 				FC2FD08E2C4403F50054CD43 /* EnumsModel.swift */,
-				FC0E31CE2C46F1C6004EB339 /* ModelViews.swift */,
 				FC14731F2C5183C100B1BE27 /* ScoreModel.swift */,
 				FC76F2402C5C27510070D970 /* ChallengeModel.swift */,
 				FCB981392C949C1C00987FC0 /* EmblemModel.swift */,
 				FCB9813B2C949D0800987FC0 /* ConnectionsModel.swift */,
+				FC0E31CE2C46F1C6004EB339 /* ModelViews.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -741,7 +744,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				es,
 			);
 			mainGroup = FC22BA532C2590EF002DFAA4;
 			packageReferences = (
@@ -763,6 +766,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCCD73782C2DDA680056036E /* games.json in Resources */,
+				FC7AB6C72CB83CF400984254 /* Localizable.xcstrings in Resources */,
 				FC22BA672C2590F0002DFAA4 /* Preview Assets.xcassets in Resources */,
 				FC22BA642C2590F0002DFAA4 /* Assets.xcassets in Resources */,
 				FC6F73EA2C5650AA00E34AF3 /* VT323.ttf in Resources */,
@@ -988,6 +992,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -1044,6 +1049,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

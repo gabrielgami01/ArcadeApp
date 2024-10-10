@@ -16,9 +16,8 @@ struct PageButton: View {
                         .stroke(.accent, lineWidth: 2)
                         .shadow(color: .black, radius: 2, x: 2, y: 2)
                 }
-                //.shadow(color: .black, radius: 2, x: 2, y: 2)
             
-            Text(page.rawValue.capitalized)
+            Text(LocalizedStringKey(page.rawValue.capitalized))
                 .font(.customCallout)
                 .foregroundColor(.accent)
                 .shadow(color: .black, radius: 1, x: 1, y: 1)

@@ -1,8 +1,8 @@
 import SwiftUI
 
 fileprivate struct SheetToolbar: ViewModifier {
-    let title: String
-    let confirmationLabel: String?
+    let title: LocalizedStringKey
+    let confirmationLabel: LocalizedStringKey?
     let confirmationAction: (() async -> Void)?
     
     @Environment(\.dismiss) private var dismiss
@@ -43,7 +43,7 @@ fileprivate struct SheetToolbar: ViewModifier {
 }
 
 extension View {
-    func sheetToolbar(title: String, confirmationLabel: String?, confirmationAction: (() async -> Void)?) -> some View {
+    func sheetToolbar(title: LocalizedStringKey, confirmationLabel: LocalizedStringKey?, confirmationAction: (() async -> Void)?) -> some View {
         modifier(SheetToolbar(title: title, confirmationLabel: confirmationLabel, confirmationAction: confirmationAction))
     }
 }

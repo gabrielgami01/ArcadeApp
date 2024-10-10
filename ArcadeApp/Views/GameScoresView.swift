@@ -34,7 +34,7 @@ struct GameScoresView: View {
                                     if let selectedScore, let value = selectedScore.score {
                                         RuleMark(
                                             x: .value("Date", selectedScore.date),
-                                            yStart: .value("Y Start", 0),
+                                            yStart: .value("Score Start", 0),
                                             yEnd: .value("Score", value)
                                         )
                                         .lineStyle(.init(lineWidth: 2, dash: [5]))
@@ -74,7 +74,7 @@ struct GameScoresView: View {
                         
                     } else {
                       CustomUnavailableView(title: "Chart unavailable", image: "chart.xyaxis.line",
-                                              description: "You need 2 or more scores to see the chart")
+                                              description: "You need 2 or more scores to see the chart.")
                     }
                 }
                 .opacity(animation ? 1.0: 0.0)
@@ -84,7 +84,7 @@ struct GameScoresView: View {
                 VStack {
                     GameDetailsLabel(showAction: $showAddScore, title: "Your scores") {
                         Label {
-                            Text("Add new Score")
+                            Text("Add new score")
                         } icon: {
                             Image(systemName: "plus")
                         }

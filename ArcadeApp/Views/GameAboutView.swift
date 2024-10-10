@@ -24,7 +24,7 @@ struct GameAboutView: View {
                 VStack {
                     GameDetailsLabel(showAction: $showAddReview, title: "Player's Reviews") {
                         Label {
-                            Text("Write a Review")
+                            Text("Write a review")
                         } icon: {
                             Image(systemName: "square.and.pencil")
                         }

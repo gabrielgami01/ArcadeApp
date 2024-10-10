@@ -10,7 +10,7 @@ struct ScoreCell: View {
                     .font(.customBody)
                 Spacer()
                 HStack {
-                    Text(score.status.rawValue.capitalized)
+                    Text(LocalizedStringKey(score.status.rawValue.capitalized))
                         .font(.customFootnote)
                     Image(systemName: score.status == .verified ? "checkmark" : "xmark")
                         .foregroundStyle(score.status == .verified ? .green : .red)

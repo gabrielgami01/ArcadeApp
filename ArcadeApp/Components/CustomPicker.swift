@@ -15,7 +15,7 @@ struct CustomPicker<T: Hashable & Identifiable & CaseIterable>: View where T.All
                     }
                 } label: {
                     let item = option[keyPath: displayKeyPath]
-                    Text(item.capitalized)
+                    Text(LocalizedStringKey(item.capitalized))
                         .font(.customHeadline)
                         .padding(5)
                         .frame(maxWidth: .infinity)

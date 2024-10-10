@@ -44,7 +44,7 @@ struct LoginView: View {
                         showRegister = true
                         userVM.resetLogin()
                     } label: {
-                        Text("Sign up")
+                        Text("Sign Up")
                     }
                 }
                 .font(.customBody)

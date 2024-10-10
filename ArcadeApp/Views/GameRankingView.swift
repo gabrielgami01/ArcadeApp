@@ -50,7 +50,7 @@ struct GameRankingView: View {
                     .transition(.move(edge: .bottom).combined(with: .opacity))
             }
         }
-        .headerToolbar(title: game.name)
+        .headerToolbar(title: LocalizedStringKey(game.name))
         .scrollBounceBehavior(.basedOnSize)
         .background(Color.background)
     }

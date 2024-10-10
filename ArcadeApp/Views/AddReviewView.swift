@@ -40,7 +40,7 @@ struct AddReviewView: View {
                 
                 Spacer()
             }
-            .sheetToolbar(title: "Leave a Review", confirmationLabel: "Send") {
+            .sheetToolbar(title: "Leave a review", confirmationLabel: "Send") {
                 if let user = userVM.activeUser,
                    let review = addReviewVM.newReview(activeUser: user) {
                     if await detailsVM.addReviewAPI(review, to: game) {

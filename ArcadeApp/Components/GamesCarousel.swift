@@ -10,7 +10,7 @@ struct GamesCarousel: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
-            Text(type.rawValue.uppercased())
+            Text(LocalizedStringKey(type.rawValue.uppercased()))
                 .font(.customTitle3)
                 .padding(.horizontal)
             

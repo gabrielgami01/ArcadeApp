@@ -3,7 +3,7 @@ import SwiftUI
 
 struct CustomTextField: View {
     @Binding var text: String
-    let label: String
+    let label: LocalizedStringKey
     var type: TextFieldType = .simple
     var capitalization: TextInputAutocapitalization = .never
     

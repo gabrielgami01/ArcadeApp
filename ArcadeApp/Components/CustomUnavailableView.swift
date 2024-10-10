@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct CustomUnavailableView: View {
-    let title: String
+    let title: LocalizedStringKey
     let image: String
-    let description: String
+    let description: LocalizedStringKey
     
     var body: some View {
         VStack(spacing: 10) {

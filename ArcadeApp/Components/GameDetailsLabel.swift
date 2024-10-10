@@ -2,7 +2,7 @@ import SwiftUI
 
 struct GameDetailsLabel<Content: View>: View {
     @Binding var showAction: Bool
-    let title: String
+    let title: LocalizedStringKey
     @ViewBuilder var label: () -> Content
     
     var body: some View {

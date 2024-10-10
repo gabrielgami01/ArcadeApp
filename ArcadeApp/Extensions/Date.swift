@@ -1,19 +1,19 @@
-import Foundation
+import SwiftUI
 
 extension Date {
-    func timeDifference(to currentDate: Date = Date()) -> String {
+    func timeDifference(to currentDate: Date = Date()) -> LocalizedStringKey {
         let calendar = Calendar.current
         
         let components = calendar.dateComponents([.weekOfYear, .day, .hour], from: self, to: currentDate)
         
         if let weeks = components.weekOfYear, weeks > 0 {
-            return "\(weeks) week(s) ago"
+            return LocalizedStringKey("\(weeks) week(s) ago")
         } else if let days = components.day, days > 0 {
-            return "\(days) day(s) ago"
+            return LocalizedStringKey("\(days) day(s) ago")
         } else if let hours = components.hour, hours > 0 {
-            return "\(hours) hour(s) ago"
+            return LocalizedStringKey("\(hours) hour(s) ago")
         } else {
-            return "Just now"
+            return LocalizedStringKey("Just now")
         }
     }
 }
