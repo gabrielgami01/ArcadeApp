@@ -17,7 +17,6 @@ struct GameCell: View {
                     gamesVM.selectedGame = game
                 }
             }
-            
         } label: {
             HStack(spacing: -25) {
                 VStack(alignment: .center, spacing: 10) {

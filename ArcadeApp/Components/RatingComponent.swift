@@ -9,6 +9,7 @@ struct RatingComponent: View {
         HStack(spacing: 5) {
             ForEach(1...maxRating, id: \.self) { number in
                 image(for: number)
+                    .font(.callout)
                     .foregroundStyle(number > rating ? Color.gray : Color.yellow)
                     .onTapGesture {
                         if mode == .rate {

@@ -5,27 +5,28 @@ struct ReviewCell: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 20) {
-            UserAvatarImage(imageData: review.user.avatarImage, size: 60)
+            UserAvatarImage(imageData: review.user.avatarImage, size: 50)
             
-            VStack(alignment: .leading) {
-                Text(review.user.username)
-                    .font(.customHeadline)
-                
-                HStack(spacing: 20) {
-                    RatingComponent(rating: .constant(review.rating), mode: .display)
+            VStack(alignment: .leading, spacing: 5) {
+                HStack {
+                    Text(review.user.username)
+                        .font(.customHeadline)
+                    Spacer()
                     Text(review.date.formatted())
                         .font(.customFootnote)
                 }
                 
-                Text(review.title)
-                    .font(.customHeadline)
+                RatingComponent(rating: .constant(review.rating), mode: .display)
                 
-                if let comment = review.comment {
-                    Text(comment)
-                        .font(.customSubheadline)
-                        .foregroundStyle(.secondary)
+                VStack(alignment: .leading) {
+                    Text(review.title)
+                        .font(.customHeadline)
+                    if let comment = review.comment {
+                        Text(comment)
+                            .font(.customSubheadline)
+                            .foregroundStyle(.secondary)
+                    }
                 }
-                
             }
         }
         .padding()

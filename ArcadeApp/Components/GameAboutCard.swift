@@ -25,7 +25,7 @@ struct GameAboutCard: View {
             }
             
             Group {
-                HStack(spacing: 10) {
+                HStack(spacing: 5) {
                     Text(game.console.rawValue)
                         .enumTag()
                     Text(game.genre.rawValue)
@@ -35,11 +35,15 @@ struct GameAboutCard: View {
                 Text("Release date: \(game.releaseDate.formatted(date: .abbreviated, time: .omitted))")
                     .font(.customCaption)
                 
-                HStack(alignment: .lastTextBaseline, spacing: 5) {
+                ViewThatFits(in: .horizontal) {
+                    HStack(alignment: .lastTextBaseline, spacing: 5) {
+                        RatingComponent(rating: .constant(Int(detailsVM.globalRating)), mode: .display)
+                        Text("(\(detailsVM.globalRating.formatted(.number.precision(.fractionLength(1)))))")
+                            .font(.customCaption)
+                            .foregroundColor(.yellow)
+                    }
+                    
                     RatingComponent(rating: .constant(Int(detailsVM.globalRating)), mode: .display)
-                    Text("(\(detailsVM.globalRating.formatted(.number.precision(.fractionLength(1)))))")
-                        .font(.customCaption)
-                        .foregroundColor(.yellow)
                 }
                 
                 HStack {
