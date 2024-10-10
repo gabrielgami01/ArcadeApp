@@ -8,37 +8,42 @@ struct AddReviewView: View {
     let game: Game
     
     @Environment(\.dismiss) private var dismiss
+    @FocusState private var focus: Bool
     
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading, spacing: 20) {
-                CustomTextField(text: $addReviewVM.title, label: "Title")
-                    .textInputAutocapitalization(.sentences)
-                
-                HStack(spacing: 20) {
-                    Text("Rating")
-                        .font(.customBody)
-                        .bold()
-                    RatingComponent(rating: $addReviewVM.rating, mode: .rate)
-                }
-                .padding(.bottom, 20)
-                
-                ZStack(alignment: .topLeading) {
-                    if addReviewVM.comment.isEmpty {
-                        Text("Add your comment")
-                            .font(.customBody)
-                            .padding(5)
-                    }
+            ScrollView {
+                VStack(alignment: .leading, spacing: 20) {
+                    CustomTextField(text: $addReviewVM.title, label: "Title", capitalization: .sentences)
+                        .focused($focus)
                     
-                    TextEditor(text: $addReviewVM.comment)
-                        .scrollContentBackground(.hidden)
-                        .font(.customBody)
-                        .background(.quinary)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .frame(height: 300)
+                    HStack(spacing: 20) {
+                        Text("Rating")
+                            .font(.customBody)
+                            .bold()
+                        RatingComponent(rating: $addReviewVM.rating, mode: .rate)
+                    }
+                    .padding(.bottom, 20)
+                    
+                    ZStack(alignment: .topLeading) {
+                        if addReviewVM.comment.isEmpty {
+                            Text("Add your comment")
+                                .font(.customBody)
+                                .padding(5)
+                        }
+                        
+                        TextEditor(text: $addReviewVM.comment)
+                            .focused($focus)
+                            .scrollContentBackground(.hidden)
+                            .font(.customBody)
+                            .background(.quinary)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .frame(height: 300)
+                    }
                 }
-                
-                Spacer()
+            }
+            .onTapGesture {
+                focus = false
             }
             .sheetToolbar(title: "Leave a review", confirmationLabel: "Send") {
                 if let user = userVM.activeUser,
