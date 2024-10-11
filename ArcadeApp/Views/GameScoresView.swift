@@ -15,7 +15,7 @@ struct GameScoresView: View {
         ScrollView {
             VStack(spacing: 20) {
                 Group {
-                    if detailsVM.verifiedScores.count > 0 {
+                    if detailsVM.verifiedScores.count > 1 {
                         Chart {
                             ForEach(detailsVM.verifiedScores) { score in
                                 if let points = score.score {

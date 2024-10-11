@@ -33,6 +33,7 @@ enum Genre: String, Codable {
 enum ScoreStatus: String, Codable {
     case verified
     case unverified
+    case denied
 }
 
 enum ChallengeType: String, Codable, Identifiable, CaseIterable {
