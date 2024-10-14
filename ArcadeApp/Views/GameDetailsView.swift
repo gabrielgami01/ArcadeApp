@@ -17,7 +17,9 @@ struct GameDetailsView: View {
         if let game {
             VStack(alignment: .leading) {
                 HStack(spacing: 15) {
-                    BackButton {
+                    CustomPicker(selected: $option, displayKeyPath: \.rawValue)
+                    
+                    Button {
                         withAnimation(.bouncy.speed(2)) {
                             option = .about
                         } completion: {
@@ -25,9 +27,10 @@ struct GameDetailsView: View {
                                 gamesVM.selectedGame = nil
                             }
                         }
+                    } label: {
+                        
                     }
-                    
-                    CustomPicker(selected: $option, displayKeyPath: \.rawValue)
+                    .buttonStyle(.plain)
                 }
                 .padding(.horizontal)
                 

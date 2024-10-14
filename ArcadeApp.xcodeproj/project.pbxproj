@@ -69,6 +69,7 @@
 		FC7AB6C72CB83CF400984254 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = FC7AB6C62CB83CF400984254 /* Localizable.xcstrings */; };
 		FC8438F82C4D0F7A00434179 /* EnumTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8438F72C4D0F7A00434179 /* EnumTag.swift */; };
 		FC8438FA2C4D219F00434179 /* AddScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8438F92C4D219F00434179 /* AddScoreView.swift */; };
+		FC8983E42CB9B15D008B17BF /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8983E32CB9B156008B17BF /* UINavigationController.swift */; };
 		FC935F192C7DE00A0053F11C /* RegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC935F182C7DE00A0053F11C /* RegisterVM.swift */; };
 		FC935F1B2C7DE9080053F11C /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC935F1A2C7DE9080053F11C /* ErrorAlert.swift */; };
 		FC935F1D2C7DEEFA0053F11C /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC935F1C2C7DEEFA0053F11C /* CustomButtonStyle.swift */; };
@@ -204,6 +205,7 @@
 		FC7AB6C62CB83CF400984254 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		FC8438F72C4D0F7A00434179 /* EnumTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumTag.swift; sourceTree = "<group>"; };
 		FC8438F92C4D219F00434179 /* AddScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddScoreView.swift; sourceTree = "<group>"; };
+		FC8983E32CB9B156008B17BF /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		FC935F182C7DE00A0053F11C /* RegisterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVM.swift; sourceTree = "<group>"; };
 		FC935F1A2C7DE9080053F11C /* ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
 		FC935F1C2C7DEEFA0053F11C /* CustomButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyle.swift; sourceTree = "<group>"; };
@@ -507,6 +509,7 @@
 		FCA519132C36C175001CCF54 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FC8983E32CB9B156008B17BF /* UINavigationController.swift */,
 				FCC324252CAAC5EA00D1E961 /* CGSize.swift */,
 				FCC324122CAAB58C00D1E961 /* JSONDecoder.swift */,
 				FCA519162C36C191001CCF54 /* UIDevice.swift */,
@@ -800,6 +803,7 @@
 				FCC324222CAAC46000D1E961 /* ImageVM.swift in Sources */,
 				FC5C1BFA2C9309E00063EDA5 /* HeaderToolbar.swift in Sources */,
 				FC76F2342C5BF5A60070D970 /* Notifications.swift in Sources */,
+				FC8983E42CB9B15D008B17BF /* UINavigationController.swift in Sources */,
 				FCC036032C480B6400DDBC90 /* GameScoresView.swift in Sources */,
 				FC935F1B2C7DE9080053F11C /* ErrorAlert.swift in Sources */,
 				FC6C61342C9B369D00A64649 /* SocialCell.swift in Sources */,
