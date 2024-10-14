@@ -5,15 +5,12 @@ struct ConnectionsView: View {
     
     @State var selectedPage: ConnectionOptions
     
-    @Environment(\.dismiss) private var dismiss
     @Namespace private var namespace
     
     var body: some View {
         VStack(spacing: 20) {
             HStack(spacing: 15) {
-                BackButton {
-                    dismiss()
-                }
+                BackButton()
                 
                 CustomPicker(selected: $selectedPage, displayKeyPath: \.rawValue)
                     .namespace(namespace)

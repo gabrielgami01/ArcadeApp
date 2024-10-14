@@ -1,11 +1,11 @@
 import SwiftUI
 
 struct BackButton: View {
-    let action: () -> Void
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         Button {
-           action()
+            dismiss()
         } label: {
             Text("<")
                 .font(.customLargeTitle)
@@ -15,6 +15,6 @@ struct BackButton: View {
 }
 
 #Preview {
-    BackButton() {}
+    BackButton()
     .preferredColorScheme(.dark)
 }

@@ -3,8 +3,6 @@ import SwiftUI
 struct ChallengesView: View {
     @Environment(ChallengesVM.self) private var challengesVM
     
-    @Environment(\.dismiss) private var dismiss
-    
     var body: some View {
         @Bindable var challengesBVM = challengesVM
         let columns = [GridItem(.flexible()), GridItem(.flexible())]
@@ -36,7 +34,7 @@ struct ChallengesView: View {
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 HStack(alignment: .firstTextBaseline, spacing: 20) {
-                    BackButton { dismiss() }
+                    BackButton()
                     
                     Text("Challenges")
                         .font(.customLargeTitle)

@@ -28,7 +28,8 @@ struct GameDetailsView: View {
                             }
                         }
                     } label: {
-                        
+                        Text("X")
+                            .font(.customLargeTitle)
                     }
                     .buttonStyle(.plain)
                 }

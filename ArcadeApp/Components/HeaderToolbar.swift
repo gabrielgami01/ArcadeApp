@@ -3,16 +3,12 @@ import SwiftUI
 fileprivate struct HeaderToolbar: ViewModifier {
     let title: LocalizedStringKey
     
-    @Environment(\.dismiss) private var dismiss
-    
     func body(content: Content) -> some View {
         content
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     HStack(alignment: .firstTextBaseline, spacing: 15) {
-                        BackButton {
-                           dismiss()
-                        }
+                        BackButton()
                         
                         Text(title)
                             .font(.customLargeTitle)
