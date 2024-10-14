@@ -5,6 +5,7 @@ let proxy = URL(string: "https://a6cf-83-53-211-97.ngrok-free.app")!
 
 let api = desa.appending(path: "api")
 
+
 extension URL {
     static let users = api.appending(path: "users")
     static let createUser = users.appending(path: "create")
@@ -16,17 +17,17 @@ extension URL {
     
     private static let games = api.appending(path: "games")
     static func getAllGames(page: Int) -> URL {
-        games.appending(path: "list").appending(queryItems: [.page(page), .per()])
+        games.appending(path: "list").appending(queryItems: [.page(page), .per(), .language()])
     }
     static func getGamesByConsole(name: String, page: Int) -> URL {
-        games.appending(path: "byConsole").appending(queryItems: [.console(name), .page(page), .per()])
+        games.appending(path: "byConsole").appending(queryItems: [.console(name), .page(page), .per(), .language()])
     }
-    static let getFeaturedGames = games.appending(path: "featured")
+    static let getFeaturedGames = games.appending(path: "featured").appending(queryItems: [.language()])
     static func searchGame(name: String) -> URL {
-        games.appending(path: "search").appending(queryItems: [.game(name)])
+        games.appending(path: "search").appending(queryItems: [.game(name), .language()])
     }
     static let favorites = games.appending(path: "favorites")
-    static let getUserFavoriteGames = favorites.appending(path: "list")
+    static let getUserFavoriteGames = favorites.appending(path: "list").appending(queryItems: [.language()])
     static let addFavoriteGame = favorites.appending(path: "add")
     static func deleteFavoriteGame(id: UUID) -> URL {
         favorites.appending(path: "delete").appending(path: id.uuidString)
@@ -48,7 +49,7 @@ extension URL {
     static let addScore = scores.appending(path: "add")
    
     static let challenges = api.appending(path: "challenges")
-    static let getChallenges = challenges.appending(path: "list")
+    static let getChallenges = challenges.appending(path: "list").appending(queryItems: [.language()])
     
     static let emblems = api.appending(path: "emblems")
     static let getActiveUserEmblems = emblems.appending(path: "listActive")
@@ -85,5 +86,12 @@ extension URLQueryItem {
     }
     static func console(_ name: String) -> URLQueryItem {
         URLQueryItem(name: "console", value: name)
+    }
+    static func language() -> URLQueryItem {
+        if let lang = Locale.current.language.languageCode {
+            URLQueryItem(name: "lang", value: lang.identifier)
+        } else {
+            URLQueryItem(name: "lang", value: "en")
+        }
     }
 }
