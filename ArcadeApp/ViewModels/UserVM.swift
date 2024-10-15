@@ -142,8 +142,7 @@ final class UserVM {
         
         if let result = try await photoItem.loadTransferable(type: Data.self),
            let image = UIImage(data: result),
-           let resize = await image.byPreparingThumbnail(ofSize: image.size.thumbnailCGSize(width: 100, height: 100)),
-           let data = resize.heicData() {
+           let data = image.heicData() {
             return data
         } else {
             return nil
