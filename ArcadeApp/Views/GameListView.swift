@@ -13,28 +13,7 @@ struct GameListView: View {
         
         ScrollView {
             VStack(spacing: 15) {
-                Group {
-                    Button {
-                        showSearchable = true
-                    } label: {
-                        HStack(spacing: 10) {
-                            Image(systemName:"magnifyingglass")
-                                .font(.customBody)
-                            Text("Search")
-                                .font(.customBody)
-                            Spacer()
-                        }
-                        .foregroundStyle(.secondary)
-                        .frame(maxWidth: .infinity)
-                    }
-                    .buttonStyle(TextFieldStyleButton())
-                    
-                    ScrollSelector(selected: $gamesBVM.activeConsole)
-                }
-                .scrollTransition(.animated, axis: .vertical) { content, phase in
-                    content
-                        .opacity(phase.isIdentity ? 1.0 : 0.4)
-                }
+                ScrollSelector(selected: $gamesBVM.activeConsole)
                 
                 LazyVStack(spacing: 20) {
                     ForEach(gamesVM.games) { game in
@@ -59,7 +38,25 @@ struct GameListView: View {
             .opacity(!showSearchable && gamesVM.selectedGame == nil ? 1.0 : 0.0 )
             .namespace(showSearchable ? nil : namespace)
         }
-        .padding(.top)
+        .safeAreaInset(edge: .top) {
+            Button {
+                showSearchable = true
+            } label: {
+                HStack(spacing: 10) {
+                    Image(systemName:"magnifyingglass")
+                        .font(.customBody)
+                    Text("Search")
+                        .font(.customBody)
+                    Spacer()
+                }
+                .foregroundStyle(.secondary)
+                .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(TextFieldStyleButton())
+            .padding(.bottom, 5)
+            .background(Color.background)
+            .opacity(gamesVM.selectedGame != nil || showSearchable ? 0.0 : 1.0)
+        }
         .onChange(of: gamesVM.selectedGame) { oldValue, newValue in
             if newValue == nil {
                 withAnimation(.default.delay(0.4)) {
