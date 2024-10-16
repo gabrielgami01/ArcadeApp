@@ -192,6 +192,9 @@
         }
       }
     },
+    "Continue" : {
+
+    },
     "Date" : {
       "localizations" : {
         "es" : {
@@ -811,6 +814,9 @@
           }
         }
       }
+    },
+    "What's new in \nArcade Studios" : {
+
     },
     "Write a review" : {
       "localizations" : {

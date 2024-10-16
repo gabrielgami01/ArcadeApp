@@ -2,6 +2,7 @@ import SwiftUI
 
 struct MainTabView: View {
     @Environment(GamesVM.self) private var gamesVM
+    @AppStorage("firstTime") private var firstTime: Bool = true
     
     init() {
         let appearance = UITabBarAppearance()
@@ -30,7 +31,10 @@ struct MainTabView: View {
                     Label("Profile", systemImage: "person.crop.circle")
                 }
         }
-       
+        .sheet(isPresented: $firstTime) {
+            OnboardingView()
+                .interactiveDismissDisabled(true)
+        }
     }
 }
 
