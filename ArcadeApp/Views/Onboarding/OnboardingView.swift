@@ -11,42 +11,39 @@ struct OnboardingView: View {
                 .multilineTextAlignment(.center)
             
             TabView {
-                VStack(alignment: .leading, spacing: 25) {
+                VStack(alignment: .leading, spacing: 30) {
                     PointView(symbol: "list.bullet.clipboard.fill",
                               title: "List of Games and Details",
                               subTitle: "Explore a list of available games with detailed descriptions and images.")
                     PointView(symbol: "magnifyingglass",
-                              title: "Sorting and Filtering",
-                              subTitle: "Sort the available games by console.\nSearch the games that interest you the most.")
+                              title: "Filter and Searching",
+                              subTitle: "Filter games by console and search the games that interest you the most.")
                     PointView(symbol: "heart.fill",
                               title: "Favorites",
                               subTitle: "Add the games you like the most to your favorites list for quick access.")
                     PointView(symbol: "info.bubble.fill",
                               title: "Reviews and Ratings",
-                              subTitle: "Read reviews and ratings from other users.\nLeave your own feedback and rate the games you’ve played.")
+                              subTitle: "Read reviews and ratings from other users and leave your own feedback.")
                     PointView(symbol: "info.bubble.fill",
                               title: "Score History",
-                              subTitle: "Upload your scores and visualize your progress over time through detailed charts.\nAttach an image of the score for later verification.")
+                              subTitle: "Upload your scores and visualize your progress over time through charts.")
                     
                     Spacer()
                 }
                 
-                VStack(alignment: .leading, spacing: 25) {
+                VStack(alignment: .leading, spacing: 30) {
                     PointView(symbol: "trophy",
                               title: "Challenges",
-                              subTitle: "Each game includes challenges with target scores that challenge you to improve.\nComplete challenges and earn unique emblems to display on your profile.")
+                              subTitle: "Complete challenges and earn unique emblems to display on your profile.")
                     PointView(symbol: "rosette",
                               title: "Rankings",
                               subTitle: "View the global score ranking for each game, only with verified scores.")
                     PointView(symbol: "person.2.fill",
                               title: "Social",
-                              subTitle: "Follow other users and see who follows you.\nAccess the profile cards of other users.")
-                    PointView(symbol: "person.2.fill",
-                              title: "Social",
-                              subTitle: "Follow other users and see who follows you.\nAccess the profile cards of other users.")
+                              subTitle: "Follow other users and see who follows you and access the profile cards of other users.")
                     PointView(symbol: "person.fill",
                               title: "Profile",
-                              subTitle: "Choose your avatar and add a personal biography.\nDisplay your emblems on your user card.")
+                              subTitle: "Choose your avatar and add a personal biography and display your emblems on your user card.")
                     
                     Spacer()
                     
@@ -60,7 +57,7 @@ struct OnboardingView: View {
                             .padding(.vertical, 10)
                             .background(.accent, in: .rect(cornerRadius: 10))
                     }
-                    .padding(.bottom, 50)
+                    .padding(.bottom, 80)
                 }
             }
             .tabViewStyle(.page)
@@ -79,8 +76,8 @@ struct OnboardingView: View {
 
 struct PointView: View {
     let symbol: String
-    let title: String
-    let subTitle: String
+    let title: LocalizedStringKey
+    let subTitle: LocalizedStringKey
     
     var body: some View {
         HStack(spacing: 15) {

@@ -110,6 +110,16 @@
         }
       }
     },
+    "Add the games you like the most to your favorites list for quick access." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añade los juegos que más te gustan a tu lista de favoritos para acceder a ellos rápidamente."
+          }
+        }
+      }
+    },
     "Add your comment" : {
       "localizations" : {
         "es" : {
@@ -182,6 +192,16 @@
         }
       }
     },
+    "Choose your avatar and add a personal biography and display your emblems on your user card." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige tu avatar y añade una biografía personal, y muestra tus emblemas en tu tarjeta de usuario."
+          }
+        }
+      }
+    },
     "Clear all" : {
       "localizations" : {
         "es" : {
@@ -192,8 +212,25 @@
         }
       }
     },
+    "Complete challenges and earn unique emblems to display on your profile." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completa desafíos y gana emblemas únicos para mostrar en tu perfil."
+          }
+        }
+      }
+    },
     "Continue" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuar"
+          }
+        }
+      }
     },
     "Date" : {
       "localizations" : {
@@ -245,6 +282,26 @@
         }
       }
     },
+    "Explore a list of available games with detailed descriptions and images." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Explora una lista de juegos disponibles con descripciones detalladas e imágenes."
+          }
+        }
+      }
+    },
+    "Favorites" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favoritos"
+          }
+        }
+      }
+    },
     "FAVORITES" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -278,12 +335,42 @@
         }
       }
     },
+    "Filter and Searching" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtrar y Búsqueda"
+          }
+        }
+      }
+    },
+    "Filter games by console and search the games that interest you the most." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtra los juegos por consola y busca los que más te interesen."
+          }
+        }
+      }
+    },
     "Follow" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Seguir"
+          }
+        }
+      }
+    },
+    "Follow other users and see who follows you and access the profile cards of other users." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sigue a otros usuarios, ve quién te sigue y accede a las tarjetas de perfil de otros usuarios."
           }
         }
       }
@@ -364,6 +451,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Me gusta"
+          }
+        }
+      }
+    },
+    "List of Games and Details" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listado de Juegos y Detalles"
           }
         }
       }
@@ -555,6 +652,16 @@
         }
       }
     },
+    "Read reviews and ratings from other users and leave your own feedback." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lee opiniones y valoraciones de otros usuarios y deja tus propios comentarios."
+          }
+        }
+      }
+    },
     "Recent searches" : {
       "localizations" : {
         "es" : {
@@ -585,6 +692,16 @@
         }
       }
     },
+    "Reviews and Ratings" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opiniones y Valoraciones"
+          }
+        }
+      }
+    },
     "Save" : {
       "localizations" : {
         "es" : {
@@ -601,6 +718,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Puntuación"
+          }
+        }
+      }
+    },
+    "Score History" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Histórico de Puntuaciones"
           }
         }
       }
@@ -794,6 +921,16 @@
         }
       }
     },
+    "Upload your scores and visualize your progress over time through charts." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sube tus puntuaciones y visualiza tu progreso a lo largo del tiempo mediante gráficos."
+          }
+        }
+      }
+    },
     "Username" : {
       "localizations" : {
         "es" : {
@@ -815,8 +952,25 @@
         }
       }
     },
+    "View the global score ranking for each game, only with verified scores." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visualiza el ranking global de puntuaciones por cada juego, solo con las puntuaciones verificadas."
+          }
+        }
+      }
+    },
     "What's new in \nArcade Studios" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Novedades en\nArcade Studios"
+          }
+        }
+      }
     },
     "Write a review" : {
       "localizations" : {
