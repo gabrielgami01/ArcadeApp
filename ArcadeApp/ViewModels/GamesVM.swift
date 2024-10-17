@@ -2,7 +2,7 @@ import SwiftUI
 
 @Observable
 final class GamesVM {
-    let interactor: DataInteractor
+    let repository: RepositoryProtocol
     
     var featured: [Game] = []
     var favorites: [Game] = []
@@ -29,8 +29,8 @@ final class GamesVM {
     var errorMsg = ""
     var showError = false
     
-    init(interactor: DataInteractor = Network.shared) {
-        self.interactor = interactor
+    init(repository: RepositoryProtocol = Repository.shared) {
+        self.repository = repository
         if SecManager.shared.isLogged {
             Task(priority: .high) {
                 await getFeaturedFavoriteGames()
@@ -51,7 +51,7 @@ final class GamesVM {
     
     func getFeaturedFavoriteGames() async {
         do {
-            let (featured, favorites) = try await interactor.getFeaturedFavoriteGames()
+            let (featured, favorites) = try await repository.getFeaturedFavoriteGames()
             await MainActor.run {
                 self.featured = featured
                 self.favorites = favorites
@@ -68,12 +68,12 @@ final class GamesVM {
     func getGames() async {
         do {
             if activeConsole == .all {
-                let games = try await interactor.getAllGames(page: page)
+                let games = try await repository.getAllGames(page: page)
                 await MainActor.run {
                     self.games += games
                 }
             } else {
-                let games = try await interactor.getGamesByConsole(activeConsole, page: page)
+                let games = try await repository.getGamesByConsole(activeConsole, page: page)
                 await MainActor.run {
                     self.games += games
                 }

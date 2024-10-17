@@ -64,7 +64,7 @@ struct ChallengesView: View {
 #Preview {
     NavigationStack {
         ChallengesView()
-            .environment(ChallengesVM(interactor: TestInteractor()))
+            .environment(ChallengesVM(repository: TestRepository()))
             .preferredColorScheme(.dark)
             .namespace(Namespace().wrappedValue)
     }

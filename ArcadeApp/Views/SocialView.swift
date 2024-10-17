@@ -50,9 +50,9 @@ struct SocialView: View {
 #Preview {
     NavigationStack {
         SocialView()
-            .environment(UserVM(interactor: TestInteractor()))
-            .environment(ChallengesVM(interactor: TestInteractor()))
-            .environment(SocialVM(interactor: TestInteractor()))
+            .environment(UserVM(repository: TestRepository()))
+            .environment(ChallengesVM(repository: TestRepository()))
+            .environment(SocialVM(repository: TestRepository()))
             .preferredColorScheme(.dark)
     }
 }

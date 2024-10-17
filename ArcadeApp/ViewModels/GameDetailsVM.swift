@@ -2,7 +2,7 @@ import Foundation
 
 @Observable
 final class GameDetailsVM {
-    let interactor: DataInteractor
+    let repository: RepositoryProtocol
     
     var isFavorite = false
     
@@ -31,13 +31,13 @@ final class GameDetailsVM {
     var errorMsg = ""
     var showError = false
     
-    init(interactor: DataInteractor = Network.shared) {
-        self.interactor = interactor
+    init(repository: RepositoryProtocol = Repository.shared) {
+        self.repository = repository
     }
     
     func getGameDetails(id: UUID) async {
         do {
-            let (isFavorite, reviews, scores) = try await interactor.getGameDetails(id: id)
+            let (isFavorite, reviews, scores) = try await repository.getGameDetails(id: id)
             await MainActor.run {
                 self.isFavorite = isFavorite
                 self.reviews = reviews
@@ -55,10 +55,10 @@ final class GameDetailsVM {
     func toggleFavorite(gameID: UUID) async -> Bool {
         do {
             if isFavorite {
-                try await interactor.deleteFavoriteGame(id: gameID)
+                try await repository.deleteFavoriteGame(id: gameID)
             } else {
-                let favoriteDTO = FavoriteDTO(gameID: gameID)
-                try await interactor.addFavoriteGame(favoriteDTO)
+                let favoriteDTO = GameDTO(gameID: gameID)
+                try await repository.addFavoriteGame(favoriteDTO)
             }
             return true
         } catch {
@@ -74,7 +74,7 @@ final class GameDetailsVM {
     func addReviewAPI(_ review: Review, to game: Game) async -> Bool {
         do {
             let reviewDTO = CreateReviewDTO(title: review.title, comment: review.comment, rating: review.rating, gameID: game.id)
-            try await interactor.addReview(reviewDTO)
+            try await repository.addReview(reviewDTO)
             return true
         } catch {
             await MainActor.run {
@@ -93,7 +93,7 @@ final class GameDetailsVM {
     func addScoreAPI(imageData: Data, to game: Game) async -> Bool {
         do {
             let scoreDTO = CreateScoreDTO(image: imageData, gameID: game.id)
-            try await interactor.addScore(scoreDTO)
+            try await repository.addScore(scoreDTO)
             return true
         } catch {
             await MainActor.run {

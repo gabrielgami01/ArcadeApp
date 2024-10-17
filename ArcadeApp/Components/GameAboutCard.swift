@@ -76,7 +76,7 @@ struct GameAboutCard: View {
 
 #Preview {
     GameAboutCard(game: .test, animation: true)
-        .environment(GamesVM(interactor: TestInteractor()))
-        .environment(GameDetailsVM(interactor: TestInteractor()))
+        .environment(GamesVM(repository: TestRepository()))
+        .environment(GameDetailsVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }

@@ -55,6 +55,6 @@ struct AddEmblemView: View {
 
 #Preview {
     AddEmblemView()
-        .environment(ChallengesVM(interactor: TestInteractor()))
+        .environment(ChallengesVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }

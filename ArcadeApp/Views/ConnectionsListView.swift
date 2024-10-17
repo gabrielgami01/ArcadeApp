@@ -43,9 +43,9 @@ struct ConnectionsListView: View {
 
 #Preview {
     ConnectionsListView(type: .following)
-        .environment(UserVM(interactor: TestInteractor()))
-        .environment(ChallengesVM(interactor: TestInteractor()))
-        .environment(SocialVM(interactor: TestInteractor()))
+        .environment(UserVM(repository: TestRepository()))
+        .environment(ChallengesVM(repository: TestRepository()))
+        .environment(SocialVM(repository: TestRepository()))
         .background(Color.background)
         .preferredColorScheme(.dark)
 }

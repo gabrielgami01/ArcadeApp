@@ -52,7 +52,7 @@ struct UserCard: View {
 
 #Preview {
     UserCard(user: .test)
-        .environment(ChallengesVM(interactor: TestInteractor()))
-        .environment(SocialVM(interactor: TestInteractor()))
+        .environment(ChallengesVM(repository: TestRepository()))
+        .environment(SocialVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }

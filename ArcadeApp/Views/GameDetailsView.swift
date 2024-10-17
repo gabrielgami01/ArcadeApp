@@ -75,9 +75,9 @@ struct GameDetailsView: View {
 
 #Preview {
     GameDetailsView(game: .test)
-        .environment(UserVM(interactor: TestInteractor()))
-        .environment(GamesVM(interactor: TestInteractor()))
-        .environment(GameDetailsVM(interactor: TestInteractor()))
+        .environment(UserVM(repository: TestRepository()))
+        .environment(GamesVM(repository: TestRepository()))
+        .environment(GameDetailsVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
         .background(Color.background)
         .namespace(Namespace().wrappedValue)

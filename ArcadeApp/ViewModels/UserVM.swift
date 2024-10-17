@@ -3,7 +3,7 @@ import PhotosUI
 
 @Observable
 final class UserVM {
-    let interactor: DataInteractor
+    let repository: RepositoryProtocol
     let secManager: SecManager = SecManager.shared
     
     var activeUser: User? = nil
@@ -22,8 +22,8 @@ final class UserVM {
     var errorMsg = ""
     var showError = false
 
-    init(interactor: DataInteractor = Network.shared) {
-        self.interactor = interactor
+    init(repository: RepositoryProtocol = Repository.shared) {
+        self.repository = repository
         
         if secManager.isLogged {
             Task { await refreshToken() }
@@ -32,7 +32,7 @@ final class UserVM {
     
     func login() async {
         do {
-            let activeUser = try await interactor.login(user: username, pass: password)
+            let activeUser = try await repository.login(user: username, pass: password)
             await MainActor.run {
                 self.activeUser = activeUser
             }
@@ -56,7 +56,7 @@ final class UserVM {
     
     func refreshToken() async {
         do {
-            let activeUser = try await interactor.refreshJWT()
+            let activeUser = try await repository.refreshJWT()
             await MainActor.run {
                 self.activeUser = activeUser
             }
@@ -72,7 +72,7 @@ final class UserVM {
     func updateUserAboutAPI() async -> Bool {
         do {
             let updateUserDTO = UpdateUserDTO(about: about, imageData: nil)
-            try await interactor.updateUserAbout(updateUserDTO)
+            try await repository.updateUserAbout(updateUserDTO)
             return true
         } catch {
             await MainActor.run {
@@ -102,7 +102,7 @@ final class UserVM {
         do {
             if let imageData = try await convertPhotoItem() {
                 let updateUserDTO = UpdateUserDTO(about: nil, imageData: imageData)
-                try await interactor.updateUserAvatar(updateUserDTO)
+                try await repository.updateUserAvatar(updateUserDTO)
                 updateUserAvatar(imageData: imageData)
             }
         } catch {

@@ -120,7 +120,7 @@ struct SearchableView: View {
 
 #Preview {
     SearchableView(show: .constant(true))
-        .environment(GamesVM(interactor: TestInteractor()))
+        .environment(GamesVM(repository: TestRepository()))
         .swiftDataPreview
         .preferredColorScheme(.dark)
         .scrollBounceBehavior(.basedOnSize)

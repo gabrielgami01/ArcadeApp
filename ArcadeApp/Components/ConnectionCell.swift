@@ -29,7 +29,7 @@ struct ConnectionsCell: View {
 
 #Preview {
     ConnectionsCell(user: .test)
-        .environment(SocialVM(interactor: TestInteractor()))
+        .environment(SocialVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
         .padding()
 }

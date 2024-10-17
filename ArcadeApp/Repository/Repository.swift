@@ -1,6 +1,6 @@
 import Foundation
 
-protocol DataInteractor {
+protocol RepositoryProtocol {
     func register(user: CreateUserDTO) async throws
     func login(user: String, pass: String) async throws -> User
     func refreshJWT() async throws -> User
@@ -14,7 +14,7 @@ protocol DataInteractor {
     func getFeaturedFavoriteGames() async throws -> (featured: [Game], favorites: [Game]) 
     
     func getGameDetails(id: UUID) async throws -> (favorite: Bool, reviews: [Review], scores: [Score])
-    func addFavoriteGame(_ game: FavoriteDTO) async throws
+    func addFavoriteGame(_ game: GameDTO) async throws
     func deleteFavoriteGame(id: UUID) async throws
     func addReview(_ review: CreateReviewDTO) async throws
     func addScore(_ score: CreateScoreDTO) async throws
@@ -29,14 +29,14 @@ protocol DataInteractor {
     func getGameRanking(id: UUID, page: Int) async throws -> [RankingScore]
     
     func getFollowingFollowers() async throws -> (following: [UserConnections], followers: [UserConnections])
-    func followUser(_ connectionsDTO: ConnectionsDTO) async throws
+    func followUser(_ connectionsDTO: UserDTO) async throws
     func unfollowUser(id: UUID) async throws
 }
 
-struct Network: DataInteractor, JSONInteractor {
+struct Repository: RepositoryProtocol, JSONService {
     let session: URLSession
     
-    static let shared = Network()
+    static let shared = Repository()
     
     init(session: URLSession = .shared) {
         self.session = session
@@ -114,7 +114,7 @@ struct Network: DataInteractor, JSONInteractor {
         return try await (favoriteRequest, reviewsRequest, scoresRequest)
     }
     
-    func addFavoriteGame(_ game: FavoriteDTO) async throws{
+    func addFavoriteGame(_ game: GameDTO) async throws{
         try await send(request: .send(url: .addFavoriteGame, data: game, method: .post, token: getToken()), status: 201)
     }
     
@@ -172,7 +172,7 @@ struct Network: DataInteractor, JSONInteractor {
         return try await(followingRequest, followersRequest)
     }
     
-    func followUser(_ connectionsDTO: ConnectionsDTO) async throws {
+    func followUser(_ connectionsDTO: UserDTO) async throws {
         try await send(request: .send(url: .followUser, data: connectionsDTO, method: .post, token: getToken()), status: 201)
     }
     

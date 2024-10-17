@@ -40,7 +40,7 @@ struct EditAboutView: View {
 
 #Preview {
     EditAboutView()
-        .environment(UserVM(interactor: TestInteractor()))
+        .environment(UserVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }
 

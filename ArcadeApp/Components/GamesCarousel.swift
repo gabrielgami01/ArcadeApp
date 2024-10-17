@@ -66,7 +66,7 @@ struct GamesCarousel: View {
 
 #Preview {
     GamesCarousel(selectedType: .constant(.favorites), type: .favorites, games: [.test,.test2])
-        .environment(GamesVM(interactor: TestInteractor()))
+        .environment(GamesVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
         .namespace(Namespace().wrappedValue)
 }

@@ -74,7 +74,7 @@ struct LoginView: View {
 
 #Preview {
     LoginView()
-        .environment(UserVM(interactor: TestInteractor()))
+        .environment(UserVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }
 

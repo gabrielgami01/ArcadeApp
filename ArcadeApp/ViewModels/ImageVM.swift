@@ -19,7 +19,7 @@ final class ImageVM {
     
     private func fetchImage(from url: URL) async {
         do {
-            let image = try await NetworkImage.shared.fetchImage(from: url)
+            let image = try await ImageDownloader.shared.fetchImage(from: url)
             await MainActor.run {
                 self.image = image
             }

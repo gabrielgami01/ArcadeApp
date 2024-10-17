@@ -58,10 +58,10 @@ struct GameRankingView: View {
 
 #Preview {
     NavigationStack {
-        GameRankingView(rankingsVM: RankingsVM(interactor: TestInteractor()), game: .test)
-            .environment(UserVM(interactor: TestInteractor()))
-            .environment(SocialVM(interactor: TestInteractor()))
-            .environment(ChallengesVM(interactor: TestInteractor()))
+        GameRankingView(rankingsVM: RankingsVM(repository: TestRepository()), game: .test)
+            .environment(UserVM(repository: TestRepository()))
+            .environment(SocialVM(repository: TestRepository()))
+            .environment(ChallengesVM(repository: TestRepository()))
             .preferredColorScheme(.dark)
     }
 }

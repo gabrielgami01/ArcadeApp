@@ -7,6 +7,13 @@ struct Score: Codable, Identifiable, Hashable {
     let date: Date
 }
 
+struct RankingScore: Codable, Identifiable, Hashable {
+    let id: UUID
+    let score: Int
+    let date: Date
+    let user: User
+}
+
 struct CreateScoreDTO: Codable {
     let image: Data
     let gameID: UUID
@@ -17,9 +24,4 @@ struct RankingScorePageDTO: Codable {
     let metadata: Metadata
 }
 
-struct RankingScore: Codable, Identifiable, Hashable {
-    let id: UUID
-    let score: Int
-    let date: Date
-    let user: User
-}
+

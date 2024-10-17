@@ -83,10 +83,10 @@ struct GameListView: View {
 
 #Preview {
     GameListView()
-        .environment(GamesVM(interactor: TestInteractor()))
-        .environment(GameDetailsVM(interactor: TestInteractor()))
-        .environment(UserVM(interactor: TestInteractor()))
-        .environment(SocialVM(interactor: TestInteractor()))
+        .environment(GamesVM(repository: TestRepository()))
+        .environment(GameDetailsVM(repository: TestRepository()))
+        .environment(UserVM(repository: TestRepository()))
+        .environment(SocialVM(repository: TestRepository()))
         .swiftDataPreview
         .preferredColorScheme(.dark)
         .namespace(Namespace().wrappedValue)

@@ -37,6 +37,6 @@ struct ConnectionsButton: View {
 
 #Preview {
     ConnectionsButton(user: .test)
-        .environment(SocialVM(interactor: TestInteractor()))
+        .environment(SocialVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }

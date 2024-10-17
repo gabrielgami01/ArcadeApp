@@ -31,7 +31,7 @@ struct SocialCell: View {
 
 #Preview {
     SocialCell(userConnection: .test)
-        .environment(SocialVM(interactor: TestInteractor()))
+        .environment(SocialVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
         
 }

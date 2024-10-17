@@ -65,8 +65,8 @@ struct RegisterView: View {
 
 #Preview {
     NavigationStack {
-        RegisterView(registerVM: RegisterVM(interactor: TestInteractor()))
-            .environment(UserVM(interactor: TestInteractor()))
+        RegisterView(registerVM: RegisterVM(repository: TestRepository()))
+            .environment(UserVM(repository: TestRepository()))
             .preferredColorScheme(.dark)
     }
 }

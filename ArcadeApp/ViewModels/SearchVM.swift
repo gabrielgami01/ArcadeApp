@@ -4,7 +4,7 @@ import Combine
 
 @Observable
 final class SearchVM {
-    let interactor: DataInteractor
+    let repository: RepositoryProtocol
     
     private var subscribers = Set<AnyCancellable>()
     let searchPublisher = PassthroughSubject<String, Never>()
@@ -24,8 +24,8 @@ final class SearchVM {
     var errorMsg = ""
     var showError = false
     
-    init(interactor: DataInteractor = Network.shared) {
-        self.interactor = interactor
+    init(repository: RepositoryProtocol = Repository.shared) {
+        self.repository = repository
         searchPublisher
             .debounce(for: .seconds(0.3), scheduler: DispatchQueue.main)
             .sink { [self] text in
@@ -36,7 +36,7 @@ final class SearchVM {
     
     func searchGame() async {
         do {
-            let games = try await interactor.searchGame(name: searchText)
+            let games = try await repository.searchGame(name: searchText)
             await MainActor.run {
                 self.games = games
             }

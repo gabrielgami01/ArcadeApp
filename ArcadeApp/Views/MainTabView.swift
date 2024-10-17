@@ -40,10 +40,10 @@ struct MainTabView: View {
 
 #Preview {
     MainTabView()
-        .environment(UserVM(interactor: TestInteractor()))
-        .environment(GamesVM(interactor: TestInteractor()))
-        .environment(GameDetailsVM(interactor: TestInteractor()))
-        .environment(ChallengesVM(interactor: TestInteractor()))
-        .environment(SocialVM(interactor: TestInteractor()))
+        .environment(UserVM(repository: TestRepository()))
+        .environment(GamesVM(repository: TestRepository()))
+        .environment(GameDetailsVM(repository: TestRepository()))
+        .environment(ChallengesVM(repository: TestRepository()))
+        .environment(SocialVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }

@@ -2,7 +2,7 @@ import SwiftUI
 
 @Observable
 final class SocialVM {
-    let interactor: DataInteractor
+    let repository: RepositoryProtocol
     
     var following: [UserConnections] = []
     var followers: [UserConnections] = []
@@ -10,8 +10,8 @@ final class SocialVM {
     var errorMsg = ""
     var showError = false
     
-    init(interactor: DataInteractor = Network.shared) {
-        self.interactor = interactor
+    init(repository: RepositoryProtocol = Repository.shared) {
+        self.repository = repository
         if SecManager.shared.isLogged {
             Task(priority: .high) {
                 await getFollowingFollowers()
@@ -30,7 +30,7 @@ final class SocialVM {
     
     func getFollowingFollowers() async {
         do {
-            let (following, followers) = try await interactor.getFollowingFollowers()
+            let (following, followers) = try await repository.getFollowingFollowers()
             await MainActor.run {
                 self.following = following
                 self.followers = followers
@@ -50,8 +50,8 @@ final class SocialVM {
     
     func followUserAPI(id: UUID) async -> Bool {
         do {
-            let connectionsDTO = ConnectionsDTO(userID: id)
-            try await interactor.followUser(connectionsDTO)
+            let connectionsDTO = UserDTO(userID: id)
+            try await repository.followUser(connectionsDTO)
             return true
         } catch {
             await MainActor.run {
@@ -69,7 +69,7 @@ final class SocialVM {
     
     func unfollowUserAPI(id: UUID) async -> Bool {
         do {
-            try await interactor.unfollowUser(id: id)
+            try await repository.unfollowUser(id: id)
             return true
         } catch {
             await MainActor.run {

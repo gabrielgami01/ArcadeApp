@@ -2,7 +2,7 @@ import SwiftUI
 
 @Observable
 final class RankingsVM {
-    let interactor: DataInteractor
+    let repository: RepositoryProtocol
     
     var rankingScores: [RankingScore] = []
     @ObservationIgnored var ranking: [(offset: Int, element: RankingScore)] {
@@ -14,13 +14,13 @@ final class RankingsVM {
     var errorMsg = ""
     var showError = false
     
-    init(interactor: DataInteractor = Network.shared) {
-        self.interactor = interactor
+    init(repository: RepositoryProtocol = Repository.shared) {
+        self.repository = repository
     }
     
     func getGameRanking(id: UUID) async {
         do {
-            let rankingScores = try await interactor.getGameRanking(id: id, page: rankingsPage)
+            let rankingScores = try await repository.getGameRanking(id: id, page: rankingsPage)
             await MainActor.run {
                 self.rankingScores = rankingScores
             }

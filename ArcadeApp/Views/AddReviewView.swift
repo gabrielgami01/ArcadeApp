@@ -64,7 +64,7 @@ struct AddReviewView: View {
 
 #Preview {
     AddReviewView(game: .test)
-        .environment(UserVM(interactor: TestInteractor()))
-        .environment(GameDetailsVM(interactor: TestInteractor()))
+        .environment(UserVM(repository: TestRepository()))
+        .environment(GameDetailsVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }

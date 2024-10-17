@@ -18,8 +18,8 @@ struct ContentView: View {
 #Preview {
     ContentView()
         .environment(UserVM())
-        .environment(GamesVM(interactor: TestInteractor()))
-        .environment(GameDetailsVM(interactor: TestInteractor()))
-        .environment(ChallengesVM(interactor: TestInteractor()))
-        .environment(SocialVM(interactor: TestInteractor()))
+        .environment(GamesVM(repository: TestRepository()))
+        .environment(GameDetailsVM(repository: TestRepository()))
+        .environment(ChallengesVM(repository: TestRepository()))
+        .environment(SocialVM(repository: TestRepository()))
 }

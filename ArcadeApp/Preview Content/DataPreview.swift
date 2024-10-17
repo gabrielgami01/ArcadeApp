@@ -12,7 +12,7 @@ func loadData(file: String) throws -> [Game] {
 }
 
 
-struct TestInteractor: DataInteractor {
+struct TestRepository: RepositoryProtocol {
     func register(user: CreateUserDTO) async throws {}
     
     func login(user: String, pass: String) async throws  -> User {
@@ -51,7 +51,7 @@ struct TestInteractor: DataInteractor {
     }
     
     
-    func addFavoriteGame(_ game: FavoriteDTO) async throws {}
+    func addFavoriteGame(_ game: GameDTO) async throws {}
     
     func deleteFavoriteGame(id: UUID) async throws {}
     
@@ -84,7 +84,7 @@ struct TestInteractor: DataInteractor {
         ([.test, .test2], [.test, .test3])
     }
     
-    func followUser(_ connectionsDTO: ConnectionsDTO) async throws {}
+    func followUser(_ connectionsDTO: UserDTO) async throws {}
     
     func unfollowUser(id: UUID) async throws {}
 }

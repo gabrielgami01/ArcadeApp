@@ -5,7 +5,3 @@ struct UserConnections: Codable, Identifiable, Hashable {
     let user: User
     let createdAt: Date
 }
-
-struct ConnectionsDTO: Codable {
-    let userID: UUID
-}

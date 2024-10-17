@@ -1,9 +1,9 @@
 import SwiftUI
 
-actor NetworkImage: ImageInteractor {
+actor ImageDownloader: ImageService {
     let session: URLSession
     
-    static let shared = NetworkImage()
+    static let shared = ImageDownloader()
     
     init(session: URLSession = .shared) {
         self.session = session

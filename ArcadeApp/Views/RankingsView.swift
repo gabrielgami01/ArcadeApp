@@ -34,7 +34,7 @@ struct RankingsView: View {
 #Preview {
     NavigationStack {
         RankingsView()
-            .environment(GamesVM(interactor: TestInteractor()))
+            .environment(GamesVM(repository: TestRepository()))
             .preferredColorScheme(.dark)
             .namespace(Namespace().wrappedValue)
     }

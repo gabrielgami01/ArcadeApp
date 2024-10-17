@@ -2,7 +2,7 @@ import SwiftUI
 
 @Observable
 final class ChallengesVM {
-    let interactor: DataInteractor
+    let repository: RepositoryProtocol
     
     var challenges: [Challenge] = []
     var searchText = ""
@@ -42,13 +42,13 @@ final class ChallengesVM {
     var errorMsg = ""
     var showError = false
     
-    init(interactor: DataInteractor = Network.shared) {
-        self.interactor = interactor
+    init(repository: RepositoryProtocol = Repository.shared) {
+        self.repository = repository
     }
     
     func getChallenges() async {
         do {
-            let challenges = try await interactor.getChallenges()
+            let challenges = try await repository.getChallenges()
             await MainActor.run {
                 self.challenges = challenges
             }
@@ -64,12 +64,12 @@ final class ChallengesVM {
     func getUserEmblems(id: UUID? = nil) async {
         do {
             if let id {
-                let emblems = try await interactor.getUserEmblems(id: id)
+                let emblems = try await repository.getUserEmblems(id: id)
                 await MainActor.run {
                     self.emblems = emblems
                 }
             } else {
-                let emblems = try await interactor.getActiveUserEmblems()
+                let emblems = try await repository.getActiveUserEmblems()
                 await MainActor.run {
                     self.emblems = emblems
                 }
@@ -86,7 +86,7 @@ final class ChallengesVM {
     func addEmblemAPI(challengeID: UUID) async -> Bool {
         do {
             let emblemDTO = CreateEmblemDTO(challengeID: challengeID)
-            try await interactor.addEmblem(emblemDTO)
+            try await repository.addEmblem(emblemDTO)
             return true
         } catch {
             await MainActor.run {
@@ -105,8 +105,8 @@ final class ChallengesVM {
     func updateEmblemAPI(newChallenge: UUID, oldChallenge: UUID) async -> Bool {
         do {
             let createEmblemDTO = CreateEmblemDTO(challengeID: newChallenge)
-            try await interactor.deleteEmblem(challengeID: oldChallenge)
-            try await interactor.addEmblem(createEmblemDTO)
+            try await repository.deleteEmblem(challengeID: oldChallenge)
+            try await repository.addEmblem(createEmblemDTO)
             return true
         } catch {
             await MainActor.run {

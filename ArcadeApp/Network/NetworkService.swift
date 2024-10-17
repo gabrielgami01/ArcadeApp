@@ -1,10 +1,10 @@
 import UIKit
 
-protocol NetworkInteractor {
+protocol NetworkService {
     var session: URLSession { get }
 }
 
-extension NetworkInteractor {
+extension NetworkService {
     func get<T>(request: URLRequest, builder: (Data) throws -> T) async throws -> T {
         let (data, response) = try await URLSession.shared.getData(for: request)
         
@@ -23,9 +23,9 @@ extension NetworkInteractor {
     }
 }
 
-protocol JSONInteractor: NetworkInteractor {}
+protocol JSONService: NetworkService {}
 
-extension JSONInteractor {
+extension JSONService {
     func fetchJSON<JSON>(request: URLRequest, type: JSON.Type) async throws -> JSON where JSON: Codable {
         try await get(request: request) { data in
             do {
@@ -37,9 +37,9 @@ extension JSONInteractor {
     }
 }
 
-protocol ImageInteractor: NetworkInteractor {}
+protocol ImageService: NetworkService {}
 
-extension ImageInteractor  {
+extension ImageService  {
     func fetchImage(url: URL) async throws -> UIImage {
         try await get(request: URLRequest.get(url: url)) { data in
             guard let image = UIImage(data: data) else {

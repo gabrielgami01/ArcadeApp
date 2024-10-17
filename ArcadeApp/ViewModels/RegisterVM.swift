@@ -2,7 +2,7 @@ import SwiftUI
 
 @Observable
 final class RegisterVM {
-    let interactor: DataInteractor
+    let repository: RepositoryProtocol
     
     var username = ""
     var password = ""
@@ -13,14 +13,14 @@ final class RegisterVM {
     var errorMsg = ""
     var showError = false
 
-    init(interactor: DataInteractor = Network.shared) {
-        self.interactor = interactor
+    init(repository: RepositoryProtocol = Repository.shared) {
+        self.repository = repository
     }
     
     func register() async -> Bool {
         do {
             let newUser = CreateUserDTO(username: username, password: password, email: email, fullName: fullName)
-            try await interactor.register(user: newUser)
+            try await repository.register(user: newUser)
             return true
         } catch {
             await MainActor.run {

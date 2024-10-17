@@ -44,6 +44,6 @@ struct AddScoreView: View {
 
 #Preview {
     AddScoreView(game: .test)
-        .environment(GameDetailsVM(interactor: TestInteractor()))
+        .environment(GameDetailsVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }
