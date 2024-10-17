@@ -389,8 +389,8 @@
 		FC22BA932C2593DA002DFAA4 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				FCC324182CAAB78900D1E961 /* NetworkService.swift */,
 				FCC324232CAAC53B00D1E961 /* ImageDownloader.swift */,
+				FCC324182CAAB78900D1E961 /* NetworkService.swift */,
 				FCC324142CAAB62700D1E961 /* URLSession.swift */,
 				FCC324102CAAB37800D1E961 /* URLRequest.swift */,
 				FC22BA942C2593E8002DFAA4 /* URL.swift */,
