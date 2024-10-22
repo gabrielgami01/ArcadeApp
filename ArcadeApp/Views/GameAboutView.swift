@@ -58,7 +58,6 @@ struct GameAboutView: View {
         }
         .onAppear {
             animation = true
-            print("about")
         }
         .sheet(isPresented: $showAddReview) {
             AddReviewView(game: game)
@@ -77,7 +76,6 @@ struct GameAboutView: View {
                     .transition(.move(edge: .bottom).combined(with: .opacity))
             }
         }
-        .scrollBounceBehavior(.basedOnSize)
     }
 }
 
@@ -88,6 +86,7 @@ struct GameAboutView: View {
         .environment(GameDetailsVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
         .background(Color.background)
+        .scrollBounceBehavior(.basedOnSize)
 }
 
 

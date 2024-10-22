@@ -76,6 +76,15 @@ struct GameDetailsView: View {
                         }
                 )
             }
+            .onChange(of: option) { oldValue, newValue in
+                switch newValue {
+                    case .about:()
+                    case .score:
+                        scoresAnimation = true
+                    case .session:
+                        sessionAnimation = true
+                }
+            }
             .task {
                 await detailsVM.getGameDetails(id: game.id)
             }
@@ -87,6 +96,8 @@ struct GameDetailsView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .toolbar(.hidden, for: .tabBar)
+            .background(Color.background)
+            .scrollBounceBehavior(.basedOnSize)
         }
     }
 }
@@ -98,7 +109,6 @@ struct GameDetailsView: View {
         .environment(GameDetailsVM(repository: TestRepository()))
         .environment(GameSessionVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
-        .background(Color.background)
         .namespace(Namespace().wrappedValue)
 }
 

@@ -107,9 +107,6 @@ struct GameScoresView: View {
             }
             .padding(.horizontal)
         }
-        .onAppear {
-            print("scores")
-        }
         .sheet(isPresented: $showAddScore) {
            AddScoreView(game: game)
         }
@@ -123,4 +120,5 @@ struct GameScoresView: View {
         .environment(GameDetailsVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
         .background(Color.background)
+        .scrollBounceBehavior(.basedOnSize)
 }
