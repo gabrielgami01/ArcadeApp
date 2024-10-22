@@ -3,6 +3,7 @@ import SwiftUI
 struct HomeView: View {
     @Environment(UserVM.self) private var userVM
     @Environment(GamesVM.self) private var gamesVM
+    @Environment(GameSessionVM.self) private var gameSessionVM
     
     @State private var selectedType: HomeScrollType = .featured
     
@@ -18,7 +19,11 @@ struct HomeView: View {
                     if let user = userVM.activeUser {
                         Text("Hello \(user.username)")
                             .font(.customLargeTitle)
-                            .padding(.horizontal)
+                            
+                    }
+                    
+                    if let activeSession = gameSessionVM.activeSession {
+                        Text("Sesion activa")
                     }
                     
                     HStack {
@@ -85,5 +90,6 @@ struct HomeView: View {
         .environment(GameDetailsVM(repository: TestRepository()))
         .environment(ChallengesVM(repository: TestRepository()))
         .environment(SocialVM(repository: TestRepository()))
+        .environment(GameSessionVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }

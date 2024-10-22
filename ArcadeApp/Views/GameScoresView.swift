@@ -71,7 +71,8 @@ struct GameScoresView: View {
                                     )
                             }
                         }
-                        
+                        .padding()
+                        .background(Color.card, in: RoundedRectangle(cornerRadius: 10))
                     } else {
                       CustomUnavailableView(title: "Chart unavailable", image: "chart.xyaxis.line",
                                               description: "You need 2 or more scores to see the chart.")
@@ -104,11 +105,10 @@ struct GameScoresView: View {
                 .opacity(animation ? 1.0: 0.0)
                 .animation(.easeInOut.delay(0.4), value: animation)
             }
-            
             .padding(.horizontal)
         }
         .onAppear {
-            animation = true
+            print("scores")
         }
         .sheet(isPresented: $showAddScore) {
            AddScoreView(game: game)

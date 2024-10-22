@@ -9,7 +9,6 @@ struct GameDetailsLabel<Content: View>: View {
         HStack {
             Text(title)
                 .font(.customTitle3)
-                .bold()
             
             Spacer()
             

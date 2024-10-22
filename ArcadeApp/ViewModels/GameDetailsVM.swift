@@ -28,6 +28,8 @@ final class GameDetailsVM {
        (verifiedScores.map { $0.date }.max() ?? Date()).addingTimeInterval(2 * 24 * 60 * 60)
     }
     
+    var sessions: [GameSession] = []
+    
     var errorMsg = ""
     var showError = false
     
@@ -37,11 +39,12 @@ final class GameDetailsVM {
     
     func getGameDetails(id: UUID) async {
         do {
-            let (isFavorite, reviews, scores) = try await repository.getGameDetails(id: id)
+            let (isFavorite, reviews, scores, sessions) = try await repository.getGameDetails(id: id)
             await MainActor.run {
                 self.isFavorite = isFavorite
                 self.reviews = reviews
                 self.scores = scores
+                self.sessions = sessions
             }
         } catch {
             await MainActor.run {

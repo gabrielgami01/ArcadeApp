@@ -58,6 +58,7 @@ struct GameAboutView: View {
         }
         .onAppear {
             animation = true
+            print("about")
         }
         .sheet(isPresented: $showAddReview) {
             AddReviewView(game: game)

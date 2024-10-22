@@ -66,6 +66,18 @@ enum HomeScrollType: String, Identifiable, CaseIterable {
 enum GameOptions: String, Identifiable, CaseIterable {
     case about
     case score
+    case session
+    
+    var image: String {
+        switch self {
+            case .about:
+                return "info.square.fill"
+            case .score:
+                return "chart.xyaxis.line"
+            case .session:
+                return "play.square.fill"
+        }
+    }
     
     var id: Self { self }
 }

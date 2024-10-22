@@ -72,6 +72,16 @@ extension URL {
     static func unfollowUser(id: UUID) -> URL {
         users.appending(path: "unfollow").appending(path: id.uuidString)
     }
+    
+    static let gameSession = api.appending(path: "gameSession")
+    static let startGameSession = gameSession.appending(path: "start")
+    static func endGameSession(id: UUID) -> URL {
+        gameSession.appending(path: "end").appending(path: id.uuidString)
+    }
+    static let getActiveGameSession = gameSession.appending(path: "active").appending(queryItems: [.language()])
+    static func getGameSessions(id: UUID) -> URL {
+        gameSession.appending(path: "list").appending(path: id.uuidString)
+    }
 }
 
 extension URLQueryItem {

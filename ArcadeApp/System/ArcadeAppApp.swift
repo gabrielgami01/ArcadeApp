@@ -8,6 +8,7 @@ struct ArcadeAppApp: App {
     @State private var gamesVM = GamesVM()
     @State private var detailsVM = GameDetailsVM()
     @State private var challengesVM = ChallengesVM()
+    @State private var gameSessionVM = GameSessionVM()
     @State private var socialVM = SocialVM()
     
     var body: some Scene {
@@ -18,6 +19,7 @@ struct ArcadeAppApp: App {
                 .environment(detailsVM)
                 .environment(challengesVM)
                 .environment(socialVM)
+                .environment(gameSessionVM)
                 .unavailableNetwork(status: network.status)
         }
         .modelContainer(for: GameModel.self)

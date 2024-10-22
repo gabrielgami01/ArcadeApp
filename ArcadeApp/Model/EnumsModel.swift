@@ -36,12 +36,14 @@ enum ScoreStatus: String, Codable {
     case denied
 }
 
-enum ChallengeType: String, Codable, Identifiable, CaseIterable {
+enum ChallengeType: String, Codable {
     case all
     case gold
     case silver
-    case bronze
-    
-    var id: Self { self }
-    
+    case bronze   
+}
+
+enum SessionStatus: String, Codable {
+    case active
+    case finished
 }

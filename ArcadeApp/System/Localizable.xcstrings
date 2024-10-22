@@ -90,6 +90,9 @@
         }
       }
     },
+    "Active session" : {
+
+    },
     "Add new emblem" : {
       "localizations" : {
         "es" : {
@@ -271,6 +274,9 @@
           }
         }
       }
+    },
+    "End: %@" : {
+
     },
     "ERROR" : {
       "localizations" : {
@@ -567,6 +573,9 @@
         }
       }
     },
+    "No sessions" : {
+
+    },
     "Password" : {
       "localizations" : {
         "es" : {
@@ -792,6 +801,9 @@
         }
       }
     },
+    "Sesion activa" : {
+
+    },
     "Shooter" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -837,6 +849,9 @@
           }
         }
       }
+    },
+    "Start: %@" : {
+
     },
     "Strategy" : {
       "extractionState" : "manual",
@@ -985,6 +1000,9 @@
     "X" : {
       "shouldTranslate" : false
     },
+    "You already have an active session." : {
+
+    },
     "You haven't any available emblems by the moment." : {
       "localizations" : {
         "es" : {
@@ -1016,6 +1034,9 @@
         }
       }
     },
+    "You haven't any session for this game yet." : {
+
+    },
     "You need 2 or more scores to see the chart." : {
       "localizations" : {
         "es" : {
@@ -1025,6 +1046,9 @@
           }
         }
       }
+    },
+    "Your past sessions" : {
+
     },
     "Your scores" : {
       "localizations" : {

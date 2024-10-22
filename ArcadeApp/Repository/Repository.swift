@@ -13,7 +13,7 @@ protocol RepositoryProtocol {
     
     func getFeaturedFavoriteGames() async throws -> (featured: [Game], favorites: [Game]) 
     
-    func getGameDetails(id: UUID) async throws -> (favorite: Bool, reviews: [Review], scores: [Score])
+    func getGameDetails(id: UUID) async throws -> (favorite: Bool, reviews: [Review], scores: [Score], sessions: [GameSession])
     func addFavoriteGame(_ game: GameDTO) async throws
     func deleteFavoriteGame(id: UUID) async throws
     func addReview(_ review: CreateReviewDTO) async throws
@@ -31,6 +31,10 @@ protocol RepositoryProtocol {
     func getFollowingFollowers() async throws -> (following: [UserConnections], followers: [UserConnections])
     func followUser(_ connectionsDTO: UserDTO) async throws
     func unfollowUser(id: UUID) async throws
+    
+    func startGameSession(_ game: GameDTO) async throws
+    func endGameSession(id: UUID) async throws
+    func getActiveGameSession() async throws -> GameSession
 }
 
 struct Repository: RepositoryProtocol, JSONService {
@@ -106,12 +110,13 @@ struct Repository: RepositoryProtocol, JSONService {
     //HOME
     
     //DETAILS
-    func getGameDetails(id: UUID) async throws -> (favorite: Bool, reviews: [Review], scores: [Score]) {
+    func getGameDetails(id: UUID) async throws -> (favorite: Bool, reviews: [Review], scores: [Score], sessions: [GameSession]) {
         async let favoriteRequest = fetchJSON(request: .get(url: .isFavoriteGame(id: id), token: getToken()), type: Bool.self)
-        async let reviewsRequest = fetchJSON(request: .get(url: .getGameReviews(id: id),token: getToken()), type: [Review].self)
-        async let scoresRequest  = fetchJSON(request: .get(url: .getGameScores(id: id),token: getToken()), type: [Score].self)
+        async let reviewsRequest = fetchJSON(request: .get(url: .getGameReviews(id: id), token: getToken()), type: [Review].self)
+        async let scoresRequest  = fetchJSON(request: .get(url: .getGameScores(id: id), token: getToken()), type: [Score].self)
+        async let sessionsRequest = fetchJSON(request: .get(url: .getGameSessions(id: id), token: getToken()), type: [GameSession].self)
         
-        return try await (favoriteRequest, reviewsRequest, scoresRequest)
+        return try await (favoriteRequest, reviewsRequest, scoresRequest, sessionsRequest)
     }
     
     func addFavoriteGame(_ game: GameDTO) async throws{
@@ -180,4 +185,18 @@ struct Repository: RepositoryProtocol, JSONService {
         try await send(request: .send(url: .unfollowUser(id: id), data: "", method: .delete, token: getToken()), status: 200)
     }
     //CONNECTIONS
+    
+    //GAMESESSION
+    func startGameSession(_ game: GameDTO) async throws {
+        try await send(request: .send(url: .startGameSession, data: game, method: .post, token: getToken()), status: 201)
+    }
+    
+    func endGameSession(id: UUID) async throws {
+        try await send(request: .send(url: .endGameSession(id: id), data: "", method: .put, token: getToken()), status: 200)
+    }
+    
+    func getActiveGameSession() async throws -> GameSession {
+        try await fetchJSON(request: .get(url: .getActiveGameSession, token: getToken()), type: GameSession.self)
+    }
+    //GAMESESSION
 }

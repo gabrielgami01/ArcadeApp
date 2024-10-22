@@ -10,6 +10,7 @@ struct GameDetailsView: View {
     @State private var option: GameOptions = .about
     @State private var aboutAnimation = false
     @State private var scoresAnimation = false
+    @State private var sessionAnimation = false
     
     @Environment(\.namespace) private var namespace
     
@@ -17,7 +18,7 @@ struct GameDetailsView: View {
         if let game {
             VStack(alignment: .leading) {
                 HStack(spacing: 15) {
-                    CustomPicker(selected: $option, displayKeyPath: \.rawValue)
+                    PillPicker(selected: $option)
                     
                     Button {
                         withAnimation(.bouncy.speed(2)) {
@@ -36,24 +37,40 @@ struct GameDetailsView: View {
                 .padding(.horizontal)
                 
                 ZStack {
-                    if option == .about {
-                        GameAboutView(game: game, animation: $aboutAnimation)
-                            .transition(.move(edge: .leading).combined(with: .opacity))
-                    }
+                    GameAboutView(game: game, animation: $aboutAnimation)
+                        .offset(x: option == .about ? 0 : option == .score ? -UIDevice.width : option == .session ? -UIDevice.width * 2 : 0)
+                        .opacity(option != .about ? 0.0 : 1.0)
                     
-                    if option == .score {
-                        GameScoresView(game: game, animation: $scoresAnimation)
-                            .transition(.move(edge: .trailing).combined(with: .opacity))
-                    }
+                    GameScoresView(game: game, animation: $scoresAnimation)
+                        .offset(x: option == .about ? UIDevice.width : option == .score ? 0 : option == .session ? -UIDevice.width : 0)
+                    
+                    GameSessionView(game: game, animation: $sessionAnimation)
+                        .offset(x: option == .about ? UIDevice.width * 2 : option == .score ? UIDevice.width : option == .session ? 0 : 0)
+                        .opacity(option != .session ? 0.0 : 1.0)
                 }
                 .gesture(
                     DragGesture(minimumDistance: 50)
-                        .onChanged { value in
+                        .onEnded { value in
                             withAnimation(.bouncy) {
                                 if value.startLocation.x > value.location.x {
-                                    option = .score
+                                    switch option {
+                                        case .about:
+                                            option = .score
+                                        case .score:
+                                            option = .session
+                                        case .session:()
+                                    }
                                 } else if value.startLocation.x < value.location.x {
-                                    option = .about
+                                    switch option {
+                                        case .about:
+                                            withAnimation {
+                                                gamesVM.selectedGame = nil
+                                            }
+                                        case .score:
+                                            option = .about
+                                        case .session:
+                                            option = .score
+                                    }
                                 }
                             }
                         }
@@ -65,6 +82,7 @@ struct GameDetailsView: View {
             .onDisappear {
                 aboutAnimation = false
                 scoresAnimation = false
+                sessionAnimation = false
                 option = .about
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -78,6 +96,7 @@ struct GameDetailsView: View {
         .environment(UserVM(repository: TestRepository()))
         .environment(GamesVM(repository: TestRepository()))
         .environment(GameDetailsVM(repository: TestRepository()))
+        .environment(GameSessionVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
         .background(Color.background)
         .namespace(Namespace().wrappedValue)

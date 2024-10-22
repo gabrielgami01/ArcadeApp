@@ -46,8 +46,8 @@ struct TestRepository: RepositoryProtocol {
         return (featured, favorites)
     }
     
-    func getGameDetails(id: UUID) async throws -> (favorite: Bool, reviews: [Review], scores: [Score]) {
-        return (true, [Review.test,Review.test2,Review.test3], [Score.test, Score.test2, Score.test3, Score.test4, Score.test5])
+    func getGameDetails(id: UUID) async throws -> (favorite: Bool, reviews: [Review], scores: [Score], sessions: [GameSession]) {
+        return (true, [Review.test,Review.test2,Review.test3], [Score.test, Score.test2, Score.test3, Score.test4, Score.test5], [GameSession.test2, GameSession.test3])
     }
     
     
@@ -87,6 +87,15 @@ struct TestRepository: RepositoryProtocol {
     func followUser(_ connectionsDTO: UserDTO) async throws {}
     
     func unfollowUser(id: UUID) async throws {}
+    
+    func startGameSession(_ game: GameDTO) async throws {}
+    
+    func endGameSession(id: UUID) async throws {}
+    
+    func getActiveGameSession() async throws -> GameSession {
+        .test
+    }
+    
 }
 
 extension User {
@@ -271,6 +280,24 @@ extension RankingScore {
                                     score: 9393,
                                     date: Calendar.current.date(from: DateComponents(year: 2024, month: 9, day: 22, hour: 14, minute: 02)) ?? .now,
                                     user: .test2)
+}
+
+extension GameSession {
+    static let test = GameSession(id: UUID(),
+                                  status: .active,
+                                  start: .now.addingTimeInterval(-600),
+                                  end: nil,
+                                  gameID: Game.test.id)
+    static let test2 = GameSession(id: UUID(),
+                                   status: .finished,
+                                   start: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 09, hour: 12, minute: 30))!,
+                                   end: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 09, hour: 14, minute: 30))!,
+                                   gameID: Game.test.id)
+    static let test3 = GameSession(id: UUID(),
+                                   status: .finished,
+                                   start: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 12, hour: 12, minute: 30))!,
+                                   end: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 12, hour: 14, minute: 30))!,
+                                   gameID: Game.test.id)
 }
 
 struct SwiftDataPreview: ViewModifier {
