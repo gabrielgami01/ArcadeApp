@@ -5,7 +5,7 @@ struct GameSession: Codable, Identifiable, Hashable {
     let status: SessionStatus
     let start: Date
     let end: Date?
-    let gameID: UUID
+    let game: Game
 }
 
 struct GameSessionDTO: Codable {

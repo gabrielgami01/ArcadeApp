@@ -12,7 +12,7 @@ struct GameSessionView: View {
             VStack(spacing: 20) {
                 Group {
                     if let activeSession = gameSessionVM.activeSession {
-                        if activeSession.gameID == game.id {
+                        if activeSession.game.id == game.id {
                             TimerCard(gameID: game.id)
                         } else {
                             CustomUnavailableView(title: "Active session", image: "play.slash.fill",

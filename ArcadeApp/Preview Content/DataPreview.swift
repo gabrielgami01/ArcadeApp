@@ -287,17 +287,17 @@ extension GameSession {
                                   status: .active,
                                   start: .now.addingTimeInterval(-600),
                                   end: nil,
-                                  gameID: Game.test.id)
+                                  game: .test)
     static let test2 = GameSession(id: UUID(),
                                    status: .finished,
                                    start: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 09, hour: 12, minute: 30))!,
                                    end: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 09, hour: 14, minute: 30))!,
-                                   gameID: Game.test.id)
+                                   game: .test)
     static let test3 = GameSession(id: UUID(),
                                    status: .finished,
                                    start: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 12, hour: 12, minute: 30))!,
                                    end: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 12, hour: 14, minute: 30))!,
-                                   gameID: Game.test.id)
+                                   game: .test)
 }
 
 struct SwiftDataPreview: ViewModifier {

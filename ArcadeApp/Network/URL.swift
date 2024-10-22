@@ -80,7 +80,7 @@ extension URL {
     }
     static let getActiveGameSession = gameSession.appending(path: "active").appending(queryItems: [.language()])
     static func getGameSessions(id: UUID) -> URL {
-        gameSession.appending(path: "list").appending(path: id.uuidString)
+        gameSession.appending(path: "list").appending(path: id.uuidString).appending(queryItems: [.language()])
     }
 }
 

@@ -25,7 +25,7 @@ struct PageButton: View {
         .padding()
         .background {
             RoundedRectangle(cornerRadius: 10)
-                .fill(Color.background)
+                .fill(Color.card)
                 .overlay {
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(.accent, lineWidth: 4)

@@ -19,11 +19,7 @@ struct HomeView: View {
                     if let user = userVM.activeUser {
                         Text("Hello \(user.username)")
                             .font(.customLargeTitle)
-                            
-                    }
-                    
-                    if let activeSession = gameSessionVM.activeSession {
-                        Text("Sesion activa")
+                            .padding(.horizontal)
                     }
                     
                     HStack {
@@ -46,6 +42,51 @@ struct HomeView: View {
                     }
                     .buttonStyle(.plain)
                     .padding()
+                    
+                    if let activeSession = gameSessionVM.activeSession {
+                        VStack(alignment: .leading, spacing: 5) {
+                            Text("NOW PLAYING")
+                                .font(.customTitle3)
+                                .padding(.horizontal)
+                            
+                            HStack(alignment: .top, spacing: 10) {
+                                GameCover(game: activeSession.game, width: 80, height: 120)
+                                
+                                VStack(spacing: 40){
+                                    Text("Zelda: Ocarina of Time")
+                                        .font(.customTitle)
+                                        .lineLimit(1)
+                                        .minimumScaleFactor(0.8)
+                                        .multilineTextAlignment(.center)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .offset(y: 20)
+                                    
+                                    HStack {
+                                        Text(gameSessionVM.sessionDuration.toDisplayString())
+                                            .font(.customTitle2)
+                                            .bold()
+                                            .contentTransition(.numericText())
+                                            .animation(.linear, value: gameSessionVM.sessionDuration)
+
+                                        Spacer()
+
+                                        TimerControl(image: "stop.fill", size: .regular, font: .customFootnote) {
+                                            Task {
+                                                if await gameSessionVM.endSessionAPI() {
+                                                    gameSessionVM.endSession()
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            .padding()
+                            .background(Color.card, in: RoundedRectangle(cornerRadius: 10))
+                            .padding(.horizontal)
+                        }
+                        
+                    }
+                    
                     
                     GamesCarousel(selectedType: $selectedType, type: .featured, games: gamesVM.featured)
                         .namespace(namespaceFeatured)
