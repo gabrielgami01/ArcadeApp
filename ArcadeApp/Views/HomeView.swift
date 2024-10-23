@@ -51,9 +51,10 @@ struct HomeView: View {
                             
                             HStack(alignment: .top, spacing: 10) {
                                 GameCover(game: activeSession.game, width: 80, height: 120)
+                                    .namespace(nil)
                                 
                                 VStack(spacing: 40){
-                                    Text("Zelda: Ocarina of Time")
+                                    Text(activeSession.game.name)
                                         .font(.customTitle)
                                         .lineLimit(1)
                                         .minimumScaleFactor(0.8)
@@ -84,7 +85,6 @@ struct HomeView: View {
                             .background(Color.card, in: RoundedRectangle(cornerRadius: 10))
                             .padding(.horizontal)
                         }
-                        
                     }
                     
                     

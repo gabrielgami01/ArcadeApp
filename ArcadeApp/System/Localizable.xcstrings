@@ -576,6 +576,9 @@
     "No sessions" : {
 
     },
+    "NOW PLAYING" : {
+
+    },
     "Password" : {
       "localizations" : {
         "es" : {
@@ -800,9 +803,6 @@
           }
         }
       }
-    },
-    "Sesion activa" : {
-
     },
     "Shooter" : {
       "extractionState" : "manual",
