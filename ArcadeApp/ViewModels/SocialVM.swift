@@ -7,6 +7,8 @@ final class SocialVM {
     var following: [UserConnections] = []
     var followers: [UserConnections] = []
     
+    var followingSessions: [Session] = []
+    
     var errorMsg = ""
     var showError = false
     
@@ -83,6 +85,28 @@ final class SocialVM {
     
     func unfollowUser(id: UUID) {
         following.removeAll(where: { $0.user.id == id })
+    }
+    
+    func getFollowingActiveSessions() async {
+        do {
+            let followingSessions = try  await repository.getFollowingActiveSession()
+            await MainActor.run {
+                self.followingSessions = followingSessions
+            }
+        } catch {
+            await MainActor.run {
+                errorMsg = error.localizedDescription
+                showError.toggle()
+            }
+            print(error.localizedDescription)
+        }
+    }
+    
+    func findFollowingByID(_ id: UUID) -> User? {
+        guard let user = following.first(where: { $0.user.id == id })?.user else {
+            return nil
+        }
+        return user
     }
     
 }

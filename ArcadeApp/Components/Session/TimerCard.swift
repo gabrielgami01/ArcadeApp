@@ -2,7 +2,7 @@ import SwiftUI
 
 struct TimerCard: View {
     @Environment(GameDetailsVM.self) private var detailsVM
-    @Environment(GameSessionVM.self) private var gameSessionVM
+    @Environment(SessionVM.self) private var gameSessionVM
     
     let gameID: UUID
     
@@ -17,7 +17,7 @@ struct TimerCard: View {
                 TimerControl(image: "play.fill") {
                     Task {
                         if await gameSessionVM.startSessionAPI(gameID: gameID) {
-                            await gameSessionVM.getActiveGameSession()
+                            await gameSessionVM.getActiveSession()
                         }
                     }
                 }
@@ -42,6 +42,6 @@ struct TimerCard: View {
 #Preview {
     TimerCard(gameID: Game.test.id)
         .environment(GameDetailsVM(repository: TestRepository()))
-        .environment(GameSessionVM(repository: TestRepository()))
+        .environment(SessionVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }

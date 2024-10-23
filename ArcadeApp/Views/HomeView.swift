@@ -3,7 +3,7 @@ import SwiftUI
 struct HomeView: View {
     @Environment(UserVM.self) private var userVM
     @Environment(GamesVM.self) private var gamesVM
-    @Environment(GameSessionVM.self) private var gameSessionVM
+    @Environment(SessionVM.self) private var gameSessionVM
     
     @State private var selectedType: HomeScrollType = .featured
     
@@ -131,6 +131,6 @@ struct HomeView: View {
         .environment(GameDetailsVM(repository: TestRepository()))
         .environment(ChallengesVM(repository: TestRepository()))
         .environment(SocialVM(repository: TestRepository()))
-        .environment(GameSessionVM(repository: TestRepository()))
+        .environment(SessionVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }

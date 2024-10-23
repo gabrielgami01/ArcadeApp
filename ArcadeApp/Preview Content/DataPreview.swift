@@ -46,8 +46,8 @@ struct TestRepository: RepositoryProtocol {
         return (featured, favorites)
     }
     
-    func getGameDetails(id: UUID) async throws -> (favorite: Bool, reviews: [Review], scores: [Score], sessions: [GameSession]) {
-        return (true, [Review.test,Review.test2,Review.test3], [Score.test, Score.test2, Score.test3, Score.test4, Score.test5], [GameSession.test2, GameSession.test3])
+    func getGameDetails(id: UUID) async throws -> (favorite: Bool, reviews: [Review], scores: [Score], sessions: [Session]) {
+        return (true, [Review.test,Review.test2,Review.test3], [Score.test, Score.test2, Score.test3, Score.test4, Score.test5], [Session.test2, Session.test3])
     }
     
     
@@ -88,12 +88,16 @@ struct TestRepository: RepositoryProtocol {
     
     func unfollowUser(id: UUID) async throws {}
     
-    func startGameSession(_ game: GameDTO) async throws {}
+    func startSession(gameDTO: GameDTO) async throws {}
     
-    func endGameSession(id: UUID) async throws {}
+    func endSession(id: UUID) async throws {}
     
-    func getActiveGameSession() async throws -> GameSession {
+    func getActiveSession() async throws -> Session {
         .test
+    }
+    
+    func getFollowingActiveSession() async throws -> [Session] {
+        [.test2, .test3]
     }
     
 }
@@ -282,21 +286,24 @@ extension RankingScore {
                                     user: .test2)
 }
 
-extension GameSession {
-    static let test = GameSession(id: UUID(),
+extension Session {
+    static let test = Session(id: UUID(),
                                   status: .active,
                                   start: .now.addingTimeInterval(-600),
                                   end: nil,
+                                  userID: User.test.id,
                                   game: .test)
-    static let test2 = GameSession(id: UUID(),
+    static let test2 = Session(id: UUID(),
                                    status: .finished,
                                    start: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 09, hour: 12, minute: 30))!,
                                    end: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 09, hour: 14, minute: 30))!,
+                                   userID: User.test.id,
                                    game: .test)
-    static let test3 = GameSession(id: UUID(),
+    static let test3 = Session(id: UUID(),
                                    status: .finished,
                                    start: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 12, hour: 12, minute: 30))!,
                                    end: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 12, hour: 14, minute: 30))!,
+                                   userID: User.test.id,
                                    game: .test)
 }
 

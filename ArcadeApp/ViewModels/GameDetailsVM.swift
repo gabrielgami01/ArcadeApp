@@ -28,7 +28,7 @@ final class GameDetailsVM {
        (verifiedScores.map { $0.date }.max() ?? Date()).addingTimeInterval(2 * 24 * 60 * 60)
     }
     
-    var sessions: [GameSession] = []
+    var sessions: [Session] = []
     
     var errorMsg = ""
     var showError = false

@@ -1,10 +1,10 @@
 import Foundation
 
 @Observable
-final class GameSessionVM {
+final class SessionVM {
     let repository: RepositoryProtocol
     
-    var activeSession: GameSession? = nil
+    var activeSession: Session? = nil
     var sessionDuration: Int = 0
     
     var timer: Timer? = nil
@@ -16,13 +16,13 @@ final class GameSessionVM {
     init(repository: RepositoryProtocol = Repository.shared) {
         self.repository = repository
         Task {
-            await getActiveGameSession()
+//            await getActiveSession()
         }
     }
     
-    func getActiveGameSession() async {
+    func getActiveSession() async {
         do {
-            let activeSession = try await repository.getActiveGameSession()
+            let activeSession = try await repository.getActiveSession()
             await MainActor.run {
                 startSession(activeSession)
             }
@@ -38,7 +38,7 @@ final class GameSessionVM {
     func startSessionAPI(gameID: UUID) async -> Bool {
         do {
             let gameDTO = GameDTO(gameID: gameID)
-            try await repository.startGameSession(gameDTO)
+            try await repository.startSession(gameDTO: gameDTO)
             return true
         } catch {
             await MainActor.run {
@@ -51,7 +51,7 @@ final class GameSessionVM {
     }
     
     
-    func startSession(_ session: GameSession) {
+    func startSession(_ session: Session) {
         sessionDuration = Int(Date().timeIntervalSince(session.start))
         self.activeSession = session
         startTimer()
@@ -60,7 +60,7 @@ final class GameSessionVM {
     func endSessionAPI() async -> Bool {
         do {
             if let activeSession {
-                try await repository.endGameSession(id: activeSession.id)
+                try await repository.endSession(id: activeSession.id)
                 return true
             } else {
                 return false

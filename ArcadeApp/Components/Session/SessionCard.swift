@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SessionCard: View {
-    let session: GameSession
+    let session: Session
     
     var body: some View {
         VStack(spacing: 10) {

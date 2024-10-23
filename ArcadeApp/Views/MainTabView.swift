@@ -45,6 +45,6 @@ struct MainTabView: View {
         .environment(GameDetailsVM(repository: TestRepository()))
         .environment(ChallengesVM(repository: TestRepository()))
         .environment(SocialVM(repository: TestRepository()))
-        .environment(GameSessionVM(repository: TestRepository()))
+        .environment(SessionVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }

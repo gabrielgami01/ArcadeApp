@@ -1,14 +1,15 @@
 import Foundation
 
-struct GameSession: Codable, Identifiable, Hashable {
+struct Session: Codable, Identifiable, Hashable {
     let id: UUID
     let status: SessionStatus
     let start: Date
     let end: Date?
-    let game: Game
+    let userID: UUID
+    let game: Game    
 }
 
-struct GameSessionDTO: Codable {
+struct SessionDTO: Codable {
     let id: UUID
     let gameID: UUID
 }

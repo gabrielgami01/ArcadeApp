@@ -2,7 +2,7 @@ import SwiftUI
 
 struct GameSessionView: View {
     @Environment(GameDetailsVM.self) private var detailsVM
-    @Environment(GameSessionVM.self) private var gameSessionVM
+    @Environment(SessionVM.self) private var gameSessionVM
     
     let game: Game
     @Binding var animation: Bool
@@ -52,7 +52,7 @@ struct GameSessionView: View {
 #Preview {
     GameSessionView(game: .test, animation: .constant(true))
         .environment(GameDetailsVM(repository: TestRepository()))
-        .environment(GameSessionVM(repository: TestRepository()))
+        .environment(SessionVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
         .background(Color.background)
         .scrollBounceBehavior(.basedOnSize)
