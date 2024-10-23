@@ -15,9 +15,21 @@ final class SessionVM {
     
     init(repository: RepositoryProtocol = Repository.shared) {
         self.repository = repository
-        Task {
-            await getActiveSession()
+        
+        if SecManager.shared.isLogged {
+            Task(priority: .high) {
+                await getActiveSession()
+            }
+            NotificationCenter.default.addObserver(forName: .login, object: nil, queue: .main) { [self] _ in
+                Task(priority: .high) {
+                    await getActiveSession()
+                }
+            }
         }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .login, object: nil)
     }
     
     func getActiveSession() async {

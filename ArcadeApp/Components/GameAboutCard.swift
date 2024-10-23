@@ -35,16 +35,7 @@ struct GameAboutCard: View {
                 Text("Release date: \(game.releaseDate.formatted(date: .abbreviated, time: .omitted))")
                     .font(.customCaption)
                 
-                ViewThatFits(in: .horizontal) {
-                    HStack(alignment: .lastTextBaseline, spacing: 5) {
-                        RatingComponent(rating: .constant(Int(detailsVM.globalRating)), mode: .display)
-                        Text("(\(detailsVM.globalRating.formatted(.number.precision(.fractionLength(1)))))")
-                            .font(.customCaption)
-                            .foregroundColor(.yellow)
-                    }
-                    
-                    RatingComponent(rating: .constant(Int(detailsVM.globalRating)), mode: .display)
-                }
+                RatingComponent(rating: .constant(Int(detailsVM.globalRating)), mode: .display)
                 
                 HStack {
                     Button {

@@ -2,6 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "(%@)" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -543,6 +544,9 @@
         }
       }
     },
+    "No notifications" : {
+
+    },
     "No results for '%@'" : {
       "localizations" : {
         "es" : {
@@ -574,6 +578,9 @@
       }
     },
     "No sessions" : {
+
+    },
+    "Notifications" : {
 
     },
     "NOW PLAYING" : {
@@ -1026,6 +1033,9 @@
           }
         }
       }
+    },
+    "You haven't any notification yet." : {
+
     },
     "You haven't any score for this game yet." : {
       "localizations" : {
