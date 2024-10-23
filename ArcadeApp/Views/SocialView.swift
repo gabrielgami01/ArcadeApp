@@ -20,25 +20,45 @@ struct SocialView: View {
                         
                         ForEach(socialVM.followingSessions) { session in
                             if let user = socialVM.findFollowingByID(session.userID) {
-                                FollowingSessionCell(user: user, game: session.game.name)
+                                Button {
+                                    withAnimation {
+                                        if user != userVM.activeUser {
+                                            selectedUser = user
+                                        }
+                                    }
+                                } label: {
+                                    FollowingSessionCell(user: user, game: session.game.name)
+                                }
+                                .buttonStyle(.plain)
                             }
                         }
                     }
                     .safeAreaPadding(.horizontal)
                 }
+                .padding(.top, 5)
                 
-                LazyVStack(spacing: 15) {
-                    ForEach(socialVM.followers) { userConnection in
-                        Button {
-                            withAnimation {
-                                if userConnection.user != userVM.activeUser {
-                                    selectedUser = userConnection.user
+                VStack(alignment: .leading) {
+                    Text("Notifications")
+                        .font(.customTitle3)
+                    
+                    if !socialVM.followers.isEmpty {
+                        LazyVStack(spacing: 15) {
+                            ForEach(socialVM.followers) { userConnection in
+                                Button {
+                                    withAnimation {
+                                        if userConnection.user != userVM.activeUser {
+                                            selectedUser = userConnection.user
+                                        }
+                                    }
+                                } label: {
+                                    SocialCell(userConnection: userConnection)
                                 }
+                                .buttonStyle(.plain)
                             }
-                        } label: {
-                            SocialCell(userConnection: userConnection)
                         }
-                        .buttonStyle(.plain)
+                    } else {
+                        CustomUnavailableView(title: "No notifications", image: "bell.fill",
+                                              description: "You haven't any notification yet.")
                     }
                 }
                 .padding(.horizontal)

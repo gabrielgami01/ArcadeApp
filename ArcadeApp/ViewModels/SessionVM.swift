@@ -16,7 +16,7 @@ final class SessionVM {
     init(repository: RepositoryProtocol = Repository.shared) {
         self.repository = repository
         Task {
-//            await getActiveSession()
+            await getActiveSession()
         }
     }
     
