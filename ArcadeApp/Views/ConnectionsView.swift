@@ -53,7 +53,6 @@ struct ConnectionsView: View {
 #Preview {
     ConnectionsView(selectedPage: .followers)
         .environment(UserVM(repository: TestRepository()))
-        .environment(ChallengesVM(repository: TestRepository()))
         .environment(SocialVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }

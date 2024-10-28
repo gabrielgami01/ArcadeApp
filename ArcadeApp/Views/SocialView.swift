@@ -92,7 +92,6 @@ struct SocialView: View {
     NavigationStack {
         SocialView()
             .environment(UserVM(repository: TestRepository()))
-            .environment(ChallengesVM(repository: TestRepository()))
             .environment(SocialVM(repository: TestRepository()))
             .environment(SessionVM(repository: TestRepository()))
             .preferredColorScheme(.dark)

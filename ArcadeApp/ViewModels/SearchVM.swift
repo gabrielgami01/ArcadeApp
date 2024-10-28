@@ -36,7 +36,7 @@ final class SearchVM {
     
     func searchGame() async {
         do {
-            let games = try await repository.searchGame(name: searchText)
+            let games = try await repository.getGamesByName(searchText)
             await MainActor.run {
                 self.games = games
             }

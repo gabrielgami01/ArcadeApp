@@ -35,7 +35,7 @@ struct TestRepository: RepositoryProtocol {
         try loadData(file: "games").filter { $0.console == console }
     }
     
-    func searchGame(name: String) async throws -> [Game] {
+    func getGamesByName(_ name: String) async throws -> [Game] {
         try loadData(file: "games").filter { $0.name.localizedStandardContains(name) }
     }
     
@@ -51,7 +51,7 @@ struct TestRepository: RepositoryProtocol {
     }
     
     
-    func addFavoriteGame(_ game: GameDTO) async throws {}
+    func addFavoriteGame(id: UUID) async throws {}
     
     func deleteFavoriteGame(id: UUID) async throws {}
     
@@ -59,21 +59,21 @@ struct TestRepository: RepositoryProtocol {
 
     func addScore(_ score: CreateScoreDTO) async throws {}
     
+    func getActiveSession() async throws -> Session {
+        .test
+    }
+    
+    func getFollowingActiveSession() async throws -> [Session] {
+        [.test2, .test3]
+    }
+    
+    func startSession(gameID: UUID) async throws {}
+    
+    func endSession(id: UUID) async throws {}
+    
     func getChallenges() async throws -> [Challenge] {
         return [.test, .test2, .test3, .test4, .test5].sorted { $0.game < $1.game}
     }
-
-    func getActiveUserEmblems() async throws -> [Emblem] {
-        [.test, .test2]
-    }
-    
-    func getUserEmblems(id: UUID) async throws -> [Emblem] {
-        [.test, .test2, .test3]
-    }
-    
-    func addEmblem(_ emblemDTO: CreateEmblemDTO) async throws {}
-    
-    func deleteEmblem(challengeID: UUID) async throws {}
     
     func getGameRanking(id: UUID, page: Int) async throws -> [RankingScore] {
         let scores: [RankingScore] = [.test, .test2, .test3, .test4, .test5, .test6, .test7, .test8]
@@ -84,21 +84,9 @@ struct TestRepository: RepositoryProtocol {
         ([.test, .test2], [.test, .test3])
     }
     
-    func followUser(_ connectionsDTO: UserDTO) async throws {}
+    func followUser(id: UUID) async throws {}
     
     func unfollowUser(id: UUID) async throws {}
-    
-    func startSession(gameDTO: GameDTO) async throws {}
-    
-    func endSession(id: UUID) async throws {}
-    
-    func getActiveSession() async throws -> Session {
-        .test
-    }
-    
-    func getFollowingActiveSession() async throws -> [Session] {
-        [.test2, .test3]
-    }
     
 }
 
@@ -236,19 +224,6 @@ extension Challenge {
                                  game: "Final Fantasy VII",
                                  isCompleted: false)
     
-}
-
-extension Emblem {
-    static let test = Emblem(id: UUID(),
-                             challenge: .test)
-    static let test2 = Emblem(id: UUID(),
-                             challenge: .test2)
-    static let test3 = Emblem(id: UUID(),
-                             challenge: .test3)
-    static let test4 = Emblem(id: UUID(),
-                             challenge: .test4)
-    static let test5 = Emblem(id: UUID(),
-                             challenge: .test5)
 }
 
 extension RankingScore {

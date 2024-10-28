@@ -3,11 +3,9 @@ import PhotosUI
 
 struct ProfileView: View {
     @Environment(UserVM.self) private var userVM
-    @Environment(ChallengesVM.self) private var challengesVM
     @Environment(SocialVM.self) private var socialVM
     
     @State private var showEditAbout = false
-    @State private var showAddEmblem = false
     
     @Environment(\.dismiss) private var dismiss
     
@@ -59,40 +57,6 @@ struct ProfileView: View {
                     
                     Form {
                         Section {
-                            HStack(spacing: 0) {
-                                ForEach(Array(challengesVM.emblems.enumerated()), id: \.element.id) { index, emblem in
-                                    Button {
-                                        challengesVM.selectedEmblem = emblem
-                                        showAddEmblem = true
-                                    } label: {
-                                        EmblemCard(emblem: emblem)
-                                    }
-                                    if index != challengesVM.emblems.count - 1 || challengesVM.emblems.count < 3 {
-                                        Spacer()
-                                    }
-                                }
-                                
-                                ForEach(0..<max(0, 3 - challengesVM.emblems.count), id: \.self) { index in
-                                    Button {
-                                        challengesVM.selectedEmblem = nil
-                                        showAddEmblem = true
-                                    } label: {
-                                        AddEmblemCard()
-                                    }
-                                    if index != max(0, 3 - challengesVM.emblems.count) - 1 {
-                                        Spacer()
-                                    }
-                                }
-                            }
-                           
-                        } header: {
-                            Text("Personal card")
-                                .font(.customTitle3)
-                        }
-                        .buttonStyle(.plain)
-                        .listRowBackground(Color.card)
-                        
-                        Section {
                             HStack {
                                 Text(user.about ?? "")
                                 
@@ -127,7 +91,7 @@ struct ProfileView: View {
                 }
             }
             .task {
-                await challengesVM.getUserEmblems()
+//                await challengesVM.getUserEmblems()
             }
             .navigationBarBackButtonHidden()
             .scrollContentBackground(.hidden)
@@ -145,9 +109,6 @@ struct ProfileView: View {
             .sheet(isPresented: $showEditAbout) {
                 EditAboutView()
             }
-            .sheet(isPresented: $showAddEmblem) {
-                AddEmblemView()
-            }
         }
         
         
@@ -157,7 +118,6 @@ struct ProfileView: View {
 #Preview {
     ProfileView()
         .environment(UserVM(repository: TestRepository()))
-        .environment(ChallengesVM(repository: TestRepository()))
         .environment(SocialVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }

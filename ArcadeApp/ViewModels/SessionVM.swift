@@ -49,8 +49,7 @@ final class SessionVM {
     
     func startSessionAPI(gameID: UUID) async -> Bool {
         do {
-            let gameDTO = GameDTO(gameID: gameID)
-            try await repository.startSession(gameDTO: gameDTO)
+            try await repository.startSession(gameID: gameID)
             return true
         } catch {
             await MainActor.run {

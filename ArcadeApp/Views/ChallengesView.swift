@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ChallengesView: View {
-    @Environment(ChallengesVM.self) private var challengesVM
+    @State var challengesVM = ChallengesVM()
     
     var body: some View {
         @Bindable var challengesBVM = challengesVM
@@ -63,8 +63,7 @@ struct ChallengesView: View {
 
 #Preview {
     NavigationStack {
-        ChallengesView()
-            .environment(ChallengesVM(repository: TestRepository()))
+        ChallengesView(challengesVM: ChallengesVM(repository: TestRepository()))
             .preferredColorScheme(.dark)
             .namespace(Namespace().wrappedValue)
     }

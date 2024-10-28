@@ -9,10 +9,6 @@ struct User: Codable, Identifiable, Hashable {
     let avatarImage: Data?
 }
 
-struct UserDTO: Codable {
-    let userID: UUID
-}
-
 struct CreateUserDTO: Codable {
     let username: String
     let password: String

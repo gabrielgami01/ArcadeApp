@@ -129,7 +129,6 @@ struct HomeView: View {
         .environment(UserVM(repository: TestRepository()))
         .environment(GamesVM(repository: TestRepository()))
         .environment(GameDetailsVM(repository: TestRepository()))
-        .environment(ChallengesVM(repository: TestRepository()))
         .environment(SocialVM(repository: TestRepository()))
         .environment(SessionVM(repository: TestRepository()))
         .preferredColorScheme(.dark)

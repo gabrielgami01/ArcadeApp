@@ -7,82 +7,89 @@ let api = desa.appending(path: "api")
 
 
 extension URL {
-    static let users = api.appending(path: "users")
+    private static let users = api.appending(path: "users")
     static let createUser = users.appending(path: "create")
     static let loginJWT = users.appending(path: "login")
     static let refreshJWT = users.appending(path: "refreshJWT")
-    static let getUserInfo = users.appending(path: "userInfo")
     static let updateUserAbout = users.appending(path: "updateAbout")
     static let updateUserAvatar = users.appending(path: "updateAvatar")
     
     private static let games = api.appending(path: "games")
     static func getAllGames(page: Int) -> URL {
-        games.appending(path: "list").appending(queryItems: [.page(page), .per(), .language()])
+        games.appending(queryItems: [.page(page), .per(), .language()])
     }
-    static func getGamesByConsole(name: String, page: Int) -> URL {
-        games.appending(path: "byConsole").appending(queryItems: [.console(name), .page(page), .per(), .language()])
+    static func getGamesByConsole(_ console: String, page: Int) -> URL {
+        games.appending(path: "byConsole").appending(queryItems: [.console(console), .page(page), .per(), .language()])
+    }
+    static func getGamesByName(_ name: String) -> URL {
+        games.appending(path: "byName").appending(queryItems: [.game(name), .language()])
     }
     static let getFeaturedGames = games.appending(path: "featured").appending(queryItems: [.language()])
-    static func searchGame(name: String) -> URL {
-        games.appending(path: "search").appending(queryItems: [.game(name), .language()])
-    }
-    static let favorites = games.appending(path: "favorites")
-    static let getUserFavoriteGames = favorites.appending(path: "list").appending(queryItems: [.language()])
-    static let addFavoriteGame = favorites.appending(path: "add")
-    static func deleteFavoriteGame(id: UUID) -> URL {
-        favorites.appending(path: "delete").appending(path: id.uuidString)
-    }
+    
+    private static let favorites = api.appending(path: "favorites")
+    static let getFavoriteGames = favorites.appending(queryItems: [.language()])
     static func isFavoriteGame(id: UUID) -> URL {
-        favorites.appending(path: "isFavorite").appending(path: id.uuidString)
+        favorites.appending(path: id.uuidString)
+    }
+    static func addFavoriteGame(id: UUID) -> URL {
+        favorites.appending(path: id.uuidString)
+    }
+    static func deleteFavoriteGame(id: UUID) -> URL {
+        favorites.appending(path: id.uuidString)
     }
     
-    static let reviews = api.appending(path: "reviews")
+    private static let reviews = api.appending(path: "reviews")
     static func getGameReviews(id: UUID) -> URL {
-        reviews.appending(path: "listByGame").appending(path: id.uuidString)
+        reviews.appending(path: id.uuidString)
     }
-    static let addReview = reviews.appending(path: "add")
+    static let addReview = reviews
     
-    static let scores = api.appending(path: "scores")
+    private static let scores = api.appending(path: "scores")
     static func getGameScores(id: UUID) -> URL {
-        scores.appending(path: "list").appending(path: id.uuidString)
+        scores.appending(path: id.uuidString)
     }
-    static let addScore = scores.appending(path: "add")
-   
-    static let challenges = api.appending(path: "challenges")
-    static let getChallenges = challenges.appending(path: "list").appending(queryItems: [.language()])
+    static func getGameRanking(id: UUID) -> URL {
+        scores.appending(path: "ranking").appending(path: id.uuidString)
+    }
+    static let addScore = scores
     
-    static let emblems = api.appending(path: "emblems")
-    static let getActiveUserEmblems = emblems.appending(path: "listActive")
-    static func getUserEmblems(id: UUID) -> URL {
-        emblems.appending(path: "listActive").appending(path: id.uuidString)
-    }
-    static let addEmblem = emblems.appending(path: "add")
-    static func deleteEmblem(challengeID: UUID) -> URL {
-        emblems.appending(path: "delete").appending(path: challengeID.uuidString)
-    }
-    
-    static let rankings = api.appending(path: "rankings")
-    static func getGameRanking(id: UUID, page: Int) -> URL {
-        rankings.appending(path: "list").appending(path: id.uuidString).appending(queryItems: [.page(page), .per()])
-    }
-    
-    static let listFollowing = users.appending(path: "listFollowing")
-    static let listFollowers = users.appending(path: "listFollowers")
-    static let followUser = users.appending(path: "follow")
-    static func unfollowUser(id: UUID) -> URL {
-        users.appending(path: "unfollow").appending(path: id.uuidString)
-    }
-    
-    static let session = api.appending(path: "session")
-    static let startSession = session.appending(path: "start")
-    static func endSession(id: UUID) -> URL {
-        session.appending(path: "end").appending(path: id.uuidString)
+    private static let session = api.appending(path: "sessions")
+    static func getGameSessions(id: UUID) -> URL {
+        session.appending(path: id.uuidString).appending(queryItems: [.language()])
     }
     static let getActiveSession = session.appending(path: "active").appending(queryItems: [.language()])
-    static func getSessions(id: UUID) -> URL {
-        session.appending(path: "list").appending(path: id.uuidString).appending(queryItems: [.language()])
+    static let getFollowingActiveSessions = session.appending(path: "following").appending(queryItems: [.language()])
+    static func startSession(gameID: UUID) -> URL {
+        session.appending(path: gameID.uuidString)
     }
-    static let getFollowingActiveSessions = session.appending(path: "listFollowing").appending(queryItems: [.language()])
+    static func endSession(id: UUID) -> URL {
+        session.appending(path: id.uuidString)
+    }
+   
+    private static let challenges = api.appending(path: "challenges")
+    static let getChallenges = challenges.appending(queryItems: [.language()])
+    
+    private static let completedChallenges = api.appending(path: "completedChallenges")
+    static let getCompletedChallenges = completedChallenges.appending(queryItems: [.language()])
+    static func getUserFeaturedChallenges(id: UUID) -> URL {
+        completedChallenges.appending(path: id.uuidString).appending(path: "featured").appending(queryItems: [.language()])
+    }
+    static let highlightChallenge = completedChallenges.appending(path: "highlight")
+    static func unhighlightChallenge(id: UUID) -> URL {
+        completedChallenges.appending(path: "unhighlight").appending(path: id.uuidString)
+    }
+    
+    private static let connections = api.appending(path: "connections")
+    static let listFollowing = connections.appending(path: "following")
+    static let listFollowers = connections.appending(path: "followers")
+    static func followUser(id: UUID) -> URL {
+        users.appending(path: id.uuidString)
+    }
+    static func unfollowUser(id: UUID) -> URL {
+        users.appending(path: id.uuidString)
+    }
+    
+    
 }
 
 extension URLQueryItem {
@@ -93,7 +100,7 @@ extension URLQueryItem {
         URLQueryItem(name: "per", value: "\(num)")
     }
     static func game(_ name: String) -> URLQueryItem {
-        URLQueryItem(name: "game", value: name)
+        URLQueryItem(name: "name", value: name)
     }
     static func console(_ name: String) -> URLQueryItem {
         URLQueryItem(name: "console", value: name)

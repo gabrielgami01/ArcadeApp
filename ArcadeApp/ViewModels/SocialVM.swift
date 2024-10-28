@@ -52,8 +52,7 @@ final class SocialVM {
     
     func followUserAPI(id: UUID) async -> Bool {
         do {
-            let connectionsDTO = UserDTO(userID: id)
-            try await repository.followUser(connectionsDTO)
+            try await repository.followUser(id: id)
             return true
         } catch {
             await MainActor.run {

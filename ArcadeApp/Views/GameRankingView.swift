@@ -61,7 +61,6 @@ struct GameRankingView: View {
         GameRankingView(rankingsVM: RankingsVM(repository: TestRepository()), game: .test)
             .environment(UserVM(repository: TestRepository()))
             .environment(SocialVM(repository: TestRepository()))
-            .environment(ChallengesVM(repository: TestRepository()))
             .preferredColorScheme(.dark)
     }
 }

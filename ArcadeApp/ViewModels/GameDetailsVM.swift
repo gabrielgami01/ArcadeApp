@@ -60,8 +60,7 @@ final class GameDetailsVM {
             if isFavorite {
                 try await repository.deleteFavoriteGame(id: gameID)
             } else {
-                let favoriteDTO = GameDTO(gameID: gameID)
-                try await repository.addFavoriteGame(favoriteDTO)
+                try await repository.addFavoriteGame(id: gameID)
             }
             return true
         } catch {

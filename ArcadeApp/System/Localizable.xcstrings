@@ -95,6 +95,7 @@
 
     },
     "Add new emblem" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -267,6 +268,7 @@
       }
     },
     "Emblems" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -503,6 +505,7 @@
       }
     },
     "No available emblems" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -513,6 +516,7 @@
       }
     },
     "No emblem" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -600,6 +604,7 @@
       }
     },
     "Personal card" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -1014,6 +1019,7 @@
 
     },
     "You haven't any available emblems by the moment." : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {

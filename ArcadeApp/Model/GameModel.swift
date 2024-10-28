@@ -6,6 +6,10 @@ struct GamePageDTO: Codable {
     let metadata: Metadata
 }
 
+struct Metadata: Codable {
+    let page, per, total: Int
+}
+
 struct Game: Codable, Identifiable, Hashable {
     let id: UUID
     let name: String
@@ -18,10 +22,6 @@ struct Game: Codable, Identifiable, Hashable {
     var imageURL: URL {
         desa.appending(path: "covers").appending(path: "\(id).jpg")
     }
-}
-
-struct Metadata: Codable {
-    let page, per, total: Int
 }
 
 struct GameDTO: Codable {

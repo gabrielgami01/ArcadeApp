@@ -19,9 +19,3 @@ struct CreateScoreDTO: Codable {
     let gameID: UUID
 }
 
-struct RankingScorePageDTO: Codable {
-    let items: [RankingScore]
-    let metadata: Metadata
-}
-
-

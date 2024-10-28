@@ -25,20 +25,6 @@ final class ChallengesVM {
         }
     }
     
-    var emblems: [Emblem] = []
-    @ObservationIgnored var completedChallenges: [Challenge] {
-        challenges.filter{ $0.isCompleted }
-    }
-    @ObservationIgnored var disponibleChallenges: [Challenge] {
-        completedChallenges.filter { challenge in
-            !emblems.contains { emblem in
-                emblem.challenge.id == challenge.id
-            }
-        }
-    }
-    
-    var selectedEmblem: Emblem? = nil
-    
     var errorMsg = ""
     var showError = false
     
@@ -61,66 +47,5 @@ final class ChallengesVM {
         }
     }
     
-    func getUserEmblems(id: UUID? = nil) async {
-        do {
-            if let id {
-                let emblems = try await repository.getUserEmblems(id: id)
-                await MainActor.run {
-                    self.emblems = emblems
-                }
-            } else {
-                let emblems = try await repository.getActiveUserEmblems()
-                await MainActor.run {
-                    self.emblems = emblems
-                }
-            }
-        } catch {
-            await MainActor.run {
-                errorMsg = error.localizedDescription
-                showError.toggle()
-            }
-            print(error.localizedDescription)
-        }
-    }
-    
-    func addEmblemAPI(challengeID: UUID) async -> Bool {
-        do {
-            let emblemDTO = CreateEmblemDTO(challengeID: challengeID)
-            try await repository.addEmblem(emblemDTO)
-            return true
-        } catch {
-            await MainActor.run {
-                errorMsg = error.localizedDescription
-                showError.toggle()
-            }
-            print(error.localizedDescription)
-            return false
-        }
-    }
-    
-    func addEmblem(_ emblem: Emblem) {
-        emblems.append(emblem)
-    }
-    
-    func updateEmblemAPI(newChallenge: UUID, oldChallenge: UUID) async -> Bool {
-        do {
-            let createEmblemDTO = CreateEmblemDTO(challengeID: newChallenge)
-            try await repository.deleteEmblem(challengeID: oldChallenge)
-            try await repository.addEmblem(createEmblemDTO)
-            return true
-        } catch {
-            await MainActor.run {
-                errorMsg = error.localizedDescription
-                showError.toggle()
-            }
-            print(error.localizedDescription)
-            return false
-        }
-    }
-    
-    func updateEmblem(_ emblem: Emblem) {
-        if let index = emblems.firstIndex(where: { $0.id == emblem.id}) {
-            emblems[index] = emblem
-        }
-    }
+   
 }
