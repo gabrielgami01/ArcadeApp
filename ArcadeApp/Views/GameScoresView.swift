@@ -5,7 +5,7 @@ struct GameScoresView: View {
     @Environment(GameDetailsVM.self) private var detailsVM
     
     let game: Game
-    @Binding var animation: Bool
+    let animation: Bool
     
     @State private var showAddScore = false
     
@@ -114,7 +114,7 @@ struct GameScoresView: View {
 }
 
 #Preview {
-    GameScoresView(game: .test, animation: .constant(true))
+    GameScoresView(game: .test, animation: true)
         .environment(UserVM(repository: TestRepository()))
         .environment(GamesVM(repository: TestRepository()))
         .environment(GameDetailsVM(repository: TestRepository()))

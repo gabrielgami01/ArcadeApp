@@ -5,7 +5,7 @@ struct GameSessionView: View {
     @Environment(SessionVM.self) private var gameSessionVM
     
     let game: Game
-    @Binding var animation: Bool
+    let animation: Bool
     
     var body: some View {
         ScrollView {
@@ -50,7 +50,7 @@ struct GameSessionView: View {
 }
 
 #Preview {
-    GameSessionView(game: .test, animation: .constant(true))
+    GameSessionView(game: .test, animation: true)
         .environment(GameDetailsVM(repository: TestRepository()))
         .environment(SessionVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
