@@ -56,7 +56,7 @@
 		FC5C1BFA2C9309E00063EDA5 /* HeaderToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5C1BF92C9309E00063EDA5 /* HeaderToolbar.swift */; };
 		FC6A9C1C2C862240002B9ED2 /* GameAboutCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6A9C1B2C862240002B9ED2 /* GameAboutCard.swift */; };
 		FC6C61312C9B361500A64649 /* ConnectionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6C61302C9B360E00A64649 /* ConnectionsButton.swift */; };
-		FC6C61342C9B369D00A64649 /* SocialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6C61332C9B369B00A64649 /* SocialCell.swift */; };
+		FC6C61342C9B369D00A64649 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6C61332C9B369B00A64649 /* NotificationCell.swift */; };
 		FC6F73E42C563E8E00E34AF3 /* ShimmerEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F73E32C563E8E00E34AF3 /* ShimmerEffect.swift */; };
 		FC6F73E82C564C2900E34AF3 /* FontStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F73E72C564C2900E34AF3 /* FontStyles.swift */; };
 		FC6F73EA2C5650AA00E34AF3 /* VT323.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC6F73E92C5650AA00E34AF3 /* VT323.ttf */; };
@@ -80,6 +80,9 @@
 		FC9A3F922CD010DF00844A77 /* SessionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A3F8E2CD010DF00844A77 /* SessionCard.swift */; };
 		FC9A3F932CD010DF00844A77 /* TimerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A3F8F2CD010DF00844A77 /* TimerCard.swift */; };
 		FC9A3F942CD010DF00844A77 /* TimerControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A3F902CD010DF00844A77 /* TimerControl.swift */; };
+		FC9A3F9A2CD0126D00844A77 /* UserActiveSessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A3F992CD0126C00844A77 /* UserActiveSessionCell.swift */; };
+		FC9A3F9C2CD012D000844A77 /* ActiveSessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A3F9B2CD012CB00844A77 /* ActiveSessionCell.swift */; };
+		FC9A3F9E2CD0133B00844A77 /* ActiveSessionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A3F9D2CD0133600844A77 /* ActiveSessionCard.swift */; };
 		FCA519152C36C18D001CCF54 /* Namespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA519142C36C18D001CCF54 /* Namespace.swift */; };
 		FCA519172C36C191001CCF54 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA519162C36C191001CCF54 /* UIDevice.swift */; };
 		FCA5191B2C36FDE5001CCF54 /* GameDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA5191A2C36FDE5001CCF54 /* GameDetailsVM.swift */; };
@@ -196,7 +199,7 @@
 		FC5C1BF92C9309E00063EDA5 /* HeaderToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderToolbar.swift; sourceTree = "<group>"; };
 		FC6A9C1B2C862240002B9ED2 /* GameAboutCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAboutCard.swift; sourceTree = "<group>"; };
 		FC6C61302C9B360E00A64649 /* ConnectionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsButton.swift; sourceTree = "<group>"; };
-		FC6C61332C9B369B00A64649 /* SocialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialCell.swift; sourceTree = "<group>"; };
+		FC6C61332C9B369B00A64649 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		FC6F73E32C563E8E00E34AF3 /* ShimmerEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerEffect.swift; sourceTree = "<group>"; };
 		FC6F73E72C564C2900E34AF3 /* FontStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyles.swift; sourceTree = "<group>"; };
 		FC6F73E92C5650AA00E34AF3 /* VT323.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = VT323.ttf; sourceTree = "<group>"; };
@@ -220,6 +223,9 @@
 		FC9A3F8E2CD010DF00844A77 /* SessionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCard.swift; sourceTree = "<group>"; };
 		FC9A3F8F2CD010DF00844A77 /* TimerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCard.swift; sourceTree = "<group>"; };
 		FC9A3F902CD010DF00844A77 /* TimerControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerControl.swift; sourceTree = "<group>"; };
+		FC9A3F992CD0126C00844A77 /* UserActiveSessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActiveSessionCell.swift; sourceTree = "<group>"; };
+		FC9A3F9B2CD012CB00844A77 /* ActiveSessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSessionCell.swift; sourceTree = "<group>"; };
+		FC9A3F9D2CD0133600844A77 /* ActiveSessionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSessionCard.swift; sourceTree = "<group>"; };
 		FCA519142C36C18D001CCF54 /* Namespace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Namespace.swift; sourceTree = "<group>"; };
 		FCA519162C36C191001CCF54 /* UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		FCA5191A2C36FDE5001CCF54 /* GameDetailsVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailsVM.swift; sourceTree = "<group>"; };
@@ -461,7 +467,9 @@
 		FC6C61322C9B369600A64649 /* Social */ = {
 			isa = PBXGroup;
 			children = (
-				FC6C61332C9B369B00A64649 /* SocialCell.swift */,
+				FC9A3F9B2CD012CB00844A77 /* ActiveSessionCell.swift */,
+				FC9A3F992CD0126C00844A77 /* UserActiveSessionCell.swift */,
+				FC6C61332C9B369B00A64649 /* NotificationCell.swift */,
 			);
 			path = Social;
 			sourceTree = "<group>";
@@ -519,6 +527,7 @@
 		FC9A3F912CD010DF00844A77 /* Session */ = {
 			isa = PBXGroup;
 			children = (
+				FC9A3F9D2CD0133600844A77 /* ActiveSessionCard.swift */,
 				FC9A3F8E2CD010DF00844A77 /* SessionCard.swift */,
 				FC9A3F8F2CD010DF00844A77 /* TimerCard.swift */,
 				FC9A3F902CD010DF00844A77 /* TimerControl.swift */,
@@ -826,7 +835,7 @@
 				FC8983E42CB9B15D008B17BF /* UINavigationController.swift in Sources */,
 				FCC036032C480B6400DDBC90 /* GameScoresView.swift in Sources */,
 				FC935F1B2C7DE9080053F11C /* ErrorAlert.swift in Sources */,
-				FC6C61342C9B369D00A64649 /* SocialCell.swift in Sources */,
+				FC6C61342C9B369D00A64649 /* NotificationCell.swift in Sources */,
 				FC6F73F12C56D19C00E34AF3 /* AsyncTypeWriter.swift in Sources */,
 				FCC324282CAAC70300D1E961 /* NetworkStatus.swift in Sources */,
 				FC6F73F32C56D1F900E34AF3 /* AsyncText.swift in Sources */,
@@ -847,6 +856,7 @@
 				FCC7245C2C525EF1008C3BC1 /* UIImage.swift in Sources */,
 				FC6C61312C9B361500A64649 /* ConnectionsButton.swift in Sources */,
 				FC2FD0872C43E3C60054CD43 /* MainTabView.swift in Sources */,
+				FC9A3F9A2CD0126D00844A77 /* UserActiveSessionCell.swift in Sources */,
 				FC2FD08F2C4403F50054CD43 /* EnumsModel.swift in Sources */,
 				FC47C1542C8CCD27002F214B /* ConnectionsListView.swift in Sources */,
 				FCB699882C64C7B300A4D638 /* SearchCell.swift in Sources */,
@@ -887,10 +897,12 @@
 				FCC324132CAAB59000D1E961 /* JSONDecoder.swift in Sources */,
 				FCC3242A2CAAC73C00D1E961 /* UnavailableNetwork.swift in Sources */,
 				FCB2CD0E2C6BD67E001D5751 /* RankingsView.swift in Sources */,
+				FC9A3F9C2CD012D000844A77 /* ActiveSessionCell.swift in Sources */,
 				FC935F1D2C7DEEFA0053F11C /* CustomButtonStyle.swift in Sources */,
 				FC0208A82CC189ED00078112 /* PillPicker.swift in Sources */,
 				FC22BA602C2590EF002DFAA4 /* ArcadeAppApp.swift in Sources */,
 				FCCE05632C2B36ED00B0D2CD /* DataPreview.swift in Sources */,
+				FC9A3F9E2CD0133B00844A77 /* ActiveSessionCard.swift in Sources */,
 				FCC7245A2C525CA8008C3BC1 /* ScoreImage.swift in Sources */,
 				FCBC23F02CC4F3C6009FF39C /* SessionModel.swift in Sources */,
 				FCA519152C36C18D001CCF54 /* Namespace.swift in Sources */,

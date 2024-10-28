@@ -15,7 +15,7 @@ struct SocialView: View {
                 ScrollView(.horizontal) {
                     LazyHStack(spacing: 20) {
                         if let activeUser = userVM.activeUser {
-                            SessionCell(user: activeUser, activeSession: sessionVM.activeSession)
+                            ActiveSessionCell(user: activeUser, activeSession: sessionVM.activeSession)
                         }
                         
                         ForEach(socialVM.followingSessions) { session in
@@ -27,7 +27,7 @@ struct SocialView: View {
                                         }
                                     }
                                 } label: {
-                                    FollowingSessionCell(user: user, game: session.game.name)
+                                    UserActiveSessionCell(user: user, game: session.game.name)
                                 }
                                 .buttonStyle(.plain)
                             }
@@ -51,7 +51,7 @@ struct SocialView: View {
                                         }
                                     }
                                 } label: {
-                                    SocialCell(userConnection: userConnection)
+                                    NotificationCell(userConnection: userConnection)
                                 }
                                 .buttonStyle(.plain)
                             }
@@ -98,58 +98,3 @@ struct SocialView: View {
     }
 }
 
-
-struct FollowingSessionCell: View {
-    let user: User
-    let game: String
-    
-    var body: some View {
-        VStack {
-            UserAvatarImage(imageData: user.avatarImage, size: 80)
-                .overlay {
-                    Text(game)
-                        .font(.customFootnote)
-                        .multilineTextAlignment(.center)
-                        .frame(width: 70)
-                        .padding(5)
-                        .background(Color.card, in: RoundedRectangle(cornerRadius: 20))
-                        .offset(y: -20)
-                    
-                }
-            
-            Text(user.username)
-                .font(.customCallout)
-        }
-    }
-}
-
-struct SessionCell: View {
-    let user: User
-    let activeSession: Session?
-    
-    var body: some View {
-        VStack {
-            UserAvatarImage(imageData: user.avatarImage, size: 80)
-                .overlay {
-                    Group {
-                        if let activeSession {
-                            Text(activeSession.game.name)
-                                .font(.customFootnote)
-                                .multilineTextAlignment(.center)
-                            
-                        } else {
-                            Text("Offline")
-                                .font(.customFootnote)
-                                .foregroundStyle(.secondary)
-                        }
-                    }
-                    .frame(width: 70, height: 30)
-                    .padding(5)
-                    .background(Color.card, in: RoundedRectangle(cornerRadius: 20))
-                    .offset(y: -20)
-                }
-            Text("Your session")
-                .font(.customCallout)
-        }
-    }
-}

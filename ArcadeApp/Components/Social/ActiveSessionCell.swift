@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct SessionCell: View {
+struct ActiveSessionCell: View {
     let user: User
     let activeSession: Session?
     
@@ -32,6 +32,6 @@ struct SessionCell: View {
 }
 
 #Preview {
-    SessionCell(user: .test, activeSession: .test)
+    ActiveSessionCell(user: .test, activeSession: .test)
         .preferredColorScheme(.dark)
 }

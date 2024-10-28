@@ -26,4 +26,5 @@ struct UserActiveSessionCell: View {
 
 #Preview {
     UserActiveSessionCell(user: .test2, game: Game.test.name)
+        .preferredColorScheme(.dark)
 }
