@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct SocialCell: View {
+struct NotificationCell: View {
     @Environment(SocialVM.self) private var socialVM
     
     let userConnection: UserConnections
@@ -30,7 +30,7 @@ struct SocialCell: View {
 }
 
 #Preview {
-    SocialCell(userConnection: .test)
+    NotificationCell(userConnection: .test)
         .environment(SocialVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
         
