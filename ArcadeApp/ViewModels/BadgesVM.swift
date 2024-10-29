@@ -21,6 +21,8 @@ final class BadgesVM {
     
     var selectedBadge: Badge? = nil
     var selectedOrder: Int? = nil
+    
+    var userBadges: [Badge] = []
 
     var errorMsg = ""
     var showError = false
@@ -30,6 +32,21 @@ final class BadgesVM {
             let badges = try await repository.getBadges()
             await MainActor.run {
                 self.badges = badges
+            }
+        } catch {
+            await MainActor.run {
+                errorMsg = error.localizedDescription
+                showError.toggle()
+            }
+            print(error.localizedDescription)
+        }
+    }
+    
+    func getFeaturedBadges(id: UUID) async {
+        do {
+            let badges = try await repository.getFeaturedBadges(userID: id)
+            await MainActor.run {
+                self.userBadges = badges
             }
         } catch {
             await MainActor.run {

@@ -71,8 +71,8 @@ extension URL {
     
     private static let badges = api.appending(path: "badges")
     static let getBadges = badges
-    static func getUserBadges(id: UUID) -> URL {
-        badges.appending(path: id.uuidString)
+    static func getFeaturedBadges(userID: UUID) -> URL {
+        badges.appending(path: userID.uuidString)
     }
     static let highlightBadge = badges.appending(path: "highlight")
     static func unhighlightBadge(id: UUID) -> URL {

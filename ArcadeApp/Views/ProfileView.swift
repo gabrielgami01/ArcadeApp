@@ -65,7 +65,7 @@ struct ProfileView: View {
                                         badgesVM.selectedBadge = badge
                                         showAddEmblem.toggle()
                                     } label: {
-                                        BadgeCard(badge: badge)
+                                        BadgeCard(type: .display, badge: badge)
                                     }
                                     
                                     if index != badgesVM.featuredBadges.count - 1 || badgesVM.featuredBadges.count < 3 {
@@ -78,7 +78,7 @@ struct ProfileView: View {
                                         badgesVM.selectedOrder = index + badgesVM.featuredBadges.count
                                         showAddEmblem.toggle()
                                     } label: {
-                                        AddBadgeCard()
+                                        BadgeCard(type: .add)
                                     }
                                     
                                     if index != max(0, 3 - badgesVM.featuredBadges.count) - 1 {
@@ -159,42 +159,4 @@ struct ProfileView: View {
         .environment(SocialVM(repository: TestRepository()))
         .environment(BadgesVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
-}
-
-
-struct BadgeCard: View {
-    let badge: Badge
-    
-    var body: some View {
-        VStack {
-            Text(badge.name)
-                .font(.customFootnote)
-                .foregroundStyle(.secondary)
-                .lineLimit(2, reservesSpace: true)
-                .multilineTextAlignment(.center)
-                .frame(width: 100)
-            
-            Image(systemName: "trophy.fill")
-                .resizable()
-                .scaledToFit()
-                .frame(height: 75)
-        }
-    }
-}
-
-struct AddBadgeCard: View {
-    var body: some View {
-        VStack {
-            Text("Add badge")
-                .font(.customFootnote)
-                .foregroundStyle(.secondary)
-                .lineLimit(2, reservesSpace: true)
-                .multilineTextAlignment(.center)
-            
-            Image(systemName: "plus.circle.fill")
-                .resizable()
-                .scaledToFit()
-                .frame(height: 75)
-        }
-    }
 }

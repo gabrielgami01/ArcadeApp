@@ -37,6 +37,7 @@
 		FC2E08D52CD10008004B4DA4 /* BadgesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E08D42CD10004004B4DA4 /* BadgesVM.swift */; };
 		FC2E08D82CD10134004B4DA4 /* DataPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E08D72CD10134004B4DA4 /* DataPreview.swift */; };
 		FC2E08DA2CD10B2E004B4DA4 /* AddBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E08D92CD10B2D004B4DA4 /* AddBadgeView.swift */; };
+		FC2E08DD2CD170F6004B4DA4 /* BadgeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E08DC2CD170F6004B4DA4 /* BadgeCard.swift */; };
 		FC2E95102C61619400393C39 /* ChallengeFrontCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E950F2C61619400393C39 /* ChallengeFrontCard.swift */; };
 		FC2E95122C6161B400393C39 /* ChallengeBackCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E95112C6161B400393C39 /* ChallengeBackCard.swift */; };
 		FC2E95142C61634E00393C39 /* ChallengeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E95132C61634E00393C39 /* ChallengeCard.swift */; };
@@ -183,6 +184,7 @@
 		FC2E08D42CD10004004B4DA4 /* BadgesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesVM.swift; sourceTree = "<group>"; };
 		FC2E08D72CD10134004B4DA4 /* DataPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPreview.swift; sourceTree = "<group>"; };
 		FC2E08D92CD10B2D004B4DA4 /* AddBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBadgeView.swift; sourceTree = "<group>"; };
+		FC2E08DC2CD170F6004B4DA4 /* BadgeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeCard.swift; sourceTree = "<group>"; };
 		FC2E950F2C61619400393C39 /* ChallengeFrontCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeFrontCard.swift; sourceTree = "<group>"; };
 		FC2E95112C6161B400393C39 /* ChallengeBackCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeBackCard.swift; sourceTree = "<group>"; };
 		FC2E95132C61634E00393C39 /* ChallengeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCard.swift; sourceTree = "<group>"; };
@@ -451,6 +453,14 @@
 			name = Search;
 			sourceTree = "<group>";
 		};
+		FC2E08DB2CD170CF004B4DA4 /* Badges */ = {
+			isa = PBXGroup;
+			children = (
+				FC2E08DC2CD170F6004B4DA4 /* BadgeCard.swift */,
+			);
+			path = Badges;
+			sourceTree = "<group>";
+		};
 		FC2E950E2C61616A00393C39 /* Challenges */ = {
 			isa = PBXGroup;
 			children = (
@@ -598,6 +608,7 @@
 		FCCD73692C2D67150056036E /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				FC2E08DB2CD170CF004B4DA4 /* Badges */,
 				FC6F73EF2C56CBEA00E34AF3 /* Common */,
 				FC2BC3022C34807400353D48 /* Home */,
 				FC94F7172C78C47D00FEA9FE /* User */,
@@ -938,6 +949,7 @@
 				FC4DDABC2C847EA8009E1FCA /* TextFieldButtonStyle.swift in Sources */,
 				FCE336CF2C67C44E009E30AB /* JWTDecoder.swift in Sources */,
 				FC0E31BF2C46DE59004EB339 /* PageButton.swift in Sources */,
+				FC2E08DD2CD170F6004B4DA4 /* BadgeCard.swift in Sources */,
 				FC2E08D82CD10134004B4DA4 /* DataPreview.swift in Sources */,
 				FCACFBC92C638A750065805E /* SearchableView.swift in Sources */,
 				FC0E31CB2C46F09F004EB339 /* GameAboutView.swift in Sources */,

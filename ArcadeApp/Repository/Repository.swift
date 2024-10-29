@@ -17,6 +17,7 @@ protocol RepositoryProtocol {
     func addScore(_ score: CreateScoreDTO) async throws
     func getChallenges() async throws -> [Challenge]
     func getBadges() async throws -> [Badge]
+    func getFeaturedBadges(userID: UUID) async throws -> [Badge]
     func highlightBadge(_ badgeDTO: HighlightBadgeDTO) async throws
     func unhighlightBadge(id: UUID) async throws
     func getGameRanking(id: UUID, page: Int) async throws -> [RankingScore]
@@ -126,6 +127,10 @@ struct Repository: RepositoryProtocol, JSONService {
     
     func getBadges() async throws -> [Badge] {
         try await fetchJSON(request: .get(url: .getBadges, token: getToken()), type: [Badge].self)
+    }
+    
+    func getFeaturedBadges(userID: UUID) async throws -> [Badge] {
+        try await fetchJSON(request: .get(url: .getFeaturedBadges(userID: userID), token: getToken()), type: [Badge].self)
     }
     
     func highlightBadge(_ badgeDTO: HighlightBadgeDTO) async throws {

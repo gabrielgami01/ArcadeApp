@@ -79,6 +79,10 @@ struct TestRepository: RepositoryProtocol {
         [.test, .test2, .test3]
     }
     
+    func getFeaturedBadges(userID: UUID) async throws -> [Badge] {
+        [.test2, .test3]
+    }
+    
     func highlightBadge(_ badgeDTO: HighlightBadgeDTO) async throws {}
     
     func unhighlightBadge(id: UUID) async throws {}
