@@ -1,4 +1,4 @@
-import Foundation
+import SwiftUI
 
 enum Console: String, Codable, Identifiable, CaseIterable {
     case all = "All"
@@ -40,7 +40,21 @@ enum ChallengeType: String, Codable {
     case all
     case gold
     case silver
-    case bronze   
+    case bronze
+    
+    func colorForChallengeType() -> Color {
+        switch self {
+            case .all:
+                return .white
+            case .bronze:
+                return .orange
+            case .gold:
+                return .yellow
+            case .silver:
+                return .gray
+            
+        }
+    }
 }
 
 enum SessionStatus: String, Codable {

@@ -75,6 +75,14 @@ struct TestRepository: RepositoryProtocol {
         return [.test, .test2, .test3, .test4, .test5].sorted { $0.game < $1.game}
     }
     
+    func getBadges() async throws -> [Badge] {
+        [.test, .test2, .test3]
+    }
+    
+    func highlightBadge(_ badgeDTO: HighlightBadgeDTO) async throws {}
+    
+    func unhighlightBadge(id: UUID) async throws {}
+    
     func getGameRanking(id: UUID, page: Int) async throws -> [RankingScore] {
         let scores: [RankingScore] = [.test, .test2, .test3, .test4, .test5, .test6, .test7, .test8]
         return scores.sorted { $0.score > $1.score}
@@ -185,6 +193,27 @@ extension Score {
                             date: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 22, hour: 14, minute: 02)) ?? .now)
 }
 
+extension Session {
+    static let test = Session(id: UUID(),
+                                  status: .active,
+                                  start: .now.addingTimeInterval(-600),
+                                  end: nil,
+                                  userID: User.test.id,
+                                  game: .test)
+    static let test2 = Session(id: UUID(),
+                                   status: .finished,
+                                   start: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 09, hour: 12, minute: 30))!,
+                                   end: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 09, hour: 14, minute: 30))!,
+                                   userID: User.test.id,
+                                   game: .test)
+    static let test3 = Session(id: UUID(),
+                                   status: .finished,
+                                   start: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 12, hour: 12, minute: 30))!,
+                                   end: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 12, hour: 14, minute: 30))!,
+                                   userID: User.test.id,
+                                   game: .test)
+}
+
 extension Challenge {
     static let test = Challenge(id: UUID(),
                                 name: "Mushroom Champion",
@@ -226,6 +255,33 @@ extension Challenge {
     
 }
 
+extension Badge {
+    static let test = Badge(id: UUID(),
+                            name: Challenge.test.name,
+                            featured: false,
+                            order: nil,
+                            challengeType: .bronze,
+                            game: Game.test.name,
+                            completedAt: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 1, hour: 22, minute: 30)) ?? .distantPast)
+                                         
+    static let test2 = Badge(id: UUID(),
+                             name: Challenge.test2.name,
+                             featured: true,
+                             order: 0,
+                             challengeType: .gold,
+                             game: Game.test.name,
+                             completedAt: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 1, hour: 22, minute: 30)) ?? .distantPast)
+                                          
+    static let test3 = Badge(id: UUID(),
+                             name: Challenge.test3.name,
+                             featured: true,
+                             order: 1,
+                             challengeType: .silver,
+                             game: Game.test2.name,
+                             completedAt: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 2, hour: 15, minute: 00)) ?? .distantPast)
+}
+                                          
+
 extension RankingScore {
     static let test = RankingScore(id: UUID(),
                                    score: 5500,
@@ -259,27 +315,6 @@ extension RankingScore {
                                     score: 9393,
                                     date: Calendar.current.date(from: DateComponents(year: 2024, month: 9, day: 22, hour: 14, minute: 02)) ?? .now,
                                     user: .test2)
-}
-
-extension Session {
-    static let test = Session(id: UUID(),
-                                  status: .active,
-                                  start: .now.addingTimeInterval(-600),
-                                  end: nil,
-                                  userID: User.test.id,
-                                  game: .test)
-    static let test2 = Session(id: UUID(),
-                                   status: .finished,
-                                   start: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 09, hour: 12, minute: 30))!,
-                                   end: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 09, hour: 14, minute: 30))!,
-                                   userID: User.test.id,
-                                   game: .test)
-    static let test3 = Session(id: UUID(),
-                                   status: .finished,
-                                   start: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 12, hour: 12, minute: 30))!,
-                                   end: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 12, hour: 14, minute: 30))!,
-                                   userID: User.test.id,
-                                   game: .test)
 }
 
 struct SwiftDataPreview: ViewModifier {

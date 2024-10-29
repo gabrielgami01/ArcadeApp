@@ -69,14 +69,14 @@ extension URL {
     private static let challenges = api.appending(path: "challenges")
     static let getChallenges = challenges.appending(queryItems: [.language()])
     
-    private static let completedChallenges = api.appending(path: "completedChallenges")
-    static let getCompletedChallenges = completedChallenges.appending(queryItems: [.language()])
-    static func getUserFeaturedChallenges(id: UUID) -> URL {
-        completedChallenges.appending(path: id.uuidString).appending(path: "featured").appending(queryItems: [.language()])
+    private static let badges = api.appending(path: "badges")
+    static let getBadges = badges
+    static func getUserBadges(id: UUID) -> URL {
+        badges.appending(path: id.uuidString)
     }
-    static let highlightChallenge = completedChallenges.appending(path: "highlight")
-    static func unhighlightChallenge(id: UUID) -> URL {
-        completedChallenges.appending(path: "unhighlight").appending(path: id.uuidString)
+    static let highlightBadge = badges.appending(path: "highlight")
+    static func unhighlightBadge(id: UUID) -> URL {
+        badges.appending(path: "unhighlight").appending(path: id.uuidString)
     }
     
     private static let connections = api.appending(path: "connections")

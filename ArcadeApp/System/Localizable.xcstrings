@@ -94,6 +94,9 @@
     "Active session" : {
 
     },
+    "Add badge" : {
+
+    },
     "Add new emblem" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -156,6 +159,9 @@
           }
         }
       }
+    },
+    "Badges" : {
+
     },
     "Cancel" : {
       "localizations" : {
@@ -504,6 +510,9 @@
         }
       }
     },
+    "No available badges" : {
+
+    },
     "No available emblems" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -604,7 +613,6 @@
       }
     },
     "Personal card" : {
-      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -1016,6 +1024,9 @@
       "shouldTranslate" : false
     },
     "You already have an active session." : {
+
+    },
+    "You haven't any available badge by the moment." : {
 
     },
     "You haven't any available emblems by the moment." : {

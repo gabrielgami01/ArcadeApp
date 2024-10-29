@@ -4,8 +4,10 @@ import PhotosUI
 struct ProfileView: View {
     @Environment(UserVM.self) private var userVM
     @Environment(SocialVM.self) private var socialVM
+    @Environment(BadgesVM.self) private var badgesVM
     
     @State private var showEditAbout = false
+    @State private var showAddEmblem = false
     
     @Environment(\.dismiss) private var dismiss
     
@@ -57,6 +59,41 @@ struct ProfileView: View {
                     
                     Form {
                         Section {
+                            HStack(spacing: 0) {
+                                ForEach(Array(badgesVM.featuredBadges.enumerated()), id: \.element.id) { index, badge in
+                                    Button {
+                                        badgesVM.selectedBadge = badge
+                                        showAddEmblem.toggle()
+                                    } label: {
+                                        BadgeCard(badge: badge)
+                                    }
+                                    
+                                    if index != badgesVM.featuredBadges.count - 1 || badgesVM.featuredBadges.count < 3 {
+                                        Spacer()
+                                    }
+                                }
+                                
+                                ForEach(0..<max(0, 3 - badgesVM.featuredBadges.count), id: \.self) { index in
+                                    Button {
+                                        badgesVM.selectedOrder = index + badgesVM.featuredBadges.count
+                                        showAddEmblem.toggle()
+                                    } label: {
+                                        AddBadgeCard()
+                                    }
+                                    
+                                    if index != max(0, 3 - badgesVM.featuredBadges.count) - 1 {
+                                        Spacer()
+                                    }
+                                }
+                            }
+                        } header: {
+                            Text("Personal card")
+                                .font(.customTitle3)
+                        }
+                        .buttonStyle(.plain)
+                        .listRowBackground(Color.card)
+                        
+                        Section {
                             HStack {
                                 Text(user.about ?? "")
                                 
@@ -91,7 +128,7 @@ struct ProfileView: View {
                 }
             }
             .task {
-//                await challengesVM.getUserEmblems()
+                await badgesVM.getBadges()
             }
             .navigationBarBackButtonHidden()
             .scrollContentBackground(.hidden)
@@ -109,9 +146,10 @@ struct ProfileView: View {
             .sheet(isPresented: $showEditAbout) {
                 EditAboutView()
             }
-        }
-        
-        
+            .sheet(isPresented: $showAddEmblem) {
+                AddBadgeView()
+            }
+        }  
     }
 }
 
@@ -119,6 +157,44 @@ struct ProfileView: View {
     ProfileView()
         .environment(UserVM(repository: TestRepository()))
         .environment(SocialVM(repository: TestRepository()))
+        .environment(BadgesVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }
 
+
+struct BadgeCard: View {
+    let badge: Badge
+    
+    var body: some View {
+        VStack {
+            Text(badge.name)
+                .font(.customFootnote)
+                .foregroundStyle(.secondary)
+                .lineLimit(2, reservesSpace: true)
+                .multilineTextAlignment(.center)
+                .frame(width: 100)
+            
+            Image(systemName: "trophy.fill")
+                .resizable()
+                .scaledToFit()
+                .frame(height: 75)
+        }
+    }
+}
+
+struct AddBadgeCard: View {
+    var body: some View {
+        VStack {
+            Text("Add badge")
+                .font(.customFootnote)
+                .foregroundStyle(.secondary)
+                .lineLimit(2, reservesSpace: true)
+                .multilineTextAlignment(.center)
+            
+            Image(systemName: "plus.circle.fill")
+                .resizable()
+                .scaledToFit()
+                .frame(height: 75)
+        }
+    }
+}

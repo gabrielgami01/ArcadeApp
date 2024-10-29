@@ -16,6 +16,9 @@ protocol RepositoryProtocol {
     func addReview(_ review: CreateReviewDTO) async throws
     func addScore(_ score: CreateScoreDTO) async throws
     func getChallenges() async throws -> [Challenge]
+    func getBadges() async throws -> [Badge]
+    func highlightBadge(_ badgeDTO: HighlightBadgeDTO) async throws
+    func unhighlightBadge(id: UUID) async throws
     func getGameRanking(id: UUID, page: Int) async throws -> [RankingScore]
     func getFollowingFollowers() async throws -> (following: [UserConnections], followers: [UserConnections])
     func followUser(id: UUID) async throws
@@ -27,8 +30,7 @@ protocol RepositoryProtocol {
 }
 
 struct Repository: RepositoryProtocol, JSONService {
-    
-    let session: URLSession
+   let session: URLSession
     
     static let shared = Repository()
     
@@ -121,6 +123,18 @@ struct Repository: RepositoryProtocol, JSONService {
     func getChallenges() async throws -> [Challenge] {
         try await fetchJSON(request: .get(url: .getChallenges, token: getToken()), type: [Challenge].self)
     }
+    
+    func getBadges() async throws -> [Badge] {
+        try await fetchJSON(request: .get(url: .getBadges, token: getToken()), type: [Badge].self)
+    }
+    
+    func highlightBadge(_ badgeDTO: HighlightBadgeDTO) async throws {
+        try await send(request: .send(url: .highlightBadge, data: badgeDTO, method: .patch, token: getToken()), status: 200)
+    }
+    
+    func unhighlightBadge(id: UUID) async throws {
+        try await send(request: .send(url: .unhighlightBadge(id: id), data: "", method: .patch, token: getToken()), status: 200)
+    }
 
     func getGameRanking(id: UUID, page: Int) async throws -> [RankingScore] {
         try await fetchJSON(request: .get(url: .getGameRanking(id: id), token: getToken()), type: [RankingScore].self)
@@ -156,7 +170,4 @@ struct Repository: RepositoryProtocol, JSONService {
     func endSession(id: UUID) async throws {
         try await send(request: .send(url: .endSession(id: id), data: "", method: .patch, token: getToken()), status: 200)
     }
-    
-    
-    //GAMESESSION
 }

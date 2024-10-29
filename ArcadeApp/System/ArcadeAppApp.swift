@@ -8,6 +8,7 @@ struct ArcadeAppApp: App {
     @State private var gamesVM = GamesVM()
     @State private var detailsVM = GameDetailsVM()
     @State private var gameSessionVM = SessionVM()
+    @State private var badgesVM = BadgesVM()
     @State private var socialVM = SocialVM()
     
     var body: some Scene {
@@ -17,6 +18,7 @@ struct ArcadeAppApp: App {
                 .environment(gamesVM)
                 .environment(detailsVM)
                 .environment(gameSessionVM)
+                .environment(badgesVM)
                 .environment(socialVM)
                 .unavailableNetwork(status: network.status)
         }

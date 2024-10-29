@@ -22,7 +22,7 @@ struct ChallengeFrontCard: View {
         }
         .frame(width: 130, height: 150)
         .padding()
-        .customCard(borderColor: challenge.colorForChallenge(), cornerRadius: 50)
+        .customCard(borderColor: challenge.type.colorForChallengeType(), cornerRadius: 50)
         .overlay(alignment: .topTrailing) {
             if showCheck {
                 Image(systemName: "checkmark")

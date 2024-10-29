@@ -10,7 +10,7 @@ struct ChallengeBackCard: View {
         }
         .frame(width: 130, height: 150, alignment: .top)
         .padding()
-        .customCard(borderColor: challenge.colorForChallenge(), cornerRadius: 50)
+        .customCard(borderColor: challenge.type.colorForChallengeType(), cornerRadius: 50)
     }
 }
 
