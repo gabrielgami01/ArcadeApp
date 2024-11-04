@@ -12,7 +12,7 @@ struct ConnectionsView: View {
             HStack(spacing: 15) {
                 BackButton()
                 
-                CustomPicker(selected: $selectedPage, displayKeyPath: \.rawValue)
+                CustomPicker(selected: $selectedPage)
                     .namespace(namespace)
             }
             .padding(.horizontal)

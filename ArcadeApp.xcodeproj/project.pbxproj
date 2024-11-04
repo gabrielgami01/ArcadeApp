@@ -41,7 +41,6 @@
 		FC2E95102C61619400393C39 /* ChallengeFrontCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E950F2C61619400393C39 /* ChallengeFrontCard.swift */; };
 		FC2E95122C6161B400393C39 /* ChallengeBackCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E95112C6161B400393C39 /* ChallengeBackCard.swift */; };
 		FC2E95142C61634E00393C39 /* ChallengeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E95132C61634E00393C39 /* ChallengeCard.swift */; };
-		FC2FD07F2C43C27D0054CD43 /* SelectorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2FD07E2C43C27D0054CD43 /* SelectorStyle.swift */; };
 		FC2FD0872C43E3C60054CD43 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2FD0862C43E3C60054CD43 /* MainTabView.swift */; };
 		FC2FD0892C43E3DD0054CD43 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2FD0882C43E3DD0054CD43 /* LoginView.swift */; };
 		FC2FD08D2C43E4010054CD43 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2FD08C2C43E4010054CD43 /* RegisterView.swift */; };
@@ -56,7 +55,7 @@
 		FC4FCA0A2C62345F004C12C4 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4FCA092C62345F004C12C4 /* BackButton.swift */; };
 		FC4FCA102C62B0BA004C12C4 /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4FCA0F2C62B0BA004C12C4 /* CustomPicker.swift */; };
 		FC54459E2C3801F5001B26EF /* AddReviewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54459D2C3801F5001B26EF /* AddReviewVM.swift */; };
-		FC565BA32C7205A20078C2ED /* ScrollSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC565BA22C7205A20078C2ED /* ScrollSelector.swift */; };
+		FC565BA32C7205A20078C2ED /* ScrollPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC565BA22C7205A20078C2ED /* ScrollPicker.swift */; };
 		FC573A5F2C6F984300F56268 /* RankingScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC573A5E2C6F984300F56268 /* RankingScoreCell.swift */; };
 		FC5C1BFA2C9309E00063EDA5 /* HeaderToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5C1BF92C9309E00063EDA5 /* HeaderToolbar.swift */; };
 		FC6A9C1C2C862240002B9ED2 /* GameAboutCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6A9C1B2C862240002B9ED2 /* GameAboutCard.swift */; };
@@ -127,6 +126,7 @@
 		FCE78D772C8B98EC001FDD21 /* SocialVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE78D762C8B98EC001FDD21 /* SocialVM.swift */; };
 		FCED20E62C2F1C8900C0C5A1 /* GamesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCED20E52C2F1C8900C0C5A1 /* GamesVM.swift */; };
 		FCF0CA972CC4434400196C76 /* GameSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF0CA962CC4433F00196C76 /* GameSessionView.swift */; };
+		FCF126532CD930C000A84B07 /* PickeableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF126522CD930BB00A84B07 /* PickeableProtocol.swift */; };
 		FCF92C202CC809DC005EE7FF /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF92C1F2CC809D9005EE7FF /* TimeInterval.swift */; };
 		FCFA6ACA2C8F15AE0049E8E4 /* GameRankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFA6AC92C8F15AE0049E8E4 /* GameRankingCell.swift */; };
 		FCFA6ACC2C8F5B6E0049E8E4 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFA6ACB2C8F5B6E0049E8E4 /* Date.swift */; };
@@ -188,7 +188,6 @@
 		FC2E950F2C61619400393C39 /* ChallengeFrontCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeFrontCard.swift; sourceTree = "<group>"; };
 		FC2E95112C6161B400393C39 /* ChallengeBackCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeBackCard.swift; sourceTree = "<group>"; };
 		FC2E95132C61634E00393C39 /* ChallengeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCard.swift; sourceTree = "<group>"; };
-		FC2FD07E2C43C27D0054CD43 /* SelectorStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorStyle.swift; sourceTree = "<group>"; };
 		FC2FD0862C43E3C60054CD43 /* MainTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		FC2FD0882C43E3DD0054CD43 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		FC2FD08C2C43E4010054CD43 /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -203,7 +202,7 @@
 		FC4FCA092C62345F004C12C4 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		FC4FCA0F2C62B0BA004C12C4 /* CustomPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicker.swift; sourceTree = "<group>"; };
 		FC54459D2C3801F5001B26EF /* AddReviewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewVM.swift; sourceTree = "<group>"; };
-		FC565BA22C7205A20078C2ED /* ScrollSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollSelector.swift; sourceTree = "<group>"; };
+		FC565BA22C7205A20078C2ED /* ScrollPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollPicker.swift; sourceTree = "<group>"; };
 		FC573A5E2C6F984300F56268 /* RankingScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingScoreCell.swift; sourceTree = "<group>"; };
 		FC5C1BF92C9309E00063EDA5 /* HeaderToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderToolbar.swift; sourceTree = "<group>"; };
 		FC6A9C1B2C862240002B9ED2 /* GameAboutCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAboutCard.swift; sourceTree = "<group>"; };
@@ -274,6 +273,7 @@
 		FCE78D762C8B98EC001FDD21 /* SocialVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialVM.swift; sourceTree = "<group>"; };
 		FCED20E52C2F1C8900C0C5A1 /* GamesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesVM.swift; sourceTree = "<group>"; };
 		FCF0CA962CC4433F00196C76 /* GameSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSessionView.swift; sourceTree = "<group>"; };
+		FCF126522CD930BB00A84B07 /* PickeableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickeableProtocol.swift; sourceTree = "<group>"; };
 		FCF92C1F2CC809D9005EE7FF /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
 		FCFA6AC92C8F15AE0049E8E4 /* GameRankingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRankingCell.swift; sourceTree = "<group>"; };
 		FCFA6ACB2C8F5B6E0049E8E4 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -497,14 +497,13 @@
 				FC935F1A2C7DE9080053F11C /* ErrorAlert.swift */,
 				FC2FD0902C4427530054CD43 /* CustomTextField.swift */,
 				FC935F1C2C7DEEFA0053F11C /* CustomButtonStyle.swift */,
-				FC2FD07E2C43C27D0054CD43 /* SelectorStyle.swift */,
+				FC565BA22C7205A20078C2ED /* ScrollPicker.swift */,
 				FC4FCA092C62345F004C12C4 /* BackButton.swift */,
 				FC6C61302C9B360E00A64649 /* ConnectionsButton.swift */,
 				FC5C1BF92C9309E00063EDA5 /* HeaderToolbar.swift */,
 				FCD1FCB52C669B7B0060E682 /* SheetToolbar.swift */,
 				FC4FCA0F2C62B0BA004C12C4 /* CustomPicker.swift */,
 				FC0208A72CC189E800078112 /* PillPicker.swift */,
-				FC565BA22C7205A20078C2ED /* ScrollSelector.swift */,
 				FC6F73EB2C56CA3B00E34AF3 /* CustomCard.swift */,
 				FCB0D5EE2C5810D000039654 /* CustomUnavailableView.swift */,
 				FC7A37022C4525E7004F6910 /* RatingComponent.swift */,
@@ -554,6 +553,7 @@
 		FCA519132C36C175001CCF54 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FCF126522CD930BB00A84B07 /* PickeableProtocol.swift */,
 				FCF92C1F2CC809D9005EE7FF /* TimeInterval.swift */,
 				FC8983E32CB9B156008B17BF /* UINavigationController.swift */,
 				FCC324252CAAC5EA00D1E961 /* CGSize.swift */,
@@ -862,12 +862,12 @@
 				FC26EFF52C8E34A40084B289 /* GameDetailsLabel.swift in Sources */,
 				FC22BA8D2C259255002DFAA4 /* UserModel.swift in Sources */,
 				FC6F73E42C563E8E00E34AF3 /* ShimmerEffect.swift in Sources */,
+				FCF126532CD930C000A84B07 /* PickeableProtocol.swift in Sources */,
 				FC2E95122C6161B400393C39 /* ChallengeBackCard.swift in Sources */,
 				FC76F23F2C5C26E90070D970 /* ChallengesView.swift in Sources */,
 				FCB2CD102C6BE494001D5751 /* RankingsVM.swift in Sources */,
 				FC4FCA102C62B0BA004C12C4 /* CustomPicker.swift in Sources */,
 				FCF92C202CC809DC005EE7FF /* TimeInterval.swift in Sources */,
-				FC2FD07F2C43C27D0054CD43 /* SelectorStyle.swift in Sources */,
 				FC8438FA2C4D219F00434179 /* AddScoreView.swift in Sources */,
 				FC76F2412C5C27510070D970 /* ChallengeModel.swift in Sources */,
 				FC0E31C12C46DEAA004EB339 /* GamesCarousel.swift in Sources */,
@@ -941,7 +941,7 @@
 				FC0E31B42C46879B004EB339 /* ProfileView.swift in Sources */,
 				FC573A5F2C6F984300F56268 /* RankingScoreCell.swift in Sources */,
 				FC9639272C8A11CA00ABAF72 /* UserCard.swift in Sources */,
-				FC565BA32C7205A20078C2ED /* ScrollSelector.swift in Sources */,
+				FC565BA32C7205A20078C2ED /* ScrollPicker.swift in Sources */,
 				FC2E95142C61634E00393C39 /* ChallengeCard.swift in Sources */,
 				FC0E31AA2C467FB4004EB339 /* AddReviewView.swift in Sources */,
 				FC935F192C7DE00A0053F11C /* RegisterVM.swift in Sources */,

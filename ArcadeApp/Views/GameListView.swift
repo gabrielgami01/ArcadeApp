@@ -13,7 +13,7 @@ struct GameListView: View {
         
         ScrollView {
             VStack(spacing: 15) {
-                ScrollSelector(selected: $gamesBVM.activeConsole)
+                ScrollPicker(selected: $gamesBVM.activeConsole)
                 
                 LazyVStack(spacing: 20) {
                     ForEach(gamesVM.games) { game in

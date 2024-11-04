@@ -63,12 +63,14 @@ enum HomeScrollType: String, Identifiable, CaseIterable {
     var id: Self { self }
 }
 
-enum GameOptions: String, Identifiable, CaseIterable {
+enum GameOptions: String, Pickeable {
     case about
     case score
     case session
     
-    var image: String {
+    var id: Self { self }
+    var displayName: String  { self.rawValue}
+    var displayImage: String? {
         switch self {
             case .about:
                 return "info.square.fill"
@@ -78,8 +80,6 @@ enum GameOptions: String, Identifiable, CaseIterable {
                 return "play.square.fill"
         }
     }
-    
-    var id: Self { self }
 }
 
 enum RatingMode {
@@ -91,10 +91,12 @@ enum CardAction: String {
     case update
 }
 
-enum ConnectionOptions: String, Identifiable, CaseIterable  {
+enum ConnectionOptions: String, Pickeable {
     case following, followers
     
     var id: Self { self }
+    var displayName: String { self.rawValue }
+    var displayImage: String? { nil }
 }
 
 

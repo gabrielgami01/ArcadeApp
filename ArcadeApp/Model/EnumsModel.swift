@@ -1,6 +1,6 @@
 import SwiftUI
 
-enum Console: String, Codable, Identifiable, CaseIterable {
+enum Console: String, Codable, Pickeable {
     case all = "All"
     case atari2600 = "Atari2600"
     case gameboy = "Gameboy"
@@ -13,6 +13,8 @@ enum Console: String, Codable, Identifiable, CaseIterable {
     case segagenesis = "SegaGenesis"
 
     var id: Self { self }
+    var displayName: String { self.rawValue }
+    var displayImage: String? { nil }
 }
 
 enum Genre: String, Codable {
