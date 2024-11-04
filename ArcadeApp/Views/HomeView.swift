@@ -5,7 +5,9 @@ struct HomeView: View {
     @Environment(GamesVM.self) private var gamesVM
     
     @State private var selectedType: HomeScrollType = .featured
+    @State private var activeNamespace: Namespace.ID?
     
+    @Namespace private var namespaceSession
     @Namespace private var namespaceFeatured
     @Namespace private var namespaceFavorites
     
@@ -42,40 +44,38 @@ struct HomeView: View {
                     .buttonStyle(.plain)
                     .padding()
                     
-                    ActiveSessionCard()
+                    ActiveSessionCard(activeNamespace: $activeNamespace)
+                        .namespace(namespaceSession)
                     
-                    GamesCarousel(selectedType: $selectedType, type: .featured, games: gamesVM.featured)
+                    GamesCarousel(selectedType: $selectedType, activeNamespace: $activeNamespace, type: .featured)
                         .namespace(namespaceFeatured)
                     
-                    GamesCarousel(selectedType: $selectedType, type: .favorites, games: gamesVM.favorites)
+                    GamesCarousel(selectedType: $selectedType, activeNamespace: $activeNamespace, type: .favorites)
                         .namespace(namespaceFavorites)
                 }
                 .opacity(gamesVM.selectedGame == nil ? 1.0 : 0.0)
             }
             .navigationDestination(for: HomePage.self) { page in
-                Group {
-                    switch page {
-                        case .challenges:
-                            ChallengesView()
-                        case .rankings:
-                            RankingsView()
-                        case .social:
-                            SocialView()
-                    }
+                switch page {
+                    case .challenges:
+                        ChallengesView()
+                    case .rankings:
+                        RankingsView()
+                    case .social:
+                        SocialView()
                 }
-                .namespace(namespaceFeatured)
             }
             .navigationDestination(for: Game.self) { game in
                 GameRankingView(game: game)
             }
             .overlay {
                 GameDetailsView(game: gamesVM.selectedGame)
+                    .namespace(activeNamespace)
             }
             .showAlert(show: $gamesBVM.showError, text: gamesVM.errorMsg)
             .scrollBounceBehavior(.basedOnSize)
             .scrollIndicators(.hidden)
             .background(Color.background)
-            .namespace(selectedType == .featured ? namespaceFeatured : namespaceFavorites)
         }
     }
 }

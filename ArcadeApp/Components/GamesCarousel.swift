@@ -2,9 +2,17 @@ import SwiftUI
 
 struct GamesCarousel: View {
     @Environment(GamesVM.self) private var gamesVM
+    
     @Binding var selectedType: HomeScrollType
+    @Binding var activeNamespace: Namespace.ID?
     let type: HomeScrollType
-    let games: [Game]
+    
+    private var games: [Game] {
+        switch type {
+            case .featured: gamesVM.featured
+            case .favorites: gamesVM.favorites
+        }
+    }
     
     @Environment(\.namespace) private var namespace
     
@@ -17,35 +25,25 @@ struct GamesCarousel: View {
             if !games.isEmpty{
                 ScrollView(.horizontal) {
                     LazyHStack(spacing: 10) {
-                        if let namespace {
-                            ForEach(games) { game in
-                                if game.id != gamesVM.selectedGame?.id || selectedType.id != type.id {
-                                    VStack {
-                                        Button {
-                                            selectedType = type
-                                            withAnimation {
-                                                gamesVM.selectedGame = game
-                                            }
-                                        } label: {
-                                            GameCover(game: game, width: 140, height: 220)
-                                        }
-                                        .buttonStyle(.plain)
-                                        
-                                        Text(game.name)
-                                            .font(.customSubheadline)
-                                            .lineLimit(2, reservesSpace: true)
-                                            .multilineTextAlignment(.center)
-                                            .matchedGeometryEffect(id: "\(game.id)_NAME", in: namespace, properties: .position)
-                                            .frame(width: 140)
+                        ForEach(games) { game in
+                            if game.id != gamesVM.selectedGame?.id || selectedType.id != type.id {
+                                Button {
+                                    selectedType = type
+                                    activeNamespace = namespace
+                                    withAnimation {
+                                        gamesVM.selectedGame = game
                                     }
-                                } else {
-                                    Color.clear
-                                        .frame(width: 140, height: 220)
+                                } label: {
+                                    CarouselCell(game: game)
                                 }
+                                .buttonStyle(.plain)
+                            } else {
+                                Color.clear
+                                    .frame(width: 140, height: 220)
                             }
                         }
                     }
-                    .padding(.horizontal)
+                    .safeAreaPadding(.horizontal)
                     .scrollTargetLayout()
                 }
                 .scrollIndicators(.hidden)
@@ -65,7 +63,7 @@ struct GamesCarousel: View {
 }
 
 #Preview {
-    GamesCarousel(selectedType: .constant(.favorites), type: .favorites, games: [.test,.test2])
+    GamesCarousel(selectedType: .constant(.favorites), activeNamespace: .constant(nil), type: .favorites)
         .environment(GamesVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
         .namespace(Namespace().wrappedValue)
