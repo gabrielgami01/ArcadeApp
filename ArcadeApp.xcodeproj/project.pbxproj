@@ -61,7 +61,6 @@
 		FC6A9C1C2C862240002B9ED2 /* GameAboutCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6A9C1B2C862240002B9ED2 /* GameAboutCard.swift */; };
 		FC6C61312C9B361500A64649 /* ConnectionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6C61302C9B360E00A64649 /* ConnectionsButton.swift */; };
 		FC6C61342C9B369D00A64649 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6C61332C9B369B00A64649 /* NotificationCell.swift */; };
-		FC6F73E42C563E8E00E34AF3 /* ShimmerEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F73E32C563E8E00E34AF3 /* ShimmerEffect.swift */; };
 		FC6F73E82C564C2900E34AF3 /* FontStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F73E72C564C2900E34AF3 /* FontStyles.swift */; };
 		FC6F73EA2C5650AA00E34AF3 /* VT323.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC6F73E92C5650AA00E34AF3 /* VT323.ttf */; };
 		FC6F73EC2C56CA3B00E34AF3 /* CustomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F73EB2C56CA3B00E34AF3 /* CustomCard.swift */; };
@@ -208,7 +207,6 @@
 		FC6A9C1B2C862240002B9ED2 /* GameAboutCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAboutCard.swift; sourceTree = "<group>"; };
 		FC6C61302C9B360E00A64649 /* ConnectionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsButton.swift; sourceTree = "<group>"; };
 		FC6C61332C9B369B00A64649 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
-		FC6F73E32C563E8E00E34AF3 /* ShimmerEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerEffect.swift; sourceTree = "<group>"; };
 		FC6F73E72C564C2900E34AF3 /* FontStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyles.swift; sourceTree = "<group>"; };
 		FC6F73E92C5650AA00E34AF3 /* VT323.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = VT323.ttf; sourceTree = "<group>"; };
 		FC6F73EB2C56CA3B00E34AF3 /* CustomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCard.swift; sourceTree = "<group>"; };
@@ -493,22 +491,21 @@
 		FC6F73EF2C56CBEA00E34AF3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				FCC324292CAAC73700D1E961 /* UnavailableNetwork.swift */,
-				FC935F1A2C7DE9080053F11C /* ErrorAlert.swift */,
-				FC2FD0902C4427530054CD43 /* CustomTextField.swift */,
-				FC935F1C2C7DEEFA0053F11C /* CustomButtonStyle.swift */,
 				FC565BA22C7205A20078C2ED /* ScrollPicker.swift */,
-				FC4FCA092C62345F004C12C4 /* BackButton.swift */,
-				FC6C61302C9B360E00A64649 /* ConnectionsButton.swift */,
-				FC5C1BF92C9309E00063EDA5 /* HeaderToolbar.swift */,
-				FCD1FCB52C669B7B0060E682 /* SheetToolbar.swift */,
 				FC4FCA0F2C62B0BA004C12C4 /* CustomPicker.swift */,
 				FC0208A72CC189E800078112 /* PillPicker.swift */,
+				FC2FD0902C4427530054CD43 /* CustomTextField.swift */,
+				FC4FCA092C62345F004C12C4 /* BackButton.swift */,
+				FC5C1BF92C9309E00063EDA5 /* HeaderToolbar.swift */,
+				FCD1FCB52C669B7B0060E682 /* SheetToolbar.swift */,
 				FC6F73EB2C56CA3B00E34AF3 /* CustomCard.swift */,
 				FCB0D5EE2C5810D000039654 /* CustomUnavailableView.swift */,
 				FC7A37022C4525E7004F6910 /* RatingComponent.swift */,
 				FC6F73F22C56D1F900E34AF3 /* AsyncText.swift */,
-				FC6F73E32C563E8E00E34AF3 /* ShimmerEffect.swift */,
+				FCC324292CAAC73700D1E961 /* UnavailableNetwork.swift */,
+				FC935F1A2C7DE9080053F11C /* ErrorAlert.swift */,
+				FC6C61302C9B360E00A64649 /* ConnectionsButton.swift */,
+				FC935F1C2C7DEEFA0053F11C /* CustomButtonStyle.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -608,7 +605,6 @@
 		FCCD73692C2D67150056036E /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				FC2E08DB2CD170CF004B4DA4 /* Badges */,
 				FC6F73EF2C56CBEA00E34AF3 /* Common */,
 				FC2BC3022C34807400353D48 /* Home */,
 				FC94F7172C78C47D00FEA9FE /* User */,
@@ -620,6 +616,7 @@
 				FC2E950E2C61616A00393C39 /* Challenges */,
 				FC573A5D2C6F982A00F56268 /* Rankings */,
 				FC6C61322C9B369600A64649 /* Social */,
+				FC2E08DB2CD170CF004B4DA4 /* Badges */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -861,7 +858,6 @@
 				FC6F73F32C56D1F900E34AF3 /* AsyncText.swift in Sources */,
 				FC26EFF52C8E34A40084B289 /* GameDetailsLabel.swift in Sources */,
 				FC22BA8D2C259255002DFAA4 /* UserModel.swift in Sources */,
-				FC6F73E42C563E8E00E34AF3 /* ShimmerEffect.swift in Sources */,
 				FCF126532CD930C000A84B07 /* PickeableProtocol.swift in Sources */,
 				FC2E95122C6161B400393C39 /* ChallengeBackCard.swift in Sources */,
 				FC76F23F2C5C26E90070D970 /* ChallengesView.swift in Sources */,

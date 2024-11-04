@@ -30,7 +30,6 @@ struct GameCover: View {
                         }
                         .matchedGeometryEffect(id: "\(game.id)_COVER", in: namespace)
                         .frame(width: width, height: height)
-                        .shimmerEffect()
                 }
             } else {
                 if let image = imageVM.image {
@@ -49,7 +48,6 @@ struct GameCover: View {
                                 .padding()
                         }
                         .frame(width: width, height: height)
-                        .shimmerEffect()
                 }
             }
         }
