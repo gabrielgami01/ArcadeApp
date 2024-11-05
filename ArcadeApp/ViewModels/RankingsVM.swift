@@ -32,13 +32,4 @@ final class RankingsVM {
             print(error.localizedDescription)
         }
     }
-    
-    func isLastScore(_ score: RankingScore, gameID: UUID) {
-        if rankingScores.last?.id == score.id {
-            rankingsPage += 1
-            Task {
-               await getGameRanking(id: gameID)
-            }
-        }
-    }
 }

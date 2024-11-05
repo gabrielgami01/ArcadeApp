@@ -20,7 +20,7 @@ struct GameRankingView: View {
                                 }
                             }
                         } label: {
-                            RankingScoreCell(index: index, rankingScore: rankingScore)
+                            RankingScoreCell(rankingScore: rankingScore, index: index)
                         }
                         .buttonStyle(.plain)
                         
@@ -30,6 +30,7 @@ struct GameRankingView: View {
                                           description: "There isn't any score for this game yet.")
                 }
             }
+            .padding(.horizontal)
             .disabled(selectedUser != nil)
             .blur(radius: selectedUser != nil ? 10 : 0)
         }
@@ -43,7 +44,6 @@ struct GameRankingView: View {
                 }
             }
         }
-        .padding(.horizontal)
         .overlay {
             if let selectedUser {
                 UserCard(user: selectedUser)
@@ -61,6 +61,7 @@ struct GameRankingView: View {
         GameRankingView(rankingsVM: RankingsVM(repository: TestRepository()), game: .test)
             .environment(UserVM(repository: TestRepository()))
             .environment(SocialVM(repository: TestRepository()))
+            .environment(BadgesVM(repository: TestRepository()))
             .preferredColorScheme(.dark)
     }
 }

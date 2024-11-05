@@ -470,8 +470,8 @@
 		FC573A5D2C6F982A00F56268 /* Rankings */ = {
 			isa = PBXGroup;
 			children = (
-				FC573A5E2C6F984300F56268 /* RankingScoreCell.swift */,
 				FCFA6AC92C8F15AE0049E8E4 /* GameRankingCell.swift */,
+				FC573A5E2C6F984300F56268 /* RankingScoreCell.swift */,
 			);
 			name = Rankings;
 			sourceTree = "<group>";

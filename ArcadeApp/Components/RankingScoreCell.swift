@@ -1,14 +1,14 @@
 import SwiftUI
 
 struct RankingScoreCell: View {
-    let index: Int
     let rankingScore: RankingScore
+    let index: Int
     
     var body: some View {
         HStack(spacing: 20) {
             Text("\(index + 1)")
                 .font(.customHeadline)
-                .foregroundColor(.gray)
+                .foregroundColor(.secondary)
             
             UserAvatarImage(imageData: rankingScore.user.avatarImage, size: 60)
                 .overlay {
@@ -26,9 +26,11 @@ struct RankingScoreCell: View {
                     .font(.customTitle2)
                 Text(rankingScore.date.formatted(date: .abbreviated, time: .omitted))
                     .font(.customFootnote)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.secondary)
             }
+            
             Spacer()
+            
             Text("\(rankingScore.score)")
                 .font(.customTitle3)
         }
@@ -38,7 +40,7 @@ struct RankingScoreCell: View {
 }
 
 #Preview {
-    RankingScoreCell(index: 0, rankingScore: .test)
+    RankingScoreCell(rankingScore: .test, index: 0)
         .preferredColorScheme(.dark)
         .padding()
 }

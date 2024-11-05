@@ -32,7 +32,6 @@ struct GameRankingCell: View {
 
 #Preview {
     GameRankingCell(game: .test)
-        .padding()
         .preferredColorScheme(.dark)
         .namespace(Namespace().wrappedValue)
 }
