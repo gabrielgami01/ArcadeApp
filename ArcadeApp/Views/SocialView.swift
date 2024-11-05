@@ -79,7 +79,7 @@ struct SocialView: View {
                     .transition(.move(edge: .bottom).combined(with: .opacity))
             }
         }
-        .headerToolbar(title: "Social")
+        .headerToolbar(title: "Social", blur: selectedUser != nil)
         .scrollBounceBehavior(.basedOnSize)
         .background(Color.background)
     }
