@@ -3,6 +3,8 @@ import SwiftUI
 struct ChallengesView: View {
     @State var challengesVM = ChallengesVM()
     
+    @FocusState private var focus: Bool
+    
     var body: some View {
         @Bindable var challengesBVM = challengesVM
         let columns = [GridItem(.flexible()), GridItem(.flexible())]
@@ -10,6 +12,7 @@ struct ChallengesView: View {
         ScrollView {
             VStack(spacing: 15) {
                 CustomTextField(text: $challengesBVM.searchText, label: "Search", type: .search)
+                    .focused($focus)
                     .scrollTransition(.animated, axis: .vertical) { content, phase in
                         content
                             .opacity(phase.isIdentity ? 1.0 : 0.0)
@@ -18,6 +21,9 @@ struct ChallengesView: View {
                 LazyVGrid(columns: columns, spacing: 15) {
                     ForEach(challengesBVM.displayChallenges) { challenge in
                         ChallengeCard(challenge: challenge)
+                            .onTapGesture {
+                                focus = false
+                            }
                     }
                 }
             }
@@ -45,17 +51,21 @@ struct ChallengesView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     challengesVM.sortOption = challengesVM.sortOption == .completed ? .uncompleted : .completed
+                    focus = false
                 } label: {
                     Image(systemName: "arrow.up.arrow.down")
+                        .font(.customFootnote)
                         .bold()
-                        .font(.subheadline)
+                        .rotation3DEffect(.degrees(challengesVM.sortOption == .completed ? 180 : 0), axis: (x: 1, y: 0, z: 0))
                 }
                 .buttonStyle(.plain)
                 .padding(.bottom, 5)
+                
             }
         }
         .toolbarBackground(Color.background, for: .navigationBar)
         .navigationBarBackButtonHidden()
+        .scrollDismissesKeyboard(.immediately)
         .scrollBounceBehavior(.basedOnSize)
         .background(Color.background)
     }

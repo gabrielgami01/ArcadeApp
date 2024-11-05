@@ -2,24 +2,40 @@ import SwiftUI
 
 struct ChallengeCard: View {
     let challenge: Challenge
-    @State private var isFlipped = false
     
     var body: some View {
-        ZStack {
-            ChallengeFrontCard(challenge: challenge, showCheck: challenge.isCompleted)
-                .rotation3DEffect(.degrees(isFlipped ? 180 : 0), axis: (x: 0, y: 1, z: 0))
-                .opacity(isFlipped ? 0 : 1)
-            ChallengeBackCard(challenge: challenge)
-                .rotation3DEffect(.degrees(isFlipped ? 0 : -180), axis: (x: 0, y: 1, z: 0))
-                .opacity(isFlipped ? 1 : 0)
-        }
-        .onTapGesture {
-            withAnimation(.easeInOut(duration: 0.5)) {
-                isFlipped.toggle()
+        VStack(spacing: 20) {
+            VStack {
+                Text(challenge.name)
+                    .font(.customHeadline)
+                    .multilineTextAlignment(.center)
+                
+                Text(challenge.game)
+                    .font(.customSubheadline)
+                    .foregroundStyle(.secondary)
             }
+            
+            Text(challenge.description)
+                .font(.customFootnote)
+                .multilineTextAlignment(.center)
         }
+        .frame(width: 140, height: 140, alignment: .top)
+        .padding()
+        .customCard(borderColor: challenge.type.colorForChallengeType(), cornerRadius: 25)
+        .overlay(alignment: .topTrailing) {
+            if challenge.isCompleted {
+                Image(systemName: "checkmark")
+                    .symbolVariant(.circle)
+                    .font(.largeTitle)
+                    .foregroundStyle(.green)
+                    .offset(x: 10, y: -10)
+            }
+                            
+        }
+        
     }
 }
+
 
 #Preview {
     ChallengeCard(challenge: .test)

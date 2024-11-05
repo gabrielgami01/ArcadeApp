@@ -46,6 +46,5 @@ final class ChallengesVM {
             print(error.localizedDescription)
         }
     }
-    
-   
+
 }

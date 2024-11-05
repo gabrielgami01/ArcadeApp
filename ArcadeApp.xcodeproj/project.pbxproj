@@ -38,8 +38,6 @@
 		FC2E08D82CD10134004B4DA4 /* DataPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E08D72CD10134004B4DA4 /* DataPreview.swift */; };
 		FC2E08DA2CD10B2E004B4DA4 /* AddBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E08D92CD10B2D004B4DA4 /* AddBadgeView.swift */; };
 		FC2E08DD2CD170F6004B4DA4 /* BadgeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E08DC2CD170F6004B4DA4 /* BadgeCard.swift */; };
-		FC2E95102C61619400393C39 /* ChallengeFrontCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E950F2C61619400393C39 /* ChallengeFrontCard.swift */; };
-		FC2E95122C6161B400393C39 /* ChallengeBackCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E95112C6161B400393C39 /* ChallengeBackCard.swift */; };
 		FC2E95142C61634E00393C39 /* ChallengeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E95132C61634E00393C39 /* ChallengeCard.swift */; };
 		FC2FD0872C43E3C60054CD43 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2FD0862C43E3C60054CD43 /* MainTabView.swift */; };
 		FC2FD0892C43E3DD0054CD43 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2FD0882C43E3DD0054CD43 /* LoginView.swift */; };
@@ -185,8 +183,6 @@
 		FC2E08D72CD10134004B4DA4 /* DataPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPreview.swift; sourceTree = "<group>"; };
 		FC2E08D92CD10B2D004B4DA4 /* AddBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBadgeView.swift; sourceTree = "<group>"; };
 		FC2E08DC2CD170F6004B4DA4 /* BadgeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeCard.swift; sourceTree = "<group>"; };
-		FC2E950F2C61619400393C39 /* ChallengeFrontCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeFrontCard.swift; sourceTree = "<group>"; };
-		FC2E95112C6161B400393C39 /* ChallengeBackCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeBackCard.swift; sourceTree = "<group>"; };
 		FC2E95132C61634E00393C39 /* ChallengeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCard.swift; sourceTree = "<group>"; };
 		FC2FD0862C43E3C60054CD43 /* MainTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		FC2FD0882C43E3DD0054CD43 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -467,8 +463,6 @@
 			isa = PBXGroup;
 			children = (
 				FC2E95132C61634E00393C39 /* ChallengeCard.swift */,
-				FC2E950F2C61619400393C39 /* ChallengeFrontCard.swift */,
-				FC2E95112C6161B400393C39 /* ChallengeBackCard.swift */,
 			);
 			name = Challenges;
 			sourceTree = "<group>";
@@ -862,7 +856,6 @@
 				FC26EFF52C8E34A40084B289 /* GameDetailsLabel.swift in Sources */,
 				FC22BA8D2C259255002DFAA4 /* UserModel.swift in Sources */,
 				FCF126532CD930C000A84B07 /* PickeableProtocol.swift in Sources */,
-				FC2E95122C6161B400393C39 /* ChallengeBackCard.swift in Sources */,
 				FC76F23F2C5C26E90070D970 /* ChallengesView.swift in Sources */,
 				FCB2CD102C6BE494001D5751 /* RankingsVM.swift in Sources */,
 				FC4FCA102C62B0BA004C12C4 /* CustomPicker.swift in Sources */,
@@ -879,7 +872,6 @@
 				FC2FD08F2C4403F50054CD43 /* EnumsModel.swift in Sources */,
 				FC47C1542C8CCD27002F214B /* ConnectionsListView.swift in Sources */,
 				FCB699882C64C7B300A4D638 /* SearchCell.swift in Sources */,
-				FC2E95102C61619400393C39 /* ChallengeFrontCard.swift in Sources */,
 				FC2FD0892C43E3DD0054CD43 /* LoginView.swift in Sources */,
 				FC2E08DA2CD10B2E004B4DA4 /* AddBadgeView.swift in Sources */,
 				FC2FD08D2C43E4010054CD43 /* RegisterView.swift in Sources */,
