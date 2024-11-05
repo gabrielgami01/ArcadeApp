@@ -23,6 +23,7 @@ struct NotificationCell: View {
                 ConnectionsButton(user: userConnection.user)
             }
             .frame(maxWidth: .infinity)
+            
             Divider()
         }
         .background(Color.background)

@@ -479,8 +479,8 @@
 		FC6C61322C9B369600A64649 /* Social */ = {
 			isa = PBXGroup;
 			children = (
-				FC9A3F9B2CD012CB00844A77 /* ActiveSessionCell.swift */,
 				FC9A3F992CD0126C00844A77 /* UserActiveSessionCell.swift */,
+				FC9A3F9B2CD012CB00844A77 /* ActiveSessionCell.swift */,
 				FC6C61332C9B369B00A64649 /* NotificationCell.swift */,
 			);
 			path = Social;

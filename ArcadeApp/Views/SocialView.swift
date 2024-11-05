@@ -3,7 +3,6 @@ import SwiftUI
 struct SocialView: View {
     @Environment(UserVM.self) private var userVM
     @Environment(SocialVM.self) private var socialVM
-    @Environment(SessionVM.self) private var sessionVM
     
     @State private var selectedUser: User?
     
@@ -14,9 +13,7 @@ struct SocialView: View {
             VStack(spacing: 15) {
                 ScrollView(.horizontal) {
                     LazyHStack(spacing: 20) {
-                        if let activeUser = userVM.activeUser {
-                            ActiveSessionCell(user: activeUser, activeSession: sessionVM.activeSession)
-                        }
+                        ActiveSessionCell()
                         
                         ForEach(socialVM.followingSessions) { session in
                             if let user = socialVM.findFollowingByID(session.userID) {
@@ -93,6 +90,7 @@ struct SocialView: View {
         SocialView()
             .environment(UserVM(repository: TestRepository()))
             .environment(SocialVM(repository: TestRepository()))
+            .environment(BadgesVM(repository: TestRepository()))
             .environment(SessionVM(repository: TestRepository()))
             .preferredColorScheme(.dark)
     }

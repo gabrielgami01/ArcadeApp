@@ -1,37 +1,43 @@
 import SwiftUI
 
 struct ActiveSessionCell: View {
-    let user: User
-    let activeSession: Session?
+    @Environment(UserVM.self) private var userVM
+    @Environment(SessionVM.self) private var sessionVM
+    
     
     var body: some View {
-        VStack {
-            UserAvatarImage(imageData: user.avatarImage, size: 80)
-                .overlay {
-                    Group {
-                        if let activeSession {
-                            Text(activeSession.game.name)
-                                .font(.customFootnote)
-                                .multilineTextAlignment(.center)
-                            
-                        } else {
-                            Text("Offline")
-                                .font(.customFootnote)
-                                .foregroundStyle(.secondary)
+        if let activeUser = userVM.activeUser {
+            VStack {
+                UserAvatarImage(imageData: activeUser.avatarImage, size: 80)
+                    .overlay {
+                        Group {
+                            if let activeSession = sessionVM.activeSession {
+                                Text(activeSession.game.name)
+                                    .font(.customFootnote)
+                                    .multilineTextAlignment(.center)
+                                
+                            } else {
+                                Text("Offline")
+                                    .font(.customFootnote)
+                                    .foregroundStyle(.secondary)
+                            }
                         }
+                        .frame(width: 70, height: 30)
+                        .padding(5)
+                        .background(Color.card, in: RoundedRectangle(cornerRadius: 20))
+                        .offset(y: -20)
                     }
-                    .frame(width: 70, height: 30)
-                    .padding(5)
-                    .background(Color.card, in: RoundedRectangle(cornerRadius: 20))
-                    .offset(y: -20)
-                }
-            Text("Your session")
-                .font(.customCallout)
+                
+                Text("Your session")
+                    .font(.customCallout)
+            }
         }
     }
 }
 
 #Preview {
-    ActiveSessionCell(user: .test, activeSession: .test)
+    ActiveSessionCell()
+        .environment(UserVM(repository: TestRepository()))
+        .environment(SessionVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }
