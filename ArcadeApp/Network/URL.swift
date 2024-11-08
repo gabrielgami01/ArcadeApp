@@ -83,10 +83,10 @@ extension URL {
     static let listFollowing = connections.appending(path: "following")
     static let listFollowers = connections.appending(path: "followers")
     static func followUser(id: UUID) -> URL {
-        users.appending(path: id.uuidString)
+        connections.appending(path: id.uuidString)
     }
     static func unfollowUser(id: UUID) -> URL {
-        users.appending(path: id.uuidString)
+        connections.appending(path: id.uuidString)
     }
     
     

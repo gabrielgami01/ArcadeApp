@@ -55,6 +55,7 @@
 		FC54459E2C3801F5001B26EF /* AddReviewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54459D2C3801F5001B26EF /* AddReviewVM.swift */; };
 		FC565BA32C7205A20078C2ED /* ScrollPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC565BA22C7205A20078C2ED /* ScrollPicker.swift */; };
 		FC573A5F2C6F984300F56268 /* RankingScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC573A5E2C6F984300F56268 /* RankingScoreCell.swift */; };
+		FC58EBCA2CDE733F0065BB55 /* UserPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC58EBC92CDE733C0065BB55 /* UserPopup.swift */; };
 		FC5C1BFA2C9309E00063EDA5 /* HeaderToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5C1BF92C9309E00063EDA5 /* HeaderToolbar.swift */; };
 		FC6A9C1C2C862240002B9ED2 /* GameAboutCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6A9C1B2C862240002B9ED2 /* GameAboutCard.swift */; };
 		FC6C61312C9B361500A64649 /* ConnectionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6C61302C9B360E00A64649 /* ConnectionsButton.swift */; };
@@ -200,6 +201,7 @@
 		FC54459D2C3801F5001B26EF /* AddReviewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewVM.swift; sourceTree = "<group>"; };
 		FC565BA22C7205A20078C2ED /* ScrollPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollPicker.swift; sourceTree = "<group>"; };
 		FC573A5E2C6F984300F56268 /* RankingScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingScoreCell.swift; sourceTree = "<group>"; };
+		FC58EBC92CDE733C0065BB55 /* UserPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPopup.swift; sourceTree = "<group>"; };
 		FC5C1BF92C9309E00063EDA5 /* HeaderToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderToolbar.swift; sourceTree = "<group>"; };
 		FC6A9C1B2C862240002B9ED2 /* GameAboutCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAboutCard.swift; sourceTree = "<group>"; };
 		FC6C61302C9B360E00A64649 /* ConnectionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsButton.swift; sourceTree = "<group>"; };
@@ -521,6 +523,7 @@
 			children = (
 				FC94F71A2C78C4D300FEA9FE /* UserAvatarImage.swift */,
 				FC9639262C8A11CA00ABAF72 /* UserCard.swift */,
+				FC58EBC92CDE733C0065BB55 /* UserPopup.swift */,
 				FC47C1552C8CCDAE002F214B /* ConnectionCell.swift */,
 			);
 			name = User;
@@ -847,6 +850,7 @@
 				FC5C1BFA2C9309E00063EDA5 /* HeaderToolbar.swift in Sources */,
 				FC76F2342C5BF5A60070D970 /* Notifications.swift in Sources */,
 				FC8983E42CB9B15D008B17BF /* UINavigationController.swift in Sources */,
+				FC58EBCA2CDE733F0065BB55 /* UserPopup.swift in Sources */,
 				FCC036032C480B6400DDBC90 /* GameScoresView.swift in Sources */,
 				FC935F1B2C7DE9080053F11C /* ErrorAlert.swift in Sources */,
 				FC6C61342C9B369D00A64649 /* NotificationCell.swift in Sources */,

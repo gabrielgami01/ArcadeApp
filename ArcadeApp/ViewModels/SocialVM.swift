@@ -9,6 +9,8 @@ final class SocialVM {
     
     var followingSessions: [Session] = []
     
+    var selectedUser: User? = nil
+    
     var errorMsg = ""
     var showError = false
     

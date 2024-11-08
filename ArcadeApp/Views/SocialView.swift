@@ -4,8 +4,6 @@ struct SocialView: View {
     @Environment(UserVM.self) private var userVM
     @Environment(SocialVM.self) private var socialVM
     
-    @State private var selectedUser: User?
-    
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -19,8 +17,8 @@ struct SocialView: View {
                             if let user = socialVM.findFollowingByID(session.userID) {
                                 Button {
                                     withAnimation {
-                                        if user != userVM.activeUser {
-                                            selectedUser = user
+                                        if user.id != userVM.activeUser?.id {
+                                            socialVM.selectedUser = user
                                         }
                                     }
                                 } label: {
@@ -42,9 +40,9 @@ struct SocialView: View {
                         LazyVStack(spacing: 15) {
                             ForEach(socialVM.followers) { userConnection in
                                 Button {
-                                    withAnimation {
-                                        if userConnection.user != userVM.activeUser {
-                                            selectedUser = userConnection.user
+                                    if userConnection.user.id != userVM.activeUser?.id {
+                                        withAnimation {
+                                            socialVM.selectedUser = userConnection.user
                                         }
                                     }
                                 } label: {
@@ -60,26 +58,11 @@ struct SocialView: View {
                 }
                 .padding(.horizontal)
             }
-            .disabled(selectedUser != nil)
-            .blur(radius: selectedUser != nil ? 10 : 0)
         }
         .task {
             await socialVM.getFollowingActiveSessions()
         }
-        .onTapGesture {
-            if selectedUser != nil {
-                withAnimation {
-                    selectedUser = nil
-                }
-            }
-        }
-        .overlay {
-            if let selectedUser {
-                UserCard(user: selectedUser)
-                    .transition(.move(edge: .bottom).combined(with: .opacity))
-            }
-        }
-        .headerToolbar(title: "Social", blur: selectedUser != nil)
+        .headerToolbar(title: "Social")
         .scrollBounceBehavior(.basedOnSize)
         .background(Color.background)
     }
@@ -90,7 +73,6 @@ struct SocialView: View {
         SocialView()
             .environment(UserVM(repository: TestRepository()))
             .environment(SocialVM(repository: TestRepository()))
-            .environment(BadgesVM(repository: TestRepository()))
             .environment(SessionVM(repository: TestRepository()))
             .preferredColorScheme(.dark)
     }

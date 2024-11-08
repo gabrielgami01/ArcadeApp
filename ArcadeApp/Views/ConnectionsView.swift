@@ -8,15 +8,7 @@ struct ConnectionsView: View {
     @Namespace private var namespace
     
     var body: some View {
-        VStack(spacing: 20) {
-            HStack(spacing: 15) {
-                BackButton()
-                
-                CustomPicker(selected: $selectedPage)
-                    .namespace(namespace)
-            }
-            .padding(.horizontal)
-            
+        ScrollView {
             ZStack {
                 if selectedPage == .following {
                     ConnectionsListView(type: .following)
@@ -40,7 +32,16 @@ struct ConnectionsView: View {
                         }
                     }
             )
-
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                BackButton()
+            }
+            
+            ToolbarItem(placement: .principal) {
+                CustomPicker(selected: $selectedPage)
+                    .namespace(namespace)
+            }
         }
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
@@ -51,9 +52,10 @@ struct ConnectionsView: View {
 }
 
 #Preview {
-    ConnectionsView(selectedPage: .followers)
-        .environment(UserVM(repository: TestRepository()))
-        .environment(SocialVM(repository: TestRepository()))
-        .preferredColorScheme(.dark)
+    NavigationStack {
+        ConnectionsView(selectedPage: .followers)
+            .environment(SocialVM(repository: TestRepository()))
+            .preferredColorScheme(.dark)
+    }
 }
 

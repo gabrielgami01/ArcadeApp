@@ -1,7 +1,8 @@
 import SwiftUI
 
 struct MainTabView: View {
-    @Environment(GamesVM.self) private var gamesVM
+    @Environment(SocialVM.self) private var socialVM
+    
     @AppStorage("firstTime") private var firstTime: Bool = true
     
     init() {
@@ -17,6 +18,8 @@ struct MainTabView: View {
     }
     
     var body: some View {
+        @Bindable var socialBVM = socialVM
+        
         TabView {
             HomeView()
                 .tabItem {
@@ -35,6 +38,7 @@ struct MainTabView: View {
             OnboardingView()
                 .interactiveDismissDisabled(true)
         }
+        .userPopup(selectedUser: $socialBVM.selectedUser)
     }
 }
 
@@ -44,6 +48,7 @@ struct MainTabView: View {
         .environment(GamesVM(repository: TestRepository()))
         .environment(GameDetailsVM(repository: TestRepository()))
         .environment(SocialVM(repository: TestRepository()))
+        .environment(BadgesVM(repository: TestRepository()))
         .environment(SessionVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }

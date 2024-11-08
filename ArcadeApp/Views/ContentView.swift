@@ -21,5 +21,6 @@ struct ContentView: View {
         .environment(GamesVM(repository: TestRepository()))
         .environment(GameDetailsVM(repository: TestRepository()))
         .environment(SocialVM(repository: TestRepository()))
+        .environment(BadgesVM(repository: TestRepository()))
         .environment(SessionVM(repository: TestRepository()))
 }

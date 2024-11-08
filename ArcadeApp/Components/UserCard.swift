@@ -42,7 +42,6 @@ struct UserCard: View {
                     }
                 }
             }
-                            
         }
         .task {
             await badgesVM.getFeaturedBadges(id: user.id)

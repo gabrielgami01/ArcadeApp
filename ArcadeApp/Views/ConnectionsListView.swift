@@ -5,46 +5,37 @@ struct ConnectionsListView: View {
     
     let type: ConnectionOptions
     
-    @State private var selectedUser: User?
+    var connections: [UserConnections] {
+        switch type {
+            case .following: socialVM.following
+            case .followers: socialVM.followers
+        }
+    }
     
     var body: some View {
-        ScrollView {
+        if !connections.isEmpty {
             LazyVStack(spacing: 15) {
-                ForEach(type == .following ? socialVM.following : socialVM.followers) { userFollows in
+                ForEach(connections) { connection in
                     Button {
                         withAnimation {
-                            selectedUser = userFollows.user
+                            socialVM.selectedUser = connection.user
                         }
                     } label: {
-                        ConnectionsCell(user: userFollows.user)
+                        ConnectionsCell(user: connection.user)
                     }
                     .buttonStyle(.plain)
                 }
             }
-            .disabled(selectedUser != nil)
-            .blur(radius: selectedUser != nil ? 10 : 0)
             .padding(.horizontal)
-        }
-        .onTapGesture {
-            if selectedUser != nil {
-                withAnimation {
-                    selectedUser = nil
-                }
-            }
-        }
-        .overlay {
-            if let selectedUser {
-                UserCard(user: selectedUser)
-                    .transition(.move(edge: .bottom).combined(with: .opacity))
-            }
+        } else {
+            CustomUnavailableView(title: "No \(type.rawValue)", image: "person.2.fill",
+                                  description: "You haven't any \(type.rawValue) yet.")
         }
     }
 }
 
 #Preview {
     ConnectionsListView(type: .following)
-        .environment(UserVM(repository: TestRepository()))
         .environment(SocialVM(repository: TestRepository()))
-        .background(Color.background)
         .preferredColorScheme(.dark)
 }

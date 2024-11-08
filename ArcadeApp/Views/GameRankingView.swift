@@ -2,11 +2,10 @@ import SwiftUI
 
 struct GameRankingView: View {
     @Environment(UserVM.self) private var userVM
+    @Environment(SocialVM.self) private var socialVM
     @State var rankingsVM = RankingsVM()
     
     let game: Game
-    
-    @State private var selectedUser: User?
     
     var body: some View {
         ScrollView {
@@ -14,16 +13,15 @@ struct GameRankingView: View {
                 if !rankingsVM.rankingScores.isEmpty {
                     ForEach(rankingsVM.ranking, id: \.element.id) { index, rankingScore in
                         Button {
-                            withAnimation {
-                                if rankingScore.user != userVM.activeUser {
-                                    selectedUser = rankingScore.user
+                            if rankingScore.user.id != userVM.activeUser?.id {
+                                withAnimation {
+                                    socialVM.selectedUser = rankingScore.user
                                 }
-                            }
+                            }  
                         } label: {
                             RankingScoreCell(rankingScore: rankingScore, index: index)
                         }
                         .buttonStyle(.plain)
-                        
                     }
                 } else {
                     CustomUnavailableView(title: "No scores", image: "gamecontroller",
@@ -31,26 +29,11 @@ struct GameRankingView: View {
                 }
             }
             .padding(.horizontal)
-            .disabled(selectedUser != nil)
-            .blur(radius: selectedUser != nil ? 10 : 0)
         }
         .task {
             await rankingsVM.getGameRanking(id: game.id)
         }
-        .onTapGesture {
-            if selectedUser != nil {
-                withAnimation {
-                    selectedUser = nil
-                }
-            }
-        }
-        .overlay {
-            if let selectedUser {
-                UserCard(user: selectedUser)
-                    .transition(.move(edge: .bottom).combined(with: .opacity))
-            }
-        }
-        .headerToolbar(title: LocalizedStringKey(game.name), blur: selectedUser != nil)
+        .headerToolbar(title: LocalizedStringKey(game.name))
         .scrollBounceBehavior(.basedOnSize)
         .background(Color.background)
     }
@@ -61,7 +44,6 @@ struct GameRankingView: View {
         GameRankingView(rankingsVM: RankingsVM(repository: TestRepository()), game: .test)
             .environment(UserVM(repository: TestRepository()))
             .environment(SocialVM(repository: TestRepository()))
-            .environment(BadgesVM(repository: TestRepository()))
             .preferredColorScheme(.dark)
     }
 }

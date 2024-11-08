@@ -2,7 +2,6 @@ import SwiftUI
 
 fileprivate struct HeaderToolbar: ViewModifier {
     let title: LocalizedStringKey
-    let blur: Bool
     
     func body(content: Content) -> some View {
         content
@@ -15,7 +14,6 @@ fileprivate struct HeaderToolbar: ViewModifier {
                             .font(.customLargeTitle)
                     }
                     .padding(.bottom, 5)
-                    .blur(radius: blur ? 10 : 0)
                 }
             }
             .toolbarBackground(Color.background, for: .navigationBar)
@@ -24,7 +22,7 @@ fileprivate struct HeaderToolbar: ViewModifier {
 }
 
 extension View {
-    func headerToolbar(title: LocalizedStringKey, blur: Bool = false) -> some View {
-        modifier(HeaderToolbar(title: title, blur: blur))
+    func headerToolbar(title: LocalizedStringKey) -> some View {
+        modifier(HeaderToolbar(title: title))
     }
 }
