@@ -8,7 +8,6 @@ struct GameAboutView: View {
     let game: Game
     @Binding var animation: Bool
     
-    @State private var selectedUser: User?
     @State private var showAddReview = false
     
     @Environment(\.namespace) private var namespace

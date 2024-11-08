@@ -1,11 +1,16 @@
 import SwiftUI
 
 struct BackButton: View {
+    var action: (() -> Void)? = nil
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         Button {
-            dismiss()
+            if let action {
+                action()
+            } else {
+                dismiss()
+            }
         } label: {
             Text("<")
                 .font(.customLargeTitle)
@@ -16,5 +21,5 @@ struct BackButton: View {
 
 #Preview {
     BackButton()
-    .preferredColorScheme(.dark)
+        .preferredColorScheme(.dark)
 }

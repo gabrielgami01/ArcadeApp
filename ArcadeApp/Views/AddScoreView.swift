@@ -34,7 +34,6 @@ struct AddScoreView: View {
             .sheet(isPresented: $showCamera) {
                 CameraPicker(photo: $addScoreVM.image)
             }
-            .showAlert(show: $addScoreVM.showError, text: addScoreVM.errorMsg)
             .navigationBarTitleDisplayMode(.inline)
             .frame(maxWidth: .infinity)
             .background(Color.background)

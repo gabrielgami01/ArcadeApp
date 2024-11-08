@@ -53,7 +53,6 @@ struct HomeView: View {
                     GamesCarousel(selectedType: $selectedType, activeNamespace: $activeNamespace, type: .favorites)
                         .namespace(namespaceFavorites)
                 }
-                .opacity(gamesVM.selectedGame == nil ? 1.0 : 0.0)
             }
             .navigationDestination(for: HomePage.self) { page in
                 switch page {
@@ -68,13 +67,13 @@ struct HomeView: View {
             .navigationDestination(for: Game.self) { game in
                 GameRankingView(game: game)
             }
+            .opacity(gamesVM.selectedGame == nil ? 1.0 : 0.0)
+            .scrollIndicators(.hidden)
             .overlay {
                 GameDetailsView(game: gamesVM.selectedGame)
                     .namespace(activeNamespace)
             }
-            .showAlert(show: $gamesBVM.showError, text: gamesVM.errorMsg)
             .scrollBounceBehavior(.basedOnSize)
-            .scrollIndicators(.hidden)
             .background(Color.background)
         }
     }

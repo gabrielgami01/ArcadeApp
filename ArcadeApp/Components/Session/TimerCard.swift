@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct TimerCard: View {
-    @Environment(GameDetailsVM.self) private var detailsVM
     @Environment(SessionVM.self) private var gameSessionVM
     
     let gameID: UUID
@@ -41,7 +40,6 @@ struct TimerCard: View {
 
 #Preview {
     TimerCard(gameID: Game.test.id)
-        .environment(GameDetailsVM(repository: TestRepository()))
         .environment(SessionVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }

@@ -79,7 +79,7 @@ struct GameScoresView: View {
                     }
                 }
                 .opacity(animation ? 1.0: 0.0)
-                .animation(.easeInOut, value: animation)
+                .animation(.default, value: animation)
                 .frame(height: 220)
                 
                 VStack {
@@ -103,7 +103,7 @@ struct GameScoresView: View {
                     }
                 }
                 .opacity(animation ? 1.0: 0.0)
-                .animation(.easeInOut.delay(0.4), value: animation)
+                .animation(.default.delay(0.4), value: animation)
             }
             .padding(.horizontal)
         }

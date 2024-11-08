@@ -17,10 +17,8 @@ struct GameDetailsView: View {
     var body: some View {
         if let game {
             VStack(alignment: .leading) {
-                HStack(spacing: 15) {
-                    PillPicker(selected: $option)
-                    
-                    Button {
+                HStack(spacing: 10) {
+                    BackButton {
                         withAnimation(.bouncy.speed(2)) {
                             option = .about
                         } completion: {
@@ -28,11 +26,9 @@ struct GameDetailsView: View {
                                 gamesVM.selectedGame = nil
                             }
                         }
-                    } label: {
-                        Text("X")
-                            .font(.customLargeTitle)
                     }
-                    .buttonStyle(.plain)
+                    
+                    PillPicker(selected: $option)
                 }
                 .padding(.horizontal)
                 
@@ -96,8 +92,6 @@ struct GameDetailsView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .toolbar(.hidden, for: .tabBar)
-            .background(Color.background)
-            .scrollBounceBehavior(.basedOnSize)
         }
     }
 }
@@ -108,7 +102,10 @@ struct GameDetailsView: View {
         .environment(GamesVM(repository: TestRepository()))
         .environment(GameDetailsVM(repository: TestRepository()))
         .environment(SessionVM(repository: TestRepository()))
+        .environment(SocialVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
+        .background(Color.background)
+        .scrollBounceBehavior(.basedOnSize)
         .namespace(Namespace().wrappedValue)
 }
 
