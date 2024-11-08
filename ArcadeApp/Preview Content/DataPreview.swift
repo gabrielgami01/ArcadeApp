@@ -326,7 +326,7 @@ struct SwiftDataPreview: ViewModifier {
         content
             .modelContainer(for: GameModel.self, inMemory: true) { result in
                 if case .success(let container) = result {
-                    let game = GameModel(id: UUID(),
+                    let game = GameModel(id: UUID(uuidString: "f29eac70-e200-4e54-b878-efcdaa9413e3") ?? UUID(),
                                          name: "Pokémon Red and Blue",
                                          desc: "An rpg game where players capture and train Pokémon to become the Pokémon Champion.",
                                          console: "Gameboy",

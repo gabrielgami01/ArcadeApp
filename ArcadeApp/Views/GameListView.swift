@@ -35,27 +35,7 @@ struct GameListView: View {
                 }
                 
             }
-            .opacity(!showSearchable && gamesVM.selectedGame == nil ? 1.0 : 0.0 )
             .namespace(showSearchable ? nil : namespace)
-        }
-        .safeAreaInset(edge: .top) {
-            Button {
-                showSearchable = true
-            } label: {
-                HStack(spacing: 10) {
-                    Image(systemName:"magnifyingglass")
-                        .font(.customBody)
-                    Text("Search")
-                        .font(.customBody)
-                    Spacer()
-                }
-                .foregroundStyle(.secondary)
-                .frame(maxWidth: .infinity)
-            }
-            .buttonStyle(TextFieldStyleButton())
-            .padding(.bottom, 5)
-            .background(Color.background)
-            .opacity(gamesVM.selectedGame != nil || showSearchable ? 0.0 : 1.0)
         }
         .onChange(of: gamesVM.selectedGame) { oldValue, newValue in
             if newValue == nil {
@@ -64,17 +44,31 @@ struct GameListView: View {
                 }
             }
         }
+        .safeAreaInset(edge: .top) {
+            Button {
+                showSearchable = true
+            } label: {
+                HStack(spacing: 10) {
+                    Image(systemName:"magnifyingglass")
+                    
+                    Text("Search")
+                    
+                    Spacer()
+                }
+                .foregroundStyle(.secondary)
+                .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(TextFieldStyleButton())
+        }
+        .opacity(!showSearchable && gamesVM.selectedGame == nil ? 1.0 : 0.0 )
         .overlay {
             ZStack {
                 GameDetailsView(game: gamesVM.selectedGame)
                     .zIndex(1)
-                if showSearchable {
-                    SearchableView(show: $showSearchable)
-                        .opacity(gamesVM.selectedGame == nil ? 1.0 : 0.0)
-                }
+                SearchableView(show: $showSearchable)
+                    .opacity(showSearchable && gamesVM.selectedGame == nil ? 1.0 : 0.0)
             }
         }
-        .showAlert(show: $gamesBVM.showError, text: gamesVM.errorMsg)
         .scrollBounceBehavior(.basedOnSize)
         .background(Color.background)
         .namespace(namespace)
@@ -87,6 +81,8 @@ struct GameListView: View {
         .environment(GameDetailsVM(repository: TestRepository()))
         .environment(UserVM(repository: TestRepository()))
         .environment(SocialVM(repository: TestRepository()))
+        .environment(BadgesVM(repository: TestRepository()))
+        .environment(SessionVM(repository: TestRepository()))
         .swiftDataPreview
         .preferredColorScheme(.dark)
         .namespace(Namespace().wrappedValue)

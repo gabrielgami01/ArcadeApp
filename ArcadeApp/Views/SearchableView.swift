@@ -113,7 +113,6 @@ struct SearchableView: View {
         .onDisappear {
             focus = false
         }
-        .showAlert(show: $searchBVM.showError, text: searchVM.errorMsg)
         .padding(.horizontal)
     }
 }
@@ -124,7 +123,6 @@ struct SearchableView: View {
         .swiftDataPreview
         .preferredColorScheme(.dark)
         .scrollBounceBehavior(.basedOnSize)
-        .scrollIndicators(.hidden)
         .background(Color.background)
         .namespace(Namespace().wrappedValue)
 }
