@@ -48,10 +48,3 @@ struct BadgeCard: View {
         .preferredColorScheme(.dark)
 }
 
-enum BadgeType {
-    case display
-    case add
-    case empty
-}
-
-

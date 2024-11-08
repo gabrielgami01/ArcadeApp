@@ -56,6 +56,9 @@
 		FC565BA32C7205A20078C2ED /* ScrollPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC565BA22C7205A20078C2ED /* ScrollPicker.swift */; };
 		FC573A5F2C6F984300F56268 /* RankingScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC573A5E2C6F984300F56268 /* RankingScoreCell.swift */; };
 		FC58EBCA2CDE733F0065BB55 /* UserPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC58EBC92CDE733C0065BB55 /* UserPopup.swift */; };
+		FC58EBCC2CDE8DE70065BB55 /* ProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC58EBCB2CDE8DE30065BB55 /* ProfileCard.swift */; };
+		FC58EBCF2CDE93EB0065BB55 /* BadgeInfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC58EBCE2CDE93E60065BB55 /* BadgeInfoCard.swift */; };
+		FC58EBD12CDE942C0065BB55 /* BadgesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC58EBD02CDE94290065BB55 /* BadgesCard.swift */; };
 		FC5C1BFA2C9309E00063EDA5 /* HeaderToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5C1BF92C9309E00063EDA5 /* HeaderToolbar.swift */; };
 		FC6A9C1C2C862240002B9ED2 /* GameAboutCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6A9C1B2C862240002B9ED2 /* GameAboutCard.swift */; };
 		FC6C61312C9B361500A64649 /* ConnectionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6C61302C9B360E00A64649 /* ConnectionsButton.swift */; };
@@ -202,6 +205,9 @@
 		FC565BA22C7205A20078C2ED /* ScrollPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollPicker.swift; sourceTree = "<group>"; };
 		FC573A5E2C6F984300F56268 /* RankingScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingScoreCell.swift; sourceTree = "<group>"; };
 		FC58EBC92CDE733C0065BB55 /* UserPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPopup.swift; sourceTree = "<group>"; };
+		FC58EBCB2CDE8DE30065BB55 /* ProfileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCard.swift; sourceTree = "<group>"; };
+		FC58EBCE2CDE93E60065BB55 /* BadgeInfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeInfoCard.swift; sourceTree = "<group>"; };
+		FC58EBD02CDE94290065BB55 /* BadgesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesCard.swift; sourceTree = "<group>"; };
 		FC5C1BF92C9309E00063EDA5 /* HeaderToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderToolbar.swift; sourceTree = "<group>"; };
 		FC6A9C1B2C862240002B9ED2 /* GameAboutCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAboutCard.swift; sourceTree = "<group>"; };
 		FC6C61302C9B360E00A64649 /* ConnectionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsButton.swift; sourceTree = "<group>"; };
@@ -456,7 +462,9 @@
 		FC2E08DB2CD170CF004B4DA4 /* Badges */ = {
 			isa = PBXGroup;
 			children = (
+				FC58EBD02CDE94290065BB55 /* BadgesCard.swift */,
 				FC2E08DC2CD170F6004B4DA4 /* BadgeCard.swift */,
+				FC58EBCE2CDE93E60065BB55 /* BadgeInfoCard.swift */,
 			);
 			path = Badges;
 			sourceTree = "<group>";
@@ -521,6 +529,7 @@
 		FC94F7172C78C47D00FEA9FE /* User */ = {
 			isa = PBXGroup;
 			children = (
+				FC58EBCB2CDE8DE30065BB55 /* ProfileCard.swift */,
 				FC94F71A2C78C4D300FEA9FE /* UserAvatarImage.swift */,
 				FC9639262C8A11CA00ABAF72 /* UserCard.swift */,
 				FC58EBC92CDE733C0065BB55 /* UserPopup.swift */,
@@ -882,6 +891,7 @@
 				FCC324262CAAC5ED00D1E961 /* CGSize.swift in Sources */,
 				FC4FCA0A2C62345F004C12C4 /* BackButton.swift in Sources */,
 				FCC53B302C5F915900015AC9 /* ChallengesVM.swift in Sources */,
+				FC58EBCC2CDE8DE70065BB55 /* ProfileCard.swift in Sources */,
 				FC1473202C5183C100B1BE27 /* ScoreModel.swift in Sources */,
 				FCFA6ACA2C8F15AE0049E8E4 /* GameRankingCell.swift in Sources */,
 				FCB9813C2C949D0800987FC0 /* ConnectionsModel.swift in Sources */,
@@ -909,6 +919,7 @@
 				FC0E31CF2C46F1C6004EB339 /* ModelViews.swift in Sources */,
 				FCF0CA972CC4434400196C76 /* GameSessionView.swift in Sources */,
 				FC0E31BD2C46DE24004EB339 /* GameCell.swift in Sources */,
+				FC58EBCF2CDE93EB0065BB55 /* BadgeInfoCard.swift in Sources */,
 				FC22BAA02C2595FF002DFAA4 /* UserVM.swift in Sources */,
 				FCC324132CAAB59000D1E961 /* JSONDecoder.swift in Sources */,
 				FCC3242A2CAAC73C00D1E961 /* UnavailableNetwork.swift in Sources */,
@@ -944,6 +955,7 @@
 				FCE78D772C8B98EC001FDD21 /* SocialVM.swift in Sources */,
 				FC4DDABC2C847EA8009E1FCA /* TextFieldButtonStyle.swift in Sources */,
 				FCE336CF2C67C44E009E30AB /* JWTDecoder.swift in Sources */,
+				FC58EBD12CDE942C0065BB55 /* BadgesCard.swift in Sources */,
 				FC0E31BF2C46DE59004EB339 /* PageButton.swift in Sources */,
 				FC2E08DD2CD170F6004B4DA4 /* BadgeCard.swift in Sources */,
 				FC2E08D82CD10134004B4DA4 /* DataPreview.swift in Sources */,

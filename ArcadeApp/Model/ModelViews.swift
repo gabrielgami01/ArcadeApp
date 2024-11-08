@@ -103,3 +103,9 @@ enum ConnectionOptions: String, Pickeable {
 enum SortOption: String, CaseIterable {
     case completed, uncompleted
 }
+
+enum BadgeType {
+    case display
+    case add
+    case empty
+}

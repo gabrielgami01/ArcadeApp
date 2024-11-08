@@ -25,23 +25,12 @@ struct UserCard: View {
                 ConnectionsButton(user: user)
             }
             
-            HStack(spacing: 0) {
-                ForEach(Array(badgesVM.userBadges.enumerated()), id: \.element.id) { index, badge in
-                    BadgeCard(type: .display, badge: badge)
-                    
-                    if index != badgesVM.userBadges.count - 1 || badgesVM.userBadges.count < 3 {
-                        Spacer()
-                    }
-                }
-                
-                ForEach(0..<max(0, 3 - badgesVM.userBadges.count), id: \.self) { index in
-                    BadgeCard(type: .empty)
-                    
-                    if index != max(0, 3 - badgesVM.userBadges.count) - 1 {
-                        Spacer()
-                    }
-                }
+            BadgesCard(badges: badgesVM.userBadges) { badge in
+                BadgeCard(type: .display, badge: badge)
+            } emptyBadge: { index in
+                BadgeCard(type: .empty)
             }
+
         }
         .task {
             await badgesVM.getFeaturedBadges(id: user.id)
