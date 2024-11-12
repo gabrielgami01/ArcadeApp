@@ -91,7 +91,6 @@ struct GameDetailsView: View {
                 option = .about
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .toolbar(.hidden, for: .tabBar)
         }
     }
 }

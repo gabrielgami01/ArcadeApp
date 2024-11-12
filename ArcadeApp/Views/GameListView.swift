@@ -60,7 +60,10 @@ struct GameListView: View {
             }
             .buttonStyle(TextFieldStyleButton())
         }
-        .opacity(!showSearchable && gamesVM.selectedGame == nil ? 1.0 : 0.0 )
+        .tabBarInset()
+        .opacity(!showSearchable && gamesVM.selectedGame == nil ? 1.0 : 0.0)
+        .scrollBounceBehavior(.basedOnSize)
+        .background(Color.background)
         .overlay {
             ZStack {
                 GameDetailsView(game: gamesVM.selectedGame)
@@ -69,8 +72,6 @@ struct GameListView: View {
                     .opacity(showSearchable && gamesVM.selectedGame == nil ? 1.0 : 0.0)
             }
         }
-        .scrollBounceBehavior(.basedOnSize)
-        .background(Color.background)
         .namespace(namespace)
     }
 }

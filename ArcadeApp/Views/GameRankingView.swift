@@ -33,6 +33,7 @@ struct GameRankingView: View {
         .task {
             await rankingsVM.getGameRanking(id: game.id)
         }
+        .tabBarInset()
         .headerToolbar(title: LocalizedStringKey(game.name))
         .scrollBounceBehavior(.basedOnSize)
         .background(Color.background)

@@ -12,8 +12,6 @@ struct HomeView: View {
     @Namespace private var namespaceFavorites
     
     var body: some View {
-        @Bindable var gamesBVM = gamesVM
-        
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 10) {
@@ -67,14 +65,15 @@ struct HomeView: View {
             .navigationDestination(for: Game.self) { game in
                 GameRankingView(game: game)
             }
+            .tabBarInset()
             .opacity(gamesVM.selectedGame == nil ? 1.0 : 0.0)
             .scrollIndicators(.hidden)
+            .scrollBounceBehavior(.basedOnSize)
+            .background(Color.background)
             .overlay {
                 GameDetailsView(game: gamesVM.selectedGame)
                     .namespace(activeNamespace)
             }
-            .scrollBounceBehavior(.basedOnSize)
-            .background(Color.background)
         }
     }
 }

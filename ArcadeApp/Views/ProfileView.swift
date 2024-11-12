@@ -71,6 +71,7 @@ struct ProfileView: View {
                         .listRowBackground(Color.card)
 
                     }
+                    .scrollContentBackground(.hidden)
                 }
             }
             .task {
@@ -84,13 +85,13 @@ struct ProfileView: View {
                         ConnectionsView(selectedPage: page)
                 }
             }
+            .tabBarInset()
             .sheet(isPresented: $showEditAbout) {
                 EditAboutView()
             }
             .sheet(isPresented: $showAddEmblem) {
                 AddBadgeView()
             }
-            .scrollContentBackground(.hidden)
             .scrollBounceBehavior(.basedOnSize)
             .scrollIndicators(.hidden)
             .background(Color.background)

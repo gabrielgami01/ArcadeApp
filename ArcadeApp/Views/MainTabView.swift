@@ -1,44 +1,77 @@
 import SwiftUI
 
+enum Tabs {
+    case home
+    case search
+    case profile
+}
+
+struct TabItem: Identifiable {
+    let id = UUID()
+    let name: String
+    let symbol: String
+    let tab: Tabs
+}
+
 struct MainTabView: View {
-    @Environment(SocialVM.self) private var socialVM
-    
     @AppStorage("firstTime") private var firstTime: Bool = true
+    @Environment(GamesVM.self) private var gamesVM
     
-    init() {
-        let appearance = UITabBarAppearance()
-        appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
-        appearance.backgroundColor = .clear
-        UITabBar.appearance().standardAppearance = appearance
-        UITabBar.appearance().scrollEdgeAppearance = appearance
-        
-        let itemAppearance = UITabBarItem.appearance()
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "VT323", size: 15)!]
-        itemAppearance.setTitleTextAttributes(attributes, for: .normal)
-    }
+    @State private var activeTab: Tabs = .home
+    @State private var tabbarHeight: CGFloat = 0.0
+    
+    private let tabs: [TabItem] = [
+        TabItem(name: "Home", symbol: "house", tab: .home),
+        TabItem(name: "Search", symbol: "magnifyingglass", tab: .search),
+        TabItem(name: "Profile", symbol: "person", tab: .profile)
+    ]
     
     var body: some View {
-        @Bindable var socialBVM = socialVM
-        
-        TabView {
+        ZStack {
             HomeView()
-                .tabItem {
-                    Label("Home", systemImage: "house")
-                }
+                .opacity(activeTab == .home ? 1.0 : 0.0)
+                
             GameListView()
-                .tabItem {
-                    Label("Search", systemImage: "magnifyingglass")
-                }
+                .opacity(activeTab == .search ? 1.0 : 0.0)
+            
             ProfileView()
-                .tabItem {
-                    Label("Profile", systemImage: "person.crop.circle")
+                .opacity(activeTab == .profile ? 1.0 : 0.0)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .overlay(alignment: .bottom) {
+            HStack(spacing: 0) {
+                ForEach(tabs) { item in
+                    Button {
+                        activeTab = item.tab
+                    } label: {
+                        VStack {
+                            Image(systemName: item.symbol)
+                                .font(.customHeadline)
+
+                            Text(item.name)
+                                .font(.customSubheadline)
+                        }
+                    }
+                    .buttonStyle(.plain)
+                    .foregroundStyle(activeTab == item.tab ? .accent : .secondary)
+                    .frame(maxWidth: .infinity)
                 }
+            }
+            .padding(8)
+            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 25))
+            .overlay {
+                GeometryReader { proxy in
+                    Color.clear
+                        .onChange(of: proxy.size.height, initial: true) {
+                            tabbarHeight = proxy.size.height
+                        }
+                }
+            }
+            .padding()
+            .opacity(gamesVM.selectedGame == nil ? 1.0 : 0.0)
         }
-        .sheet(isPresented: $firstTime) {
-            OnboardingView()
-                .interactiveDismissDisabled(true)
-        }
-        .userPopup(selectedUser: $socialBVM.selectedUser)
+        .ignoresSafeArea(edges: .bottom)
+        .tabBarHeight(tabbarHeight)
     }
 }
 

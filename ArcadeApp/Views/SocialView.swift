@@ -62,6 +62,7 @@ struct SocialView: View {
         .task {
             await socialVM.getFollowingActiveSessions()
         }
+        .tabBarInset()
         .headerToolbar(title: "Social")
         .scrollBounceBehavior(.basedOnSize)
         .background(Color.background)

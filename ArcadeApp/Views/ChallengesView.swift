@@ -37,6 +37,7 @@ struct ChallengesView: View {
                 await challengesVM.getChallenges()
             }
         }
+        .tabBarInset()
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 HStack(alignment: .firstTextBaseline, spacing: 20) {
@@ -60,7 +61,6 @@ struct ChallengesView: View {
                 }
                 .buttonStyle(.plain)
                 .padding(.bottom, 5)
-                
             }
         }
         .toolbarBackground(Color.background, for: .navigationBar)

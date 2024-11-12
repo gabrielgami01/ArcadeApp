@@ -25,6 +25,7 @@ struct RankingsView: View {
                 gamesVM.activeConsole = .all
             }
         }
+        .tabBarInset()
         .headerToolbar(title: "Rankings")
         .scrollBounceBehavior(.basedOnSize)
         .background(Color.background)
