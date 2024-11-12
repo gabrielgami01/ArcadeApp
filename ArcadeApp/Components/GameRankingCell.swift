@@ -10,11 +10,8 @@ struct GameRankingCell: View {
             HStack(spacing: 15) {
                 GameCover(game: game, width: 60, height: 60)
                                         
-                if let namespace {
-                    Text(game.name)
-                        .font(.customHeadline)
-                        .matchedGeometryEffect(id: "\(game.id)_NAME", in: namespace, properties: .position)
-                }
+                Text(game.name)
+                    .font(.customHeadline)
                 
                 Spacer()
                 
