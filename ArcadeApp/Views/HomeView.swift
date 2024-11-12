@@ -66,10 +66,10 @@ struct HomeView: View {
                 GameRankingView(game: game)
             }
             .tabBarInset()
-            .opacity(gamesVM.selectedGame == nil ? 1.0 : 0.0)
             .scrollIndicators(.hidden)
             .scrollBounceBehavior(.basedOnSize)
             .background(Color.background)
+            .opacity(gamesVM.selectedGame == nil ? 1.0 : 0.0)
             .overlay {
                 GameDetailsView(game: gamesVM.selectedGame)
                     .namespace(activeNamespace)

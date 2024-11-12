@@ -6,7 +6,7 @@ struct GameListView: View {
     @State private var animationGame: Game?
     @State private var showSearchable = false
     
-    @Namespace private var namespace
+    @Environment(\.namespace) private var namespace
     
     var body: some View {
         @Bindable var gamesBVM = gamesVM
@@ -61,18 +61,16 @@ struct GameListView: View {
             .buttonStyle(TextFieldStyleButton())
         }
         .tabBarInset()
-        .opacity(!showSearchable && gamesVM.selectedGame == nil ? 1.0 : 0.0)
         .scrollBounceBehavior(.basedOnSize)
         .background(Color.background)
+        .opacity(!showSearchable && gamesVM.selectedGame == nil ? 1.0 : 0.0)
         .overlay {
-            ZStack {
-                GameDetailsView(game: gamesVM.selectedGame)
-                    .zIndex(1)
-                SearchableView(show: $showSearchable)
-                    .opacity(showSearchable && gamesVM.selectedGame == nil ? 1.0 : 0.0)
-            }
+            SearchableView(show: $showSearchable)
+                .opacity(showSearchable && gamesVM.selectedGame == nil ? 1.0 : 0.0)
         }
-        .namespace(namespace)
+        .overlay {
+            GameDetailsView(game: gamesVM.selectedGame)
+        }
     }
 }
 

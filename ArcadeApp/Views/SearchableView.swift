@@ -114,6 +114,8 @@ struct SearchableView: View {
             focus = false
         }
         .padding(.horizontal)
+        .scrollBounceBehavior(.basedOnSize)
+        .background(Color.background)
     }
 }
 
@@ -122,7 +124,5 @@ struct SearchableView: View {
         .environment(GamesVM(repository: TestRepository()))
         .swiftDataPreview
         .preferredColorScheme(.dark)
-        .scrollBounceBehavior(.basedOnSize)
-        .background(Color.background)
         .namespace(Namespace().wrappedValue)
 }

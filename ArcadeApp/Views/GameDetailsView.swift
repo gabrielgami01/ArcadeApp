@@ -91,6 +91,8 @@ struct GameDetailsView: View {
                 option = .about
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .scrollBounceBehavior(.basedOnSize)
+            .background(Color.background)
         }
     }
 }
@@ -103,8 +105,6 @@ struct GameDetailsView: View {
         .environment(SessionVM(repository: TestRepository()))
         .environment(SocialVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
-        .background(Color.background)
-        .scrollBounceBehavior(.basedOnSize)
         .namespace(Namespace().wrappedValue)
 }
 

@@ -5,8 +5,6 @@ struct ConnectionsView: View {
     
     @State var selectedPage: ConnectionOptions
     
-    @Namespace private var namespace
-    
     var body: some View {
         ScrollView {
             ZStack {
@@ -40,7 +38,6 @@ struct ConnectionsView: View {
             
             ToolbarItem(placement: .principal) {
                 CustomPicker(selected: $selectedPage)
-                    .namespace(namespace)
             }
         }
         .navigationBarBackButtonHidden()
