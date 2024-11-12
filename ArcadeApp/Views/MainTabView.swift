@@ -1,18 +1,5 @@
 import SwiftUI
 
-enum Tabs {
-    case home
-    case search
-    case profile
-}
-
-struct TabItem: Identifiable {
-    let id = UUID()
-    let name: String
-    let symbol: String
-    let tab: Tabs
-}
-
 struct MainTabView: View {
     @AppStorage("firstTime") private var firstTime: Bool = true
     @Environment(GamesVM.self) private var gamesVM
@@ -47,7 +34,7 @@ struct MainTabView: View {
                         VStack {
                             Image(systemName: item.symbol)
                                 .font(.customHeadline)
-
+                    
                             Text(item.name)
                                 .font(.customSubheadline)
                         }

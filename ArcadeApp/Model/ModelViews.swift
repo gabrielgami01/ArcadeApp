@@ -1,7 +1,37 @@
 import SwiftUI
 
-enum TextFieldType {
-    case simple, secured, search
+enum Tabs {
+    case home, search, profile
+}
+
+struct TabItem: Identifiable {
+    let id = UUID()
+    let name: String
+    let symbol: String
+    let tab: Tabs
+}
+
+enum HomePage: String, Identifiable, CaseIterable {
+    case challenges, rankings, social
+    
+    var id: Self { self }
+    
+    var image: String {
+        switch self {
+            case .challenges:
+                return "trophy"
+            case .rankings:
+                return "rosette"
+            case .social:
+                return "person.2.fill"
+        }
+    }
+}
+
+enum HomeScrollType: String, Identifiable, CaseIterable {
+    case featured, favorites
+    
+    var id: Self { self }
 }
 
 enum SignupFields {
@@ -38,35 +68,8 @@ enum SignupFields {
     }
 }
 
-enum HomePage: String, Identifiable, CaseIterable {
-    case challenges
-    case rankings
-    case social
-    
-    var id: Self { self }
-    
-    var image: String {
-        switch self {
-            case .challenges:
-                return "trophy"
-            case .rankings:
-                return "rosette"
-            case .social:
-                return "person.2.fill"
-        }
-    }
-}
-
-enum HomeScrollType: String, Identifiable, CaseIterable {
-    case featured, favorites
-    
-    var id: Self { self }
-}
-
 enum GameOptions: String, Pickeable {
-    case about
-    case score
-    case session
+    case about, score, session
     
     var id: Self { self }
     var displayName: String  { self.rawValue}
@@ -82,15 +85,6 @@ enum GameOptions: String, Pickeable {
     }
 }
 
-enum RatingMode {
-    case display, rate
-}
-
-enum CardAction: String {
-    case add
-    case update
-}
-
 enum ConnectionOptions: String, Pickeable {
     case following, followers
     
@@ -99,13 +93,19 @@ enum ConnectionOptions: String, Pickeable {
     var displayImage: String? { nil }
 }
 
+enum TextFieldType {
+    case simple, secured, search
+}
 
 enum SortOption: String, CaseIterable {
     case completed, uncompleted
 }
 
 enum BadgeType {
-    case display
-    case add
-    case empty
+    case display, add, empty
 }
+
+enum RatingMode {
+    case display, rate
+}
+
