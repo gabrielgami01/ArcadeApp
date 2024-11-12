@@ -1,7 +1,7 @@
 import SwiftUI
 
 fileprivate struct UserPopup: ViewModifier {
-    @Binding var selectedUser: User?
+    @Environment(SocialVM.self) private var socialVM
     
     func body(content: Content) -> some View {
         content
@@ -11,18 +11,15 @@ fileprivate struct UserPopup: ViewModifier {
                         .fill(.ultraThinMaterial)
                         .ignoresSafeArea()
                         .onTapGesture {
-                            if selectedUser != nil {
+                            if socialVM.selectedUser != nil {
                                 withAnimation {
-                                    selectedUser = nil
+                                    socialVM.selectedUser = nil
                                 }
                             }
                         }
-                        .opacity(selectedUser != nil ? 1.0 : 0.0)
+                        .opacity(socialVM.selectedUser != nil ? 1.0 : 0.0)
                     
-                    if let selectedUser {
-                        UserCard(user: selectedUser)
-                            .transition(.move(edge: .bottom).combined(with: .opacity))
-                    }
+                    UserCard(user: socialVM.selectedUser)
                 }
                 
             }
@@ -31,8 +28,8 @@ fileprivate struct UserPopup: ViewModifier {
 }
 
 extension View {
-    func userPopup(selectedUser: Binding<User?>) -> some View {
-        modifier(UserPopup(selectedUser: selectedUser))
+    func userPopup() -> some View {
+        modifier(UserPopup())
     }
     
 }

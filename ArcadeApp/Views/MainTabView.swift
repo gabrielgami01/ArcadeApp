@@ -59,6 +59,7 @@ struct MainTabView: View {
         }
         .ignoresSafeArea(edges: .bottom)
         .tabBarHeight(tabbarHeight)
+        .userPopup()
     }
 }
 
