@@ -17,7 +17,7 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .environment(UserVM())
+        .environment(UserVM(repository: TestRepository()))
         .environment(GamesVM(repository: TestRepository()))
         .environment(GameDetailsVM(repository: TestRepository()))
         .environment(SocialVM(repository: TestRepository()))
