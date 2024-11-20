@@ -7,8 +7,6 @@ struct MainTabView: View {
     @State private var activeTab: Tabs = .home
     @State private var tabbarHeight: CGFloat = 0.0
     
-    @Namespace private var namespace
-    
     private let tabs: [TabItem] = [
         TabItem(name: "Home", symbol: "house", tab: .home),
         TabItem(name: "Search", symbol: "magnifyingglass", tab: .search),
@@ -62,7 +60,6 @@ struct MainTabView: View {
         .ignoresSafeArea(edges: .bottom)
         .tabBarHeight(tabbarHeight)
         .userPopup()
-        .namespace(namespace)
     }
 }
 

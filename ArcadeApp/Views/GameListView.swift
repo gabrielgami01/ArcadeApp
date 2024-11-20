@@ -6,7 +6,7 @@ struct GameListView: View {
     @State private var animationGame: Game?
     @State private var showSearchable = false
     
-    @Environment(\.namespace) private var namespace
+    @Namespace private var namespace
     
     var body: some View {
         @Bindable var gamesBVM = gamesVM
@@ -71,6 +71,7 @@ struct GameListView: View {
         .overlay {
             GameDetailsView(game: gamesVM.selectedGame)
         }
+        .namespace(namespace)
     }
 }
 
@@ -84,6 +85,5 @@ struct GameListView: View {
         .environment(SessionVM(repository: TestRepository()))
         .swiftDataPreview
         .preferredColorScheme(.dark)
-        .namespace(Namespace().wrappedValue)
 }
 

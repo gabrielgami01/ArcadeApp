@@ -3,20 +3,18 @@ import SwiftUI
 struct ScrollPicker<T: Pickeable>: View where T.AllCases: RandomAccessCollection {
     @Binding var selected: T
     
-    @Environment(\.namespace) private var namespace
+    @Namespace private var namespace
     
     var body: some View {
         ScrollView(.horizontal) {
             LazyHStack(spacing: 10) {
                 ForEach(T.allCases) { option in
-                    if let namespace {
-                        Button {
-                            selected = option
-                        } label: {
-                            Text(LocalizedStringKey(option.displayName))     
-                        }
-                        .buttonStyle(SelectorStyle(isActive: selected == option, namespace: namespace))
+                    Button {
+                        selected = option
+                    } label: {
+                        Text(LocalizedStringKey(option.displayName))
                     }
+                    .buttonStyle(SelectorStyle(isActive: selected == option, namespace: namespace))
                 }
             }
             .animation(.smooth, value: selected)
@@ -32,7 +30,6 @@ struct ScrollPicker<T: Pickeable>: View where T.AllCases: RandomAccessCollection
 #Preview {
     ScrollPicker(selected: .constant(Console.all))
         .preferredColorScheme(.dark)
-        .namespace(Namespace().wrappedValue)
 }
 
 struct SelectorStyle: ButtonStyle {

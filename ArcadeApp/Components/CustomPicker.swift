@@ -3,21 +3,19 @@ import SwiftUI
 struct CustomPicker<T: Pickeable>: View where T.AllCases: RandomAccessCollection {
     @Binding var selected: T
     
-    @Environment(\.namespace) private var namespace
+    @Namespace private var namespace
     
     var body: some View {
         HStack(spacing: 0) {
             ForEach(T.allCases) { option in
-                if let namespace {
-                    Button {
-                        withAnimation(.bouncy) {
-                            selected = option
-                        }
-                    } label: {
-                        Text(LocalizedStringKey(option.displayName.capitalized))
+                Button {
+                    withAnimation(.bouncy) {
+                        selected = option
                     }
-                    .buttonStyle(PickerStyle(isActive: selected == option, namespace: namespace))
+                } label: {
+                    Text(LocalizedStringKey(option.displayName.capitalized))
                 }
+                .buttonStyle(PickerStyle(isActive: selected == option, namespace: namespace))
             }
         }
     }
@@ -25,7 +23,6 @@ struct CustomPicker<T: Pickeable>: View where T.AllCases: RandomAccessCollection
 
 #Preview {
     CustomPicker(selected: .constant(ConnectionOptions.followers))
-        .namespace(Namespace().wrappedValue)
         .preferredColorScheme(.dark)
 }
 

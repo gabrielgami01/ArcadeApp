@@ -3,30 +3,28 @@ import SwiftUI
 struct PillPicker<T: Pickeable>: View where T.AllCases: RandomAccessCollection {
     @Binding var selected: T
     
-    @Environment(\.namespace) private var namespace
+    @Namespace private var namespace
     
     var body: some View {
         HStack(spacing: 5) {
             ForEach(T.allCases) { option in
-                if let namespace {
-                    Button {
-                        withAnimation(.bouncy) {
-                            selected = option
-                        }
-                    } label: {
-                        HStack {
-                            if let image = option.displayImage {
-                                Image(systemName: image)
-                            }
-
-                            if selected == option {
-                                Text(LocalizedStringKey(option.displayName.capitalized))
-                            }
-                                
-                        }
+                Button {
+                    withAnimation(.bouncy) {
+                        selected = option
                     }
-                    .buttonStyle(PillStyle(isActive: option == selected, namespace: namespace))
+                } label: {
+                    HStack {
+                        if let image = option.displayImage {
+                            Image(systemName: image)
+                        }
+
+                        if selected == option {
+                            Text(LocalizedStringKey(option.displayName.capitalized))
+                        }
+                            
+                    }
                 }
+                .buttonStyle(PillStyle(isActive: option == selected, namespace: namespace))
             }
         }
     }
@@ -34,7 +32,6 @@ struct PillPicker<T: Pickeable>: View where T.AllCases: RandomAccessCollection {
 
 #Preview {
     PillPicker(selected: .constant(GameOptions.about))
-        .namespace(Namespace().wrappedValue)
         .preferredColorScheme(.dark)
 }
 
