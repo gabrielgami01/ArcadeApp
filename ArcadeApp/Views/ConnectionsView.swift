@@ -18,19 +18,19 @@ struct ConnectionsView: View {
                         .transition(.move(edge: .trailing).combined(with: .opacity))
                 }
             }
-            .gesture(
-                DragGesture(minimumDistance: 50)
-                    .onEnded { value in
-                        withAnimation(.bouncy){
-                            if value.startLocation.x > value.location.x {
-                                selectedPage = .followers
-                            } else if value.startLocation.x < value.location.x {
-                                selectedPage = .following
-                            }
+        }
+        .gesture(
+            DragGesture(minimumDistance: 50)
+                .onEnded { value in
+                    withAnimation(.bouncy){
+                        if value.startLocation.x > value.location.x {
+                            selectedPage = .followers
+                        } else if value.startLocation.x < value.location.x {
+                            selectedPage = .following
                         }
                     }
-            )
-        }
+                }
+        )
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 BackButton()
