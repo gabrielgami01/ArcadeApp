@@ -1,14 +1,7 @@
 import SwiftUI
 
-struct TabBarHeightKey: EnvironmentKey {
-    static let defaultValue: CGFloat = 0
-}
-
 extension EnvironmentValues {
-    var tabBarHeight: CGFloat {
-        get { self[TabBarHeightKey.self] }
-        set { self[TabBarHeightKey.self] = newValue }
-    }
+     @Entry var tabBarHeight: CGFloat = 0
 }
 
 extension View {
