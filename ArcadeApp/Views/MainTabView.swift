@@ -47,7 +47,7 @@ struct MainTabView: View {
                 }
             }
             .padding(8)
-            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 25))
+            .background(Color.card, in: RoundedRectangle(cornerRadius: 25))
             .overlay {
                 GeometryReader { proxy in
                     Color.clear
