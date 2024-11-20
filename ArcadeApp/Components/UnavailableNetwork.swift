@@ -9,9 +9,8 @@ fileprivate struct UnavailableNetwork: ViewModifier {
                 ZStack {
                     Rectangle()
                         .fill(.ultraThinMaterial)
-                    ContentUnavailableView("Network not available",
-                                           systemImage: "network.slash",
-                                           description: Text("There's no internet connection at this moment. This app needs connection in order to work properly. Come back when you have internet again."))
+                    CustomUnavailableView(title: "Network not available", image: "network.slash",
+                                          description: "There's no internet connection at this moment. This app needs connection in order to work.")
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .ignoresSafeArea()
