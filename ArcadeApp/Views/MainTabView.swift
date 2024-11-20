@@ -28,7 +28,7 @@ struct MainTabView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .overlay(alignment: .bottom) {
-            HStack(spacing: 0) {
+            HStack(alignment: .firstTextBaseline, spacing: 0) {
                 ForEach(tabs) { item in
                     Button {
                         activeTab = item.tab
@@ -46,8 +46,9 @@ struct MainTabView: View {
                     .frame(maxWidth: .infinity)
                 }
             }
-            .padding(8)
-            .background(Color.card, in: RoundedRectangle(cornerRadius: 25))
+            .padding(10)
+            .padding(.bottom, 10)
+            .background(Color.card)
             .overlay {
                 GeometryReader { proxy in
                     Color.clear
@@ -56,7 +57,6 @@ struct MainTabView: View {
                         }
                 }
             }
-            .padding()
             .opacity(gamesVM.selectedGame == nil ? 1.0 : 0.0)
         }
         .ignoresSafeArea(edges: .bottom)
