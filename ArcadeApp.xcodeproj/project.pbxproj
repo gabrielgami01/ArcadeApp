@@ -22,6 +22,7 @@
 		FC1473202C5183C100B1BE27 /* ScoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC14731F2C5183C100B1BE27 /* ScoreModel.swift */; };
 		FC15BB362CE3B5DA008558EC /* TabBarHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC15BB352CE3B5DA008558EC /* TabBarHeight.swift */; };
 		FC15BB382CE3BD1D008558EC /* TabBarInset.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC15BB372CE3BD1A008558EC /* TabBarInset.swift */; };
+		FC1D81672CF4EAE70080CB86 /* ErrorPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1D81662CF4EADE0080CB86 /* ErrorPopup.swift */; };
 		FC22BA602C2590EF002DFAA4 /* ArcadeAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA5F2C2590EF002DFAA4 /* ArcadeAppApp.swift */; };
 		FC22BA622C2590EF002DFAA4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA612C2590EF002DFAA4 /* ContentView.swift */; };
 		FC22BA642C2590F0002DFAA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC22BA632C2590F0002DFAA4 /* Assets.xcassets */; };
@@ -79,7 +80,6 @@
 		FC8438FA2C4D219F00434179 /* AddScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8438F92C4D219F00434179 /* AddScoreView.swift */; };
 		FC8983E42CB9B15D008B17BF /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8983E32CB9B156008B17BF /* UINavigationController.swift */; };
 		FC935F192C7DE00A0053F11C /* RegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC935F182C7DE00A0053F11C /* RegisterVM.swift */; };
-		FC935F1B2C7DE9080053F11C /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC935F1A2C7DE9080053F11C /* ErrorAlert.swift */; };
 		FC935F1D2C7DEEFA0053F11C /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC935F1C2C7DEEFA0053F11C /* CustomButtonStyle.swift */; };
 		FC94F71B2C78C4D300FEA9FE /* UserAvatarImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC94F71A2C78C4D300FEA9FE /* UserAvatarImage.swift */; };
 		FC9639272C8A11CA00ABAF72 /* UserCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9639262C8A11CA00ABAF72 /* UserCard.swift */; };
@@ -169,6 +169,7 @@
 		FC14731F2C5183C100B1BE27 /* ScoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreModel.swift; sourceTree = "<group>"; };
 		FC15BB352CE3B5DA008558EC /* TabBarHeight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarHeight.swift; sourceTree = "<group>"; };
 		FC15BB372CE3BD1A008558EC /* TabBarInset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarInset.swift; sourceTree = "<group>"; };
+		FC1D81662CF4EADE0080CB86 /* ErrorPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPopup.swift; sourceTree = "<group>"; };
 		FC22BA5C2C2590EF002DFAA4 /* ArcadeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArcadeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC22BA5F2C2590EF002DFAA4 /* ArcadeAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeAppApp.swift; sourceTree = "<group>"; };
 		FC22BA612C2590EF002DFAA4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -230,7 +231,6 @@
 		FC8438F92C4D219F00434179 /* AddScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddScoreView.swift; sourceTree = "<group>"; };
 		FC8983E32CB9B156008B17BF /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		FC935F182C7DE00A0053F11C /* RegisterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVM.swift; sourceTree = "<group>"; };
-		FC935F1A2C7DE9080053F11C /* ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
 		FC935F1C2C7DEEFA0053F11C /* CustomButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyle.swift; sourceTree = "<group>"; };
 		FC94F71A2C78C4D300FEA9FE /* UserAvatarImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAvatarImage.swift; sourceTree = "<group>"; };
 		FC9639262C8A11CA00ABAF72 /* UserCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCard.swift; sourceTree = "<group>"; };
@@ -503,6 +503,7 @@
 		FC6F73EF2C56CBEA00E34AF3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				FC1D81662CF4EADE0080CB86 /* ErrorPopup.swift */,
 				FC565BA22C7205A20078C2ED /* ScrollPicker.swift */,
 				FC4FCA0F2C62B0BA004C12C4 /* CustomPicker.swift */,
 				FC0208A72CC189E800078112 /* PillPicker.swift */,
@@ -516,7 +517,6 @@
 				FC7A37022C4525E7004F6910 /* RatingComponent.swift */,
 				FC6F73F22C56D1F900E34AF3 /* AsyncText.swift */,
 				FCC324292CAAC73700D1E961 /* UnavailableNetwork.swift */,
-				FC935F1A2C7DE9080053F11C /* ErrorAlert.swift */,
 				FC6C61302C9B360E00A64649 /* ConnectionsButton.swift */,
 				FC935F1C2C7DEEFA0053F11C /* CustomButtonStyle.swift */,
 			);
@@ -875,7 +875,6 @@
 				FC8983E42CB9B15D008B17BF /* UINavigationController.swift in Sources */,
 				FC58EBCA2CDE733F0065BB55 /* UserPopup.swift in Sources */,
 				FCC036032C480B6400DDBC90 /* GameScoresView.swift in Sources */,
-				FC935F1B2C7DE9080053F11C /* ErrorAlert.swift in Sources */,
 				FC6C61342C9B369D00A64649 /* NotificationCell.swift in Sources */,
 				FC6F73F12C56D19C00E34AF3 /* AsyncTypeWriter.swift in Sources */,
 				FCC324282CAAC70300D1E961 /* NetworkStatus.swift in Sources */,
@@ -975,6 +974,7 @@
 				FC0E31BF2C46DE59004EB339 /* PageButton.swift in Sources */,
 				FC2E08DD2CD170F6004B4DA4 /* BadgeCard.swift in Sources */,
 				FC2E08D82CD10134004B4DA4 /* DataPreview.swift in Sources */,
+				FC1D81672CF4EAE70080CB86 /* ErrorPopup.swift in Sources */,
 				FCACFBC92C638A750065805E /* SearchableView.swift in Sources */,
 				FC0E31CB2C46F09F004EB339 /* GameAboutView.swift in Sources */,
 				FCC324192CAAB78D00D1E961 /* NetworkService.swift in Sources */,
