@@ -49,30 +49,24 @@ struct SearchableView: View {
                 
                         LazyVStack {
                             ForEach(recentSearchs) { gameModel in
-                                if gameModel.id != gamesVM.selectedGame?.id {
-                                    HStack(alignment: .firstTextBaseline) {
-                                        Button {
-                                            withAnimation {
-                                                gamesVM.selectedGame = gameModel.toGame
-                                            }
-                                            
-                                            focus = false
-                                        } label: {
-                                            SearchCell(game: gameModel.toGame)
+                                HStack(alignment: .firstTextBaseline) {
+                                    Button {
+                                        withAnimation {
+                                            gamesVM.selectedGame = gameModel.toGame
                                         }
-                                        
-                                        Button {
-                                            try? searchVM.deleteGameSearch(game: gameModel.toGame, context: context)
-                                        } label: {
-                                            Text("X")
-                                                .font(.customTitle2)
-                                        }
+                                        focus = false
+                                    } label: {
+                                        SearchCell(game: gameModel.toGame)
                                     }
-                                    .buttonStyle(.plain)
-                                } else {
-                                    Color.clear
-                                        .frame(height: 60)
+                                    
+                                    Button {
+                                        try? searchVM.deleteGameSearch(game: gameModel.toGame, context: context)
+                                    } label: {
+                                        Text("X")
+                                            .font(.customTitle2)
+                                    }
                                 }
+                                .buttonStyle(.plain)
                             }
                         }
                     } else {
@@ -83,21 +77,16 @@ struct SearchableView: View {
                     if !searchVM.games.isEmpty {
                         LazyVStack {
                             ForEach(searchVM.games) { game in
-                                if game.id != gamesVM.selectedGame?.id {
-                                    Button {
-                                        withAnimation {
-                                            gamesVM.selectedGame = game
-                                        }
-                                        focus = false
-                                        try? searchVM.saveGameSearch(game: game, context: context)
-                                    } label: {
-                                        SearchCell(game: game)
+                                Button {
+                                    withAnimation {
+                                        gamesVM.selectedGame = game
                                     }
-                                    .buttonStyle(.plain)
-                                } else {
-                                    Color.clear
-                                        .frame(height: 60)
+                                    focus = false
+                                    try? searchVM.saveGameSearch(game: game, context: context)
+                                } label: {
+                                    SearchCell(game: game)
                                 }
+                                .buttonStyle(.plain)
                             }
                         }
                     } else {

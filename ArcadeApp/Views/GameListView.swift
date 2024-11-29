@@ -17,20 +17,18 @@ struct GameListView: View {
                 
                 LazyVStack(spacing: 20) {
                     ForEach(gamesVM.games) { game in
-                        if game.id != gamesVM.selectedGame?.id {
-                            GameCell(game: game, animation: $animationGame)
-                                .scrollTransition(.animated, axis: .vertical) { content, phase in
-                                    content
-                                        .opacity(phase.isIdentity ? 1.0 : 0.4)
-                                        .scaleEffect(phase.isIdentity ? 1.0 : 0.9)
+                        Button {
+                            withAnimation {
+                                animationGame = game
+                            } completion: {
+                                withAnimation {
+                                    gamesVM.selectedGame = game
                                 }
-                                .onAppear {
-                                    gamesVM.isLastItem(game)
-                                }
-                        } else {
-                            Color.clear
-                                .frame(height: 210)
+                            }                                             
+                        } label: {
+                            GameCell(game: game, animation: animationGame)
                         }
+                        .buttonStyle(.plain)
                     }
                 }
                 
