@@ -103,7 +103,6 @@ struct GameDetailsView: View {
         .environment(GamesVM(repository: TestRepository()))
         .environment(GameDetailsVM(repository: TestRepository()))
         .environment(SessionVM(repository: TestRepository()))
-        .environment(SocialVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
         .namespace(Namespace().wrappedValue)
 }

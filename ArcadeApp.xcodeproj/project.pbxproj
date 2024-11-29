@@ -22,7 +22,6 @@
 		FC1473202C5183C100B1BE27 /* ScoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC14731F2C5183C100B1BE27 /* ScoreModel.swift */; };
 		FC15BB362CE3B5DA008558EC /* TabBarHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC15BB352CE3B5DA008558EC /* TabBarHeight.swift */; };
 		FC15BB382CE3BD1D008558EC /* TabBarInset.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC15BB372CE3BD1A008558EC /* TabBarInset.swift */; };
-		FC1D81672CF4EAE70080CB86 /* ErrorPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1D81662CF4EADE0080CB86 /* ErrorPopup.swift */; };
 		FC22BA602C2590EF002DFAA4 /* ArcadeAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA5F2C2590EF002DFAA4 /* ArcadeAppApp.swift */; };
 		FC22BA622C2590EF002DFAA4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC22BA612C2590EF002DFAA4 /* ContentView.swift */; };
 		FC22BA642C2590F0002DFAA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC22BA632C2590F0002DFAA4 /* Assets.xcassets */; };
@@ -37,10 +36,7 @@
 		FC26EFF52C8E34A40084B289 /* GameDetailsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC26EFF42C8E34A40084B289 /* GameDetailsLabel.swift */; };
 		FC2D02732CBEF15100D28313 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2D02722CBEF14B00D28313 /* OnboardingView.swift */; };
 		FC2E08D32CD0FFCB004B4DA4 /* BadgeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E08D22CD0FFC5004B4DA4 /* BadgeModel.swift */; };
-		FC2E08D52CD10008004B4DA4 /* BadgesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E08D42CD10004004B4DA4 /* BadgesVM.swift */; };
 		FC2E08D82CD10134004B4DA4 /* DataPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E08D72CD10134004B4DA4 /* DataPreview.swift */; };
-		FC2E08DA2CD10B2E004B4DA4 /* AddBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E08D92CD10B2D004B4DA4 /* AddBadgeView.swift */; };
-		FC2E08DD2CD170F6004B4DA4 /* BadgeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E08DC2CD170F6004B4DA4 /* BadgeCard.swift */; };
 		FC2E95142C61634E00393C39 /* ChallengeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E95132C61634E00393C39 /* ChallengeCard.swift */; };
 		FC2FD0872C43E3C60054CD43 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2FD0862C43E3C60054CD43 /* MainTabView.swift */; };
 		FC2FD0892C43E3DD0054CD43 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2FD0882C43E3DD0054CD43 /* LoginView.swift */; };
@@ -49,23 +45,15 @@
 		FC2FD0912C4427530054CD43 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2FD0902C4427530054CD43 /* CustomTextField.swift */; };
 		FC2FD0952C4438F80054CD43 /* GameDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2FD0942C4438F80054CD43 /* GameDetailsView.swift */; };
 		FC35A2392C3EE1500075E7B4 /* AddScoreVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC35A2382C3EE1500075E7B4 /* AddScoreVM.swift */; };
-		FC47C1522C8CB1DF002F214B /* ConnectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC47C1512C8CB1DF002F214B /* ConnectionsView.swift */; };
-		FC47C1542C8CCD27002F214B /* ConnectionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC47C1532C8CCD27002F214B /* ConnectionsListView.swift */; };
-		FC47C1562C8CCDAE002F214B /* ConnectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC47C1552C8CCDAE002F214B /* ConnectionCell.swift */; };
 		FC4DDABC2C847EA8009E1FCA /* TextFieldButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4DDABB2C847EA8009E1FCA /* TextFieldButtonStyle.swift */; };
 		FC4FCA0A2C62345F004C12C4 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4FCA092C62345F004C12C4 /* BackButton.swift */; };
 		FC4FCA102C62B0BA004C12C4 /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4FCA0F2C62B0BA004C12C4 /* CustomPicker.swift */; };
 		FC54459E2C3801F5001B26EF /* AddReviewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54459D2C3801F5001B26EF /* AddReviewVM.swift */; };
 		FC565BA32C7205A20078C2ED /* ScrollPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC565BA22C7205A20078C2ED /* ScrollPicker.swift */; };
 		FC573A5F2C6F984300F56268 /* RankingScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC573A5E2C6F984300F56268 /* RankingScoreCell.swift */; };
-		FC58EBCA2CDE733F0065BB55 /* UserPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC58EBC92CDE733C0065BB55 /* UserPopup.swift */; };
 		FC58EBCC2CDE8DE70065BB55 /* ProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC58EBCB2CDE8DE30065BB55 /* ProfileCard.swift */; };
-		FC58EBCF2CDE93EB0065BB55 /* BadgeInfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC58EBCE2CDE93E60065BB55 /* BadgeInfoCard.swift */; };
-		FC58EBD12CDE942C0065BB55 /* BadgesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC58EBD02CDE94290065BB55 /* BadgesCard.swift */; };
 		FC5C1BFA2C9309E00063EDA5 /* HeaderToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5C1BF92C9309E00063EDA5 /* HeaderToolbar.swift */; };
 		FC6A9C1C2C862240002B9ED2 /* GameAboutCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6A9C1B2C862240002B9ED2 /* GameAboutCard.swift */; };
-		FC6C61312C9B361500A64649 /* ConnectionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6C61302C9B360E00A64649 /* ConnectionsButton.swift */; };
-		FC6C61342C9B369D00A64649 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6C61332C9B369B00A64649 /* NotificationCell.swift */; };
 		FC6F73E82C564C2900E34AF3 /* FontStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F73E72C564C2900E34AF3 /* FontStyles.swift */; };
 		FC6F73EA2C5650AA00E34AF3 /* VT323.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC6F73E92C5650AA00E34AF3 /* VT323.ttf */; };
 		FC6F73EC2C56CA3B00E34AF3 /* CustomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F73EB2C56CA3B00E34AF3 /* CustomCard.swift */; };
@@ -82,13 +70,9 @@
 		FC935F192C7DE00A0053F11C /* RegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC935F182C7DE00A0053F11C /* RegisterVM.swift */; };
 		FC935F1D2C7DEEFA0053F11C /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC935F1C2C7DEEFA0053F11C /* CustomButtonStyle.swift */; };
 		FC94F71B2C78C4D300FEA9FE /* UserAvatarImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC94F71A2C78C4D300FEA9FE /* UserAvatarImage.swift */; };
-		FC9639272C8A11CA00ABAF72 /* UserCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9639262C8A11CA00ABAF72 /* UserCard.swift */; };
-		FC96392A2C8A150400ABAF72 /* SocialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9639292C8A150400ABAF72 /* SocialView.swift */; };
 		FC9A3F922CD010DF00844A77 /* SessionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A3F8E2CD010DF00844A77 /* SessionCard.swift */; };
 		FC9A3F932CD010DF00844A77 /* TimerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A3F8F2CD010DF00844A77 /* TimerCard.swift */; };
 		FC9A3F942CD010DF00844A77 /* TimerControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A3F902CD010DF00844A77 /* TimerControl.swift */; };
-		FC9A3F9A2CD0126D00844A77 /* UserActiveSessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A3F992CD0126C00844A77 /* UserActiveSessionCell.swift */; };
-		FC9A3F9C2CD012D000844A77 /* ActiveSessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A3F9B2CD012CB00844A77 /* ActiveSessionCell.swift */; };
 		FC9A3F9E2CD0133B00844A77 /* ActiveSessionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A3F9D2CD0133600844A77 /* ActiveSessionCard.swift */; };
 		FCA519152C36C18D001CCF54 /* Namespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA519142C36C18D001CCF54 /* Namespace.swift */; };
 		FCA519172C36C191001CCF54 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA519162C36C191001CCF54 /* UIDevice.swift */; };
@@ -126,7 +110,6 @@
 		FCD1FCB42C6698460060E682 /* EditAboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD1FCB32C6698460060E682 /* EditAboutView.swift */; };
 		FCD1FCB62C669B7B0060E682 /* SheetToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD1FCB52C669B7B0060E682 /* SheetToolbar.swift */; };
 		FCE336CF2C67C44E009E30AB /* JWTDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE336CE2C67C44E009E30AB /* JWTDecoder.swift */; };
-		FCE78D772C8B98EC001FDD21 /* SocialVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE78D762C8B98EC001FDD21 /* SocialVM.swift */; };
 		FCED20E62C2F1C8900C0C5A1 /* GamesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCED20E52C2F1C8900C0C5A1 /* GamesVM.swift */; };
 		FCF0CA972CC4434400196C76 /* GameSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF0CA962CC4433F00196C76 /* GameSessionView.swift */; };
 		FCF126532CD930C000A84B07 /* PickeableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF126522CD930BB00A84B07 /* PickeableProtocol.swift */; };
@@ -169,7 +152,6 @@
 		FC14731F2C5183C100B1BE27 /* ScoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreModel.swift; sourceTree = "<group>"; };
 		FC15BB352CE3B5DA008558EC /* TabBarHeight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarHeight.swift; sourceTree = "<group>"; };
 		FC15BB372CE3BD1A008558EC /* TabBarInset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarInset.swift; sourceTree = "<group>"; };
-		FC1D81662CF4EADE0080CB86 /* ErrorPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPopup.swift; sourceTree = "<group>"; };
 		FC22BA5C2C2590EF002DFAA4 /* ArcadeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArcadeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC22BA5F2C2590EF002DFAA4 /* ArcadeAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeAppApp.swift; sourceTree = "<group>"; };
 		FC22BA612C2590EF002DFAA4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -188,10 +170,7 @@
 		FC26EFF42C8E34A40084B289 /* GameDetailsLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailsLabel.swift; sourceTree = "<group>"; };
 		FC2D02722CBEF14B00D28313 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		FC2E08D22CD0FFC5004B4DA4 /* BadgeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeModel.swift; sourceTree = "<group>"; };
-		FC2E08D42CD10004004B4DA4 /* BadgesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesVM.swift; sourceTree = "<group>"; };
 		FC2E08D72CD10134004B4DA4 /* DataPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPreview.swift; sourceTree = "<group>"; };
-		FC2E08D92CD10B2D004B4DA4 /* AddBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBadgeView.swift; sourceTree = "<group>"; };
-		FC2E08DC2CD170F6004B4DA4 /* BadgeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeCard.swift; sourceTree = "<group>"; };
 		FC2E95132C61634E00393C39 /* ChallengeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCard.swift; sourceTree = "<group>"; };
 		FC2FD0862C43E3C60054CD43 /* MainTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		FC2FD0882C43E3DD0054CD43 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -200,23 +179,15 @@
 		FC2FD0902C4427530054CD43 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		FC2FD0942C4438F80054CD43 /* GameDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailsView.swift; sourceTree = "<group>"; };
 		FC35A2382C3EE1500075E7B4 /* AddScoreVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScoreVM.swift; sourceTree = "<group>"; };
-		FC47C1512C8CB1DF002F214B /* ConnectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsView.swift; sourceTree = "<group>"; };
-		FC47C1532C8CCD27002F214B /* ConnectionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsListView.swift; sourceTree = "<group>"; };
-		FC47C1552C8CCDAE002F214B /* ConnectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionCell.swift; sourceTree = "<group>"; };
 		FC4DDABB2C847EA8009E1FCA /* TextFieldButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldButtonStyle.swift; sourceTree = "<group>"; };
 		FC4FCA092C62345F004C12C4 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		FC4FCA0F2C62B0BA004C12C4 /* CustomPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicker.swift; sourceTree = "<group>"; };
 		FC54459D2C3801F5001B26EF /* AddReviewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewVM.swift; sourceTree = "<group>"; };
 		FC565BA22C7205A20078C2ED /* ScrollPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollPicker.swift; sourceTree = "<group>"; };
 		FC573A5E2C6F984300F56268 /* RankingScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingScoreCell.swift; sourceTree = "<group>"; };
-		FC58EBC92CDE733C0065BB55 /* UserPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPopup.swift; sourceTree = "<group>"; };
 		FC58EBCB2CDE8DE30065BB55 /* ProfileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCard.swift; sourceTree = "<group>"; };
-		FC58EBCE2CDE93E60065BB55 /* BadgeInfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeInfoCard.swift; sourceTree = "<group>"; };
-		FC58EBD02CDE94290065BB55 /* BadgesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesCard.swift; sourceTree = "<group>"; };
 		FC5C1BF92C9309E00063EDA5 /* HeaderToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderToolbar.swift; sourceTree = "<group>"; };
 		FC6A9C1B2C862240002B9ED2 /* GameAboutCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAboutCard.swift; sourceTree = "<group>"; };
-		FC6C61302C9B360E00A64649 /* ConnectionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsButton.swift; sourceTree = "<group>"; };
-		FC6C61332C9B369B00A64649 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		FC6F73E72C564C2900E34AF3 /* FontStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyles.swift; sourceTree = "<group>"; };
 		FC6F73E92C5650AA00E34AF3 /* VT323.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = VT323.ttf; sourceTree = "<group>"; };
 		FC6F73EB2C56CA3B00E34AF3 /* CustomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCard.swift; sourceTree = "<group>"; };
@@ -233,13 +204,9 @@
 		FC935F182C7DE00A0053F11C /* RegisterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVM.swift; sourceTree = "<group>"; };
 		FC935F1C2C7DEEFA0053F11C /* CustomButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyle.swift; sourceTree = "<group>"; };
 		FC94F71A2C78C4D300FEA9FE /* UserAvatarImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAvatarImage.swift; sourceTree = "<group>"; };
-		FC9639262C8A11CA00ABAF72 /* UserCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCard.swift; sourceTree = "<group>"; };
-		FC9639292C8A150400ABAF72 /* SocialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialView.swift; sourceTree = "<group>"; };
 		FC9A3F8E2CD010DF00844A77 /* SessionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCard.swift; sourceTree = "<group>"; };
 		FC9A3F8F2CD010DF00844A77 /* TimerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCard.swift; sourceTree = "<group>"; };
 		FC9A3F902CD010DF00844A77 /* TimerControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerControl.swift; sourceTree = "<group>"; };
-		FC9A3F992CD0126C00844A77 /* UserActiveSessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActiveSessionCell.swift; sourceTree = "<group>"; };
-		FC9A3F9B2CD012CB00844A77 /* ActiveSessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSessionCell.swift; sourceTree = "<group>"; };
 		FC9A3F9D2CD0133600844A77 /* ActiveSessionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSessionCard.swift; sourceTree = "<group>"; };
 		FCA519142C36C18D001CCF54 /* Namespace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Namespace.swift; sourceTree = "<group>"; };
 		FCA519162C36C191001CCF54 /* UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
@@ -277,7 +244,6 @@
 		FCD1FCB32C6698460060E682 /* EditAboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAboutView.swift; sourceTree = "<group>"; };
 		FCD1FCB52C669B7B0060E682 /* SheetToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetToolbar.swift; sourceTree = "<group>"; };
 		FCE336CE2C67C44E009E30AB /* JWTDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTDecoder.swift; sourceTree = "<group>"; };
-		FCE78D762C8B98EC001FDD21 /* SocialVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialVM.swift; sourceTree = "<group>"; };
 		FCED20E52C2F1C8900C0C5A1 /* GamesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesVM.swift; sourceTree = "<group>"; };
 		FCF0CA962CC4433F00196C76 /* GameSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSessionView.swift; sourceTree = "<group>"; };
 		FCF126522CD930BB00A84B07 /* PickeableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickeableProtocol.swift; sourceTree = "<group>"; };
@@ -463,16 +429,6 @@
 			name = Search;
 			sourceTree = "<group>";
 		};
-		FC2E08DB2CD170CF004B4DA4 /* Badges */ = {
-			isa = PBXGroup;
-			children = (
-				FC58EBD02CDE94290065BB55 /* BadgesCard.swift */,
-				FC2E08DC2CD170F6004B4DA4 /* BadgeCard.swift */,
-				FC58EBCE2CDE93E60065BB55 /* BadgeInfoCard.swift */,
-			);
-			path = Badges;
-			sourceTree = "<group>";
-		};
 		FC2E950E2C61616A00393C39 /* Challenges */ = {
 			isa = PBXGroup;
 			children = (
@@ -490,20 +446,9 @@
 			name = Rankings;
 			sourceTree = "<group>";
 		};
-		FC6C61322C9B369600A64649 /* Social */ = {
-			isa = PBXGroup;
-			children = (
-				FC9A3F992CD0126C00844A77 /* UserActiveSessionCell.swift */,
-				FC9A3F9B2CD012CB00844A77 /* ActiveSessionCell.swift */,
-				FC6C61332C9B369B00A64649 /* NotificationCell.swift */,
-			);
-			path = Social;
-			sourceTree = "<group>";
-		};
 		FC6F73EF2C56CBEA00E34AF3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				FC1D81662CF4EADE0080CB86 /* ErrorPopup.swift */,
 				FC565BA22C7205A20078C2ED /* ScrollPicker.swift */,
 				FC4FCA0F2C62B0BA004C12C4 /* CustomPicker.swift */,
 				FC0208A72CC189E800078112 /* PillPicker.swift */,
@@ -517,7 +462,6 @@
 				FC7A37022C4525E7004F6910 /* RatingComponent.swift */,
 				FC6F73F22C56D1F900E34AF3 /* AsyncText.swift */,
 				FCC324292CAAC73700D1E961 /* UnavailableNetwork.swift */,
-				FC6C61302C9B360E00A64649 /* ConnectionsButton.swift */,
 				FC935F1C2C7DEEFA0053F11C /* CustomButtonStyle.swift */,
 			);
 			name = Common;
@@ -536,19 +480,8 @@
 			children = (
 				FC58EBCB2CDE8DE30065BB55 /* ProfileCard.swift */,
 				FC94F71A2C78C4D300FEA9FE /* UserAvatarImage.swift */,
-				FC9639262C8A11CA00ABAF72 /* UserCard.swift */,
-				FC58EBC92CDE733C0065BB55 /* UserPopup.swift */,
-				FC47C1552C8CCDAE002F214B /* ConnectionCell.swift */,
 			);
 			name = User;
-			sourceTree = "<group>";
-		};
-		FC9639282C8A14F100ABAF72 /* Social */ = {
-			isa = PBXGroup;
-			children = (
-				FC9639292C8A150400ABAF72 /* SocialView.swift */,
-			);
-			name = Social;
 			sourceTree = "<group>";
 		};
 		FC9A3F912CD010DF00844A77 /* Session */ = {
@@ -630,8 +563,6 @@
 				FC9A3F912CD010DF00844A77 /* Session */,
 				FC2E950E2C61616A00393C39 /* Challenges */,
 				FC573A5D2C6F982A00F56268 /* Rankings */,
-				FC6C61322C9B369600A64649 /* Social */,
-				FC2E08DB2CD170CF004B4DA4 /* Badges */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -647,9 +578,7 @@
 				FC35A2382C3EE1500075E7B4 /* AddScoreVM.swift */,
 				FCCE055F2C2B33F500B0D2CD /* SearchVM.swift */,
 				FCC53B2F2C5F915900015AC9 /* ChallengesVM.swift */,
-				FC2E08D42CD10004004B4DA4 /* BadgesVM.swift */,
 				FCB2CD0F2C6BE494001D5751 /* RankingsVM.swift */,
-				FCE78D762C8B98EC001FDD21 /* SocialVM.swift */,
 				FCBC23F12CC4F432009FF39C /* SessionVM.swift */,
 				FCC324212CAAC45800D1E961 /* ImageVM.swift */,
 			);
@@ -668,7 +597,6 @@
 				FCCD736D2C2D67750056036E /* Search */,
 				FC76F23D2C5C26DD0070D970 /* Challenges */,
 				FCB2CD0C2C6BD65F001D5751 /* Rankings */,
-				FC9639282C8A14F100ABAF72 /* Social */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -679,10 +607,7 @@
 				FC2FD0882C43E3DD0054CD43 /* LoginView.swift */,
 				FC2FD08C2C43E4010054CD43 /* RegisterView.swift */,
 				FC0E31B32C46879B004EB339 /* ProfileView.swift */,
-				FC47C1512C8CB1DF002F214B /* ConnectionsView.swift */,
-				FC47C1532C8CCD27002F214B /* ConnectionsListView.swift */,
 				FCD1FCB32C6698460060E682 /* EditAboutView.swift */,
-				FC2E08D92CD10B2D004B4DA4 /* AddBadgeView.swift */,
 			);
 			name = Users;
 			sourceTree = "<group>";
@@ -873,9 +798,7 @@
 				FC5C1BFA2C9309E00063EDA5 /* HeaderToolbar.swift in Sources */,
 				FC76F2342C5BF5A60070D970 /* Notifications.swift in Sources */,
 				FC8983E42CB9B15D008B17BF /* UINavigationController.swift in Sources */,
-				FC58EBCA2CDE733F0065BB55 /* UserPopup.swift in Sources */,
 				FCC036032C480B6400DDBC90 /* GameScoresView.swift in Sources */,
-				FC6C61342C9B369D00A64649 /* NotificationCell.swift in Sources */,
 				FC6F73F12C56D19C00E34AF3 /* AsyncTypeWriter.swift in Sources */,
 				FCC324282CAAC70300D1E961 /* NetworkStatus.swift in Sources */,
 				FC6F73F32C56D1F900E34AF3 /* AsyncText.swift in Sources */,
@@ -892,14 +815,10 @@
 				FC0E31C12C46DEAA004EB339 /* GamesCarousel.swift in Sources */,
 				FC22BAB02C25EEF5002DFAA4 /* SecKeyStore.swift in Sources */,
 				FC8438F82C4D0F7A00434179 /* EnumTag.swift in Sources */,
-				FC6C61312C9B361500A64649 /* ConnectionsButton.swift in Sources */,
 				FC2FD0872C43E3C60054CD43 /* MainTabView.swift in Sources */,
-				FC9A3F9A2CD0126D00844A77 /* UserActiveSessionCell.swift in Sources */,
 				FC2FD08F2C4403F50054CD43 /* EnumsModel.swift in Sources */,
-				FC47C1542C8CCD27002F214B /* ConnectionsListView.swift in Sources */,
 				FCB699882C64C7B300A4D638 /* SearchCell.swift in Sources */,
 				FC2FD0892C43E3DD0054CD43 /* LoginView.swift in Sources */,
-				FC2E08DA2CD10B2E004B4DA4 /* AddBadgeView.swift in Sources */,
 				FC2FD08D2C43E4010054CD43 /* RegisterView.swift in Sources */,
 				FCC324262CAAC5ED00D1E961 /* CGSize.swift in Sources */,
 				FC4FCA0A2C62345F004C12C4 /* BackButton.swift in Sources */,
@@ -919,13 +838,11 @@
 				FC2D02732CBEF15100D28313 /* OnboardingView.swift in Sources */,
 				FCA5191B2C36FDE5001CCF54 /* GameDetailsVM.swift in Sources */,
 				FC35A2392C3EE1500075E7B4 /* AddScoreVM.swift in Sources */,
-				FC47C1522C8CB1DF002F214B /* ConnectionsView.swift in Sources */,
 				FCC724572C523C5D008C3BC1 /* CameraPicker.swift in Sources */,
 				FC94F71B2C78C4D300FEA9FE /* UserAvatarImage.swift in Sources */,
 				FCC324112CAAB37C00D1E961 /* URLRequest.swift in Sources */,
 				FC54459E2C3801F5001B26EF /* AddReviewVM.swift in Sources */,
 				FC15BB382CE3BD1D008558EC /* TabBarInset.swift in Sources */,
-				FC96392A2C8A150400ABAF72 /* SocialView.swift in Sources */,
 				FCB2CD122C6BE7D4001D5751 /* GameRankingView.swift in Sources */,
 				FC6F73E82C564C2900E34AF3 /* FontStyles.swift in Sources */,
 				FCD1FCB62C669B7B0060E682 /* SheetToolbar.swift in Sources */,
@@ -934,12 +851,10 @@
 				FC0E31CF2C46F1C6004EB339 /* ModelViews.swift in Sources */,
 				FCF0CA972CC4434400196C76 /* GameSessionView.swift in Sources */,
 				FC0E31BD2C46DE24004EB339 /* GameCell.swift in Sources */,
-				FC58EBCF2CDE93EB0065BB55 /* BadgeInfoCard.swift in Sources */,
 				FC22BAA02C2595FF002DFAA4 /* UserVM.swift in Sources */,
 				FCC324132CAAB59000D1E961 /* JSONDecoder.swift in Sources */,
 				FCC3242A2CAAC73C00D1E961 /* UnavailableNetwork.swift in Sources */,
 				FCB2CD0E2C6BD67E001D5751 /* RankingsView.swift in Sources */,
-				FC9A3F9C2CD012D000844A77 /* ActiveSessionCell.swift in Sources */,
 				FC935F1D2C7DEEFA0053F11C /* CustomButtonStyle.swift in Sources */,
 				FC0208A82CC189ED00078112 /* PillPicker.swift in Sources */,
 				FC22BA602C2590EF002DFAA4 /* ArcadeAppApp.swift in Sources */,
@@ -962,25 +877,18 @@
 				FC2E08D32CD0FFCB004B4DA4 /* BadgeModel.swift in Sources */,
 				FC0E31B42C46879B004EB339 /* ProfileView.swift in Sources */,
 				FC573A5F2C6F984300F56268 /* RankingScoreCell.swift in Sources */,
-				FC9639272C8A11CA00ABAF72 /* UserCard.swift in Sources */,
 				FC565BA32C7205A20078C2ED /* ScrollPicker.swift in Sources */,
 				FC2E95142C61634E00393C39 /* ChallengeCard.swift in Sources */,
 				FC0E31AA2C467FB4004EB339 /* AddReviewView.swift in Sources */,
 				FC935F192C7DE00A0053F11C /* RegisterVM.swift in Sources */,
-				FCE78D772C8B98EC001FDD21 /* SocialVM.swift in Sources */,
 				FC4DDABC2C847EA8009E1FCA /* TextFieldButtonStyle.swift in Sources */,
 				FCE336CF2C67C44E009E30AB /* JWTDecoder.swift in Sources */,
-				FC58EBD12CDE942C0065BB55 /* BadgesCard.swift in Sources */,
 				FC0E31BF2C46DE59004EB339 /* PageButton.swift in Sources */,
-				FC2E08DD2CD170F6004B4DA4 /* BadgeCard.swift in Sources */,
 				FC2E08D82CD10134004B4DA4 /* DataPreview.swift in Sources */,
-				FC1D81672CF4EAE70080CB86 /* ErrorPopup.swift in Sources */,
 				FCACFBC92C638A750065805E /* SearchableView.swift in Sources */,
 				FC0E31CB2C46F09F004EB339 /* GameAboutView.swift in Sources */,
 				FCC324192CAAB78D00D1E961 /* NetworkService.swift in Sources */,
 				FCC324152CAAB62A00D1E961 /* URLSession.swift in Sources */,
-				FC47C1562C8CCDAE002F214B /* ConnectionCell.swift in Sources */,
-				FC2E08D52CD10008004B4DA4 /* BadgesVM.swift in Sources */,
 				FC7A37032C4525E7004F6910 /* RatingComponent.swift in Sources */,
 				FC0E31C52C46E063004EB339 /* GameCover.swift in Sources */,
 				FCCD73702C2D88990056036E /* Repository.swift in Sources */,

@@ -2,10 +2,9 @@ import SwiftUI
 
 struct ProfileView: View {
     @Environment(UserVM.self) private var userVM
-    @Environment(BadgesVM.self) private var badgesVM
 
     @State private var showEditAbout = false
-    @State private var showAddEmblem = false
+    @State private var showAddBadge = false
 
     @Environment(\.dismiss) private var dismiss
 
@@ -16,28 +15,28 @@ struct ProfileView: View {
                     ProfileCard(user: user)
 
                     Form {
-                        Section {
-                            BadgesCard(badges: badgesVM.featuredBadges) { badge in
-                                Button {
-                                    badgesVM.selectedBadge = badge
-                                    showAddEmblem.toggle()
-                                } label: {
-                                    BadgeCard(type: .display, badge: badge)
-                                }
-                            } emptyBadge: { index in
-                                Button {
-                                    badgesVM.selectedOrder = index + badgesVM.featuredBadges.count
-                                    showAddEmblem.toggle()
-                                } label: {
-                                    BadgeCard(type: .add)
-                                }
-                            }
-                        } header: {
-                            Text("Personal card")
-                                .font(.customTitle3)
-                        }
-                        .buttonStyle(.plain)
-                        .listRowBackground(Color.card)
+//                        Section {
+//                            BadgesCard(badges: badgesVM.featuredBadges) { badge in
+//                                Button {
+//                                    badgesVM.selectedBadge = badge
+//                                    showAddEmblem.toggle()
+//                                } label: {
+//                                    BadgeCard(type: .display, badge: badge)
+//                                }
+//                            } emptyBadge: { index in
+//                                Button {
+//                                    badgesVM.selectedOrder = index + badgesVM.featuredBadges.count
+//                                    showAddEmblem.toggle()
+//                                } label: {
+//                                    BadgeCard(type: .add)
+//                                }
+//                            }
+//                        } header: {
+//                            Text("Personal card")
+//                                .font(.customTitle3)
+//                        }
+//                        .buttonStyle(.plain)
+//                        .listRowBackground(Color.card)
 
                         Section {
                             HStack {
@@ -74,24 +73,24 @@ struct ProfileView: View {
                     .scrollContentBackground(.hidden)
                 }
             }
-            .task {
-                await badgesVM.getBadges()
-            }
-            .navigationDestination(for: ConnectionOptions.self) { page in
-                switch page {
-                    case .following:
-                        ConnectionsView(selectedPage: page)
-                    case .followers:
-                        ConnectionsView(selectedPage: page)
-                }
-            }
+//            .task {
+//                await badgesVM.getBadges()
+//            }
+//            .navigationDestination(for: ConnectionOptions.self) { page in
+//                switch page {
+//                    case .following:
+//                        ConnectionsView(selectedPage: page)
+//                    case .followers:
+//                        ConnectionsView(selectedPage: page)
+//                }
+//            }
             .tabBarInset()
             .sheet(isPresented: $showEditAbout) {
                 EditAboutView()
             }
-            .sheet(isPresented: $showAddEmblem) {
-                AddBadgeView()
-            }
+//            .sheet(isPresented: $showAddEmblem) {
+//                AddBadgeView()
+//            }
             .scrollBounceBehavior(.basedOnSize)
             .scrollIndicators(.hidden)
             .background(Color.background)
@@ -102,7 +101,5 @@ struct ProfileView: View {
 #Preview {
     ProfileView()
         .environment(UserVM(repository: TestRepository()))
-        .environment(SocialVM(repository: TestRepository()))
-        .environment(BadgesVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }

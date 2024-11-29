@@ -59,7 +59,6 @@ struct MainTabView: View {
         }
         .ignoresSafeArea(edges: .bottom)
         .tabBarHeight(tabbarHeight)
-        .userPopup()
     }
 }
 
@@ -68,8 +67,6 @@ struct MainTabView: View {
         .environment(UserVM(repository: TestRepository()))
         .environment(GamesVM(repository: TestRepository()))
         .environment(GameDetailsVM(repository: TestRepository()))
-        .environment(SocialVM(repository: TestRepository()))
-        .environment(BadgesVM(repository: TestRepository()))
         .environment(SessionVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }

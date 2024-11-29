@@ -67,7 +67,6 @@ struct LoginView: View {
             .padding(.horizontal)
             .padding(.top, 100)
             .background(Color.background)
-            .showAlert(show: $userBVM.showError, text: userVM.errorMsg)
         }
     }
 }

@@ -2,7 +2,6 @@ import SwiftUI
 
 struct GameRankingView: View {
     @Environment(UserVM.self) private var userVM
-    @Environment(SocialVM.self) private var socialVM
     @State var rankingsVM = RankingsVM()
     
     let game: Game
@@ -12,16 +11,17 @@ struct GameRankingView: View {
             LazyVStack(spacing: 15) {
                 if !rankingsVM.rankingScores.isEmpty {
                     ForEach(rankingsVM.ranking, id: \.element.id) { index, rankingScore in
-                        Button {
-                            if rankingScore.user.id != userVM.activeUser?.id {
-                                withAnimation {
-                                    socialVM.selectedUser = rankingScore.user
-                                }
-                            }  
-                        } label: {
-                            RankingScoreCell(rankingScore: rankingScore, index: index)
-                        }
-                        .buttonStyle(.plain)
+//                        Button {
+//                            if rankingScore.user.id != userVM.activeUser?.id {
+//                                withAnimation {
+//                                    socialVM.selectedUser = rankingScore.user
+//                                }
+//                            }  
+//                        } label: {
+//                            RankingScoreCell(rankingScore: rankingScore, index: index)
+//                        }
+//                        .buttonStyle(.plain)
+                        RankingScoreCell(rankingScore: rankingScore, index: index)
                     }
                 } else {
                     CustomUnavailableView(title: "No scores", image: "gamecontroller",
@@ -44,7 +44,6 @@ struct GameRankingView: View {
     NavigationStack {
         GameRankingView(rankingsVM: RankingsVM(repository: TestRepository()), game: .test)
             .environment(UserVM(repository: TestRepository()))
-            .environment(SocialVM(repository: TestRepository()))
             .preferredColorScheme(.dark)
     }
 }

@@ -3,7 +3,6 @@ import PhotosUI
 
 struct ProfileCard: View {
     @Environment(UserVM.self) private var userVM
-    @Environment(SocialVM.self) private var socialVM
     
     let user: User
     
@@ -28,26 +27,26 @@ struct ProfileCard: View {
                 .foregroundStyle(.secondary)
                 .font(.customHeadline)
             
-            HStack {
-                NavigationLink(value: ConnectionOptions.following) {
-                    HStack(spacing: 5) {
-                        Text("\(socialVM.following.count)")
-                        Text("Following")
-                            .foregroundStyle(.secondary)
-                    }
-                }
-                
-                NavigationLink(value: ConnectionOptions.followers) {
-                    HStack(spacing: 5) {
-                        Text("\(socialVM.followers.count)")
-                        Text("Followers")
-                            .foregroundStyle(.secondary)
-                    }
-                }
-            }
-            .buttonStyle(.plain)
-            .font(.customBody)
-            .padding(.top, 5)
+//            HStack {
+//                NavigationLink(value: ConnectionOptions.following) {
+//                    HStack(spacing: 5) {
+//                        Text("\(socialVM.following.count)")
+//                        Text("Following")
+//                            .foregroundStyle(.secondary)
+//                    }
+//                }
+//                
+//                NavigationLink(value: ConnectionOptions.followers) {
+//                    HStack(spacing: 5) {
+//                        Text("\(socialVM.followers.count)")
+//                        Text("Followers")
+//                            .foregroundStyle(.secondary)
+//                    }
+//                }
+//            }
+//            .buttonStyle(.plain)
+//            .font(.customBody)
+//            .padding(.top, 5)
         }
     }
 }
@@ -55,7 +54,6 @@ struct ProfileCard: View {
     NavigationStack {
         ProfileCard(user: .test)
             .environment(UserVM(repository: TestRepository()))
-            .environment(SocialVM(repository: TestRepository()))
             .preferredColorScheme(.dark)
     }
 }

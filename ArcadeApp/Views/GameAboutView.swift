@@ -3,7 +3,6 @@ import SwiftUI
 struct GameAboutView: View {
     @Environment(UserVM.self) private var userVM
     @Environment(GameDetailsVM.self) private var detailsVM
-    @Environment(SocialVM.self) private var socialVM
     
     let game: Game
     @Binding var animation: Bool
@@ -33,16 +32,17 @@ struct GameAboutView: View {
                     if !detailsVM.reviews.isEmpty {
                         LazyVStack(alignment: .leading, spacing: 15) {
                             ForEach(detailsVM.reviews) { review in
-                                Button {
-                                    if review.user.id != userVM.activeUser?.id {
-                                        withAnimation {
-                                            socialVM.selectedUser = review.user
-                                        }
-                                    }
-                                } label: {
-                                    ReviewCell(review: review)
-                                }
-                                .buttonStyle(.plain)
+//                                Button {
+//                                    if review.user.id != userVM.activeUser?.id {
+//                                        withAnimation {
+//                                            socialVM.selectedUser = review.user
+//                                        }
+//                                    }
+//                                } label: {
+//                                    ReviewCell(review: review)
+//                                }
+//                                .buttonStyle(.plain)
+                                ReviewCell(review: review)
                             }
                         }
                     } else {
@@ -69,7 +69,6 @@ struct GameAboutView: View {
         .environment(UserVM(repository: TestRepository()))
         .environment(GamesVM(repository: TestRepository()))
         .environment(GameDetailsVM(repository: TestRepository()))
-        .environment(SocialVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
         .background(Color.background)
         .scrollBounceBehavior(.basedOnSize)

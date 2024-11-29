@@ -14,6 +14,7 @@
       "shouldTranslate" : false
     },
     "%@ started following you." : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -97,9 +98,6 @@
     "Active Sessions" : {
 
     },
-    "Add badge" : {
-
-    },
     "Add new emblem" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -162,9 +160,6 @@
           }
         }
       }
-    },
-    "Badges" : {
-
     },
     "Cancel" : {
       "localizations" : {
@@ -295,9 +290,6 @@
         }
       }
     },
-    "Empty" : {
-
-    },
     "End: %@" : {
 
     },
@@ -386,6 +378,7 @@
       }
     },
     "Follow" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -410,6 +403,7 @@
 
     },
     "Followers" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -420,6 +414,7 @@
       }
     },
     "Following" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -530,12 +525,6 @@
         }
       }
     },
-    "No %@" : {
-
-    },
-    "No available badges" : {
-
-    },
     "No available emblems" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -580,9 +569,6 @@
         }
       }
     },
-    "No notifications" : {
-
-    },
     "No results for '%@'" : {
       "localizations" : {
         "es" : {
@@ -616,19 +602,7 @@
     "No sessions" : {
 
     },
-    "Notifications" : {
-
-    },
     "NOW PLAYING" : {
-
-    },
-    "Offline" : {
-
-    },
-    "OK" : {
-
-    },
-    "Oooops!" : {
 
     },
     "Password" : {
@@ -642,6 +616,7 @@
       }
     },
     "Personal card" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -891,9 +866,6 @@
     "Social" : {
       "shouldTranslate" : false
     },
-    "Something went wrong." : {
-
-    },
     "Sports" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1065,12 +1037,6 @@
     "You already have an active session." : {
 
     },
-    "You haven't any %@ yet." : {
-
-    },
-    "You haven't any available badge by the moment." : {
-
-    },
     "You haven't any available emblems by the moment." : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1092,9 +1058,6 @@
           }
         }
       }
-    },
-    "You haven't any notification yet." : {
-
     },
     "You haven't any score for this game yet." : {
       "localizations" : {
@@ -1131,9 +1094,6 @@
           }
         }
       }
-    },
-    "Your session" : {
-
     }
   },
   "version" : "1.0"

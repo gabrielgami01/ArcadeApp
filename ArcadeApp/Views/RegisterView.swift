@@ -54,7 +54,6 @@ struct RegisterView: View {
                 .disabled(registerVM.checkEmptyFields())
             }
         }
-        .showAlert(show: $registerBVM.showError, text: registerVM.errorMsg)
         .headerToolbar(title: "Register")
         .padding()
         .scrollBounceBehavior(.basedOnSize)

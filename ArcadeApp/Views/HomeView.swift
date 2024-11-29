@@ -30,14 +30,7 @@ struct HomeView: View {
                         
                         NavigationLink(value: HomePage.rankings) {
                             PageButton(page: HomePage.rankings)
-                        }
-                        
-                        Spacer()
-                        
-                        NavigationLink(value: HomePage.social) {
-                            PageButton(page: HomePage.social)
-                        }
-                        
+                        }  
                     }
                     .buttonStyle(.plain)
                     .padding()
@@ -58,8 +51,6 @@ struct HomeView: View {
                         ChallengesView()
                     case .rankings:
                         RankingsView()
-                    case .social:
-                        SocialView()
                 }
             }
             .navigationDestination(for: Game.self) { game in
@@ -83,7 +74,6 @@ struct HomeView: View {
         .environment(UserVM(repository: TestRepository()))
         .environment(GamesVM(repository: TestRepository()))
         .environment(GameDetailsVM(repository: TestRepository()))
-        .environment(SocialVM(repository: TestRepository()))
         .environment(SessionVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }
