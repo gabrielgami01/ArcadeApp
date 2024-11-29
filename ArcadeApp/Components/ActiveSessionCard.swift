@@ -1,10 +1,9 @@
 import SwiftUI
 
 struct ActiveSessionCard: View {
-    @Environment(GamesVM.self) private var gamesVM
     @Environment(SessionVM.self) private var gameSessionVM
-    
-    @Binding var activeNamespace: Namespace.ID?
+
+    let onGameSelect: (Game) -> Void
     
     @Environment(\.namespace) private var namespace
     
@@ -17,10 +16,7 @@ struct ActiveSessionCard: View {
                 
                 HStack(alignment: .top, spacing: 10) {
                     Button {
-                        activeNamespace = namespace
-                        withAnimation {
-                            gamesVM.selectedGame = activeSession.game
-                        }
+                        onGameSelect(activeSession.game)
                     } label: {
                         GameCover(game: activeSession.game, width: 80, height: 120)
                     }
@@ -65,8 +61,8 @@ struct ActiveSessionCard: View {
 }
 
 #Preview {
-    ActiveSessionCard(activeNamespace: .constant(nil))
-        .environment(GamesVM(repository: TestRepository()))
-        .environment(SessionVM(repository: TestRepository()))
-        .preferredColorScheme(.dark)
+    ActiveSessionCard { _ in }
+    .environment(SessionVM(repository: TestRepository()))
+    .preferredColorScheme(.dark)
+    .namespace(Namespace().wrappedValue)
 }

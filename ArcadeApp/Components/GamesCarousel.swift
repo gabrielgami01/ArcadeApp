@@ -1,18 +1,9 @@
 import SwiftUI
 
 struct GamesCarousel: View {
-    @Environment(GamesVM.self) private var gamesVM
-    
-    @Binding var selectedType: HomeScrollType
-    @Binding var activeNamespace: Namespace.ID?
+    let games: [Game]
     let type: HomeScrollType
-    
-    private var games: [Game] {
-        switch type {
-            case .featured: gamesVM.featured
-            case .favorites: gamesVM.favorites
-        }
-    }
+    let onGameSelect: (Game) -> Void
     
     @Environment(\.namespace) private var namespace
     
@@ -22,25 +13,16 @@ struct GamesCarousel: View {
                 .font(.customTitle3)
                 .padding(.horizontal)
             
-            if !games.isEmpty{
+            if !games.isEmpty {
                 ScrollView(.horizontal) {
                     LazyHStack(spacing: 10) {
                         ForEach(games) { game in
-                            if game.id != gamesVM.selectedGame?.id || selectedType.id != type.id {
-                                Button {
-                                    selectedType = type
-                                    activeNamespace = namespace
-                                    withAnimation {
-                                        gamesVM.selectedGame = game
-                                    }
-                                } label: {
-                                    CarouselCell(game: game)
-                                }
-                                .buttonStyle(.plain)
-                            } else {
-                                Color.clear
-                                    .frame(width: 140, height: 220)
+                            Button {
+                                onGameSelect(game)
+                            } label: {
+                                CarouselCell(game: game)
                             }
+                            .buttonStyle(.plain)
                         }
                     }
                     .safeAreaPadding(.horizontal)
@@ -63,8 +45,7 @@ struct GamesCarousel: View {
 }
 
 #Preview {
-    GamesCarousel(selectedType: .constant(.favorites), activeNamespace: .constant(nil), type: .favorites)
-        .environment(GamesVM(repository: TestRepository()))
+    GamesCarousel(games: [.test, .test2], type: .featured) { _ in }
         .preferredColorScheme(.dark)
         .namespace(Namespace().wrappedValue)
 }

@@ -35,14 +35,29 @@ struct HomeView: View {
                     .buttonStyle(.plain)
                     .padding()
                     
-                    ActiveSessionCard(activeNamespace: $activeNamespace)
-                        .namespace(namespaceSession)
+                    ActiveSessionCard { game in
+                        activeNamespace = namespaceSession
+                        withAnimation {
+                            gamesVM.selectedGame = game
+                        }
+                    }
+                    .namespace(namespaceSession)
                     
-                    GamesCarousel(selectedType: $selectedType, activeNamespace: $activeNamespace, type: .featured)
-                        .namespace(namespaceFeatured)
+                    GamesCarousel(games: gamesVM.featured, type: .featured) { game in
+                        activeNamespace = namespaceFeatured
+                        withAnimation {
+                            gamesVM.selectedGame = game
+                        }
+                    }
+                    .namespace(namespaceFeatured)
                     
-                    GamesCarousel(selectedType: $selectedType, activeNamespace: $activeNamespace, type: .favorites)
-                        .namespace(namespaceFavorites)
+                    GamesCarousel(games: gamesVM.favorites, type: .favorites) { game in
+                        activeNamespace = namespaceFavorites
+                        withAnimation {
+                            gamesVM.selectedGame = game
+                        }
+                    }
+                    .namespace(namespaceFavorites)
                 }
             }
             .navigationDestination(for: HomePage.self) { page in
