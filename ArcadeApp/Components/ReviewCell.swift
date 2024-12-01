@@ -31,7 +31,6 @@ struct ReviewCell: View {
         }
         .padding()
         .background(Color.card, in: .rect(cornerRadius: 10))
-        .frame(maxWidth: .infinity)
     }
 }
 

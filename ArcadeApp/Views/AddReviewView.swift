@@ -20,7 +20,7 @@ struct AddReviewView: View {
                     HStack(spacing: 20) {
                         Text("Rating")
                             .font(.customBody)
-                            .bold()
+                        
                         RatingComponent(rating: $addReviewVM.rating, mode: .rate)
                     }
                     .padding(.bottom, 20)

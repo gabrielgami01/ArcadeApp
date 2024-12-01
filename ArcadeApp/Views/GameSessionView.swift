@@ -23,8 +23,6 @@ struct GameSessionView: View {
                         TimerCard(gameID: game.id)
                     }
                 }
-                .opacity(animation ? 1.0: 0.0)
-                .animation(.default, value: animation)
                 
                 VStack(alignment: .leading) {
                     Text("Your past sessions")

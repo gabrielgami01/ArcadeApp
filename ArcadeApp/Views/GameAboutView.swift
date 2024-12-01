@@ -14,11 +14,7 @@ struct GameAboutView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
-                HStack(spacing: 10) {
-                    GameCover(game: game, width: 150, height: 220)
-                    
-                    GameAboutCard(game: game, animation: animation)
-                }
+                GameAboutCard(game: game, animation: animation)
                 
                 VStack {
                     GameDetailsLabel(showAction: $showAddReview, title: "Player's Reviews") {

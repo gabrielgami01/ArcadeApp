@@ -36,7 +36,6 @@ struct ActiveSessionCard: View {
                         HStack {
                             Text(gameSessionVM.sessionDuration.toDisplayString())
                                 .font(.customTitle2)
-                                .bold()
                                 .contentTransition(.numericText())
                                 .animation(.linear, value: gameSessionVM.sessionDuration)
                             

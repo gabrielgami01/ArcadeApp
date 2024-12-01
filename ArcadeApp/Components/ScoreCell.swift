@@ -14,6 +14,7 @@ struct ScoreCell: View {
                 HStack {
                     Text(LocalizedStringKey(score.status.rawValue.capitalized))
                         .font(.customFootnote)
+                    
                     switch score.status {
                         case .verified:
                             Image(systemName: "checkmark")
@@ -32,7 +33,6 @@ struct ScoreCell: View {
             if let score = score.score {
                 Text("Score: \(score)")
                     .font(.customBody)
-                    .bold()
             }
         }
         .padding()

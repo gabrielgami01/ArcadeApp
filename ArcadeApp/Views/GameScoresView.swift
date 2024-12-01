@@ -75,11 +75,9 @@ struct GameScoresView: View {
                         .background(Color.card, in: RoundedRectangle(cornerRadius: 10))
                     } else {
                       CustomUnavailableView(title: "Chart unavailable", image: "chart.xyaxis.line",
-                                              description: "You need 2 or more scores to see the chart.")
+                                            description: "You need a score to see the chart.")
                     }
                 }
-                .opacity(animation ? 1.0: 0.0)
-                .animation(.default, value: animation)
                 .frame(height: 220)
                 
                 VStack {

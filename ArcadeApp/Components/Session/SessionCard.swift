@@ -29,4 +29,5 @@ struct SessionCard: View {
 
 #Preview {
     SessionCard(session: .test2)
+        .preferredColorScheme(.dark)
 }
