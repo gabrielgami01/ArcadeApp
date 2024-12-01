@@ -3,8 +3,6 @@ import SwiftUI
 struct GameRankingCell: View {
     let game: Game
     
-    @Environment(\.namespace) private var namespace
-    
     var body: some View {
         VStack(alignment: .leading) {
             HStack(spacing: 15) {
@@ -30,7 +28,6 @@ struct GameRankingCell: View {
 #Preview {
     GameRankingCell(game: .test)
         .preferredColorScheme(.dark)
-        .namespace(Namespace().wrappedValue)
 }
 
 
