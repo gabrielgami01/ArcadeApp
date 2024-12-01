@@ -15,23 +15,27 @@ struct GameListView: View {
             VStack(spacing: 15) {
                 ScrollPicker(selected: $gamesBVM.activeConsole)
                 
-                LazyVStack(spacing: 20) {
-                    ForEach(gamesVM.games) { game in
-                        Button {
-                            withAnimation {
-                                animationGame = game
-                            } completion: {
+                if !gamesVM.games.isEmpty {
+                    LazyVStack(spacing: 20) {
+                        ForEach(gamesVM.games) { game in
+                            Button {
                                 withAnimation {
-                                    gamesVM.selectedGame = game
+                                    animationGame = game
+                                } completion: {
+                                    withAnimation {
+                                        gamesVM.selectedGame = game
+                                    }
                                 }
-                            }                                             
-                        } label: {
-                            GameCell(game: game, animation: animationGame)
+                            } label: {
+                                GameCell(game: game, animation: animationGame)
+                            }
+                            .buttonStyle(.plain)
                         }
-                        .buttonStyle(.plain)
                     }
+                } else {
+                    CustomUnavailableView(title: "No games found", image: "exclamationmark.triangle",
+                                          description: "There isn't any game by the moment.")
                 }
-                
             }
             .namespace(showSearchable ? nil : namespace)
         }
