@@ -9,8 +9,6 @@ final class RankingsVM {
         rankingScores.enumerated().map { $0 }
     }
     
-    var rankingsPage = 1
-    
     var errorMsg = ""
     var showError = false
     
@@ -20,7 +18,7 @@ final class RankingsVM {
     
     func getGameRanking(id: UUID) async {
         do {
-            let rankingScores = try await repository.getGameRanking(id: id, page: rankingsPage)
+            let rankingScores = try await repository.getGameRanking(id: id)
             await MainActor.run {
                 self.rankingScores = rankingScores
             }

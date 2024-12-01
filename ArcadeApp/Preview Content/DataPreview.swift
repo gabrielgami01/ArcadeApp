@@ -87,7 +87,7 @@ struct TestRepository: RepositoryProtocol {
     
     func unhighlightBadge(id: UUID) async throws {}
     
-    func getGameRanking(id: UUID, page: Int) async throws -> [RankingScore] {
+    func getGameRanking(id: UUID) async throws -> [RankingScore] {
         let scores: [RankingScore] = [.test, .test2, .test3, .test4, .test5, .test6, .test7, .test8]
         return scores.sorted { $0.score > $1.score}
     }

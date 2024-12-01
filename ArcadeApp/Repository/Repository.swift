@@ -20,7 +20,7 @@ protocol RepositoryProtocol {
     func getFeaturedBadges(userID: UUID) async throws -> [Badge]
     func highlightBadge(_ badgeDTO: HighlightBadgeDTO) async throws
     func unhighlightBadge(id: UUID) async throws
-    func getGameRanking(id: UUID, page: Int) async throws -> [RankingScore]
+    func getGameRanking(id: UUID) async throws -> [RankingScore]
     func getFollowingFollowers() async throws -> (following: [UserConnections], followers: [UserConnections])
     func followUser(id: UUID) async throws
     func unfollowUser(id: UUID) async throws
@@ -141,7 +141,7 @@ struct Repository: RepositoryProtocol, JSONService {
         try await send(request: .send(url: .unhighlightBadge(id: id), data: "", method: .patch, token: getToken()), status: 200)
     }
 
-    func getGameRanking(id: UUID, page: Int) async throws -> [RankingScore] {
+    func getGameRanking(id: UUID) async throws -> [RankingScore] {
         try await fetchJSON(request: .get(url: .getGameRanking(id: id), token: getToken()), type: [RankingScore].self)
     }
 
