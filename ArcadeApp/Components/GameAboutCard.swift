@@ -2,10 +2,10 @@ import SwiftUI
 
 struct GameAboutCard: View {
     @Environment(GamesVM.self) private var gamesVM
-    @Environment(GameDetailsVM.self) private var detailsVM
     
     let game: Game
     let animation: Bool
+    @State var detailsVM: GameDetailsVM
     
     @Environment(\.namespace) private var namespace
     
@@ -70,8 +70,7 @@ struct GameAboutCard: View {
 }
 
 #Preview {
-    GameAboutCard(game: .test, animation: true)
+    GameAboutCard(game: .test, animation: true, detailsVM: GameDetailsVM(repository: TestRepository()))
         .environment(GamesVM(repository: TestRepository()))
-        .environment(GameDetailsVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }

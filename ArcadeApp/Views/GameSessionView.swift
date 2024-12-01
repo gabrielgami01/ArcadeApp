@@ -1,11 +1,11 @@
 import SwiftUI
 
 struct GameSessionView: View {
-    @Environment(GameDetailsVM.self) private var detailsVM
     @Environment(SessionVM.self) private var gameSessionVM
     
     let game: Game
     let animation: Bool
+    @State var detailsVM: GameDetailsVM
     
     var body: some View {
         ScrollView {
@@ -48,8 +48,7 @@ struct GameSessionView: View {
 }
 
 #Preview {
-    GameSessionView(game: .test, animation: true)
-        .environment(GameDetailsVM(repository: TestRepository()))
+    GameSessionView(game: .test, animation: true, detailsVM: GameDetailsVM(repository: TestRepository()))
         .environment(SessionVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
         .background(Color.background)

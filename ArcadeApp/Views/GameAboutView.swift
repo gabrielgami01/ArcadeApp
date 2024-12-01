@@ -2,10 +2,10 @@ import SwiftUI
 
 struct GameAboutView: View {
     @Environment(UserVM.self) private var userVM
-    @Environment(GameDetailsVM.self) private var detailsVM
     
     let game: Game
     @Binding var animation: Bool
+    @State var detailsVM: GameDetailsVM
     
     @State private var showAddReview = false
     
@@ -14,7 +14,7 @@ struct GameAboutView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
-                GameAboutCard(game: game, animation: animation)
+                GameAboutCard(game: game, animation: animation, detailsVM: detailsVM)
                 
                 VStack {
                     GameDetailsLabel(showAction: $showAddReview, title: "Player's Reviews") {
@@ -55,16 +55,15 @@ struct GameAboutView: View {
             animation = true
         }
         .sheet(isPresented: $showAddReview) {
-            AddReviewView(game: game)
+            AddReviewView(game: game, detailsVM: detailsVM)
         }
     }
 }
 
 #Preview {
-    GameAboutView(game: .test, animation: .constant(true))
+    GameAboutView(game: .test, animation: .constant(true), detailsVM: GameDetailsVM(repository: TestRepository()))
         .environment(UserVM(repository: TestRepository()))
         .environment(GamesVM(repository: TestRepository()))
-        .environment(GameDetailsVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
         .background(Color.background)
         .scrollBounceBehavior(.basedOnSize)

@@ -2,10 +2,11 @@ import SwiftUI
 
 struct AddReviewView: View {
     @Environment(UserVM.self) private var userVM
-    @Environment(GameDetailsVM.self) private var detailsVM
-    @State private var addReviewVM = AddReviewVM()
+    @Environment(SessionVM.self) private var gameSessionVM    
     
     let game: Game
+    @State private var addReviewVM = AddReviewVM()
+    @State var detailsVM: GameDetailsVM
     
     @Environment(\.dismiss) private var dismiss
     @FocusState private var focus: Bool
@@ -62,8 +63,7 @@ struct AddReviewView: View {
 }
 
 #Preview {
-    AddReviewView(game: .test)
+    AddReviewView(game: .test ,detailsVM: GameDetailsVM(repository: TestRepository()))
         .environment(UserVM(repository: TestRepository()))
-        .environment(GameDetailsVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }

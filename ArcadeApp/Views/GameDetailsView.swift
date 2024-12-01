@@ -3,7 +3,7 @@ import Charts
 
 struct GameDetailsView: View {
     @Environment(GamesVM.self) private var gamesVM
-    @Environment(GameDetailsVM.self) private var detailsVM
+    @State private var detailsVM = GameDetailsVM()
     
     let game: Game?
     
@@ -33,14 +33,14 @@ struct GameDetailsView: View {
                 .padding(.horizontal)
                 
                 ZStack {
-                    GameAboutView(game: game, animation: $aboutAnimation)
+                    GameAboutView(game: game, animation: $aboutAnimation, detailsVM: detailsVM)
                         .offset(x: option == .about ? 0 : option == .score ? -UIDevice.width : option == .session ? -UIDevice.width * 2 : 0)
                         .opacity(option != .about ? 0.0 : 1.0)
                     
-                    GameScoresView(game: game, animation: scoresAnimation)
+                    GameScoresView(game: game, animation: scoresAnimation, detailsVM: detailsVM)
                         .offset(x: option == .about ? UIDevice.width : option == .score ? 0 : option == .session ? -UIDevice.width : 0)
                     
-                    GameSessionView(game: game, animation: sessionAnimation)
+                    GameSessionView(game: game, animation: sessionAnimation, detailsVM: detailsVM)
                         .offset(x: option == .about ? UIDevice.width * 2 : option == .score ? UIDevice.width : option == .session ? 0 : 0)
                         .opacity(option != .session ? 0.0 : 1.0)
                 }
@@ -101,7 +101,6 @@ struct GameDetailsView: View {
     GameDetailsView(game: .test)
         .environment(UserVM(repository: TestRepository()))
         .environment(GamesVM(repository: TestRepository()))
-        .environment(GameDetailsVM(repository: TestRepository()))
         .environment(SessionVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
         .namespace(Namespace().wrappedValue)

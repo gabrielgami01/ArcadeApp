@@ -2,10 +2,10 @@ import SwiftUI
 import PhotosUI
 
 struct AddScoreView: View {
-    @Environment(GameDetailsVM.self) private var detailsVM
     @State private var addScoreVM = AddScoreVM()
     
     let game: Game
+    @State var detailsVM: GameDetailsVM
     
     @State private var showCamera = false
     
@@ -42,7 +42,6 @@ struct AddScoreView: View {
 }
 
 #Preview {
-    AddScoreView(game: .test)
-        .environment(GameDetailsVM(repository: TestRepository()))
+    AddScoreView(game: .test, detailsVM: GameDetailsVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }

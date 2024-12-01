@@ -80,7 +80,6 @@ struct GameListView: View {
 #Preview {
     GameListView()
         .environment(GamesVM(repository: TestRepository()))
-        .environment(GameDetailsVM(repository: TestRepository()))
         .environment(UserVM(repository: TestRepository()))
         .environment(SessionVM(repository: TestRepository()))
         .swiftDataPreview

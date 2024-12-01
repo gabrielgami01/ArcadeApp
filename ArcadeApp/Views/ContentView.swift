@@ -19,6 +19,5 @@ struct ContentView: View {
     ContentView()
         .environment(UserVM())
         .environment(GamesVM(repository: TestRepository()))
-        .environment(GameDetailsVM(repository: TestRepository()))
         .environment(SessionVM(repository: TestRepository()))
 }
