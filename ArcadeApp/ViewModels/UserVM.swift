@@ -19,7 +19,6 @@ final class UserVM {
     var username = ""
     var password = ""
 
-    var errorMsg = ""
     var showError = false
 
     init(repository: RepositoryProtocol = Repository.shared) {
@@ -39,8 +38,7 @@ final class UserVM {
             NotificationCenter.default.post(name: .login, object: nil)
         } catch {
             await MainActor.run {
-                errorMsg = error.localizedDescription
-                showError.toggle()
+                showError = true
             }
             print(error.localizedDescription)
         }
@@ -62,8 +60,7 @@ final class UserVM {
             }
         } catch {
             await MainActor.run {
-                errorMsg = error.localizedDescription
-                showError.toggle()
+                showError = true
             }
             print(error.localizedDescription)
         }
@@ -76,8 +73,7 @@ final class UserVM {
             return true
         } catch {
             await MainActor.run {
-                errorMsg = error.localizedDescription
-                showError.toggle()
+                showError = true
             }
             print(error.localizedDescription)
             return false
@@ -107,8 +103,7 @@ final class UserVM {
             }
         } catch {
             await MainActor.run {
-                errorMsg = error.localizedDescription
-                showError.toggle()
+                showError = true
             }
             print(error.localizedDescription)
         }

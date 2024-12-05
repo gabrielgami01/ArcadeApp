@@ -21,7 +21,6 @@ final class SearchVM {
     
     var games: [Game] = []
     
-    var errorMsg = ""
     var showError = false
     
     init(repository: RepositoryProtocol = Repository.shared) {
@@ -42,8 +41,7 @@ final class SearchVM {
             }
         } catch {
             await MainActor.run {
-                errorMsg = error.localizedDescription
-                showError.toggle()
+                showError = true
             }
             print(error.localizedDescription)
         }

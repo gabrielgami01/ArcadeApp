@@ -37,6 +37,7 @@ struct AddScoreView: View {
             .navigationBarTitleDisplayMode(.inline)
             .frame(maxWidth: .infinity)
             .background(Color.background)
+            .errorAlert(show: $detailsVM.showError)
         }
     }
 }

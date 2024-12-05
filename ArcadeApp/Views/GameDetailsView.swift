@@ -84,6 +84,11 @@ struct GameDetailsView: View {
             .task {
                 await detailsVM.getGameDetails(id: game.id)
             }
+            .refreshable {
+                Task {
+                    await detailsVM.getGameDetails(id: game.id)
+                }
+            }
             .onDisappear {
                 aboutAnimation = false
                 scoresAnimation = false
@@ -93,6 +98,7 @@ struct GameDetailsView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .scrollBounceBehavior(.basedOnSize)
             .background(Color.background)
+            .errorAlert(show: $detailsVM.showError)
         }
     }
 }

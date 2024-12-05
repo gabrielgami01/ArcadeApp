@@ -8,6 +8,8 @@ struct GameSessionView: View {
     @State var detailsVM: GameDetailsVM
     
     var body: some View {
+        @Bindable var gameSessionBVM = gameSessionVM
+        
         ScrollView {
             VStack(spacing: 20) {
                 Group {
@@ -44,6 +46,7 @@ struct GameSessionView: View {
             }
             .padding(.horizontal)
         }
+        .errorAlert(show: $gameSessionBVM.showError)
     }
 }
 

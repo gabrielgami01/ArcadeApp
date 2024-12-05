@@ -6,6 +6,8 @@ struct RankingsView: View {
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
+        @Bindable var gamesBVM = gamesVM
+        
         ScrollView {
             LazyVStack {
                 ForEach(gamesVM.games) { game in
@@ -25,10 +27,16 @@ struct RankingsView: View {
                 gamesVM.activeConsole = .all
             }
         }
+        .refreshable {
+            Task {
+                await gamesVM.getGames()
+            }
+        }
         .tabBarInset()
         .headerToolbar(title: "Rankings")
         .scrollBounceBehavior(.basedOnSize)
         .background(Color.background)
+        .errorAlert(show: $gamesBVM.showError)
     }
 }
 

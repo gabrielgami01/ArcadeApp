@@ -68,6 +68,7 @@ struct ChallengesView: View {
         .scrollDismissesKeyboard(.immediately)
         .scrollBounceBehavior(.basedOnSize)
         .background(Color.background)
+        .errorAlert(show: $challengesVM.showError)
     }
 }
 

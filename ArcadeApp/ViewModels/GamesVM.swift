@@ -26,7 +26,6 @@ final class GamesVM {
         }
     }
     
-    var errorMsg = ""
     var showError = false
     
     init(repository: RepositoryProtocol = Repository.shared) {
@@ -58,8 +57,7 @@ final class GamesVM {
             }
         } catch {
             await MainActor.run {
-                errorMsg = error.localizedDescription
-                showError.toggle()
+                showError = true
             }
             print(error.localizedDescription)
         }
@@ -82,8 +80,7 @@ final class GamesVM {
             pageCache[activeConsole] = page
         } catch {
             await MainActor.run {
-                errorMsg = error.localizedDescription
-                showError.toggle()
+                showError = true
             }
             print(error.localizedDescription)
         }

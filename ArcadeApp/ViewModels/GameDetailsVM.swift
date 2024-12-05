@@ -30,7 +30,6 @@ final class GameDetailsVM {
     
     var sessions: [Session] = []
     
-    var errorMsg = ""
     var showError = false
     
     init(repository: RepositoryProtocol = Repository.shared) {
@@ -48,8 +47,7 @@ final class GameDetailsVM {
             }
         } catch {
             await MainActor.run {
-                errorMsg = error.localizedDescription
-                showError.toggle()
+                showError = true
             }
             print(error.localizedDescription)
         }
@@ -65,8 +63,7 @@ final class GameDetailsVM {
             return true
         } catch {
             await MainActor.run {
-                errorMsg = error.localizedDescription
-                showError.toggle()
+                showError = true
             }
             print(error.localizedDescription)
             return false
@@ -80,8 +77,7 @@ final class GameDetailsVM {
             return true
         } catch {
             await MainActor.run {
-                errorMsg = error.localizedDescription
-                showError.toggle()
+                showError = true
             }
             print(error.localizedDescription)
             return false
@@ -99,8 +95,7 @@ final class GameDetailsVM {
             return true
         } catch {
             await MainActor.run {
-                errorMsg = error.localizedDescription
-                showError.toggle()
+                showError = true
             }
             print(error.localizedDescription)
             return false

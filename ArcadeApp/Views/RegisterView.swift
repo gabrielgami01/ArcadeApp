@@ -59,6 +59,7 @@ struct RegisterView: View {
         .scrollBounceBehavior(.basedOnSize)
         .scrollIndicators(.hidden)
         .background(Color.background)
+        .errorAlert(show: $registerBVM.showError, text: registerVM.errorMsg)
     }
 }
 

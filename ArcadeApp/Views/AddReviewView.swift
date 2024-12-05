@@ -2,7 +2,6 @@ import SwiftUI
 
 struct AddReviewView: View {
     @Environment(UserVM.self) private var userVM
-    @Environment(SessionVM.self) private var gameSessionVM    
     
     let game: Game
     @State private var addReviewVM = AddReviewVM()
@@ -58,6 +57,7 @@ struct AddReviewView: View {
             .navigationBarTitleDisplayMode(.inline)
             .padding(.horizontal)
             .background(Color.background)
+            .errorAlert(show: $detailsVM.showError)
         }
     }
 }

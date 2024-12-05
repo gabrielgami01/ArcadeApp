@@ -105,6 +105,7 @@ struct SearchableView: View {
         .padding(.horizontal)
         .scrollBounceBehavior(.basedOnSize)
         .background(Color.background)
+        .errorAlert(show: $searchVM.showError)
     }
 }
 

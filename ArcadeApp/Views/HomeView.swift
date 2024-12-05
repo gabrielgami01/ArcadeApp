@@ -12,6 +12,8 @@ struct HomeView: View {
     @Namespace private var namespaceFavorites
     
     var body: some View {
+        @Bindable var gamesBVM = gamesVM
+        
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 10) {
@@ -80,6 +82,7 @@ struct HomeView: View {
                 GameDetailsView(game: gamesVM.selectedGame)
                     .namespace(activeNamespace)
             }
+            .errorAlert(show: $gamesBVM.showError)
         }
     }
 }

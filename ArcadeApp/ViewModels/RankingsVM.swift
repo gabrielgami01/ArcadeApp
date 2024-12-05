@@ -9,7 +9,6 @@ final class RankingsVM {
         rankingScores.enumerated().map { $0 }
     }
     
-    var errorMsg = ""
     var showError = false
     
     init(repository: RepositoryProtocol = Repository.shared) {
@@ -24,8 +23,7 @@ final class RankingsVM {
             }
         } catch {
             await MainActor.run {
-                errorMsg = error.localizedDescription
-                showError.toggle()
+                showError = true
             }
             print(error.localizedDescription)
         }

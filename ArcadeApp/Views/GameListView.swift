@@ -39,6 +39,11 @@ struct GameListView: View {
             }
             .namespace(showSearchable ? nil : namespace)
         }
+        .refreshable {
+            Task {
+                await gamesVM.getGames()
+            }
+        }
         .onChange(of: gamesVM.selectedGame) { oldValue, newValue in
             if newValue == nil {
                 withAnimation(.default.delay(0.4)) {
@@ -74,6 +79,7 @@ struct GameListView: View {
             GameDetailsView(game: gamesVM.selectedGame)
         }
         .namespace(namespace)
+        .errorAlert(show: $gamesBVM.showError)
     }
 }
 

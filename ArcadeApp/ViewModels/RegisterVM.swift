@@ -24,8 +24,8 @@ final class RegisterVM {
             return true
         } catch {
             await MainActor.run {
-                errorMsg = error.localizedDescription
-                showError.toggle()
+                errorMsg = "Something went wrong."
+                showError = true
             }
             print(error.localizedDescription)
             return false

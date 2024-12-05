@@ -25,7 +25,6 @@ final class ChallengesVM {
         }
     }
     
-    var errorMsg = ""
     var showError = false
     
     init(repository: RepositoryProtocol = Repository.shared) {
@@ -40,8 +39,7 @@ final class ChallengesVM {
             }
         } catch {
             await MainActor.run {
-                errorMsg = error.localizedDescription
-                showError.toggle()
+                showError = true
             }
             print(error.localizedDescription)
         }
