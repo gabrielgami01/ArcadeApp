@@ -1,7 +1,9 @@
 import SwiftUI
+import PhotosUI
 
 struct ProfileView: View {
     @Environment(UserVM.self) private var userVM
+    @State var badgesVM = BadgesVM()
 
     @State private var showEditAbout = false
     @State private var showAddBadge = false
@@ -9,36 +11,61 @@ struct ProfileView: View {
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
+        @Bindable var userBVM = userVM
         NavigationStack {
-            VStack {
+            ScrollView {
                 if let user = userVM.activeUser {
-                    ProfileCard(user: user)
+                    VStack(spacing: 20) {
+                        VStack {
+                            UserAvatarImage(imageData: user.avatarImage)
+                                .overlay(alignment: .topTrailing) {
+                                    PhotosPicker(selection: $userBVM.photoItem, matching: .images) {
+                                        Image(systemName: "pencil.circle")
+                                            .font(.largeTitle)
+                                            .tint(.white)
+                                            .offset(x: 25)
+                                    }
+                                }
+                            
+                            Text(user.username)
+                                .font(.customTitle)
+                            
+                            Text(user.email)
+                                .foregroundStyle(.secondary)
+                                .font(.customHeadline)
 
-                    Form {
-//                        Section {
-//                            BadgesCard(badges: badgesVM.featuredBadges) { badge in
-//                                Button {
-//                                    badgesVM.selectedBadge = badge
-//                                    showAddEmblem.toggle()
-//                                } label: {
-//                                    BadgeCard(type: .display, badge: badge)
-//                                }
-//                            } emptyBadge: { index in
-//                                Button {
-//                                    badgesVM.selectedOrder = index + badgesVM.featuredBadges.count
-//                                    showAddEmblem.toggle()
-//                                } label: {
-//                                    BadgeCard(type: .add)
-//                                }
-//                            }
-//                        } header: {
-//                            Text("Personal card")
-//                                .font(.customTitle3)
-//                        }
-//                        .buttonStyle(.plain)
-//                        .listRowBackground(Color.card)
-
-                        Section {
+                        }
+                        
+                        VStack(alignment: .leading) {
+                            Text("PERSONAL CARD")
+                                .font(.customTitle3)
+                                .foregroundStyle(.secondary)
+                                .padding(.leading)
+                            
+                            BadgesCard(badges: badgesVM.featuredBadges) { badge in
+                                Button {
+                                    badgesVM.selectedBadge = badge
+                                    showAddBadge.toggle()
+                                } label: {
+                                    BadgeCard(type: .display, badge: badge)
+                                }
+                            } emptyBadge: { index in
+                                Button {
+                                    badgesVM.selectedOrder = index + badgesVM.featuredBadges.count
+                                    showAddBadge.toggle()
+                                } label: {
+                                    BadgeCard(type: .add)
+                                }
+                            }
+                            .buttonStyle(.plain)
+                        }
+                        
+                        VStack(alignment: .leading) {
+                            Text("ABOUT")
+                                .font(.customTitle3)
+                                .foregroundStyle(.secondary)
+                                .padding(.leading)
+                            
                             HStack {
                                 Text(user.about ?? "")
 
@@ -49,33 +76,37 @@ struct ProfileView: View {
                                 } label: {
                                     Text(">")
                                 }
-                                .foregroundStyle(.secondary)
-
+                                .buttonStyle(.plain)
                             }
-                        } header: {
-                            Text("About")
-                                .font(.customTitle3)
+                            .font(.customBody)
+                            .foregroundStyle(.secondary)
+                            .padding()
+                            .background(Color.card, in: RoundedRectangle(cornerRadius: 10))
+                        }
+                        
+                        Button(role: .destructive) {
+                            userVM.logout()
+                        } label: {
+                            Text("Log Out")
+                        
                         }
                         .font(.customBody)
-                        .listRowBackground(Color.card)
-
-                        Section {
-                            Button(role: .destructive) {
-                                userVM.logout()
-                            } label: {
-                                Text("Log Out")
-                            }
-                        }
-                        .font(.customBody)
-                        .listRowBackground(Color.card)
-
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding()
+                        .background(Color.card, in: RoundedRectangle(cornerRadius: 10))
                     }
-                    .scrollContentBackground(.hidden)
+                    .padding(.horizontal)
+                    
                 }
             }
-//            .task {
-//                await badgesVM.getBadges()
-//            }
+            .task {
+                await badgesVM.getBadges()
+            }
+            .refreshable {
+                Task {
+                    await badgesVM.getBadges()
+                }
+            }
 //            .navigationDestination(for: ConnectionOptions.self) { page in
 //                switch page {
 //                    case .following:
@@ -88,18 +119,18 @@ struct ProfileView: View {
             .sheet(isPresented: $showEditAbout) {
                 EditAboutView()
             }
-//            .sheet(isPresented: $showAddEmblem) {
-//                AddBadgeView()
-//            }
-            .scrollBounceBehavior(.basedOnSize)
-            .scrollIndicators(.hidden)
-            .background(Color.background)
+            .sheet(isPresented: $showAddBadge) {
+                AddBadgeView(badgesVM: badgesVM)
+            }
+           .scrollIndicators(.hidden)
+           .background(Color.background)
+           .errorAlert(show: $badgesVM.showError)
         }
     }
 }
 
 #Preview {
-    ProfileView()
+    ProfileView(badgesVM: BadgesVM(repository: TestRepository()))
         .environment(UserVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }
