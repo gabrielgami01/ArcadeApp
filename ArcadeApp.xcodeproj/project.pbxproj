@@ -338,7 +338,6 @@
 			children = (
 				FCCD736B2C2D674B0056036E /* Views */,
 				FCCD73692C2D67150056036E /* Components */,
-				FCC5DD722D022BEF005D93DD /* Badges */,
 				FCCD736A2C2D67390056036E /* ViewModels */,
 				FCCD73682C2D67040056036E /* Repository */,
 				FC22BA932C2593DA002DFAA4 /* Network */,
@@ -587,6 +586,7 @@
 				FC9A3F912CD010DF00844A77 /* Session */,
 				FC2E950E2C61616A00393C39 /* Challenges */,
 				FC573A5D2C6F982A00F56268 /* Rankings */,
+				FCC5DD722D022BEF005D93DD /* Badges */,
 			);
 			path = Components;
 			sourceTree = "<group>";
