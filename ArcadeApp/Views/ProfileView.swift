@@ -3,6 +3,7 @@ import PhotosUI
 
 struct ProfileView: View {
     @Environment(UserVM.self) private var userVM
+    @Environment(SocialVM.self) private var socialVM
     @State var badgesVM = BadgesVM()
 
     @State private var showEditAbout = false
@@ -33,6 +34,27 @@ struct ProfileView: View {
                             Text(user.email)
                                 .foregroundStyle(.secondary)
                                 .font(.customHeadline)
+                            
+                            HStack {
+                                NavigationLink(value: ConnectionOptions.following) {
+                                    HStack(spacing: 5) {
+                                        Text("\(socialVM.following.count)")
+                                        Text("Following")
+                                            .foregroundStyle(.secondary)
+                                    }
+                                }
+                
+                                NavigationLink(value: ConnectionOptions.followers) {
+                                    HStack(spacing: 5) {
+                                        Text("\(socialVM.followers.count)")
+                                        Text("Followers")
+                                            .foregroundStyle(.secondary)
+                                    }
+                                }
+                            }
+                            .buttonStyle(.plain)
+                            .font(.customBody)
+                            .padding(.top, 5)
 
                         }
                         
@@ -107,14 +129,14 @@ struct ProfileView: View {
                     await badgesVM.getBadges()
                 }
             }
-//            .navigationDestination(for: ConnectionOptions.self) { page in
-//                switch page {
-//                    case .following:
-//                        ConnectionsView(selectedPage: page)
-//                    case .followers:
-//                        ConnectionsView(selectedPage: page)
-//                }
-//            }
+            .navigationDestination(for: ConnectionOptions.self) { page in
+                switch page {
+                    case .following:
+                        ConnectionsView(selectedPage: page)
+                    case .followers:
+                        ConnectionsView(selectedPage: page)
+                }
+            }
             .tabBarInset()
             .sheet(isPresented: $showEditAbout) {
                 EditAboutView()
@@ -132,5 +154,6 @@ struct ProfileView: View {
 #Preview {
     ProfileView(badgesVM: BadgesVM(repository: TestRepository()))
         .environment(UserVM(repository: TestRepository()))
+        .environment(SocialVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }
