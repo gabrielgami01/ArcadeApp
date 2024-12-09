@@ -39,10 +39,6 @@ final class SessionVM {
                 startSession(activeSession)
             }
         } catch {
-//            await MainActor.run {
-//                self.errorMsg = error.localizedDescription
-//                self.showError.toggle()
-//            }
             print(error.localizedDescription)
         }
     }
