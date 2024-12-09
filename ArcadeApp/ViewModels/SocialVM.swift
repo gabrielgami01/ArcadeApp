@@ -10,7 +10,7 @@ final class SocialVM {
     var followingSessions: [Session] = []
     
     var selectedUser: User? = nil
-    var userBadges: [Badge] = []
+    var featuredBadges: [Badge] = []
     
     var showError = false
     
@@ -85,9 +85,16 @@ final class SocialVM {
         following.removeAll(where: { $0.user.id == id })
     }
     
+    func findFollowingByID(_ id: UUID) -> User? {
+        guard let user = following.first(where: { $0.user.id == id })?.user else {
+            return nil
+        }
+        return user
+    }
+    
     func getFollowingActiveSessions() async {
         do {
-            let followingSessions = try  await repository.getFollowingActiveSession()
+            let followingSessions = try await repository.getFollowingActiveSession()
             await MainActor.run {
                 self.followingSessions = followingSessions
             }
@@ -99,10 +106,19 @@ final class SocialVM {
         }
     }
     
-    func findFollowingByID(_ id: UUID) -> User? {
-        guard let user = following.first(where: { $0.user.id == id })?.user else {
-            return nil
+    func getUserBadges() async {
+        do {
+            if let selectedUser {
+                let featuredBadges = try await repository.getFeaturedBadges(userID: selectedUser.id)
+                await MainActor.run {
+                    self.featuredBadges = featuredBadges
+                }
+            }
+        } catch {
+            await MainActor.run {
+                showError = true
+            }
+            print(error.localizedDescription)
         }
-        return user
     }
 }

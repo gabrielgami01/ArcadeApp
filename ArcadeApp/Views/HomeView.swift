@@ -32,7 +32,13 @@ struct HomeView: View {
                         
                         NavigationLink(value: HomePage.rankings) {
                             PageButton(page: HomePage.rankings)
-                        }  
+                        }
+                        
+                        Spacer()
+                        
+                        NavigationLink(value: HomePage.social) {
+                            PageButton(page: HomePage.social)
+                        }
                     }
                     .buttonStyle(.plain)
                     .padding()
@@ -68,6 +74,8 @@ struct HomeView: View {
                         ChallengesView()
                     case .rankings:
                         RankingsView()
+                    case .social:
+                        SocialView()
                 }
             }
             .navigationDestination(for: Game.self) { game in

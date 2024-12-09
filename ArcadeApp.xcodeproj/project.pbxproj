@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC014CD72D075FCD00BE4A07 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC014CD62D075FCD00BE4A07 /* NotificationCell.swift */; };
+		FC014CD92D07606D00BE4A07 /* ConnectionSessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC014CD82D07606D00BE4A07 /* ConnectionSessionCell.swift */; };
 		FC0208A82CC189ED00078112 /* PillPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0208A72CC189E800078112 /* PillPicker.swift */; };
 		FC0E31AA2C467FB4004EB339 /* AddReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E31A92C467FB4004EB339 /* AddReviewView.swift */; };
 		FC0E31AE2C46877D004EB339 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E31AD2C46877D004EB339 /* HomeView.swift */; };
@@ -80,6 +82,7 @@
 		FCA5191D2C3729EE001CCF54 /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA5191C2C3729EE001CCF54 /* ReviewModel.swift */; };
 		FCABDC792D05A3AA006AD996 /* ConnectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCABDC782D05A3AA006AD996 /* ConnectionCell.swift */; };
 		FCABDC7B2D05A3B0006AD996 /* ConnectionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCABDC7A2D05A3B0006AD996 /* ConnectionsButton.swift */; };
+		FCABDC7E2D05B702006AD996 /* SocialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCABDC7D2D05B702006AD996 /* SocialView.swift */; };
 		FCACFBC92C638A750065805E /* SearchableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCACFBC82C638A750065805E /* SearchableView.swift */; };
 		FCB0D5EF2C5810D000039654 /* CustomUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB0D5EE2C5810D000039654 /* CustomUnavailableView.swift */; };
 		FCB2CD0E2C6BD67E001D5751 /* RankingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB2CD0D2C6BD67E001D5751 /* RankingsView.swift */; };
@@ -148,6 +151,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FC014CD62D075FCD00BE4A07 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
+		FC014CD82D07606D00BE4A07 /* ConnectionSessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionSessionCell.swift; sourceTree = "<group>"; };
 		FC0208A72CC189E800078112 /* PillPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillPicker.swift; sourceTree = "<group>"; };
 		FC0E31A92C467FB4004EB339 /* AddReviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddReviewView.swift; sourceTree = "<group>"; };
 		FC0E31AD2C46877D004EB339 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -225,6 +230,7 @@
 		FCA5191C2C3729EE001CCF54 /* ReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
 		FCABDC782D05A3AA006AD996 /* ConnectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionCell.swift; sourceTree = "<group>"; };
 		FCABDC7A2D05A3B0006AD996 /* ConnectionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsButton.swift; sourceTree = "<group>"; };
+		FCABDC7D2D05B702006AD996 /* SocialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialView.swift; sourceTree = "<group>"; };
 		FCACFBC82C638A750065805E /* SearchableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableView.swift; sourceTree = "<group>"; };
 		FCB0D5EE2C5810D000039654 /* CustomUnavailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUnavailableView.swift; sourceTree = "<group>"; };
 		FCB2CD0D2C6BD67E001D5751 /* RankingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingsView.swift; sourceTree = "<group>"; };
@@ -300,6 +306,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC014CD52D075FB700BE4A07 /* Social */ = {
+			isa = PBXGroup;
+			children = (
+				FC014CD82D07606D00BE4A07 /* ConnectionSessionCell.swift */,
+				FC014CD62D075FCD00BE4A07 /* NotificationCell.swift */,
+			);
+			path = Social;
+			sourceTree = "<group>";
+		};
 		FC0E31BB2C46DDF8004EB339 /* Games */ = {
 			isa = PBXGroup;
 			children = (
@@ -539,6 +554,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		FCABDC7F2D05B708006AD996 /* Social */ = {
+			isa = PBXGroup;
+			children = (
+				FCABDC7D2D05B702006AD996 /* SocialView.swift */,
+			);
+			path = Social;
+			sourceTree = "<group>";
+		};
 		FCB2CD0C2C6BD65F001D5751 /* Rankings */ = {
 			isa = PBXGroup;
 			children = (
@@ -599,6 +622,7 @@
 				FC2E950E2C61616A00393C39 /* Challenges */,
 				FC573A5D2C6F982A00F56268 /* Rankings */,
 				FCC5DD722D022BEF005D93DD /* Badges */,
+				FC014CD52D075FB700BE4A07 /* Social */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -635,6 +659,7 @@
 				FCCD736D2C2D67750056036E /* Search */,
 				FC76F23D2C5C26DD0070D970 /* Challenges */,
 				FCB2CD0C2C6BD65F001D5751 /* Rankings */,
+				FCABDC7F2D05B708006AD996 /* Social */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -844,6 +869,7 @@
 				FCC324282CAAC70300D1E961 /* NetworkStatus.swift in Sources */,
 				FC6F73F32C56D1F900E34AF3 /* AsyncText.swift in Sources */,
 				FC26EFF52C8E34A40084B289 /* GameDetailsLabel.swift in Sources */,
+				FC014CD92D07606D00BE4A07 /* ConnectionSessionCell.swift in Sources */,
 				FCD1867A2CF356C5009964CF /* PointView.swift in Sources */,
 				FC22BA8D2C259255002DFAA4 /* UserModel.swift in Sources */,
 				FCF126532CD930C000A84B07 /* PickeableProtocol.swift in Sources */,
@@ -858,6 +884,7 @@
 				FC8438F82C4D0F7A00434179 /* EnumTag.swift in Sources */,
 				FC2FD0872C43E3C60054CD43 /* MainTabView.swift in Sources */,
 				FC2FD08F2C4403F50054CD43 /* EnumsModel.swift in Sources */,
+				FCABDC7E2D05B702006AD996 /* SocialView.swift in Sources */,
 				FCB699882C64C7B300A4D638 /* SearchCell.swift in Sources */,
 				FC2FD0892C43E3DD0054CD43 /* LoginView.swift in Sources */,
 				FC2FD08D2C43E4010054CD43 /* RegisterView.swift in Sources */,
@@ -939,6 +966,7 @@
 				FCACFBC92C638A750065805E /* SearchableView.swift in Sources */,
 				FC0E31CB2C46F09F004EB339 /* GameAboutView.swift in Sources */,
 				FCC324192CAAB78D00D1E961 /* NetworkService.swift in Sources */,
+				FC014CD72D075FCD00BE4A07 /* NotificationCell.swift in Sources */,
 				FCC324152CAAB62A00D1E961 /* URLSession.swift in Sources */,
 				FCC5DD762D022C1C005D93DD /* BadgesCard.swift in Sources */,
 				FC7A37032C4525E7004F6910 /* RatingComponent.swift in Sources */,

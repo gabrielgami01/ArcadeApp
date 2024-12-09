@@ -12,7 +12,7 @@ struct TabItem: Identifiable {
 }
 
 enum HomePage: String, Identifiable, CaseIterable {
-    case challenges, rankings
+    case challenges, rankings, social
     
     var id: Self { self }
     
@@ -22,6 +22,8 @@ enum HomePage: String, Identifiable, CaseIterable {
                 return "trophy"
             case .rankings:
                 return "rosette"
+            case .social:
+                return "person.2.fill"
         }
     }
 }
