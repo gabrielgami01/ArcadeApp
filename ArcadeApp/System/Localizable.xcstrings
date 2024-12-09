@@ -1,20 +1,7 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "(%@)" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "(%@)"
-          }
-        }
-      },
-      "shouldTranslate" : false
-    },
     "%@ started following you." : {
-      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -81,6 +68,16 @@
         }
       }
     },
+    "ABOUT" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BIOGRAFÍA"
+          }
+        }
+      }
+    },
     "Action" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -93,18 +90,31 @@
       }
     },
     "Active session" : {
-
-    },
-    "Active Sessions" : {
-
-    },
-    "Add new emblem" : {
-      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Añadir nuevo emblema"
+            "value" : "Sesión activa"
+          }
+        }
+      }
+    },
+    "Active Sessions" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sesiones Activas"
+          }
+        }
+      }
+    },
+    "Add badge" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añadir emblema"
           }
         }
       }
@@ -161,6 +171,16 @@
         }
       }
     },
+    "Badges" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emblemas"
+          }
+        }
+      }
+    },
     "Cancel" : {
       "localizations" : {
         "es" : {
@@ -201,19 +221,15 @@
         }
       }
     },
-    "Choose your avatar and add a personal biography and display your emblems on your user card." : {
-      "extractionState" : "stale",
+    "Choose your avatar and add a personal biography." : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Elige tu avatar y añade una biografía personal, y muestra tus emblemas en tu tarjeta de usuario."
+            "value" : "Elige tu avatar y añade una biografía personal."
           }
         }
       }
-    },
-    "Choose your avatar and add a personal biography." : {
-
     },
     "Clear all" : {
       "localizations" : {
@@ -226,10 +242,6 @@
       }
     },
     "Complete challenges and earn unique badges to display on your profile." : {
-
-    },
-    "Complete challenges and earn unique emblems to display on your profile." : {
-      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -279,27 +291,22 @@
         }
       }
     },
-    "Emblems" : {
-      "extractionState" : "stale",
+    "Empty" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Emblemas"
+            "value" : "Vacío"
           }
         }
       }
     },
     "End: %@" : {
-
-    },
-    "ERROR" : {
-      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ERROR"
+            "value" : "Fin %@"
           }
         }
       }
@@ -378,7 +385,6 @@
       }
     },
     "Follow" : {
-      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -388,22 +394,17 @@
         }
       }
     },
-    "Follow other users and see who follows you and access the profile cards of other users." : {
-      "extractionState" : "stale",
+    "Follow other users, see who follows you and access the profile cards of other users." : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sigue a otros usuarios, ve quién te sigue y accede a las tarjetas de perfil de otros usuarios."
+            "value" : "Sigue a otros usuarios, mira quién te sigue y accede a las tarjetas de perfil de otros usuarios."
           }
         }
       }
     },
-    "Follow other users, see who follows you and access the profile cards of other users." : {
-
-    },
     "Followers" : {
-      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -414,7 +415,6 @@
       }
     },
     "Following" : {
-      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -440,17 +440,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hola %@"
-          }
-        }
-      }
-    },
-    "Home" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Principal"
           }
         }
       }
@@ -525,24 +514,15 @@
         }
       }
     },
-    "No available emblems" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No tienes emblemas dispoibles"
-          }
-        }
-      }
+    "No %@" : {
+      "shouldTranslate" : false
     },
-    "No emblem" : {
-      "extractionState" : "stale",
+    "No available badges" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sin emblema"
+            "value" : "Sin emblemas disponibles"
           }
         }
       }
@@ -565,6 +545,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No hay juegos destacados"
+          }
+        }
+      }
+    },
+    "No games found" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se encontraron juegos"
+          }
+        }
+      }
+    },
+    "No notifications" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin notificaciones"
           }
         }
       }
@@ -600,10 +600,64 @@
       }
     },
     "No sessions" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin sesiones"
+          }
+        }
+      }
+    },
+    "Notifications" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notificaciones"
+          }
+        }
+      }
     },
     "NOW PLAYING" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JUGANDO"
+          }
+        }
+      }
+    },
+    "Offline" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desconectado"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VALE"
+          }
+        }
+      }
+    },
+    "OOOOOPS!" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UUUUUPS!"
+          }
+        }
+      }
     },
     "Password" : {
       "localizations" : {
@@ -615,13 +669,12 @@
         }
       }
     },
-    "Personal card" : {
-      "extractionState" : "stale",
+    "PERSONAL CARD" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tarjeta de usuario"
+            "value" : "TARJETA DE USUARIO"
           }
         }
       }
@@ -866,6 +919,16 @@
     "Social" : {
       "shouldTranslate" : false
     },
+    "Something went wrong." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Algo ha ido mal."
+          }
+        }
+      }
+    },
     "Sports" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -878,10 +941,24 @@
       }
     },
     "Start a gaming session and track how long you play." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inicia una sesión de juego y registra cuánto tiempo juegas."
+          }
+        }
+      }
     },
     "Start: %@" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inicio: %@"
+          }
+        }
+      }
     },
     "Strategy" : {
       "extractionState" : "manual",
@@ -915,12 +992,22 @@
         }
       }
     },
+    "There isn't any game by the moment." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay juegos por el momento."
+          }
+        }
+      }
+    },
     "There isn't any review for this game yet." : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No hay opiniones de este juego por el momento."
+            "value" : "Aún no hay opiniones para este juego."
           }
         }
       }
@@ -930,24 +1017,20 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No hay puntuaciones de este juego por el momento."
-          }
-        }
-      }
-    },
-    "There's no internet connection at this moment. This app needs connection in order to work properly. Come back when you have internet again." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No hay conexión a internet en este momento. Esta aplicación necesita una conexión para funcionar correctamente. Vuelve cuando tengas internet nuevamente."
+            "value" : "Aún no hay puntuaciones para este juego"
           }
         }
       }
     },
     "There's no internet connection at this moment. This app needs connection in order to work." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay conexión a internet en este momento. Esta app necesita conexión para funcionar."
+          }
+        }
+      }
     },
     "Title" : {
       "localizations" : {
@@ -1035,15 +1118,31 @@
       "shouldTranslate" : false
     },
     "You already have an active session." : {
-
-    },
-    "You haven't any available emblems by the moment." : {
-      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No tienes emblemas disponibles por el momento."
+            "value" : "Ya tienes una sesión activa"
+          }
+        }
+      }
+    },
+    "You haven't any %@ yet." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aún no tienes ningún %@"
+          }
+        }
+      }
+    },
+    "You haven't any available badge by the moment." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No tienes ningún emblema disponible por el momento."
           }
         }
       }
@@ -1054,7 +1153,17 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No tienes juegos favoritos todavía."
+            "value" : "Aún no tienes juegos favoritos"
+          }
+        }
+      }
+    },
+    "You haven't any notification yet." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aún no tienes notificaciones"
           }
         }
       }
@@ -1064,26 +1173,40 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No tienes puntuaciones de este juego todavía."
+            "value" : "Aún no tienes ninguna puntuación para este juego."
           }
         }
       }
     },
     "You haven't any session for this game yet." : {
-
-    },
-    "You need 2 or more scores to see the chart." : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Necesitas tener 2 o más puntuaciones para visualizar el gráfico."
+            "value" : "Aún no tienes ninguna sesión para este juego."
+          }
+        }
+      }
+    },
+    "You need a score to see the chart." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Necesitas una puntuación para ver la gráfica."
           }
         }
       }
     },
     "Your past sessions" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sesiones pasadas"
+          }
+        }
+      }
     },
     "Your scores" : {
       "localizations" : {
@@ -1091,6 +1214,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tus puntuaciones"
+          }
+        }
+      }
+    },
+    "Your session" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tu sesión"
           }
         }
       }
