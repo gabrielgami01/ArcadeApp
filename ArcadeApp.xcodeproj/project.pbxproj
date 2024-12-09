@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		FC014CD72D075FCD00BE4A07 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC014CD62D075FCD00BE4A07 /* NotificationCell.swift */; };
 		FC014CD92D07606D00BE4A07 /* ConnectionSessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC014CD82D07606D00BE4A07 /* ConnectionSessionCell.swift */; };
+		FC014CDB2D07613C00BE4A07 /* UserCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC014CDA2D07613C00BE4A07 /* UserCard.swift */; };
+		FC014CDD2D0761BE00BE4A07 /* UserPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC014CDC2D0761BB00BE4A07 /* UserPopup.swift */; };
 		FC0208A82CC189ED00078112 /* PillPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0208A72CC189E800078112 /* PillPicker.swift */; };
 		FC0E31AA2C467FB4004EB339 /* AddReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E31A92C467FB4004EB339 /* AddReviewView.swift */; };
 		FC0E31AE2C46877D004EB339 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E31AD2C46877D004EB339 /* HomeView.swift */; };
@@ -153,6 +155,8 @@
 /* Begin PBXFileReference section */
 		FC014CD62D075FCD00BE4A07 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		FC014CD82D07606D00BE4A07 /* ConnectionSessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionSessionCell.swift; sourceTree = "<group>"; };
+		FC014CDA2D07613C00BE4A07 /* UserCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCard.swift; sourceTree = "<group>"; };
+		FC014CDC2D0761BB00BE4A07 /* UserPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPopup.swift; sourceTree = "<group>"; };
 		FC0208A72CC189E800078112 /* PillPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillPicker.swift; sourceTree = "<group>"; };
 		FC0E31A92C467FB4004EB339 /* AddReviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddReviewView.swift; sourceTree = "<group>"; };
 		FC0E31AD2C46877D004EB339 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -309,6 +313,8 @@
 		FC014CD52D075FB700BE4A07 /* Social */ = {
 			isa = PBXGroup;
 			children = (
+				FC014CDC2D0761BB00BE4A07 /* UserPopup.swift */,
+				FC014CDA2D07613C00BE4A07 /* UserCard.swift */,
 				FC014CD82D07606D00BE4A07 /* ConnectionSessionCell.swift */,
 				FC014CD62D075FCD00BE4A07 /* NotificationCell.swift */,
 			);
@@ -878,6 +884,7 @@
 				FC4FCA102C62B0BA004C12C4 /* CustomPicker.swift in Sources */,
 				FCF92C202CC809DC005EE7FF /* Int.swift in Sources */,
 				FC8438FA2C4D219F00434179 /* AddScoreView.swift in Sources */,
+				FC014CDD2D0761BE00BE4A07 /* UserPopup.swift in Sources */,
 				FC76F2412C5C27510070D970 /* ChallengeModel.swift in Sources */,
 				FC0E31C12C46DEAA004EB339 /* GamesCarousel.swift in Sources */,
 				FC22BAB02C25EEF5002DFAA4 /* SecKeyStore.swift in Sources */,
@@ -905,6 +912,7 @@
 				FCFA6ACC2C8F5B6E0049E8E4 /* Date.swift in Sources */,
 				FCBCB1042D04DA3000F14F4E /* SocialVM.swift in Sources */,
 				FC22BA622C2590EF002DFAA4 /* ContentView.swift in Sources */,
+				FC014CDB2D07613C00BE4A07 /* UserCard.swift in Sources */,
 				FCDEBBB32D04DECF00391D31 /* ConnectionsList.swift in Sources */,
 				FC2D02732CBEF15100D28313 /* OnboardingView.swift in Sources */,
 				FCA5191B2C36FDE5001CCF54 /* GameDetailsVM.swift in Sources */,

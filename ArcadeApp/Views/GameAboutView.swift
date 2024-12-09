@@ -2,7 +2,7 @@ import SwiftUI
 
 struct GameAboutView: View {
     @Environment(UserVM.self) private var userVM
-    
+    @Environment(SocialVM.self) private var socialVM
     let game: Game
     @Binding var animation: Bool
     @State var detailsVM: GameDetailsVM
@@ -28,17 +28,17 @@ struct GameAboutView: View {
                     if !detailsVM.reviews.isEmpty {
                         LazyVStack(alignment: .leading, spacing: 15) {
                             ForEach(detailsVM.reviews) { review in
-//                                Button {
-//                                    if review.user.id != userVM.activeUser?.id {
-//                                        withAnimation {
-//                                            socialVM.selectedUser = review.user
-//                                        }
-//                                    }
-//                                } label: {
-//                                    ReviewCell(review: review)
-//                                }
-//                                .buttonStyle(.plain)
-                                ReviewCell(review: review)
+                                Button {
+                                    if review.user.id != userVM.activeUser?.id {
+                                        withAnimation {
+                                            socialVM.selectedUser = review.user
+                                        }
+                                    }
+                                } label: {
+                                    ReviewCell(review: review)
+                                }
+                                .buttonStyle(.plain)
+                                
                             }
                         }
                     } else {
@@ -64,6 +64,7 @@ struct GameAboutView: View {
     GameAboutView(game: .test, animation: .constant(true), detailsVM: GameDetailsVM(repository: TestRepository()))
         .environment(UserVM(repository: TestRepository()))
         .environment(GamesVM(repository: TestRepository()))
+        .environment(SocialVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
         .background(Color.background)
         .scrollBounceBehavior(.basedOnSize)

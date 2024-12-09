@@ -58,6 +58,7 @@ struct MainTabView: View {
             .opacity(gamesVM.selectedGame == nil ? 1.0 : 0.0)
         }
         .ignoresSafeArea(edges: .bottom)
+        .userPopup()
         .tabBarHeight(tabbarHeight)
     }
 }
@@ -67,5 +68,6 @@ struct MainTabView: View {
         .environment(UserVM(repository: TestRepository()))
         .environment(GamesVM(repository: TestRepository()))
         .environment(SessionVM(repository: TestRepository()))
+        .environment(SocialVM(repository: TestRepository()))
         .preferredColorScheme(.dark)
 }
