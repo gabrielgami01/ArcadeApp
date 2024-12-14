@@ -58,6 +58,9 @@ struct MainTabView: View {
             .opacity(gamesVM.selectedGame == nil ? 1.0 : 0.0)
         }
         .ignoresSafeArea(edges: .bottom)
+        .fullScreenCover(isPresented: $firstTime) {
+            OnboardingView()
+        }
         .userPopup()
         .tabBarHeight(tabbarHeight)
     }
