@@ -3,6 +3,12 @@
 Arcade Studios es una aplicación desarrollada en SwiftUI para iOS 17 que te permite explorar y competir con tus amigos en una gran variedad de juegos retro.
 Personaliza tu perfil, sube tus mejores puntuaciones y desafía a la comunidad mientras alcanzas nuevas metas y emblemas.
 
+## Tecnologías utilizadas
+- **SwiftUI**: Para construir una interfaz de usuario declarativa.
+- **SwiftData**: Para la persistencia local de datos.
+- **Async/Await**: Para concurrencia y asincronia
+- **Charts**: Para la visualizacion de gráficos
+
 ## Características principales
 
 👤 Login/Registro
@@ -57,18 +63,3 @@ Personaliza tu perfil, sube tus mejores puntuaciones y desafía a la comunidad m
 
 	•	Elige tu avatar y añade una biografía personal.
 	•	Muestra tus emblemas en tu tarjeta de usuario.
-
-## Tecnologías Usadas
-
-	•	**SwiftUI: Para construir una interfaz de usuario declarativa.
- 	•	**Async/Await**: Para 
-	•	**SwiftData**: Para la persistencia local de datos.
-	•	**Charts**: 
- 	•       **iOS 17**: Compatible únicamente con dispositivos con esta versión o superior.
-
-## Tecnologías utilizadas
-- **SwiftUI**: Para construir una interfaz de usuario declarativa.
-- **SwiftData**: Para la persistencia local de datos.
-- **Async/Await**: Para concurrencia y asincronia
-- **Charts**: Para la visualizacion de gráficos
-
